@@ -1,0 +1,1061 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<style>
+    .placeholder-656565::placeholder {
+        color: #656565;
+    }
+
+    .center {
+        display: flex;
+        justify-content: center;
+    }
+
+    main {
+        transform: scale(0.5);
+        transform-origin: 20% 5%;
+        min-width: 1920px;
+    }
+
+    .how-it-works-title {
+        font-family: 'Arial Rounded MT Bold';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40.0485px;
+        line-height: 46px;
+        text-align: center;
+        color: #00292A;
+    }
+
+    .how-it-works-descr {
+        font-family: 'SF Pro Display';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 41px;
+        line-height: 49px;
+        text-align: center;
+        color: #888888;
+    }
+
+    /* Arial Rounded MT Bold */
+    @@font-face {
+        font-family: 'Arial Rounded MT Bold';
+        src: url('arial-mt/ARLRDBD.TTF') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    /* Arial Rounded MT Extra Bold */
+    @@font-face {
+        font-family: 'Arial Rounded MT Extra Bold';
+        src: url('arial-mt/ARIALROUNDEDMTEXTRABOLD.TTF') format('truetype');
+        font-weight: bolder;
+        font-style: normal;
+    }
+    /* Arial Rounded MT */
+    @@font-face {
+        font-family: 'Arial Rounded MT';
+        src: url('arial-mt/ARIALROUNDEDMT.TTF') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* Arial Rounded MT Light */
+    @@font-face {
+        font-family: 'Arial Rounded MT Light';
+        src: url('arial-mt/ARIALROUNDEDMTLIGHT.TTF') format('truetype');
+        font-weight: 300; /* Light weight */
+        font-style: normal;
+    }
+
+    /* Arial MT Bold */
+    @@font-face {
+        font-family: 'Arial MT Bold';
+        src: url('arial-mt/ARIALBOLDMT.OTF') format('opentype');
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    /* Arial MT */
+    @@font-face {
+        font-family: 'Arial MT';
+        src: url('arial-mt/arialmt.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* Arial MT Black */
+    @@font-face {
+        font-family: 'Arial MT Black';
+        src: url('arial-mt/ARIALMTBLACK.TTF') format('truetype');
+        font-weight: bolder;
+        font-style: normal;
+    }
+
+    /* Arial MT Black Italic */
+    @@font-face {
+        font-family: 'Arial MT Black Italic';
+        src: url('arial-mt/arialmtblackitalic.ttf') format('truetype');
+        font-weight: bolder;
+        font-style: italic;
+    }
+
+    /* Arial MT Extra Bold */
+    @@font-face {
+        font-family: 'Arial MT Extra Bold';
+        src: url('arial-mt/ARIALMTEXTRABOLD.TTF') format('truetype');
+        font-weight: bolder;
+        font-style: normal;
+    }
+
+    /* Arial MT Extra Bold Italic */
+    @@font-face {
+        font-family: 'Arial MT Extra Bold Italic';
+        src: url('arial-mt/ARIALMTEXTRABOLDITALIC.TTF') format('truetype');
+        font-weight: bolder;
+        font-style: italic;
+    }
+
+    /* Arial MT Italic */
+    @@font-face {
+        font-family: 'Arial MT Italic';
+        src: url('arial-mt/ARIALMTITALIC.OTF') format('opentype');
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    /* Arial MT Light */
+    @@font-face {
+        font-family: 'Arial MT Light';
+        src: url('arial-mt/ARIALMTLIGHT.TTF') format('truetype');
+        font-weight: 300; /* Light weight */
+        font-style: normal;
+    }
+
+    /* Arial MT Light Italic */
+    @@font-face {
+        font-family: 'Arial MT Light Italic';
+        src: url('arial-mt/ARIALMTLIGHTITALIC.TTF') format('truetype');
+        font-weight: 300; /* Light weight */
+        font-style: italic;
+    }
+
+    /* Arial MT Medium */
+    @@font-face {
+        font-family: 'Arial MT Medium';
+        src: url('arial-mt/ARIALMTMEDIUM.TTF') format('truetype');
+        font-weight: 500; /* Medium weight */
+        font-style: normal;
+    }
+
+    /* Arial MT Medium Italic */
+    @@font-face {
+        font-family: 'Arial MT Medium Italic';
+        src: url('arial-mt/ARIALMTMEDIUMITALIC.TTF') format('truetype');
+        font-weight: 500; /* Medium weight */
+        font-style: italic;
+    }
+
+    /* Arial MT Narrow */
+    @@font-face {
+        font-family: 'Arial MT Narrow';
+        src: url('arial-mt/ARIALMTNARROW.TTF') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    /* Arial MT Narrow Bold */
+    @@font-face {
+        font-family: 'Arial MT Narrow Bold';
+        src: url('arial-mt/ARIALMTNARROWBOLD.TTF') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    /* Arial MT Narrow Bold Italic */
+    @@font-face {
+        font-family: 'Arial MT Narrow Bold Italic';
+        src: url('arial-mt/ARIALMTNARROWBOLDITALIC.TTF') format('truetype');
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    /* Arial MT Narrow Italic */
+    @@font-face {
+        font-family: 'Arial MT Narrow Italic';
+        src: url('arial-mt/ARIALMTNARROWITALIC.TTF') format('truetype');
+        font-weight: normal;
+        font-style: italic;
+    }
+
+    .top-bg {
+        background: #FFFFFF;
+    }
+
+    .bottom-bg {
+        background: #00292A;
+    }
+
+    .transparency-bullet {
+        /* Text */
+
+        font-family: 'Arial Rounded MT';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 28.3627px;
+        line-height: 160%;
+        /* or 45px */
+        /* Primary */
+        color: #020800;
+        /* Inside auto layout */
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .arial-rounded-mt {
+        font-family: 'Arial Rounded MT';
+    }
+
+        .arial-rounded-mt b {
+            font-family: 'Arial Rounded MT Bold';
+        }
+
+</style>
+<script>
+function getQuote () {
+    quotePopup.style.display = '';
+    document.body.style.height = '100%';
+    document.body.style.overflow = "hidden";
+}
+</script>
+
+<div style="display:flex">
+    <div style="margin-top:calc(75px - -158px);min-width:calc(989px - 59px)">
+        <div style="
+font-family: 'Arial Rounded MT Bold';
+font-style: normal;
+font-weight: 400;
+font-size: 74.6477px;
+line-height: 86px;
+
+color: #00292A;
+text-align:center;
+">
+            Your Move, Simplified.
+        </div>
+        <div style="
+margin-top:calc(185px - (75px + 86px));
+font-family: 'Arial Rounded MT';
+font-style: normal;
+font-weight: 400;
+font-size: 29.9574px;
+line-height: 35px;
+
+color: #908989;
+width:100%;
+text-align:center;
+">
+            Full service moving teams or rent a truck.
+        </div>
+        <div style="display:flex;justify-content:center;width:100%;">
+            <div style="width:549px;height:181px;border-top:6.5px solid #34A853;display:flex;padding-top:27px;margin-top:calc(330px - (185px + 35px))">
+                <svg style="margin-left:41px;margin-top:10px" width="107" height="107" viewBox="0 0 107 107" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100.419 54.1394C100.419 50.6925 100.11 47.3782 99.5353 44.1965H53.7542V63.0216H79.9148C78.7659 69.0757 75.319 74.2017 70.1487 77.6486V89.8893H85.9247C95.1163 81.4048 100.419 68.9431 100.419 54.1394Z" fill="#4285F4" />
+                    <path d="M53.7542 101.644C66.8788 101.644 77.8822 97.3132 85.9248 89.8893L70.1488 77.6485C65.8182 80.5651 60.2944 82.3327 53.7542 82.3327C41.1158 82.3327 30.3776 73.804 26.533 62.3145H10.3594V74.8646C18.3578 90.7289 34.7524 101.644 53.7542 101.644Z" fill="#34A853" />
+                    <path d="M26.5329 62.2703C25.5607 59.3537 24.9862 56.2604 24.9862 53.0345C24.9862 49.8086 25.5607 46.7153 26.5329 43.7987V31.2487H10.3592C7.04496 37.7889 5.14478 45.1686 5.14478 53.0345C5.14478 60.9004 7.04496 68.2802 10.3592 74.8203L22.9535 65.0101L26.5329 62.2703Z" fill="#FBBC05" />
+                    <path d="M53.7542 23.7806C60.9131 23.7806 67.2765 26.2553 72.3584 31.0279L86.2783 17.1079C77.838 9.24203 66.8788 4.42529 53.7542 4.42529C34.7524 4.42529 18.3578 15.3403 10.3594 31.2488L26.533 43.7988C30.3776 32.3094 41.1158 23.7806 53.7542 23.7806Z" fill="#EA4335" />
+                </svg>
+                <div style="margin-left:calc(167px - (41px + 107px))">
+                    <div style="
+font-family: 'Arial Rounded MT Bold';
+font-style: normal;
+font-weight: 400;
+font-size: 27.1505px;
+line-height: 27px;
+/* identical to box height, or 100% */
+
+/* Dark-grey */
+color: #6A6A6A;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;margin-bottom:17px;
+">
+                        Google Top Rated Service
+                    </div>
+                    <div style="display:flex;flex-direction:row;gap:27.15px">
+                        <div style="/* 4.9 */
+
+font-family: 'Arial Rounded MT Bold';
+font-style: normal;
+font-weight: 400;
+font-size: 40.7258px;
+line-height: 41px;
+/* identical to box height, or 100% */
+text-align: center;
+
+color: #FEA500;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+margin-top:calc((48px - 41px) / 2);
+">
+                            4.9
+                        </div>
+                        <div>
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5329 3.33641C23.1569 2.0806 24.9483 2.08061 25.5723 3.33641L30.6681 13.5925C30.9151 14.0898 31.3899 14.4348 31.9392 14.5161L43.2681 16.1932C44.6552 16.3985 45.2088 18.1023 44.2073 19.0838L36.0278 27.0995C35.6312 27.4881 35.4499 28.0463 35.5423 28.5938L37.4481 39.8864C37.6814 41.2691 36.2321 42.3221 34.9892 41.6729L24.8382 36.3708C24.346 36.1137 23.7592 36.1137 23.267 36.3708L13.116 41.6729C11.8731 42.3221 10.4238 41.2691 10.6571 39.8864L12.5629 28.5938C12.6553 28.0463 12.474 27.4881 12.0774 27.0995L3.89791 19.0838C2.89638 18.1023 3.44997 16.3985 4.83712 16.1932L16.166 14.5161C16.7153 14.4348 17.1901 14.0898 17.4371 13.5925L22.5329 3.33641Z" fill="#FEA500" />
+                            </svg>
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5329 3.33641C23.1569 2.0806 24.9483 2.08061 25.5723 3.33641L30.6681 13.5925C30.9151 14.0898 31.3899 14.4348 31.9392 14.5161L43.2681 16.1932C44.6552 16.3985 45.2088 18.1023 44.2073 19.0838L36.0278 27.0995C35.6312 27.4881 35.4499 28.0463 35.5423 28.5938L37.4481 39.8864C37.6814 41.2691 36.2321 42.3221 34.9892 41.6729L24.8382 36.3708C24.346 36.1137 23.7592 36.1137 23.267 36.3708L13.116 41.6729C11.8731 42.3221 10.4238 41.2691 10.6571 39.8864L12.5629 28.5938C12.6553 28.0463 12.474 27.4881 12.0774 27.0995L3.89791 19.0838C2.89638 18.1023 3.44997 16.3985 4.83712 16.1932L16.166 14.5161C16.7153 14.4348 17.1901 14.0898 17.4371 13.5925L22.5329 3.33641Z" fill="#FEA500" />
+                            </svg>
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5329 3.33641C23.1569 2.0806 24.9483 2.08061 25.5723 3.33641L30.6681 13.5925C30.9151 14.0898 31.3899 14.4348 31.9392 14.5161L43.2681 16.1932C44.6552 16.3985 45.2088 18.1023 44.2073 19.0838L36.0278 27.0995C35.6312 27.4881 35.4499 28.0463 35.5423 28.5938L37.4481 39.8864C37.6814 41.2691 36.2321 42.3221 34.9892 41.6729L24.8382 36.3708C24.346 36.1137 23.7592 36.1137 23.267 36.3708L13.116 41.6729C11.8731 42.3221 10.4238 41.2691 10.6571 39.8864L12.5629 28.5938C12.6553 28.0463 12.474 27.4881 12.0774 27.0995L3.89791 19.0838C2.89638 18.1023 3.44997 16.3985 4.83712 16.1932L16.166 14.5161C16.7153 14.4348 17.1901 14.0898 17.4371 13.5925L22.5329 3.33641Z" fill="#FEA500" />
+                            </svg>
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5329 3.33641C23.1569 2.0806 24.9483 2.08061 25.5723 3.33641L30.6681 13.5925C30.9151 14.0898 31.3899 14.4348 31.9392 14.5161L43.2681 16.1932C44.6552 16.3985 45.2088 18.1023 44.2073 19.0838L36.0278 27.0995C35.6312 27.4881 35.4499 28.0463 35.5423 28.5938L37.4481 39.8864C37.6814 41.2691 36.2321 42.3221 34.9892 41.6729L24.8382 36.3708C24.346 36.1137 23.7592 36.1137 23.267 36.3708L13.116 41.6729C11.8731 42.3221 10.4238 41.2691 10.6571 39.8864L12.5629 28.5938C12.6553 28.0463 12.474 27.4881 12.0774 27.0995L3.89791 19.0838C2.89638 18.1023 3.44997 16.3985 4.83712 16.1932L16.166 14.5161C16.7153 14.4348 17.1901 14.0898 17.4371 13.5925L22.5329 3.33641Z" fill="#FEA500" />
+                            </svg>
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.5329 3.33641C23.1569 2.0806 24.9483 2.08061 25.5723 3.33641L30.6681 13.5925C30.9151 14.0898 31.3899 14.4348 31.9392 14.5161L43.2681 16.1932C44.6552 16.3985 45.2088 18.1023 44.2073 19.0838L36.0278 27.0995C35.6312 27.4881 35.4499 28.0463 35.5423 28.5938L37.4481 39.8864C37.6814 41.2691 36.2321 42.3221 34.9892 41.6729L24.8382 36.3708C24.346 36.1137 23.7592 36.1137 23.267 36.3708L13.116 41.6729C11.8731 42.3221 10.4238 41.2691 10.6571 39.8864L12.5629 28.5938C12.6553 28.0463 12.474 27.4881 12.0774 27.0995L3.89791 19.0838C2.89638 18.1023 3.44997 16.3985 4.83712 16.1932L16.166 14.5161C16.7153 14.4348 17.1901 14.0898 17.4371 13.5925L22.5329 3.33641Z" fill="#FEA500" />
+                            </svg>
+                        </div>
+                    </div>
+                    <div style="margin-top:calc(103px - (42px + 47px));/* See all our reviews */
+
+font-family: 'Arial Rounded MT';
+font-style: normal;
+font-weight: 400;
+font-size: 20.3629px;
+line-height: 24px;
+/* identical to box height */
+
+/* Grey */
+color: #868686;
+
+
+/* Inside auto layout */
+flex: none;
+order: 2;
+flex-grow: 0;
+">
+                        See all our reviews
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div>
+        <div style="/* Rectangle 31 */
+width: 975px;
+height: 948px;
+
+background: #00292A;
+border-radius: 40px;
+display:flex;
+justify-content:center;
+">
+            <div style="width:553px;margin-top:calc(-111px - -158px);">
+                <div style="/* Where are you moving to? */
+font-family: 'Arial Rounded MT Bold';
+font-style: normal;
+font-weight: 400;
+font-size: 32.8236px;
+line-height: 38px;
+/* identical to box height */
+
+color: #FFFFFF;
+text-align:center;
+">
+                    Where are you moving to?
+                </div>
+                <div style="/* Pick Up Point */
+width: 100%;
+height: 87.53px;
+border-radius:calc(87.53px / 2);
+
+background: #FAFAFA;
+border: 5.23652px solid #F84734;
+display:flex;
+">
+                    <div style="height:100%;display:flex;justify-content:center;flex-direction:column;margin-left:calc(-24px - -44px)">
+                        <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M51.0295 25.6806C51.0295 39.2766 40.0078 50.2983 26.4118 50.2983C12.8158 50.2983 1.79409 39.2766 1.79409 25.6806C1.79409 12.0846 12.8158 1.06284 26.4118 1.06284C40.0078 1.06284 51.0295 12.0846 51.0295 25.6806Z" fill="white" stroke="white" stroke-width="1.82353" />
+                            <path d="M26.4119 43.9159C36.483 43.9159 44.6472 35.7517 44.6472 25.6806C44.6472 15.6095 36.483 7.44524 26.4119 7.44524C16.3408 7.44524 8.17651 15.6095 8.17651 25.6806C8.17651 35.7517 16.3408 43.9159 26.4119 43.9159Z" stroke="#00292A" stroke-width="14.5883" />
+                        </svg>
+                    </div>
+                    <input style="width:100%;background:none;border:none;outline:none;/* Choose pick up point */
+font-family: 'Arial Rounded MT';
+font-style: normal;
+font-weight: 400;
+font-size: 25.5295px;
+line-height: 30px;
+margin-left:calc(305px - (221px + 51px));
+/* identical to box height */" class="placeholder-656565" placeholder="Choose pick up point" />
+                </div>
+                <div style="margin-top:calc(34px - (-44px + 88px));margin-bottom:calc(73px - (34px + 58px) + (34px - (-44px + 88px)));margin-left:calc(246px - 199px)">
+                    <svg width="4" height="62" viewBox="0 0 4 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.82764 1.96805V59.5735" stroke="#C8C7CC" stroke-width="3.64707" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7.29 7.29" />
+                    </svg>
+                </div>
+                <div style="/* Pick Up Point */
+width: 100%;
+height: 87.53px;
+border-radius:calc(87.53px / 2);
+
+background: #FAFAFA;
+border: 5.23652px solid #FAFAFA;
+display:flex;
+">
+                    <div style="height:100%;display:flex;justify-content:center;flex-direction:column;margin-left:calc(((52px - 41px) / 2) + -24px - -44px)">
+                        <svg width="41" height="52" viewBox="0 0 41 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.4118 51.9162C18.3877 51.9162 8.77587 40.0341 6.42169 36.2101C2.90409 30.497 0.781494 27.0469 0.781494 20.4876C0.781494 15.2813 2.84969 10.2883 6.53109 6.60687C10.2125 2.92546 15.2056 0.857269 20.4118 0.857269C25.6181 0.857269 30.6112 2.92546 34.2926 6.60687C37.974 10.2883 40.0422 15.2813 40.0422 20.4876C40.0422 26.7825 37.9451 30.1834 34.4695 35.8181L34.2288 36.2101C31.8035 40.1417 22.3959 51.9162 20.4118 51.9162ZM20.4118 10.6734C18.4704 10.6734 16.5726 11.2491 14.9583 12.3277C13.3441 13.4063 12.0859 14.9393 11.343 16.733C10.6 18.5266 10.4056 20.5003 10.7844 22.4045C11.1631 24.3086 12.098 26.0577 13.4708 27.4305C14.8436 28.8033 16.5927 29.7382 18.4968 30.1169C20.401 30.4957 22.3746 30.3013 24.1683 29.5583C25.962 28.8154 27.495 27.5572 28.5736 25.943C29.6522 24.3287 30.2279 22.4309 30.2279 20.4894C30.225 17.8869 29.1899 15.3919 27.3497 13.5516C25.5094 11.7114 23.0143 10.6763 20.4118 10.6734Z" fill="#F84734" />
+                        </svg>
+                    </div>
+                    <input style="width:100%;background:none;border:none;outline:none;/* Choose pick up point */
+font-family: 'Arial Rounded MT';
+font-style: normal;
+font-weight: 400;
+font-size: 25.5295px;
+line-height: 30px;
+margin-left:calc(305px - (221px + ((41px + 52px) / 2)));
+/* identical to box height */" class="placeholder-656565" placeholder="Choose your destination" />
+                </div>
+                <div class="center" style="margin-top:calc(194.6px - (72.8px + 87.53px))">
+                    <div style="/* Rectangle 3 */
+    width: 225.26px;
+    height: 62.75px;
+
+    background: #F84734;
+    border-radius: 37.6746px;
+    /* Get a Quote */
+
+    font-family: 'Arial Rounded MT Bold';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 28.2559px;
+    line-height: 33px;
+
+    color: #FFFFFF;
+    text-align:center;
+    display:flex;
+    justify-content:center;
+    flex-direction:column;
+    " onclick="getQuote()">
+                        Get a Quote
+                    </div>
+                </div>
+                <div class="center">
+                    <div style="/*  */
+font-family: 'Arial Rounded MT';
+font-style: normal;
+font-weight: 400;
+font-size: 21.4765px;
+line-height: 25px;
+text-align: center;
+
+color: rgba(255, 255, 255, 0.33);
+margin-top:calc(298px - (195px + 63px));
+">
+                        No hidden fees.<br />Transparent Pricing from start to finish.
+                    </div>
+                </div>
+                <img src="~/movers.png" style="margin-top:calc(456px - 298px);
+width: 533.94px;
+height: 272.02px;
+border-radius: 21.2512px;" />
+            </div>
+        </div>
+    </div>
+</div>
+<div style="
+font-family: 'Arial Rounded MT Bold';
+font-style: normal;
+font-weight: 400;
+font-size: 60.7408px;
+line-height: 70px;
+
+color: #000000;
+text-align:center;
+margin-top:calc(952px - (-158px + 948px));
+">
+    How it works
+</div>
+<div class="center">
+    <style>
+        .toggle {
+            cursor: pointer;
+            background: #00292A;
+            color: #E0E0E0;
+            font-size: 49px;
+            line-height: 70px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            height: 99px;
+            border-radius: 350px;
+            justify-content: center;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        .toggle:not(.active) {
+            transform: scale(0.95);
+        }
+
+        .active {
+            background: #F84734;
+            color: #FFFFFF;
+        }
+    </style>
+    <div id="slider" style="display: flex; flex-direction: row; align-items: flex-start; padding: 7px; gap: 14px; width: 744px; height: 113px; background: #00292A; border-radius: 84px;">
+        <script>
+            function toggle(clickedElem) {
+                // Get all toggle elements within the slider
+                const toggles = document.querySelectorAll('#slider .toggle');
+
+                // Remove the 'active' class from all toggle elements
+                toggles.forEach(elem => {
+                    elem.classList.remove('active');
+                });
+
+                // Add the 'active' class to the clicked element
+                clickedElem.classList.add('active');
+            }
+        </script>
+        <div onclick="toggle(this)" class="toggle active" style="width: 364px; font-family: 'Inter'; font-weight: 600; ">
+            Full-service
+        </div>
+        <div onclick="toggle(this)" class="toggle" style="width: 352px; font-family: 'Arial Rounded MT'; font-weight: 400; ">
+            Self-service
+        </div>
+    </div>
+</div>
+<div style="display:flex;margin-top:calc(1441px - (1093px + 113px));gap:calc(2785px - (2183px + 492px));">
+    <div style="width:calc(33%-((2785px - (2183px + 492px))*2/3));">
+        <div class="how-it-works-title">
+            Book your move
+        </div>
+        <div class="how-it-works-descr">
+            Tell us when and where, and we’ll handle the rest. Booking is easy and stress free.
+        </div>
+    </div>
+    <div style="width:calc(33%-((2785px - (2183px + 492px))*2/3));">
+        <div class="how-it-works-title">
+            We move you
+        </div>
+        <div class="how-it-works-descr">
+            Our professional movers arrive on time, ready to carefully pack, load and transport your belongings.
+        </div>
+    </div>
+    <div style="width:calc(33%-((2785px - (2183px + 492px))*2/3));">
+        <div class="how-it-works-title">
+            Settle in
+        </div>
+        <div class="how-it-works-descr">
+            We unload and all you need
+            to do is relax and enjoy your
+            new space.
+        </div>
+    </div>
+</div>
+<div class="center">
+    <div style="/* Rectangle 3 */
+width: 424px;
+height: 118.11px;
+
+background: #F84734;
+border-radius: 70.9129px;
+
+font-family: 'Arial Rounded MT Bold';
+font-style: normal;
+font-weight: 400;
+font-size: 53.1847px;
+line-height: 62px;
+
+color: #FFFFFF;
+display:flex;
+flex-direction:column;
+justify-content:center;
+text-align:center;
+margin-top:calc(1858px - (1514px + 178px));
+margin-bottom:calc(930px - 848px);
+">
+        Get a Quote
+    </div>
+</div>
+<div class=bottom-bg>
+    <div style="/* Our Services: Making your move a breeze */
+
+font-style: normal;
+font-weight: 400;
+font-size: 60px;
+line-height: 69px;
+text-align: center;
+
+color: #FFFFFF;
+padding-top:calc(2116px - 2048px);
+" class="arial-rounded-mt">
+        <b>Our Services:</b> Making your<br />
+        move a breeze
+    </div>
+    <div style="/* Moving Papa provides flexible moving solutions, from full-service to DIY options. Our tech-driven platform ensures a smooth, transparent process, so you can move with ease. */
+font-family: 'Arial Rounded MT';
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 160%;
+/* or 51px */
+text-align: center;
+
+color: #FFFFFF;
+margin-top:calc(-37px + (2306px - -17px) - (2116px + 172px) + 70px);
+">
+        Moving Papa provides flexible moving solutions<br />
+        from full-service to DIY options. Our tech-driven platform ensures a smooth,<br />
+        transparent process, so you can move with ease.
+    </div>
+</div>
+<div style="/* Our commitment to transparency */
+
+font-family: 'Arial Rounded MT Bold';
+font-style: normal;
+font-weight: 400;
+font-size: 61px;
+line-height: 71px;
+text-align: center;
+
+color: #000000;
+margin-top:calc(437px - 349px);
+margin-bottom:calc(627px - 437px);
+">
+    Our commitment to transparency
+</div>
+<div style="display:flex" class="arial-rounded-mt">
+    <div style="width:50%">
+        <style>
+            .transparency-bullet > div:first-of-type > svg:first-of-type {
+                margin-right: 19px;
+            }
+        </style>
+        <div class="transparency-bullet">
+            <div>
+            <svg width="29" height="24" viewBox="0 0 29 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.93539 23.3782C7.98151 23.3782 6.29026 22.9055 4.86162 21.96C3.45399 20.9936 2.37201 19.6595 1.61567 17.9577C0.859331 16.235 0.481162 14.2391 0.481162 11.9701C0.481162 9.70105 0.859331 7.71567 1.61567 6.01391C2.37201 4.29114 3.45399 2.95704 4.86162 2.01162C6.29026 1.04519 7.98151 0.561971 9.93539 0.561971C11.8893 0.561971 13.57 1.04519 14.9776 2.01162C16.3853 2.95704 17.4673 4.29114 18.2236 6.01391C18.9799 7.71567 19.3581 9.70105 19.3581 11.9701C19.3581 14.2391 18.9799 16.235 18.2236 17.9577C17.4673 19.6595 16.3853 20.9936 14.9776 21.96C13.57 22.9055 11.8893 23.3782 9.93539 23.3782ZM9.93539 21.0461C11.217 21.0461 12.362 20.689 13.3704 19.9746C14.3999 19.2393 15.1982 18.1994 15.7655 16.8548C16.3538 15.4891 16.6479 13.8609 16.6479 11.9701C16.6479 10.0792 16.3538 8.4615 15.7655 7.1169C15.1982 5.7723 14.3999 4.74284 13.3704 4.02852C12.362 3.29319 11.217 2.92553 9.93539 2.92553C8.63281 2.92553 7.47729 3.29319 6.46884 4.02852C5.46039 4.74284 4.66203 5.7723 4.07377 7.1169C3.48551 8.4615 3.19137 10.0792 3.19137 11.9701C3.19137 13.8609 3.48551 15.4891 4.07377 16.8548C4.66203 18.1994 5.46039 19.2393 6.46884 19.9746C7.47729 20.689 8.63281 21.0461 9.93539 21.0461ZM25.3571 23V3.90246L21.796 4.69032V2.8625L26.2395 0.940138H28.0358V23H25.3571Z" fill="url(#paint0_linear_61_519)" />
+                <defs>
+                    <linearGradient id="paint0_linear_61_519" x1="22.6356" y1="-10" x2="22.6356" y2="34" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#F84734" />
+                        <stop offset="1" stop-color="#34A853" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            </div>
+            <div>
+            <b>Clear, Upfront pricing</b> - We believe in honest communication from the start. We provide clear, upfront pricing with no hidden fees, so you know exactly what you’re paying for.
+            </div>
+        </div>
+        <style>
+            .line-container {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                position: relative;
+                margin-top: 38px;
+                margin-bottom: 38px;
+            }
+
+            .line {
+                flex: 1;
+                height: 1.58px;
+                background: linear-gradient(to right, #F84734, #34A853);
+                position: relative;
+            }
+
+            .circle {
+                width: 8.2px; /* Circle diameter */
+                height: 8.2px;
+                border-radius: 50%;
+                position: absolute;
+                top: -3.16px; /* Adjust based on line height */
+            }
+
+                .circle.left {
+                    background-color: #F84734;
+                    left: -4.1px; /* Half the circle width to center it on the end */
+                }
+
+                .circle.right {
+                    background-color: #34A853;
+                    right: -4.1px; /* Half the circle width to center it on the end */
+                }
+        </style>
+        <div class="line-container">
+            <div class="circle left"></div>
+            <div class="line"></div>
+            <div class="circle right"></div>
+        </div>
+        <div class="transparency-bullet">
+            <div>
+            <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.93539 23.012C7.98151 23.012 6.29026 22.5392 4.86162 21.5938C3.45399 20.6274 2.37201 19.2933 1.61567 17.5915C0.859331 15.8688 0.481162 13.8729 0.481162 11.6039C0.481162 9.33484 0.859331 7.34946 1.61567 5.6477C2.37201 3.92493 3.45399 2.59083 4.86162 1.64541C6.29026 0.678976 7.98151 0.19576 9.93539 0.19576C11.8893 0.19576 13.57 0.678976 14.9776 1.64541C16.3853 2.59083 17.4673 3.92493 18.2236 5.6477C18.9799 7.34946 19.3581 9.33484 19.3581 11.6039C19.3581 13.8729 18.9799 15.8688 18.2236 17.5915C17.4673 19.2933 16.3853 20.6274 14.9776 21.5938C13.57 22.5392 11.8893 23.012 9.93539 23.012ZM9.93539 20.6799C11.217 20.6799 12.362 20.3228 13.3704 19.6084C14.3999 18.8731 15.1982 17.8331 15.7655 16.4885C16.3538 15.1229 16.6479 13.4947 16.6479 11.6039C16.6479 9.71301 16.3538 8.09529 15.7655 6.75069C15.1982 5.40609 14.3999 4.37663 13.3704 3.66231C12.362 2.92698 11.217 2.55932 9.93539 2.55932C8.63281 2.55932 7.47729 2.92698 6.46884 3.66231C5.46039 4.37663 4.66203 5.40609 4.07377 6.75069C3.48551 8.09529 3.19137 9.71301 3.19137 11.6039C3.19137 13.4947 3.48551 15.1229 4.07377 16.4885C4.66203 17.8331 5.46039 18.8731 6.46884 19.6084C7.47729 20.3228 8.63281 20.6799 9.93539 20.6799ZM22.5282 22.6338V20.7745C24.0199 19.5979 25.4275 18.4109 26.7511 17.2134C28.0957 15.9948 29.2827 14.7973 30.3122 13.6208C31.3627 12.4442 32.182 11.2887 32.7703 10.1542C33.3796 9.0197 33.6842 7.92722 33.6842 6.87675C33.6842 6.0994 33.5476 5.37457 33.2745 4.70227C33.0224 4.02997 32.6022 3.49423 32.014 3.09506C31.4257 2.67487 30.6273 2.46477 29.6189 2.46477C28.6525 2.46477 27.8436 2.68537 27.1923 3.12657C26.541 3.54676 26.0473 4.11401 25.7111 4.82833C25.396 5.54265 25.2384 6.30949 25.2384 7.12886H22.6858C22.6858 5.67921 22.9904 4.43966 23.5997 3.4102C24.209 2.35973 25.0388 1.56137 26.0893 1.01512C27.1398 0.468881 28.3268 0.19576 29.6504 0.19576C31.6043 0.19576 33.201 0.752508 34.4405 1.86601C35.7011 2.95849 36.3314 4.59723 36.3314 6.7822C36.3314 8.08479 36.0057 9.37686 35.3545 10.6584C34.7032 11.919 33.8733 13.148 32.8648 14.3456C31.8564 15.5221 30.7744 16.6251 29.6189 17.6546C28.4844 18.684 27.4234 19.6084 26.436 20.4278H37.0877V22.6338H22.5282Z" fill="url(#paint0_linear_61_523)" />
+                <defs>
+                    <linearGradient id="paint0_linear_61_523" x1="22.6356" y1="-10.3662" x2="22.6356" y2="33.6338" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#F84734" />
+                        <stop offset="1" stop-color="#34A853" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+            <div>
+            <b>Real-Time Tracking</b> - With MovingPapa You’ll always know the status of your move, from when we pick up your items to when they arrive at your new home, providing full visibility.
+            </div>
+        </div>
+        <div class="line-container">
+            <div class="circle left"></div>
+            <div class="line"></div>
+            <div class="circle right"></div>
+        </div>
+        <div class=transparency-bullet>
+            <div>
+            <svg width="38" height="24" viewBox="0 0 38 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.93539 23.6457C7.98151 23.6457 6.29026 23.173 4.86162 22.2276C3.45399 21.2612 2.37201 19.9271 1.61567 18.2253C0.859331 16.5026 0.481162 14.5067 0.481162 12.2376C0.481162 9.96863 0.859331 7.98325 1.61567 6.28148C2.37201 4.55871 3.45399 3.22462 4.86162 2.2792C6.29026 1.31276 7.98151 0.829549 9.93539 0.829549C11.8893 0.829549 13.57 1.31276 14.9776 2.2792C16.3853 3.22462 17.4673 4.55871 18.2236 6.28148C18.9799 7.98325 19.3581 9.96863 19.3581 12.2376C19.3581 14.5067 18.9799 16.5026 18.2236 18.2253C17.4673 19.9271 16.3853 21.2612 14.9776 22.2276C13.57 23.173 11.8893 23.6457 9.93539 23.6457ZM9.93539 21.3137C11.217 21.3137 12.362 20.9565 13.3704 20.2422C14.3999 19.5069 15.1982 18.4669 15.7655 17.1223C16.3538 15.7567 16.6479 14.1285 16.6479 12.2376C16.6479 10.3468 16.3538 8.72908 15.7655 7.38448C15.1982 6.03988 14.3999 5.01042 13.3704 4.2961C12.362 3.56077 11.217 3.1931 9.93539 3.1931C8.63281 3.1931 7.47729 3.56077 6.46884 4.2961C5.46039 5.01042 4.66203 6.03988 4.07377 7.38448C3.48551 8.72908 3.19137 10.3468 3.19137 12.2376C3.19137 14.1285 3.48551 15.7567 4.07377 17.1223C4.66203 18.4669 5.46039 19.5069 6.46884 20.2422C7.47729 20.9565 8.63281 21.3137 9.93539 21.3137ZM30.0527 23.6457C28.6451 23.6457 27.374 23.3936 26.2395 22.8894C25.105 22.3642 24.1911 21.5868 23.4978 20.5574C22.8255 19.5279 22.4683 18.2463 22.4263 16.7126H25.105C25.126 17.9732 25.5672 19.0657 26.4286 19.9901C27.29 20.8935 28.498 21.3452 30.0527 21.3452C31.6074 21.3452 32.7734 20.9145 33.5508 20.0531C34.3491 19.1918 34.7483 18.1518 34.7483 16.9332C34.7483 15.9038 34.4962 15.0634 33.992 14.4121C33.5087 13.7608 32.8469 13.2776 32.0066 12.9625C31.1872 12.6473 30.2838 12.4898 29.2964 12.4898H27.6576V10.2523H29.2964C30.725 10.2523 31.8385 9.92661 32.6369 9.27532C33.4562 8.62403 33.8659 7.71012 33.8659 6.5336C33.8659 5.54616 33.5403 4.7373 32.889 4.10701C32.2587 3.45572 31.3133 3.13008 30.0527 3.13008C28.8342 3.13008 27.8572 3.49774 27.1219 4.23307C26.3866 4.94739 25.9769 5.85079 25.8928 6.94328H23.2141C23.2772 5.74575 23.5923 4.68477 24.1596 3.76036C24.7478 2.83594 25.5462 2.12163 26.5546 1.6174C27.5631 1.09217 28.7291 0.829549 30.0527 0.829549C31.4813 0.829549 32.6684 1.08166 33.6138 1.58589C34.5802 2.09011 35.305 2.76241 35.7883 3.60279C36.2925 4.44316 36.5446 5.36758 36.5446 6.37603C36.5446 7.48953 36.24 8.50848 35.6307 9.43289C35.0214 10.3363 34.1075 10.9456 32.889 11.2607C34.1915 11.5338 35.2735 12.1536 36.1349 13.12C36.9963 14.0865 37.427 15.3575 37.427 16.9332C37.427 18.1518 37.1434 19.2758 36.5761 20.3053C36.0299 21.3137 35.2105 22.1226 34.118 22.7318C33.0255 23.3411 31.6704 23.6457 30.0527 23.6457Z" fill="url(#paint0_linear_61_527)" />
+                <defs>
+                    <linearGradient id="paint0_linear_61_527" x1="22.6356" y1="-9.73242" x2="22.6356" y2="34.2676" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#F84734" />
+                        <stop offset="1" stop-color="#34A853" />
+                    </linearGradient>
+                </defs>
+            </svg>
+            </div>
+            <div>
+            <b>Sustainability at the Core</b> - Transparency extends to our environmental impact. From our eco-friendly packing materials to optimized routes, we’re committed to moving your belongings while minimizing our carbon footprint.
+            </div>
+        </div>
+
+        <div class="line-container">
+            <div class="circle left"></div>
+            <div class="line"></div>
+            <div class="circle right"></div>
+        </div>
+        <div class="transparency-bullet" style="margin-bottom:calc(64px - 7px)">
+            <div>
+                <svg width="39" height="23" viewBox="0 0 39 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.65055 22.2697C7.74757 22.2697 6.10036 21.8093 4.70894 20.8885C3.33797 19.9472 2.28417 18.6479 1.54754 16.9905C0.8109 15.3126 0.442581 13.3687 0.442581 11.1587C0.442581 8.94883 0.8109 7.01516 1.54754 5.35772C2.28417 3.67983 3.33797 2.38048 4.70894 1.45968C6.10036 0.518425 7.74757 0.0477954 9.65055 0.0477954C11.5535 0.0477954 13.1905 0.518425 14.5615 1.45968C15.9324 2.38048 16.9862 3.67983 17.7229 5.35772C18.4595 7.01516 18.8278 8.94883 18.8278 11.1587C18.8278 13.3687 18.4595 15.3126 17.7229 16.9905C16.9862 18.6479 15.9324 19.9472 14.5615 20.8885C13.1905 21.8093 11.5535 22.2697 9.65055 22.2697ZM9.65055 19.9984C10.8987 19.9984 12.0139 19.6505 12.9961 18.9548C13.9988 18.2386 14.7763 17.2258 15.3288 15.9162C15.9017 14.5861 16.1882 13.0003 16.1882 11.1587C16.1882 9.31715 15.9017 7.74156 15.3288 6.43198C14.7763 5.12241 13.9988 4.11976 12.9961 3.42405C12.0139 2.70787 10.8987 2.34979 9.65055 2.34979C8.38189 2.34979 7.25648 2.70787 6.27429 3.42405C5.29211 4.11976 4.51455 5.12241 3.94161 6.43198C3.36867 7.74156 3.0822 9.31715 3.0822 11.1587C3.0822 13.0003 3.36867 14.5861 3.94161 15.9162C4.51455 17.2258 5.29211 18.2386 6.27429 18.9548C7.25648 19.6505 8.38189 19.9984 9.65055 19.9984ZM32.2825 21.9014V17.2974H21.3864V15.3023L31.8221 0.416113H34.83V15.0261H38.0221V17.2974H34.83V21.9014H32.2825ZM24.2409 15.0261H32.4053V3.27058L24.2409 15.0261Z" fill="url(#paint0_linear_61_531)" />
+                    <defs>
+                        <linearGradient id="paint0_linear_61_531" x1="22.0199" y1="-10.0986" x2="22.0199" y2="32.9014" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#F84734" />
+                            <stop offset="1" stop-color="#34A853" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <div>
+            <b>24/7 Availability & Non-Intrusive Service</b> - Life doesn’t stop, so neither do we. With round-the-clock availability, you can schedule your move at your convenience. Plus, we respect your time—no spammy calls. You decide when you want to be contacted.
+            </div>
+        </div>
+    </div>
+    <div style="width:50%"></div>
+</div>
+<div style="background-color:#F9E6F0">
+    <div style="/* A Message From The Founders */
+font-family: 'Patrick Hand';
+font-style: normal;
+font-weight: 400;
+font-size: 74.3694px;
+line-height: 101px;
+text-align: center;
+padding-top:calc(626px - 568px);
+margin-bottom:calc(849px - 756px);
+color: #000000;
+
+">
+        A Message From The Founders
+    </div>
+    <div style="display:flex">
+        <div style="/* Bio text */
+font-family: 'Handlee';
+font-style: normal;
+font-weight: 400;
+font-size: 35.3423px;
+line-height: 56px;
+width:50%;
+/* or 159% */
+
+/* Black */
+color: #2D2D2D;
+
+">
+            At Moving Papa, we believe in keeping things simple and honest. Moving can be stressful, so transparency is at the heart of everything we do.<br /><br />
+
+            You deserve to know exactly what to expect—no hidden fees, no unnecessary calls, just a straightforward process that works for you. We’re here to earn your trust by being open and always putting your needs first.<br /><br />
+
+            Thank you for choosing us to be part of your journey.
+            <svg style="display:inline;" width="259" height="259" viewBox="0 0 259 259" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M129.22 37.2153L135.279 46.0336L142.643 38.2717L147.247 47.9292L155.735 41.4148L158.772 51.6737L168.174 46.5672L169.569 57.175L179.653 53.6021L179.372 64.2975L189.892 62.3462L187.94 72.8659L198.636 72.5843L195.063 82.6692L205.671 84.0642L200.564 93.466L210.823 96.5032L204.309 104.99L213.966 109.595L206.204 116.959L215.022 123.018L206.204 129.076L213.966 136.44L204.309 141.045L210.823 149.532L200.564 152.569L205.671 161.971L195.063 163.366L198.636 173.451L187.94 173.169L189.892 183.689L179.372 181.738L179.653 192.433L169.569 188.86L168.174 199.468L158.772 194.361L155.735 204.62L147.247 198.106L142.643 207.763L135.279 200.001L129.22 208.82L123.161 200.001L115.798 207.763L111.193 198.106L102.706 204.62L99.6686 194.361L90.2668 199.468L88.8718 188.86L78.7869 192.433L79.0685 181.738L68.5489 183.689L70.5001 173.169L59.8047 173.451L63.3776 163.366L52.7699 161.971L57.8764 152.569L47.6174 149.532L54.1318 141.045L44.4743 136.44L52.2362 129.076L43.418 123.018L52.2362 116.959L44.4743 109.595L54.1318 104.99L47.6174 96.5032L57.8764 93.466L52.7699 84.0642L63.3776 82.6692L59.8047 72.5843L70.5001 72.8659L68.5489 62.3462L79.0685 64.2975L78.7869 53.6021L88.8718 57.175L90.2668 46.5672L99.6686 51.6737L102.706 41.4148L111.193 47.9292L115.798 38.2717L123.161 46.0336L129.22 37.2153Z" fill="#8000FF" />
+                <g style="mix-blend-mode:multiply">
+                    <path d="M131.768 37.1787L137.568 46.1807L145.165 38.6341L149.485 48.4325L158.169 42.1673L160.903 52.5208L170.46 47.6913L171.541 58.345L181.736 55.0701L181.137 65.7616L191.719 64.1219L189.455 74.5881L200.163 74.624L196.289 84.6071L206.86 86.3177L201.472 95.5718L211.645 98.915L204.876 107.212L214.401 112.106L206.417 119.242L215.059 125.565L206.057 131.365L213.604 138.962L203.805 143.282L210.071 151.966L199.717 154.7L204.547 164.258L193.893 165.338L197.168 175.534L186.476 174.934L188.116 185.516L177.65 183.252L177.614 193.96L167.631 190.086L165.92 200.657L156.666 195.269L153.323 205.442L145.025 198.673L140.132 208.198L132.996 200.214L126.672 208.856L120.873 199.854L113.276 207.401L108.956 197.602L100.272 203.868L97.5377 193.514L87.9802 198.344L86.8996 187.69L76.7043 190.965L77.3036 180.273L66.7216 181.913L68.986 171.447L58.2777 171.411L62.1516 161.428L51.5807 159.717L56.9686 150.463L46.7955 147.12L53.5647 138.823L44.0398 133.929L52.0237 126.793L43.3816 120.47L52.3835 114.67L44.837 107.073L54.6353 102.753L48.3702 94.0687L58.7237 91.3348L53.8942 81.7773L64.5479 80.6967L61.2729 70.5015L71.9645 71.1008L70.3248 60.5187L80.791 62.7832L80.8268 52.0749L90.8099 55.9487L92.5205 45.3779L101.775 50.7658L105.118 40.5926L113.415 47.3619L118.309 37.837L125.445 45.8208L131.768 37.1787Z" fill="#FF0000" />
+                </g>
+                <path d="M83.2333 92.0094C82.8461 91.6353 82.615 91.2248 82.5401 90.7781C82.4876 90.331 82.5752 89.8871 82.8028 89.4464C83.0198 89.0394 83.2985 88.637 83.6389 88.2391C83.9907 87.8523 84.4967 87.3172 85.1569 86.6338C85.7732 85.996 86.2014 85.4958 86.4416 85.1332C86.6931 84.7817 86.7221 84.5124 86.5285 84.3253C86.3007 84.1052 86.0422 84.0537 85.753 84.1707C85.4748 84.2762 85.1596 84.5113 84.8075 84.8757C84.4884 85.206 84.0332 85.7683 83.4421 86.5625C83.3214 86.7101 83.1351 86.9486 82.8831 87.2777C82.6312 87.6068 82.4117 87.8682 82.2246 88.0619C81.6964 88.6086 81.1969 88.8747 80.7263 88.8604C80.267 88.8571 79.8039 88.6299 79.3369 88.1787C78.7788 87.6395 78.5864 86.87 78.7596 85.8702C78.9328 84.8703 79.3516 83.8215 80.0159 82.7237C80.6913 81.6144 81.4526 80.6213 82.3 79.7443C83.3124 78.6964 84.4014 77.8657 85.5668 77.252C86.7437 76.6494 87.8981 76.3663 89.03 76.4028C90.1732 76.4504 91.1776 76.8923 92.0432 77.7287C92.7722 78.433 93.133 79.222 93.1256 80.0957C93.1292 80.9581 92.8969 81.7797 92.4287 82.5606C93.1593 82.0552 93.961 81.7838 94.834 81.7464C95.7184 81.72 96.5194 82.0535 97.2369 82.7467C98.0911 83.5721 98.5615 84.544 98.6479 85.6626C98.7567 86.7807 98.5139 87.9666 97.9194 89.22C97.3364 90.4845 96.4451 91.7375 95.2456 92.9789C94.4643 93.7876 93.5415 94.5147 92.4774 95.1602C91.4243 95.7943 90.4176 96.198 89.4573 96.3714C88.4971 96.5447 87.755 96.3782 87.2311 95.872C86.7527 95.4098 86.5038 94.9381 86.4843 94.4568C86.4648 93.9755 86.7192 93.4615 87.2474 92.9148C87.4895 92.6643 87.9863 92.2413 88.7376 91.646C89.5331 91.0051 90.0848 90.5252 90.3929 90.2063C91.1082 89.4659 91.2666 88.9032 90.8679 88.518C90.6629 88.32 90.3724 88.3586 89.9963 88.6338C89.6316 88.9201 89.0859 89.4279 88.3592 90.1572C87.82 90.7153 87.3574 91.1713 86.9715 91.5251C86.5966 91.8676 86.2207 92.1541 85.8438 92.3846C85.4336 92.6268 84.9928 92.7184 84.5213 92.6593C84.0613 92.6112 83.6319 92.3946 83.2333 92.0094ZM94.971 103.375C94.1964 102.643 93.6678 101.765 93.3852 100.743C93.111 99.7292 93.1015 98.6941 93.3566 97.6378C93.6284 96.5812 94.1546 95.6321 94.9352 94.7904C95.6917 93.9906 96.585 93.4368 97.6151 93.1292C98.6451 92.8216 99.684 92.7913 100.732 93.0384C101.788 93.277 102.712 93.7787 103.503 94.5437C104.286 95.2839 104.815 96.1694 105.09 97.2C105.373 98.2387 105.374 99.2906 105.094 100.356C104.814 101.421 104.272 102.37 103.466 103.204C102.709 103.987 101.82 104.52 100.798 104.803C99.7753 105.085 98.7444 105.099 97.7047 104.843C96.6734 104.596 95.7622 104.107 94.971 103.375ZM97.3892 100.948C97.7766 101.322 98.2394 101.5 98.7775 101.483C99.324 101.474 99.8086 101.242 100.232 100.787C100.671 100.332 100.89 99.8357 100.889 99.2973C100.888 98.7589 100.694 98.3026 100.307 97.9283C99.9192 97.5539 99.4564 97.3755 98.9184 97.3931C98.3803 97.4106 97.8915 97.6468 97.4521 98.1016C97.0208 98.548 96.8056 99.0404 96.8066 99.5787C96.8076 100.117 97.0018 100.573 97.3892 100.948ZM104.094 112.165C103.286 111.384 102.878 110.297 102.87 108.906C102.863 107.515 103.153 106.102 103.742 104.667C104.338 103.224 105.067 102.056 105.93 101.163C106.557 100.514 107.212 100.122 107.898 99.9862C108.591 99.8417 109.22 100.042 109.784 100.587C110.247 101.035 110.455 101.578 110.408 102.217C110.37 102.863 110.186 103.525 109.858 104.201C109.539 104.87 109.077 105.71 108.473 106.722C107.901 107.668 107.5 108.387 107.268 108.88C107.63 108.725 108.036 108.515 108.487 108.25C108.938 107.986 109.376 107.717 109.802 107.445C110.745 106.857 111.524 106.405 112.14 106.088C112.764 105.779 113.365 105.595 113.944 105.535C114.523 105.475 115.019 105.645 115.431 106.044C115.996 106.589 116.226 107.202 116.121 107.883C116.017 108.564 115.639 109.241 114.988 109.915C114.126 110.808 112.988 111.581 111.574 112.235C110.169 112.88 108.771 113.223 107.38 113.264C105.998 113.312 104.903 112.946 104.094 112.165ZM115.287 118.558C115.668 119.024 115.895 119.454 115.968 119.851C116.057 120.247 115.931 120.622 115.589 120.975C115.248 121.329 114.869 121.468 114.454 121.393C114.047 121.325 113.65 121.145 113.264 120.854C112.886 120.554 112.424 120.14 111.876 119.611C111.337 119.09 110.911 118.646 110.598 118.278C110.294 117.903 110.101 117.512 110.019 117.108C109.938 116.704 110.068 116.324 110.41 115.971C110.743 115.625 111.101 115.483 111.483 115.542C111.882 115.602 112.312 115.797 112.773 116.129C113.203 115.6 113.857 114.88 114.736 113.971C115.525 113.154 116.177 112.513 116.691 112.049C116.251 111.526 115.982 111.038 115.883 110.584C115.784 110.13 115.926 109.705 116.308 109.309C116.683 108.922 117.094 108.766 117.543 108.841C117.991 108.916 118.425 109.116 118.845 109.44C119.265 109.764 119.774 110.215 120.372 110.793C120.97 111.37 121.438 111.863 121.776 112.272C122.114 112.68 122.329 113.107 122.419 113.553C122.518 114.007 122.38 114.427 122.006 114.815C121.624 115.211 121.2 115.363 120.734 115.271C120.277 115.188 119.776 114.932 119.23 114.502C118.825 115.006 118.211 115.683 117.389 116.534C116.6 117.351 115.899 118.026 115.287 118.558ZM116.526 124.176C116.113 123.778 116.02 123.199 116.248 122.442C116.483 121.692 116.892 120.907 117.474 120.085C118.056 119.263 118.669 118.52 119.312 117.854C120.362 116.768 121.466 115.97 122.625 115.462C123.801 114.953 124.801 115.097 125.627 115.895C125.989 116.245 126.171 116.689 126.172 117.227C126.181 117.774 126.071 118.368 125.842 119.009C125.621 119.643 125.275 120.489 124.805 121.549L124.446 122.351C124.738 122.014 124.958 121.77 125.104 121.619C126.056 120.633 126.944 119.976 127.766 119.647C128.597 119.326 129.303 119.447 129.884 120.008C130.584 120.684 130.661 121.564 130.116 122.651C129.58 123.728 128.77 124.827 127.688 125.947C127.045 126.613 126.294 127.222 125.434 127.775C124.582 128.337 123.718 128.683 122.842 128.814C121.967 128.945 121.217 128.709 120.594 128.107C120.215 127.741 120.012 127.285 119.986 126.738C119.977 126.192 120.071 125.623 120.268 125.031C120.473 124.448 120.787 123.677 121.209 122.717C121.433 122.216 121.596 121.836 121.699 121.578L120.723 122.613C120.08 123.279 119.526 123.785 119.06 124.133C118.602 124.472 118.162 124.658 117.74 124.69C117.326 124.73 116.922 124.559 116.526 124.176ZM128.387 135.612C127.427 134.685 126.769 133.723 126.412 132.727C126.055 131.731 125.997 130.746 126.237 129.773C126.493 128.799 127.037 127.883 127.867 127.024C128.86 125.996 129.908 125.341 131.013 125.056C132.127 124.781 133.192 124.808 134.208 125.138C135.224 125.469 136.111 126 136.869 126.732C137.543 127.383 138.039 128.058 138.358 128.757C138.676 129.455 138.816 130.103 138.776 130.7C138.737 131.297 138.542 131.777 138.192 132.139C137.688 132.661 137.191 132.906 136.701 132.873C136.22 132.831 135.782 132.619 135.386 132.237C135.201 132.058 135.053 131.882 134.942 131.71C134.84 131.546 134.741 131.362 134.647 131.156C134.535 130.935 134.424 130.746 134.314 130.59C134.22 130.435 134.076 130.263 133.883 130.076C133.327 129.539 132.726 129.284 132.081 129.312C131.443 129.331 130.831 129.644 130.246 130.25C129.749 130.764 129.522 131.311 129.566 131.89C129.609 132.469 129.862 132.982 130.325 133.43C130.586 133.682 130.846 133.868 131.105 133.988C131.364 134.107 131.584 134.174 131.767 134.188C131.949 134.201 132.065 134.182 132.114 134.132C131.499 133.538 131.101 133.015 130.919 132.562C130.737 132.11 130.817 131.707 131.159 131.353C131.501 130.999 131.887 130.843 132.319 130.886C132.758 130.92 133.269 131.217 133.85 131.779C134.448 132.357 134.846 132.88 135.045 133.348C135.251 133.809 135.284 134.255 135.142 134.689C135.009 135.113 134.71 135.566 134.246 136.046C133.774 136.534 133.192 136.842 132.498 136.97C131.813 137.106 131.1 137.052 130.358 136.808C129.625 136.572 128.968 136.174 128.387 135.612ZM134.843 141.907C133.909 141.005 133.789 139.854 134.481 138.453C135.186 137.063 136.341 135.537 137.948 133.874C138.993 132.792 140.166 131.965 141.467 131.394C142.79 130.822 144.136 130.637 145.506 130.837C146.887 131.026 148.158 131.682 149.32 132.805C150.254 133.707 150.91 134.726 151.288 135.862C151.677 136.987 151.741 138.128 151.481 139.286C151.232 140.455 150.646 141.518 149.721 142.475C148.654 143.58 147.535 144.293 146.365 144.616C145.194 144.938 144.08 144.941 143.021 144.623C141.963 144.305 141.041 143.767 140.255 143.007C139.617 142.391 139.135 141.716 138.809 140.982C138.525 141.413 138.29 141.725 138.103 141.919C137.057 143.001 135.971 142.997 134.843 141.907ZM142.574 140.128C142.984 140.524 143.481 140.717 144.063 140.707C144.668 140.697 145.162 140.492 145.548 140.094C145.944 139.684 146.131 139.182 146.11 138.589C146.111 137.995 145.906 137.5 145.496 137.104C145.098 136.719 144.596 136.532 143.991 136.542C143.398 136.541 142.903 136.746 142.507 137.156C142.121 137.554 141.934 138.056 141.944 138.66C141.966 139.254 142.176 139.743 142.574 140.128ZM145.531 152.25C144.967 151.705 144.776 150.991 144.96 150.11C145.16 149.229 145.687 148.288 146.539 147.288C146.661 147.145 146.848 146.943 147.1 146.682C148.085 145.663 149.124 144.924 150.218 144.466C151.319 144 152.385 143.849 153.415 144.014C154.462 144.178 155.398 144.659 156.223 145.456C157.048 146.254 157.557 147.169 157.749 148.201C157.957 149.232 157.847 150.299 157.418 151.399C156.999 152.508 156.292 153.576 155.299 154.604C155.047 154.865 154.852 155.059 154.713 155.185C153.726 156.089 152.804 156.647 151.946 156.861C151.089 157.074 150.374 156.904 149.801 156.351C149.338 155.903 149.135 155.464 149.194 155.032C149.261 154.608 149.47 154.215 149.82 153.853C149.983 153.685 150.138 153.55 150.285 153.448C149.831 153.041 149.435 152.675 149.098 152.35C148.888 152.146 148.664 151.914 148.428 151.653C148.331 151.804 148.201 151.964 148.039 152.132C147.681 152.503 147.287 152.725 146.857 152.798C146.436 152.88 145.994 152.697 145.531 152.25ZM150.512 149.319C150.983 149.742 151.324 150.055 151.535 150.258C151.762 150.478 152.087 150.808 152.508 151.248C152.615 151.171 152.757 151.04 152.937 150.855C153.319 150.459 153.544 150.058 153.612 149.651C153.687 149.235 153.548 148.857 153.194 148.515C152.849 148.181 152.474 148.055 152.07 148.137C151.665 148.218 151.276 148.453 150.902 148.84C150.763 148.983 150.634 149.143 150.512 149.319ZM154.064 160.47C153.373 159.803 153.284 158.951 153.797 157.915C154.317 156.887 155.172 155.759 156.36 154.529C157.133 153.729 158 153.118 158.962 152.695C159.94 152.273 160.936 152.135 161.949 152.284C162.97 152.423 163.911 152.908 164.77 153.738C165.46 154.406 165.945 155.159 166.225 155.999C166.512 156.831 166.56 157.675 166.368 158.531C166.184 159.396 165.75 160.182 165.067 160.89C164.277 161.707 163.45 162.234 162.584 162.473C161.719 162.711 160.894 162.713 160.112 162.478C159.329 162.243 158.647 161.845 158.066 161.283C157.595 160.827 157.238 160.328 156.997 159.786C156.787 160.104 156.613 160.335 156.475 160.478C155.701 161.278 154.898 161.276 154.064 160.47ZM159.781 159.154C160.085 159.447 160.451 159.59 160.882 159.582C161.329 159.575 161.695 159.423 161.98 159.129C162.273 158.825 162.411 158.455 162.396 158.016C162.396 157.577 162.245 157.211 161.942 156.918C161.647 156.633 161.276 156.495 160.829 156.502C160.39 156.501 160.024 156.653 159.731 156.956C159.446 157.251 159.308 157.622 159.315 158.069C159.331 158.507 159.487 158.869 159.781 159.154ZM162.175 168.331C161.61 167.785 161.42 167.072 161.604 166.191C161.804 165.31 162.33 164.369 163.183 163.369C163.304 163.226 163.491 163.024 163.744 162.763C164.728 161.743 165.768 161.005 166.861 160.547C167.963 160.081 169.029 159.93 170.059 160.095C171.105 160.259 172.041 160.74 172.867 161.537C173.692 162.335 174.201 163.249 174.392 164.282C174.6 165.313 174.49 166.379 174.062 167.48C173.642 168.589 172.936 169.657 171.943 170.685C171.691 170.946 171.495 171.14 171.357 171.266C170.37 172.169 169.448 172.728 168.59 172.941C167.732 173.155 167.017 172.985 166.444 172.432C165.981 171.984 165.779 171.544 165.838 171.113C165.905 170.689 166.114 170.296 166.464 169.934C166.626 169.766 166.781 169.63 166.929 169.529C166.474 169.122 166.079 168.756 165.742 168.431C165.531 168.227 165.308 167.995 165.072 167.734C164.975 167.885 164.845 168.044 164.682 168.213C164.324 168.584 163.93 168.806 163.501 168.879C163.08 168.961 162.638 168.778 162.175 168.331ZM167.156 165.4C167.627 165.822 167.968 166.135 168.178 166.339C168.406 166.559 168.73 166.889 169.152 167.329C169.258 167.252 169.401 167.121 169.58 166.936C169.963 166.54 170.188 166.139 170.255 165.732C170.331 165.316 170.192 164.938 169.838 164.596C169.493 164.262 169.118 164.136 168.713 164.218C168.309 164.299 167.92 164.534 167.545 164.921C167.407 165.064 167.277 165.224 167.156 165.4Z" fill="#00292A" fill-opacity="0.31" />
+                <circle cx="144.111" cy="138.406" r="2.56315" transform="rotate(44.0149 144.111 138.406)" fill="#F84734" fill-opacity="0.52" />
+                <circle cx="160.89" cy="157.747" r="1.93799" transform="rotate(44.0149 160.89 157.747)" fill="#F84734" fill-opacity="0.66" />
+            </svg>
+
+        </div>
+    </div>
+</div>
+<div style="/* Real Stories from Happy Customers */
+
+font-family: 'Arial Rounded MT Bold';
+font-style: normal;
+font-weight: 400;
+font-size: 62.8532px;
+line-height: 73px;
+/* identical to box height */
+text-align: center;
+
+color: #000000;
+margin-top:calc(681px - 547px);
+">
+    Real Stories from Happy Customers🫶
+</div>
+<div class="center">
+<div style="display:flex;gap:calc(483px - 295px);margin-bottom:calc(973px - 877px);margin-top:calc(817px - 681px)">
+    <style>
+        .google-review {
+            /* Frame 17 */
+            /* Auto layout */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50.1053px;
+            gap: 50.11px;
+            width: 357px;
+            height: 684.95px;
+            background: #FFFFFF;
+            box-shadow: -12.5263px -6.26316px 50.1053px rgba(0, 0, 0, 0.08), 62.6316px 43.8421px 125.263px rgba(0, 0, 0, 0.08);
+            border-radius: 25.0526px;
+        }
+        .google-review > div:first-of-type {
+                /* Frame 16 */
+                /* Auto layout */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0px;
+                gap: 12.53px;
+                width: 164.41px;
+                height: 143.27px;
+                /* Inside auto layout */
+                flex: none;
+                order: 0;
+                flex-grow: 0;
+            }
+            .google-review > div:nth-of-type(2) {
+                /* Et eligendi expedita. Accusantium qui est eius nemo eaque dolore necessitatibus voluptatem. Ut accusamus provident beatae dolorum amet. Omnis sapiente aut saepe aliquam doloribus eaque. Iure sit sed animi molestiae impedit. */
+
+                width: 256.79px;
+                height: 282px;
+                font-family: 'Plus Jakarta Sans';
+                font-style: normal;
+                font-weight: 400;
+                font-size: 18.7895px;
+                line-height: 28px;
+                /* or 150% */
+                text-align: center;
+                /* Dark-grey */
+                color: #6A6A6A;
+                /* Inside auto layout */
+                flex: none;
+                order: 1;
+                align-self: stretch;
+                flex-grow: 0;
+            }
+            .google-review > div:nth-of-type(3) {
+                /* Frame 17 */
+                /* Auto layout */
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 0px;
+                gap: 6.26px;
+                width: 256.79px;
+                height: 59.26px;
+                /* Inside auto layout */
+                flex: none;
+                order: 2;
+                flex-grow: 0;
+            }
+            .google-review > div:nth-of-type(3) > div:nth-of-type(1) {
+                    /* From: Sophia Jenkins */
+
+                    width: 256.79px;
+                    height: 29px;
+                    font-family: 'Plus Jakarta Sans';
+                    font-style: italic;
+                    font-weight: 400;
+                    font-size: 18.7895px;
+                    line-height: 28px;
+                    /* identical to box height, or 150% */
+                    text-align: center;
+                    /* Dark-grey */
+                    color: #6A6A6A;
+                    /* Inside auto layout */
+                    flex: none;
+                    order: 0;
+                    flex-grow: 0;
+                }
+
+            .google-review > div:nth-of-type(3) > div:nth-of-type(2) {
+            /* See it on Google */
+
+            font-family: 'Plus Jakarta Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 18.7895px;
+            line-height: 24px;
+            /* identical to box height */
+            text-align: center;
+            color: #4285F4;
+            /* Inside auto layout */
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+        }
+    </style>
+    <div class="google-review">
+        <div>
+            <svg width="99" height="98" viewBox="0 0 99 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M92.5592 50.0569C92.5592 46.8764 92.2738 43.8182 91.7437 40.8823H49.5V58.2528H73.6393C72.5791 63.8391 69.3986 68.5691 64.6278 71.7496V83.0445H79.1848C87.6661 75.2155 92.5592 63.7168 92.5592 50.0569Z" fill="#4285F4" />
+                <path d="M49.5001 93.89C61.6105 93.89 71.7636 89.894 79.1848 83.0437L64.6279 71.7488C60.6318 74.44 55.5349 76.071 49.5001 76.071C37.8382 76.071 27.9297 68.2013 24.3822 57.5996H9.45825V69.1799C16.8387 83.8184 31.9665 93.89 49.5001 93.89Z" fill="#34A853" />
+                <path d="M24.3822 57.5587C23.4851 54.8675 22.955 52.0132 22.955 49.0365C22.955 46.0599 23.4851 43.2056 24.3822 40.5144V28.9341H9.45827C6.40009 34.9689 4.64673 41.7784 4.64673 49.0365C4.64673 56.2946 6.40009 63.1042 9.45827 69.139L21.0794 60.0868L24.3822 57.5587Z" fill="#FBBC05" />
+                <path d="M49.5001 22.0439C56.1057 22.0439 61.9774 24.3273 66.6667 28.7311L79.511 15.8867C71.7229 8.62864 61.6105 4.18408 49.5001 4.18408C31.9665 4.18408 16.8387 14.2557 9.45825 28.935L24.3822 40.5153C27.9297 29.9136 37.8382 22.0439 49.5001 22.0439Z" fill="#EA4335" />
+            </svg>
+            <svg width="165" height="34" viewBox="0 0 165 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.6852 2.61034C16.1171 1.74126 17.3568 1.74126 17.7886 2.61034L21.3152 9.70808C21.4861 10.0522 21.8147 10.291 22.1949 10.3472L30.035 11.5078C30.995 11.65 31.3781 12.829 30.685 13.5083L25.0244 19.0555C24.7499 19.3245 24.6244 19.7107 24.6883 20.0897L26.0073 27.9047C26.1688 28.8616 25.1658 29.5903 24.3056 29.141L17.2806 25.4717C16.94 25.2938 16.5339 25.2938 16.1932 25.4717L9.16827 29.141C8.3081 29.5903 7.30511 28.8616 7.46661 27.9047L8.78552 20.0897C8.84947 19.7107 8.72397 19.3245 8.4495 19.0555L2.78891 13.5083C2.09581 12.829 2.47891 11.65 3.43889 11.5078L11.279 10.3472C11.6592 10.291 11.9877 10.0522 12.1587 9.70808L15.6852 2.61034Z" fill="#FCD503" />
+                <path d="M48.5668 2.61034C48.9986 1.74126 50.2384 1.74126 50.6702 2.61034L54.1967 9.70808C54.3677 10.0522 54.6963 10.291 55.0765 10.3472L62.9166 11.5078C63.8765 11.65 64.2597 12.829 63.5665 13.5083L57.906 19.0555C57.6315 19.3245 57.506 19.7107 57.5699 20.0897L58.8889 27.9047C59.0503 28.8616 58.0474 29.5903 57.1872 29.141L50.1622 25.4717C49.8216 25.2938 49.4155 25.2938 49.0748 25.4717L42.0499 29.141C41.1897 29.5903 40.1867 28.8616 40.3482 27.9047L41.6671 20.0897C41.7311 19.7107 41.6056 19.3245 41.3311 19.0555L35.6705 13.5083C34.9774 12.829 35.3605 11.65 36.3205 11.5078L44.1606 10.3472C44.5407 10.291 44.8693 10.0522 45.0403 9.70808L48.5668 2.61034Z" fill="#FCD503" />
+                <path d="M81.4484 2.61034C81.8802 1.74126 83.12 1.74126 83.5518 2.61034L87.0783 9.70808C87.2493 10.0522 87.5779 10.291 87.958 10.3472L95.7982 11.5078C96.7581 11.65 97.1412 12.829 96.4481 13.5083L90.7875 19.0555C90.5131 19.3245 90.3876 19.7107 90.4515 20.0897L91.7704 27.9047C91.9319 28.8616 90.929 29.5903 90.0688 29.141L83.0438 25.4717C82.7032 25.2938 82.2971 25.2938 81.9564 25.4717L74.9315 29.141C74.0713 29.5903 73.0683 28.8616 73.2298 27.9047L74.5487 20.0897C74.6127 19.7107 74.4872 19.3245 74.2127 19.0555L68.5521 13.5083C67.859 12.829 68.2421 11.65 69.2021 11.5078L77.0422 10.3472C77.4223 10.291 77.7509 10.0522 77.9219 9.70808L81.4484 2.61034Z" fill="#FCD503" />
+                <path d="M114.33 2.61034C114.762 1.74126 116.002 1.74126 116.433 2.61034L119.96 9.70808C120.131 10.0522 120.459 10.291 120.84 10.3472L128.68 11.5078C129.64 11.65 130.023 12.829 129.33 13.5083L123.669 19.0555C123.395 19.3245 123.269 19.7107 123.333 20.0897L124.652 27.9047C124.814 28.8616 123.811 29.5903 122.95 29.141L115.925 25.4717C115.585 25.2938 115.179 25.2938 114.838 25.4717L107.813 29.141C106.953 29.5903 105.95 28.8616 106.111 27.9047L107.43 20.0897C107.494 19.7107 107.369 19.3245 107.094 19.0555L101.434 13.5083C100.741 12.829 101.124 11.65 102.084 11.5078L109.924 10.3472C110.304 10.291 110.632 10.0522 110.803 9.70808L114.33 2.61034Z" fill="#FCD503" />
+                <path d="M147.212 2.61034C147.643 1.74126 148.883 1.74126 149.315 2.61034L152.842 9.70808C153.013 10.0522 153.341 10.291 153.721 10.3472L161.561 11.5078C162.521 11.65 162.904 12.829 162.211 13.5083L156.551 19.0555C156.276 19.3245 156.151 19.7107 156.215 20.0897L157.534 27.9047C157.695 28.8616 156.692 29.5903 155.832 29.141L148.807 25.4717C148.466 25.2938 148.06 25.2938 147.72 25.4717L140.695 29.141C139.834 29.5903 138.831 28.8616 138.993 27.9047L140.312 20.0897C140.376 19.7107 140.25 19.3245 139.976 19.0555L134.315 13.5083C133.622 12.829 134.005 11.65 134.965 11.5078L142.805 10.3472C143.186 10.291 143.514 10.0522 143.685 9.70808L147.212 2.61034Z" fill="#FCD503" />
+            </svg>
+        </div>
+        <div>
+            Et eligendi expedita. Accusantium qui est eius nemo eaque dolore necessitatibus voluptatem. Ut accusamus provident beatae dolorum amet. Omnis sapiente aut saepe aliquam doloribus eaque. Iure sit sed animi molestiae impedit.
+        </div>
+        <div>
+            <div>
+                From: Sophia Jenkins
+            </div>
+            <div>See it on Google</div>
+        </div>
+    </div>
+    <div class="google-review">
+        <div>
+            <svg width="99" height="98" viewBox="0 0 99 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M92.5592 50.0569C92.5592 46.8764 92.2738 43.8182 91.7437 40.8823H49.5V58.2528H73.6393C72.5791 63.8391 69.3986 68.5691 64.6278 71.7496V83.0445H79.1848C87.6661 75.2155 92.5592 63.7168 92.5592 50.0569Z" fill="#4285F4" />
+                <path d="M49.5001 93.89C61.6105 93.89 71.7636 89.894 79.1848 83.0437L64.6279 71.7488C60.6318 74.44 55.5349 76.071 49.5001 76.071C37.8382 76.071 27.9297 68.2013 24.3822 57.5996H9.45825V69.1799C16.8387 83.8184 31.9665 93.89 49.5001 93.89Z" fill="#34A853" />
+                <path d="M24.3822 57.5587C23.4851 54.8675 22.955 52.0132 22.955 49.0365C22.955 46.0599 23.4851 43.2056 24.3822 40.5144V28.9341H9.45827C6.40009 34.9689 4.64673 41.7784 4.64673 49.0365C4.64673 56.2946 6.40009 63.1042 9.45827 69.139L21.0794 60.0868L24.3822 57.5587Z" fill="#FBBC05" />
+                <path d="M49.5001 22.0439C56.1057 22.0439 61.9774 24.3273 66.6667 28.7311L79.511 15.8867C71.7229 8.62864 61.6105 4.18408 49.5001 4.18408C31.9665 4.18408 16.8387 14.2557 9.45825 28.935L24.3822 40.5153C27.9297 29.9136 37.8382 22.0439 49.5001 22.0439Z" fill="#EA4335" />
+            </svg>
+            <svg width="165" height="34" viewBox="0 0 165 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.6852 2.61034C16.1171 1.74126 17.3568 1.74126 17.7886 2.61034L21.3152 9.70808C21.4861 10.0522 21.8147 10.291 22.1949 10.3472L30.035 11.5078C30.995 11.65 31.3781 12.829 30.685 13.5083L25.0244 19.0555C24.7499 19.3245 24.6244 19.7107 24.6883 20.0897L26.0073 27.9047C26.1688 28.8616 25.1658 29.5903 24.3056 29.141L17.2806 25.4717C16.94 25.2938 16.5339 25.2938 16.1932 25.4717L9.16827 29.141C8.3081 29.5903 7.30511 28.8616 7.46661 27.9047L8.78552 20.0897C8.84947 19.7107 8.72397 19.3245 8.4495 19.0555L2.78891 13.5083C2.09581 12.829 2.47891 11.65 3.43889 11.5078L11.279 10.3472C11.6592 10.291 11.9877 10.0522 12.1587 9.70808L15.6852 2.61034Z" fill="#FCD503" />
+                <path d="M48.5668 2.61034C48.9986 1.74126 50.2384 1.74126 50.6702 2.61034L54.1967 9.70808C54.3677 10.0522 54.6963 10.291 55.0765 10.3472L62.9166 11.5078C63.8765 11.65 64.2597 12.829 63.5665 13.5083L57.906 19.0555C57.6315 19.3245 57.506 19.7107 57.5699 20.0897L58.8889 27.9047C59.0503 28.8616 58.0474 29.5903 57.1872 29.141L50.1622 25.4717C49.8216 25.2938 49.4155 25.2938 49.0748 25.4717L42.0499 29.141C41.1897 29.5903 40.1867 28.8616 40.3482 27.9047L41.6671 20.0897C41.7311 19.7107 41.6056 19.3245 41.3311 19.0555L35.6705 13.5083C34.9774 12.829 35.3605 11.65 36.3205 11.5078L44.1606 10.3472C44.5407 10.291 44.8693 10.0522 45.0403 9.70808L48.5668 2.61034Z" fill="#FCD503" />
+                <path d="M81.4484 2.61034C81.8802 1.74126 83.12 1.74126 83.5518 2.61034L87.0783 9.70808C87.2493 10.0522 87.5779 10.291 87.958 10.3472L95.7982 11.5078C96.7581 11.65 97.1412 12.829 96.4481 13.5083L90.7875 19.0555C90.5131 19.3245 90.3876 19.7107 90.4515 20.0897L91.7704 27.9047C91.9319 28.8616 90.929 29.5903 90.0688 29.141L83.0438 25.4717C82.7032 25.2938 82.2971 25.2938 81.9564 25.4717L74.9315 29.141C74.0713 29.5903 73.0683 28.8616 73.2298 27.9047L74.5487 20.0897C74.6127 19.7107 74.4872 19.3245 74.2127 19.0555L68.5521 13.5083C67.859 12.829 68.2421 11.65 69.2021 11.5078L77.0422 10.3472C77.4223 10.291 77.7509 10.0522 77.9219 9.70808L81.4484 2.61034Z" fill="#FCD503" />
+                <path d="M114.33 2.61034C114.762 1.74126 116.002 1.74126 116.433 2.61034L119.96 9.70808C120.131 10.0522 120.459 10.291 120.84 10.3472L128.68 11.5078C129.64 11.65 130.023 12.829 129.33 13.5083L123.669 19.0555C123.395 19.3245 123.269 19.7107 123.333 20.0897L124.652 27.9047C124.814 28.8616 123.811 29.5903 122.95 29.141L115.925 25.4717C115.585 25.2938 115.179 25.2938 114.838 25.4717L107.813 29.141C106.953 29.5903 105.95 28.8616 106.111 27.9047L107.43 20.0897C107.494 19.7107 107.369 19.3245 107.094 19.0555L101.434 13.5083C100.741 12.829 101.124 11.65 102.084 11.5078L109.924 10.3472C110.304 10.291 110.632 10.0522 110.803 9.70808L114.33 2.61034Z" fill="#FCD503" />
+                <path d="M147.212 2.61034C147.643 1.74126 148.883 1.74126 149.315 2.61034L152.842 9.70808C153.013 10.0522 153.341 10.291 153.721 10.3472L161.561 11.5078C162.521 11.65 162.904 12.829 162.211 13.5083L156.551 19.0555C156.276 19.3245 156.151 19.7107 156.215 20.0897L157.534 27.9047C157.695 28.8616 156.692 29.5903 155.832 29.141L148.807 25.4717C148.466 25.2938 148.06 25.2938 147.72 25.4717L140.695 29.141C139.834 29.5903 138.831 28.8616 138.993 27.9047L140.312 20.0897C140.376 19.7107 140.25 19.3245 139.976 19.0555L134.315 13.5083C133.622 12.829 134.005 11.65 134.965 11.5078L142.805 10.3472C143.186 10.291 143.514 10.0522 143.685 9.70808L147.212 2.61034Z" fill="#FCD503" />
+            </svg>
+        </div>
+        <div>
+            Et eligendi expedita. Accusantium qui est eius nemo eaque dolore necessitatibus voluptatem. Ut accusamus provident beatae dolorum amet. Omnis sapiente aut saepe aliquam doloribus eaque. Iure sit sed animi molestiae impedit.
+        </div>
+        <div>
+            <div>
+                From: Sophia Jenkins
+            </div>
+            <div>See it on Google</div>
+        </div>
+    </div>
+    <div class="google-review">
+        <div>
+            <svg width="99" height="98" viewBox="0 0 99 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M92.5592 50.0569C92.5592 46.8764 92.2738 43.8182 91.7437 40.8823H49.5V58.2528H73.6393C72.5791 63.8391 69.3986 68.5691 64.6278 71.7496V83.0445H79.1848C87.6661 75.2155 92.5592 63.7168 92.5592 50.0569Z" fill="#4285F4" />
+                <path d="M49.5001 93.89C61.6105 93.89 71.7636 89.894 79.1848 83.0437L64.6279 71.7488C60.6318 74.44 55.5349 76.071 49.5001 76.071C37.8382 76.071 27.9297 68.2013 24.3822 57.5996H9.45825V69.1799C16.8387 83.8184 31.9665 93.89 49.5001 93.89Z" fill="#34A853" />
+                <path d="M24.3822 57.5587C23.4851 54.8675 22.955 52.0132 22.955 49.0365C22.955 46.0599 23.4851 43.2056 24.3822 40.5144V28.9341H9.45827C6.40009 34.9689 4.64673 41.7784 4.64673 49.0365C4.64673 56.2946 6.40009 63.1042 9.45827 69.139L21.0794 60.0868L24.3822 57.5587Z" fill="#FBBC05" />
+                <path d="M49.5001 22.0439C56.1057 22.0439 61.9774 24.3273 66.6667 28.7311L79.511 15.8867C71.7229 8.62864 61.6105 4.18408 49.5001 4.18408C31.9665 4.18408 16.8387 14.2557 9.45825 28.935L24.3822 40.5153C27.9297 29.9136 37.8382 22.0439 49.5001 22.0439Z" fill="#EA4335" />
+            </svg>
+            <svg width="165" height="34" viewBox="0 0 165 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.6852 2.61034C16.1171 1.74126 17.3568 1.74126 17.7886 2.61034L21.3152 9.70808C21.4861 10.0522 21.8147 10.291 22.1949 10.3472L30.035 11.5078C30.995 11.65 31.3781 12.829 30.685 13.5083L25.0244 19.0555C24.7499 19.3245 24.6244 19.7107 24.6883 20.0897L26.0073 27.9047C26.1688 28.8616 25.1658 29.5903 24.3056 29.141L17.2806 25.4717C16.94 25.2938 16.5339 25.2938 16.1932 25.4717L9.16827 29.141C8.3081 29.5903 7.30511 28.8616 7.46661 27.9047L8.78552 20.0897C8.84947 19.7107 8.72397 19.3245 8.4495 19.0555L2.78891 13.5083C2.09581 12.829 2.47891 11.65 3.43889 11.5078L11.279 10.3472C11.6592 10.291 11.9877 10.0522 12.1587 9.70808L15.6852 2.61034Z" fill="#FCD503" />
+                <path d="M48.5668 2.61034C48.9986 1.74126 50.2384 1.74126 50.6702 2.61034L54.1967 9.70808C54.3677 10.0522 54.6963 10.291 55.0765 10.3472L62.9166 11.5078C63.8765 11.65 64.2597 12.829 63.5665 13.5083L57.906 19.0555C57.6315 19.3245 57.506 19.7107 57.5699 20.0897L58.8889 27.9047C59.0503 28.8616 58.0474 29.5903 57.1872 29.141L50.1622 25.4717C49.8216 25.2938 49.4155 25.2938 49.0748 25.4717L42.0499 29.141C41.1897 29.5903 40.1867 28.8616 40.3482 27.9047L41.6671 20.0897C41.7311 19.7107 41.6056 19.3245 41.3311 19.0555L35.6705 13.5083C34.9774 12.829 35.3605 11.65 36.3205 11.5078L44.1606 10.3472C44.5407 10.291 44.8693 10.0522 45.0403 9.70808L48.5668 2.61034Z" fill="#FCD503" />
+                <path d="M81.4484 2.61034C81.8802 1.74126 83.12 1.74126 83.5518 2.61034L87.0783 9.70808C87.2493 10.0522 87.5779 10.291 87.958 10.3472L95.7982 11.5078C96.7581 11.65 97.1412 12.829 96.4481 13.5083L90.7875 19.0555C90.5131 19.3245 90.3876 19.7107 90.4515 20.0897L91.7704 27.9047C91.9319 28.8616 90.929 29.5903 90.0688 29.141L83.0438 25.4717C82.7032 25.2938 82.2971 25.2938 81.9564 25.4717L74.9315 29.141C74.0713 29.5903 73.0683 28.8616 73.2298 27.9047L74.5487 20.0897C74.6127 19.7107 74.4872 19.3245 74.2127 19.0555L68.5521 13.5083C67.859 12.829 68.2421 11.65 69.2021 11.5078L77.0422 10.3472C77.4223 10.291 77.7509 10.0522 77.9219 9.70808L81.4484 2.61034Z" fill="#FCD503" />
+                <path d="M114.33 2.61034C114.762 1.74126 116.002 1.74126 116.433 2.61034L119.96 9.70808C120.131 10.0522 120.459 10.291 120.84 10.3472L128.68 11.5078C129.64 11.65 130.023 12.829 129.33 13.5083L123.669 19.0555C123.395 19.3245 123.269 19.7107 123.333 20.0897L124.652 27.9047C124.814 28.8616 123.811 29.5903 122.95 29.141L115.925 25.4717C115.585 25.2938 115.179 25.2938 114.838 25.4717L107.813 29.141C106.953 29.5903 105.95 28.8616 106.111 27.9047L107.43 20.0897C107.494 19.7107 107.369 19.3245 107.094 19.0555L101.434 13.5083C100.741 12.829 101.124 11.65 102.084 11.5078L109.924 10.3472C110.304 10.291 110.632 10.0522 110.803 9.70808L114.33 2.61034Z" fill="#FCD503" />
+                <path d="M147.212 2.61034C147.643 1.74126 148.883 1.74126 149.315 2.61034L152.842 9.70808C153.013 10.0522 153.341 10.291 153.721 10.3472L161.561 11.5078C162.521 11.65 162.904 12.829 162.211 13.5083L156.551 19.0555C156.276 19.3245 156.151 19.7107 156.215 20.0897L157.534 27.9047C157.695 28.8616 156.692 29.5903 155.832 29.141L148.807 25.4717C148.466 25.2938 148.06 25.2938 147.72 25.4717L140.695 29.141C139.834 29.5903 138.831 28.8616 138.993 27.9047L140.312 20.0897C140.376 19.7107 140.25 19.3245 139.976 19.0555L134.315 13.5083C133.622 12.829 134.005 11.65 134.965 11.5078L142.805 10.3472C143.186 10.291 143.514 10.0522 143.685 9.70808L147.212 2.61034Z" fill="#FCD503" />
+            </svg>
+        </div>
+        <div>
+            Et eligendi expedita. Accusantium qui est eius nemo eaque dolore necessitatibus voluptatem. Ut accusamus provident beatae dolorum amet. Omnis sapiente aut saepe aliquam doloribus eaque. Iure sit sed animi molestiae impedit.
+        </div>
+        <div>
+            <div>
+                From: Sophia Jenkins
+            </div>
+            <div>See it on Google</div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="bottom-bg" style="padding-top:calc(732px - 658px)">
+    <div style="font-style: normal;font-weight: 400;font-size: 61px;line-height: 71px;text-align: center;color: #FFFFFF;" class="arial-rounded-mt">
+        <b>Our commitment to transparency</b><br /><br />
+        Get your instant quote<br />
+        and see why thousands trust Moving Papa
+    </div>
+    <div class="center">
+        <div style="width: 424px;height: 118.11px;background: #F84734;border-radius: 70.9129px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 53.1847px;line-height: 62px;color: #FFFFFF;display:flex;flex-direction:column;justify-content:center;text-align:center;margin-top:calc(1057px - 971px);margin-bottom:calc(175px - 57px);">
+            Get a Quote
+        </div>
+    </div>
+</div>
+<div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;overflow:hidden;" id="quotePopup" class="bottom-bg">
+    <div style="
+margin-top:calc(-832px - -1091px);
+margin-left:calc(520px - 284px);">
+    <div style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 86.7269px;line-height: 100px;color: #EEEEEE;">
+        What kind of moving help<br />
+        do you need?
+    </div>
+    <div style="font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 45.3492px;line-height: 53px;color: #EEEEEE;">
+        Tell us how we can help—are you looking for a full-service move, or do you just need a truck?
+    </div>
+    <div style="display:flex;width: 959.88px;height: 282.83px;background: #EEEEEE;box-shadow: 1.09201px 1.09201px 109.201px 1.09201px rgba(0, 0, 0, 0.05);border-radius: 32.7603px;">
+        <div style="width:20%"></div>
+        <div>
+            <div style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.6005px;line-height: 63px;color: #00292A;">
+                Full Service
+            </div>
+            <div style="font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 39.3454px;line-height: 46px;color: #888888;">
+                Book professional movers
+            </div>
+        </div>
+    </div>
+    <div style="display:flex;width: 959.88px;height: 282.83px;background: #EEEEEE;box-shadow: 1.09201px 1.09201px 109.201px 1.09201px rgba(0, 0, 0, 0.05);border-radius: 32.7603px;">
+        <div style="width:20%"></div>
+        <div>
+            <div style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.6005px;line-height: 63px;color: #00292A;">
+                Self Service
+            </div>
+            <div style="font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 39.3454px;line-height: 46px;color: #888888;">
+                Rent a truck
+            </div>
+        </div>
+    </div>
+</div>
+</div>
