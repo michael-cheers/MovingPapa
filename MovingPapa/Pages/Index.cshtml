@@ -24,7 +24,7 @@
 
     .popup {
         transform-origin: left top;
-        transform: scale(0.5);
+        transform: scale(0.4);
         min-width: 1920px;
     }
 
@@ -969,7 +969,7 @@ function getQuote () {
     </div>
 </div>
 <template>
-<div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:200vw;height:200vh;overflow:hidden;" id="quotePopup" class="popup bottom-bg">
+<div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:250vw;height:250vh;overflow:hidden;" id="quotePopup" class="popup bottom-bg">
     <div style="
 margin-top:calc(-832px - -1091px);
 margin-left:calc(520px - 284px);" class="mb-no-margin-left">
@@ -982,6 +982,20 @@ margin-left:calc(520px - 284px);" class="mb-no-margin-left">
     </div>
     <script>
     let calendarRates = null;
+    let callEnquiry = false;
+    function callMe() {
+        quoteFirstText.innerText = "Great choice! We’ll call you.";
+        quoteSecondText.innerText = `Share your contacts, and we’ll give you a call to
+guide you through the process.
+Personalized support, just a phone call away.`;
+        let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
+        while (elem !== null) {
+            elem.style.display = 'none';
+            elem = elem.nextElementSibling;
+        }
+        quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
+        callEnquiry = true;
+    }
     function quoteSelectService(service) {
         quoteFirstText.innerText = "Do you have a date in mind?";
         quoteSecondText.innerText = "Don’t worry! You can change this later.";
@@ -1011,6 +1025,10 @@ margin-left:calc(520px - 284px);" class="mb-no-margin-left">
         quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
     }
     function chooseBillingMethod() {
+        if (callEnquiry) {
+            location.reload();
+            return;
+        }
         quoteFirstText.style.display = 'none';
         quoteSecondText.style.display = 'none';
         quoteSecondText.parentElement.querySelector('[name=contactForm]').style.display = 'none';
@@ -1060,7 +1078,20 @@ margin-left:calc(520px - 284px);" class="mb-no-margin-left">
         }
     }
     </script>
-    <button onclick="quoteSelectService('full')" style="text-align:left;margin-top:calc(458px - 370px);padding-top:calc(139px - 90px);display:flex;width: 959.88px;height: 282.83px;background: #EEEEEE;box-shadow: 1.09201px 1.09201px 109.201px 1.09201px rgba(0, 0, 0, 0.05);border-radius: 32.7603px;">
+    <style>
+        @@media all and (min-width: 600px) {
+            #fullServiceQuoteBtn {
+                        margin-top: 100px !important;
+            }
+            #selfServiceQuoteBtn {
+                margin-top: 39px!important;
+            }
+            #callMeBtn {
+                margin-top: 191px!important;
+            }
+        }
+    </style>
+    <button id=fullServiceQuoteBtn onclick="quoteSelectService('full')" style="text-align:left;margin-top:calc(458px - 370px);padding-top:calc(139px - 90px);display:flex;width: 959.88px;height: 282.83px;background: #EEEEEE;box-shadow: 1.09201px 1.09201px 109.201px 1.09201px rgba(0, 0, 0, 0.05);border-radius: 32.7603px;">
         <div style="display:flex">
             <div style="margin-right:11px;margin-left:calc(135px - 85px)">
                 <img width="162" height="162" src="~/fullService.png" />
@@ -1088,6 +1119,11 @@ margin-left:calc(520px - 284px);" class="mb-no-margin-left">
                     Rent a truck
                 </div>
             </div>
+        </div>
+    </button>
+    <button id=callMeBtn onclick="callMe()" style="display:block;margin-top:559px;width: 531.42px;height: 148px;background: #F84734;border-radius: 40px;/* Call me instead */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 55.0006px;line-height: 64px;letter-spacing: -0.01em;color: #FFFFFF;">
+        <div style="display:flex;flex-direction:column;justify-content:center">
+            Call me instead
         </div>
     </button>
 </div>
@@ -1185,11 +1221,12 @@ margin-left:calc(520px - 284px);" class="mb-no-margin-left">
                                 monthDif = 0;
                             }
                             let date = new Date(year, month + monthDif, day);
+                            let dateIsInPast = date <= today;
                             console.log(date);
                             if (calendarRates !== null)
-                                day = calendarRates[date.toLocaleDateString('en-CA')] ?? "N/A";
+                                day = (calendarRates[date.toLocaleDateString('en-CA')] + "/hr") ?? "N/A";
                             dayOfMonth.innerHTML = `<div>${day}</div>`;
-                            dayOfMonth.onclick = () => quoteSelectDate(date);
+                            dayOfMonth.onclick = calendarRates === null ? (() => quoteSelectDate(date)) : (() => { });
                             weekOfMonth.appendChild(dayOfMonth);
                             dayCount++;
                         }
@@ -1351,7 +1388,12 @@ margin-left:calc(520px - 284px);" class="mb-no-margin-left">
                 <circle cx="721.927" cy="17.9268" r="5.92683" fill="white" />
                 <circle cx="1082.93" cy="17.9268" r="5.92683" fill="#FFEAEA" />
             </svg>
-            <div style="border-radius:40px;height:661px;margin-bottom:41px">
+            <style>    
+            @@media all and (min-width: 600px) {
+                #theMap > div { width: 50%!important; }
+            }
+            </style>
+            <div id="theMap" style="border-radius:40px;height:661px;margin-bottom:41px">
             </div>
             <script>
             calculateAndDisplayRoute(document.currentScript.previousElementSibling);
