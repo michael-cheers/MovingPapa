@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MovingPapa.styles.css" asp-append-version="true" />
+    <link rel="manifest" href="~/manifest.json">
 </head>
 <body>
     <div class="container">
         <main role="main" class="pb-3">
             <div style="display:flex">
-                <div class="mb-full-width" style="width:60%;border-right: 0.747786px solid #6D6D6D;padding-top:32px">
+                <div class="mb-full-width" style="width:60%;padding-top:32px">
                     <div style="float:right">
                         <button style="margin-top:3px;margin-right:57px;width: 212.2px;height: 63.79px;background: #F84734;border-radius: 35.467px;border:none;/* Book a move */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26.6003px;line-height: 31px;/* identical to box height */color: #FFFFFF;">
                             <div style="display:flex;flex-direction:column;justify-content:center;">
@@ -27,7 +28,7 @@
                     </div>
                     <a href="/"><div class="responsive-logo"></div></a>
                 </div>
-                <div class="mb-display-none" style="width:70%;display:flex">
+                <div class="mb-display-none" style="width:70%;border-left: 0.747786px solid #6D6D6D;display:flex">
                     <a href="/track" style="padding-top:51px;padding-bottom:40px;text-decoration:none;padding-left:30px;padding-right:20px;border-right: 0.747786px solid #6D6D6D; font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26px;line-height: 32px;/* identical to box height, or 125% */color: #00292A;">
                         TRACK YOUR MOVE
                         <svg style="margin-left:15px" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,7 +51,7 @@
                     </a>
                 </div>
             </div>
-            <div class="mb-no-margin-left" style="transform-origin:20% 5%;margin-left:calc((100vw - (1400px * 0.6)) / 2);">
+            <div id="mainContent" class="mb-no-margin-left" style="transform-origin:20% 5%;margin-left:calc((100vw - (1400px * 0.6)) / 2);">
                 @RenderBody()
             </div>
         </main>

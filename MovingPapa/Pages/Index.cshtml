@@ -43,9 +43,18 @@
         .pc-display-none {
             display: none;
         }
+
+        .pc-center {
+            display: flex;
+            justify-content: center;
+        }
     }
 
     @@media all and (max-width: 600px) {
+        #mainContent {
+            min-width: calc(100vw / 0.4 - 7rem);
+        }
+
         main {
             transform: scale(0.4);
             transform-origin: 0% 0%;
@@ -391,14 +400,28 @@ function getQuote () {
 </script>
 
 <div style="display:flex" class="mb-column-flex">
-    <div style="margin-top:calc(75px - -158px);min-width:calc(989px - 59px)">
+    <style>
+        @@media all and (min-width: 600px) {
+            #aboutInfo {
+                min-width:calc(989px - 59px);
+            }
+        }
+    </style>
+    <div id="aboutInfo" style="margin-top:calc(75px - -158px);">
         <div style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 74.6477px;line-height: 86px;color: #00292A;text-align:center;">
             Your Move, Simplified.
         </div>
         <div style="margin-top:calc(185px - (75px + 86px));font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 29.9574px;line-height: 35px;color: #908989;width:100%;text-align:center;">
             Full service moving teams or rent a truck.
         </div>
-        <div style="display:flex;justify-content:center;width:100%;">
+        <style>
+            @@media all and (max-width: 600px) {
+                #googleReviewsSummary {
+                    margin-bottom: 97px;
+                }
+            }
+        </style>
+        <div id="googleReviewsSummary" style="display:flex;justify-content:center;width:100%;">
             <div style="width:549px;height:181px;border-top:6.5px solid #34A853;display:flex;padding-top:27px;margin-top:calc(330px - (185px + 35px));box-shadow: -6.552px -3.276px 26.208px 0px rgba(0, 0, 0, 0.08), 32.76px 22.932px 65.521px 0px rgba(0, 0, 0, 0.08);border-radius: 13.104px;background: #FFF;">
                 <svg style="margin-left:41px;margin-top:10px" width="107" height="107" viewBox="0 0 107 107" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M100.419 54.1394C100.419 50.6925 100.11 47.3782 99.5353 44.1965H53.7542V63.0216H79.9148C78.7659 69.0757 75.319 74.2017 70.1487 77.6486V89.8893H85.9247C95.1163 81.4048 100.419 68.9431 100.419 54.1394Z" fill="#4285F4" />
@@ -441,10 +464,23 @@ function getQuote () {
         </div>
     </div>
     <div>
-        <div style="width: 975px;--height: 948px;background: #00292A;border-radius: 40px;display:flex;justify-content:center;
-" class="mb-bigger">
+        <style>
+            @@media all and (min-width: 600px) {
+                #quoteForm {
+                    width: 975px;
+                }
+            }
+        </style>
+        <div id="quoteForm" style="--height: 948px;background: #00292A;border-radius: 40px;display:flex;justify-content:center;" class="mb-bigger">
             <div style="width:553px;margin-top:calc(-111px - -158px);">
-                <div style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 32.8236px;line-height: 38px;/* identical to box height */color: #FFFFFF;text-align:center;">
+                <style>
+                    @@media all and (max-width: 600px) {
+                        #whereAreYouMovingToText {
+                            margin-bottom: 55px!important;
+                        }
+                    }
+                </style>
+                <div id="whereAreYouMovingToText" style="margin-bottom: 29px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 32.8236px;line-height: 38px;/* identical to box height */color: #FFFFFF;text-align:center;">
                     Where are you moving to?
                 </div>
                 <div style="width: 100%;height: 87.53px;border-radius:calc(87.53px / 2);background: #FAFAFA;border: 5.23652px solid #F84734;display:flex;">
@@ -1039,7 +1075,7 @@ margin-left:calc(520px - 284px);" class="mb-no-margin-left">
             </div>
         </div>
     </button>
-    <button onclick="quoteSelectService('self')" style="text-align:left;margin-top:calc(370px - 284px);padding-top:calc(46px - 28px);width: 959.88px;height: 282.83px;background: #EEEEEE;box-shadow: 1.09201px 1.09201px 109.201px 1.09201px rgba(0, 0, 0, 0.05);border-radius: 32.7603px;">
+    <button id=selfServiceQuoteBtn onclick="quoteSelectService('self')" style="text-align:left;margin-top:calc(370px - 284px);padding-top:calc(46px - 28px);width: 959.88px;height: 282.83px;background: #EEEEEE;box-shadow: 1.09201px 1.09201px 109.201px 1.09201px rgba(0, 0, 0, 0.05);border-radius: 32.7603px;">
         <div style="display:flex">
             <div style="margin-right:-22px;margin-left:calc(46px - 28px)">
                 <img width="228" height="228" src="~/selfService.png" />
