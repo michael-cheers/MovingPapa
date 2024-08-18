@@ -17,7 +17,7 @@
 
     main, .popup {
         transform: scale(0.6);
-        transform-origin: 20% 5%;
+        transform-origin: 0% 0%;
         min-width: 1920px;
     }
 
@@ -1128,6 +1128,7 @@ margin-left:calc(520px - 284px);">
         Tell us how we can help—are you looking for a full-service move, or do you just need a truck?
     </div>
     <script>
+    let calendarRates = null;
     function quoteSelectService(service) {
         quoteFirstText.innerText = "Do you have a date in mind?";
         quoteSecondText.innerText = "Don’t worry! You can change this later.";
@@ -1160,7 +1161,49 @@ margin-left:calc(520px - 284px);">
         quoteFirstText.style.display = 'none';
         quoteSecondText.style.display = 'none';
         quoteSecondText.parentElement.querySelector('[name=contactForm]').style.display = 'none';
-        quoteSecondText.parentElement.appendChild(loggedInUI.content.firstElementChild.cloneNode(true));
+        quoteSecondText.parentElement.parentElement.lastElementChild.before(loggedInUI.content.firstElementChild.cloneNode(true));
+        fromLocation.innerText = pickUpPoint.value;
+        toLocation.innerText = destinationPoint.value;
+    }
+    let billingMethod = 'hourly';
+    function chooseRate () {
+        if (billingMethod === 'hourly') {
+            calendarRates = {
+                "2024-08-01": 279,
+                "2024-08-02": 149,
+                "2024-08-03": 179,
+                "2024-08-04": 119,
+                "2024-08-05": 109,
+                "2024-08-06": 189,
+                "2024-08-07": 139,
+                "2024-08-08": 139,
+                "2024-08-09": 159,
+                "2024-08-10": 129,
+                "2024-08-11": 109,
+                "2024-08-12": 99,
+                "2024-08-13": 209,
+                "2024-08-14": 129,
+                "2024-08-15": 159,
+                "2024-08-16": 199,
+                "2024-08-17": 129,
+                "2024-08-18": 149,
+                "2024-08-19": 129,
+                "2024-08-20": 119,
+                "2024-08-21": 179,
+                "2024-08-22": 189,
+                "2024-08-23": 129,
+                "2024-08-24": 219,
+                "2024-08-25": 239,
+                "2024-08-26": 179,
+                "2024-08-27": 179,
+                "2024-08-28": 199,
+                "2024-08-29": 199,
+                "2024-08-30": 249
+            };
+            loggedInUI_bottom.after(calendar.content.firstElementChild.cloneNode(true));
+            loggedInUI_chooseBilling.style.display = 'none';
+            loggedInUI_bottom.style.display = 'none';
+        }
     }
     </script>
     <button onclick="quoteSelectService('full')" style="text-align:left;margin-top:calc(458px - 370px);padding-top:calc(139px - 90px);display:flex;width: 959.88px;height: 282.83px;background: #EEEEEE;box-shadow: 1.09201px 1.09201px 109.201px 1.09201px rgba(0, 0, 0, 0.05);border-radius: 32.7603px;">
@@ -1229,68 +1272,72 @@ margin-left:calc(520px - 284px);">
                 </div>
             </div>
             <script>
-                let container = document.currentScript.parentElement;
-                let monthDiv = container;
-                while (monthDiv.getAttribute('name') !== 'calendar') {
-                    monthDiv = monthDiv.parentElement;
-                }
-                monthDiv = monthDiv.querySelector('[name=month]');
-                const today = new Date();
-                monthDiv.innerText = today.toLocaleString('default', { month: 'long', year: 'numeric' });
-                const year = today.getFullYear();
-                const month = today.getMonth();
-                const currentDay = today.getDate();
-
-                // Helper functions
-                const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
-                const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay();
-
-                // Get the current month's first and last days
-                const daysInMonth = getDaysInMonth(year, month);
-                const startDay = getFirstDayOfMonth(year, month);
-
-                // Calculate the previous and next month's information
-                const prevMonthDays = getDaysInMonth(year, month - 1);
-                const nextMonthDays = getDaysInMonth(year, month + 1);
-
-                let dayCount = 1 - startDay; // Start with days from the previous month
-
-                // Create the calendar HTML
-                while (dayCount <= daysInMonth + (7 - ((startDay + daysInMonth) % 7))) {
-                    const weekOfMonth = document.createElement('div');
-                    weekOfMonth.className = 'week-of-month';
-
-                    for (let i = 0; i < 7; i++) {
-                        const dayOfMonth = document.createElement('button');
-                        dayOfMonth.className = 'day-of-month';
-                        let day, monthDif;
-                        if (dayCount < 1) {
-                            // Days from the previous month
-                            dayOfMonth.classList.add('disabled');
-                            day = prevMonthDays + dayCount;
-                            monthDif = -1;
-                        } else if (dayCount > daysInMonth) {
-                            // Days from the next month
-                            dayOfMonth.classList.add('disabled');
-                            day = dayCount - daysInMonth;
-                            monthDif = 0;
-                        } else {
-                            // Current month's days
-                            if (dayCount === currentDay) {
-                                dayOfMonth.classList.add('today');
-                            }
-                            day = dayCount;
-                            monthDif = 1;
-                        }
-                        dayOfMonth.innerHTML = `<div>${day}</div>`;
-                        let date = new Date(year, month + monthDif, day);
-                        dayOfMonth.onclick = () => quoteSelectDate(date);
-                        weekOfMonth.appendChild(dayOfMonth);
-                        dayCount++;
+                (() => {
+                    let container = document.currentScript.parentElement;
+                    let monthDiv = container;
+                    while (monthDiv.getAttribute('name') !== 'calendar') {
+                        monthDiv = monthDiv.parentElement;
                     }
+                    monthDiv = monthDiv.querySelector('[name=month]');
+                    const today = new Date();
+                    monthDiv.innerText = today.toLocaleString('default', { month: 'long', year: 'numeric' });
+                    const year = today.getFullYear();
+                    const month = today.getMonth();
+                    const currentDay = today.getDate();
 
-                    container.appendChild(weekOfMonth);
-                }
+                    // Helper functions
+                    const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
+                    const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay();
+
+                    // Get the current month's first and last days
+                    const daysInMonth = getDaysInMonth(year, month);
+                    const startDay = getFirstDayOfMonth(year, month);
+
+                    // Calculate the previous and next month's information
+                    const prevMonthDays = getDaysInMonth(year, month - 1);
+                    const nextMonthDays = getDaysInMonth(year, month + 1);
+
+                    let dayCount = 1 - startDay; // Start with days from the previous month
+
+                    // Create the calendar HTML
+                    while (dayCount <= daysInMonth + (7 - ((startDay + daysInMonth) % 7))) {
+                        const weekOfMonth = document.createElement('div');
+                        weekOfMonth.className = 'week-of-month';
+
+                        for (let i = 0; i < 7; i++) {
+                            const dayOfMonth = document.createElement('button');
+                            dayOfMonth.className = 'day-of-month';
+                            let day, monthDif;
+                            if (dayCount < 1) {
+                                // Days from the previous month
+                                dayOfMonth.classList.add('disabled');
+                                day = prevMonthDays + dayCount;
+                                monthDif = -1;
+                            } else if (dayCount > daysInMonth) {
+                                // Days from the next month
+                                dayOfMonth.classList.add('disabled');
+                                day = dayCount - daysInMonth;
+                                monthDif = 0;
+                            } else {
+                                // Current month's days
+                                if (dayCount === currentDay) {
+                                    dayOfMonth.classList.add('today');
+                                }
+                                day = dayCount;
+                                monthDif = 1;
+                            }
+                            let date = new Date(year, month + monthDif, day);
+                            if (calendarRates !== null)
+                                day = calendarRates[date.toLocaleDateString('en-CA')] ?? "N/A";
+                            dayOfMonth.innerHTML = `<div>${day}</div>`;
+                            dayOfMonth.onclick = () => quoteSelectDate(date);
+                            weekOfMonth.appendChild(dayOfMonth);
+                            dayCount++;
+                        }
+
+                        container.appendChild(weekOfMonth);
+                    }
+                })();
             </script>
         </div>
     </div>
@@ -1323,141 +1370,249 @@ margin-left:calc(520px - 284px);">
     </div>
 </template>
 <template id=loggedInUI>
-    <div style="background: #EEEEEE">@* 
-    <div style="width: 1920px; height: 1619px; background: #EEEEEE"></div>
-<div style="width: 1920px; height: 0px; border: 4px #CDCDCD solid"></div>
- *@<div style="width: 310px; height: 57px; position: relative">
-  <div style="left: 0px; top: 0px; position: absolute; text-align: center"><span style="color: #00292A; font-size: 57.14px; font-family: Cherry Bomb; font-weight: 400; word-wrap: break-word">M</span><span style="color: #00292A; font-size: 42.26px; font-family: Cherry Bomb; font-weight: 400; word-wrap: break-word">OVING</span><span style="color: #00292A; font-size: 57.14px; font-family: Cherry Bomb; font-weight: 400; word-wrap: break-word">P</span><span style="color: #00292A; font-size: 42.26px; font-family: Cherry Bomb; font-weight: 400; word-wrap: break-word">APA</span></div>
-  <div style="width: 12.33px; height: 12.33px; left: 200.59px; top: 22.86px; position: absolute; background: #F84734; border-radius: 9999px"></div>
-  <div style="width: 9.32px; height: 9.32px; left: 263.45px; top: 29.77px; position: absolute; background: #F84734; border-radius: 9999px"></div>
-</div>
-<div style="width: 292px; height: 77.26px; position: relative">
-  <div style="width: 292px; height: 77.26px; left: 0px; top: 0px; position: absolute; background: #00292A; border-radius: 39.28px"></div>
-  <div style="left: 86.42px; top: 18.33px; position: absolute; text-align: center; color: white; font-size: 34.76px; font-family: Arial Rounded MT; font-weight: 400; word-wrap: break-word">Abby lex</div>
-  <div style="width: 66.13px; height: 66.13px; left: 12.44px; top: 2.62px; position: absolute; background: #00292A; border-radius: 236.16px; justify-content: center; align-items: flex-end; gap: 11.81px; display: inline-flex">
-    <div style="width: 56.68px; height: 56.68px; padding-left: 8.86px; padding-right: 8.86px; padding-top: 3.54px; padding-bottom: 3.54px; justify-content: center; align-items: center; display: flex">
-      <div style="width: 38.96px; height: 49.59px; background: #F84734"></div>
+    <div style="background: #EEEEEE;padding-left:58px;padding-top:74px">
+        <div style="display:flex">
+            <div style="width: 657px; background: #EEEEEE; border-radius: calc(83.23px / 2); border: 1px rgba(0, 0, 0, 0.23) solid">
+                <div style="margin-top:33px;margin-left:51px;margin-right:51px;width: 556.01px;height: 152.81px;background: #00292A;border-radius: calc(83.2348px / 2);">
+                    <div style="margin-bottom:21px;padding-left:29px;padding-top:24px;display:flex;color: #FFF; font-family: 'Arial Rounded MT'; font-size: 25.775px; font-style: normal; font-weight: 400; line-height: normal;">
+                        <svg style="margin-right:24px" width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15.6818 30.1305C23.8163 30.1305 30.4105 23.5362 30.4105 15.4018C30.4105 7.26736 23.8163 0.673096 15.6818 0.673096C7.54739 0.673096 0.953125 7.26736 0.953125 15.4018C0.953125 23.5362 7.54739 30.1305 15.6818 30.1305Z" fill="#00292A" />
+                            <path d="M15.6823 26.4483C21.7831 26.4483 26.7288 21.5026 26.7288 15.4017C26.7288 9.30092 21.7831 4.35522 15.6823 4.35522C9.58144 4.35522 4.63574 9.30092 4.63574 15.4017C4.63574 21.5026 9.58144 26.4483 15.6823 26.4483Z" stroke="white" stroke-width="7.36435" />
+                        </svg>
+                        <span id=fromLocation>15 dundas st w</span>
+                    </div>
+                    <div style="display:flex">
+                        <div style="padding-left:35px;width: 371.091px;border-top: 1.841px solid #EEE;padding-top:21px;display:flex;color: #FFF; font-family: 'Arial Rounded MT'; font-size: 25.775px; font-style: normal; font-weight: 400; line-height: normal;">
+                            <svg style="margin-right:30px" width="21" height="26" viewBox="0 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.5905 25.8378C9.58898 25.8378 4.83345 19.9574 3.66804 18.0666C1.92385 15.8408 0.944929 13.1113 0.876953 10.2843C0.876953 7.70788 1.90044 5.23696 3.72226 3.41514C5.54409 1.59331 8.01501 0.569824 10.5915 0.569824C13.1679 0.569824 15.6388 1.59331 17.4606 3.41514C19.2825 5.23696 20.3059 7.70788 20.3059 10.2843C20.3059 13.3994 19.2676 15.0822 17.5443 17.8714L17.4283 18.0611C16.2279 20.0108 11.5718 25.8378 10.5905 25.8378ZM10.5905 5.42845C10.5905 5.42896 10.5901 5.42938 10.5896 5.42938C9.62927 5.42956 8.69053 5.71444 7.89205 6.24802C7.09332 6.78177 6.47081 7.54041 6.10327 8.42798C5.73572 9.31555 5.63965 10.2922 5.8272 11.2344C6.01475 12.1765 6.4775 13.0419 7.15691 13.7211C7.83633 14.4002 8.7019 14.8627 9.64415 15.0499C10.5864 15.237 11.563 15.1406 12.4504 14.7727C13.3378 14.4048 14.0962 13.7821 14.6297 12.9831C15.1631 12.1842 15.4477 11.245 15.4473 10.2843C15.4459 8.99667 14.9337 7.76218 14.0232 6.85167C13.1129 5.94138 11.8788 5.42924 10.5915 5.42754C10.5909 5.42753 10.5905 5.42795 10.5905 5.42845Z" fill="#F84734" />
+                            </svg>
+                            <span id=toLocation>209 bay street</span>
+                            </div>
+                        <button style="margin-top:-33px;margin-bottom:-33px;background: #FAFAFA;border: 1.84109px solid #EEEEEE;border-radius: 83.2348px;width: 125.19px;height: 66.28px;">
+                            <div style="display:flex;height:100%">
+                                <svg style="margin-left:17px;margin-top:15px;margin-right:6px" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6113 4.17676C14.0623 4.17676 11.5706 4.9326 9.45128 6.34871C7.33192 7.76482 5.68008 9.77759 4.70465 12.1325C3.72922 14.4874 3.474 17.0787 3.97127 19.5786C4.46854 22.0786 5.69597 24.3749 7.49833 26.1773C9.3007 27.9797 11.5971 29.2071 14.097 29.7044C16.597 30.2016 19.1882 29.9464 21.5431 28.971C23.898 27.9955 25.9108 26.3437 27.3269 24.2243C28.743 22.105 29.4989 19.6133 29.4989 17.0644C29.4989 13.6464 28.1411 10.3683 25.7242 7.95145C23.3073 5.53456 20.0293 4.17676 16.6113 4.17676ZM20.4775 18.3531C19.054 18.3531 17.9 19.5071 17.9 20.9307C17.9 21.2725 17.7642 21.6003 17.5225 21.8419C17.2809 22.0836 16.9531 22.2194 16.6113 22.2194C16.2695 22.2194 15.9416 22.0836 15.7 21.8419C15.4583 21.6003 15.3225 21.2725 15.3225 20.9307C15.3225 19.5071 14.1685 18.3531 12.745 18.3531C12.4032 18.3531 12.0754 18.2174 11.8337 17.9757C11.592 17.734 11.4562 17.4062 11.4562 17.0644C11.4562 16.7226 11.592 16.3948 11.8337 16.1531C12.0754 15.9114 12.4032 15.7756 12.745 15.7756C14.1685 15.7756 15.3225 14.6216 15.3225 13.1981C15.3225 12.8563 15.4583 12.5285 15.7 12.2868C15.9416 12.0451 16.2695 11.9093 16.6113 11.9093C16.9531 11.9093 17.2809 12.0451 17.5225 12.2868C17.7642 12.5285 17.9 12.8563 17.9 13.1981C17.9 14.6216 19.054 15.7756 20.4775 15.7756C20.8193 15.7756 21.1471 15.9114 21.3888 16.1531C21.6305 16.3948 21.7663 16.7226 21.7663 17.0644C21.7663 17.4062 21.6305 17.734 21.3888 17.9757C21.1471 18.2174 20.8193 18.3531 20.4775 18.3531Z" fill="#F84734"/></svg>
+                                <div style="margin-top:15px;font-family: 'Poppins';font-style: normal;font-weight: 400;font-size: 22.0931px;line-height: 33px;color: #656565;">Add</div>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+                <div style="width:fit-content;margin-left:63px;margin-top:26px;height: 64.92px;background: #00292A;border-radius: 83.2348px;">
+                    <svg style="margin-top:15px;margin-bottom:15px;margin-left:26px" width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32.1346 11.5851H3.98395M22.4885 16.4579C19.0286 16.4579 13.6289 16.4579 13.6289 16.4579M32.2348 12.4217V29.3044C32.2348 31.2617 30.6481 32.8483 28.6909 32.8483H7.42766C5.47044 32.8483 3.88379 31.2617 3.88379 29.3044V12.4217C3.88379 11.8715 4.01188 11.3289 4.25793 10.8368L6.69304 5.96657C7.14326 5.06611 8.0636 4.49731 9.07034 4.49731H27.0482C28.055 4.49731 28.9753 5.06611 29.4255 5.96657L31.8606 10.8368C32.1067 11.3289 32.2348 11.8715 32.2348 12.4217Z" stroke="#F84734" stroke-width="2.95323" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <select style="border:none;outline:none;padding-right:calc(138px - 86px);margin-right:calc(64px - 37px);background:inherit;margin-left:22px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 23.918px;line-height: 28px;/* identical to box height */color: #FFFFFF;">
+                        <option value="fullService">Full Service</option>
+                        <option value=selfService>Self Service</option>
+                    </select>
+                </div>
+                <div style="margin-bottom:79px;display:flex;width:fit-content;margin-left:63px;margin-top:27px;height: 64.92px;background: #00292A;border-radius: 83.2348px;">
+                    <svg onclick="" style="cursor:pointer;margin-top:15px;margin-bottom:15px;margin-left:26px" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">S<path fill-rule="evenodd" clip-rule="evenodd" d="M11.26 2.19116C12.0389 2.19116 12.6703 2.82261 12.6703 3.60153V5.0119H22.5429V3.60153C22.5429 2.82261 23.1743 2.19116 23.9533 2.19116C24.7322 2.19116 25.3636 2.82261 25.3636 3.60153V5.04672C28.9271 5.40052 31.7103 8.40711 31.7103 12.0637V24.757C31.7103 28.6517 28.5531 31.8089 24.6584 31.8089H10.5548C6.66014 31.8089 3.50293 28.6517 3.50293 24.757V12.0637C3.50293 8.40711 6.28606 5.40052 9.84958 5.04672V3.60153C9.84958 2.82261 10.481 2.19116 11.26 2.19116ZM6.56442 10.6534H28.6488C28.0679 9.01002 26.5007 7.83263 24.6584 7.83263H10.5548C8.71252 7.83263 7.14526 9.01002 6.56442 10.6534ZM28.8895 13.4741H6.32366V24.757C6.32366 27.0938 8.21799 28.9881 10.5548 28.9881H24.6584C26.9952 28.9881 28.8895 27.0938 28.8895 24.757V13.4741ZM9.1444 17.7052C9.1444 16.9263 9.77584 16.2948 10.5548 16.2948H16.1962C16.9752 16.2948 17.6066 16.9263 17.6066 17.7052V23.3467C17.6066 24.1256 16.9752 24.757 16.1962 24.757H10.5548C9.77584 24.757 9.1444 24.1256 9.1444 23.3467V17.7052ZM14.7859 19.1156H11.9651V21.9363H14.7859V19.1156Z" fill="#F84734"/>S</svg>
+                    <div style="margin-top:15px;border:none;outline:none;padding-right:calc(138px - 86px);margin-right:calc(64px - 37px);background:inherit;margin-left:22px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 23.918px;line-height: 28px;/* identical to box height */color: #FFFFFF;">
+                        Wed, Aug 22
+                    </div>
+                </div>
+            </div>
+            <div id="loggedInUI_chooseBilling" style="margin-left:135px;padding-left:40px;padding-top:30px;width: 1011px;height: 448px;background: #00292A;box-shadow: 0px 1.96128px 1.96128px rgba(0, 0, 0, 0.25);border-radius: 40px;">
+                <div style="margin-bottom:38px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 30.5493px;line-height: 35px;color: #EEEEEE;">
+                    Welcome, Abby.<br />
+                    Choose a billing method.
+                </div>
+                <div style="display:flex;margin-bottom:101px">
+                    <style>
+                        .selected {
+                            border: 5px solid #F84734;margin:-5px;
+                        }
+                        :not(.selected) {
+                            border: 5px solid transparent;margin:-5px;
+                        }
+                    </style>
+                    <script>
+                        function selectBillingMethod (elem, met) {
+                            const toggles = elem.parentElement.querySelectorAll('.selected');
+                            toggles.forEach(e => e.classList.remove('selected'));
+                            elem.classList.add('selected');
+                            billingMethod = met;
+                        }
+                    </script>
+                    <button class="selected" onclick="selectBillingMethod(this, 'hourly')" style="margin-right:126px;background: #EEEEEE;box-shadow: 0.614137px 0.614137px 61.4137px 0.614137px rgba(0, 0, 0, 0.05);border-radius: 20px;">
+                        <div style="display:flex;height:100%;text-align:left">
+                            <svg style="margin-top:26px;margin-bottom:27px;margin-left:27px;margin-right:27px" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.0362 34.2251C36.2161 34.6183 37.4913 33.9807 37.8846 32.8009C38.2779 31.621 37.6402 30.3458 36.4604 29.9525L35.0362 34.2251ZM28.1484 29.5555H25.8965C25.8965 30.5247 26.5168 31.3852 27.4363 31.6917L28.1484 29.5555ZM30.4002 18.9625C30.4002 17.7189 29.392 16.7107 28.1484 16.7107C26.9047 16.7107 25.8965 17.7189 25.8965 18.9625H30.4002ZM36.4604 29.9525L28.8605 27.4192L27.4363 31.6917L35.0362 34.2251L36.4604 29.9525ZM30.4002 29.5555V18.9625H25.8965V29.5555H30.4002ZM46.1631 27.0221C46.1631 36.9714 38.0976 45.0368 28.1484 45.0368V49.5405C40.5849 49.5405 50.6667 39.4587 50.6667 27.0221H46.1631ZM28.1484 45.0368C18.1991 45.0368 10.1337 36.9714 10.1337 27.0221H5.63C5.63 39.4587 15.7118 49.5405 28.1484 49.5405V45.0368ZM10.1337 27.0221C10.1337 17.0729 18.1991 9.00745 28.1484 9.00745V4.50378C15.7118 4.50378 5.63 14.5856 5.63 27.0221H10.1337ZM28.1484 9.00745C38.0976 9.00745 46.1631 17.0729 46.1631 27.0221H50.6667C50.6667 14.5856 40.5849 4.50378 28.1484 4.50378V9.00745Z" fill="#F84734"/></svg>
+                            <div style="margin-top:21px;">
+                                <div style="margin-bottom:12px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 23.3803px;line-height: 27px;/* identical to box height */color: #00292A;">
+                                    Hourly Rate
+                                </div>
+                                <div style="margin-right:104px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 14.7393px;line-height: 17px;color: #888888;">
+                                    Pay for how long it takes
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                    <button onclick="selectBillingMethod(this, 'flat')" style="background: #EEEEEE;box-shadow: 0.614137px 0.614137px 61.4137px 0.614137px rgba(0, 0, 0, 0.05);border-radius: 20px;">
+                        <div style="display:flex;height:100%;text-align:left">
+                            <svg style="margin-top:26px;margin-bottom:27px;margin-left:27px;margin-right:27px" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.0362 34.2251C36.2161 34.6183 37.4913 33.9807 37.8846 32.8009C38.2779 31.621 37.6402 30.3458 36.4604 29.9525L35.0362 34.2251ZM28.1484 29.5555H25.8965C25.8965 30.5247 26.5168 31.3852 27.4363 31.6917L28.1484 29.5555ZM30.4002 18.9625C30.4002 17.7189 29.392 16.7107 28.1484 16.7107C26.9047 16.7107 25.8965 17.7189 25.8965 18.9625H30.4002ZM36.4604 29.9525L28.8605 27.4192L27.4363 31.6917L35.0362 34.2251L36.4604 29.9525ZM30.4002 29.5555V18.9625H25.8965V29.5555H30.4002ZM46.1631 27.0221C46.1631 36.9714 38.0976 45.0368 28.1484 45.0368V49.5405C40.5849 49.5405 50.6667 39.4587 50.6667 27.0221H46.1631ZM28.1484 45.0368C18.1991 45.0368 10.1337 36.9714 10.1337 27.0221H5.63C5.63 39.4587 15.7118 49.5405 28.1484 49.5405V45.0368ZM10.1337 27.0221C10.1337 17.0729 18.1991 9.00745 28.1484 9.00745V4.50378C15.7118 4.50378 5.63 14.5856 5.63 27.0221H10.1337ZM28.1484 9.00745C38.0976 9.00745 46.1631 17.0729 46.1631 27.0221H50.6667C50.6667 14.5856 40.5849 4.50378 28.1484 4.50378V9.00745Z" fill="#F84734" /></svg>
+                            <div style="margin-top:21px;">
+                                <div style="margin-bottom:12px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 23.3803px;line-height: 27px;/* identical to box height */color: #00292A;">
+                                    Flat Rate
+                                </div>
+                                <div style="margin-right:104px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 14.7393px;line-height: 17px;color: #888888;">
+                                    Upfront Guaranteed pricing
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+                <button onclick="chooseRate()" style="text-align:center;width: 319px;height: 75.09px;background: #F84734;border-radius: 40px;font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 29.3822px; line-height: 34px; /* identical to box height */ letter-spacing: -0.01em; color: #FFFFFF; ">
+                    <span style="display:flex;flex-direction:column;justify-content:center;">Continue</span>
+                </button>
+            </div>
+        </div>
+        <div id="loggedInUI_bottom" style="text-align:left;margin-top:71px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 47.4146px;line-height: 83px;/* identical to box height, or 175% */color: #00292A;/* Inside auto layout */flex: none;order: 0;flex-grow: 0;">
+            95% to complete<br />
+            <svg width="1790" height="36" viewBox="318 0 1790 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="1790" height="36" rx="18" fill="#E0E0E0" />
+                <rect width="1304" height="36" rx="18" fill="#00292A" />
+                <circle cx="115.574" cy="17.7803" r="5.92683" fill="#EDF5FF" />
+                <circle cx="418.927" cy="17.9268" r="5.92683" fill="#EDF5FF" />
+                <circle cx="721.927" cy="17.9268" r="5.92683" fill="white" />
+                <circle cx="1082.93" cy="17.9268" r="5.92683" fill="#FFEAEA" />
+            </svg>
+            <div style="border-radius:40px;height:661px;margin-bottom:41px">
+            </div>
+            <script>
+            calculateAndDisplayRoute(document.currentScript.previousElementSibling);
+            </script>
+        </div>
     </div>
-    <div style="width: 9.45px; height: 9.45px; position: relative; background: #F84734; border-radius: 18.89px; border: 2.36px #FDFDFD solid"></div>
-  </div>
-  <div style="width: 1.96px; height: 0px; left: 249.44px; top: 45.83px; position: absolute; transform: rotate(90deg); transform-origin: 0 0; border: 3.27px #F84734 solid"></div>
-</div>
-<div style="width: 657px; height: 448px; position: relative">
-  <div style="width: 657px; height: 448px; left: 0px; top: 0px; position: absolute; background: #EEEEEE; border-radius: 83.23px; border: 1px rgba(0, 0, 0, 0.23) solid"></div>
-  <div style="width: 556.01px; height: 152.81px; left: 50.50px; top: 32.74px; position: absolute">
-    <div style="width: 556.01px; height: 152.81px; left: 0px; top: 0px; position: absolute; background: #00292A; border-radius: 83.23px"></div>
-    <div style="width: 371.09px; height: 0px; left: 31.19px; top: 76.41px; position: absolute; border-radius: 83.23px; border: 1.84px #EEEEEE solid"></div>
-    <div style="left: 83.79px; top: 93.78px; position: absolute; color: white; font-size: 25.78px; font-family: Arial Rounded MT; font-weight: 400; word-wrap: break-word">209 bay street</div>
-    <div style="left: 83.79px; top: 23.86px; position: absolute; color: white; font-size: 25.78px; font-family: Arial Rounded MT; font-weight: 400; word-wrap: break-word">15 dundas st w</div>
-    <div style="width: 19.43px; height: 25.27px; left: 34.38px; top: 97.83px; position: absolute; background: #F84734; border-radius: 83.23px"></div>
-    <div style="width: 29.46px; height: 29.46px; left: 29.46px; top: 23.93px; position: absolute">
-      <div style="width: 29.46px; height: 29.46px; left: 0px; top: 0px; position: absolute; background: #00292A; border-radius: 83.23px"></div>
-      <div style="width: 22.09px; height: 22.09px; left: 3.68px; top: 3.68px; position: absolute; border-radius: 83.23px; border: 7.36px white solid"></div>
-    </div>
-    <div style="width: 125.19px; height: 66.28px; left: 399.52px; top: 44.19px; position: absolute; background: #FAFAFA; border-radius: 83.23px; border: 1.84px #EEEEEE solid"></div>
-    <div style="left: 455.84px; top: 63.52px; position: absolute; color: #656565; font-size: 22.09px; font-family: Poppins; font-weight: 400; word-wrap: break-word">Add</div>
-    <div style="width: 33.14px; height: 33.14px; left: 416.55px; top: 60.76px; position: absolute">
-      <div style="width: 33.14px; height: 33.14px; left: 0px; top: 0px; position: absolute; opacity: 0; background: #F84734; border-radius: 83.23px"></div>
-      <div style="width: 25.78px; height: 25.78px; left: 3.68px; top: 3.68px; position: absolute; background: #F84734; border-radius: 83.23px"></div>
-    </div>
-  </div>
-  <div style="width: 341.13px; height: 64.92px; left: 63.26px; top: 304.08px; position: absolute">
-    <div style="width: 299.09px; height: 64.92px; left: 0px; top: 0px; position: absolute; background: #00292A; border-radius: 83.23px"></div>
-    <div style="width: 33.85px; height: 33.85px; padding-top: 1.41px; padding-bottom: 2.82px; padding-left: 2.82px; padding-right: 2.82px; left: 22.42px; top: 15.70px; position: absolute; border-radius: 83.23px; overflow: hidden; justify-content: center; align-items: center; display: inline-flex">
-      <div style="width: 28.21px; height: 29.62px; background: #F84734"></div>
-    </div>
-    <div style="width: 267.88px; left: 73.25px; top: 18.87px; position: absolute; color: white; font-size: 23.92px; font-family: Arial Rounded MT; font-weight: 400; word-wrap: break-word">Wed, Aug 22</div>
-  </div>
-  <div style="width: 351.12px; height: 64.92px; left: 63.26px; top: 211.97px; position: absolute">
-    <div style="width: 299.09px; height: 64.92px; left: 0px; top: 0px; position: absolute; background: #00292A; border-radius: 83.23px"></div>
-    <div style="width: 43.28px; height: 43.28px; left: 244.99px; top: 11.77px; position: absolute; border-radius: 83.23px; overflow: hidden; justify-content: center; align-items: center; display: inline-flex">
-      <div style="width: 10.82px; height: 5.41px; border: 1.80px #F84734 solid"></div>
-    </div>
-    <div style="width: 267.88px; left: 83.24px; top: 18.87px; position: absolute; color: white; font-size: 23.92px; font-family: Arial Rounded MT; font-weight: 400; word-wrap: break-word">Full service</div>
-    <div style="width: 35.44px; height: 35.44px; padding: 3.54px; left: 26.08px; top: 14.98px; position: absolute; border-radius: 83.23px; justify-content: center; align-items: center; display: inline-flex">
-      <div style="width: 28.35px; height: 28.35px; border: 2.95px #F84734 solid"></div>
-    </div>
-  </div>
-</div>
-<div style="width: 1948.32px; height: 448px; position: relative">
-  <div style="width: 1011px; height: 448px; left: 0px; top: 0px; position: absolute; background: #00292A; box-shadow: 0px 1.961276888847351px 1.961276888847351px rgba(0, 0, 0, 0.25); border-radius: 40px"></div>
-  <div style="width: 882.13px; left: 40px; top: 30px; position: absolute; color: #EEEEEE; font-size: 30.55px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Welcome, Abby. <br/>Choose a billing method.</div>
-  <div style="width: 752.32px; height: 121.60px; left: 40px; top: 138px; position: absolute">
-    <div style="width: 377px; height: 107px; left: 0px; top: 0px; position: absolute; background: #EEEEEE; box-shadow: 0.6141371726989746px 0.6141371726989746px 61.413719177246094px 0.6141371726989746px rgba(0, 0, 0, 0.05); border-radius: 20px; border: 5px #F84734 solid"></div>
-    <div style="left: 108.09px; top: 20.88px; position: absolute; color: #00292A; font-size: 23.38px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Hourly Rate</div>
-    <div style="width: 644.23px; height: 61.41px; left: 108.09px; top: 60.19px; position: absolute; color: #888888; font-size: 14.74px; font-family: Arial Rounded MT; font-weight: 400; word-wrap: break-word">Pay for how long it takes</div>
-    <div style="width: 54.04px; height: 54.04px; padding-top: 6.76px; padding-bottom: 6.76px; padding-left: 7.88px; padding-right: 5.63px; left: 27px; top: 26px; position: absolute; border-radius: 40px; justify-content: center; align-items: center; display: inline-flex">
-      <div style="width: 40.53px; height: 40.53px; border: 4.50px #F84734 solid"></div>
-    </div>
-  </div>
-  <div style="width: 752.32px; height: 121.60px; left: 542px; top: 139px; position: absolute">
-    <div style="width: 377px; height: 107px; left: 0px; top: 0px; position: absolute; background: #EEEEEE; box-shadow: 0.6141371726989746px 0.6141371726989746px 61.413719177246094px 0.6141371726989746px rgba(0, 0, 0, 0.05); border-radius: 20px; border: 0.61px solid"></div>
-    <div style="left: 108.09px; top: 20.88px; position: absolute; color: #00292A; font-size: 23.38px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Flat Rate</div>
-    <div style="width: 644.23px; height: 61.41px; left: 108.09px; top: 60.19px; position: absolute; color: #888888; font-size: 14.74px; font-family: Arial Rounded MT; font-weight: 400; word-wrap: break-word">Upfront Guaranteed pricing</div>
-    <div style="width: 54.04px; height: 54.04px; padding-top: 6.76px; padding-bottom: 6.76px; padding-left: 7.88px; padding-right: 5.63px; left: 27px; top: 26px; position: absolute; border-radius: 40px; justify-content: center; align-items: center; display: inline-flex">
-      <div style="width: 40.53px; height: 40.53px; border: 4.50px #F84734 solid"></div>
-    </div>
-  </div>
-  <div style="width: 752.32px; height: 121.60px; left: 1196px; top: 59px; position: absolute">
-    <div style="width: 511.89px; height: 107.38px; left: 0px; top: 0px; position: absolute; background: #EEEEEE; box-shadow: 0.6141371726989746px 0.6141371726989746px 61.413719177246094px 0.6141371726989746px rgba(0, 0, 0, 0.05); border-radius: 20px; border: 0.61px solid"></div>
-    <div style="left: 108.09px; top: 20.88px; position: absolute; color: #00292A; font-size: 23.38px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Flat Rate</div>
-    <div style="width: 644.23px; height: 61.41px; left: 108.09px; top: 60.19px; position: absolute; color: #888888; font-size: 14.74px; font-family: Arial Rounded MT; font-weight: 400; word-wrap: break-word">Upfront guaranteed price</div>
-    <div style="width: 1.63px; height: 0px; left: 482.96px; top: 53.94px; position: absolute; border-radius: 20px; border: 3.07px #888888 solid"></div>
-    <div style="width: 42.66px; height: 42.66px; padding-left: 3.20px; padding-right: 3.20px; padding-top: 7.13px; padding-bottom: 7.13px; left: 39.28px; top: 37.52px; position: absolute; border-radius: 20px; justify-content: center; align-items: center; display: inline-flex">
-      <div style="width: 36.26px; height: 28.39px; border: 3.55px #F84734 solid"></div>
-    </div>
-  </div>
-  <div style="width: 319px; height: 75.09px; left: 40px; top: 346px; position: absolute">
-    <div style="width: 319px; height: 75.09px; left: 0px; top: 0px; position: absolute; background: #F84734; border-radius: 40px"></div>
-    <div style="width: 174px; left: 89px; top: 21px; position: absolute; color: white; font-size: 29.38px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Continue</div>
-  </div>
-</div>
-<div style="width: 877.17px; height: 131px; flex-direction: column; justify-content: center; align-items: flex-start; gap: 11.85px; display: inline-flex">
-  <div style="align-self: stretch; height: 131px; flex-direction: column; justify-content: flex-end; align-items: flex-start; display: flex">
-    <div></div>
-    <div style="width: 373px; justify-content: space-between; align-items: center; display: inline-flex">
-      <div style="justify-content: flex-start; align-items: center; gap: 17.78px; display: flex">
-        <div style="text-align: center; color: #00292A; font-size: 47.41px; font-family: Arial Rounded MT Bold; font-weight: 400; line-height: 82.98px; word-wrap: break-word">95%</div>
-        <div style="text-align: center; color: #00292A; font-size: 47.41px; font-family: Arial Rounded MT Bold; font-weight: 400; line-height: 82.98px; word-wrap: break-word">to complete</div>
-      </div>
-    </div>
-  </div>
-</div>
-<div style="width: 1790px; height: 36px; padding-right: 592.68px; background: #E0E0E0; border-radius: 189.66px; overflow: hidden; justify-content: flex-start; align-items: center; gap: 23.71px; display: inline-flex">
-  <div style="width: 1304px; align-self: stretch; background: #00292A; border-radius: 189.66px"></div>
-  <div style="width: 11.85px; height: 11.85px; background: #EDF5FF; border-radius: 9999px"></div>
-  <div style="width: 11.85px; height: 11.85px; background: #EDF5FF; border-radius: 9999px"></div>
-  <div style="width: 11.85px; height: 11.85px; background: white; border-radius: 9999px"></div>
-  <div style="width: 11.85px; height: 11.85px; background: #FFEAEA; border-radius: 9999px"></div>
-</div>
-<div style="width: 524px; height: 548.54px; position: relative">
-  <div style="width: 416.88px; height: 438.10px; left: 12.60px; top: 12.60px; position: absolute; border: 8.62px rgba(248, 71, 52, 0.48) solid"></div>
-  <div style="width: 416.88px; height: 438.10px; left: 12.60px; top: 11.94px; position: absolute; border: 2.65px #F84734 solid"></div>
-  <div style="width: 25.21px; height: 25.21px; left: 0px; top: 0px; position: absolute">
-    <div style="width: 25.21px; height: 25.21px; left: 0px; top: 0px; position: absolute; background: rgba(232, 249, 238, 0.60); border-radius: 9999px"></div>
-    <div style="width: 9.29px; height: 9.29px; left: 7.96px; top: 7.96px; position: absolute; background: #0EBC93; border-radius: 9999px"></div>
-  </div>
-  <div style="width: 25.21px; height: 25.21px; left: 419.86px; top: 430.48px; position: absolute">
-    <div style="width: 25.21px; height: 25.21px; left: 0px; top: 0px; position: absolute; background: rgba(229, 229, 254, 0.70); border-radius: 9999px"></div>
-    <div style="width: 15.92px; height: 15.92px; left: 5.14px; top: 5.14px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
-      <div style="width: 15.92px; height: 15.92px; position: relative">
-        <div style="width: 11.77px; height: 13.60px; left: 2.07px; top: 1.16px; position: absolute; background: #5251FA"></div>
-        <div style="width: 15.92px; height: 15.92px; left: 0px; top: 0px; position: absolute; opacity: 0"></div>
-        <div style="width: 15.92px; height: 15.92px; left: 15.92px; top: 15.92px; position: absolute; transform: rotate(-180deg); transform-origin: 0 0; opacity: 0"></div>
-      </div>
-    </div>
-  </div>
-  <div style="width: 46.91px; height: 49.19px; left: 260.07px; top: 258.73px; position: absolute; transform: rotate(71.40deg); transform-origin: 0 0">
-    <div style="width: 46.91px; height: 46.91px; left: 0px; top: 0px; position: absolute; transform: rotate(71.40deg); transform-origin: 0 0; background: rgba(198.06, 183.88, 250.75, 0.40); border-radius: 9999px"></div>
-    <div style="width: 35.18px; height: 35.18px; left: -3.69px; top: 7.43px; position: absolute; transform: rotate(71.40deg); transform-origin: 0 0; background: rgba(128.84, 104.05, 221, 0.40); border-radius: 9999px"></div>
-    <div style="width: 23.06px; height: 29.21px; left: -11.34px; top: 28.97px; position: absolute; transform: rotate(71.40deg); transform-origin: 0 0; background: #FDFDFD; box-shadow: 0px 6.149202346801758px 6.149202346801758px rgba(0, 0, 0, 0.25); border: 1.54px solid"></div>
-  </div>
-  <div style="width: 22.89px; height: 22.89px; left: 514.04px; top: 519.55px; position: absolute; transform: rotate(71.40deg); transform-origin: 0 0">
-    <div style="width: 22.89px; height: 22.89px; left: 0px; top: 0px; position: absolute; transform: rotate(71.40deg); transform-origin: 0 0; background: white; box-shadow: 0px 13.265824317932129px 33.1645622253418px rgba(219.62, 224.10, 248.63, 0.50); border-radius: 9999px; border: 1.82px solid"></div>
-    <div style="width: 9.95px; height: 12.60px; left: -5.01px; top: 5.78px; position: absolute; transform: rotate(45deg); transform-origin: 0 0; background: #5932EA; border: 0.66px solid"></div>
-  </div>
-  <div style="width: 13.27px; height: 13.27px; left: 510.73px; top: 443.08px; position: absolute"></div>
-</div>
-<img style="width: 1809px; height: 661px; border-radius: 40px" src="https://via.placeholder.com/1809x661" />
-</div>
 </template>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcXKzVKjKPR2haUPYSVZ-Wpxh2mNz_PSc&callback=initMap&libraries=places&v=weekly"
+        defer></script>
+<script>
+
+    async function initMap() {// Request needed libraries.
+        const options = {
+            fields: ["formatted_address", "geometry", "name"],
+            strictBounds: false,
+        };
+
+        new google.maps.places.Autocomplete(pickUpPoint, options);
+        new google.maps.places.Autocomplete(destinationPoint, options);
+    }
+
+    function calculateAndDisplayRoute(mapElem) {
+        const directionsService = new google.maps.DirectionsService();
+        const directionsRenderer = new google.maps.DirectionsRenderer({
+            polylineOptions: {
+                strokeColor: "#F84734",
+                width: 2.653
+            }
+        });
+        const map = new google.maps.Map(mapElem, {
+            zoom: 15,
+            center: { lat: 43.6532, lng: -79.3832 },
+            mapTypeControl: false,
+            draggable: false,
+            scaleControl: false,
+            scrollwheel: false,
+            navigationControl: false,
+            streetViewControl: false,
+            disableDefaultUI: true,
+            styles: [
+              { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
+              { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
+              { elementType: "labels.text.fill", stylers: [{ color: "#746855" }] },
+              {
+                featureType: "administrative.locality",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#d59563" }],
+              },
+              {
+                featureType: "poi",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#d59563" }],
+              },
+              {
+                featureType: "poi.park",
+                elementType: "geometry",
+                stylers: [{ color: "#263c3f" }],
+              },
+              {
+                featureType: "poi.park",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#6b9a76" }],
+              },
+              {
+                featureType: "road",
+                elementType: "geometry",
+                stylers: [{ color: "#38414e" }],
+              },
+              {
+                featureType: "road",
+                elementType: "geometry.stroke",
+                stylers: [{ color: "#212a37" }],
+              },
+              {
+                featureType: "road",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#9ca5b3" }],
+              },
+              {
+                featureType: "road.highway",
+                elementType: "geometry",
+                stylers: [{ color: "#746855" }],
+              },
+              {
+                featureType: "road.highway",
+                elementType: "geometry.stroke",
+                stylers: [{ color: "#1f2835" }],
+              },
+              {
+                featureType: "road.highway",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#f3d19c" }],
+              },
+              {
+                featureType: "transit",
+                elementType: "geometry",
+                stylers: [{ color: "#2f3948" }],
+              },
+              {
+                featureType: "transit.station",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#d59563" }],
+              },
+              {
+                featureType: "water",
+                elementType: "geometry",
+                stylers: [{ color: "#17263c" }],
+              },
+              {
+                featureType: "water",
+                elementType: "labels.text.fill",
+                stylers: [{ color: "#515c6d" }],
+              },
+              {
+                featureType: "water",
+                elementType: "labels.text.stroke",
+                stylers: [{ color: "#17263c" }],
+              },
+            ]
+        });
+        
+        directionsRenderer.setMap(map);
+        directionsRenderer.setOptions({ suppressMarkers: true });
+
+        directionsService
+            .route({
+                origin: {
+                    query: pickUpPoint.value,
+                },
+                destination: {
+                    query: destinationPoint.value,
+                },
+                travelMode: google.maps.TravelMode.DRIVING,
+            })
+            .then((response) => {
+                directionsRenderer.setDirections(response);
+            });
+            // .catch((e) => window.alert("Directions request failed due to " + status));
+    }
+
+</script>
