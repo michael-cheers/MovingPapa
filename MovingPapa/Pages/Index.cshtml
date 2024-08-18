@@ -15,7 +15,8 @@
 
     div.container { margin-left: 0; }
 
-    main, .popup {
+
+    main {
         transform: scale(0.6);
         transform-origin: 0% 0%;
         min-width: 1920px;
@@ -25,6 +26,70 @@
         transform-origin: left top;
         transform: scale(0.5);
         min-width: 1920px;
+    }
+
+    .responsive-logo {
+        background:url('/movingPapaLogoLarge.png') no-repeat;
+        width:310px;
+        height:57px;
+        background-size: 310px 57px;
+    }
+
+    .mb-bigger {
+        height: var(--height);
+    }
+
+    @@media all and (min-width: 600px) {
+        .pc-display-none {
+            display: none;
+        }
+    }
+
+    @@media all and (max-width: 600px) {
+        main {
+            transform: scale(0.4);
+            transform-origin: 0% 0%;
+            min-width: inherit;
+        }
+
+        .mb-center {
+            display: flex;
+            justify-content: center;
+        }
+
+        .popup {
+            transform: scale(0.33);
+            transform-origin: 0% 0%;
+            min-width: calc(150vw / 0.33);
+            min-height: calc(150vh / 0.33);
+        }
+        .popup > *, .popup-child {
+            max-width: calc(100vw / 0.33);
+        }
+
+        .mb-column-flex {
+            flex-direction: column;
+        }
+        .mb-no-margin-left {
+            margin-left: 0px!important;
+        }
+        .mb-display-none {
+            display: none!important;
+        }
+        .mb-full-width {
+            min-width: calc(100vw / 0.4);
+        }
+        .mb-bigger {
+            transform:scale(1.4);
+            transform-origin: center;
+            margin-top:calc((var(--height) * 0.4) / 2);
+            margin-bottom:calc((var(--height) * 0.4) / 2);
+        }
+        .responsive-logo {
+            background: url('/movingPapaLogoSmall.png') no-repeat;
+            width: 208px;
+            height: 141px;
+        }
     }
 
     .how-it-works-title {
@@ -325,7 +390,7 @@ function getQuote () {
 }
 </script>
 
-<div style="display:flex">
+<div style="display:flex" class="mb-column-flex">
     <div style="margin-top:calc(75px - -158px);min-width:calc(989px - 59px)">
         <div style="
 font-family: 'Arial Rounded MT Bold';
@@ -354,7 +419,7 @@ text-align:center;
             Full service moving teams or rent a truck.
         </div>
         <div style="display:flex;justify-content:center;width:100%;">
-            <div style="width:549px;height:181px;border-top:6.5px solid #34A853;display:flex;padding-top:27px;margin-top:calc(330px - (185px + 35px))">
+            <div style="width:549px;height:181px;border-top:6.5px solid #34A853;display:flex;padding-top:27px;margin-top:calc(330px - (185px + 35px));box-shadow: -6.552px -3.276px 26.208px 0px rgba(0, 0, 0, 0.08), 32.76px 22.932px 65.521px 0px rgba(0, 0, 0, 0.08);border-radius: 13.104px;background: #FFF;">
                 <svg style="margin-left:41px;margin-top:10px" width="107" height="107" viewBox="0 0 107 107" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M100.419 54.1394C100.419 50.6925 100.11 47.3782 99.5353 44.1965H53.7542V63.0216H79.9148C78.7659 69.0757 75.319 74.2017 70.1487 77.6486V89.8893H85.9247C95.1163 81.4048 100.419 68.9431 100.419 54.1394Z" fill="#4285F4" />
                     <path d="M53.7542 101.644C66.8788 101.644 77.8822 97.3132 85.9248 89.8893L70.1488 77.6485C65.8182 80.5651 60.2944 82.3327 53.7542 82.3327C41.1158 82.3327 30.3776 73.804 26.533 62.3145H10.3594V74.8646C18.3578 90.7289 34.7524 101.644 53.7542 101.644Z" fill="#34A853" />
@@ -449,13 +514,13 @@ flex-grow: 0;
     <div>
         <div style="/* Rectangle 31 */
 width: 975px;
-height: 948px;
+--height: 948px;
 
 background: #00292A;
 border-radius: 40px;
 display:flex;
 justify-content:center;
-">
+" class="mb-bigger">
             <div style="width:553px;margin-top:calc(-111px - -158px);">
                 <div style="/* Where are you moving to? */
 font-family: 'Arial Rounded MT Bold';
@@ -1119,7 +1184,7 @@ margin-top:calc(681px - 547px);
 <div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:200vw;height:200vh;overflow:hidden;" id="quotePopup" class="popup bottom-bg">
     <div style="
 margin-top:calc(-832px - -1091px);
-margin-left:calc(520px - 284px);">
+margin-left:calc(520px - 284px);" class="mb-no-margin-left">
     <div id="quoteFirstText" style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 86.7269px;line-height: 100px;color: #EEEEEE;">
         What kind of moving help<br />
         do you need?
@@ -1162,6 +1227,7 @@ margin-left:calc(520px - 284px);">
         quoteSecondText.style.display = 'none';
         quoteSecondText.parentElement.querySelector('[name=contactForm]').style.display = 'none';
         quoteSecondText.parentElement.parentElement.lastElementChild.before(loggedInUI.content.firstElementChild.cloneNode(true));
+        accountName.innerText = firstName.value;
         fromLocation.innerText = pickUpPoint.value;
         toLocation.innerText = destinationPoint.value;
     }
@@ -1287,7 +1353,11 @@ margin-left:calc(520px - 284px);">
 
                     // Helper functions
                     const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
-                    const getFirstDayOfMonth = (year, month) => new Date(year, month, 1).getDay();
+                    // Adjusted function to get the first day of the month considering Monday as the first day of the week
+                    const getFirstDayOfMonth = (year, month) => {
+                        const day = new Date(year, month, 1).getDay();
+                        return (day === 0) ? 6 : day - 1;
+                    };
 
                     // Get the current month's first and last days
                     const daysInMonth = getDaysInMonth(year, month);
@@ -1317,16 +1387,17 @@ margin-left:calc(520px - 284px);">
                                 // Days from the next month
                                 dayOfMonth.classList.add('disabled');
                                 day = dayCount - daysInMonth;
-                                monthDif = 0;
+                                monthDif = 1;
                             } else {
                                 // Current month's days
                                 if (dayCount === currentDay) {
                                     dayOfMonth.classList.add('today');
                                 }
                                 day = dayCount;
-                                monthDif = 1;
+                                monthDif = 0;
                             }
                             let date = new Date(year, month + monthDif, day);
+                            console.log(date);
                             if (calendarRates !== null)
                                 day = calendarRates[date.toLocaleDateString('en-CA')] ?? "N/A";
                             dayOfMonth.innerHTML = `<div>${day}</div>`;
@@ -1346,7 +1417,7 @@ margin-left:calc(520px - 284px);">
     <div name=contactForm style="margin-top:81px; max-width: 1405px; width:100%; height: 100%; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 46.17px; display: inline-flex">
         <div style="align-self: stretch; justify-content: flex-start; align-items: flex-start; gap: 46.17px; display: inline-flex">
             <input class="quoteContactFormInput" placeholder="Last Name" style="flex: 1 1 0; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: inline-flex">
-            <input class="quoteContactFormInput" placeholder="First Name" style="flex: 1 1 0; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: inline-flex">
+            <input id=firstName class="quoteContactFormInput" placeholder="First Name" style="flex: 1 1 0; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: inline-flex">
         </div>
         <input class="quoteContactFormInput" placeholder="Email" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex">
         <input class="quoteContactFormInput" placeholder="Phone Number" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex">
@@ -1370,103 +1441,121 @@ margin-left:calc(520px - 284px);">
     </div>
 </template>
 <template id=loggedInUI>
-    <div style="background: #EEEEEE;padding-left:58px;padding-top:74px">
-        <div style="display:flex">
-            <div style="width: 657px; background: #EEEEEE; border-radius: calc(83.23px / 2); border: 1px rgba(0, 0, 0, 0.23) solid">
-                <div style="margin-top:33px;margin-left:51px;margin-right:51px;width: 556.01px;height: 152.81px;background: #00292A;border-radius: calc(83.2348px / 2);">
-                    <div style="margin-bottom:21px;padding-left:29px;padding-top:24px;display:flex;color: #FFF; font-family: 'Arial Rounded MT'; font-size: 25.775px; font-style: normal; font-weight: 400; line-height: normal;">
-                        <svg style="margin-right:24px" width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M15.6818 30.1305C23.8163 30.1305 30.4105 23.5362 30.4105 15.4018C30.4105 7.26736 23.8163 0.673096 15.6818 0.673096C7.54739 0.673096 0.953125 7.26736 0.953125 15.4018C0.953125 23.5362 7.54739 30.1305 15.6818 30.1305Z" fill="#00292A" />
-                            <path d="M15.6823 26.4483C21.7831 26.4483 26.7288 21.5026 26.7288 15.4017C26.7288 9.30092 21.7831 4.35522 15.6823 4.35522C9.58144 4.35522 4.63574 9.30092 4.63574 15.4017C4.63574 21.5026 9.58144 26.4483 15.6823 26.4483Z" stroke="white" stroke-width="7.36435" />
-                        </svg>
-                        <span id=fromLocation>15 dundas st w</span>
-                    </div>
-                    <div style="display:flex">
-                        <div style="padding-left:35px;width: 371.091px;border-top: 1.841px solid #EEE;padding-top:21px;display:flex;color: #FFF; font-family: 'Arial Rounded MT'; font-size: 25.775px; font-style: normal; font-weight: 400; line-height: normal;">
-                            <svg style="margin-right:30px" width="21" height="26" viewBox="0 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10.5905 25.8378C9.58898 25.8378 4.83345 19.9574 3.66804 18.0666C1.92385 15.8408 0.944929 13.1113 0.876953 10.2843C0.876953 7.70788 1.90044 5.23696 3.72226 3.41514C5.54409 1.59331 8.01501 0.569824 10.5915 0.569824C13.1679 0.569824 15.6388 1.59331 17.4606 3.41514C19.2825 5.23696 20.3059 7.70788 20.3059 10.2843C20.3059 13.3994 19.2676 15.0822 17.5443 17.8714L17.4283 18.0611C16.2279 20.0108 11.5718 25.8378 10.5905 25.8378ZM10.5905 5.42845C10.5905 5.42896 10.5901 5.42938 10.5896 5.42938C9.62927 5.42956 8.69053 5.71444 7.89205 6.24802C7.09332 6.78177 6.47081 7.54041 6.10327 8.42798C5.73572 9.31555 5.63965 10.2922 5.8272 11.2344C6.01475 12.1765 6.4775 13.0419 7.15691 13.7211C7.83633 14.4002 8.7019 14.8627 9.64415 15.0499C10.5864 15.237 11.563 15.1406 12.4504 14.7727C13.3378 14.4048 14.0962 13.7821 14.6297 12.9831C15.1631 12.1842 15.4477 11.245 15.4473 10.2843C15.4459 8.99667 14.9337 7.76218 14.0232 6.85167C13.1129 5.94138 11.8788 5.42924 10.5915 5.42754C10.5909 5.42753 10.5905 5.42795 10.5905 5.42845Z" fill="#F84734" />
-                            </svg>
-                            <span id=toLocation>209 bay street</span>
+    <div style="background: #EEEEEE;min-height:calc(150vh / 0.33);min-width:calc(150vw / 0.33)">
+        <div class="popup-child" style="padding-left:58px;padding-top:74px">
+            <div style="display:flex" class="mb-column-flex">
+                <div class="mb-center">
+                    <div class="mb-bigger" style="width: 657px; --height: calc(145px / 0.33); background: #EEEEEE; border-radius: calc(83.23px / 2); border: 1px rgba(0, 0, 0, 0.23) solid">
+                        <div style="margin-top:33px;margin-left:51px;margin-right:51px;width: 556.01px;height: 152.81px;background: #00292A;border-radius: calc(83.2348px / 2);">
+                            <div style="margin-bottom:21px;padding-left:29px;padding-top:24px;display:flex;color: #FFF; font-family: 'Arial Rounded MT'; font-size: 25.775px; font-style: normal; font-weight: 400; line-height: normal;">
+                                <svg style="margin-right:24px" width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15.6818 30.1305C23.8163 30.1305 30.4105 23.5362 30.4105 15.4018C30.4105 7.26736 23.8163 0.673096 15.6818 0.673096C7.54739 0.673096 0.953125 7.26736 0.953125 15.4018C0.953125 23.5362 7.54739 30.1305 15.6818 30.1305Z" fill="#00292A" />
+                                    <path d="M15.6823 26.4483C21.7831 26.4483 26.7288 21.5026 26.7288 15.4017C26.7288 9.30092 21.7831 4.35522 15.6823 4.35522C9.58144 4.35522 4.63574 9.30092 4.63574 15.4017C4.63574 21.5026 9.58144 26.4483 15.6823 26.4483Z" stroke="white" stroke-width="7.36435" />
+                                </svg>
+                                <span id=fromLocation>15 dundas st w</span>
                             </div>
-                        <button style="margin-top:-33px;margin-bottom:-33px;background: #FAFAFA;border: 1.84109px solid #EEEEEE;border-radius: 83.2348px;width: 125.19px;height: 66.28px;">
-                            <div style="display:flex;height:100%">
-                                <svg style="margin-left:17px;margin-top:15px;margin-right:6px" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6113 4.17676C14.0623 4.17676 11.5706 4.9326 9.45128 6.34871C7.33192 7.76482 5.68008 9.77759 4.70465 12.1325C3.72922 14.4874 3.474 17.0787 3.97127 19.5786C4.46854 22.0786 5.69597 24.3749 7.49833 26.1773C9.3007 27.9797 11.5971 29.2071 14.097 29.7044C16.597 30.2016 19.1882 29.9464 21.5431 28.971C23.898 27.9955 25.9108 26.3437 27.3269 24.2243C28.743 22.105 29.4989 19.6133 29.4989 17.0644C29.4989 13.6464 28.1411 10.3683 25.7242 7.95145C23.3073 5.53456 20.0293 4.17676 16.6113 4.17676ZM20.4775 18.3531C19.054 18.3531 17.9 19.5071 17.9 20.9307C17.9 21.2725 17.7642 21.6003 17.5225 21.8419C17.2809 22.0836 16.9531 22.2194 16.6113 22.2194C16.2695 22.2194 15.9416 22.0836 15.7 21.8419C15.4583 21.6003 15.3225 21.2725 15.3225 20.9307C15.3225 19.5071 14.1685 18.3531 12.745 18.3531C12.4032 18.3531 12.0754 18.2174 11.8337 17.9757C11.592 17.734 11.4562 17.4062 11.4562 17.0644C11.4562 16.7226 11.592 16.3948 11.8337 16.1531C12.0754 15.9114 12.4032 15.7756 12.745 15.7756C14.1685 15.7756 15.3225 14.6216 15.3225 13.1981C15.3225 12.8563 15.4583 12.5285 15.7 12.2868C15.9416 12.0451 16.2695 11.9093 16.6113 11.9093C16.9531 11.9093 17.2809 12.0451 17.5225 12.2868C17.7642 12.5285 17.9 12.8563 17.9 13.1981C17.9 14.6216 19.054 15.7756 20.4775 15.7756C20.8193 15.7756 21.1471 15.9114 21.3888 16.1531C21.6305 16.3948 21.7663 16.7226 21.7663 17.0644C21.7663 17.4062 21.6305 17.734 21.3888 17.9757C21.1471 18.2174 20.8193 18.3531 20.4775 18.3531Z" fill="#F84734"/></svg>
-                                <div style="margin-top:15px;font-family: 'Poppins';font-style: normal;font-weight: 400;font-size: 22.0931px;line-height: 33px;color: #656565;">Add</div>
+                            <div style="display:flex">
+                                <div style="padding-left:35px;width: 371.091px;border-top: 1.841px solid #EEE;padding-top:21px;display:flex;color: #FFF; font-family: 'Arial Rounded MT'; font-size: 25.775px; font-style: normal; font-weight: 400; line-height: normal;">
+                                    <svg style="margin-right:30px" width="21" height="26" viewBox="0 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M10.5905 25.8378C9.58898 25.8378 4.83345 19.9574 3.66804 18.0666C1.92385 15.8408 0.944929 13.1113 0.876953 10.2843C0.876953 7.70788 1.90044 5.23696 3.72226 3.41514C5.54409 1.59331 8.01501 0.569824 10.5915 0.569824C13.1679 0.569824 15.6388 1.59331 17.4606 3.41514C19.2825 5.23696 20.3059 7.70788 20.3059 10.2843C20.3059 13.3994 19.2676 15.0822 17.5443 17.8714L17.4283 18.0611C16.2279 20.0108 11.5718 25.8378 10.5905 25.8378ZM10.5905 5.42845C10.5905 5.42896 10.5901 5.42938 10.5896 5.42938C9.62927 5.42956 8.69053 5.71444 7.89205 6.24802C7.09332 6.78177 6.47081 7.54041 6.10327 8.42798C5.73572 9.31555 5.63965 10.2922 5.8272 11.2344C6.01475 12.1765 6.4775 13.0419 7.15691 13.7211C7.83633 14.4002 8.7019 14.8627 9.64415 15.0499C10.5864 15.237 11.563 15.1406 12.4504 14.7727C13.3378 14.4048 14.0962 13.7821 14.6297 12.9831C15.1631 12.1842 15.4477 11.245 15.4473 10.2843C15.4459 8.99667 14.9337 7.76218 14.0232 6.85167C13.1129 5.94138 11.8788 5.42924 10.5915 5.42754C10.5909 5.42753 10.5905 5.42795 10.5905 5.42845Z" fill="#F84734" />
+                                    </svg>
+                                    <span id=toLocation>209 bay street</span>
+                                    </div>
+                                <button style="margin-top:-33px;margin-bottom:-33px;background: #FAFAFA;border: 1.84109px solid #EEEEEE;border-radius: 83.2348px;width: 125.19px;height: 66.28px;">
+                                    <div style="display:flex;height:100%">
+                                        <svg style="margin-left:17px;margin-top:15px;margin-right:6px" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6113 4.17676C14.0623 4.17676 11.5706 4.9326 9.45128 6.34871C7.33192 7.76482 5.68008 9.77759 4.70465 12.1325C3.72922 14.4874 3.474 17.0787 3.97127 19.5786C4.46854 22.0786 5.69597 24.3749 7.49833 26.1773C9.3007 27.9797 11.5971 29.2071 14.097 29.7044C16.597 30.2016 19.1882 29.9464 21.5431 28.971C23.898 27.9955 25.9108 26.3437 27.3269 24.2243C28.743 22.105 29.4989 19.6133 29.4989 17.0644C29.4989 13.6464 28.1411 10.3683 25.7242 7.95145C23.3073 5.53456 20.0293 4.17676 16.6113 4.17676ZM20.4775 18.3531C19.054 18.3531 17.9 19.5071 17.9 20.9307C17.9 21.2725 17.7642 21.6003 17.5225 21.8419C17.2809 22.0836 16.9531 22.2194 16.6113 22.2194C16.2695 22.2194 15.9416 22.0836 15.7 21.8419C15.4583 21.6003 15.3225 21.2725 15.3225 20.9307C15.3225 19.5071 14.1685 18.3531 12.745 18.3531C12.4032 18.3531 12.0754 18.2174 11.8337 17.9757C11.592 17.734 11.4562 17.4062 11.4562 17.0644C11.4562 16.7226 11.592 16.3948 11.8337 16.1531C12.0754 15.9114 12.4032 15.7756 12.745 15.7756C14.1685 15.7756 15.3225 14.6216 15.3225 13.1981C15.3225 12.8563 15.4583 12.5285 15.7 12.2868C15.9416 12.0451 16.2695 11.9093 16.6113 11.9093C16.9531 11.9093 17.2809 12.0451 17.5225 12.2868C17.7642 12.5285 17.9 12.8563 17.9 13.1981C17.9 14.6216 19.054 15.7756 20.4775 15.7756C20.8193 15.7756 21.1471 15.9114 21.3888 16.1531C21.6305 16.3948 21.7663 16.7226 21.7663 17.0644C21.7663 17.4062 21.6305 17.734 21.3888 17.9757C21.1471 18.2174 20.8193 18.3531 20.4775 18.3531Z" fill="#F84734"/></svg>
+                                        <div style="margin-top:15px;font-family: 'Poppins';font-style: normal;font-weight: 400;font-size: 22.0931px;line-height: 33px;color: #656565;">Add</div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        <div style="width:fit-content;margin-left:63px;margin-top:26px;height: 64.92px;background: #00292A;border-radius: 83.2348px;">
+                            <svg style="margin-top:15px;margin-bottom:15px;margin-left:26px" width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32.1346 11.5851H3.98395M22.4885 16.4579C19.0286 16.4579 13.6289 16.4579 13.6289 16.4579M32.2348 12.4217V29.3044C32.2348 31.2617 30.6481 32.8483 28.6909 32.8483H7.42766C5.47044 32.8483 3.88379 31.2617 3.88379 29.3044V12.4217C3.88379 11.8715 4.01188 11.3289 4.25793 10.8368L6.69304 5.96657C7.14326 5.06611 8.0636 4.49731 9.07034 4.49731H27.0482C28.055 4.49731 28.9753 5.06611 29.4255 5.96657L31.8606 10.8368C32.1067 11.3289 32.2348 11.8715 32.2348 12.4217Z" stroke="#F84734" stroke-width="2.95323" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <select style="border:none;outline:none;padding-right:calc(138px - 86px);margin-right:calc(64px - 37px);background:inherit;margin-left:22px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 23.918px;line-height: 28px;/* identical to box height */color: #FFFFFF;">
+                                <option value="fullService">Full Service</option>
+                                <option value=selfService>Self Service</option>
+                            </select>
+                        </div>
+                        <div style="margin-bottom:79px;display:flex;width:fit-content;margin-left:63px;margin-top:27px;height: 64.92px;background: #00292A;border-radius: 83.2348px;">
+                            <svg onclick="" style="cursor:pointer;margin-top:15px;margin-bottom:15px;margin-left:26px" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">S<path fill-rule="evenodd" clip-rule="evenodd" d="M11.26 2.19116C12.0389 2.19116 12.6703 2.82261 12.6703 3.60153V5.0119H22.5429V3.60153C22.5429 2.82261 23.1743 2.19116 23.9533 2.19116C24.7322 2.19116 25.3636 2.82261 25.3636 3.60153V5.04672C28.9271 5.40052 31.7103 8.40711 31.7103 12.0637V24.757C31.7103 28.6517 28.5531 31.8089 24.6584 31.8089H10.5548C6.66014 31.8089 3.50293 28.6517 3.50293 24.757V12.0637C3.50293 8.40711 6.28606 5.40052 9.84958 5.04672V3.60153C9.84958 2.82261 10.481 2.19116 11.26 2.19116ZM6.56442 10.6534H28.6488C28.0679 9.01002 26.5007 7.83263 24.6584 7.83263H10.5548C8.71252 7.83263 7.14526 9.01002 6.56442 10.6534ZM28.8895 13.4741H6.32366V24.757C6.32366 27.0938 8.21799 28.9881 10.5548 28.9881H24.6584C26.9952 28.9881 28.8895 27.0938 28.8895 24.757V13.4741ZM9.1444 17.7052C9.1444 16.9263 9.77584 16.2948 10.5548 16.2948H16.1962C16.9752 16.2948 17.6066 16.9263 17.6066 17.7052V23.3467C17.6066 24.1256 16.9752 24.757 16.1962 24.757H10.5548C9.77584 24.757 9.1444 24.1256 9.1444 23.3467V17.7052ZM14.7859 19.1156H11.9651V21.9363H14.7859V19.1156Z" fill="#F84734"/>S</svg>
+                            <div style="margin-top:15px;border:none;outline:none;padding-right:calc(138px - 86px);margin-right:calc(64px - 37px);background:inherit;margin-left:22px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 23.918px;line-height: 28px;/* identical to box height */color: #FFFFFF;">
+                                Wed, Aug 22
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <style>
+                    @@media all and (max-width: 600px) {
+                        #loggedInUI_chooseBilling {
+                            margin-top: 70px;
+                        }
+                    }
+                </style>
+                <div id="loggedInUI_chooseBilling" class="mb-no-margin-left" style="margin-left:135px;padding-left:40px;padding-top:30px;width: 1011px;height: 448px;background: #00292A;box-shadow: 0px 1.96128px 1.96128px rgba(0, 0, 0, 0.25);border-radius: 40px;">
+                    <div style="margin-bottom:38px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 30.5493px;line-height: 35px;color: #EEEEEE;">
+                        Welcome, <span id=accountName></span>.<br />
+                        Choose a pricing option.
+                    </div>
+                    <div style="display:flex;margin-bottom:101px" class="buttons">
+                        <style>
+                            .buttons > button.selected {
+                                border: 5px solid #F84734;margin:-5px;
+                            }
+                            .buttons > button:not(.selected) {
+                                border: 5px solid transparent;margin:-5px;
+                            }
+                        </style>
+                        <script>
+                            function selectBillingMethod (elem, met) {
+                                const toggles = elem.parentElement.querySelectorAll('.selected');
+                                toggles.forEach(e => e.classList.remove('selected'));
+                                elem.classList.add('selected');
+                                billingMethod = met;
+                            }
+                        </script>
+                        <button class="selected" onclick="selectBillingMethod(this, 'hourly')" style="margin-right:126px;background: #EEEEEE;box-shadow: 0.614137px 0.614137px 61.4137px 0.614137px rgba(0, 0, 0, 0.05);border-radius: 20px;">
+                            <div style="display:flex;height:100%;text-align:left">
+                                <svg style="margin-top:26px;margin-bottom:27px;margin-left:27px;margin-right:27px" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.0362 34.2251C36.2161 34.6183 37.4913 33.9807 37.8846 32.8009C38.2779 31.621 37.6402 30.3458 36.4604 29.9525L35.0362 34.2251ZM28.1484 29.5555H25.8965C25.8965 30.5247 26.5168 31.3852 27.4363 31.6917L28.1484 29.5555ZM30.4002 18.9625C30.4002 17.7189 29.392 16.7107 28.1484 16.7107C26.9047 16.7107 25.8965 17.7189 25.8965 18.9625H30.4002ZM36.4604 29.9525L28.8605 27.4192L27.4363 31.6917L35.0362 34.2251L36.4604 29.9525ZM30.4002 29.5555V18.9625H25.8965V29.5555H30.4002ZM46.1631 27.0221C46.1631 36.9714 38.0976 45.0368 28.1484 45.0368V49.5405C40.5849 49.5405 50.6667 39.4587 50.6667 27.0221H46.1631ZM28.1484 45.0368C18.1991 45.0368 10.1337 36.9714 10.1337 27.0221H5.63C5.63 39.4587 15.7118 49.5405 28.1484 49.5405V45.0368ZM10.1337 27.0221C10.1337 17.0729 18.1991 9.00745 28.1484 9.00745V4.50378C15.7118 4.50378 5.63 14.5856 5.63 27.0221H10.1337ZM28.1484 9.00745C38.0976 9.00745 46.1631 17.0729 46.1631 27.0221H50.6667C50.6667 14.5856 40.5849 4.50378 28.1484 4.50378V9.00745Z" fill="#F84734"/></svg>
+                                <div style="margin-top:21px;">
+                                    <div style="margin-bottom:12px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 23.3803px;line-height: 27px;/* identical to box height */color: #00292A;">
+                                        Hourly Rate
+                                    </div>
+                                    <div style="margin-right:104px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 14.7393px;line-height: 17px;color: #888888;">
+                                        Pay for how long it takes
+                                    </div>
+                                </div>
+                            </div>
+                        </button>
+                        <button onclick="selectBillingMethod(this, 'flat')" style="background: #EEEEEE;box-shadow: 0.614137px 0.614137px 61.4137px 0.614137px rgba(0, 0, 0, 0.05);border-radius: 20px;">
+                            <div style="display:flex;height:100%;text-align:left">
+                                <svg style="margin-top:26px;margin-bottom:27px;margin-left:27px;margin-right:27px" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.0362 34.2251C36.2161 34.6183 37.4913 33.9807 37.8846 32.8009C38.2779 31.621 37.6402 30.3458 36.4604 29.9525L35.0362 34.2251ZM28.1484 29.5555H25.8965C25.8965 30.5247 26.5168 31.3852 27.4363 31.6917L28.1484 29.5555ZM30.4002 18.9625C30.4002 17.7189 29.392 16.7107 28.1484 16.7107C26.9047 16.7107 25.8965 17.7189 25.8965 18.9625H30.4002ZM36.4604 29.9525L28.8605 27.4192L27.4363 31.6917L35.0362 34.2251L36.4604 29.9525ZM30.4002 29.5555V18.9625H25.8965V29.5555H30.4002ZM46.1631 27.0221C46.1631 36.9714 38.0976 45.0368 28.1484 45.0368V49.5405C40.5849 49.5405 50.6667 39.4587 50.6667 27.0221H46.1631ZM28.1484 45.0368C18.1991 45.0368 10.1337 36.9714 10.1337 27.0221H5.63C5.63 39.4587 15.7118 49.5405 28.1484 49.5405V45.0368ZM10.1337 27.0221C10.1337 17.0729 18.1991 9.00745 28.1484 9.00745V4.50378C15.7118 4.50378 5.63 14.5856 5.63 27.0221H10.1337ZM28.1484 9.00745C38.0976 9.00745 46.1631 17.0729 46.1631 27.0221H50.6667C50.6667 14.5856 40.5849 4.50378 28.1484 4.50378V9.00745Z" fill="#F84734" /></svg>
+                                <div style="margin-top:21px;">
+                                    <div style="margin-bottom:12px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 23.3803px;line-height: 27px;/* identical to box height */color: #00292A;">
+                                        Flat Rate
+                                    </div>
+                                    <div style="margin-right:104px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 14.7393px;line-height: 17px;color: #888888;">
+                                        Upfront Guaranteed pricing
+                                    </div>
+                                </div>
                             </div>
                         </button>
                     </div>
-                </div>
-                <div style="width:fit-content;margin-left:63px;margin-top:26px;height: 64.92px;background: #00292A;border-radius: 83.2348px;">
-                    <svg style="margin-top:15px;margin-bottom:15px;margin-left:26px" width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32.1346 11.5851H3.98395M22.4885 16.4579C19.0286 16.4579 13.6289 16.4579 13.6289 16.4579M32.2348 12.4217V29.3044C32.2348 31.2617 30.6481 32.8483 28.6909 32.8483H7.42766C5.47044 32.8483 3.88379 31.2617 3.88379 29.3044V12.4217C3.88379 11.8715 4.01188 11.3289 4.25793 10.8368L6.69304 5.96657C7.14326 5.06611 8.0636 4.49731 9.07034 4.49731H27.0482C28.055 4.49731 28.9753 5.06611 29.4255 5.96657L31.8606 10.8368C32.1067 11.3289 32.2348 11.8715 32.2348 12.4217Z" stroke="#F84734" stroke-width="2.95323" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                    <select style="border:none;outline:none;padding-right:calc(138px - 86px);margin-right:calc(64px - 37px);background:inherit;margin-left:22px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 23.918px;line-height: 28px;/* identical to box height */color: #FFFFFF;">
-                        <option value="fullService">Full Service</option>
-                        <option value=selfService>Self Service</option>
-                    </select>
-                </div>
-                <div style="margin-bottom:79px;display:flex;width:fit-content;margin-left:63px;margin-top:27px;height: 64.92px;background: #00292A;border-radius: 83.2348px;">
-                    <svg onclick="" style="cursor:pointer;margin-top:15px;margin-bottom:15px;margin-left:26px" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">S<path fill-rule="evenodd" clip-rule="evenodd" d="M11.26 2.19116C12.0389 2.19116 12.6703 2.82261 12.6703 3.60153V5.0119H22.5429V3.60153C22.5429 2.82261 23.1743 2.19116 23.9533 2.19116C24.7322 2.19116 25.3636 2.82261 25.3636 3.60153V5.04672C28.9271 5.40052 31.7103 8.40711 31.7103 12.0637V24.757C31.7103 28.6517 28.5531 31.8089 24.6584 31.8089H10.5548C6.66014 31.8089 3.50293 28.6517 3.50293 24.757V12.0637C3.50293 8.40711 6.28606 5.40052 9.84958 5.04672V3.60153C9.84958 2.82261 10.481 2.19116 11.26 2.19116ZM6.56442 10.6534H28.6488C28.0679 9.01002 26.5007 7.83263 24.6584 7.83263H10.5548C8.71252 7.83263 7.14526 9.01002 6.56442 10.6534ZM28.8895 13.4741H6.32366V24.757C6.32366 27.0938 8.21799 28.9881 10.5548 28.9881H24.6584C26.9952 28.9881 28.8895 27.0938 28.8895 24.757V13.4741ZM9.1444 17.7052C9.1444 16.9263 9.77584 16.2948 10.5548 16.2948H16.1962C16.9752 16.2948 17.6066 16.9263 17.6066 17.7052V23.3467C17.6066 24.1256 16.9752 24.757 16.1962 24.757H10.5548C9.77584 24.757 9.1444 24.1256 9.1444 23.3467V17.7052ZM14.7859 19.1156H11.9651V21.9363H14.7859V19.1156Z" fill="#F84734"/>S</svg>
-                    <div style="margin-top:15px;border:none;outline:none;padding-right:calc(138px - 86px);margin-right:calc(64px - 37px);background:inherit;margin-left:22px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 23.918px;line-height: 28px;/* identical to box height */color: #FFFFFF;">
-                        Wed, Aug 22
-                    </div>
-                </div>
-            </div>
-            <div id="loggedInUI_chooseBilling" style="margin-left:135px;padding-left:40px;padding-top:30px;width: 1011px;height: 448px;background: #00292A;box-shadow: 0px 1.96128px 1.96128px rgba(0, 0, 0, 0.25);border-radius: 40px;">
-                <div style="margin-bottom:38px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 30.5493px;line-height: 35px;color: #EEEEEE;">
-                    Welcome, Abby.<br />
-                    Choose a billing method.
-                </div>
-                <div style="display:flex;margin-bottom:101px">
-                    <style>
-                        .selected {
-                            border: 5px solid #F84734;margin:-5px;
-                        }
-                        :not(.selected) {
-                            border: 5px solid transparent;margin:-5px;
-                        }
-                    </style>
-                    <script>
-                        function selectBillingMethod (elem, met) {
-                            const toggles = elem.parentElement.querySelectorAll('.selected');
-                            toggles.forEach(e => e.classList.remove('selected'));
-                            elem.classList.add('selected');
-                            billingMethod = met;
-                        }
-                    </script>
-                    <button class="selected" onclick="selectBillingMethod(this, 'hourly')" style="margin-right:126px;background: #EEEEEE;box-shadow: 0.614137px 0.614137px 61.4137px 0.614137px rgba(0, 0, 0, 0.05);border-radius: 20px;">
-                        <div style="display:flex;height:100%;text-align:left">
-                            <svg style="margin-top:26px;margin-bottom:27px;margin-left:27px;margin-right:27px" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.0362 34.2251C36.2161 34.6183 37.4913 33.9807 37.8846 32.8009C38.2779 31.621 37.6402 30.3458 36.4604 29.9525L35.0362 34.2251ZM28.1484 29.5555H25.8965C25.8965 30.5247 26.5168 31.3852 27.4363 31.6917L28.1484 29.5555ZM30.4002 18.9625C30.4002 17.7189 29.392 16.7107 28.1484 16.7107C26.9047 16.7107 25.8965 17.7189 25.8965 18.9625H30.4002ZM36.4604 29.9525L28.8605 27.4192L27.4363 31.6917L35.0362 34.2251L36.4604 29.9525ZM30.4002 29.5555V18.9625H25.8965V29.5555H30.4002ZM46.1631 27.0221C46.1631 36.9714 38.0976 45.0368 28.1484 45.0368V49.5405C40.5849 49.5405 50.6667 39.4587 50.6667 27.0221H46.1631ZM28.1484 45.0368C18.1991 45.0368 10.1337 36.9714 10.1337 27.0221H5.63C5.63 39.4587 15.7118 49.5405 28.1484 49.5405V45.0368ZM10.1337 27.0221C10.1337 17.0729 18.1991 9.00745 28.1484 9.00745V4.50378C15.7118 4.50378 5.63 14.5856 5.63 27.0221H10.1337ZM28.1484 9.00745C38.0976 9.00745 46.1631 17.0729 46.1631 27.0221H50.6667C50.6667 14.5856 40.5849 4.50378 28.1484 4.50378V9.00745Z" fill="#F84734"/></svg>
-                            <div style="margin-top:21px;">
-                                <div style="margin-bottom:12px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 23.3803px;line-height: 27px;/* identical to box height */color: #00292A;">
-                                    Hourly Rate
-                                </div>
-                                <div style="margin-right:104px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 14.7393px;line-height: 17px;color: #888888;">
-                                    Pay for how long it takes
-                                </div>
-                            </div>
-                        </div>
-                    </button>
-                    <button onclick="selectBillingMethod(this, 'flat')" style="background: #EEEEEE;box-shadow: 0.614137px 0.614137px 61.4137px 0.614137px rgba(0, 0, 0, 0.05);border-radius: 20px;">
-                        <div style="display:flex;height:100%;text-align:left">
-                            <svg style="margin-top:26px;margin-bottom:27px;margin-left:27px;margin-right:27px" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.0362 34.2251C36.2161 34.6183 37.4913 33.9807 37.8846 32.8009C38.2779 31.621 37.6402 30.3458 36.4604 29.9525L35.0362 34.2251ZM28.1484 29.5555H25.8965C25.8965 30.5247 26.5168 31.3852 27.4363 31.6917L28.1484 29.5555ZM30.4002 18.9625C30.4002 17.7189 29.392 16.7107 28.1484 16.7107C26.9047 16.7107 25.8965 17.7189 25.8965 18.9625H30.4002ZM36.4604 29.9525L28.8605 27.4192L27.4363 31.6917L35.0362 34.2251L36.4604 29.9525ZM30.4002 29.5555V18.9625H25.8965V29.5555H30.4002ZM46.1631 27.0221C46.1631 36.9714 38.0976 45.0368 28.1484 45.0368V49.5405C40.5849 49.5405 50.6667 39.4587 50.6667 27.0221H46.1631ZM28.1484 45.0368C18.1991 45.0368 10.1337 36.9714 10.1337 27.0221H5.63C5.63 39.4587 15.7118 49.5405 28.1484 49.5405V45.0368ZM10.1337 27.0221C10.1337 17.0729 18.1991 9.00745 28.1484 9.00745V4.50378C15.7118 4.50378 5.63 14.5856 5.63 27.0221H10.1337ZM28.1484 9.00745C38.0976 9.00745 46.1631 17.0729 46.1631 27.0221H50.6667C50.6667 14.5856 40.5849 4.50378 28.1484 4.50378V9.00745Z" fill="#F84734" /></svg>
-                            <div style="margin-top:21px;">
-                                <div style="margin-bottom:12px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 23.3803px;line-height: 27px;/* identical to box height */color: #00292A;">
-                                    Flat Rate
-                                </div>
-                                <div style="margin-right:104px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 14.7393px;line-height: 17px;color: #888888;">
-                                    Upfront Guaranteed pricing
-                                </div>
-                            </div>
-                        </div>
+                    <button onclick="chooseRate()" style="text-align:center;width: 319px;height: 75.09px;background: #F84734;border-radius: 40px;font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 29.3822px; line-height: 34px; /* identical to box height */ letter-spacing: -0.01em; color: #FFFFFF; ">
+                        <span style="display:flex;flex-direction:column;justify-content:center;">Continue</span>
                     </button>
                 </div>
-                <button onclick="chooseRate()" style="text-align:center;width: 319px;height: 75.09px;background: #F84734;border-radius: 40px;font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 29.3822px; line-height: 34px; /* identical to box height */ letter-spacing: -0.01em; color: #FFFFFF; ">
-                    <span style="display:flex;flex-direction:column;justify-content:center;">Continue</span>
-                </button>
             </div>
-        </div>
-        <div id="loggedInUI_bottom" style="text-align:left;margin-top:71px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 47.4146px;line-height: 83px;/* identical to box height, or 175% */color: #00292A;/* Inside auto layout */flex: none;order: 0;flex-grow: 0;">
+            <div id="loggedInUI_bottom" style="text-align:left;margin-top:71px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 47.4146px;line-height: 83px;/* identical to box height, or 175% */color: #00292A;/* Inside auto layout */flex: none;order: 0;flex-grow: 0;">
             95% to complete<br />
-            <svg width="1790" height="36" viewBox="318 0 1790 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <style>
+                @@media all and (max-width: 600px) {
+                    #progressBar {
+                        transform:scale(0.6);
+                        transform-origin: top left;
+                    }
+                }
+            </style>
+            <svg width="1790" height="36" id=progressBar viewBox="0 0 1790 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect width="1790" height="36" rx="18" fill="#E0E0E0" />
                 <rect width="1304" height="36" rx="18" fill="#00292A" />
                 <circle cx="115.574" cy="17.7803" r="5.92683" fill="#EDF5FF" />
@@ -1479,6 +1568,7 @@ margin-left:calc(520px - 284px);">
             <script>
             calculateAndDisplayRoute(document.currentScript.previousElementSibling);
             </script>
+        </div>
         </div>
     </div>
 </template>

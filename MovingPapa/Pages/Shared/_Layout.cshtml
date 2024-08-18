@@ -12,15 +12,22 @@
     <div class="container">
         <main role="main" class="pb-3">
             <div style="display:flex">
-                <div style="width:60%;border-right: 0.747786px solid #6D6D6D;padding-top:32px">
-                    <a href="/"><img src="~/movingPapaLogoLarge.png" width="310" height="57" /></a>
-                    <button style="margin-top:3px;margin-right:57px;float:right;width: 212.2px;height: 63.79px;background: #F84734;border-radius: 35.467px;border:none;/* Book a move */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26.6003px;line-height: 31px;/* identical to box height */color: #FFFFFF;">
-                        <div style="display:flex;flex-direction:column;justify-content:center;">
-                            Book a move
-                        </div>
-                    </button>
+                <div class="mb-full-width" style="width:60%;border-right: 0.747786px solid #6D6D6D;padding-top:32px">
+                    <div style="float:right">
+                        <button style="margin-top:3px;margin-right:57px;width: 212.2px;height: 63.79px;background: #F84734;border-radius: 35.467px;border:none;/* Book a move */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26.6003px;line-height: 31px;/* identical to box height */color: #FFFFFF;">
+                            <div style="display:flex;flex-direction:column;justify-content:center;">
+                                Book a move
+                            </div>
+                        </button>
+                        <svg class="pc-display-none" width="102" height="64" viewBox="0 0 102 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 3L101.939 3" stroke="black" stroke-width="5" />
+                            <path d="M0 32.8788H101.939" stroke="black" stroke-width="5" />
+                            <path d="M0 61H101.939" stroke="#242121" stroke-width="5" />
+                        </svg>
+                    </div>
+                    <a href="/"><div class="responsive-logo"></div></a>
                 </div>
-                <div style="width:70%;display:flex">
+                <div class="mb-display-none" style="width:70%;display:flex">
                     <a href="/track" style="padding-top:51px;padding-bottom:40px;text-decoration:none;padding-left:30px;padding-right:20px;border-right: 0.747786px solid #6D6D6D; font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26px;line-height: 32px;/* identical to box height, or 125% */color: #00292A;">
                         TRACK YOUR MOVE
                         <svg style="margin-left:15px" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +50,7 @@
                     </a>
                 </div>
             </div>
-            <div style="transform-origin:20% 5%;margin-left:calc((100vw - (1400px * 0.6)) / 2);">
+            <div class="mb-no-margin-left" style="transform-origin:20% 5%;margin-left:calc((100vw - (1400px * 0.6)) / 2);">
                 @RenderBody()
             </div>
         </main>
