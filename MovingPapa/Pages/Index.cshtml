@@ -634,8 +634,8 @@ function getQuote () {
 <div style="/* Our commitment to transparency */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 61px;line-height: 71px;text-align: center;color: #000000;margin-top:calc(437px - 349px);margin-bottom:calc(627px - 437px);">
     Our commitment to transparency
 </div>
-<div style="display:flex" class="arial-rounded-mt">
-    <div style="width:50%">
+<div style="display:flex" class="arial-rounded-mt mb-column-flex">
+    <div class="pc-width-50">
         <style>
             .transparency-bullet > div:first-of-type > svg:first-of-type {
                 margin-right: 19px;
@@ -757,14 +757,19 @@ function getQuote () {
             </div>
         </div>
     </div>
-    <div style="width:50%"></div>
+    <div class=pc-width-50></div>
 </div>
 <div style="background-color:#F9E6F0">
     <div style="/* A Message From The Founders */font-family: 'Patrick Hand';font-style: normal;font-weight: 400;font-size: 74.3694px;line-height: 101px;text-align: center;padding-top:calc(626px - 568px);margin-bottom:calc(849px - 756px);color: #000000;">
         A Message From The Founders
     </div>
-    <div style="display:flex">
-        <div style="font-family: 'Handlee';font-style: normal;font-weight: 400;font-size: 35.3423px;line-height: 56px;width:50%;/* or 159% *//* Black */color: #2D2D2D;">
+    <div style="display:flex" class="mb-column-flex">
+        <style>
+            @@media all and (min-width: 600px) {
+                .pc-width-50 { width:50%; }
+            }
+        </style>
+        <div class=pc-width-50 style="font-family: 'Handlee';font-style: normal;font-weight: 400;font-size: 35.3423px;line-height: 56px;/* or 159% *//* Black */color: #2D2D2D;">
             At Moving Papa, we believe in keeping things simple and honest. Moving can be stressful, so transparency is at the heart of everything we do.<br /><br />
 
             You deserve to know exactly what to expect—no hidden fees, no unnecessary calls, just a straightforward process that works for you. We’re here to earn your trust by being open and always putting your needs first.<br /><br />
