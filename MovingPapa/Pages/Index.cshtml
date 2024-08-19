@@ -143,6 +143,21 @@
         display: inline-flex;
     }
 
+    .day-of-month.rate-day {
+        background: #00292A;
+    }
+    .day-of-month.rate-day > div:first-of-type {
+        font-family: 'Arial Rounded MT Bold';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 24.5817px;
+        line-height: 28px;
+        color: #FFFFFF;
+    }
+    .day-of-month.rate-day.rate-day-save > div:first-of-type {
+        color: #13E74C;
+    }
+
     .day-of-month.today {
         background: #F84734;
     }
@@ -1007,6 +1022,7 @@ Personalized support, just a phone call away.`;
         }
         elemParent.appendChild(calendar.content.firstElementChild.cloneNode(true));
     }
+    let selectedDate = null;
     function quoteSelectDate(date) {
         quoteFirstText.innerText = "For your first move, here’s a gift from papa";
         quoteSecondText.innerText = "To celebrate your first move with us, enjoy a special discount—this will be automatically added to your move.";
@@ -1014,7 +1030,7 @@ Personalized support, just a phone call away.`;
         quoteSecondText.style.lineHeight = "48px";
         quoteSecondText.parentElement.querySelector('[name=calendar]').style.display = 'none';
         quoteSecondText.parentElement.appendChild(papaGiftCard.content.firstElementChild.cloneNode(true));
-
+                    selectedDate = date.toLocaleDateString('en-CA');
     }
     function acceptGiftCard() {
         quoteFirstText.innerText = "Let’s get you set up";
@@ -1072,9 +1088,14 @@ Personalized support, just a phone call away.`;
                 "2024-08-29": 199,
                 "2024-08-30": 249
             };
-            loggedInUI_bottom.after(calendar.content.firstElementChild.cloneNode(true));
             loggedInUI_chooseBilling.style.display = 'none';
             loggedInUI_bottom.style.display = 'none';
+            loggedInUI_chooseHour.style.display = '';
+            let c = calendar.content.firstElementChild.cloneNode(true);
+            calendarSlot.after(c);
+            calendarSlot.remove();
+            c.style.marginLeft = "103px";
+            c.style.marginTop = "79px";
         }
     }
     </script>
@@ -1201,7 +1222,11 @@ Personalized support, just a phone call away.`;
                         for (let i = 0; i < 7; i++) {
                             const dayOfMonth = document.createElement('button');
                             dayOfMonth.className = 'day-of-month';
+                            if (calendarRates !== null) {
+                                dayOfMonth.classList.add('rate-day');
+                            }
                             let day, monthDif;
+                            let isToday = false;
                             if (dayCount < 1) {
                                 // Days from the previous month
                                 dayOfMonth.classList.add('disabled');
@@ -1215,18 +1240,37 @@ Personalized support, just a phone call away.`;
                             } else {
                                 // Current month's days
                                 if (dayCount === currentDay) {
-                                    dayOfMonth.classList.add('today');
+                                    if (selectedDate === null) {
+                                        dayOfMonth.classList.add('today');
+                                    }
+                                    isToday = true;
                                 }
                                 day = dayCount;
                                 monthDif = 0;
                             }
                             let date = new Date(year, month + monthDif, day);
-                            let dateIsInPast = date <= today;
-                            console.log(date);
-                            if (calendarRates !== null)
-                                day = (calendarRates[date.toLocaleDateString('en-CA')] + "/hr") ?? "N/A";
+                            let dateStr = date.toLocaleDateString('en-CA');
+                            if (dateStr === selectedDate) {
+                                dayOfMonth.classList.add('today');
+                            }
+                            let dateIsInPast = new Date(year, month + monthDif, day + 1) < today;
+                            if (dateIsInPast) {
+                                dayOfMonth.classList.add('disabled');
+                                if (calendarRates !== null) {
+                                    day = "N/A";
+                                }
+                            }
+                            else if (calendarRates !== null) {
+                                let rate = calendarRates[dateStr];
+                                if (rate <= 150) {
+                                    dayOfMonth.classList.add('rate-day-save');
+                                }
+                                day = (rate + "/hr") ?? "N/A";
+                            }
                             dayOfMonth.innerHTML = `<div>${day}</div>`;
-                            dayOfMonth.onclick = calendarRates === null ? (() => quoteSelectDate(date)) : (() => { });
+                            dayOfMonth.onclick =
+                                dateIsInPast ? (() => {}) :
+                                calendarRates === null ? (() => quoteSelectDate(date)) : (() => { });
                             weekOfMonth.appendChild(dayOfMonth);
                             dayCount++;
                         }
@@ -1338,7 +1382,14 @@ Personalized support, just a phone call away.`;
                                 billingMethod = met;
                             }
                         </script>
-                        <button class="selected" onclick="selectBillingMethod(this, 'hourly')" style="margin-right:126px;background: #EEEEEE;box-shadow: 0.614137px 0.614137px 61.4137px 0.614137px rgba(0, 0, 0, 0.05);border-radius: 20px;">
+                        <style>
+                            @@media all and (max-width: 600px) {
+                                #hourlyBilling {
+                                    margin-right: 48px!important;
+                                }
+                            }
+                        </style>
+                        <button id=hourlyBilling class="selected" onclick="selectBillingMethod(this, 'hourly')" style="margin-right:126px;background: #EEEEEE;box-shadow: 0.614137px 0.614137px 61.4137px 0.614137px rgba(0, 0, 0, 0.05);border-radius: 20px;">
                             <div style="display:flex;height:100%;text-align:left">
                                 <svg style="margin-top:26px;margin-bottom:27px;margin-left:27px;margin-right:27px" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.0362 34.2251C36.2161 34.6183 37.4913 33.9807 37.8846 32.8009C38.2779 31.621 37.6402 30.3458 36.4604 29.9525L35.0362 34.2251ZM28.1484 29.5555H25.8965C25.8965 30.5247 26.5168 31.3852 27.4363 31.6917L28.1484 29.5555ZM30.4002 18.9625C30.4002 17.7189 29.392 16.7107 28.1484 16.7107C26.9047 16.7107 25.8965 17.7189 25.8965 18.9625H30.4002ZM36.4604 29.9525L28.8605 27.4192L27.4363 31.6917L35.0362 34.2251L36.4604 29.9525ZM30.4002 29.5555V18.9625H25.8965V29.5555H30.4002ZM46.1631 27.0221C46.1631 36.9714 38.0976 45.0368 28.1484 45.0368V49.5405C40.5849 49.5405 50.6667 39.4587 50.6667 27.0221H46.1631ZM28.1484 45.0368C18.1991 45.0368 10.1337 36.9714 10.1337 27.0221H5.63C5.63 39.4587 15.7118 49.5405 28.1484 49.5405V45.0368ZM10.1337 27.0221C10.1337 17.0729 18.1991 9.00745 28.1484 9.00745V4.50378C15.7118 4.50378 5.63 14.5856 5.63 27.0221H10.1337ZM28.1484 9.00745C38.0976 9.00745 46.1631 17.0729 46.1631 27.0221H50.6667C50.6667 14.5856 40.5849 4.50378 28.1484 4.50378V9.00745Z" fill="#F84734"/></svg>
                                 <div style="margin-top:21px;">
@@ -1399,6 +1450,33 @@ Personalized support, just a phone call away.`;
             calculateAndDisplayRoute(document.currentScript.previousElementSibling);
             </script>
         </div>
+            <div id=loggedInUI_chooseHour style="margin-left:-58px;display:none;border-radius: 60px 60px 0px 0px;background: #00292A;box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+                <div style="padding-top:65px;padding-left:50px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.2157px;line-height: 63px;color: #FFFFFF;">
+                    Almost there Abby,<br />
+Please confirm your move details.</div>
+                <div id=calendarSlot></div>
+                <div style="margin-left:103px;margin-top:78px;background: #FFFFFF;border-radius: 77.1223px;display:flex;width:fit-content;margin-bottom:65px">
+                    <div style='margin-left:54px;margin-right:416px;color: #00292A;font-family: "Arial Rounded MT Bold";font-size: 43.914px;font-style: normal;font-weight: 400;line-height: normal;'>Trucks</div>
+                    <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="26.22" stroke="#888888" stroke-width="4.55992"/><rect x="13.6797" y="26.2196" width="29.64" height="4.56" rx="1.13998" fill="#888888"/></svg>
+                    <div style="margin-left:98px;margin-right:99px;/* 1 */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 52.5127px;line-height: 61px;/* identical to box height */color: #F84734;">
+                        1
+                    </div>
+                    <svg style="margin-right:42px" width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="25.02" stroke="#F84734" stroke-width="6.96"/><rect x="14.5497" y="27.09" width="27.9" height="2.82" rx="0.87" fill="#F84734" stroke="#F84734" stroke-width="1.74"/><rect x="29.9112" y="14.5501" width="27.9" height="2.82" rx="0.87" transform="rotate(90 29.9112 14.5501)" fill="#F84734" stroke="#F84734" stroke-width="1.74"/></svg>
+                </div>
+                <div style="margin-left:103px;background: #FFFFFF;border-radius: 77.1223px;display:flex;width:fit-content;">
+                    <div style='margin-left:54px;margin-right:407px;color: #00292A;font-family: "Arial Rounded MT Bold";font-size: 43.914px;font-style: normal;font-weight: 400;line-height: normal;'>Movers</div>
+                    <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="26.22" stroke="#888888" stroke-width="4.55992"/><rect x="13.6797" y="26.2196" width="29.64" height="4.56" rx="1.13998" fill="#888888"/></svg>
+                    <div style="margin-left:98px;margin-right:99px;/* 1 */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 52.5127px;line-height: 61px;/* identical to box height */color: #F84734;">
+                        2
+                    </div>
+                    <svg style="margin-right:42px" width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="25.02" stroke="#F84734" stroke-width="6.96"/><rect x="14.5497" y="27.09" width="27.9" height="2.82" rx="0.87" fill="#F84734" stroke="#F84734" stroke-width="1.74"/><rect x="29.9112" y="14.5501" width="27.9" height="2.82" rx="0.87" transform="rotate(90 29.9112 14.5501)" fill="#F84734" stroke="#F84734" stroke-width="1.74"/></svg>
+                </div>
+                <button style='margin-top:131px;margin-left:70px;margin-bottom:39px;margin-right;62px;border:none;width: 1106px;height: 160px;flex-shrink: 0;border-radius: 36.265px;background: #F84734;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 54.216px;font-style: normal;font-weight: 400;line-height: normal;text-align:center;'>
+                    <div style="display:flex;flex-direction:column;justify-content:center;">
+                        Proceed to Reserve
+                    </div>
+                </button>
+            </div>
         </div>
     </div>
 </template>
