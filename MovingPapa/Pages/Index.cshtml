@@ -13,18 +13,25 @@
         justify-content: center;
     }
 
-    div.container { margin-left: 0; }
+    div.container {
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
 
+    main, .popup {
+        transform: scale(var(--scale, 1));
+    }
 
     main {
-        transform: scale(0.6);
+        --scale: 0.6;
         transform-origin: 0% 0%;
         min-width: 1920px;
     }
 
     .popup {
         transform-origin: left top;
-        transform: scale(0.4);
+        --scale: 0.4;
         min-width: 1920px;
     }
 
@@ -48,6 +55,11 @@
             display: flex;
             justify-content: center;
         }
+
+        .landing-content {
+            padding-left: calc((100vw - (1400px * 0.6)) / 2);
+            padding-right: calc((100vw - (1400px * 0.6)) / 2);
+        }
     }
 
     @@media all and (max-width: 600px) {
@@ -56,7 +68,7 @@
         }
 
         main {
-            transform: scale(0.4);
+            --scale: 0.4;
             transform-origin: 0% 0%;
             min-width: inherit;
         }
@@ -67,7 +79,7 @@
         }
 
         .popup {
-            transform: scale(0.33);
+            --scale: 0.33;
             transform-origin: 0% 0%;
             min-width: calc(150vw / 0.33);
             min-height: calc(150vh / 0.33);
@@ -99,6 +111,10 @@
             width: 208px;
             height: 141px;
         }
+    }
+
+    .landing-content {
+        width: calc(98.9vw / var(--scale, 1));
     }
 
     .how-it-works-title {
@@ -414,11 +430,13 @@ function getQuote () {
 }
 </script>
 
-<div style="display:flex" class="mb-column-flex">
+<div class=landing-content>
+    <div style="display:flex;justify-content: space-between;" class="mb-column-flex">
     <style>
         @@media all and (min-width: 600px) {
             #aboutInfo {
-                min-width:calc(989px - 59px);
+/*                 min-width:calc(989px - 59px);
+ */                
             }
         }
     </style>
@@ -587,8 +605,8 @@ function getQuote () {
         </div>
     </div>
 </div>
-<div style="display:flex;margin-top:calc(1441px - (1093px + 113px));gap:calc(2785px - (2183px + 492px));">
-    <div style="width:calc(33%-((2785px - (2183px + 492px))*2/3));">
+<div style="display:flex;margin-top:calc(1441px - (1093px + 113px));justify-content:space-evenly;">
+    <div style="width:calc(33% - ((2785px - (2183px + 492px)) * 2 / 3));">
         <div class="how-it-works-title">
             Book your move
         </div>
@@ -596,7 +614,7 @@ function getQuote () {
             Tell us when and where, and we’ll handle the rest. Booking is easy and stress free.
         </div>
     </div>
-    <div style="width:calc(33%-((2785px - (2183px + 492px))*2/3));">
+    <div style="width:calc(33% - ((2785px - (2183px + 492px)) * 2 / 3));">
         <div class="how-it-works-title">
             We move you
         </div>
@@ -604,7 +622,7 @@ function getQuote () {
             Our professional movers arrive on time, ready to carefully pack, load and transport your belongings.
         </div>
     </div>
-    <div style="width:calc(33%-((2785px - (2183px + 492px))*2/3));">
+    <div style="width:calc(33% - ((2785px - (2183px + 492px)) * 2 / 3));">
         <div class="how-it-works-title">
             Settle in
         </div>
@@ -619,8 +637,9 @@ function getQuote () {
     <div style="width: 424px;height: 118.11px;background: #F84734;border-radius: 70.9129px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 53.1847px;line-height: 62px;color: #FFFFFF;display:flex;flex-direction:column;justify-content:center;text-align:center;margin-top:calc(1858px - (1514px + 178px));margin-bottom:calc(930px - 848px);">
         Get a Quote
     </div>
+    </div>
 </div>
-<div class=bottom-bg>
+<div class="bottom-bg landing-content">
     <div style="font-style: normal;font-weight: 400;font-size: 60px;line-height: 69px;text-align: center;color: #FFFFFF;padding-top:calc(2116px - 2048px);" class="arial-rounded-mt">
         <b>Our Services:</b> Making your<br />
         move a breeze
@@ -631,6 +650,7 @@ function getQuote () {
         transparent process, so you can move with ease.
     </div>
 </div>
+<div class=landing-content>
 <div style="/* Our commitment to transparency */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 61px;line-height: 71px;text-align: center;color: #000000;margin-top:calc(437px - 349px);margin-bottom:calc(627px - 437px);">
     Our commitment to transparency
 </div>
@@ -759,7 +779,8 @@ function getQuote () {
     </div>
     <div class=pc-width-50></div>
 </div>
-<div style="background-color:#F9E6F0">
+</div>
+<div style="background-color:#F9E6F0" class="landing-content">
     <div style="/* A Message From The Founders */font-family: 'Patrick Hand';font-style: normal;font-weight: 400;font-size: 74.3694px;line-height: 101px;text-align: center;padding-top:calc(626px - 568px);margin-bottom:calc(849px - 756px);color: #000000;">
         A Message From The Founders
     </div>
@@ -1055,8 +1076,8 @@ Personalized support, just a phone call away.`;
         quoteSecondText.parentElement.querySelector('[name=contactForm]').style.display = 'none';
         quoteSecondText.parentElement.parentElement.lastElementChild.before(loggedInUI.content.firstElementChild.cloneNode(true));
         accountName.innerText = firstName.value;
-        fromLocation.innerText = pickUpPoint.value;
-        toLocation.innerText = destinationPoint.value;
+        fromLocation.innerText = pickUpPoint.value.split(', ')[0];
+        toLocation.innerText = destinationPoint.value.split(', ')[0];
     }
     let billingMethod = 'hourly';
     function chooseRate () {
@@ -1218,6 +1239,7 @@ Personalized support, just a phone call away.`;
                     const nextMonthDays = getDaysInMonth(year, month + 1);
 
                     let dayCount = 1 - startDay; // Start with days from the previous month
+                    let selectedElem;
 
                     // Create the calendar HTML
                     while (dayCount <= daysInMonth + (7 - ((startDay + daysInMonth) % 7))) {
@@ -1257,6 +1279,7 @@ Personalized support, just a phone call away.`;
                             let dateStr = date.toLocaleDateString('en-CA');
                             if (dateStr === selectedDate) {
                                 dayOfMonth.classList.add('today');
+                                selectedElem = dayOfMonth;
                             }
                             let dateIsInPast = new Date(year, month + monthDif, day + 1) < today;
                             if (dateIsInPast) {
@@ -1275,7 +1298,12 @@ Personalized support, just a phone call away.`;
                             dayOfMonth.innerHTML = `<div>${day}</div>`;
                             dayOfMonth.onclick =
                                 dateIsInPast ? (() => {}) :
-                                calendarRates === null ? (() => quoteSelectDate(date)) : (() => { });
+                                calendarRates === null ? (() => quoteSelectDate(date)) :
+                                (() => {
+                                    dayOfMonth.classList.add('today');
+                                    selectedElem.classList.remove('today');
+                                    selectedElem = dayOfMonth;
+                                });
                             weekOfMonth.appendChild(dayOfMonth);
                             dayCount++;
                         }
