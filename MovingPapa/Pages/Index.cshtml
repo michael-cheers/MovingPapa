@@ -1363,8 +1363,8 @@ ${day}
                                 dateIsInPast ? (() => { }) :
                                     calendarRates === null ? (() => quoteSelectDate(date)) :
                                         (() => {
-                                            dayOfMonth.classList.add('today');
                                             selectedElem.classList.remove('today');
+                                            dayOfMonth.classList.add('today');
                                             selectedElem = dayOfMonth;
                                             selectedDate = dateStr;
                                         });
