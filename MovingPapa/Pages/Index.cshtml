@@ -1287,29 +1287,29 @@ margin-left:calc(520px - 284px);">
                     const year = today.getFullYear();
                     const month = today.getMonth();
                     const currentDay = today.getDate();
-                
+
                     // Helper functions
                     const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
                     const getFirstDayOfMonth = (year, month) => {
                         const day = new Date(year, month, 1).getDay();
                         return day === 0 ? 6 : day - 1;
                     };
-                
+
                     // Get the current month's first and last days
                     const daysInMonth = getDaysInMonth(year, month);
                     const startDay = getFirstDayOfMonth(year, month);
-                
+
                     // Calculate the previous month's days
                     const prevMonthDays = getDaysInMonth(year, month - 1);
-                
+
                     let dayCount = 1 - startDay; // Start with days from the previous month
                     let selectedElem;
-                
+
                     // Create the calendar HTML
                     while (dayCount <= daysInMonth + (7 - ((startDay + daysInMonth) % 7))) {
                         const weekOfMonth = document.createElement('div');
                         weekOfMonth.className = 'week-of-month';
-                
+
                         for (let i = 0; i < 7; i++) {
                             const dayOfMonth = document.createElement('button');
                             dayOfMonth.className = 'day-of-month';
@@ -1319,7 +1319,7 @@ margin-left:calc(520px - 284px);">
                             let day, monthDif;
                             let isToday = false;
                             let dayCountDisplay = '';
-                
+
                             if (dayCount < 1) {
                                 dayOfMonth.classList.add('disabled');
                                 day = prevMonthDays + dayCount;
@@ -1343,7 +1343,7 @@ margin-left:calc(520px - 284px);">
                                 monthDif = 0;
                                 dayCountDisplay = '';
                             }
-                
+
                             let date = new Date(year, month + monthDif, day);
                             let dateStr = date.toLocaleDateString('en-CA');
                             if (dateStr === selectedDate) {
@@ -1364,7 +1364,7 @@ margin-left:calc(520px - 284px);">
                                 }
                                 day = rate + '/hr' ?? 'N/A';
                             }
-                
+
                             dayOfMonth.innerHTML = `<div>${day}${dayCountDisplay}</div>`;
                             dayOfMonth.onclick = dateIsInPast
                                 ? () => {}
@@ -1378,7 +1378,7 @@ margin-left:calc(520px - 284px);">
                             weekOfMonth.appendChild(dayOfMonth);
                             dayCount++;
                         }
-                
+
                         container.appendChild(weekOfMonth);
                     }
                 })();
