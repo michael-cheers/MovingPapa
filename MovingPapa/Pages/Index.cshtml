@@ -1263,123 +1263,125 @@ margin-left:calc(520px - 284px);">
                     <div style="width: 39.46px; height: 39.46px; text-align: center; color: black; font-size: 23.02px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Su</div>
                 </div>
             </div>
-            <script>
-                (() => {
-                    let container = document.currentScript.parentElement;
-                    let monthDiv = container;
-                    while (monthDiv.getAttribute('name') !== 'calendar') {
-                        monthDiv = monthDiv.parentElement;
-                    }
-                    monthDiv = monthDiv.querySelector('[name=month]');
-                    const today = new Date();
-                    monthDiv.innerText = today.toLocaleString('default', { month: 'long', year: 'numeric' });
-                    const year = today.getFullYear();
-                    const month = today.getMonth();
-                    const currentDay = today.getDate();
+           <style>
+/* CSS for day count styling */
+.day-count {
+color: white;
+}
 
-                    // Helper functions
-                    const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
-                    // Adjusted function to get the first day of the month considering Monday as the first day of the week
-                    const getFirstDayOfMonth = (year, month) => {
-                        const day = new Date(year, month, 1).getDay();
-                        return (day === 0) ? 6 : day - 1;
-                    };
+.day-count.disabled {
+color: #a9a9a9; /* Example color for disabled past days */
+}
+</style>
 
-                    // Get the current month's first and last days
-                    const daysInMonth = getDaysInMonth(year, month);
-                    const startDay = getFirstDayOfMonth(year, month);
+<script>
+(() => {
+let container = document.currentScript.parentElement;
+let monthDiv = container;
+while (monthDiv.getAttribute('name') !== 'calendar') {
+monthDiv = monthDiv.parentElement;
+}
+monthDiv = monthDiv.querySelector('[name=month]');
+const today = new Date();
+monthDiv.innerText = today.toLocaleString('default', { month: 'long', year: 'numeric' });
+const year = today.getFullYear();
+const month = today.getMonth();
+const currentDay = today.getDate();
 
-                    // Calculate the previous and next month's information
-                    const prevMonthDays = getDaysInMonth(year, month - 1);
-                    const nextMonthDays = getDaysInMonth(year, month + 1);
+// Helper functions
+const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
+const getFirstDayOfMonth = (year, month) => {
+const day = new Date(year, month, 1).getDay();
+return (day === 0) ? 6 : day - 1;
+};
 
-                    let dayCount = 1 - startDay; // Start with days from the previous month
-                    let selectedElem;
+// Get the current month's first and last days
+const daysInMonth = getDaysInMonth(year, month);
+const startDay = getFirstDayOfMonth(year, month);
 
-                    // Create the calendar HTML
-                    while (dayCount <= daysInMonth + (7 - ((startDay + daysInMonth) % 7))) {
-                        const weekOfMonth = document.createElement('div');
-                        weekOfMonth.className = 'week-of-month';
+// Calculate the previous month's days
+const prevMonthDays = getDaysInMonth(year, month - 1);
 
-                        for (let i = 0; i < 7; i++) {
-                            const dayOfMonth = document.createElement('button');
-                            dayOfMonth.className = 'day-of-month';
-                            if (calendarRates !== null) {
-                                dayOfMonth.classList.add('rate-day');
-                            }
-                            let day, monthDif;
-                            let isToday = false;
-                            if (dayCount < 1) {
-                                // Days from the previous month
-                                dayOfMonth.classList.add('disabled');
-                                day = prevMonthDays + dayCount;
-                                monthDif = -1;
-                            } else if (dayCount > daysInMonth) {
-                                // Days from the next month
-                                dayOfMonth.classList.add('disabled');
-                                day = dayCount - daysInMonth;
-                                monthDif = 1;
-                            } else {
-                                // Current month's days
-                                if (dayCount === currentDay) {
-                                    if (selectedDate === null) {
-                                        dayOfMonth.classList.add('today');
-                                    }
-                                    isToday = true;
-                                }
-                                day = dayCount;
-                                monthDif = 0;
-                            }
-                            let date = new Date(year, month + monthDif, day);
-                            let dateStr = date.toLocaleDateString('en-CA');
-                            if (dateStr === selectedDate) {
-                                dayOfMonth.classList.add('today');
-                                selectedElem = dayOfMonth;
-                            }
-                            let dateIsInPast = new Date(year, month + monthDif, day + 1) < today;
-                            if (dateIsInPast) {
-                                if (calendarRates === null) {
-                                    dayOfMonth.classList.add('disabled');
-                                }
-                            }
-                            if (calendarRates !== null) {
-                                let rate = calendarRates[dateStr];
-                                if (dateIsInPast) {
-                                    rate = 'N/A';
-                                }
-                                else {
-                                    if (rate <= 150) {
-                                        dayOfMonth.classList.add('rate-day-save');
-                                    }
-                                    rate = rate + "/hr";
-                                }
-                                day = `<div style="display: flex;flex-direction: column;width: 100%;height: 100%;">
-<div style='font-family: "Arial Rounded MT Bold";font-size: 24.582px;font-style: normal;font-weight: 400;line-height: normal;padding-left:13px;padding-top:13px;align-self: flex-start;''>
-${rate}
-</div>
-<div style="font-family: Inter;font-size: 18.027px;font-style: normal;font-weight: 500;line-height: normal;padding-right:13px;padding-bottom:13px;align-self: flex-end;color: rgba(255, 255, 255, 0.5);flex-direction: column-reverse;display: flex;justify-content: flex-start;height: 100%;">
-${day}
-</div>
-</div>`;
-                            }
-                            dayOfMonth.innerHTML = `<div>${day}</div>`;
-                            dayOfMonth.onclick =
-                                dateIsInPast ? (() => { }) :
-                                    calendarRates === null ? (() => quoteSelectDate(date)) :
-                                        (() => {
-                                            selectedElem.classList.remove('today');
-                                            dayOfMonth.classList.add('today');
-                                            selectedElem = dayOfMonth;
-                                            selectedDate = dateStr;
-                                        });
-                            weekOfMonth.appendChild(dayOfMonth);
-                            dayCount++;
-                        }
+let dayCount = 1 - startDay; // Start with days from the previous month
+let selectedElem;
 
-                        container.appendChild(weekOfMonth);
-                    }
-                })();
-            </script>
+// Create the calendar HTML
+while (dayCount <= daysInMonth + (7 - ((startDay + daysInMonth) % 7))) {
+const weekOfMonth = document.createElement('div');
+weekOfMonth.className = 'week-of-month';
+
+for (let i = 0; i < 7; i++) {
+const dayOfMonth = document.createElement('button');
+dayOfMonth.className = 'day-of-month';
+if (calendarRates !== null) {
+dayOfMonth.classList.add('rate-day');
+}
+let day, monthDif;
+let isToday = false;
+let dayCountDisplay = '';
+
+if (dayCount < 1) {
+dayOfMonth.classList.add('disabled');
+day = prevMonthDays + dayCount;
+monthDif = -1;
+dayCountDisplay = ` (${day})`; // Display day from previous month
+} else if (dayCount > daysInMonth) {
+// Days from the next month
+dayOfMonth.classList.add('disabled');
+day = dayCount - daysInMonth;
+monthDif = 1;
+dayCountDisplay = ''; // No extra display for next month
+} else {
+// Current month's days
+if (dayCount === currentDay) {
+if (selectedDate === null) {
+dayOfMonth.classList.add('today');
+}
+isToday = true;
+}
+day = dayCount;
+monthDif = 0;
+dayCountDisplay = '';
+}
+
+let date = new Date(year, month + monthDif, day);
+let dateStr = date.toLocaleDateString('en-CA');
+if (dateStr === selectedDate) {
+dayOfMonth.classList.add('today');
+selectedElem = dayOfMonth;
+}
+let dateIsInPast = new Date(year, month + monthDif, day + 1) < today;
+if (dateIsInPast) {
+dayOfMonth.classList.add('disabled');
+if (calendarRates !== null) {
+day = "N/A";
+dayCountDisplay = ` ${dayCount}`;
+}
+} else if (calendarRates !== null) {
+let rate = calendarRates[dateStr];
+if (rate <= 150) {
+dayOfMonth.classList.add('rate-day-save');
+}
+day = (rate + "/hr") ?? "N/A";
+}
+
+dayOfMonth.innerHTML = `<div>${day}${dayCountDisplay}</div>`;
+dayOfMonth.onclick =
+dateIsInPast ? (() => { }) :
+calendarRates === null ? (() => quoteSelectDate(date)) :
+(() => {
+dayOfMonth.classList.add('today');
+selectedElem.classList.remove('today');
+selectedElem = dayOfMonth;
+});
+weekOfMonth.appendChild(dayOfMonth);
+dayCount++;
+}
+
+container.appendChild(weekOfMonth);
+}
+})();
+</script>
         </div>
     </div>
 </template>
