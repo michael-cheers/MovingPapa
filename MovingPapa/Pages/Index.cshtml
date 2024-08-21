@@ -1328,7 +1328,9 @@ margin-left:calc(520px - 284px);">
                                 monthDif = -1;
                             } else if (dayCount > daysInMonth) {
                                 // Days from the next month
-                                dayOfMonth.classList.add('disabled');
+                                if (calendarRates === null) {
+                                    dayOfMonth.classList.add('disabled');
+                                }
                                 day = dayCount - daysInMonth;
                                 monthDif = 1;
                             } else {
