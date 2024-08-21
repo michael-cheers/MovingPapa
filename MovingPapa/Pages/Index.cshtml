@@ -1224,19 +1224,17 @@ Personalized support, just a phone call away.`;
 
                     // Helper functions
                     const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
-                    // Adjusted function to get the first day of the month considering Monday as the first day of the week
                     const getFirstDayOfMonth = (year, month) => {
                         const day = new Date(year, month, 1).getDay();
-                        return (day === 0) ? 6 : day - 1;
+                        return day === 0 ? 6 : day - 1;
                     };
 
                     // Get the current month's first and last days
                     const daysInMonth = getDaysInMonth(year, month);
                     const startDay = getFirstDayOfMonth(year, month);
 
-                    // Calculate the previous and next month's information
+                    // Calculate the previous month's days
                     const prevMonthDays = getDaysInMonth(year, month - 1);
-                    const nextMonthDays = getDaysInMonth(year, month + 1);
 
                     let dayCount = 1 - startDay; // Start with days from the previous month
                     let selectedElem;
@@ -1254,16 +1252,19 @@ Personalized support, just a phone call away.`;
                             }
                             let day, monthDif;
                             let isToday = false;
+                            let dayCountDisplay = '';
+
                             if (dayCount < 1) {
-                                // Days from the previous month
                                 dayOfMonth.classList.add('disabled');
                                 day = prevMonthDays + dayCount;
                                 monthDif = -1;
+                                dayCountDisplay = ` (${day})`; // Display day from previous month
                             } else if (dayCount > daysInMonth) {
                                 // Days from the next month
                                 dayOfMonth.classList.add('disabled');
                                 day = dayCount - daysInMonth;
                                 monthDif = 1;
+                                dayCountDisplay = ''; // No extra display for next month
                             } else {
                                 // Current month's days
                                 if (dayCount === currentDay) {
@@ -1274,7 +1275,9 @@ Personalized support, just a phone call away.`;
                                 }
                                 day = dayCount;
                                 monthDif = 0;
+                                dayCountDisplay = '';
                             }
+
                             let date = new Date(year, month + monthDif, day);
                             let dateStr = date.toLocaleDateString('en-CA');
                             if (dateStr === selectedDate) {
@@ -1285,25 +1288,27 @@ Personalized support, just a phone call away.`;
                             if (dateIsInPast) {
                                 dayOfMonth.classList.add('disabled');
                                 if (calendarRates !== null) {
-                                    day = "N/A";
+                                    day = 'N/A';
+                                    dayCountDisplay = ` ${dayCount}`;
                                 }
-                            }
-                            else if (calendarRates !== null) {
+                            } else if (calendarRates !== null) {
                                 let rate = calendarRates[dateStr];
                                 if (rate <= 150) {
                                     dayOfMonth.classList.add('rate-day-save');
                                 }
-                                day = (rate + "/hr") ?? "N/A";
+                                day = rate + '/hr' ?? 'N/A';
                             }
-                            dayOfMonth.innerHTML = `<div>${day}</div>`;
-                            dayOfMonth.onclick =
-                                dateIsInPast ? (() => {}) :
-                                calendarRates === null ? (() => quoteSelectDate(date)) :
-                                (() => {
-                                    dayOfMonth.classList.add('today');
-                                    selectedElem.classList.remove('today');
-                                    selectedElem = dayOfMonth;
-                                });
+
+                            dayOfMonth.innerHTML = `<div>${day}${dayCountDisplay}</div>`;
+                            dayOfMonth.onclick = dateIsInPast
+                                ? () => {}
+                                : calendarRates === null
+                                ? () => quoteSelectDate(date)
+                                : () => {
+                                      dayOfMonth.classList.add('today');
+                                      selectedElem.classList.remove('today');
+                                      selectedElem = dayOfMonth;
+                                  };
                             weekOfMonth.appendChild(dayOfMonth);
                             dayCount++;
                         }
@@ -1311,7 +1316,7 @@ Personalized support, just a phone call away.`;
                         container.appendChild(weekOfMonth);
                     }
                 })();
-            </script>
+</script>
         </div>
     </div>
 </template>
