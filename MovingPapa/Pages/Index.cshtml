@@ -1187,7 +1187,31 @@ margin-left:calc(520px - 284px);">
                     newCard.querySelector('[name=cardEnd]').innerText = acn_CN.value.slice(-4);
                     cards.prepend(newCard);
                 }
+                function formatDate(dateString) {
+                    // List of month names
+                    const months = [
+                        'January', 'February', 'March', 'April', 'May', 'June',
+                        'July', 'August', 'September', 'October', 'November', 'December'
+                    ];
+    
+                    // Parse the date string (yyyy-mm-dd)
+                    const [year, month, day] = dateString.split('-').map(Number);
+    
+                    // Convert month number to month name
+                    const monthName = months[month - 1];
+    
+                    // Determine the ordinal suffix for the day
+                    let suffix = 'th';
+                    if (day % 10 === 1 && day % 100 !== 11) suffix = 'st';
+                    else if (day % 10 === 2 && day % 100 !== 12) suffix = 'nd';
+                    else if (day % 10 === 3 && day % 100 !== 13) suffix = 'rd';
+    
+                    // Format the date string
+                    return `${monthName} ${day}${suffix}, ${year}`;
+                }
+
                 function reserve () {
+                    moveDate.innerText = formatDate(selectedDate);
                     loggedInUI_confirmMove.style.display = 'none';
                     loggedInUI_moveConfirmed.style.display = '';
                 }
@@ -1819,7 +1843,7 @@ ${day}
                 <div style='padding-top:189px;text-align: center;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 78.33px;font-style: normal;font-weight: 400;line-height: normal;'>Your move is confirmed!</div>
                 <div style='margin-top:75px;text-align: center;color: #FFF;font-family: "Arial Rounded MT";font-size: 58.748px;font-style: normal;font-weight: 400;line-height: normal;'>
                     Thank you for moving with us<br />
-                    We’ll see you on on August 28th, 2024
+                    We’ll see you on on <span id=moveDate>August 28th, 2024</span>
                 </div>
                 <div class=center>
                     <img src="~/moveConfirmed.png" width=1224 height=1583 />
