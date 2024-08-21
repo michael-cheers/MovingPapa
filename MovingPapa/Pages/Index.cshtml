@@ -1175,6 +1175,10 @@ margin-left:calc(520px - 284px);">
                 loggedInUI_confirmMove.style.display = 'none';
                 loggedInUI_addNewCard.style.display = '';
                 }
+                function saveCard () {
+                    loggedInUI_confirmMove.style.display = '';
+                    loggedInUI_addNewCard.style.display = 'none';
+                }
             </script>
             <style>
                 @@media all and (min-width: 600px) {
@@ -1713,7 +1717,7 @@ ${day}
                     <input id="acn_CN" placeholder="Enter 12 digit card number" style="width:100%;padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;" />
                 </div>
                 <div style="margin-top:51px">
-                    <div style="display:flex">
+                    <div style="display:flex;margin-bottom:51px">
                         <div>
                             <div style='margin-bottom:26px;color: #FFF;text-align: left;font-family: "IBM Plex Sans";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: normal;'>
                                 <label for=acn_MO>Valid Thru</label>
@@ -1731,7 +1735,7 @@ ${day}
                                 line-height: 65.399px; /* 142.857% */
                                 }
                             </style>
-                            <select id="acn_MO" placeholder="Month" style="padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;">
+                            <select id="acn_MO" placeholder="Month" style="margin-right:26px;padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;">
                                 <option value="01">Jan</option>
                                 <option value="02">Feb</option>
                                 <option value="03">Mar</option>
@@ -1767,13 +1771,34 @@ ${day}
                                 }
                             </select>
                         </div>
-                        <div>
+                        <div style="margin-left:65px;">
                             <div style='margin-bottom:26px;color: #FFF;text-align: left;font-family: "IBM Plex Sans";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                <label for=acn_CVV>Valid Thru</label>
+                                <label for=acn_CVV>CVV</label>
                             </div>
-                            <input id="acn_CVV" placeholder="CVV" style="padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;">
+                            <style>
+                            #acn_CVV::placeholder {
+                                color: #979797;
+                            }
+                            </style>
+                            <input id="acn_CVV" placeholder="CVV" style='width:334px;font-family: "Arial Rounded MT Bold";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: 65.399px; /* 142.857% */padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;'>
                         </div>
                     </div>
+                    <div style="margin-bottom:550px">
+                        <div style='margin-bottom:26px;color: #FFF;text-align: left;font-family: "IBM Plex Sans";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: normal;'>
+                            <label for=acn_Name>Card Holder’s Name</label>
+                        </div>
+                        <style>
+                        #acn_Name::placeholder {
+                            color: #979797;
+                        }
+                        </style>
+                        <input id="acn_Name" placeholder="Name on Card" style='width:100%;font-family: "Arial Rounded MT Bold";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: 65.399px; /* 142.857% */padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;'>
+                    </div>
+                    <button onclick="saveCard()" style='margin-top:131px;margin-left:70px;margin-bottom:39px;margin-right;62px;border:none;width: calc(100% - 100px);height: 160px;flex-shrink: 0;border-radius: 36.265px;background: #F84734;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 54.216px;font-style: normal;font-weight: 400;line-height: normal;text-align:center;'>
+                        <div style="display:flex;flex-direction:column;justify-content:center;">
+                            Save card and Proceed
+                        </div>
+                    </button>
                 </div>
             </div>
         </div>
