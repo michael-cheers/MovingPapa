@@ -1595,71 +1595,78 @@ ${day}
                     Please confirm your move details.</div>
                 <div id=calendarSlot></div>
 
-                <div style="margin-left:103px;margin-top:50px;color:#FFF;">
-                <label for="hour" style="font-family: 'Arial Rounded MT Bold';font-size: 36px;">Select Time:</label>
-                <div style="display: flex; align-items: center; margin-top: 15px;">
-                    <select id="hour" name="hour" style="font-size: 36px; padding: 10px; border-radius: 5px;">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    <span style="margin: 0 10px; font-size: 36px;">:</span>
-                    <select id="minute" name="minute" style="font-size: 36px; padding: 10px; border-radius: 5px;">
-                        <option value="00">00</option>
-                        <option value="15">15</option>
-                        <option value="30">30</option>
-                        <option value="45">45</option>
-                    </select>
+        <div style="margin-left:103px;margin-top:50px;color:#FFF;">
+    <label for="hour" style="font-family: 'Arial Rounded MT Bold';font-size: 36px;">Select Time:</label>
+    <div style="display: flex; align-items: center; margin-top: 15px;">
+        <select id="hour" name="hour" style="font-size: 36px; padding: 10px; border-radius: 5px; background-color: rgb(0, 41, 42); color: white; border: 2px solid #F84734; width: 100px; text-align: center;">
+            <option value="1" style="text-align: center;">1</option>
+            <option value="2" style="text-align: center;">2</option>
+            <option value="3" style="text-align: center;">3</option>
+            <option value="4" style="text-align: center;">4</option>
+            <option value="5" style="text-align: center;">5</option>
+            <option value="6" style="text-align: center;">6</option>
+            <option value="7" style="text-align: center;">7</option>
+            <option value="8" style="text-align: center;">8</option>
+            <option value="9" style="text-align: center;">9</option>
+            <option value="10" style="text-align: center;">10</option>
+            <option value="11" style="text-align: center;">11</option>
+            <option value="12" style="text-align: center;">12</option>
+        </select>
+        <span style="margin: 0 10px; font-size: 36px;">:</span>
+        <select id="minute" name="minute" style="font-size: 36px; padding: 10px; border-radius: 5px; background-color: white; color: black; width: 100px; text-align: center;">
+            <option value="00" style="text-align: center;">00</option>
+            <option value="15" style="text-align: center;">15</option>
+            <option value="30" style="text-align: center;">30</option>
+            <option value="45" style="text-align: center;">45</option>
+        </select>
 
-                    <!-- AM/PM Toggle Switch -->
-                    <div style="margin-left: 20px; display: flex; align-items: center;">
-                        <input type="radio" id="am" name="ampm" value="AM" style="display: none;">
-                        <label for="am" id="am-label" style="padding: 10px 30px; background-color: rgb(0, 41, 42); color: #FFF; font-family: 'Arial Rounded MT Bold'; font-size: 24px; border-radius: 20px 0 0 20px; cursor: pointer; border: 2px solid rgb(0, 41, 42);">
-                            AM
-                        </label>
-                        <input type="radio" id="pm" name="ampm" value="PM" style="display: none;">
-                        <label for="pm" id="pm-label" style="padding: 10px 30px; background-color: rgb(0, 41, 42); color: #FFF; font-family: 'Arial Rounded MT Bold'; font-size: 24px; border-radius: 0 20px 20px 0; cursor: pointer; border: 2px solid rgb(0, 41, 42);">
-                            PM
-                        </label>
-                    </div>
-                </div>
-            </div>
+        <!-- AM/PM Toggle Switch -->
+        <div style="margin-left: 20px; display: flex; align-items: center;">
+            <input type="radio" id="am" name="ampm" value="AM" style="display: none;" checked>
+            <label for="am" id="am-label" style="font-size: 36px; padding: 10px; border-radius: 10px 0 0 10px; background-color: rgb(0, 41, 42); color: white; border: 2px solid white; border-right: none; width: 100px; text-align: center; cursor: pointer;">
+                AM
+            </label>
+            <input type="radio" id="pm" name="ampm" value="PM" style="display: none;">
+            <label for="pm" id="pm-label" style="font-size: 36px; padding: 10px; border-radius: 0 10px 10px 0; background-color: rgb(0, 41, 42); color: white; border: 2px solid white; border-left: none; width: 100px; text-align: center; cursor: pointer;">
+                PM
+            </label>
+        </div>
+    </div>
+</div>
 
-            <script>
-                function updateToggleColors() {
-                    if (document.getElementById('am').checked) {
-                        document.getElementById('am-label').style.backgroundColor = '#F84734';
-                        document.getElementById('pm-label').style.backgroundColor = 'rgb(0, 41, 42)';
-                        document.getElementById('am-label').style.borderColor = 'white';
-                    } else if (document.getElementById('pm').checked) {
-                        document.getElementById('pm-label').style.backgroundColor = '#F84734';
-                        document.getElementById('am-label').style.backgroundColor = 'rgb(0, 41, 42)';
-                        document.getElementById('pm-label').style.borderColor = 'white';
-                    }
-                }                    
+<script>
+    function updateToggleColors() {
+        if (document.getElementById('am').checked) {
+            document.getElementById('am-label').style.backgroundColor = '#F84734';
+            document.getElementById('pm-label').style.backgroundColor = 'rgb(0, 41, 42)';
+            document.getElementById('am-label').style.borderColor = '#F84734';
+            document.getElementById('pm-label').style.borderColor = 'white';
+        } else if (document.getElementById('pm').checked) {
+            document.getElementById('pm-label').style.backgroundColor = '#F84734';
+            document.getElementById('am-label').style.backgroundColor = 'rgb(0, 41, 42)';
+            document.getElementById('pm-label').style.borderColor = '#F84734';
+            document.getElementById('am-label').style.borderColor = 'white';
+        }
+    }                    
 
-                document.getElementById('am-label').addEventListener('click', function () {
-                    document.getElementById('am').checked = true;
-                    updateToggleColors();
-                });
+    document.getElementById('am-label').addEventListener('click', function () {
+        document.getElementById('am').checked = true;
+        updateToggleColors();
+    });
 
-                document.getElementById('pm-label').addEventListener('click', function () {
-                    document.getElementById('pm').checked = true;
-                    updateToggleColors();
-                });
+    document.getElementById('pm-label').addEventListener('click', function () {
+        document.getElementById('pm').checked = true;
+        updateToggleColors();
+    });
 
-                // Initialize colors based on the current selection
-                updateToggleColors();
-            </script>
+    // Initialize colors based on the current selection
+    updateToggleColors();
+</script>
+
+
+
+
+
 
                 <div style="margin-left:103px;margin-top:78px;background: #FFFFFF;border-radius: 77.1223px;display:flex;width:fit-content;margin-bottom:65px">
                     <div style='margin-left:54px;margin-right:416px;color: #00292A;font-family: "Arial Rounded MT Bold";font-size: 43.914px;font-style: normal;font-weight: 400;line-height: normal;'>Trucks</div>
