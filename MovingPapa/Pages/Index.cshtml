@@ -1165,6 +1165,7 @@ margin-left:calc(520px - 284px);">
                         calendarSlot.remove();
                         c.style.marginLeft = "103px";
                         c.style.marginTop = "79px";
+                        quoteLGDate.innerText = formatDate(selectedDate, true);
                     }
                     else if (billingMethod === 'flat') {
                         loggedInUI_chooseBilling.style.display = 'none';
@@ -1192,7 +1193,7 @@ margin-left:calc(520px - 284px);">
                     newCard.querySelector('[name=cardEnd]').innerText = acn_CN.value.slice(-4);
                     cards.prepend(newCard);
                 }
-                function formatDate(dateString) {
+                function formatDate(dateString, format2 = false) {
                     // List of month names
                     const months = [
                         'January', 'February', 'March', 'April', 'May', 'June',
@@ -1212,7 +1213,7 @@ margin-left:calc(520px - 284px);">
                     else if (day % 10 === 3 && day % 100 !== 13) suffix = 'rd';
     
                     // Format the date string
-                    return `${monthName} ${day}${suffix}, ${year}`;
+                    return format2 ? `${day}${suffix} ${monthName} ${year}` : `${monthName} ${day}${suffix}, ${year}`;
                 }
 
                 function reserve () {
