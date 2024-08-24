@@ -1669,19 +1669,19 @@ ${day}
                             <div style='margin-bottom: 77px;justify-content: space-between; display: flex;margin-left: 84px; margin-right: 168px;border-radius: 90px;border: 2.966px solid #888;background: rgba(255, 255, 255, 0.50);box-shadow: 3.955px 3.955px 3.955px 0px rgba(0, 0, 0, 0.25) inset;color: #000;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 43.71px;font-style: normal;font-weight: 400;line-height: normal;'>
                             <div style='padding-left: 37px; padding-top: 57px; padding-right: 37px; padding-bottom: 57px;' name=itemName>Boxes</div>
                             <div style='margin-right: 25px; margin-top: 13px; margin-bottom: 14px;border-radius: 50px;border: 1px solid #D5D4DF;background: #00292A;display: flex;padding-left: 72px; padding-right: 72px;'>
-                                <button style="background:transparent;border:none;" onclick="let i = this.parentElement.querySelector('[name=numberOfItems]');i.innerText = Math.max(0, +i.innerText - 1);"><div style='display: flex; flex-direction: column; justify-content: center;'>
-                                    <div style='width: 70px; height: 70px;'>
-                                        <div style='border-radius: 20px;background: #F84734;display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>-</div>
-                                    </div>
-                                </div></button>
+                                <div style='display: flex; flex-direction: column; justify-content: center;'>
+                                    <button onclick="let i = this.parentElement.parentElement.querySelector('[name=numberOfItems]');i.innerText = Math.max(0, +i.innerText - 1);" style='width: 70px; height: 70px;background:transparent;border:none;border-radius: 20px;background: #F84734;'>
+                                        <div style='display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>-</div>
+                                    </button>
+                                </div>
                                 <div name=numberOfItems style="margin-left: 64px; margin-right: 57px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: 'dlig' on;font-family: Inter;font-size: 32px;font-style: normal;font-weight: 700;line-height: normal;display: flex;flex-direction: column;justify-content: center;">
                                     0
                                 </div>
-                                <button style="background:transparent;border:none;" onclick="let i = this.parentElement.querySelector('[name=numberOfItems]');i.innerText = (+i.innerText + 1);"><div style='display: flex; flex-direction: column; justify-content: center;'>
-                                    <div style='width: 70px; height: 70px;'>
-                                        <div style='border-radius: 20px;background: #F84734;display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>+</div>
-                                    </div>
-                                </div></button>
+                                <div style='display: flex; flex-direction: column; justify-content: center;'>
+                                    <button onclick="let i = this.parentElement.parentElement.querySelector('[name=numberOfItems]');i.innerText = (+i.innerText + 1);" style='width: 70px; height: 70px;background:transparent;border:none;border-radius: 20px;background: #F84734;'>
+                                        <div style='display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>+</div>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                         </template>
