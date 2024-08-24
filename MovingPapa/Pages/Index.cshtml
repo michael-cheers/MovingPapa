@@ -1188,7 +1188,7 @@ margin-left:calc(520px - 284px);">
                 quoteLGOrigin.innerText = pickUpPoint.value;
                 quoteLGDest.innerText = destinationPoint.value;
                 let price = calendarRates[selectedDate];
-                quoteLGDetails.innerText = `1 TRUCK, 2 MOVERS @@ $${price} / HOUR`;
+                quoteLGDetails.innerHTML = `${truckNum.innerText} TRUCK${truckNum.innerText.trim() !== '1' ? 'S' : ''}, ${moverNum.innerText} MOVER${moverNum.innerText.trim() !== '1' ? 'S' : ''} @@ $${price} / HOUR`;
                 }
                 function addCard () {
                 loggedInUI_confirmMove.style.display = 'none';
@@ -1667,19 +1667,27 @@ ${day}
                 <div id=calendarSlot></div>
                 <div style="margin-left:103px;margin-top:78px;background: #FFFFFF;border-radius: 77.1223px;display:flex;width:fit-content;margin-bottom:65px">
                     <div style='margin-left:54px;margin-right:416px;color: #00292A;font-family: "Arial Rounded MT Bold";font-size: 43.914px;font-style: normal;font-weight: 400;line-height: normal;'>Trucks</div>
+                    <button style="background:transparent;border:none;" onclick="let i = this.parentElement.querySelector('[name=num]');i.innerText = Math.max(1, +i.innerText - 1);">
                     <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="26.22" stroke="#888888" stroke-width="4.55992"/><rect x="13.6797" y="26.2196" width="29.64" height="4.56" rx="1.13998" fill="#888888"/></svg>
-                    <div style="margin-left:98px;margin-right:99px;/* 1 */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 52.5127px;line-height: 61px;/* identical to box height */color: #F84734;">
+                    </button>
+                    <div id=truckNum name=num style="margin-left:98px;margin-right:99px;/* 1 */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 52.5127px;line-height: 61px;/* identical to box height */color: #F84734;">
                         1
                     </div>
-                    <svg style="margin-right:42px" width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="25.02" stroke="#F84734" stroke-width="6.96"/><rect x="14.5497" y="27.09" width="27.9" height="2.82" rx="0.87" fill="#F84734" stroke="#F84734" stroke-width="1.74"/><rect x="29.9112" y="14.5501" width="27.9" height="2.82" rx="0.87" transform="rotate(90 29.9112 14.5501)" fill="#F84734" stroke="#F84734" stroke-width="1.74"/></svg>
+                    <button style="background:transparent;border:none;margin-right:42px" onclick="let i = this.parentElement.querySelector('[name=num]');i.innerText = (+i.innerText + 1);">
+                    <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="25.02" stroke="#F84734" stroke-width="6.96"/><rect x="14.5497" y="27.09" width="27.9" height="2.82" rx="0.87" fill="#F84734" stroke="#F84734" stroke-width="1.74"/><rect x="29.9112" y="14.5501" width="27.9" height="2.82" rx="0.87" transform="rotate(90 29.9112 14.5501)" fill="#F84734" stroke="#F84734" stroke-width="1.74"/></svg>
+                    </button>
                 </div>
                 <div style="margin-left:103px;background: #FFFFFF;border-radius: 77.1223px;display:flex;width:fit-content;">
                     <div style='margin-left:54px;margin-right:407px;color: #00292A;font-family: "Arial Rounded MT Bold";font-size: 43.914px;font-style: normal;font-weight: 400;line-height: normal;'>Movers</div>
+                    <button style="background:transparent;border:none;" onclick="let i = this.parentElement.querySelector('[name=num]');i.innerText = Math.max(1, +i.innerText - 1);">
                     <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="26.22" stroke="#888888" stroke-width="4.55992"/><rect x="13.6797" y="26.2196" width="29.64" height="4.56" rx="1.13998" fill="#888888"/></svg>
-                    <div style="margin-left:98px;margin-right:99px;/* 1 */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 52.5127px;line-height: 61px;/* identical to box height */color: #F84734;">
+                    </button>
+                    <div id=moverNum name=num style="margin-left:98px;margin-right:99px;/* 1 */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 52.5127px;line-height: 61px;/* identical to box height */color: #F84734;">
                         2
                     </div>
-                    <svg style="margin-right:42px" width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="25.02" stroke="#F84734" stroke-width="6.96"/><rect x="14.5497" y="27.09" width="27.9" height="2.82" rx="0.87" fill="#F84734" stroke="#F84734" stroke-width="1.74"/><rect x="29.9112" y="14.5501" width="27.9" height="2.82" rx="0.87" transform="rotate(90 29.9112 14.5501)" fill="#F84734" stroke="#F84734" stroke-width="1.74"/></svg>
+                    <button style="background:transparent;border:none;margin-right:42px" onclick="let i = this.parentElement.querySelector('[name=num]');i.innerText = (+i.innerText + 1);">
+                    <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="25.02" stroke="#F84734" stroke-width="6.96"/><rect x="14.5497" y="27.09" width="27.9" height="2.82" rx="0.87" fill="#F84734" stroke="#F84734" stroke-width="1.74"/><rect x="29.9112" y="14.5501" width="27.9" height="2.82" rx="0.87" transform="rotate(90 29.9112 14.5501)" fill="#F84734" stroke="#F84734" stroke-width="1.74"/></svg>
+                    </button>
                 </div>
                 <button onclick="goToConfirmation()" style='margin-top:131px;margin-left:70px;margin-bottom:39px;margin-right;62px;border:none;width: calc(100% - 100px);height: 160px;flex-shrink: 0;border-radius: 36.265px;background: #F84734;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 54.216px;font-style: normal;font-weight: 400;line-height: normal;text-align:center;'>
                     <div style="display:flex;flex-direction:column;justify-content:center;">
