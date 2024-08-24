@@ -1226,6 +1226,7 @@ margin-left:calc(520px - 284px);">
                         loggedInUI_chooseBilling.style.display = 'none';
                         loggedInUI_bottom.style.display = 'none';
                         loggedInUI_addFurnitureInfo.style.display = '';
+                        quotePopup.querySelector('.popup-child').style.backgroundColor = '#012122';
                         furnitureInfo_firstName.innerText = firstName.value;
                     }
                 }
@@ -1653,14 +1654,15 @@ ${day}
             </div>
             <div id=loggedInUI_addFurnitureInfo style="display:none;">
                 <div style="background-color:#012122;">
-                    <div class=center><div style='margin-top: 104px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;'>
+                    <div class=mb-center><div style='margin-top: 104px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;'>
                         What will you be moving, <span id=furnitureInfo_firstName>Abby</span>?
                     </div></div>
-                     <div class=center><div style='margin-top: 37px;color: #D9D9D9;font-family: "Arial Rounded MT";font-size: 42.489px;font-style: normal;font-weight: 400;line-height: normal;'>
+                     <div class=mb-center><div style='margin-top: 37px;color: #D9D9D9;font-family: "Arial Rounded MT";font-size: 42.489px;font-style: normal;font-weight: 400;line-height: normal;'>
                         To provide you with a guaranteed upfront<br />
                         flat rate, please provide accurate information
                     </div></div>
-                    <div style="max-height: calc((100vh - 168px) / var(--scale));overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 2075px;flex-shrink: 0;border-radius: 118.628px;background: #00292A;">
+                    <div style="border-radius: 118.628px;background: #00292A;padding-bottom: 87px;">
+                    <div style="border-bottom: 3px solid #B6ADB0;max-height: calc((100vh - 168px) / var(--scale) - 272px);overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 2075px;flex-shrink: 0;">
                         <div class=center style="padding-bottom:100px">
                             <img src="bedroom1.png" width=679 height=532 />
                         </div>
@@ -1692,6 +1694,18 @@ ${day}
                             document.currentScript.after(f);
                         });
                         </script>
+                    </div>
+                    <div style="display:flex">
+                        <div style='margin-left: 64px;margin-top: 65px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 34.604px;font-style: normal;font-weight: 400;line-height: normal;'>
+                            Slide to confirm that the information is accurate. Inaccuracies may affect service pricing.
+                        </div>
+                        <div style='margin-top: 71px;display: flex;padding: 9.75px;align-items: flex-start;gap: 24.375px;border-radius: 102.375px;background: linear-gradient(90deg, #ACACAC 0%, rgba(182, 182, 182, 0.72) 100%);'>
+                            <svg width="127" height="115" viewBox="0 0 127 115" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_0_1)"><circle cx="58.5" cy="56.5" r="48.75" fill="#E0E0E0"/></g><path d="M51.1875 41.875L65.8125 59.0809L51.1875 71.125" stroke="black" stroke-width="4.875"/><defs><filter id="filter0_d_0_1" x="0" y="0.4375" width="126.75" height="126.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dx="4.875" dy="7.3125"/><feGaussianBlur stdDeviation="7.3125"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.19 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/></filter></defs></svg>
+                            <div style='color: #828282;font-family: Inter;font-size: 29.25px;font-style: normal;font-weight: 500;line-height: normal;'>
+                                Slide To Confirm
+                            </div>
+                        </div>
+                    </div> 
                     </div>
                 </div>
             </div>
