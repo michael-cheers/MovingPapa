@@ -1222,6 +1222,7 @@ margin-left:calc(520px - 284px);">
                         quoteLGDate.innerText = formatDate(selectedDate, true);
                     }
                     else if (billingMethod === 'flat') {
+                        loggedInUI_quoteForm.style.display = 'none';
                         loggedInUI_chooseBilling.style.display = 'none';
                         loggedInUI_bottom.style.display = 'none';
                         loggedInUI_addFurnitureInfo.style.display = '';
@@ -1650,19 +1651,47 @@ ${day}
                 </script>
             </div>
             <div id=loggedInUI_addFurnitureInfo style="display:none;">
-                <div style="color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;">
-                    What will you be moving, Abby?
-                </div>
-                <div style="color: #D9D9D9;font-family: "Arial Rounded MT";font-size: 42.489px;font-style: normal;font-weight: 400;line-height: normal;">
-                    To provide you with a guaranteed upfront<br />
-                    flat rate, please provide accurate information
-                </div>
-                <div style="width: 1122.022px;height: 2075px;flex-shrink: 0;border-radius: 118.628px;background: #00292A;">
-                    <div class=center style="padding-bottom:100px">
-                        <img src="bedroom1.png" width=679 height=532 />
+                <div style="background-color:#012122;">
+                    <div class=center><div style='margin-top: 104px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;'>
+                        What will you be moving, Abby?
+                    </div></div>
+                     <div class=center><div style='margin-top: 37px;color: #D9D9D9;font-family: "Arial Rounded MT";font-size: 42.489px;font-style: normal;font-weight: 400;line-height: normal;'>
+                        To provide you with a guaranteed upfront<br />
+                        flat rate, please provide accurate information
+                    </div></div>
+                    <div style="max-height: calc((100vh - 168px) / var(--scale));overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 2075px;flex-shrink: 0;border-radius: 118.628px;background: #00292A;">
+                        <div class=center style="padding-bottom:100px">
+                            <img src="bedroom1.png" width=679 height=532 />
+                        </div>
+                        <div style='margin-left: 92px; margin-bottom:49px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 63.471px;font-style: normal;font-weight: 400;line-height: normal;'>Bedroom 1</div>
+                        <template id=flatRateFurniture>
+                            <div style='margin-bottom: 77px;justify-content: space-between; display: flex;margin-left: 84px; margin-right: 168px;border-radius: 90px;border: 2.966px solid #888;background: rgba(255, 255, 255, 0.50);box-shadow: 3.955px 3.955px 3.955px 0px rgba(0, 0, 0, 0.25) inset;color: #000;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 43.71px;font-style: normal;font-weight: 400;line-height: normal;'>
+                            <div style='padding-left: 37px; padding-top: 57px; padding-right: 37px; padding-bottom: 57px;' name=itemName>Boxes</div>
+                            <div style='margin-right: 25px; margin-top: 13px; margin-bottom: 14px;border-radius: 50px;border: 1px solid #D5D4DF;background: #00292A;display: flex;padding-left: 72px; padding-right: 72px;'>
+                                <div style='display: flex; flex-direction: column; justify-content: center;'>
+                                    <div style='width: 70px; height: 70px;'>
+                                        <div style='border-radius: 20px;background: #F84734;display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>-</div>
+                                    </div>
+                                </div>
+                                <div style="margin-left: 64px; margin-right: 57px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: 'dlig' on;font-family: Inter;font-size: 32px;font-style: normal;font-weight: 700;line-height: normal;display: flex;flex-direction: column;justify-content: center;">
+                                    0
+                                </div>
+                                <div style='display: flex; flex-direction: column; justify-content: center;'>
+                                    <div style='width: 70px; height: 70px;'>
+                                        <div style='border-radius: 20px;background: #F84734;display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>+</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </template>
+                        <script>
+                        ['Boxes', 'Dressers', 'Nighstands', 'Credenza', 'Wardrobes'].reverse().forEach(t => {
+                            let f = flatRateFurniture.content.firstElementChild.cloneNode(true);
+                            f.querySelector('[name=itemName]').innerText = t;
+                            document.currentScript.after(f);
+                        });
+                        </script>
                     </div>
-                    <div style='margin-bottom:49px;color: #D9D9D9;font-family: "Arial Rounded MT";font-size: 42.489px;font-style: normal;font-weight: 400;line-height: normal;'>Bedroom 1</div>
-
                 </div>
             </div>
             <div id=loggedInUI_chooseHour class="mb-smaller" style="margin-left:calc(-220px - 58px);margin-right:-220px;--margin-top:65px;--height:calc(399px / var(--scale, 1) * 1.4);display:none;border-radius: 60px 60px 0px 0px;background: #00292A;box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);">
