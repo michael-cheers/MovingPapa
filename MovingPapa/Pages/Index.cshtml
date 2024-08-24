@@ -1177,6 +1177,7 @@ margin-left:calc(520px - 284px);">
                         loggedInUI_chooseBilling.style.display = 'none';
                         loggedInUI_bottom.style.display = 'none';
                         loggedInUI_addFurnitureInfo.style.display = '';
+                        furnitureInfo_firstName.innerText = firstName.value;
                     }
                 }
                 function goToConfirmation() {
@@ -1604,7 +1605,7 @@ ${day}
             <div id=loggedInUI_addFurnitureInfo style="display:none;">
                 <div style="background-color:#012122;">
                     <div class=center><div style='margin-top: 104px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;'>
-                        What will you be moving, Abby?
+                        What will you be moving, <span id=furnitureInfo_firstName>Abby</span>?
                     </div></div>
                      <div class=center><div style='margin-top: 37px;color: #D9D9D9;font-family: "Arial Rounded MT";font-size: 42.489px;font-style: normal;font-weight: 400;line-height: normal;'>
                         To provide you with a guaranteed upfront<br />
@@ -1619,19 +1620,19 @@ ${day}
                             <div style='margin-bottom: 77px;justify-content: space-between; display: flex;margin-left: 84px; margin-right: 168px;border-radius: 90px;border: 2.966px solid #888;background: rgba(255, 255, 255, 0.50);box-shadow: 3.955px 3.955px 3.955px 0px rgba(0, 0, 0, 0.25) inset;color: #000;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 43.71px;font-style: normal;font-weight: 400;line-height: normal;'>
                             <div style='padding-left: 37px; padding-top: 57px; padding-right: 37px; padding-bottom: 57px;' name=itemName>Boxes</div>
                             <div style='margin-right: 25px; margin-top: 13px; margin-bottom: 14px;border-radius: 50px;border: 1px solid #D5D4DF;background: #00292A;display: flex;padding-left: 72px; padding-right: 72px;'>
-                                <div style='display: flex; flex-direction: column; justify-content: center;'>
+                                <button style="background:transparent;border:none;" onclick="let i = this.parentElement.querySelector('[name=numberOfItems]');i.innerText = Math.max(0, +i.innerText - 1);"><div style='display: flex; flex-direction: column; justify-content: center;'>
                                     <div style='width: 70px; height: 70px;'>
                                         <div style='border-radius: 20px;background: #F84734;display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>-</div>
                                     </div>
-                                </div>
-                                <div style="margin-left: 64px; margin-right: 57px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: 'dlig' on;font-family: Inter;font-size: 32px;font-style: normal;font-weight: 700;line-height: normal;display: flex;flex-direction: column;justify-content: center;">
+                                </div></button>
+                                <div name=numberOfItems style="margin-left: 64px; margin-right: 57px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: 'dlig' on;font-family: Inter;font-size: 32px;font-style: normal;font-weight: 700;line-height: normal;display: flex;flex-direction: column;justify-content: center;">
                                     0
                                 </div>
-                                <div style='display: flex; flex-direction: column; justify-content: center;'>
+                                <button style="background:transparent;border:none;" onclick="let i = this.parentElement.querySelector('[name=numberOfItems]');i.innerText = (+i.innerText + 1);"><div style='display: flex; flex-direction: column; justify-content: center;'>
                                     <div style='width: 70px; height: 70px;'>
                                         <div style='border-radius: 20px;background: #F84734;display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>+</div>
                                     </div>
-                                </div>
+                                </div></button>
                             </div>
                         </div>
                         </template>
