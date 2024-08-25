@@ -1304,6 +1304,10 @@ margin-left:calc(520px - 284px);">
                     furnitureCont.innerHTML = '';
                     createFurniture(items[idx]);
                 }
+                function confirmFinalDetails () {
+                    loggedInUI_flatFinalDetails.style.display = 'none';
+                    loggedInUI_flatConfirmAndPay.style.display = '';
+                }
             </script>
             <style>
                 @media all and (min-width: 600px) {
@@ -1766,13 +1770,13 @@ ${day}
                                     </style>
                                     <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
                                         Stairs
-                                        <div style="width: 38.52px;height: 38.52px;border: 2.41px solid #F84734;">
+                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
                                             <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
                                         </div>
                                     </div>
                                     <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
                                         Elevator
-                                        <div style="width: 38.52px;height: 38.52px;border: 2.41px solid #F84734;">
+                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
                                             <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
                                         </div>
                                     </div>
@@ -1790,13 +1794,13 @@ ${day}
                                     </style>
                                     <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
                                         Stairs
-                                        <div style="width: 38.52px;height: 38.52px;border: 2.41px solid #F84734;">
+                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
                                             <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
                                         </div>
                                     </div>
                                     <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
                                         Elevator
-                                        <div style="width: 38.52px;height: 38.52px;border: 2.41px solid #F84734;">
+                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
                                             <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
                                         </div>
                                     </div>
@@ -1818,13 +1822,13 @@ ${day}
                                     </style>
                                     <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
                                         Yes
-                                        <div style="width: 38.52px;height: 38.52px;border: 2.41px solid #F84734;">
+                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
                                             <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
                                         </div>
                                     </div>
                                     <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
                                         No
-                                        <div style="width: 38.52px;height: 38.52px;border: 2.41px solid #F84734;">
+                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
                                             <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
                                         </div>
                                     </div>
@@ -1846,13 +1850,13 @@ ${day}
                                     </style>
                                     <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
                                         Yes
-                                        <div style="width: 38.52px;height: 38.52px;border: 2.41px solid #F84734;">
+                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
                                             <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
                                         </div>
                                     </div>
                                     <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
                                         No
-                                        <div style="width: 38.52px;height: 38.52px;border: 2.41px solid #F84734;">
+                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
                                             <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
                                         </div>
                                     </div>
@@ -1864,7 +1868,7 @@ ${day}
                         <div style='margin-left: 64px;margin-top: 65px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 34.604px;font-style: normal;font-weight: 400;line-height: normal;'>
                             Slide to confirm that the information is accurate. Inaccuracies may affect service pricing.
                         </div>
-                        <div onclick="nextBedroom()" style='cursor: pointer;white-space: nowrap;margin-top: 71px;display: flex;padding: 9.75px;align-items: flex-start;gap: 24.375px;border-radius: 102.375px;background: linear-gradient(90deg, #ACACAC 0%, rgba(182, 182, 182, 0.72) 100%);'>
+                        <div onclick="confirmFinalDetails()" style='cursor: pointer;white-space: nowrap;margin-top: 71px;display: flex;padding: 9.75px;align-items: flex-start;gap: 24.375px;border-radius: 102.375px;background: linear-gradient(90deg, #ACACAC 0%, rgba(182, 182, 182, 0.72) 100%);'>
                             <svg style="display: flex;flex-direction: column;justify-content: center;height: 100%;" width="127" height="115" viewBox="0 0 127 115" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_0_1)"><circle cx="58.5" cy="56.5" r="48.75" fill="#E0E0E0"/></g><path d="M51.1875 41.875L65.8125 59.0809L51.1875 71.125" stroke="black" stroke-width="4.875"/><defs><filter id="filter0_d_0_1" x="0" y="0.4375" width="126.75" height="126.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dx="4.875" dy="7.3125"/><feGaussianBlur stdDeviation="7.3125"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.19 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/></filter></defs></svg>
                             <div style='color: #828282;font-family: Inter;font-size: 29.25px;font-style: normal;font-weight: 500;line-height: normal;display: flex;flex-direction: column; justify-content: center;height:100%;'>
                                 Slide To Confirm
@@ -1873,6 +1877,104 @@ ${day}
                     </div> 
                 </div>
             </div></div>
+            <div id=loggedInUI_flatConfirmAndPay style="display:none">
+                <div style='border-bottom: 1px solid #00292A;padding-bottom: 19px;margin-bottom: 92px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;'>
+                    Confirm and pay, <span class=firstName>Abby</span>
+                </div>
+                <div style="max-height: 1743px;overflow-y: scroll;border-radius: 118.628px;background: #00292A;padding-bottom: 87px;">
+                    <div style="margin-right: 150px; padding-right: 50px; margin-left: 39px; margin-top: 123px; width: 1122.022px;flex-shrink: 0;">
+                        <div style='padding-top: 67px;padding-left: 113px;padding-bottom:30px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 50px;font-style: normal;font-weight: 400;line-height: normal;'>Your move</div>
+                        <div style='margin-left: 91px; padding-left: 37px;border: 2.935px solid #012122;'>
+                            <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                Pickup
+                            </div>
+                            <div style='margin-right: 120px;margin-top: 26px;border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                    22 Bay street, Toronto ON M5V 2R5
+                                </div>
+                                <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
+                                    Edit
+                                </button>
+                            </div>
+                            <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                Drop-off
+                            </div>
+                            <div style='margin-right: 120px;margin-top: 26px;border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                    22 Bay street, Toronto ON M5V 2R5
+                                </div>
+                                <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
+                                    Edit
+                                </button>
+                            </div>
+                            <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                Date
+                            </div>
+                            <div style='margin-right: 120px;margin-top: 26px;border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                    Friday August 28, 2024
+                                </div>
+                                <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
+                                    Edit
+                                </button>
+                            </div>
+                            <div style='display:flex;justify-content:space-between;'>
+                                <div style='margin-right: 120px;margin-top: 26px;border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                    <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                        2 Bedroom
+                                    </div>
+                                </div>
+                                <div style='margin-right: 120px;margin-top: 26px;border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                    <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                        Full Service
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-right: 150px; padding-right: 50px; margin-left: 39px; margin-top: 123px; width: 1122.022px;flex-shrink: 0;">
+                        <div style='padding-top: 67px;padding-left: 113px;padding-bottom:30px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 50px;font-style: normal;font-weight: 400;line-height: normal;'>What's included?</div>
+                        <div style='margin-left: 91px; padding-left: 37px;border: 2.935px solid #012122;'>
+                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
+                                <div>
+                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>All-Inclusive Flat Rate</div>
+                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>No hidden fees for trucks, gas, or mileage<br />—everything is included.</div>
+                                </div>
+                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'><svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
+                                </svg></div>
+                            </div>
+                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
+                                <div>
+                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Complete Protection</div>
+                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>We protect your floors, wrap furniture<br />to ensure no damages.</div>
+                                </div>
+                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'><svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
+                                </svg></div>
+                            </div>
+                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
+                                <div>
+                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Top-notch Movers</div>
+                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>Our professional movers are<br />highly trained for excellent service.</div>
+                                </div>
+                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'><svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
+                                </svg></div>
+                            </div>
+                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
+                                <div>
+                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Premium Protection Plan</div>
+                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>Get up to $10 per pound in coverage, <br />with property protection included for free.</div>
+                                </div>
+                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'><svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
+                                </svg></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id=loggedInUI_chooseHour class="mb-smaller" style="margin-left:calc(-220px - 58px);margin-right:-220px;--margin-top:65px;--height:calc(399px / var(--scale, 1) * 1.4);display:none;border-radius: 60px 60px 0px 0px;background: #00292A;box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                 <div style="padding-top:65px;padding-left:50px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.2157px;line-height: 63px;color: #FFFFFF;">
                     Almost there Abby,<br />
