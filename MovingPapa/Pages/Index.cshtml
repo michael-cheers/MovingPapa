@@ -1229,6 +1229,27 @@ margin-left:calc(520px - 284px);">
                     loggedInUI_confirmMove.style.display = 'none';
                     loggedInUI_moveConfirmed.style.display = '';
                 }
+
+                function nextBedroom () {
+                    let arr = ['Bedroom 1', 'Bedroom 2', 'Living Room', 'Basement', 'Specialty items'];
+                    let items = [
+                        [],
+                        ['Beds',
+                        'Dressers',
+                        'Nightstands',
+                        'Credenza'],
+                        ['Couch', 'Sofa', 'Loveseat', 'TV stand'],
+                        ['Boxes', 'Sofa', 'Loveseat', 'TV stand'],
+                        ['Piano', 'Pool table', 'Fridge', 'Safe']
+                    ];
+                    let idx = arr.indexOf(roomName.innerText) + 1;
+                    if (idx === arr.length) {
+
+                    }
+                    roomName.innerText = arr[idx];
+                    furnitureCont.innerHTML = '';
+                    createFurniture(items[idx]);
+                }
             </script>
             <style>
                 @@media all and (min-width: 600px) {
@@ -1617,7 +1638,7 @@ ${day}
                         <div class=center style="padding-bottom:100px">
                             <img src="bedroom1.png" width=679 height=532 />
                         </div>
-                        <div style='margin-left: 92px; margin-bottom:49px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 63.471px;font-style: normal;font-weight: 400;line-height: normal;'>Bedroom 1</div>
+                        <div id="roomName" style='margin-left: 92px; margin-bottom:49px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 63.471px;font-style: normal;font-weight: 400;line-height: normal;'>Bedroom 1</div>
                         <template id=flatRateFurniture>
                             <div style='margin-bottom: 77px;justify-content: space-between; display: flex;margin-left: 84px; margin-right: 168px;border-radius: 90px;border: 2.966px solid #888;background: rgba(255, 255, 255, 0.50);box-shadow: 3.955px 3.955px 3.955px 0px rgba(0, 0, 0, 0.25) inset;color: #000;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 43.71px;font-style: normal;font-weight: 400;line-height: normal;'>
                             <div style='padding-left: 37px; padding-top: 57px; padding-right: 37px; padding-bottom: 57px;' name=itemName>Boxes</div>
@@ -1639,18 +1660,22 @@ ${day}
                         </div>
                         </template>
                         <script>
-                        ['Boxes', 'Dressers', 'Nighstands', 'Credenza', 'Wardrobes'].reverse().forEach(t => {
-                            let f = flatRateFurniture.content.firstElementChild.cloneNode(true);
-                            f.querySelector('[name=itemName]').innerText = t;
-                            document.currentScript.after(f);
-                        });
+                        createFurniture(['Boxes', 'Dressers', 'Nighstands', 'Credenza', 'Wardrobes']);
+                        function createFurniture (arr) {
+                            arr.forEach(t => {
+                                let f = flatRateFurniture.content.firstElementChild.cloneNode(true);
+                                f.querySelector('[name=itemName]').innerText = t;
+                                furnitureCont.appendChild(f);
+                            });
+                        }
                         </script>
+                        <div id=furnitureCont></div>
                     </div>
                     <div style="display:flex">
                         <div style='margin-left: 64px;margin-top: 65px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 34.604px;font-style: normal;font-weight: 400;line-height: normal;'>
                             Slide to confirm that the information is accurate. Inaccuracies may affect service pricing.
                         </div>
-                        <div style='white-space: nowrap;margin-top: 71px;display: flex;padding: 9.75px;align-items: flex-start;gap: 24.375px;border-radius: 102.375px;background: linear-gradient(90deg, #ACACAC 0%, rgba(182, 182, 182, 0.72) 100%);'>
+                        <div onclick="nextBedroom()" style='cursor: pointer;white-space: nowrap;margin-top: 71px;display: flex;padding: 9.75px;align-items: flex-start;gap: 24.375px;border-radius: 102.375px;background: linear-gradient(90deg, #ACACAC 0%, rgba(182, 182, 182, 0.72) 100%);'>
                             <svg style="display: flex;flex-direction: column;justify-content: center;height: 100%;" width="127" height="115" viewBox="0 0 127 115" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_0_1)"><circle cx="58.5" cy="56.5" r="48.75" fill="#E0E0E0"/></g><path d="M51.1875 41.875L65.8125 59.0809L51.1875 71.125" stroke="black" stroke-width="4.875"/><defs><filter id="filter0_d_0_1" x="0" y="0.4375" width="126.75" height="126.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dx="4.875" dy="7.3125"/><feGaussianBlur stdDeviation="7.3125"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.19 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/></filter></defs></svg>
                             <div style='color: #828282;font-family: Inter;font-size: 29.25px;font-style: normal;font-weight: 500;line-height: normal;display: flex;flex-direction: column; justify-content: center;height:100%;'>
                                 Slide To Confirm
