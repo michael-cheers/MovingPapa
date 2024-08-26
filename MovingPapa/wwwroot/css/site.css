@@ -63,7 +63,11 @@ body {
   width: 100%;
   padding: 79px 48px;
   line-height: 100px;
+  outline: none;
+  border: none;
+  color: white;
   border-bottom: 2px solid #012122;
+  background-color: #00292a;
 }
 
 .btn-arrow {
