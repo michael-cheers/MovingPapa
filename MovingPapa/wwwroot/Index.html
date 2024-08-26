@@ -511,22 +511,28 @@
 <script>
     let stageDiv;
     function getQuote () {
-    stages = [
-        [progressInd1.innerText, progressInd2.innerText, [
-            stage0Heading,
-            (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'nextStage()'); return t;}) (quoteContactForm.content.cloneNode(true))
-        ], 50, 'monster.png'],
-        ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
-        stage1 ,
-        185, 'monster2.png'],
-        ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
-                                (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=origOrDest]').innerText = 'destination'; return c; })(),
-                                432, 'monster3.png'],
-    ];
-    quotePopup.style.display = '';
-    displayStage();
-    document.body.style.height = '100%';
-    document.body.style.overflow = "hidden";
+        quotePopup.style.display = '';
+        document.body.style.height = '100%';
+        document.body.style.overflow = "hidden";
+    }
+    function chooseOnline() {
+        quoteMethodSelector.style.display = 'none';
+        stages = [
+			[progressInd1.innerText, progressInd2.innerText, [
+				stage0Heading,
+				(t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'nextStage()'); return t;}) (quoteContactForm.content.cloneNode(true))
+			], 50, 'monster.png'],
+			["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
+			stage1 ,
+			185, 'monster2.png'],
+			["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
+									(() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=origOrDest]').innerText = 'destination'; return c; })(),
+									432, 'monster3.png']
+		];
+        displayStage();
+		quotePopup.style.display = '';
+		document.body.style.height = '100%';
+		document.body.style.overflow = "hidden";
     }
     function previousStage () {
         stageIdx--;
@@ -536,7 +542,8 @@
         stageIdx++;
         displayStage();
     }
-    function displayStage () {
+    function displayStage() {
+        newPopupDesign.style.display = '';
         let stage = stages[stageIdx];
         progressIndImg.src = stage[4];
         progressIndBar.value = stage[3];
@@ -1228,7 +1235,7 @@
     </div>
 </div>
 <template>
-    <div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:250vw;height:250vh;overflow:hidden;" id="quotePopup" class="popup bottom-bg">
+    <div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:250vw;height:250vh;overflow:hidden;background-color: #012122;" id="quotePopup" class="popup bottom-bg">
         <style>
         #popupMainPart {
             margin-left: 65px!important;
@@ -1238,7 +1245,84 @@
         <div id="popupMainPart" style="
 margin-top:calc(-832px - -1091px);
 margin-left:calc(520px - 284px);">
-            <div style="display:flex">
+            <style>
+
+
+            .popup {
+                font-size: 87px;
+                font-family: "Arial Rounded MT Bold";
+                font-weight: 400;
+            }
+
+            .wavybuddies {
+                background-color: #012122;
+                padding-top: 193px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .wavybuddies > div {
+                width: 70%;
+                height: auto;
+            }
+
+            .wavybuddies img {
+                width: 100%;
+                height: 100%;
+            }
+
+            .btn-groups {
+                margin-top: -50px;
+                width: 100%;
+                height: 50%;
+                background-color: #00292a;
+                color: white;
+            }
+
+            .quote-btn {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                padding: 79px 48px;
+                line-height: 100px;
+                outline: none;
+                border: none;
+                color: white;
+                border-bottom: 5px solid #012122;
+                background-color: #00292a;
+            }
+
+            .btn-arrow {
+                font-size: 150px;
+                font-weight: 600;
+            }
+
+            </style>
+            <div id="quoteMethodSelector">
+                <div style="margin-top:calc(-832px - -1091px);">
+                    <div style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 95px;line-height: 109px;color: #EEEEEE;">
+                        How would you like to receive your quote?
+                    </div>
+                </div>
+                <div class="wavybuddies">
+                    <div>
+                        <img src="monster0.png" alt="popup image" />
+                    </div>
+                </div>
+                <div class="btn-groups">
+                    <button onclick="chooseOnline()" class="quote-btn">
+                        <span>Book online</span>
+                        <span class="btn-arrow">&#8594;</span>
+                    </button>
+                    <button class="quote-btn">
+                        <span>Request a call</span>
+                        <span class="btn-arrow">&#8594;</span>
+                    </button>
+                </div>
+            </div>
+            <div id="newPopupDesign" style="display:none">
+                    <div style="display:flex">
                 <img id=progressIndImg src="monster.png" width=425 height=490 />
                 <div>
                     <div id=progressInd1 style="margin-bottom: 57px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.1899px;line-height: 63px;display: flex;align-items: center;color: #FFFFFF;">
@@ -1247,8 +1331,8 @@ margin-left:calc(520px - 284px);">
                     <div id=progressInd2 style='color: #EEE;font-family: "Arial Rounded MT";font-size: 38.206px;font-style: normal;font-weight: 400;line-height: normal;'>
                         Lets build your quote.  I’ll make this as smooth and enjoyable as a stroll in the park.
                     </div>
-                </div>
             </div>
+        </div>
             <style>
                 .styledProgress {
                     accent-color: #F84734;
