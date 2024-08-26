@@ -14,7 +14,7 @@
         <main role="main" class="pb-3">
             <div style="display:flex">
                 <div class="mb-full-width" style="width:60%;padding-top:32px">
-                    <div style="float:right">
+                    <div id="right-logo" style="float:right">
                         <button style="margin-top:3px;margin-right:57px;width: 212.2px;height: 63.79px;background: #F84734;border-radius: 35.467px;border:none;/* Book a move */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26.6003px;line-height: 31px;/* identical to box height */color: #FFFFFF;">
                             <div style="display:flex;flex-direction:column;justify-content:center;">
                                 Book a move
@@ -27,6 +27,7 @@
                         </svg>
                     </div>
                     <a href="/"><div class="responsive-logo"></div></a>
+                    <hr/>
                 </div>
                 <div class="mb-display-none" style="width:70%;border-left: 0.747786px solid #6D6D6D;display:flex">
                     <a href="/track" style="padding-top:51px;padding-bottom:40px;text-decoration:none;padding-left:30px;padding-right:20px;border-right: 0.747786px solid #6D6D6D; font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26px;line-height: 32px;/* identical to box height, or 125% */color: #00292A;">
@@ -99,6 +100,10 @@
     height: var(--height);
     margin-top: var(--margin-top, 0px);
     }
+    
+    hr {
+        display: none;
+    }
 
     @media all and (min-width: 600px) {
     .pc-display-none {
@@ -114,6 +119,7 @@
     padding-left: calc((100vw - (1400px * 0.6)) / 2);
     padding-right: calc((100vw - (1400px * 0.6)) / 2);
     }
+
     }
 
     @media all and (max-width: 600px) {
@@ -121,6 +127,12 @@
             margin-left: 52px;
             margin-right: 92px;
         }
+        #right-logo {
+            margin-top: 30px;
+        }
+    hr {
+    display: block;
+    }
 
     #mainContent {
     min-width: calc(100vw / 0.4 - 7rem);
@@ -556,22 +568,65 @@
             }
             }
         </style>
-        <div id="aboutInfo" style="margin-top:calc(75px - -158px);">
-            <div style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 74.6477px;line-height: 86px;color: #00292A;text-align:center;">
+        <div id="aboutInfo">
+            <div id="headerTxt1" style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 74.65px;line-height: 86px;color: #00292A;text-align:center;">
                 Your Move, Simplified.
             </div>
-            <div style="margin-top:calc(185px - (75px + 86px));font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 29.9574px;line-height: 35px;color: #908989;width:100%;text-align:center;">
+
+            <div id="headerTxt2" style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 69.37px;line-height: 86px;color: #00292A;text-align:center;">
+                Your Move, Simplified. <br/>up-front guaranteed <span style="background: linear-gradient(90deg, rgba(255, 0, 0, 0.7), rgba(0, 128, 0, 0.7), rgba(0, 0, 255, 0.7), rgba(255, 0, 0, 0.7)); -webkit-background-clip: text; background-clip: text; color: transparent; ">flat-rate.</span>
+            </div>
+
+            <div id="desTxt1" style="font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 29.9574px;line-height: 35px;color: #908989;width:100%;text-align:center;">
                 Full service moving teams or rent a truck.
             </div>
+
+            <div id="desTxt2" style="font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 50.14px;line-height: 58.11px;color: #00292A;width:100%;text-align:center; margin-top: 40px">
+                Book full service moving teams or rent a truck
+            </div>
+
             <style>
+                #headerTxt1, #desTxt1 {
+                display: block;
+                }
+                #headerTxt2, #desTxt2 {
+                display: none;
+                }
+                #aboutInfo {
+                margin-top: calc(75px - -158px);
+                }
+                #googleDiv {
+                margin-top:calc(330px - (185px + 35px));
+                }
+                #mark-left, #mark-right {
+                display: none;
+                }
                 @media all and (max-width: 600px) {
                 #googleReviewsSummary {
                 margin-bottom: 97px;
                 }
+                #googleDiv {
+                margin: 45.88px 0px;
                 }
+                #headerTxt1, #desTxt1 {
+                display: none;
+                }
+                #headerTxt2, #desTxt2 {
+                display: block;
+                }
+                #aboutInfo {
+                margin-top: 45px;
+                }
+                #mark-left, #mark-right {
+                display: block;
+                }
+                }
+               
             </style>
             <div id="googleReviewsSummary" style="display:flex;justify-content:center;width:100%;">
-                <div style="width:549px;height:181px;border-top:6.5px solid #34A853;display:flex;padding-top:27px;margin-top:calc(330px - (185px + 35px));box-shadow: -6.552px -3.276px 26.208px 0px rgba(0, 0, 0, 0.08), 32.76px 22.932px 65.521px 0px rgba(0, 0, 0, 0.08);border-radius: 13.104px;background: #FFF;">
+                <div id="googleDiv" style="width:549px;height:181px;border-top:6.5px solid #34A853;display:flex;padding-top:27px;box-shadow: -6.552px -3.276px 26.208px 0px rgba(0, 0, 0, 0.08), 32.76px 22.932px 65.521px 0px rgba(0, 0, 0, 0.08);border-radius: 13.104px;background: #FFF;position:relative;">
+                    <img id="mark-left" src="mark-left.jpg" style="width: 114.59px; height: 201px; position: absolute; left: -150px; top: 0px"/>
+                    <img id="mark-right" src="mark-right.png" style="width: 114.59px; height: 201px; position: absolute; left: 589px; top: 0px"/>
                     <svg style="margin-left:41px;margin-top:10px" width="107" height="107" viewBox="0 0 107 107" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M100.419 54.1394C100.419 50.6925 100.11 47.3782 99.5353 44.1965H53.7542V63.0216H79.9148C78.7659 69.0757 75.319 74.2017 70.1487 77.6486V89.8893H85.9247C95.1163 81.4048 100.419 68.9431 100.419 54.1394Z" fill="#4285F4" />
                         <path d="M53.7542 101.644C66.8788 101.644 77.8822 97.3132 85.9248 89.8893L70.1488 77.6485C65.8182 80.5651 60.2944 82.3327 53.7542 82.3327C41.1158 82.3327 30.3776 73.804 26.533 62.3145H10.3594V74.8646C18.3578 90.7289 34.7524 101.644 53.7542 101.644Z" fill="#34A853" />
@@ -614,18 +669,42 @@
         </div>
         <div>
             <style>
+                #quoteForm {
+                border-top-left-radius: 120px;
+                border-top-right-radius: 120px;
+                margin-top: 150px;
+                height: 1090.2px;
+                margin-bottom: 150px;
+                }
                 @media all and (min-width: 600px) {
                 #quoteForm {
                 width: 975px;
+                border-radius: 40px;
                 }
                 }
             </style>
-            <div id="quoteForm" style="--height: 948px;background: #00292A;border-radius: 40px;display:flex;justify-content:center;margin-left:130px;margin-right:130px;" class="mb-bigger">
+            <div id="quoteForm" style="--height: 948px;background: #00292A;display:flex;justify-content:center;margin-left:130px;margin-right:130px;" class="mb-bigger">
                 <div style="width:553px;margin-top:calc(-111px - -158px);">
                     <style>
+                        #btnDes {
+                        font-size: 21.4765px;
+                        line-height: 25px;
+                        margin-top:calc(298px - (195px + 63px));
+                        }
+                        #imgMover {
+                        margin-top:calc(456px - 298px);
+                        }
                         @media all and (max-width: 600px) {
                         #whereAreYouMovingToText {
                         margin-bottom: 55px!important;
+                        }
+                        #btnDes {
+                        font-size: 23px;
+                        line-height: 52.43px;
+                        margin-top: 50.89;
+                        }
+                        #imgMover {
+                        margin-top: 125px;
                         }
                         }
                     </style>
@@ -661,11 +740,11 @@
                         </button>
                     </div>
                     <div class="center">
-                        <div style="font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 21.4765px;line-height: 25px;text-align: center;color: rgba(255, 255, 255, 0.33);margin-top:calc(298px - (195px + 63px));">
-                            No hidden fees.<br />Transparent Pricing from start to finish.
+                        <div id="btnDes" style="font-family: 'Arial Rounded MT Bold'; font-style: normal;font-weight: 400;text-align: center;color: #D5D4DF;">
+                            Our flat rate means no surprises, ever!
                         </div>
                     </div>
-                    <img src="movers.png" style="margin-top:calc(456px - 298px);width: 533.94px;height: 272.02px;border-radius: 21.2512px;" />
+                    <img id="imgMover" src="movers.png" style="width: 533.94px;height: 272.02px;border-radius: 21.2512px;" />
                 </div>
             </div>
         </div>
