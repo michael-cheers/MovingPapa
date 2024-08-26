@@ -8,11 +8,7 @@ html {
   }
 }
 
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-control:focus,
-.form-check-input:focus {
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
@@ -23,54 +19,4 @@ html {
 
 body {
   margin-bottom: 60px;
-}
-
-.popup {
-  font-size: 87px;
-  font-family: "Arial Rounded MT Bold";
-  font-weight: 400;
-}
-
-.wavybuddies {
-  background-color: #012122;
-  padding-top: 193px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.wavybuddies > div {
-  width: 70%;
-  height: auto;
-}
-
-.wavybuddies img {
-  width: 100%;
-  height: 100%;
-}
-
-.btn-groups {
-  margin-top: -50px;
-  width: 100%;
-  height: 50%;
-  background-color: #00292a;
-  color: white;
-}
-
-.quote-btn {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 79px 48px;
-  line-height: 100px;
-  outline: none;
-  border: none;
-  color: white;
-  border-bottom: 5px solid #012122;
-  background-color: #00292a;
-}
-
-.btn-arrow {
-  font-size: 150px;
-  font-weight: 600;
 }
