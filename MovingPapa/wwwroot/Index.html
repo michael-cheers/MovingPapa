@@ -508,22 +508,22 @@
 <script>
     let stageDiv;
     function getQuote () {
-    stages = [
-        [progressInd1.innerText, progressInd2.innerText, [
-            stage0Heading,
-            (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'nextStage()'); return t;}) (quoteContactForm.content.cloneNode(true))
-        ], 50, 'monster.png'],
-        ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
-        stage1 ,
-        185, 'monster2.png'],
-        ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
-        stage1 ,
-        432, 'monster.png'],
-    ];
-    quotePopup.style.display = '';
-    displayStage();
-    document.body.style.height = '100%';
-    document.body.style.overflow = "hidden";
+        // stages = [
+        //     [progressInd1.innerText, progressInd2.innerText, [
+        //         stage0Heading,
+        //         (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'nextStage()'); return t;}) (quoteContactForm.content.cloneNode(true))
+        //     ], 50, 'monster.png'],
+        //     ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
+        //     stage1 ,
+        //     185, 'monster2.png'],
+        //     ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
+        //     stage1 ,
+        //     432, 'monster.png'],
+        // ];
+        quotePopup.style.display = '';
+        // displayStage();
+        document.body.style.height = '100%';
+        document.body.style.overflow = "hidden";
     }
     function previousStage () {
         stageIdx--;
@@ -1243,14 +1243,14 @@
             </div>
         </div>
         <div class="btn-groups">
-            <div class="quote-btn">
+            <button class="quote-btn">
                 <span>Book online</span>
                 <span class="btn-arrow">&#8594;</span>
-            </div>
-            <div class="quote-btn">
+            </button>
+            <button class="quote-btn">
                 <span>Request a call</span>
                 <span class="btn-arrow">&#8594;</span>
-            </div>
+            </button>
         </div>
     </div>
 </template>
