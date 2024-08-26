@@ -1100,264 +1100,32 @@
     </div>
 </div>
 <template>
-    <div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:250vw;height:250vh;overflow:hidden;" id="quotePopup" class="popup bottom-bg">
+    <div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:250vw;height:250vh;overflow:hidden;background-color: #012122;" id="quotePopup" class="popup bottom-bg">
         <style>
         #popupMainPart {
             margin-left: 65px!important;
             padding-right: 70px;
         }
         </style>
-        <div id="popupMainPart" style="
-margin-top:calc(-832px - -1091px);
-margin-left:calc(520px - 284px);">
-            <div id="quoteFirstText" style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 86.7269px;line-height: 100px;color: #EEEEEE;">
-                What kind of moving<br />help
-                do you need?
+        <div id="popupMainPart" style="margin-top:calc(-832px - -1091px);margin-left:calc(520px - 284px);">
+            <div id="quoteFirstText" style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 95px;line-height: 109px;color: #EEEEEE;">
+                How would you like to receive your quote?
             </div>
-            <div id="quoteSecondText" style="max-width: 1245px;margin-top:calc(132px - 84px);font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 45.3492px;line-height: 53px;color: #EEEEEE;">
-                Tell us how we can help—are you looking for a full-service move, or do you just need a truck?
+        </div>
+        <div class="wavybuddies">
+            <div>
+                <img src="Wavy Buddies Out of Stock.png" alt="popup image" />
             </div>
-            <script>
-                let calendarRates = null;
-                let callEnquiry = false;
-                function callMe() {
-                quoteFirstText.innerText = "Great choice! We’ll call you.";
-                quoteSecondText.innerText = `Share your contacts, and we’ll give you a call to
-                guide you through the process.
-                Personalized support, just a phone call away.`;
-                let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
-                while (elem !== null) {
-                elem.style.display = 'none';
-                elem = elem.nextElementSibling;
-                }
-                quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
-                callEnquiry = true;
-                }
-                function quoteSelectService(service) {
-                quoteFirstText.innerText = "Do you have a date in mind?";
-                quoteSecondText.innerText = "Don’t worry! You can change this later.";
-                quoteSecondText.style.marginTop = "29px";
-                let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
-                while (elem !== null) {
-                elem.style.display = 'none';
-                elem = elem.nextElementSibling;
-                }
-                elemParent.appendChild(calendar.content.firstElementChild.cloneNode(true));
-                }
-                let selectedDate = null;
-                function quoteSelectDate(date) {
-                quoteFirstText.innerText = "For your first move, here’s a gift from papa";
-                quoteSecondText.innerText = "To celebrate your first move with us, enjoy a special discount—this will be automatically added to your move.";
-                quoteSecondText.style.fontSize = "41.5282px";
-                quoteSecondText.style.lineHeight = "48px";
-                quoteSecondText.parentElement.querySelector('[name=calendar]').style.display = 'none';
-                quoteSecondText.parentElement.appendChild(papaGiftCard.content.firstElementChild.cloneNode(true));
-                selectedDate = date.toLocaleDateString('en-CA');
-                }
-                function acceptGiftCard() {
-                quoteFirstText.innerText = "Let’s get you set up";
-                quoteSecondText.innerText = "To keep things smooth, we need your contact info to save your progress and adjust your move later. We’re here to keep everything on track, just the way you want.";
-                quoteSecondText.style.fontSize = "41.5282px";
-                quoteSecondText.style.lineHeight = "48px";
-                quoteSecondText.parentElement.querySelector('[name=papaGiftCard]').style.display = 'none';
-                quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
-                }
-                function chooseBillingMethod() {
-                if (callEnquiry) {
-                location.reload();
-                return;
-                }
-                quoteFirstText.style.display = 'none';
-                quoteSecondText.style.display = 'none';
-                quoteSecondText.parentElement.querySelector('[name=contactForm]').style.display = 'none';
-                quoteSecondText.parentElement.parentElement.lastElementChild.before(loggedInUI.content.firstElementChild.cloneNode(true));
-                accountName.innerText = firstName.value;
-                fromLocation.innerText = pickUpPoint.value.split(', ')[0];
-                toLocation.innerText = destinationPoint.value.split(', ')[0];
-                }
-                let billingMethod = 'hourly';
-                function chooseRate () {
-                    if (billingMethod === 'hourly') {
-                        calendarRates = {
-                        "2024-08-01": 279,
-                        "2024-08-02": 149,
-                        "2024-08-03": 179,
-                        "2024-08-04": 119,
-                        "2024-08-05": 109,
-                        "2024-08-06": 189,
-                        "2024-08-07": 139,
-                        "2024-08-08": 139,
-                        "2024-08-09": 159,
-                        "2024-08-10": 129,
-                        "2024-08-11": 109,
-                        "2024-08-12": 99,
-                        "2024-08-13": 209,
-                        "2024-08-14": 129,
-                        "2024-08-15": 159,
-                        "2024-08-16": 199,
-                        "2024-08-17": 129,
-                        "2024-08-18": 149,
-                        "2024-08-19": 129,
-                        "2024-08-20": 119,
-                        "2024-08-21": 179,
-                        "2024-08-22": 189,
-                        "2024-08-23": 129,
-                        "2024-08-24": 219,
-                        "2024-08-25": 239,
-                        "2024-08-26": 179,
-                        "2024-08-27": 179,
-                        "2024-08-28": 199,
-                        "2024-08-29": 199,
-                        "2024-08-30": 249,
-                        "2024-08-31": 249,
-                        "2024-09-01": 149,
-                        };
-                        loggedInUI_chooseBilling.style.display = 'none';
-                        loggedInUI_bottom.style.display = 'none';
-                        loggedInUI_chooseHour.style.display = '';
-                        let c = calendar.content.firstElementChild.cloneNode(true);
-                        calendarSlot.after(c);
-                        calendarSlot.remove();
-                        c.style.marginLeft = "103px";
-                        c.style.marginTop = "79px";
-                        quoteLGDate.innerText = formatDate(selectedDate, true);
-                    }
-                    else if (billingMethod === 'flat') {
-                        loggedInUI_quoteForm.style.display = 'none';
-                        loggedInUI_chooseBilling.style.display = 'none';
-                        loggedInUI_bottom.style.display = 'none';
-                        loggedInUI_addFurnitureInfo.style.display = '';
-                        quotePopup.querySelector('.popup-child').style.backgroundColor = '#012122';
-                        for (let f of document.querySelectorAll('.firstName'))
-                            f.innerText = firstName.value;
-                    }
-                }
-                function goToConfirmation() {
-                loggedInUI_chooseHour.style.display = 'none';
-                loggedInUI_quoteForm.style.display = 'none';
-                loggedInUI_confirmMove.style.display = '';
-                quoteLGOrigin.innerText = pickUpPoint.value;
-                quoteLGDest.innerText = destinationPoint.value;
-                let price = calendarRates[selectedDate];
-                quoteLGDetails.innerHTML = `${truckNum.innerText} TRUCK${truckNum.innerText.trim() !== '1' ? 'S' : ''}, ${moverNum.innerText} MOVER${moverNum.innerText.trim() !== '1' ? 'S' : ''} @ $${price} / HOUR`;
-                }
-                function addCard () {
-                loggedInUI_confirmMove.style.display = 'none';
-                loggedInUI_addNewCard.style.display = '';
-                }
-                function saveCard () {
-                    loggedInUI_confirmMove.style.display = '';
-                    loggedInUI_addNewCard.style.display = 'none';
-                    let newCard = savedCard.content.firstElementChild.cloneNode(true);
-                    newCard.querySelector('[name=cardEnd]').innerText = acn_CN.value.slice(-4);
-                    cards.prepend(newCard);
-                }
-                function formatDate(dateString, format2 = false) {
-                    // List of month names
-                    const months = [
-                        'January', 'February', 'March', 'April', 'May', 'June',
-                        'July', 'August', 'September', 'October', 'November', 'December'
-                    ];
-    
-                    // Parse the date string (yyyy-mm-dd)
-                    const [year, month, day] = dateString.split('-').map(Number);
-    
-                    // Convert month number to month name
-                    const monthName = months[month - 1];
-    
-                    // Determine the ordinal suffix for the day
-                    let suffix = 'th';
-                    if (day % 10 === 1 && day % 100 !== 11) suffix = 'st';
-                    else if (day % 10 === 2 && day % 100 !== 12) suffix = 'nd';
-                    else if (day % 10 === 3 && day % 100 !== 13) suffix = 'rd';
-    
-                    // Format the date string
-                    return format2 ? `${day}${suffix} ${monthName} ${year}` : `${monthName} ${day}${suffix}, ${year}`;
-                }
-
-                function reserve () {
-                    moveDate.innerText = formatDate(selectedDate);
-                    loggedInUI_confirmMove.style.display = 'none';
-                    loggedInUI_moveConfirmed.style.display = '';
-                }
-
-                function nextBedroom () {
-                    let arr = ['Bedroom 1', 'Bedroom 2', 'Living Room', 'Basement', 'Specialty items'];
-                    let items = [
-                        [],
-                        ['Beds',
-                        'Dressers',
-                        'Nightstands',
-                        'Credenza'],
-                        ['Couch', 'Sofa', 'Loveseat', 'TV stand'],
-                        ['Boxes', 'Sofa', 'Loveseat', 'TV stand'],
-                        ['Piano', 'Pool table', 'Fridge', 'Safe']
-                    ];
-                    let imgs = ['bedroom1.png', 'bedroom2.png', 'livingRoom.png', 'basement.png', 'specialtyItems.png'];
-                    let idx = arr.indexOf(roomName.innerText) + 1;
-                    if (idx === arr.length) {
-                        loggedInUI_addFurnitureInfo.style.display = 'none';
-                        loggedInUI_flatFinalDetails.style.display = '';
-                        return;
-                    }
-                    roomName.innerText = arr[idx];
-                    roomImg.src = imgs[idx];
-                    furnitureCont.innerHTML = '';
-                    createFurniture(items[idx]);
-                }
-                function confirmFinalDetails () {
-                    loggedInUI_flatFinalDetails.style.display = 'none';
-                    loggedInUI_flatConfirmAndPay.style.display = '';
-                }
-            </script>
-            <style>
-                @media all and (min-width: 600px) {
-                #fullServiceQuoteBtn {
-                margin-top: 100px !important;
-                }
-                #selfServiceQuoteBtn {
-                margin-top: 39px!important;
-                }
-                #callMeBtn {
-                margin-top: 191px!important;
-                }
-                }
-            </style>
-            <button id=fullServiceQuoteBtn onclick="quoteSelectService('full')" style="text-align:left;margin-top:calc(458px - 370px);padding-top:calc(139px - 90px);display:flex;width: 959.88px;height: 282.83px;background: #EEEEEE;box-shadow: 1.09201px 1.09201px 109.201px 1.09201px rgba(0, 0, 0, 0.05);border-radius: 32.7603px;">
-                <div style="display:flex">
-                    <div style="margin-right:11px;margin-left:calc(135px - 85px)">
-                        <img width="162" height="162" src="fullService.png" />
-                    </div>
-                    <div style="margin-top:calc(55px - 39px)">
-                        <div style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.6005px;line-height: 63px;color: #00292A;">
-                            Full Service
-                        </div>
-                        <div style="margin-top:calc(49px - 13px);font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 39.3454px;line-height: 46px;color: #888888;">
-                            Book professional movers
-                        </div>
-                    </div>
-                </div>
-            </button>
-            <button id=selfServiceQuoteBtn onclick="quoteSelectService('self')" style="text-align:left;margin-top:calc(370px - 284px);padding-top:calc(46px - 28px);width: 959.88px;height: 282.83px;background: #EEEEEE;box-shadow: 1.09201px 1.09201px 109.201px 1.09201px rgba(0, 0, 0, 0.05);border-radius: 32.7603px;">
-                <div style="display:flex">
-                    <div style="margin-right:-22px;margin-left:calc(46px - 28px)">
-                        <img width="228" height="228" src="selfService.png" />
-                    </div>
-                    <div style="margin-top:calc(93px - 46px)">
-                        <div style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.6005px;line-height: 63px;color: #00292A;">
-                            Self Service
-                        </div>
-                        <div style="margin-top:calc(74px - 51px);font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 39.3454px;line-height: 46px;color: #888888;">
-                            Rent a truck
-                        </div>
-                    </div>
-                </div>
-            </button>
-            <button id=callMeBtn onclick="callMe()" style="display:block;margin-top:calc(459px - 111px);width: 531.42px;height: 148px;background: #F84734;border-radius: 40px;/* Call me instead */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 55.0006px;line-height: 64px;letter-spacing: -0.01em;color: #FFFFFF;">
-                <div style="display:flex;flex-direction:column;justify-content:center">
-                    Call me instead
-                </div>
-            </button>
+        </div>
+        <div class="btn-groups">
+            <div class="quote-btn">
+                <span>Book online</span>
+                <span class="btn-arrow">&#8594;</span>
+            </div>
+            <div class="quote-btn">
+                <span>Request a call</span>
+                <span class="btn-arrow">&#8594;</span>
+            </div>
         </div>
     </div>
 </template>
