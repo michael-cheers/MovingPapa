@@ -545,7 +545,15 @@
     }
     function nextStage () {
         stageIdx++;
-        displayStage();
+        if (stageIdx === stages.length) {
+            billingMethod = 'flat';
+            quotePopup.appendChild(loggedInUI.content.cloneNode(true));
+            chooseRate();
+            newPopupDesign.style.display = 'none';
+            stageDiv.style.display = 'none';
+        }
+        else
+            displayStage();
     }
     function displayStage() {
         newPopupDesign.style.display = '';
@@ -1905,7 +1913,7 @@ ${day}
                         flat rate, please provide accurate information
                     </div></div>
                     <div style="border-radius: 118.628px;background: #00292A;padding-bottom: 87px;">
-                    <div style="border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 2075px;flex-shrink: 0;">
+                    <div style="border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 975px;flex-shrink: 0;">
                         <div class=center style="padding-bottom:100px">
                             <img id=roomImg src="bedroom1.png" width=679 height=532 />
                         </div>
@@ -1966,7 +1974,7 @@ ${day}
                         flat rate, please provide accurate information
                     </div></div>
                     <div style="border-radius: 118.628px;background: #00292A;padding-bottom: 87px;">
-                    <div style="margin-right: 150px; padding-right: 50px; border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 2075px;flex-shrink: 0;">
+                    <div style="margin-right: 150px; padding-right: 50px; border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 975px;flex-shrink: 0;">
                         <img src="house.png" width="658" height="511" style="margin-bottom: 118px;margin-top: 41px;" />
                         <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
                             <div style="padding-left: 60px;padding-top: 31px;margin-bottom: 55px; font-family: 'Arial Rounded MT';font-style: normal;font-weight: 800;font-size: 40px;line-height: 47px;display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">Is there an elevator, or will we use the stairs?</div>
@@ -2781,7 +2789,7 @@ ${day}
                         5 items or less
                     </div>
                 </div>
-                <div style="width: 415px; border-radius: 38.034px; border: 7.924px solid #00292A; background: #012122;">
+                <div onclick="nextStage()" style="width: 415px; border-radius: 38.034px; border: 7.924px solid #00292A; background: #012122;">
                     <div class="center">
                         <svg width="163" height="163" viewBox="0 0 163 163" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="81.3964" cy="81.478" r="80.9355" fill="#00292A" /><path d="M92.5987 91.9494L81.0799 89L80.9998 63.5L81.0088 41H80.9998L61.2535 60.9421L41.4981 80.8931L41.5159 91.4068L41 92.065H41.5159L41.5604 121.48L69.6146 121.418L69.5701 92.0027L81.0799 91.976L92.5987 91.9494L92.6431 121.364L92.638 118L92.5987 91.9494Z" fill="#F84734" /><path d="M82.0609 43.5249L100.172 61.6844L119.689 81.2545L119.706 91.0033H119.704L119.706 92.0051L119.758 120.421L93.7039 120.478L93.661 92.0641L93.6595 91.0633L92.6587 91.0656L82.1367 91.09L82.0621 77.4742L82.0621 77.4639L82.1422 61.0632L82.1421 61.0528L82.0606 46.3376V46.3348V44.1144V44.1139L82.0609 43.5249Z" fill="#F84734" fill-opacity="0.42" stroke="white" stroke-width="2" /></svg>
                     </div>
@@ -2791,7 +2799,7 @@ ${day}
                 </div>
             </div>
             <div style="display: flex; justify-content: space-evenly; margin-bottom: 85px;">
-                <div style="width: 415px; border-radius: 38.034px; border: 7.924px solid #00292A; background: #012122;">
+                <div onclick="nextStage()" style="width: 415px; border-radius: 38.034px; border: 7.924px solid #00292A; background: #012122;">
                     <div class="center">
                         <svg width="162" height="162" viewBox="0 0 162 162" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="80.9355" cy="80.9355" r="80.9355" fill="#00292A" /><path d="M126.13 93.21L125.54 92.47L125.52 80.66L103.25 58.33L80.98 36H80.97L58.77 58.42L36.5599 80.85L36.58 92.67L36 93.41H36.58L36.63 126.48L68.17 126.41L68.12 93.34L81.0599 93.31L94.01 93.28L94.0599 126.35L125.6 126.28L125.54 93.21H126.13Z" fill="#F84734" /></svg>
                     </div>
