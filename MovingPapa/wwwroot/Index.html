@@ -765,21 +765,51 @@
                         @media all and (max-width: 600px) {
                         #whereAreYouMovingToText {
                         margin-bottom: 55px!important;
+                            #imgMover {
+                                margin-top: 125px;
+                            }
                         }
                         #btnDes {
                         font-size: 23px;
                         line-height: 52.43px;
                         margin-top: 50.89;
+
+                        @property --bg-angle {
+                            inherits: false;
+                            initial-value: 0deg;
+                            syntax: "<angle>";
                         }
-                        #imgMover {
-                        margin-top: 125px;
+
+                        @keyframes spin {
+                            to {
+                                --bg-angle: 360deg;
+                            }
                         }
+                        
+                        .rainbow-border {
+                            animation: spin 2.5s infinite linear paused;
+                            background-color: #FAFAFA;
+                            background:
+                                linear-gradient(
+                                    to bottom,
+                                    oklch(98.51% 0 0),
+                                    oklch(98.51% 0 0)
+                                )
+                                padding-box,
+                                conic-gradient(
+                                    from var(--bg-angle) in oklch longer hue,
+                                    oklch(0.85 0.37 0) 0 0
+                                )
+                                border-box;
+                            & {
+                                animation-play-state: running;
+                            }
                         }
                     </style>
                     <div id="whereAreYouMovingToText" style="margin-bottom: 29px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35.8236px;line-height: 38px;/* identical to box height */color: #FFFFFF;text-align:center;">
                         Where are you moving to?
                     </div>
-                    <div style="width: 100%;height: 87.53px;border-radius:calc(87.53px / 2);background: #FAFAFA;border: 5.23652px solid #F84734;display:flex;">
+                    <div class="rainbow-border" style="width: 100%;height: 87.53px;border-radius:calc(87.53px / 2);border: 5.23652px solid transparent;display:flex;">
                         <div style="height:100%;display:flex;justify-content:center;flex-direction:column;margin-left:calc(-24px - -44px)">
                             <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M51.0295 25.6806C51.0295 39.2766 40.0078 50.2983 26.4118 50.2983C12.8158 50.2983 1.79409 39.2766 1.79409 25.6806C1.79409 12.0846 12.8158 1.06284 26.4118 1.06284C40.0078 1.06284 51.0295 12.0846 51.0295 25.6806Z" fill="white" stroke="white" stroke-width="1.82353" />
