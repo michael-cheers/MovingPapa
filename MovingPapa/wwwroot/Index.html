@@ -1116,6 +1116,7 @@ font-family: " Arial Rounded MT Bold";
                     background: #013C3D;
                     padding-top: 49px;
                     padding-left: 49px;
+					padding-bottom: 40px;
                     display: flex;
                     margin-left: 125px;
                     margin-right: 125px;
@@ -1125,7 +1126,7 @@ font-family: " Arial Rounded MT Bold";
                     .transparency-bullet > div:first-of-type > div:first-of-type {
                         color: var(--9, #FFF);
                         font-family: "Arial Rounded MT Bold";
-                        font-size: 54.19px;
+                        font-size: 49.19px;
                         font-style: normal;
                         font-weight: 400;
                         line-height: 61.111px; /* 112.772% */
@@ -1155,10 +1156,12 @@ font-family: " Arial Rounded MT Bold";
                     svgs.push(svgs[0].nextElementSibling);
                     if (aboutText.style.height === '0px' || !aboutText.style.height) {
                         aboutText.style.height = aboutText.scrollHeight + 'px';
+						aboutText.style.marginBottom = '29px';
                         svgs[0].style.display = '';
                         svgs[1].style.display = 'none';
                     } else {
                         aboutText.style.height = '0px';
+						aboutText.style.marginBottom = '0px';
                         svgs[0].style.display = 'none';
                         svgs[1].style.display = '';
                     }
