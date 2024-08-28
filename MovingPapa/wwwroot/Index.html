@@ -865,6 +865,80 @@
         from full-service to DIY options. Our tech-driven platform ensures a smooth,<br />
         transparent process, so you can move with ease.
     </div>
+
+    <style>
+        .arrow {
+            color: white;
+            font-size: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-bottom: 13px;
+        }
+    
+        .left-arrow {
+            padding-right: 80px;
+        }
+    
+        .right-arrow {
+            background-color: #F84734;
+            border-radius: 50%;
+            width: 130px;
+            height: 130px;
+        
+        }
+    
+        .arrow-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    
+        .cards-container {
+            display: flex;
+            overflow: hidden;
+            max-width: 80%;
+        }
+    
+        .card.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+    
+        .card {
+            background-color: #ffffff;
+            color: #333333;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            margin: 0 10px;
+            padding: 20px;
+            text-align: left;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+    
+        .card .card-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+    
+        .card .card-description {
+            font-size: 0.9rem;
+            color: #666666;
+        }
+    
+        .card .card-title img {
+            margin-right: 8px;
+        }
+    </style>
+
+    <div class="arrow-group">
+        <div class="arrow left-arrow">←</div>
+        <div class="arrow right-arrow">→</div>
+    </div>
+    <div id="cards-container" class="cards-container"></div>
 </div>
 <div class=landing-content>
     <div style="/* Our commitment to transparency */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 61px;line-height: 71px;text-align: center;color: #000000;margin-top:calc(437px - 349px);margin-bottom:calc(627px - 437px);">
