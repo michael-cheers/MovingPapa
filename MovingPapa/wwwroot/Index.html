@@ -1021,38 +1021,59 @@ font-family: " Arial Rounded MT Bold";
                         line-height: 160%; /* 58.665px */
                     }
 
-                    .transparency-bullet > svg:first-of-type {
+                    .transparency-bullet > svg {
                         transform: scale(3);
                         transform-origin: 100% 55%;
                     }
             </style>
+            <script>
+                function showOrHide(el) {
+
+                    const aboutText = el.parentElement.firstElementChild.firstElementChild.nextElementSibling;
+                    let svgs = [el.parentElement.firstElementChild.nextElementSibling];
+                    svgs.push(svgs[0].nextElementSibling);
+                    if (aboutText.style.height === '0px' || !aboutText.style.height) {
+                        aboutText.style.height = aboutText.scrollHeight + 'px';
+                        svgs[0].style.display = '';
+                        svgs[1].style.display = 'none';
+                    } else {
+                        aboutText.style.height = '0px';
+                        svgs[0].style.display = 'none';
+                        svgs[1].style.display = '';
+                    }
+                }
+            </script>
             <div class="transparency-bullet">
                 <div>
                     <div>Clear, upfront Pricing</div>
-                    <div>We believe in honest communication from the start. We provide clear, upfront pricing with no hidden fees, so you know exactly what you’re paying for.</div>
+                    <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">We believe in honest communication from the start. We provide clear, upfront pricing with no hidden fees, so you know exactly what you’re paying for.</div>
                 </div>
-                <svg width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
+                <svg onclick="showOrHide(this)" style="display:none" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
+                <svg onclick="showOrHide(this)" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M36.7778 18.8335C35.0903 18.8335 33.7222 20.2015 33.7222 21.8891V34.1113H21.5C19.8125 34.1113 18.4445 35.4793 18.4445 37.1668C18.4445 38.8544 19.8125 40.2224 21.5 40.2224H33.7222V52.4446C33.7222 54.1321 35.0903 55.5002 36.7778 55.5002C38.4653 55.5002 39.8333 54.1321 39.8333 52.4446V40.2224H52.0556C53.7431 40.2224 55.1111 38.8544 55.1111 37.1668C55.1111 35.4793 53.7431 34.1113 52.0556 34.1113H39.8333V21.8891C39.8333 20.2015 38.4653 18.8335 36.7778 18.8335Z" fill="#F84734" /></svg>
             </div>
             <div class="transparency-bullet">
                 <div>
-                    <div>Real-time tracking</div>
-                    <div>We believe in honest communication from the start. We provide clear, upfront pricing with no hidden fees, so you know exactly what you’re paying for.</div>
+                    <div>Clear, upfront Pricing</div>
+                    <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">We believe in honest communication from the start. We provide clear, upfront pricing with no hidden fees, so you know exactly what you’re paying for.</div>
                 </div>
-                <svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M36.7778 18.8335C35.0903 18.8335 33.7222 20.2015 33.7222 21.8891V34.1113H21.5C19.8125 34.1113 18.4445 35.4793 18.4445 37.1668C18.4445 38.8544 19.8125 40.2224 21.5 40.2224H33.7222V52.4446C33.7222 54.1321 35.0903 55.5002 36.7778 55.5002C38.4653 55.5002 39.8333 54.1321 39.8333 52.4446V40.2224H52.0556C53.7431 40.2224 55.1111 38.8544 55.1111 37.1668C55.1111 35.4793 53.7431 34.1113 52.0556 34.1113H39.8333V21.8891C39.8333 20.2015 38.4653 18.8335 36.7778 18.8335Z" fill="#F84734"/></svg>
+                <svg onclick="showOrHide(this)" style="display:none" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
+                <svg onclick="showOrHide(this)" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M36.7778 18.8335C35.0903 18.8335 33.7222 20.2015 33.7222 21.8891V34.1113H21.5C19.8125 34.1113 18.4445 35.4793 18.4445 37.1668C18.4445 38.8544 19.8125 40.2224 21.5 40.2224H33.7222V52.4446C33.7222 54.1321 35.0903 55.5002 36.7778 55.5002C38.4653 55.5002 39.8333 54.1321 39.8333 52.4446V40.2224H52.0556C53.7431 40.2224 55.1111 38.8544 55.1111 37.1668C55.1111 35.4793 53.7431 34.1113 52.0556 34.1113H39.8333V21.8891C39.8333 20.2015 38.4653 18.8335 36.7778 18.8335Z" fill="#F84734" /></svg>
             </div>
             <div class="transparency-bullet">
                 <div>
-                    <div>Fully sustainable</div>
-                    <div>We believe in honest communication from the start. We provide clear, upfront pricing with no hidden fees, so you know exactly what you’re paying for.</div>
+                    <div>Clear, upfront Pricing</div>
+                    <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">We believe in honest communication from the start. We provide clear, upfront pricing with no hidden fees, so you know exactly what you’re paying for.</div>
                 </div>
-                <svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M36.7778 18.8335C35.0903 18.8335 33.7222 20.2015 33.7222 21.8891V34.1113H21.5C19.8125 34.1113 18.4445 35.4793 18.4445 37.1668C18.4445 38.8544 19.8125 40.2224 21.5 40.2224H33.7222V52.4446C33.7222 54.1321 35.0903 55.5002 36.7778 55.5002C38.4653 55.5002 39.8333 54.1321 39.8333 52.4446V40.2224H52.0556C53.7431 40.2224 55.1111 38.8544 55.1111 37.1668C55.1111 35.4793 53.7431 34.1113 52.0556 34.1113H39.8333V21.8891C39.8333 20.2015 38.4653 18.8335 36.7778 18.8335Z" fill="#F84734"/></svg>
+                <svg onclick="showOrHide(this)" style="display:none" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
+                <svg onclick="showOrHide(this)" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M36.7778 18.8335C35.0903 18.8335 33.7222 20.2015 33.7222 21.8891V34.1113H21.5C19.8125 34.1113 18.4445 35.4793 18.4445 37.1668C18.4445 38.8544 19.8125 40.2224 21.5 40.2224H33.7222V52.4446C33.7222 54.1321 35.0903 55.5002 36.7778 55.5002C38.4653 55.5002 39.8333 54.1321 39.8333 52.4446V40.2224H52.0556C53.7431 40.2224 55.1111 38.8544 55.1111 37.1668C55.1111 35.4793 53.7431 34.1113 52.0556 34.1113H39.8333V21.8891C39.8333 20.2015 38.4653 18.8335 36.7778 18.8335Z" fill="#F84734" /></svg>
             </div>
             <div class="transparency-bullet">
                 <div>
-                    <div>Non-intrusive service</div>
-                    <div>We believe in honest communication from the start. We provide clear, upfront pricing with no hidden fees, so you know exactly what you’re paying for.</div>
+                    <div>Clear, upfront Pricing</div>
+                    <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">We believe in honest communication from the start. We provide clear, upfront pricing with no hidden fees, so you know exactly what you’re paying for.</div>
                 </div>
-                <svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M36.7778 18.8335C35.0903 18.8335 33.7222 20.2015 33.7222 21.8891V34.1113H21.5C19.8125 34.1113 18.4445 35.4793 18.4445 37.1668C18.4445 38.8544 19.8125 40.2224 21.5 40.2224H33.7222V52.4446C33.7222 54.1321 35.0903 55.5002 36.7778 55.5002C38.4653 55.5002 39.8333 54.1321 39.8333 52.4446V40.2224H52.0556C53.7431 40.2224 55.1111 38.8544 55.1111 37.1668C55.1111 35.4793 53.7431 34.1113 52.0556 34.1113H39.8333V21.8891C39.8333 20.2015 38.4653 18.8335 36.7778 18.8335Z" fill="#F84734"/></svg>
+                <svg onclick="showOrHide(this)" style="display:none" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
+                <svg onclick="showOrHide(this)" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M36.7778 18.8335C35.0903 18.8335 33.7222 20.2015 33.7222 21.8891V34.1113H21.5C19.8125 34.1113 18.4445 35.4793 18.4445 37.1668C18.4445 38.8544 19.8125 40.2224 21.5 40.2224H33.7222V52.4446C33.7222 54.1321 35.0903 55.5002 36.7778 55.5002C38.4653 55.5002 39.8333 54.1321 39.8333 52.4446V40.2224H52.0556C53.7431 40.2224 55.1111 38.8544 55.1111 37.1668C55.1111 35.4793 53.7431 34.1113 52.0556 34.1113H39.8333V21.8891C39.8333 20.2015 38.4653 18.8335 36.7778 18.8335Z" fill="#F84734" /></svg>
             </div>
         </div>
         <div class=pc-width-50></div>
