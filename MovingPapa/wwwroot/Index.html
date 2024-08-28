@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home page - MovingPapa</title>
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/flickity/flickity.min.css" />
     <link rel="stylesheet" href="css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="MovingPapa.styles.css" asp-append-version="true" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -957,7 +958,7 @@
         </div>
     </div>
 </div>
-<div class="bottom-bg landing-content">
+<div class="bottom-bg landing-content" style="padding: 0px;">
     <div style="font-style: normal;font-weight: 400;font-size: 60px;line-height: 69px;text-align: center;color: #FFFFFF;padding-top:calc(2116px - 2048px);" class="arial-rounded-mt">
         <b>Our Services:</b> Making your<br />
         move a breeze
@@ -967,6 +968,126 @@
         from full-service to DIY options. Our tech-driven platform ensures a smooth,<br />
         transparent process, so you can move with ease.
     </div>
+    <style>
+        .gallery {
+            background: #00292A;
+            margin-top: 100px;
+            padding: 100px 0px 50px 0px;
+        }
+
+        .gallery-cell {
+            background: #ddd;
+            border-radius: 45px;    
+            counter-increment: gallery-cell;
+            font-family: "Arial Rounded MT Bold";
+            font-weight: 400;
+            height: 506px;
+            padding: 70px;
+            margin-right: 250px;
+            width: 646px;
+
+            div {
+                margin-top: 30px;
+
+                h1 {
+                    color: #020800;
+                    font-size: 42.43px;
+                    line-height: 59.4px;
+                }
+
+                h6 {
+                    color: #98A393;
+                    font-family: "DM Sans";
+                    font-size: 24.75px;
+                    line-height: 39.6px;
+                    margin-left: 15px;                  
+                }
+            }
+
+            h3 {
+                color: #00292A;
+                font-size: 28.29px;
+                line-height: 45.26px;
+            }
+        }
+
+        .gallery-cell.is-selected {
+            background: #fff;
+        }
+
+        .flickity-prev-next-button {
+            background: transparent;
+            color: white;
+            width: 174px;
+            height: 174px;
+            top: 0px;
+            &.previous {
+                left: calc(100vw/3);
+            };
+            &.next {
+                right: calc(100vw/3);
+            };
+            &:hover {
+                background: #F84734;
+            }
+        }
+        .flickity-button-icon {
+            path {
+                stroke: white;
+                stroke-width: 10;
+            }
+        }
+    </style>
+    <div class="gallery">
+        <div class="gallery-cell">
+            <img src="delivery.png"/>
+            <div style="display: flex;">
+                <h1>Local Moving</h1>
+                <h6>01</h6>
+            </div>
+            <h3>Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.</h3>
+        </div>
+        <div class="gallery-cell">
+            <img src="delivery.png"/>
+            <div style="display: flex;">
+                <h1>Local Moving</h1>
+                <h6>02</h6>
+            </div>
+            <h3>Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.</h3>
+        </div>
+        <div class="gallery-cell">
+            <img src="delivery.png"/>
+            <div style="display: flex;">
+                <h1>Local Moving</h1>
+                <h6>03</h6>
+            </div>
+            <h3>Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.</h3>
+        </div>
+        <div class="gallery-cell">
+            <img src="delivery.png"/>
+            <div style="display: flex;">
+                <h1>Local Moving</h1>
+                <h6>04</h6>
+            </div>
+            <h3>Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.</h3>
+        </div>
+        <div class="gallery-cell">
+            <img src="delivery.png"/>
+            <div style="display: flex;">
+                <h1>Local Moving</h1>
+                <h6>05</h6>
+            </div>
+            <h3>Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.</h3>
+        </div>
+        <div class="gallery-cell">
+            <img src="delivery.png"/>
+            <div style="display: flex;">
+                <h1>Local Moving</h1>
+                <h6>06</h6>
+            </div>
+            <h3>Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.</h3>
+        </div>
+  </div>
 </div>
 <div class=landing-content>
     <div style="/* Our commitment to transparency */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 61px;line-height: 71px;text-align: center;color: #000000;margin-top:calc(437px - 349px);margin-bottom:calc(627px - 437px);">
@@ -2888,7 +3009,17 @@ ${day}
 
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/flickity/flickity.pkgd.min.js"></script>
     <script src="js/site.js" asp-append-version="true"></script>
+    <script>
+        $('.gallery').flickity({
+            arrowShape: 'M 7 53 L 40 15 M 7 47 L 40 85 M 10 50 L 90 50',    
+            cellPosition: 'center',
+            wrapAround: true,
+            draggable: true,
+            pageDots: false
+        });
+    </script>
 
     <!--@await RenderSectionAsync("Scripts", required: false)-->
 </body>
