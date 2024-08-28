@@ -786,22 +786,31 @@
                         }
 
                         @keyframes spin {
+                            from {
+                                background: linear-gradient( to bottom, var(--bg-color), var(--bg-color) ) padding-box, conic-gradient( from var(--bg-angle) in oklch longer hue, oklch(0.85 0.37 0) 0 0 ) border-box;
+                            }
+
                             to {
                                 --bg-angle: 360deg;
+                                background: linear-gradient( to bottom, var(--bg-color), var(--bg-color) ) padding-box, conic-gradient( from var(--bg-angle) in oklch longer hue, oklch(0.85 0.37 0) 0 0 ) border-box;
                             }
+                        }
+                        .rainbow-border {
+                            --bg-color: #FAFAFA;
+                        }
+
+                        .rainbow-border-orange {
+                            --bg-color: #F84734;
                         }
 
                         .rainbow-border, .rainbow-border-orange {
                             border: 5.23652px solid transparent;
                             animation: spin 2.5s infinite linear paused;
-                            background-color: #FAFAFA;
-                            background: linear-gradient( to bottom, oklch(98.51% 0 0), oklch(98.51% 0 0) ) padding-box, conic-gradient( from var(--bg-angle) in oklch longer hue, oklch(0.85 0.37 0) 0 0 ) border-box;
+                            background: var(--bg-color);
                             & {
+                                animation-delay: 1s;
                                 animation-play-state: running;
                             }
-                        }
-                        .rainbow-border-orange {
-                            background: linear-gradient( to bottom, oklch(65.28% 0.216 30.02), oklch(65.28% 0.216 30.02) ) padding-box, conic-gradient( from var(--bg-angle) in oklch longer hue, oklch(0.85 0.37 0) 0 0 ) border-box;
                         }
 
                         .focus-orange {
