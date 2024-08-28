@@ -874,71 +874,187 @@
             justify-content: center;
             align-items: center;
             padding-bottom: 13px;
-        }
-    
-        .left-arrow {
-            padding-right: 80px;
-        }
-    
-        .right-arrow {
-            background-color: #F84734;
             border-radius: 50%;
             width: 130px;
             height: 130px;
-        
+            background-color: transparent;
+            border: none;
+            outline: none;
         }
-    
+
+        .left-arrow {
+            margin-right: 80px;
+        }
+
+        .right-arrow {
+            background-color: #F84734;
+        }
+
         .arrow-group {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-    
-        .cards-container {
+
+        .card-slide {
             display: flex;
+            padding-top: 156px;
+            padding-bottom: 86px;
+            width: 100%;
             overflow: hidden;
-            max-width: 80%;
+            background-color: #00292A;
+            justify-content: center;
+            text-align: center;
         }
-    
-        .card.active {
-            opacity: 1;
-            transform: scale(1);
+
+        .cards-container{
+            width: 200%;
+            display: flex;
+            gap: 70px;
         }
-    
-        .card {
+
+        .card-one {
+            width: 646px;
+            height: 606px;
+            color: black;
+        }
+
+        .card-main {
+            width: 646px;
+            height: 506px;
             background-color: #ffffff;
-            color: #333333;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            min-width: 200px;
-            margin: 0 10px;
-            padding: 20px;
-            text-align: left;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            border-radius: 45px;
+            padding: 56px;
+            display: flex;
+            flex-direction: column;
+            gap: 56px;
         }
-    
-        .card .card-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+
+        .card-image {
+            text-align: left;
+        }
+
+        .card-title {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card-title h4 {
+            font-family: Arial Rounded MT Bold;
+            font-size: 42.43px;
+            font-weight: 400;
+            line-height: 59.4px;
+            text-align: left;
+
+        }
+
+        .card-title span {
+            font-family: DM Sans;
+            font-size: 24.75px;
+            font-weight: 400;
+            line-height: 39.6px;
+            text-align: left;
+        }
+
+        .card-description {
+            font-family: Arial Rounded MT;
+            font-size: 28.29px;
+            font-weight: 400;
+            line-height: 45.26px;
+            text-align: left;
+        }
+
+        .card-footer {
+            width: 100%;
             display: flex;
             align-items: center;
+            background-color: transparent;
+            border: none;
+            padding: 0;
         }
-    
-        .card .card-description {
-            font-size: 0.9rem;
-            color: #666666;
+
+        .card-line {
+            width: 100%;
+            height: 2px;
+            background-color: #DEE2DD;
+            border: none;
         }
-    
-        .card .card-title img {
-            margin-right: 8px;
+
+        .card-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: #DEE2DD;
+            border: none;
         }
     </style>
 
     <div class="arrow-group">
-        <div class="arrow left-arrow">←</div>
-        <div class="arrow right-arrow">→</div>
+        <button class="arrow left-arrow" onclick="plusSlides(-1)">←</button>
+        <button class="arrow right-arrow" onclick="plusSlides(1)">→</button>
     </div>
-    <div id="cards-container" class="cards-container"></div>
+    <div class="card-slide">
+        <div id="cards-container" class="cards-container">
+            <div id="slide1" class="card-main">
+                <div class="card-image">
+                    <img src="delivery.png" alt="delivery" />
+                </div>
+                <div class="card-content">
+                    <div class="card-title">
+                        <h4>Local Moving</h4>
+                        <span>01</span>
+                    </div>
+                    <div class="card-description">
+                        Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-dot"></div>
+                    <div class="card-line"></div>
+                    <div class="card-dot"></div>
+                </div>
+            </div>
+            <div id="slide2" class="card-main">
+                <div class="card-image">
+                    <img src="delivery.png" alt="delivery" />
+                </div>
+                <div class="card-content">
+                    <div class="card-title">
+                        <h4>Local Moving</h4>
+                        <span>02</span>
+                    </div>
+                    <div class="card-description">
+                        Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-dot"></div>
+                    <div class="card-line"></div>
+                    <div class="card-dot"></div>
+                </div>
+            </div>
+            <div id="slide3" class="card-main">
+                <div class="card-image">
+                    <img src="delivery.png" alt="delivery" />
+                </div>
+                <div class="card-content">
+                    <div class="card-title">
+                        <h4>Local Moving</h4>
+                        <span>03</span>
+                    </div>
+                    <div class="card-description">
+                        Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="card-dot"></div>
+                    <div class="card-line"></div>
+                    <div class="card-dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 <div class=landing-content>
     <div style="/* Our commitment to transparency */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 61px;line-height: 71px;text-align: center;color: #000000;margin-top:calc(437px - 349px);margin-bottom:calc(627px - 437px);">
