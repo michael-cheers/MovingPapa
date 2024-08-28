@@ -1001,8 +1001,8 @@
                 </div>
                 <div class="card-content">
                     <div class="card-title">
-                        <h4>Local Moving</h4>
-                        <span>01</span>
+                        <h4>Local Moving 1</h4>
+                        <span>1</span>
                     </div>
                     <div class="card-description">
                         Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.
@@ -1020,8 +1020,8 @@
                 </div>
                 <div class="card-content">
                     <div class="card-title">
-                        <h4>Local Moving</h4>
-                        <span>02</span>
+                        <h4>Local Moving 2</h4>
+                        <span>2</span>
                     </div>
                     <div class="card-description">
                         Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.
@@ -1039,8 +1039,8 @@
                 </div>
                 <div class="card-content">
                     <div class="card-title">
-                        <h4>Local Moving</h4>
-                        <span>03</span>
+                        <h4>Local Moving 3</h4>
+                        <span>3</span>
                     </div>
                     <div class="card-description">
                         Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.
@@ -1055,6 +1055,97 @@
         </div>
     </div>
 
+    <script>
+        const cardsInfo = [
+            {
+                id: 0,
+                img: "delivery.png",
+                title: "Local Moving0",
+                description: "Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.",
+            },
+            {
+                id: 1,
+                img: "delivery.png",
+                title: "Local Moving1",
+                description: "Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.",
+            },
+            {
+                id: 2,
+                img: "delivery.png",
+                title: "Local Moving2",
+                description: "Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.",
+            },
+            {
+                id: 3,
+                img: "delivery.png",
+                title: "Local Moving3",
+                description: "Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.",
+            },
+            {
+                id: 4,
+                img: "delivery.png",
+                title: "Local Moving4",
+                description: "Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.",
+            },
+            {
+                id: 5,
+                img: "delivery.png",
+                title: "Local Moving5",
+                description: "Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.",
+            },
+            {
+                id: 6,
+                img: "delivery.png",
+                title: "Local Moving6",
+                description: "Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.",
+            },
+            {
+                id: 7,
+                img: "delivery.png",
+                title: "Local Moving7",
+                description: "Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.",
+            },
+            {
+                id: 8,
+                img: "delivery.png",
+                title: "Local Moving8",
+                description: "Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.",
+            },
+        ]
+
+        let currentSlide = 0;
+        const slideLength = 9;
+
+        const plusSlides = (way) => {
+            currentSlide = (currentSlide + way + slideLength) % slideLength;
+            console.log(currentSlide);
+            showSlides(currentSlide);
+        }
+
+        const showSlides = (slide) => {
+            for (let i = 0; i < 3; i++) {
+                document.getElementById("slide" + (i + 1)).innerHTML = `
+                    <div class="card-image">
+                        <img src="${cardsInfo[(i + currentSlide) % slideLength].img}" alt="delivery" />
+                    </div>
+                    <div class="card-content">
+                        <div class="card-title">
+                            <h4>Local Moving ${cardsInfo[(i + currentSlide) % slideLength].id + 1}</h4>
+                            <span>${cardsInfo[(i + currentSlide) % slideLength].id + 1}</span>
+                        </div>
+                        <div class="card-description">
+                            Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-dot"></div>
+                        <div class="card-line"></div>
+                        <div class="card-dot"></div>
+                    </div>`;
+            }
+        }
+
+    </script>
 </div>
 <div class=landing-content>
     <div style="/* Our commitment to transparency */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 61px;line-height: 71px;text-align: center;color: #000000;margin-top:calc(437px - 349px);margin-bottom:calc(627px - 437px);">
