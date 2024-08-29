@@ -2308,9 +2308,6 @@ ${day}
                 </div>
             </div></div>
             <style>
-                body::-webkit-scrollbar {
-                    display: none;
-                }
                 .break-line {
                     width: 100%;
                     height: 4px;
@@ -2457,7 +2454,7 @@ ${day}
                 }
             </style>
             <div id=loggedInUI_flatConfirmAndPay style="display:none; overflow-y: scroll;">
-                <div style="overflow-y: scroll">
+                <div style="max-height: 250vh; overflow-y: scroll; height: auto;">
                     <div style='border-bottom: 1px solid #00292A;padding-bottom: 19px;margin-bottom: 92px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;' class="flatConfirmPay-body">
                         <div class="flatConfirmPay-head">
                             <div class="flatConfirmPay-head-image">
