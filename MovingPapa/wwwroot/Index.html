@@ -631,38 +631,63 @@
                             chooseRate();
                             newPopupDesign.style.display = 'none';
                             stageDiv.style.display = 'none';
-                        }
-                        else
+                        } else {
                             displayStage();
+                        }
                     }
+
                     function displayStage() {
                         newPopupDesign.style.display = '';
                         let stage = stages[stageIdx];
+
                         if (stage[2] == stage3) {
                             document.getElementById("progress").style = "display:none";
-                            document.getElementById("newPopupDesign").style = " width:68%;   background-color: #00292A;border-top-right-radius: 90px;border-top-left-radius: 90px;position: absolute;top: 39px;left: 0;"
-                            progressInd1.style = "font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.1899px;line-height: 63px;display: flex;align-items: center;color: #FFFFFF;position: relative;top: 11rem;width:52rem";
+                            document.getElementById("newPopupDesign").style = "width:68%; background-color: #00292A; border-top-right-radius: 90px; border-top-left-radius: 90px; position: absolute; top: 39px; left: 0;";
+                            progressInd1.style = "font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 54.1899px; line-height: 63px; display: flex; align-items: center; color: #FFFFFF; position: relative; top: 11rem; width:52rem";
                         }
+
                         progressIndImg.src = stage[4];
                         progressIndBar.value = stage[3];
                         progressInd1.innerText = stage[0];
                         progressInd2.innerText = stage[1];
+
                         let els = stage[2];
                         if (stageDiv !== undefined)
                             stageDiv.style.display = 'none';
+
                         let tempDiv = document.createElement('div');
                         if (!(els instanceof Array))
                             els = [els];
+
                         for (let el of els) {
                             if (el instanceof HTMLTemplateElement)
                                 tempDiv.appendChild(el.content.cloneNode(true));
                             else
                                 tempDiv.appendChild(el.cloneNode(true));
                         }
+
                         popupMainPart.appendChild(tempDiv);
                         stageDiv = tempDiv;
-                        stage[3]
+
+                        if (stage[2] == stage3) {
+                            const moveItems = document.querySelectorAll('.move-item');
+
+                            moveItems.forEach((item) => {
+                                const toggleBtn = item.querySelector('.toggle-btn');
+
+                                toggleBtn.addEventListener('click', () => {
+                                    moveItems.forEach(i => {
+                                        i.classList.remove('active-move-item');
+                                        i.querySelector('.toggle-btn').textContent = '+';
+                                    });
+
+                                    item.classList.add('active-move-item');
+                                    toggleBtn.textContent = '−';
+                                });
+                            });
+                        }
                     }
+
                     function addStop(stopBtn) {
                         let betweenInputs = stopBtn.parentElement;
                         let destinationInput = betweenInputs.nextElementSibling;
@@ -4455,40 +4480,65 @@ ${day}
                 <h2 style="font-size: 48px; font-weight: 800;text-align: left;">Move types</h2>
                 <div style="display: flex;flex-direction: column;gap: 1.5rem;">
 
-                    <div
-                        style=" padding: 15px; border-radius: 25px; margin-bottom: 10px; border: 4.58px solid #F84734; display: flex; justify-content: space-between; align-items: center;height: 280px;">
+                    <div class="move-item active-move-item">
                         <div>
-                            <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <div
+                                style="display: flex;justify-content: space-between;align-items: center;position: relative;width: 100%;">
                                 <h3 style="font-size:  42px;font-weight: 600; margin: 0;">5 items or less</h3>
-                                <button
-                                    style="background-color: transparent; border: none; color: red; font-size: 4rem;">−</button>
+                                <button class="toggle-btn"
+                                    style="background-color: transparent; border: none; color: red; font-size: 5rem;">−</button>
                             </div>
-                            <p style="font-size: 38px;font-weight: 400; color: #E7E7E7; margin-top: 5px;">Ideal for
+                            <p class="description"
+                                style="font-size: 38px;font-weight: 400; color: #E7E7E7; margin-top: 5px;">Ideal for
                                 those light moves where you’re only
                                 taking a few items like deliveries. MUST BE LESS THAN 5 ITEMS</p>
                         </div>
 
                     </div>
 
-                    <div style=" padding: 15px; border-radius: 25px;height: 240px; margin-bottom: 10px; border: 4.58px solid 
-#013C3D; display: flex; justify-content: space-between; align-items: start;">
-                        <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Partial move</h3>
-                        <button
-                            style="background-color: transparent; border: none; color: red; font-size: 5rem;">+</button>
+                    <div class="move-item">
+                        <div>
+                            <div
+                                style="display: flex;justify-content: space-between;align-items: center;position: relative;width: 100%;">
+                                <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Partial move</h3>
+                                <button class="toggle-btn"
+                                    style="background-color: transparent; border: none; color: red; font-size: 5rem;">+</button>
+                            </div>
+                            <p class="description"
+                                style="font-size: 38px;font-weight: 400; color: #E7E7E7; margin-top: 5px;">Ideal for
+                                those light moves where you’re only
+                                taking a few items like deliveries. MUST BE LESS THAN 5 ITEMS</p>
+                        </div>
                     </div>
 
-                    <div style=" padding: 15px;height: 240px; border-radius: 25px; margin-bottom: 10px;border: 4.58px solid 
-#013C3D;display: flex; justify-content: space-between; align-items: start;">
-                        <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Full home</h3>
-                        <button
-                            style="background-color: transparent; border: none; color: red; font-size: 5rem;">+</button>
+                    <div class="move-item">
+                        <div>
+                            <div
+                                style="display: flex;justify-content: space-between;align-items: center;position: relative;width: 100%;">
+                                <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Full home</h3>
+                                <button class="toggle-btn"
+                                    style="background-color: transparent; border: none; color: red; font-size: 5rem;">+</button>
+                            </div>
+                            <p class="description"
+                                style="font-size: 38px;font-weight: 400; color: #E7E7E7; margin-top: 5px;">Ideal for
+                                those light moves where you’re only
+                                taking a few items like deliveries. MUST BE LESS THAN 5 ITEMS</p>
+                        </div>
                     </div>
 
-                    <div style=" padding: 15px;height: 240px; border-radius: 25px; margin-bottom: 10px;border: 4.58px solid 
-#013C3D;display: flex; justify-content: space-between; align-items: start;">
-                        <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Commercial</h3>
-                        <button
-                            style="background-color: transparent; border: none;  color: red; font-size: 5rem;">+</button>
+                    <div class="move-item">
+                        <div>
+                            <div
+                                style="display: flex;justify-content: space-between;align-items: center;position: relative;width: 100%;">
+                                <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Commercial</h3>
+                                <button class="toggle-btn"
+                                    style="background-color: transparent; border: none;  color: red; font-size: 5rem;">+</button>
+                            </div>
+                            <p class="description"
+                                style="font-size: 38px;font-weight: 400; color: #E7E7E7; margin-top: 5px;">Ideal for
+                                those light moves where you’re only
+                                taking a few items like deliveries. MUST BE LESS THAN 5 ITEMS</p>
+                        </div>
                     </div>
                 </div>
 
@@ -4504,8 +4554,35 @@ ${day}
             </div>
         </div>
     </template>
+    <style>
+        .move-item {
+            padding: 15px;
+            height: 240px;
+            border-radius: 25px;
+            margin-bottom: 10px;
+            border: 4.58px solid #013C3D;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            transition: height 0.3s ease, border-color 0.3s ease;
+        }
 
+        .move-item .description {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.3s ease, opacity 0.3s ease;
+        }
 
+        .move-item.active-move-item .description {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .move-item.active-move-item {
+            border: 4.58px solid #F84734;
+            height: 320px;
+        }
+    </style>
 
     <footer class="border-top footer text-muted">
         <div class="container">
