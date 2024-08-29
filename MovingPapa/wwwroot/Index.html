@@ -976,21 +976,22 @@
         }
 
         .gallery-cell {
-            background: #ddd;
+            background: #00292A;
+            border: 7px solid #FFFFFF40;
             border-radius: 45px;    
             counter-increment: gallery-cell;
             font-family: "Arial Rounded MT Bold";
             font-weight: 400;
             height: 506px;
-            padding: 70px;
-            margin-right: 250px;
+            padding: 60px;
+            margin-right: 20vw;
             width: 646px;
 
             div {
                 margin-top: 30px;
 
                 h1 {
-                    color: #020800;
+                    color: white;
                     font-size: 42.43px;
                     line-height: 59.4px;
                 }
@@ -1005,14 +1006,17 @@
             }
 
             h3 {
-                color: #00292A;
+                color: white;
                 font-size: 28.29px;
                 line-height: 45.26px;
             }
         }
 
-        .gallery-cell.is-selected {
-            background: #fff;
+        @media screen and (max-width: 720px) {
+            .gallery-cell {
+                margin-right: 5vw;
+                width: 530px;
+            }
         }
 
         .flickity-prev-next-button {
@@ -1021,12 +1025,14 @@
             width: 174px;
             height: 174px;
             top: 0px;
+
             &.previous {
                 left: calc(100vw/3);
-            };
+            }
             &.next {
                 right: calc(100vw/3);
-            };
+            }
+
             &:hover {
                 background: #F84734;
             }
@@ -1034,13 +1040,13 @@
         .flickity-button-icon {
             path {
                 stroke: white;
-                stroke-width: 10;
+                stroke-width: 8.69;
             }
         }
     </style>
     <div class="gallery">
         <div class="gallery-cell">
-            <img src="delivery.png"/>
+            <img src="delivery-white.png"/>
             <div style="display: flex;">
                 <h1>Local Moving</h1>
                 <h6>01</h6>
@@ -1048,7 +1054,7 @@
             <h3>Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.</h3>
         </div>
         <div class="gallery-cell">
-            <img src="delivery.png"/>
+            <img src="delivery-white.png"/>
             <div style="display: flex;">
                 <h1>Local Moving</h1>
                 <h6>02</h6>
@@ -1056,7 +1062,7 @@
             <h3>Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.</h3>
         </div>
         <div class="gallery-cell">
-            <img src="delivery.png"/>
+            <img src="delivery-white.png"/>
             <div style="display: flex;">
                 <h1>Local Moving</h1>
                 <h6>03</h6>
@@ -1064,7 +1070,7 @@
             <h3>Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.</h3>
         </div>
         <div class="gallery-cell">
-            <img src="delivery.png"/>
+            <img src="delivery-white.png"/>
             <div style="display: flex;">
                 <h1>Local Moving</h1>
                 <h6>04</h6>
@@ -1072,7 +1078,7 @@
             <h3>Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.</h3>
         </div>
         <div class="gallery-cell">
-            <img src="delivery.png"/>
+            <img src="delivery-white.png"/>
             <div style="display: flex;">
                 <h1>Local Moving</h1>
                 <h6>05</h6>
@@ -1080,7 +1086,7 @@
             <h3>Lorem morbi et amet suscipit. At sed proin quis risus urna a. Magna in odio in urna amet ultrices fermentum.</h3>
         </div>
         <div class="gallery-cell">
-            <img src="delivery.png"/>
+            <img src="delivery-white.png"/>
             <div style="display: flex;">
                 <h1>Local Moving</h1>
                 <h6>06</h6>
@@ -3012,12 +3018,14 @@ ${day}
     <script src="lib/flickity/flickity.pkgd.min.js"></script>
     <script src="js/site.js" asp-append-version="true"></script>
     <script>
-        $('.gallery').flickity({
-            arrowShape: 'M 7 53 L 40 15 M 7 47 L 40 85 M 10 50 L 90 50',    
-            cellPosition: 'center',
-            wrapAround: true,
-            draggable: true,
-            pageDots: false
+        $(document).ready(function() {
+            $('.gallery').flickity({
+                arrowShape: 'M 7 53 L 40 15 M 7 47 L 40 85 M 10 50 L 90 50',    
+                cellPosition: 'center',
+                wrapAround: true,
+                draggable: true,
+                pageDots: false
+            });
         });
     </script>
 
