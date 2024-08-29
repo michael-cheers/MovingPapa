@@ -565,12 +565,18 @@
 			["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
 									(() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=origOrDest]').innerText = 'destination'; return c; })(),
                 432, 'monster3.png'],
-            ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 643, 'monster4.png']
+            ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 643, 'monster4.png'],
+            ["Great choice! how can we reach you?", "", quoteContactForm, -1, 'monsterCall.png']
 		];
         displayStage();
 		quotePopup.style.display = '';
 		document.body.style.height = '100%';
 		document.body.style.overflow = "hidden";
+    }
+    function requestCall() {
+        chooseOnline();
+        stageIdx = 4;
+        displayStage();
     }
     function previousStage () {
         stageIdx--;
@@ -592,7 +598,13 @@
         newPopupDesign.style.display = '';
         let stage = stages[stageIdx];
         progressIndImg.src = stage[4];
-        progressIndBar.value = stage[3];
+        if (stage[3] === -1) {
+            progressDiv.style.display = 'none';
+            progressInd1.style.height = '100%';
+        }
+        else {
+            progressIndBar.value = stage[3];
+        }
         progressInd1.innerText = stage[0];
         progressInd2.innerText = stage[1];
         let els = stage[2];
@@ -609,7 +621,6 @@
         }
         popupMainPart.appendChild(tempDiv);
         stageDiv = tempDiv;
-        stage[3]
     }
     function addStop(stopBtn) {
         let betweenInputs = stopBtn.parentElement;
@@ -1344,6 +1355,9 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                 order: 1;
                 flex-grow: 0;
                 }
+                .papa-focus-orange:focus {
+                    outline: 2px solid #F84734;
+                }
             </style>
             <div class="google-review">
                 <div>
@@ -1550,7 +1564,7 @@ margin-left:calc(520px - 284px);">
                         <span>Book online</span>
                         <span class="btn-arrow">&#8594;</span>
                     </button>
-                    <button class="quote-btn">
+                    <button onclick="requestCall()" class="quote-btn">
                         <span>Request a call</span>
                         <span class="btn-arrow">&#8594;</span>
                     </button>
@@ -1583,7 +1597,7 @@ margin-left:calc(520px - 284px);">
 
 
             </style>
-            <div style="display:flex">
+            <div style="display:flex" id="progressDiv">
                 <progress id=progressIndBar class=styledProgress style="width:100%;height:39px" value=50 max=950></progress>
                 <svg style="margin-right:76px;margin-left:35px" width="38" height="33" viewBox="0 0 38 33" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7.71387" y="1.45752" width="22.2997" height="31.2859" fill="#F84734"/><rect x="7.71387" y="2.51855" width="22.2997" height="2.65135" fill="#F84734"/><rect x="7.71387" y="29.0312" width="22.2997" height="2.65135" fill="#F84734"/><rect x="7.71387" y="22.668" width="22.2997" height="2.65135" fill="#F84734"/><rect x="7.71387" y="8.45361" width="22.2997" height="2.65135" fill="#F84734"/><rect x="0.972656" y="1.45801" width="6.22316" height="16.4384" fill="#D28800"/><rect x="3.0459" y="17.3657" width="4.14877" height="13.787" fill="#D28800"/><rect x="30.0127" y="1.45752" width="6.22316" height="16.4384" fill="#D28800"/><rect x="30.0127" y="17.3657" width="4.14877" height="13.787" fill="#D28800"/><rect x="7.19629" y="15.7749" width="22.8182" height="3.18162" fill="#FBB603"/><mask id="mask0_381_2770" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="-1" width="38" height="34"><path d="M35.8804 -0.000488281H30.5648C30.2123 -0.000488281 29.8743 0.142611 29.6251 0.397518C29.3758 0.652295 29.2359 0.997935 29.2359 1.35833V2.71715H7.97342V1.35833C7.97342 0.99796 7.83347 0.652324 7.58418 0.397518C7.33501 0.142597 6.99698 -0.000488281 6.64452 -0.000488281H1.3289C0.976468 -0.000488281 0.638441 0.142611 0.389245 0.397518C0.139935 0.652295 0 0.997935 0 1.35833V17.6641C0 18.0245 0.13995 18.3701 0.389245 18.625C0.638412 18.8799 0.976443 19.023 1.3289 19.023V31.2523C1.3289 31.6127 1.46885 31.9583 1.71815 32.2131C1.96732 32.468 2.30535 32.6111 2.65781 32.6111H34.5515C34.9039 32.6111 35.242 32.468 35.4912 32.2131C35.7405 31.9584 35.8804 31.6127 35.8804 31.2523V19.023C36.2328 19.023 36.5709 18.8799 36.8201 18.625C37.0694 18.3702 37.2093 18.0245 37.2093 17.6641V1.35833C37.2093 0.99796 37.0694 0.652324 36.8201 0.397518C36.5709 0.142597 36.2329 -0.000488281 35.8804 -0.000488281ZM31.8937 2.71715H34.5515V16.3053H31.8937V2.71715ZM29.2359 5.43478V16.3053H23.9203V14.9465C23.9203 14.2258 23.6402 13.5345 23.1417 13.0249C22.6434 12.5152 21.9673 12.2289 21.2625 12.2289H15.9468C15.242 12.2289 14.5659 12.5152 14.0676 13.0249C13.5691 13.5345 13.289 14.2258 13.289 14.9465V16.3053H7.97342V5.43478H29.2359ZM21.2625 20.3818H15.9468V14.9465H21.2625V20.3818ZM2.65781 2.71715H5.31561V16.3053H2.65781V2.71715ZM3.98671 19.023H6.64452V29.8935H3.98671V19.023ZM9.30233 19.023H13.289V20.3818C13.289 21.1025 13.5691 21.7938 14.0676 22.3034C14.5659 22.813 15.242 23.0994 15.9468 23.0994H17.2757V24.4582C17.2757 24.9437 17.5291 25.3923 17.9402 25.635C18.3513 25.8778 18.858 25.8778 19.2691 25.635C19.6802 25.3923 19.9336 24.9437 19.9336 24.4582V23.0994H21.2625C21.9673 23.0994 22.6434 22.8131 23.1417 22.3034C23.6402 21.7938 23.9203 21.1025 23.9203 20.3818V19.023H27.907V29.8935H9.30233V19.023ZM33.2226 29.8935H30.5648V19.023H33.2226V29.8935Z" fill="black"/></mask><g mask="url(#mask0_381_2770)"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.26227 -10.2085H-7.84473V18.9564H-6.83737V45.4695H9.26963V16.3047H8.26227V-10.2085Z" fill="#FBB603"/><path fill-rule="evenodd" clip-rule="evenodd" d="M45.0521 -10.2085H28.457V18.9564H29.4948V45.4694H46.0899V16.3046H45.0521V-10.2085Z" fill="#FBB603"/></g><rect x="13.418" y="12.0635" width="10.3719" height="11.1357" rx="5.18597" fill="#FBCF04"/><path d="M18.6046 14.7144C16.3447 14.7144 17.0352 16.8709 17.663 17.9491C16.9097 20.3379 17.3491 20.6033 17.663 20.4374C18.2907 20.5204 19.5934 20.6365 19.7817 20.4374C19.97 20.2384 19.7032 18.5297 19.5463 17.7003C20.174 16.705 20.8646 14.7144 18.6046 14.7144Z" fill="#DB8E00"/></svg>
             </div>
@@ -1959,9 +1973,9 @@ ${day}
 </template>
 <template id="quoteContactForm">
     <div name=contactForm style="margin-top:81px; max-width: 1405px; width:100%; height: 100%; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 46.17px; display: inline-flex">
-        <input class="quoteContactFormInput" id=firstName placeholder="Full Name" style="width: 950px; align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
-        <input class="quoteContactFormInput" placeholder="Email" style="width: 950px; align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
-        <input class="quoteContactFormInput" placeholder="Phone Number" style="width: 950px; align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex">
+        <input class="papa-focus-orange quoteContactFormInput" id=firstName placeholder="Full Name" style="width: 950px; align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
+        <input class="papa-focus-orange quoteContactFormInput" placeholder="Email" style="width: 950px; align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
+        <input class="papa-focus-orange quoteContactFormInput" placeholder="Phone Number" style="width: 950px; align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex">
         <button onclick="chooseBillingMethod()" style="align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
             <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Done</div>
         </button>
