@@ -1470,18 +1470,8 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
 </div>
 <template>
     <div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:250vw;height:250vh;overflow:hidden;background-color: #012122;" id="quotePopup" class="popup bottom-bg">
-        <style>
-        #popupMainPart {
-            margin-left: 65px!important;
-            padding-right: 70px;
-        }
-        </style>
-        <div id="popupMainPart" style="
-margin-top:calc(-832px - -1091px);
-margin-left:calc(520px - 284px);">
+        <div id="popupMainPart">
             <style>
-
-
             .popup {
                 font-size: 87px;
                 font-family: "Arial Rounded MT Bold";
@@ -1534,7 +1524,7 @@ margin-left:calc(520px - 284px);">
 
             </style>
             <div id="quoteMethodSelector">
-                <div style="margin-top:calc(-832px - -1091px);">
+                <div style="margin-top:calc(-832px - -1091px); padding: 65px;">
                     <div style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 95px;line-height: 109px;color: #EEEEEE;">
                         How would you like to receive your quote?
                     </div>
@@ -1555,18 +1545,19 @@ margin-left:calc(520px - 284px);">
                     </button>
                 </div>
             </div>
-            <div id="newPopupDesign" style="display:none">
-                    <div style="padding-left: 53px;padding-right: 61px;display: flex; border-radius: 104.801px; border: 7px solid #013C3D; background: linear-gradient(267deg, rgba(1, 60, 61, 0.10) 86.41%, rgba(54, 76, 111, 0.00) 131.14%);">
-                <img id=progressIndImg src="monster.png" width=425 height=490 />
-                <div>
-                    <div id=progressInd1 style="margin-bottom: 57px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.1899px;line-height: 63px;display: flex;align-items: center;color: #FFFFFF;">
-                        Hey there, you're off to a great start!
+            <div id="newPopupDesign" style="display:none; margin: 65px;">
+                <div style="padding-left: 53px;padding-right: 61px;display: flex; border-radius: 104.801px; border: 7px solid #013C3D; background: linear-gradient(267deg, rgba(1, 60, 61, 0.10) 86.41%, rgba(54, 76, 111, 0.00) 131.14%);">
+                    <img id=progressIndImg src="monster.png" width=425 height=490 />
+                    <div>
+                        <div id=progressInd1 style="margin-bottom: 57px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.1899px;line-height: 63px;display: flex;align-items: center;color: #FFFFFF;">
+                            Hey there, you're off to a great start!
+                        </div>
+                        <div id=progressInd2 style='color: #EEE;font-family: "Arial Rounded MT";font-size: 38.206px;font-style: normal;font-weight: 400;line-height: normal;'>
+                            Lets build your quote.  I’ll make this as smooth and enjoyable as a stroll in the park.
+                        </div>
                     </div>
-                    <div id=progressInd2 style='color: #EEE;font-family: "Arial Rounded MT";font-size: 38.206px;font-style: normal;font-weight: 400;line-height: normal;'>
-                        Lets build your quote.  I’ll make this as smooth and enjoyable as a stroll in the park.
-                    </div>
+                </div>
             </div>
-        </div>
             <style>
                 .styledProgress {
                     accent-color: #F84734;
@@ -1582,14 +1573,14 @@ margin-left:calc(520px - 284px);">
 
 
             </style>
-            <div style="display:flex">
+            <div style="display:flex; margin: 65px;">
                 <progress id=progressIndBar class=styledProgress style="width:100%;height:39px" value=50 max=950></progress>
                 <svg style="margin-right:76px;margin-left:35px" width="38" height="33" viewBox="0 0 38 33" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7.71387" y="1.45752" width="22.2997" height="31.2859" fill="#F84734"/><rect x="7.71387" y="2.51855" width="22.2997" height="2.65135" fill="#F84734"/><rect x="7.71387" y="29.0312" width="22.2997" height="2.65135" fill="#F84734"/><rect x="7.71387" y="22.668" width="22.2997" height="2.65135" fill="#F84734"/><rect x="7.71387" y="8.45361" width="22.2997" height="2.65135" fill="#F84734"/><rect x="0.972656" y="1.45801" width="6.22316" height="16.4384" fill="#D28800"/><rect x="3.0459" y="17.3657" width="4.14877" height="13.787" fill="#D28800"/><rect x="30.0127" y="1.45752" width="6.22316" height="16.4384" fill="#D28800"/><rect x="30.0127" y="17.3657" width="4.14877" height="13.787" fill="#D28800"/><rect x="7.19629" y="15.7749" width="22.8182" height="3.18162" fill="#FBB603"/><mask id="mask0_381_2770" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="-1" width="38" height="34"><path d="M35.8804 -0.000488281H30.5648C30.2123 -0.000488281 29.8743 0.142611 29.6251 0.397518C29.3758 0.652295 29.2359 0.997935 29.2359 1.35833V2.71715H7.97342V1.35833C7.97342 0.99796 7.83347 0.652324 7.58418 0.397518C7.33501 0.142597 6.99698 -0.000488281 6.64452 -0.000488281H1.3289C0.976468 -0.000488281 0.638441 0.142611 0.389245 0.397518C0.139935 0.652295 0 0.997935 0 1.35833V17.6641C0 18.0245 0.13995 18.3701 0.389245 18.625C0.638412 18.8799 0.976443 19.023 1.3289 19.023V31.2523C1.3289 31.6127 1.46885 31.9583 1.71815 32.2131C1.96732 32.468 2.30535 32.6111 2.65781 32.6111H34.5515C34.9039 32.6111 35.242 32.468 35.4912 32.2131C35.7405 31.9584 35.8804 31.6127 35.8804 31.2523V19.023C36.2328 19.023 36.5709 18.8799 36.8201 18.625C37.0694 18.3702 37.2093 18.0245 37.2093 17.6641V1.35833C37.2093 0.99796 37.0694 0.652324 36.8201 0.397518C36.5709 0.142597 36.2329 -0.000488281 35.8804 -0.000488281ZM31.8937 2.71715H34.5515V16.3053H31.8937V2.71715ZM29.2359 5.43478V16.3053H23.9203V14.9465C23.9203 14.2258 23.6402 13.5345 23.1417 13.0249C22.6434 12.5152 21.9673 12.2289 21.2625 12.2289H15.9468C15.242 12.2289 14.5659 12.5152 14.0676 13.0249C13.5691 13.5345 13.289 14.2258 13.289 14.9465V16.3053H7.97342V5.43478H29.2359ZM21.2625 20.3818H15.9468V14.9465H21.2625V20.3818ZM2.65781 2.71715H5.31561V16.3053H2.65781V2.71715ZM3.98671 19.023H6.64452V29.8935H3.98671V19.023ZM9.30233 19.023H13.289V20.3818C13.289 21.1025 13.5691 21.7938 14.0676 22.3034C14.5659 22.813 15.242 23.0994 15.9468 23.0994H17.2757V24.4582C17.2757 24.9437 17.5291 25.3923 17.9402 25.635C18.3513 25.8778 18.858 25.8778 19.2691 25.635C19.6802 25.3923 19.9336 24.9437 19.9336 24.4582V23.0994H21.2625C21.9673 23.0994 22.6434 22.8131 23.1417 22.3034C23.6402 21.7938 23.9203 21.1025 23.9203 20.3818V19.023H27.907V29.8935H9.30233V19.023ZM33.2226 29.8935H30.5648V19.023H33.2226V29.8935Z" fill="black"/></mask><g mask="url(#mask0_381_2770)"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.26227 -10.2085H-7.84473V18.9564H-6.83737V45.4695H9.26963V16.3047H8.26227V-10.2085Z" fill="#FBB603"/><path fill-rule="evenodd" clip-rule="evenodd" d="M45.0521 -10.2085H28.457V18.9564H29.4948V45.4694H46.0899V16.3046H45.0521V-10.2085Z" fill="#FBB603"/></g><rect x="13.418" y="12.0635" width="10.3719" height="11.1357" rx="5.18597" fill="#FBCF04"/><path d="M18.6046 14.7144C16.3447 14.7144 17.0352 16.8709 17.663 17.9491C16.9097 20.3379 17.3491 20.6033 17.663 20.4374C18.2907 20.5204 19.5934 20.6365 19.7817 20.4374C19.97 20.2384 19.7032 18.5297 19.5463 17.7003C20.174 16.705 20.8646 14.7144 18.6046 14.7144Z" fill="#DB8E00"/></svg>
             </div>
             <template id=stage0Heading>
-            <div id="quoteFirstText" style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 55px;line-height: 56px;/* or 102% */display: flex;align-items: center;color: #FFFFFF;">
-                First things first, what’s your name and how can we reach you?
-            </div>
+                <div id="quoteFirstText" style=" margin: 65px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 55px;line-height: 56px;/* or 102% */display: flex;align-items: center;color: #FFFFFF;">
+                    First things first, what’s your name and how can we reach you?
+                </div>
             </template>
             <div id="quoteSecondText" style="max-width: 1245px;margin-top:calc(132px - 84px);font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 45.3492px;line-height: 53px;color: #EEEEEE;">
             </div>
@@ -1957,7 +1948,7 @@ ${day}
     </div>
 </template>
 <template id="quoteContactForm">
-    <div name=contactForm style="margin-top:81px; max-width: 1405px; width:100%; height: 100%; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 46.17px; display: inline-flex">
+    <div name=contactForm style="margin: 65px;margin-top:81px; max-width: 1405px; height: 100%; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 46.17px; display: inline-flex">
         <input class="quoteContactFormInput" id=firstName placeholder="Full Name" style="width: 950px; align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
         <input class="quoteContactFormInput" placeholder="Email" style="width: 950px; align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
         <input class="quoteContactFormInput" placeholder="Phone Number" style="width: 950px; align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex">
@@ -1982,7 +1973,7 @@ ${day}
 </template>
 <template id=loggedInUI>
     <div style="background: #EEEEEE;min-height:calc(150vh / 0.33);min-width:calc(150vw / 0.33)">
-        <div class="popup-child" style="padding-left:58px;padding-top:74px">
+        <div class="popup-child" style="padding-top:74px;">
             <div style="display:flex" class="mb-column-flex" id="loggedInUI_quoteForm">
                 <div class="mb-center">
                     <div class="mb-bigger" style="width: 657px; --height: calc(145px / 0.33); background: #EEEEEE; border-radius: calc(83.23px / 2); border: 1px rgba(0, 0, 0, 0.23) solid">
@@ -2328,7 +2319,7 @@ ${day}
                     background-color: #013C3D;
                 }
                 .flatConfirmPay-body {
-                    padding: 0px 50px 50px 90px;
+                    padding: 0px 50px 50px 50px;
                 }
                 .flatConfirmPay-head {
                     display: flex;
@@ -2374,83 +2365,172 @@ ${day}
                     background-color: #013C3D;
                     margin: 40px 0;
                 }
+                .price-card {
+                    color: white;
+                    margin: 50px;
+                }
+                .price-title {
+                    font-family: Arial Rounded MT Bold;
+                    font-size: 64.04px;
+                    font-weight: 400;
+                    line-height: 74.11px;
+                    text-align: left;
+                    margin: 35px;
+                }
+                .price-body {
+                    padding: 50px;
+                    border-radius: 30px;
+                    border: none;
+                    background-color: #00292A;
+                }
+                .price-cell {
+                    display: flex;
+                    justify-content: space-between;
+                    margin: 20px 0;
+                }
+                .price-name {
+                    font-family: Arial Rounded MT;
+                    font-size: 47.61px;
+                    font-weight: 400;
+                    line-height: 55.18px;
+                    text-align: left;
+                }
+                .price-value {
+                    font-family: Arial Rounded MT;
+                    font-size: 46.96px;
+                    font-weight: 400;
+                    line-height: 54.43px;
+                    text-align: left;
+                }
+                .cell-break-line {
+                    width: 100%;
+                    height: 10px;
+                    background-color: #012122;
+                    margin: 5px 0;
+                }
+                .due-today {
+                    color: white;
+                    border-radius: 0px 0px 121.82px 121.82px;
+                    border: 3.05px 0px 0px 0px;
+                    border-top: 3.05px solid #013C3D;
+                    box-shadow: 0px 4px 40px 0px #00000040 inset;
+                    background-color: #00292A;
+                    padding: 50px 60px 100px;
+                }
+                .due-today a {
+                    color: white;
+                    background-color: #013C3D;
+                }
+                .due-today-price {
+                    margin: 20px;
+                }
+                .dash-break-line {
+                    margin: 40px 0;
+                    border-top: 3px #A9A9AA dashed;
+                }
+                .due-today-description {
+                    font-family: Arial Rounded MT;
+                    font-size: 28.24px;
+                    font-weight: 400;
+                    line-height: 32.73px;
+                    text-align: center;
+                    margin: 45px;
+                }
+                .secure-btn {
+                    width: 100%;
+                    color: white;
+                    font-family: Arial Rounded MT Bold;
+                    font-size: 53.18px;
+                    font-weight: 400;
+                    border-radius: 20px;
+                    text-align: center;
+                    background: linear-gradient(90deg, #F84734 0%, #FCD503 27%, #278BFF 59.5%, #F84734 83%);
+                    margin: 10px auto 100px;
+                    padding: 60px;
+                }
+                .book-help {
+                    font-family: Arial Rounded MT;
+                    font-size: 49.32px;
+                    font-weight: 400;
+                    line-height: 57.16px;
+                    text-align: center;
+                }
             </style>
-            <div id=loggedInUI_flatConfirmAndPay style="display:none">
-                <div style='border-bottom: 1px solid #00292A;padding-bottom: 19px;margin-bottom: 92px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;' class="flatConfirmPay-body">
-                    <div class="flatConfirmPay-head">
-                        <div class="flatConfirmPay-head-image">
-                            <img src="monster7.png" alt="monster" />
+            <div id=loggedInUI_flatConfirmAndPay style="display:none; overflow-y: scroll;">
+                <div style="overflow-y: scroll">
+                    <div style='border-bottom: 1px solid #00292A;padding-bottom: 19px;margin-bottom: 92px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;' class="flatConfirmPay-body">
+                        <div class="flatConfirmPay-head">
+                            <div class="flatConfirmPay-head-image">
+                                <img src="monster7.png" alt="monster" />
+                            </div>
+                            <div class="flatConfirmPay-head-content">
+                                <div class="flatConfirmPay-head-content-title">Secure Your Move with a $50 Deposit</div>
+                                <div class="flatConfirmPay-head-content-description">Lock in your moving date and guarantee our best service with a refundable deposit.</div>
+                            </div>
                         </div>
-                        <div class="flatConfirmPay-head-content">
-                            <div class="flatConfirmPay-head-content-title">Secure Your Move with a $50 Deposit</div>
-                            <div class="flatConfirmPay-head-content-description">Lock in your moving date and guarantee our best service with a refundable deposit.</div>
+                        <div class="break-line"></div>
+                        <div class="flatConfirmPay-main">
+                            <div class="flatConfirmPay-main-content">Free cancellation before up to 48 hours before your move. Get a full refund if you change your mind.</div>
+                            <div class="flatConfirmPay-main-image">
+                                <img src="calendar-check.png" alt="calendar-check" />
+                            </div>
                         </div>
                     </div>
-                    <div class="break-line"></div>
-                    <div class="flatConfirmPay-main">
-                        <div class="flatConfirmPay-main-content">Free cancellation before up to 48 hours before your move. Get a full refund if you change your mind.</div>
-                        <div class="flatConfirmPay-main-image">
-                            <img src="calendar-check.png" alt="calendar-check" />
-                        </div>
-                    </div>
-                </div>
-                <div class="break-content"></div>
-                <div class="flatConfirmPay-body">
-                    <div class="lastConfirm" style="max-height: 1743px;overflow-y: scroll;border-radius: 70px;background: #00292A; padding-left: 40px; padding-right: 40px; padding-bottom: 87px;">
-                        <div style="flex-shrink: 0;">
-                            <div style='padding-bottom:30px;padding-top:60px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 50px;font-style: normal;font-weight: 400;line-height: normal;'>Your move details</div>
-                            <div style='border-radius: 60px; padding: 37px;border: 2.935px solid #012122; width: 100%'>
-                                <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal; margin-bottom: 20px;'>
-                                    Pickup
-                                </div>
-                                <div style='border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                    <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                        22 Bay street, Toronto ON M5V 2R5
+                    <div class="break-content"></div>
+                    <div class="flatConfirmPay-body">
+                        <div class="lastConfirm" style="border-radius: 70px;background: #00292A; padding-left: 40px; padding-right: 40px; padding-bottom: 87px;">
+                            <div style="flex-shrink: 0;">
+                                <div style='padding-bottom:30px;padding-top:60px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 50px;font-style: normal;font-weight: 400;line-height: normal;'>Your move details</div>
+                                <div style='border-radius: 60px; padding: 37px;border: 2.935px solid #012122; width: 100%'>
+                                    <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal; margin-bottom: 20px;'>
+                                        Pickup
                                     </div>
-                                    <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
-                                        Edit
-                                    </button>
-                                </div>
-                                <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 20px;'>
-                                    Drop-off
-                                </div>
-                                <div style='border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                    <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                        22 Bay street, Toronto ON M5V 2R5
-                                    </div>
-                                    <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
-                                        Edit
-                                    </button>
-                                </div>
-                                <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 20px;'>
-                                    Date
-                                </div>
-                                <div style='border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                    <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                        Friday August 28, 2024
-                                    </div>
-                                    <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
-                                        Edit
-                                    </button>
-                                </div>
-                                <div style='display:flex;justify-content:space-between;margin-top: 26px; gap: 57px;'>
-                                    <div style='width: 60%; text-align: center; border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                        <div class="fromAddress" style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;margin: auto;'>
-                                            2 Bedroom
+                                    <div style='border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                        <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                            22 Bay street, Toronto ON M5V 2R5
                                         </div>
+                                        <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
+                                            Edit
+                                        </button>
                                     </div>
-                                    <div style='width: 60%; text-align: center; border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                        <div class="fromAddress" style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;margin: auto;'>
-                                            Full Service
+                                    <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 20px;'>
+                                        Drop-off
+                                    </div>
+                                    <div style='border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                        <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                            22 Bay street, Toronto ON M5V 2R5
+                                        </div>
+                                        <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
+                                            Edit
+                                        </button>
+                                    </div>
+                                    <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 20px;'>
+                                        Date
+                                    </div>
+                                    <div style='border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                        <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                            Friday August 28, 2024
+                                        </div>
+                                        <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
+                                            Edit
+                                        </button>
+                                    </div>
+                                    <div style='display:flex;justify-content:space-between;margin-top: 26px; gap: 57px;'>
+                                        <div style='width: 60%; text-align: center; border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                            <div class="fromAddress" style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;margin: auto;'>
+                                                2 Bedroom
+                                            </div>
+                                        </div>
+                                        <div style='width: 60%; text-align: center; border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                            <div class="fromAddress" style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;margin: auto;'>
+                                                Full Service
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div style="margin-right: 150px; padding: 80px; margin-left: 39px; margin-top: 123px; width: 1122.022px;flex-shrink: 0;">
-                            <div style='padding-top: 67px;padding-left: 113px;padding-bottom:30px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 50px;font-style: normal;font-weight: 400;line-height: normal;'>What's included?</div>
-                            <div style='margin-left: 91px; padding-left: 37px;border: 2.935px solid #012122;'>
-                                <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
+                            <div style="margin-top: 118px;flex-shrink: 0;display:flex; flex-direction: column; gap:66px;">
+                                <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #013C3D;display:flex;justify-content: space-between;'>
                                     <div>
                                         <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>All-Inclusive Flat Rate</div>
                                         <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>No hidden fees for trucks, gas, or mileage<br />—everything is included.</div>
@@ -2459,7 +2539,7 @@ ${day}
                                     <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
                                     </svg></div>
                                 </div>
-                                <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
+                                <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #013C3D;display:flex;justify-content: space-between;'>
                                     <div>
                                         <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Complete Protection</div>
                                         <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>We protect your floors, wrap furniture<br />to ensure no damages.</div>
@@ -2468,7 +2548,7 @@ ${day}
                                     <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
                                     </svg></div>
                                 </div>
-                                <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
+                                <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #013C3D;display:flex;justify-content: space-between;'>
                                     <div>
                                         <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Top-notch Movers</div>
                                         <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>Our professional movers are<br />highly trained for excellent service.</div>
@@ -2477,7 +2557,7 @@ ${day}
                                     <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
                                     </svg></div>
                                 </div>
-                                <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
+                                <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #013C3D;display:flex;justify-content: space-between;'>
                                     <div>
                                         <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Premium Protection Plan</div>
                                         <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>Get up to $10 per pound in coverage, <br />with property protection included for free.</div>
@@ -2486,6 +2566,46 @@ ${day}
                                     <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
                                     </svg></div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="flagConfrimPay-body price-card">
+                            <div class="price-title">
+                                Price details
+                            </div>
+                            <div class="price-body">
+                                <div class="price-cell">
+                                    <div class="price-name" style="opacity: 60%;">Guaranteed rate</div>
+                                    <div class="price-value">$1598.25 CAD</div>
+                                </div>
+                                <div class="price-cell">
+                                    <div class="price-name" style="opacity: 60%;">Taxes</div>
+                                    <div class="price-value">$218.25 CAD</div>
+                                </div>
+                                <div class="price-cell" style="opacity: 70%; color: #13E74C;">
+                                    <div class="price-name">Discounts</div>
+                                    <div class="price-value">$50.00 CAD</div>
+                                </div>
+                                <div class="cell-break-line"></div>
+                                <div class="price-cell" style="margin-top: 20px;">
+                                    <div class="price-name">Total</div>
+                                    <div class="price-value">$218.25 CAD</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="due-today">
+                            <div class="price-cell due-today-price">
+                                <div class="price-name">Due Today</div>
+                                <div class="price-value">$50 CAD</div>
+                            </div>
+                            <div class="dash-break-line" style="opacity: 60%;"></div>
+                            <div class="due-today-description" style="opacity: 60%;">
+                                <span>By selecting the button, I confirm that I provided </span>
+                                <a href="#">accurate inventory</a>
+                            </div>
+                            <button class="secure-btn">Secure and confirm booking</button>
+                            <div class="book-help" style="opacity: 60%;">
+                                <span> Not ready to book? </span>
+                                <a href="#"> email my quote </a>
                             </div>
                         </div>
                     </div>
@@ -2964,20 +3084,20 @@ ${day}
         </main>
     </div>
 <template id=stage1>
-    <div style='background: #00292A; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset; max-height: 1300px; overflow-y: scroll;'>
-            <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 48.392px;font-style: normal;font-weight: 400;line-height: 49.272px; /* 101.818% */'>Tell us about your <span name=origOrDest>origin</span></div>
-    <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 44px;margin-left: 67px;'>
+    <div style='background: #00292A; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset; max-height: 1800px; overflow-y: scroll; padding: 65px;'>
+        <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 48.392px;font-style: normal;font-weight: 400;line-height: 49.272px; /* 101.818% */'>Tell us about your <span name=origOrDest>origin</span></div>
+    <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 40px; padding: 25px;'>
                 <div style="margin-top: 44px; margin-left: 67px;/* 256 Bay st, Toronto, ON M5R 2W2 */font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
         256 Bay st, Toronto, ON M5R 2W2
                 </div>
                 <div style='display:flex;justify-content:space-evenly'>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+                    <div style='margin-top: 50px; width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
             House
                         <div class="form-check papa-check">
                 <input class="form-check-input" type="checkbox">
             </div>
         </div>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
+                    <div style='margin-top: 50px; width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
             Townhouse
                         <div class="form-check papa-check">
                 <input class="form-check-input" type="checkbox">
@@ -2985,13 +3105,13 @@ ${day}
         </div>
         </div>
                 <div style='display:flex;justify-content:space-evenly'>
-                    <div style='width:441px;padding: 33px;border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+                    <div style='margin-top: 50px; width:441px;padding: 33px;border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
                         Apartment
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
     </div>
     </div>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
+                    <div style='margin-top: 50px; width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
                         Storage
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
@@ -2999,18 +3119,18 @@ ${day}
                     </div>
                 </div>
             </div>
-            <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 44px;margin-left: 67px;'>
+            <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 40px; padding: 25px;'>
                 <div style="margin-top: 44px; margin-left: 67px; /* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
                     Parking type
                 </div>
                 <div style='display:flex;justify-content:space-evenly'>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+                    <div style='margin-top: 50px; width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
                         Loading dock
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
+                    <div style='margin-top: 50px; width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
                         Driveway
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
@@ -3018,13 +3138,13 @@ ${day}
                     </div>
                 </div>
                 <div style='display:flex;justify-content:space-evenly'>
-                    <div style='width:441px;padding: 33px;border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+                    <div style='margin-top: 50px; width:441px;padding: 33px;border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
                         Street
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
+                    <div style='margin-top: 50px; width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
                         Other
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
@@ -3032,18 +3152,18 @@ ${day}
                     </div>
                 </div>
             </div>
-            <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 44px;margin-left: 67px;'>
+            <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 40px; padding: 25px;'>
                 <div style="margin-top: 44px; margin-left: 67px; /* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
                     Access
                 </div>
                 <div style='display:flex;justify-content:space-evenly'>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+                    <div style='margin-top: 50px; width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
                         Stairs
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
+                    <div style='margin-top: 50px; width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
                         Elevator
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
