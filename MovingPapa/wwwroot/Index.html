@@ -549,25 +549,28 @@
     let stageDiv;
     function getQuote () {
         quotePopup.style.display = '';
+        newPopupDesign.style.display = '';
         document.body.style.height = '100%';
         document.body.style.overflow = "hidden";
+        stages = [
+            ['How would you like to receive your quote?', 'Help us get your move just right by listing exactly what’s coming with you.',
+                stageQuote, -1, 'quote-main.webp'],
+            [progressInd1.innerText, progressInd2.innerText, [
+                stage0Heading,
+                (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'nextStage()'); return t; })(quoteContactForm.content.cloneNode(true))
+            ], 50, 'monster.png'],
+            ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
+                stage1,
+                185, 'monster2.png'],
+            ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
+                (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=origOrDest]').innerText = 'destination'; return c; })(),
+                432, 'monster3.png'],
+            ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 643, 'monster4.png']
+        ];
+        displayStage();
     }
     function chooseOnline() {
         quoteMethodSelector.style.display = 'none';
-        stages = [
-			[progressInd1.innerText, progressInd2.innerText, [
-				stage0Heading,
-				(t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'nextStage()'); return t;}) (quoteContactForm.content.cloneNode(true))
-			], 50, 'monster.png'],
-			["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
-			stage1 ,
-			185, 'monster2.png'],
-			["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
-									(() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=origOrDest]').innerText = 'destination'; return c; })(),
-                432, 'monster3.png'],
-            ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 643, 'monster4.png']
-		];
-        displayStage();
 		quotePopup.style.display = '';
 		document.body.style.height = '100%';
 		document.body.style.overflow = "hidden";
@@ -1560,275 +1563,263 @@ p.recommended-box {
     left: 0;
             }
             </style>
-            <div id="quoteMethodSelector">
-                <div class="quote-boxes-wrapper">
-                    <div class="wavybuddies">
-                    <img src="quote-main.webp" alt="popup image" />
-                    </div>
-                              <div class="quote-head">
-                        <h2>How would you like to receive your quote?</h2>
-                        <p>Help us get your move just right by listing exactly what’s coming <br> with you.</p>
-                </div>
-                    </div>
-                </div>
-                <div class="btn-groups">
-                    <button onclick="chooseOnline()" class="quote-btn">
-                        <p class="recommended-box">recommended</p>
-                        <span>Book online</span>
-                        <span class="btn-arrow"><img src="back.webp"></span>
-                    </button>
-                    <button class="quote-btn">
-                        <span>Request a call</span>
-                        <span class="btn-arrow"><img src="back.webp"></span>
-                    </button>
-                </div>
-            </div>
             <div id="newPopupDesign" style="display:none">
+                <div id="quoteMethodSelector">
+                    <div class="quote-boxes-wrapper">
+                        <div class="wavybuddies">
+                            <img src="quote-main.webp" alt="popup image" />
+                        </div>
+                        <div class="quote-head">
+                            <h2>How would you like to receive your quote?</h2>
+                            <p>Help us get your move just right by listing exactly what’s coming <br> with you.</p>
+                        </div>
+                    </div>
+                </div>
                     <div style="padding-left: 53px;padding-right: 61px;display: flex; border-radius: 104.801px; border: 7px solid #013C3D; background: linear-gradient(267deg, rgba(1, 60, 61, 0.10) 86.41%, rgba(54, 76, 111, 0.00) 131.14%);">
-                <img id=progressIndImg src="monster.png" width=425 height=490 />
-                <div>
-                    <div id=progressInd1 style="margin-bottom: 57px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.1899px;line-height: 63px;display: flex;align-items: center;color: #FFFFFF;">
-                        Hey there, you're off to a great start!
+                        <img id=progressIndImg src="monster.png" width=425 height=490 />
+                        <div>
+                            <div id=progressInd1 style="margin-bottom: 57px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.1899px;line-height: 63px;display: flex;align-items: center;color: #FFFFFF;">
+                                Hey there, you're off to a great start!
+                            </div>
+                            <div id=progressInd2 style='color: #EEE;font-family: "Arial Rounded MT";font-size: 38.206px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                Lets build your quote.  I’ll make this as smooth and enjoyable as a stroll in the park.
+                            </div>
+                        </div>
                     </div>
-                    <div id=progressInd2 style='color: #EEE;font-family: "Arial Rounded MT";font-size: 38.206px;font-style: normal;font-weight: 400;line-height: normal;'>
-                        Lets build your quote.  I’ll make this as smooth and enjoyable as a stroll in the park.
+                    <style>
+                        .styledProgress {
+                            accent-color: #F84734;
+                        }
+
+                            .styledProgress::-webkit-progress-value {
+                                background-color: #F84734;
+                            }
+
+                            .styledProgress::-moz-progress-value {
+                                background-color: #F84734;
+                            }
+                    </style>
+                    <div style="display:flex">
+                        <progress id=progressIndBar class=styledProgress style="width:100%;height:39px" value=50 max=950></progress>
+                        <svg style="margin-right:76px;margin-left:35px" width="38" height="33" viewBox="0 0 38 33" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7.71387" y="1.45752" width="22.2997" height="31.2859" fill="#F84734" /><rect x="7.71387" y="2.51855" width="22.2997" height="2.65135" fill="#F84734" /><rect x="7.71387" y="29.0312" width="22.2997" height="2.65135" fill="#F84734" /><rect x="7.71387" y="22.668" width="22.2997" height="2.65135" fill="#F84734" /><rect x="7.71387" y="8.45361" width="22.2997" height="2.65135" fill="#F84734" /><rect x="0.972656" y="1.45801" width="6.22316" height="16.4384" fill="#D28800" /><rect x="3.0459" y="17.3657" width="4.14877" height="13.787" fill="#D28800" /><rect x="30.0127" y="1.45752" width="6.22316" height="16.4384" fill="#D28800" /><rect x="30.0127" y="17.3657" width="4.14877" height="13.787" fill="#D28800" /><rect x="7.19629" y="15.7749" width="22.8182" height="3.18162" fill="#FBB603" /><mask id="mask0_381_2770" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="-1" width="38" height="34"><path d="M35.8804 -0.000488281H30.5648C30.2123 -0.000488281 29.8743 0.142611 29.6251 0.397518C29.3758 0.652295 29.2359 0.997935 29.2359 1.35833V2.71715H7.97342V1.35833C7.97342 0.99796 7.83347 0.652324 7.58418 0.397518C7.33501 0.142597 6.99698 -0.000488281 6.64452 -0.000488281H1.3289C0.976468 -0.000488281 0.638441 0.142611 0.389245 0.397518C0.139935 0.652295 0 0.997935 0 1.35833V17.6641C0 18.0245 0.13995 18.3701 0.389245 18.625C0.638412 18.8799 0.976443 19.023 1.3289 19.023V31.2523C1.3289 31.6127 1.46885 31.9583 1.71815 32.2131C1.96732 32.468 2.30535 32.6111 2.65781 32.6111H34.5515C34.9039 32.6111 35.242 32.468 35.4912 32.2131C35.7405 31.9584 35.8804 31.6127 35.8804 31.2523V19.023C36.2328 19.023 36.5709 18.8799 36.8201 18.625C37.0694 18.3702 37.2093 18.0245 37.2093 17.6641V1.35833C37.2093 0.99796 37.0694 0.652324 36.8201 0.397518C36.5709 0.142597 36.2329 -0.000488281 35.8804 -0.000488281ZM31.8937 2.71715H34.5515V16.3053H31.8937V2.71715ZM29.2359 5.43478V16.3053H23.9203V14.9465C23.9203 14.2258 23.6402 13.5345 23.1417 13.0249C22.6434 12.5152 21.9673 12.2289 21.2625 12.2289H15.9468C15.242 12.2289 14.5659 12.5152 14.0676 13.0249C13.5691 13.5345 13.289 14.2258 13.289 14.9465V16.3053H7.97342V5.43478H29.2359ZM21.2625 20.3818H15.9468V14.9465H21.2625V20.3818ZM2.65781 2.71715H5.31561V16.3053H2.65781V2.71715ZM3.98671 19.023H6.64452V29.8935H3.98671V19.023ZM9.30233 19.023H13.289V20.3818C13.289 21.1025 13.5691 21.7938 14.0676 22.3034C14.5659 22.813 15.242 23.0994 15.9468 23.0994H17.2757V24.4582C17.2757 24.9437 17.5291 25.3923 17.9402 25.635C18.3513 25.8778 18.858 25.8778 19.2691 25.635C19.6802 25.3923 19.9336 24.9437 19.9336 24.4582V23.0994H21.2625C21.9673 23.0994 22.6434 22.8131 23.1417 22.3034C23.6402 21.7938 23.9203 21.1025 23.9203 20.3818V19.023H27.907V29.8935H9.30233V19.023ZM33.2226 29.8935H30.5648V19.023H33.2226V29.8935Z" fill="black" /></mask><g mask="url(#mask0_381_2770)"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.26227 -10.2085H-7.84473V18.9564H-6.83737V45.4695H9.26963V16.3047H8.26227V-10.2085Z" fill="#FBB603" /><path fill-rule="evenodd" clip-rule="evenodd" d="M45.0521 -10.2085H28.457V18.9564H29.4948V45.4694H46.0899V16.3046H45.0521V-10.2085Z" fill="#FBB603" /></g><rect x="13.418" y="12.0635" width="10.3719" height="11.1357" rx="5.18597" fill="#FBCF04" /><path d="M18.6046 14.7144C16.3447 14.7144 17.0352 16.8709 17.663 17.9491C16.9097 20.3379 17.3491 20.6033 17.663 20.4374C18.2907 20.5204 19.5934 20.6365 19.7817 20.4374C19.97 20.2384 19.7032 18.5297 19.5463 17.7003C20.174 16.705 20.8646 14.7144 18.6046 14.7144Z" fill="#DB8E00" /></svg>
                     </div>
-            </div>
-        </div>
-            <style>
-                .styledProgress {
-                    accent-color: #F84734;
-                }
-                .styledProgress::-webkit-progress-value
-                {
-                    background-color: #F84734;
-                }
-                .styledProgress::-moz-progress-value
-                {
-                    background-color: #F84734;
-                }
+                    <template id=stage0Heading>
+                        <div id="quoteFirstText" style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 55px;line-height: 56px;/* or 102% */display: flex;align-items: center;color: #FFFFFF;">
+                            First things first, what’s your name and how can we reach you?
+                        </div>
+                    </template>
+                    <div id="quoteSecondText" style="max-width: 1245px;margin-top:calc(132px - 84px);font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 45.3492px;line-height: 53px;color: #EEEEEE;">
+                    </div>
+                    <script>
+                        let calendarRates = null;
+                        let callEnquiry = false;
+                        function callMe() {
+                            quoteFirstText.innerText = "Great choice! We’ll call you.";
+                            quoteSecondText.innerText = `Share your contacts, and we’ll give you a call to
+                                                    guide you through the process.
+                                                    Personalized support, just a phone call away.`;
+                            let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
+                            while (elem !== null) {
+                                elem.style.display = 'none';
+                                elem = elem.nextElementSibling;
+                            }
+                            quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
+                            callEnquiry = true;
+                        }
+                        function quoteSelectService(service) {
+                            quoteFirstText.innerText = "Do you have a date in mind?";
+                            quoteSecondText.innerText = "Don’t worry! You can change this later.";
+                            quoteSecondText.style.marginTop = "29px";
+                            let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
+                            while (elem !== null) {
+                                elem.style.display = 'none';
+                                elem = elem.nextElementSibling;
+                            }
+                            elemParent.appendChild(calendar.content.firstElementChild.cloneNode(true));
+                        }
+                        let selectedDate = null;
+                        function quoteSelectDate(date) {
+                            quoteFirstText.innerText = "For your first move, here’s a gift from papa";
+                            quoteSecondText.innerText = "To celebrate your first move with us, enjoy a special discount—this will be automatically added to your move.";
+                            quoteSecondText.style.fontSize = "41.5282px";
+                            quoteSecondText.style.lineHeight = "48px";
+                            quoteSecondText.parentElement.querySelector('[name=calendar]').style.display = 'none';
+                            quoteSecondText.parentElement.appendChild(papaGiftCard.content.firstElementChild.cloneNode(true));
+                            selectedDate = date.toLocaleDateString('en-CA');
+                        }
+                        function acceptGiftCard() {
+                            quoteFirstText.innerText = "Let’s get you set up";
+                            quoteSecondText.innerText = "To keep things smooth, we need your contact info to save your progress and adjust your move later. We’re here to keep everything on track, just the way you want.";
+                            quoteSecondText.style.fontSize = "41.5282px";
+                            quoteSecondText.style.lineHeight = "48px";
+                            quoteSecondText.parentElement.querySelector('[name=papaGiftCard]').style.display = 'none';
+                            quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
+                        }
+                        function chooseBillingMethod() {
+                            if (callEnquiry) {
+                                location.reload();
+                                return;
+                            }
+                            quoteFirstText.style.display = 'none';
+                            quoteSecondText.style.display = 'none';
+                            quoteSecondText.parentElement.querySelector('[name=contactForm]').style.display = 'none';
+                            quoteSecondText.parentElement.parentElement.lastElementChild.before(loggedInUI.content.firstElementChild.cloneNode(true));
+                            accountName.innerText = firstName.value;
+                            fromLocation.innerText = pickUpPoint.value.split(', ')[0];
+                            toLocation.innerText = destinationPoint.value.split(', ')[0];
+                        }
+                        let billingMethod = 'hourly';
+                        function chooseRate() {
+                            if (billingMethod === 'hourly') {
+                                calendarRates = {
+                                    "2024-08-01": 279,
+                                    "2024-08-02": 149,
+                                    "2024-08-03": 179,
+                                    "2024-08-04": 119,
+                                    "2024-08-05": 109,
+                                    "2024-08-06": 189,
+                                    "2024-08-07": 139,
+                                    "2024-08-08": 139,
+                                    "2024-08-09": 159,
+                                    "2024-08-10": 129,
+                                    "2024-08-11": 109,
+                                    "2024-08-12": 99,
+                                    "2024-08-13": 209,
+                                    "2024-08-14": 129,
+                                    "2024-08-15": 159,
+                                    "2024-08-16": 199,
+                                    "2024-08-17": 129,
+                                    "2024-08-18": 149,
+                                    "2024-08-19": 129,
+                                    "2024-08-20": 119,
+                                    "2024-08-21": 179,
+                                    "2024-08-22": 189,
+                                    "2024-08-23": 129,
+                                    "2024-08-24": 219,
+                                    "2024-08-25": 239,
+                                    "2024-08-26": 179,
+                                    "2024-08-27": 179,
+                                    "2024-08-28": 199,
+                                    "2024-08-29": 199,
+                                    "2024-08-30": 249,
+                                    "2024-08-31": 249,
+                                    "2024-09-01": 149,
+                                };
+                                loggedInUI_chooseBilling.style.display = 'none';
+                                loggedInUI_bottom.style.display = 'none';
+                                loggedInUI_chooseHour.style.display = '';
+                                let c = calendar.content.firstElementChild.cloneNode(true);
+                                calendarSlot.after(c);
+                                calendarSlot.remove();
+                                c.style.marginLeft = "103px";
+                                c.style.marginTop = "79px";
+                                quoteLGDate.innerText = formatDate(selectedDate, true);
+                            }
+                            else if (billingMethod === 'flat') {
+                                loggedInUI_quoteForm.style.display = 'none';
+                                loggedInUI_chooseBilling.style.display = 'none';
+                                loggedInUI_bottom.style.display = 'none';
+                                loggedInUI_addFurnitureInfo.style.display = '';
+                                quotePopup.querySelector('.popup-child').style.backgroundColor = '#012122';
+                                for (let f of document.querySelectorAll('.firstName'))
+                                    f.innerText = firstName.value;
+                            }
+                        }
+                        function goToConfirmation() {
+                            loggedInUI_chooseHour.style.display = 'none';
+                            loggedInUI_quoteForm.style.display = 'none';
+                            loggedInUI_confirmMove.style.display = '';
+                            quoteLGOrigin.innerText = pickUpPoint.value;
+                            quoteLGDest.innerText = destinationPoint.value;
+                            let price = calendarRates[selectedDate];
+                            quoteLGDetails.innerHTML = `${truckNum.innerText} TRUCK${truckNum.innerText.trim() !== '1' ? 'S' : ''}, ${moverNum.innerText} MOVER${moverNum.innerText.trim() !== '1' ? 'S' : ''} @ $${price} / HOUR`;
+                        }
+                        function addCard() {
+                            loggedInUI_confirmMove.style.display = 'none';
+                            loggedInUI_addNewCard.style.display = '';
+                        }
+                        function saveCard() {
+                            loggedInUI_confirmMove.style.display = '';
+                            loggedInUI_addNewCard.style.display = 'none';
+                            let newCard = savedCard.content.firstElementChild.cloneNode(true);
+                            newCard.querySelector('[name=cardEnd]').innerText = acn_CN.value.slice(-4);
+                            cards.prepend(newCard);
+                        }
+                        function formatDate(dateString, format2 = false) {
+                            // List of month names
+                            const months = [
+                                'January', 'February', 'March', 'April', 'May', 'June',
+                                'July', 'August', 'September', 'October', 'November', 'December'
+                            ];
 
+                            // Parse the date string (yyyy-mm-dd)
+                            const [year, month, day] = dateString.split('-').map(Number);
 
-            </style>
-            <div style="display:flex">
-                <progress id=progressIndBar class=styledProgress style="width:100%;height:39px" value=50 max=950></progress>
-                <svg style="margin-right:76px;margin-left:35px" width="38" height="33" viewBox="0 0 38 33" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="7.71387" y="1.45752" width="22.2997" height="31.2859" fill="#F84734"/><rect x="7.71387" y="2.51855" width="22.2997" height="2.65135" fill="#F84734"/><rect x="7.71387" y="29.0312" width="22.2997" height="2.65135" fill="#F84734"/><rect x="7.71387" y="22.668" width="22.2997" height="2.65135" fill="#F84734"/><rect x="7.71387" y="8.45361" width="22.2997" height="2.65135" fill="#F84734"/><rect x="0.972656" y="1.45801" width="6.22316" height="16.4384" fill="#D28800"/><rect x="3.0459" y="17.3657" width="4.14877" height="13.787" fill="#D28800"/><rect x="30.0127" y="1.45752" width="6.22316" height="16.4384" fill="#D28800"/><rect x="30.0127" y="17.3657" width="4.14877" height="13.787" fill="#D28800"/><rect x="7.19629" y="15.7749" width="22.8182" height="3.18162" fill="#FBB603"/><mask id="mask0_381_2770" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="-1" width="38" height="34"><path d="M35.8804 -0.000488281H30.5648C30.2123 -0.000488281 29.8743 0.142611 29.6251 0.397518C29.3758 0.652295 29.2359 0.997935 29.2359 1.35833V2.71715H7.97342V1.35833C7.97342 0.99796 7.83347 0.652324 7.58418 0.397518C7.33501 0.142597 6.99698 -0.000488281 6.64452 -0.000488281H1.3289C0.976468 -0.000488281 0.638441 0.142611 0.389245 0.397518C0.139935 0.652295 0 0.997935 0 1.35833V17.6641C0 18.0245 0.13995 18.3701 0.389245 18.625C0.638412 18.8799 0.976443 19.023 1.3289 19.023V31.2523C1.3289 31.6127 1.46885 31.9583 1.71815 32.2131C1.96732 32.468 2.30535 32.6111 2.65781 32.6111H34.5515C34.9039 32.6111 35.242 32.468 35.4912 32.2131C35.7405 31.9584 35.8804 31.6127 35.8804 31.2523V19.023C36.2328 19.023 36.5709 18.8799 36.8201 18.625C37.0694 18.3702 37.2093 18.0245 37.2093 17.6641V1.35833C37.2093 0.99796 37.0694 0.652324 36.8201 0.397518C36.5709 0.142597 36.2329 -0.000488281 35.8804 -0.000488281ZM31.8937 2.71715H34.5515V16.3053H31.8937V2.71715ZM29.2359 5.43478V16.3053H23.9203V14.9465C23.9203 14.2258 23.6402 13.5345 23.1417 13.0249C22.6434 12.5152 21.9673 12.2289 21.2625 12.2289H15.9468C15.242 12.2289 14.5659 12.5152 14.0676 13.0249C13.5691 13.5345 13.289 14.2258 13.289 14.9465V16.3053H7.97342V5.43478H29.2359ZM21.2625 20.3818H15.9468V14.9465H21.2625V20.3818ZM2.65781 2.71715H5.31561V16.3053H2.65781V2.71715ZM3.98671 19.023H6.64452V29.8935H3.98671V19.023ZM9.30233 19.023H13.289V20.3818C13.289 21.1025 13.5691 21.7938 14.0676 22.3034C14.5659 22.813 15.242 23.0994 15.9468 23.0994H17.2757V24.4582C17.2757 24.9437 17.5291 25.3923 17.9402 25.635C18.3513 25.8778 18.858 25.8778 19.2691 25.635C19.6802 25.3923 19.9336 24.9437 19.9336 24.4582V23.0994H21.2625C21.9673 23.0994 22.6434 22.8131 23.1417 22.3034C23.6402 21.7938 23.9203 21.1025 23.9203 20.3818V19.023H27.907V29.8935H9.30233V19.023ZM33.2226 29.8935H30.5648V19.023H33.2226V29.8935Z" fill="black"/></mask><g mask="url(#mask0_381_2770)"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.26227 -10.2085H-7.84473V18.9564H-6.83737V45.4695H9.26963V16.3047H8.26227V-10.2085Z" fill="#FBB603"/><path fill-rule="evenodd" clip-rule="evenodd" d="M45.0521 -10.2085H28.457V18.9564H29.4948V45.4694H46.0899V16.3046H45.0521V-10.2085Z" fill="#FBB603"/></g><rect x="13.418" y="12.0635" width="10.3719" height="11.1357" rx="5.18597" fill="#FBCF04"/><path d="M18.6046 14.7144C16.3447 14.7144 17.0352 16.8709 17.663 17.9491C16.9097 20.3379 17.3491 20.6033 17.663 20.4374C18.2907 20.5204 19.5934 20.6365 19.7817 20.4374C19.97 20.2384 19.7032 18.5297 19.5463 17.7003C20.174 16.705 20.8646 14.7144 18.6046 14.7144Z" fill="#DB8E00"/></svg>
-            </div>
-            <template id=stage0Heading>
-            <div id="quoteFirstText" style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 55px;line-height: 56px;/* or 102% */display: flex;align-items: center;color: #FFFFFF;">
-                First things first, what’s your name and how can we reach you?
-            </div>
-            </template>
-            <div id="quoteSecondText" style="max-width: 1245px;margin-top:calc(132px - 84px);font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 45.3492px;line-height: 53px;color: #EEEEEE;">
-            </div>
-            <script>
-                let calendarRates = null;
-                let callEnquiry = false;
-                function callMe() {
-                quoteFirstText.innerText = "Great choice! We’ll call you.";
-                quoteSecondText.innerText = `Share your contacts, and we’ll give you a call to
-                guide you through the process.
-                Personalized support, just a phone call away.`;
-                let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
-                while (elem !== null) {
-                elem.style.display = 'none';
-                elem = elem.nextElementSibling;
-                }
-                quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
-                callEnquiry = true;
-                }
-                function quoteSelectService(service) {
-                quoteFirstText.innerText = "Do you have a date in mind?";
-                quoteSecondText.innerText = "Don’t worry! You can change this later.";
-                quoteSecondText.style.marginTop = "29px";
-                let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
-                while (elem !== null) {
-                elem.style.display = 'none';
-                elem = elem.nextElementSibling;
-                }
-                elemParent.appendChild(calendar.content.firstElementChild.cloneNode(true));
-                }
-                let selectedDate = null;
-                function quoteSelectDate(date) {
-                quoteFirstText.innerText = "For your first move, here’s a gift from papa";
-                quoteSecondText.innerText = "To celebrate your first move with us, enjoy a special discount—this will be automatically added to your move.";
-                quoteSecondText.style.fontSize = "41.5282px";
-                quoteSecondText.style.lineHeight = "48px";
-                quoteSecondText.parentElement.querySelector('[name=calendar]').style.display = 'none';
-                quoteSecondText.parentElement.appendChild(papaGiftCard.content.firstElementChild.cloneNode(true));
-                selectedDate = date.toLocaleDateString('en-CA');
-                }
-                function acceptGiftCard() {
-                quoteFirstText.innerText = "Let’s get you set up";
-                quoteSecondText.innerText = "To keep things smooth, we need your contact info to save your progress and adjust your move later. We’re here to keep everything on track, just the way you want.";
-                quoteSecondText.style.fontSize = "41.5282px";
-                quoteSecondText.style.lineHeight = "48px";
-                quoteSecondText.parentElement.querySelector('[name=papaGiftCard]').style.display = 'none';
-                quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
-                }
-                function chooseBillingMethod() {
-                if (callEnquiry) {
-                location.reload();
-                return;
-                }
-                quoteFirstText.style.display = 'none';
-                quoteSecondText.style.display = 'none';
-                quoteSecondText.parentElement.querySelector('[name=contactForm]').style.display = 'none';
-                quoteSecondText.parentElement.parentElement.lastElementChild.before(loggedInUI.content.firstElementChild.cloneNode(true));
-                accountName.innerText = firstName.value;
-                fromLocation.innerText = pickUpPoint.value.split(', ')[0];
-                toLocation.innerText = destinationPoint.value.split(', ')[0];
-                }
-                let billingMethod = 'hourly';
-                function chooseRate () {
-                    if (billingMethod === 'hourly') {
-                        calendarRates = {
-                        "2024-08-01": 279,
-                        "2024-08-02": 149,
-                        "2024-08-03": 179,
-                        "2024-08-04": 119,
-                        "2024-08-05": 109,
-                        "2024-08-06": 189,
-                        "2024-08-07": 139,
-                        "2024-08-08": 139,
-                        "2024-08-09": 159,
-                        "2024-08-10": 129,
-                        "2024-08-11": 109,
-                        "2024-08-12": 99,
-                        "2024-08-13": 209,
-                        "2024-08-14": 129,
-                        "2024-08-15": 159,
-                        "2024-08-16": 199,
-                        "2024-08-17": 129,
-                        "2024-08-18": 149,
-                        "2024-08-19": 129,
-                        "2024-08-20": 119,
-                        "2024-08-21": 179,
-                        "2024-08-22": 189,
-                        "2024-08-23": 129,
-                        "2024-08-24": 219,
-                        "2024-08-25": 239,
-                        "2024-08-26": 179,
-                        "2024-08-27": 179,
-                        "2024-08-28": 199,
-                        "2024-08-29": 199,
-                        "2024-08-30": 249,
-                        "2024-08-31": 249,
-                        "2024-09-01": 149,
-                        };
-                        loggedInUI_chooseBilling.style.display = 'none';
-                        loggedInUI_bottom.style.display = 'none';
-                        loggedInUI_chooseHour.style.display = '';
-                        let c = calendar.content.firstElementChild.cloneNode(true);
-                        calendarSlot.after(c);
-                        calendarSlot.remove();
-                        c.style.marginLeft = "103px";
-                        c.style.marginTop = "79px";
-                        quoteLGDate.innerText = formatDate(selectedDate, true);
-                    }
-                    else if (billingMethod === 'flat') {
-                        loggedInUI_quoteForm.style.display = 'none';
-                        loggedInUI_chooseBilling.style.display = 'none';
-                        loggedInUI_bottom.style.display = 'none';
-                        loggedInUI_addFurnitureInfo.style.display = '';
-                        quotePopup.querySelector('.popup-child').style.backgroundColor = '#012122';
-                        for (let f of document.querySelectorAll('.firstName'))
-                            f.innerText = firstName.value;
-                    }
-                }
-                function goToConfirmation() {
-                loggedInUI_chooseHour.style.display = 'none';
-                loggedInUI_quoteForm.style.display = 'none';
-                loggedInUI_confirmMove.style.display = '';
-                quoteLGOrigin.innerText = pickUpPoint.value;
-                quoteLGDest.innerText = destinationPoint.value;
-                let price = calendarRates[selectedDate];
-                quoteLGDetails.innerHTML = `${truckNum.innerText} TRUCK${truckNum.innerText.trim() !== '1' ? 'S' : ''}, ${moverNum.innerText} MOVER${moverNum.innerText.trim() !== '1' ? 'S' : ''} @ $${price} / HOUR`;
-                }
-                function addCard () {
-                loggedInUI_confirmMove.style.display = 'none';
-                loggedInUI_addNewCard.style.display = '';
-                }
-                function saveCard () {
-                    loggedInUI_confirmMove.style.display = '';
-                    loggedInUI_addNewCard.style.display = 'none';
-                    let newCard = savedCard.content.firstElementChild.cloneNode(true);
-                    newCard.querySelector('[name=cardEnd]').innerText = acn_CN.value.slice(-4);
-                    cards.prepend(newCard);
-                }
-                function formatDate(dateString, format2 = false) {
-                    // List of month names
-                    const months = [
-                        'January', 'February', 'March', 'April', 'May', 'June',
-                        'July', 'August', 'September', 'October', 'November', 'December'
-                    ];
-    
-                    // Parse the date string (yyyy-mm-dd)
-                    const [year, month, day] = dateString.split('-').map(Number);
-    
-                    // Convert month number to month name
-                    const monthName = months[month - 1];
-    
-                    // Determine the ordinal suffix for the day
-                    let suffix = 'th';
-                    if (day % 10 === 1 && day % 100 !== 11) suffix = 'st';
-                    else if (day % 10 === 2 && day % 100 !== 12) suffix = 'nd';
-                    else if (day % 10 === 3 && day % 100 !== 13) suffix = 'rd';
-    
-                    // Format the date string
-                    return format2 ? `${day}${suffix} ${monthName} ${year}` : `${monthName} ${day}${suffix}, ${year}`;
-                }
+                            // Convert month number to month name
+                            const monthName = months[month - 1];
 
-                function reserve () {
-                    moveDate.innerText = formatDate(selectedDate);
-                    loggedInUI_confirmMove.style.display = 'none';
-                    loggedInUI_moveConfirmed.style.display = '';
-                }
+                            // Determine the ordinal suffix for the day
+                            let suffix = 'th';
+                            if (day % 10 === 1 && day % 100 !== 11) suffix = 'st';
+                            else if (day % 10 === 2 && day % 100 !== 12) suffix = 'nd';
+                            else if (day % 10 === 3 && day % 100 !== 13) suffix = 'rd';
 
-                function nextBedroom () {
-                    let arr = ['Bedroom 1', 'Bedroom 2', 'Living Room', 'Basement', 'Specialty items'];
-                    let items = [
-                        [],
-                        ['Beds',
-                        'Dressers',
-                        'Nightstands',
-                        'Credenza'],
-                        ['Couch', 'Sofa', 'Loveseat', 'TV stand'],
-                        ['Boxes', 'Sofa', 'Loveseat', 'TV stand'],
-                        ['Piano', 'Pool table', 'Fridge', 'Safe']
-                    ];
-                    let imgs = ['bedroom1.png', 'bedroom2.png', 'livingRoom.png', 'basement.png', 'specialtyItems.png'];
-                    let idx = arr.indexOf(roomName.innerText) + 1;
-                    if (idx === arr.length) {
-                        loggedInUI_addFurnitureInfo.style.display = 'none';
-                        loggedInUI_flatFinalDetails.style.display = '';
-                        return;
-                    }
-                    roomName.innerText = arr[idx];
-                    roomImg.src = imgs[idx];
-                    furnitureCont.innerHTML = '';
-                    createFurniture(items[idx]);
-                }
-                function confirmFinalDetails () {
-                    loggedInUI_flatFinalDetails.style.display = 'none';
-                    loggedInUI_flatConfirmAndPay.style.display = '';
-                }
-            </script>
-            <style>
-                @media all and (min-width: 600px) {
-                #fullServiceQuoteBtn {
-                margin-top: 100px !important;
-                }
-                #selfServiceQuoteBtn {
-                margin-top: 39px!important;
-                }
-                #callMeBtn {
-                margin-top: 191px!important;
-                }
-                }
-            </style>
-        </div>
-    </div>
+                            // Format the date string
+                            return format2 ? `${day}${suffix} ${monthName} ${year}` : `${monthName} ${day}${suffix}, ${year}`;
+                        }
+
+                        function reserve() {
+                            moveDate.innerText = formatDate(selectedDate);
+                            loggedInUI_confirmMove.style.display = 'none';
+                            loggedInUI_moveConfirmed.style.display = '';
+                        }
+
+                        function nextBedroom() {
+                            let arr = ['Bedroom 1', 'Bedroom 2', 'Living Room', 'Basement', 'Specialty items'];
+                            let items = [
+                                [],
+                                ['Beds',
+                                    'Dressers',
+                                    'Nightstands',
+                                    'Credenza'],
+                                ['Couch', 'Sofa', 'Loveseat', 'TV stand'],
+                                ['Boxes', 'Sofa', 'Loveseat', 'TV stand'],
+                                ['Piano', 'Pool table', 'Fridge', 'Safe']
+                            ];
+                            let imgs = ['bedroom1.png', 'bedroom2.png', 'livingRoom.png', 'basement.png', 'specialtyItems.png'];
+                            let idx = arr.indexOf(roomName.innerText) + 1;
+                            if (idx === arr.length) {
+                                loggedInUI_addFurnitureInfo.style.display = 'none';
+                                loggedInUI_flatFinalDetails.style.display = '';
+                                return;
+                            }
+                            roomName.innerText = arr[idx];
+                            roomImg.src = imgs[idx];
+                            furnitureCont.innerHTML = '';
+                            createFurniture(items[idx]);
+                        }
+                        function confirmFinalDetails() {
+                            loggedInUI_flatFinalDetails.style.display = 'none';
+                            loggedInUI_flatConfirmAndPay.style.display = '';
+                        }
+                    </script>
+                    <style>
+                        @media all and (min-width: 600px) {
+                            #fullServiceQuoteBtn {
+                                margin-top: 100px !important;
+                            }
+
+                            #selfServiceQuoteBtn {
+                                margin-top: 39px !important;
+                            }
+
+                            #callMeBtn {
+                                margin-top: 191px !important;
+                            }
+                        }
+                    </style>
+                </div>
+            </div>
 </template>
 <script>
     document.body.appendChild(document.currentScript.previousElementSibling.content.firstElementChild.cloneNode(true));
@@ -3020,6 +3011,19 @@ ${day}
             </div>
             <button onclick="nextStage()" style='width: 100%;border-radius: 40px; background: linear-gradient(90deg, #FD6F00 0.4%, #FDD302 25.4%, #F84734 50.9%, #319AED 82.4%, #F84734 100%); color: #FFF; font-family: "Arial Rounded MT"; font-size: 46.001px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: -0.46px;'>Next</button>
         </div>
+</template>
+<template id="stageQuote">
+    <div class="btn-groups">
+        <button onclick="chooseOnline()" class="quote-btn">
+            <p class="recommended-box">recommended</p>
+            <span>Book online</span>
+            <span class="btn-arrow"><img src="back.webp"></span>
+        </button>
+        <button class="quote-btn">
+            <span>Request a call</span>
+            <span class="btn-arrow"><img src="back.webp"></span>
+        </button>
+    </div>
 </template>
     <template id="stage2">
         <div style="color: #FFF; font-family: 'Arial Rounded MT Bold'; font-size: 48.392px; font-style: normal; font-weight: 400; line-height: 49.272px; /* 101.818% */ ">
