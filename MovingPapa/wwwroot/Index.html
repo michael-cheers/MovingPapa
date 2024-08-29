@@ -1473,86 +1473,113 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
     <div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:250vw;height:250vh;overflow:hidden;background-color: #012122;" id="quotePopup" class="popup bottom-bg">
         <style>
         #popupMainPart {
-            margin-left: 65px!important;
+            margin-left: 30px!important;
             padding-right: 70px;
         }
         </style>
         <div id="popupMainPart" style="
-margin-top:calc(-832px - -1091px);
+margin-top:calc(-932px - -1091px);
 margin-left:calc(520px - 284px);">
             <style>
 
 
-            .popup {
-                font-size: 87px;
-                font-family: "Arial Rounded MT Bold";
-                font-weight: 400;
+            div#quoteMethodSelector {
+    background: url(../wwwroot/background.png);
+    border: 7px solid #013C3D;
+    border-radius: 104px;
+    max-width: 1180px;
+    margin: auto;
+}
+.quote-boxes-wrapper img {
+    max-width: 430px;
             }
 
-            .wavybuddies {
-                background-color: #012122;
-                padding-top: 193px;
-                width: 100%;
+.quote-boxes-wrapper {
                 display: flex;
-                justify-content: center;
+    align-items: center;
+    padding: 50px 40px 110px;
             }
-
-            .wavybuddies > div {
-                width: 70%;
-                height: auto;
+.quote-head {
+    margin-left: 35px;
             }
-
-            .wavybuddies img {
+.quote-head p {
+    margin-top: 20px;
+}
+.quote-boxes-wrapper h2 {
+    color: #fff;
+    font-size: 45px;
+    font-family: 'Arial Rounded MT Bold';
+    margin-top: 20px;
+}
+.quote-head p {
+    font-size: 39px;
+    color: #fff;
+    line-height: 44px;
+    font-family: 'Arial Rounded MT'
+}
+.quote-boxes-wrapper {
+    background: url(../wwwroot/quote-bg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+button.quote-btn {
+    display: block;
                 width: 100%;
-                height: 100%;
+    padding: 50px;
+    text-align: left;
+    border-radius: 30px;
+    border: 4px solid #013C3D;
+    background: #012122;
+    color: #fff;
+    margin-bottom: 60px;
+    position: relative;
+}
+span.btn-arrow {
+    float: right;
+}
+button.quote-btn span {
+    font-size: 46px !important;
+    font-family: 'Arial Rounded MT Bold';
             }
-
             .btn-groups {
-                margin-top: -50px;
-                width: 100%;
-                height: 50%;
-                background-color: #00292a;
-                color: white;
+    max-width: 1180px;
+    margin: 200px auto 0;
             }
-
-            .quote-btn {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                padding: 79px 48px;
-                line-height: 100px;
-                outline: none;
-                border: none;
-                color: white;
-                border-bottom: 5px solid #012122;
-                background-color: #00292a;
+.btn-groups img {
+    max-width: 80px;
             }
-
-            .btn-arrow {
-                font-size: 150px;
-                font-weight: 600;
+p.recommended-box {
+    border-radius: 30px 0px 30px 0px;
+    background: #013C3D;
+    font-size: 28px;
+    padding: 5px 20px;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
             }
-
             </style>
             <div id="quoteMethodSelector">
-                <div style="margin-top:calc(-832px - -1091px);">
-                    <div style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 95px;line-height: 109px;color: #EEEEEE;">
-                        How would you like to receive your quote?
+                <div class="quote-boxes-wrapper">
+                    <div class="wavybuddies">
+                    <img src="quote-main.webp" alt="popup image" />
                     </div>
+                              <div class="quote-head">
+                        <h2>How would you like to receive your quote?</h2>
+                        <p>Help us get your move just right by listing exactly what’s coming <br> with you.</p>
                 </div>
-                <div class="wavybuddies">
-                    <div>
-                        <img src="monster0.png" alt="popup image" />
                     </div>
                 </div>
                 <div class="btn-groups">
                     <button onclick="chooseOnline()" class="quote-btn">
+                        <p class="recommended-box">recommended</p>
                         <span>Book online</span>
-                        <span class="btn-arrow">&#8594;</span>
+                        <span class="btn-arrow"><img src="back.webp"></span>
                     </button>
                     <button class="quote-btn">
                         <span>Request a call</span>
-                        <span class="btn-arrow">&#8594;</span>
+                        <span class="btn-arrow"><img src="back.webp"></span>
                     </button>
                 </div>
             </div>
