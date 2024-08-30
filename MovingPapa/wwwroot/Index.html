@@ -642,7 +642,7 @@ display: none;
 									(() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=origOrDest]').innerText = 'destination'; return c; })(),
                 432, 'monster3.png'],
             ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 643, 'monster4.png'],
-            ["Not sure which option fits your move? Let me help you out!.", "", stage3, 500, 'stage3.png'],
+            ["Not sure which option fits your move? Let me help you out!.", "", stage3, -1, 'stage3.png'],
             ["Great choice! how can we reach you?", "", quoteContactForm, -1, 'monsterCall.png']
 		];
         displayStage();
@@ -679,12 +679,23 @@ display: none;
             progressInd1.style.height = '';
         if (stage[2] === stage3) {
             progressDiv.style.display = 'none';
+            newPopupDesign.style.backgroundColor = '#00292A';
+            newPopupDesign.style.borderRadius = '90px 90px 0px 0px';
+            newPopupDesign.style.boxShadow = '0px 4px 4px 5px rgba(0, 0, 0, 0.25)';
+            newPopupDesign.style.paddingTop = '0px';
+            let div = document.createElement('div');
+            div.innerHTML = `<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M52.4999 52.4999L35.0001 35.0001M35.0001 35.0001L17.5 17.5M35.0001 35.0001L52.5001 17.5M35.0001 35.0001L17.5 52.5001" stroke="#888888" stroke-width="5.83333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`;
+            newPopupDesign.firstElementChild.before(div);
         }
         progressIndImg.src = stage[4];
         if (stage[3] === -1) {
             progressDiv.style.display = 'none';
         }
         else {
+            progressDiv.style.display = '';
             progressIndBar.value = stage[3];
         }
         progressInd1.innerText = stage[0];
@@ -1733,7 +1744,7 @@ margin-top:51px;
 
                 .btn-groups {
                     max-width: 1180px;
-                    margin: 200px auto 0;
+                    margin: 69px auto 0;
                 }
 
                     .btn-groups img {
@@ -3199,7 +3210,7 @@ ${day}
     <div class="" style="overflow-y: scroll; height: 1170px; background: #00292A; padding: 60px; width: 100%; ">
         <div class="" style="margin-bottom: 80px;">
             <h3 style="font-family: Arial Rounded MT Bold;
-                    font-size: 46.44px;
+                    font-size: 59.44px;
                     font-weight: 400;
                     line-height: 47.29px;
                     text-align: left;
@@ -3353,16 +3364,24 @@ ${day}
     </div>
 </template>
     <template id="stage3">
+        <style>
+            .pad-a-bit {
+                padding-left: 50px!important;
+            }
+            .pad-a-bit p {
+                padding-right: 60px;
+                font-family:'Arial Rounded MT';
+            }
+        </style>
         <div
             style="padding: 20px; color: #fff;background-color: #00292A;">
-            <div style="width: 100%; height: 4px; background-color: #013C3D;"></div>
             <div
-                style="display: flex; flex-direction: column; padding: 1rem 2rem; margin: 0 130px;gap: 1.2rem;">
+                style="border-top: 4px solid #013C3D; display: flex; flex-direction: column; padding: 1rem 2rem; margin: 0px 0px; gap: 1.2rem; padding-top: 100px; margin-top: -60px">
                 <h2 style="font-size: 48px; font-weight: 800;text-align: left;">Move types</h2>
                 <div style="display: flex;flex-direction: column;gap: 1.5rem;">
 
-                    <div
-                        style=" padding: 15px; border-radius: 25px; margin-bottom: 10px; border: 4.58px solid #F84734; display: flex; justify-content: space-between; align-items: center;height: 280px;">
+                    <div class="pad-a-bit"
+                        style=" padding: 15px; border-radius: 25px; margin-bottom: 10px; border: 4.58px solid #F84734; display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <div style="display: flex;justify-content: space-between;align-items: center;">
                                 <h3 style="font-size:  42px;font-weight: 600; margin: 0;">5 items or less</h3>
@@ -3371,26 +3390,26 @@ ${day}
                             </div>
                             <p style="font-size: 38px;font-weight: 400; color: #E7E7E7; margin-top: 5px;">Ideal for
                                 those light moves where you’re only
-                                taking a few items like deliveries. MUST BE LESS THAN 5 ITEMS</p>
+                                taking a few items like deliveries. <span style="font-family:'Arial Rounded MT Bold'">MUST BE LESS THAN 5 ITEMS</span></p>
                         </div>
 
                     </div>
 
-                    <div style=" padding: 15px; border-radius: 25px;height: 240px; margin-bottom: 10px; border: 4.58px solid 
+                    <div class="pad-a-bit" style=" padding: 15px; border-radius: 25px;height: 240px; margin-bottom: 10px; border: 4.58px solid 
 #013C3D; display: flex; justify-content: space-between; align-items: start;">
                         <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Partial move</h3>
                         <button
                             style="background-color: transparent; border: none; color: red; font-size: 5rem;">+</button>
                     </div>
 
-                    <div style=" padding: 15px;height: 240px; border-radius: 25px; margin-bottom: 10px;border: 4.58px solid 
+                    <div class="pad-a-bit" style=" padding: 15px;height: 240px; border-radius: 25px; margin-bottom: 10px;border: 4.58px solid 
 #013C3D;display: flex; justify-content: space-between; align-items: start;">
                         <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Full home</h3>
                         <button
                             style="background-color: transparent; border: none; color: red; font-size: 5rem;">+</button>
                     </div>
 
-                    <div style=" padding: 15px;height: 240px; border-radius: 25px; margin-bottom: 10px;border: 4.58px solid 
+                    <div class="pad-a-bit" style=" padding: 15px;height: 240px; border-radius: 25px; margin-bottom: 10px;border: 4.58px solid 
 #013C3D;display: flex; justify-content: space-between; align-items: start;">
                         <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Commercial</h3>
                         <button
