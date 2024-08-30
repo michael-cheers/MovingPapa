@@ -643,9 +643,8 @@ display: none;
 									(() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=origOrDest]').innerText = 'destination'; return c; })(),
                 432, 'monster3.png'],
             ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 643, 'monster4.png'],
-            ["Great choice! how can we reach you?", "", quoteContactForm, -1, 'monsterCall.png'],
-            ["Not sure which option fits your move? Let me help you out!.", "",
-            stage3, 500, 'stage3.png']
+            ["Not sure which option fits your move? Let me help you out!.", "", stage3, 500, 'stage3.png'],
+            ["Great choice! how can we reach you?", "", quoteContactForm, -1, 'monsterCall.png']
 		];
         displayStage();
 		quotePopup.style.display = '';
@@ -3202,7 +3201,7 @@ ${day}
                     </div>
                 </div>
             </div>
-            <a href="#" style="font-family: Arial Rounded MT Bold;
+            <a onclick="nextStage()" href="#" style="font-family: Arial Rounded MT Bold;
                             font-size: 40.03px;
                             font-weight: 400;
                             line-height: 46.32px;
@@ -3241,7 +3240,7 @@ ${day}
                     </div>
                 </div>
             </div>
-            <a href="#" style="font-family: Arial Rounded MT Bold;
+            <a onclick="nextStage()" href="#" style="font-family: Arial Rounded MT Bold;
                             font-size: 40.03px;
                             font-weight: 400;
                             line-height: 46.32px;
@@ -3264,7 +3263,7 @@ ${day}
             style="padding: 20px; color: #fff;background-color: #00292A;">
             <div style="width: 100%; height: 4px; background-color: #013C3D;"></div>
             <div
-                style="display: flex; flex-direction: column; padding: 1rem 2rem; width: 51%;margin: 0 130px;gap: 1.2rem;">
+                style="display: flex; flex-direction: column; padding: 1rem 2rem; margin: 0 130px;gap: 1.2rem;">
                 <h2 style="font-size: 48px; font-weight: 800;text-align: left;">Move types</h2>
                 <div style="display: flex;flex-direction: column;gap: 1.5rem;">
 
@@ -3307,11 +3306,10 @@ ${day}
 
             </div>
             <div
-                style="display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 1rem;width: 100%;position: absolute;bottom: 54%;">
+                style="margin-top: 99px;display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 1rem;width: 100%;">
                 <div style="width: 100%; height: 4px; background-color: #013C3D;"></div>
                 <span
-                    style="display: inline-block;position: relative;
-    right: 19%; text-align: center; margin-top: 20px;font-size: 53px;font-weight: 400; color: #fff;border-bottom: 4px solid #fff;">Go
+                    style="text-align: center; margin-top: 20px;font-size: 53px;font-weight: 400; color: #fff;border-bottom: 4px solid #fff;">Go
                     back</span>
 
             </div>
