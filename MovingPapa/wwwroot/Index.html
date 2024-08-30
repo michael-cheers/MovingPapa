@@ -689,6 +689,7 @@ display: none;
             stageDiv.style.display = 'none';
         let tempDiv = document.createElement('div');
         tempDiv.style.backgroundColor = '#00292A';
+        tempDiv.style.paddingTop = '91px';
         tempDiv.style.paddingBottom = '520px';
         tempDiv.classList.add('popup-main-inner');
         if (!(els instanceof Array))
@@ -1582,56 +1583,55 @@ margin-top:51px;
             <style>
 
 
-            .popup {
-                font-size: 87px;
-                font-family: "Arial Rounded MT Bold";
-                font-weight: 400;
-            }
+                .popup {
+                    font-size: 87px;
+                    font-family: "Arial Rounded MT Bold";
+                    font-weight: 400;
+                }
 
-            .wavybuddies {
-                background-color: #012122;
-                padding-top: 193px;
-                width: 100%;
-                display: flex;
-                justify-content: center;
-            }
+                .wavybuddies {
+                    background-color: #012122;
+                    padding-top: 193px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                }
 
-            .wavybuddies > div {
-                width: 70%;
-                height: auto;
-            }
+                    .wavybuddies > div {
+                        width: 70%;
+                        height: auto;
+                    }
 
-            .wavybuddies img {
-                width: 100%;
-                height: 100%;
-            }
+                    .wavybuddies img {
+                        width: 100%;
+                        height: 100%;
+                    }
 
-            .btn-groups {
-                margin-top: -50px;
-                width: 100%;
-                height: 50%;
-                background-color: #00292a;
-                color: white;
-            }
+                .btn-groups {
+                    margin-top: -50px;
+                    width: 100%;
+                    height: 50%;
+                    background-color: #00292a;
+                    color: white;
+                }
 
-            .quote-btn {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                padding: 79px 48px;
-                line-height: 100px;
-                outline: none;
-                border: none;
-                color: white;
-                border-bottom: 5px solid #012122;
-                background-color: #00292a;
-            }
+                .quote-btn {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    padding: 79px 48px;
+                    line-height: 100px;
+                    outline: none;
+                    border: none;
+                    color: white;
+                    border-bottom: 5px solid #012122;
+                    background-color: #00292a;
+                }
 
-            .btn-arrow {
-                font-size: 150px;
-                font-weight: 600;
-            }
-
+                .btn-arrow {
+                    font-size: 150px;
+                    font-weight: 600;
+                }
             </style>
             <div id="quoteMethodSelector" class="popup-main-inner">
                 <div style="margin-top:calc(-832px - -1091px);">
@@ -1656,249 +1656,252 @@ margin-top:51px;
                 </div>
             </div>
             <div id="newPopupDesign" style="display:none" class="popup-main-inner">
-                    <div style="padding-left: 53px;padding-right: 61px;display: flex; border-radius: 104.801px; border: 7px solid #013C3D; background: linear-gradient(267deg, rgba(1, 60, 61, 0.10) 86.41%, rgba(54, 76, 111, 0.00) 131.14%);">
-                <img id=progressIndImg src="monster.png" width=425 height=490 />
-                <div>
-                    <div id=progressInd1 style="margin-bottom: 57px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.1899px;line-height: 63px;display: flex;align-items: center;color: #FFFFFF;">
-                        Hey there, you're off to a great start!
+                <div style="background: url(background.png); border-radius: 104.801px; border: 7px solid #013C3D; padding-left: 53px; padding-right: 61px;">
+                    <div style="display: flex">
+                        <img id=progressIndImg src="monster.png" width=425 height=490 />
+                        <div>
+                            <div id=progressInd1 style="margin-bottom: 57px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.1899px;line-height: 63px;display: flex;align-items: center;color: #FFFFFF;">
+                                Hey there, you're off to a great start!
+                            </div>
+                            <div id=progressInd2 style='color: #EEE;font-family: "Arial Rounded MT";font-size: 38.206px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                Lets build your quote.  I’ll make this as smooth and enjoyable as a stroll in the park.
+                            </div>
+                        </div>
                     </div>
-                    <div id=progressInd2 style='color: #EEE;font-family: "Arial Rounded MT";font-size: 38.206px;font-style: normal;font-weight: 400;line-height: normal;'>
-                        Lets build your quote.  I’ll make this as smooth and enjoyable as a stroll in the park.
-                    </div>
-            </div>
-        </div>
-            <style>
-                .styledProgress {
-                    accent-color: #F84734;
-                }
-                .styledProgress::-webkit-progress-value
-                {
-                    background-color: #F84734;
-                }
-                .styledProgress::-moz-progress-value
-                {
-                    background-color: #F84734;
-                }
-
-
-            </style>
-            <div style="display:flex" id="progressDiv" class="popup-main-inner">
-                <progress style="margin-top: 63px;" id=progressIndBar class=styledProgress style="width:100%;height:39px" value=50 max=950></progress>
-            </div>
-            <template id=stage0Heading>
-            <div id="quoteFirstText" style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 55px;line-height: 56px;/* or 102% */display: flex;align-items: center;color: #FFFFFF;">
-            </div>
-            </template>
-            <div id="quoteSecondText" style="max-width: 1245px;margin-top:calc(132px - 84px);font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 45.3492px;line-height: 53px;color: #EEEEEE;">
-            </div>
-            <script>
-                let calendarRates = null;
-                let callEnquiry = false;
-                function callMe() {
-                quoteFirstText.innerText = "Great choice! We’ll call you.";
-                quoteSecondText.innerText = `Share your contacts, and we’ll give you a call to
-                guide you through the process.
-                Personalized support, just a phone call away.`;
-                let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
-                while (elem !== null) {
-                elem.style.display = 'none';
-                elem = elem.nextElementSibling;
-                }
-                quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
-                callEnquiry = true;
-                }
-                function quoteSelectService(service) {
-                quoteFirstText.innerText = "Do you have a date in mind?";
-                quoteSecondText.innerText = "Don’t worry! You can change this later.";
-                quoteSecondText.style.marginTop = "29px";
-                let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
-                while (elem !== null) {
-                elem.style.display = 'none';
-                elem = elem.nextElementSibling;
-                }
-                elemParent.appendChild(calendar.content.firstElementChild.cloneNode(true));
-                }
-                let selectedDate = null;
-                function quoteSelectDate(date) {
-                quoteFirstText.innerText = "For your first move, here’s a gift from papa";
-                quoteSecondText.innerText = "To celebrate your first move with us, enjoy a special discount—this will be automatically added to your move.";
-                quoteSecondText.style.fontSize = "41.5282px";
-                quoteSecondText.style.lineHeight = "48px";
-                quoteSecondText.parentElement.querySelector('[name=calendar]').style.display = 'none';
-                quoteSecondText.parentElement.appendChild(papaGiftCard.content.firstElementChild.cloneNode(true));
-                selectedDate = date.toLocaleDateString('en-CA');
-                }
-                function acceptGiftCard() {
-                quoteFirstText.innerText = "Let’s get you set up";
-                quoteSecondText.innerText = "To keep things smooth, we need your contact info to save your progress and adjust your move later. We’re here to keep everything on track, just the way you want.";
-                quoteSecondText.style.fontSize = "41.5282px";
-                quoteSecondText.style.lineHeight = "48px";
-                quoteSecondText.parentElement.querySelector('[name=papaGiftCard]').style.display = 'none';
-                quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
-                }
-                function chooseBillingMethod() {
-                if (callEnquiry) {
-                location.reload();
-                return;
-                }
-                quoteFirstText.style.display = 'none';
-                quoteSecondText.style.display = 'none';
-                quoteSecondText.parentElement.querySelector('[name=contactForm]').style.display = 'none';
-                quoteSecondText.parentElement.parentElement.lastElementChild.before(loggedInUI.content.firstElementChild.cloneNode(true));
-                accountName.innerText = firstName.value;
-                fromLocation.innerText = pickUpPoint.value.split(', ')[0];
-                toLocation.innerText = destinationPoint.value.split(', ')[0];
-                }
-                let billingMethod = 'hourly';
-                function chooseRate () {
-                    if (billingMethod === 'hourly') {
-                        calendarRates = {
-                        "2024-08-01": 279,
-                        "2024-08-02": 149,
-                        "2024-08-03": 179,
-                        "2024-08-04": 119,
-                        "2024-08-05": 109,
-                        "2024-08-06": 189,
-                        "2024-08-07": 139,
-                        "2024-08-08": 139,
-                        "2024-08-09": 159,
-                        "2024-08-10": 129,
-                        "2024-08-11": 109,
-                        "2024-08-12": 99,
-                        "2024-08-13": 209,
-                        "2024-08-14": 129,
-                        "2024-08-15": 159,
-                        "2024-08-16": 199,
-                        "2024-08-17": 129,
-                        "2024-08-18": 149,
-                        "2024-08-19": 129,
-                        "2024-08-20": 119,
-                        "2024-08-21": 179,
-                        "2024-08-22": 189,
-                        "2024-08-23": 129,
-                        "2024-08-24": 219,
-                        "2024-08-25": 239,
-                        "2024-08-26": 179,
-                        "2024-08-27": 179,
-                        "2024-08-28": 199,
-                        "2024-08-29": 199,
-                        "2024-08-30": 249,
-                        "2024-08-31": 249,
-                        "2024-09-01": 149,
-                        };
-                        loggedInUI_chooseBilling.style.display = 'none';
-                        loggedInUI_bottom.style.display = 'none';
-                        loggedInUI_chooseHour.style.display = '';
-                        let c = calendar.content.firstElementChild.cloneNode(true);
-                        calendarSlot.after(c);
-                        calendarSlot.remove();
-                        c.style.marginLeft = "103px";
-                        c.style.marginTop = "79px";
-                        quoteLGDate.innerText = formatDate(selectedDate, true);
+                    <div style=" background: url(quote-bg.png); height: 150px; margin-top: -50px; margin-bottom: -80px; background-size: contain; background-repeat: no-repeat; background-position: bottom;" />
+                </div>
+                <style>
+                    .styledProgress {
+                        accent-color: #F84734;
                     }
-                    else if (billingMethod === 'flat') {
+
+                        .styledProgress::-webkit-progress-value {
+                            background-color: #F84734;
+                        }
+
+                        .styledProgress::-moz-progress-value {
+                            background-color: #F84734;
+                        }
+                </style>
+                <template id=stage0Heading>
+                    <div id="quoteFirstText" style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 55px;line-height: 56px;/* or 102% */display: flex;align-items: center;color: #FFFFFF;">
+                    </div>
+                </template>
+                <div id="quoteSecondText" style="max-width: 1245px;margin-top:calc(132px - 84px);font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 45.3492px;line-height: 53px;color: #EEEEEE;">
+                </div>
+                <script>
+                    let calendarRates = null;
+                    let callEnquiry = false;
+                    function callMe() {
+                        quoteFirstText.innerText = "Great choice! We’ll call you.";
+                        quoteSecondText.innerText = `Share your contacts, and we’ll give you a call to
+                                                guide you through the process.
+                                                Personalized support, just a phone call away.`;
+                        let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
+                        while (elem !== null) {
+                            elem.style.display = 'none';
+                            elem = elem.nextElementSibling;
+                        }
+                        quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
+                        callEnquiry = true;
+                    }
+                    function quoteSelectService(service) {
+                        quoteFirstText.innerText = "Do you have a date in mind?";
+                        quoteSecondText.innerText = "Don’t worry! You can change this later.";
+                        quoteSecondText.style.marginTop = "29px";
+                        let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
+                        while (elem !== null) {
+                            elem.style.display = 'none';
+                            elem = elem.nextElementSibling;
+                        }
+                        elemParent.appendChild(calendar.content.firstElementChild.cloneNode(true));
+                    }
+                    let selectedDate = null;
+                    function quoteSelectDate(date) {
+                        quoteFirstText.innerText = "For your first move, here’s a gift from papa";
+                        quoteSecondText.innerText = "To celebrate your first move with us, enjoy a special discount—this will be automatically added to your move.";
+                        quoteSecondText.style.fontSize = "41.5282px";
+                        quoteSecondText.style.lineHeight = "48px";
+                        quoteSecondText.parentElement.querySelector('[name=calendar]').style.display = 'none';
+                        quoteSecondText.parentElement.appendChild(papaGiftCard.content.firstElementChild.cloneNode(true));
+                        selectedDate = date.toLocaleDateString('en-CA');
+                    }
+                    function acceptGiftCard() {
+                        quoteFirstText.innerText = "Let’s get you set up";
+                        quoteSecondText.innerText = "To keep things smooth, we need your contact info to save your progress and adjust your move later. We’re here to keep everything on track, just the way you want.";
+                        quoteSecondText.style.fontSize = "41.5282px";
+                        quoteSecondText.style.lineHeight = "48px";
+                        quoteSecondText.parentElement.querySelector('[name=papaGiftCard]').style.display = 'none';
+                        quoteSecondText.parentElement.appendChild(quoteContactForm.content.firstElementChild.cloneNode(true));
+                    }
+                    function chooseBillingMethod() {
+                        if (callEnquiry) {
+                            location.reload();
+                            return;
+                        }
+                        quoteFirstText.style.display = 'none';
+                        quoteSecondText.style.display = 'none';
+                        quoteSecondText.parentElement.querySelector('[name=contactForm]').style.display = 'none';
+                        quoteSecondText.parentElement.parentElement.lastElementChild.before(loggedInUI.content.firstElementChild.cloneNode(true));
+                        accountName.innerText = firstName.value;
+                        fromLocation.innerText = pickUpPoint.value.split(', ')[0];
+                        toLocation.innerText = destinationPoint.value.split(', ')[0];
+                    }
+                    let billingMethod = 'hourly';
+                    function chooseRate() {
+                        if (billingMethod === 'hourly') {
+                            calendarRates = {
+                                "2024-08-01": 279,
+                                "2024-08-02": 149,
+                                "2024-08-03": 179,
+                                "2024-08-04": 119,
+                                "2024-08-05": 109,
+                                "2024-08-06": 189,
+                                "2024-08-07": 139,
+                                "2024-08-08": 139,
+                                "2024-08-09": 159,
+                                "2024-08-10": 129,
+                                "2024-08-11": 109,
+                                "2024-08-12": 99,
+                                "2024-08-13": 209,
+                                "2024-08-14": 129,
+                                "2024-08-15": 159,
+                                "2024-08-16": 199,
+                                "2024-08-17": 129,
+                                "2024-08-18": 149,
+                                "2024-08-19": 129,
+                                "2024-08-20": 119,
+                                "2024-08-21": 179,
+                                "2024-08-22": 189,
+                                "2024-08-23": 129,
+                                "2024-08-24": 219,
+                                "2024-08-25": 239,
+                                "2024-08-26": 179,
+                                "2024-08-27": 179,
+                                "2024-08-28": 199,
+                                "2024-08-29": 199,
+                                "2024-08-30": 249,
+                                "2024-08-31": 249,
+                                "2024-09-01": 149,
+                            };
+                            loggedInUI_chooseBilling.style.display = 'none';
+                            loggedInUI_bottom.style.display = 'none';
+                            loggedInUI_chooseHour.style.display = '';
+                            let c = calendar.content.firstElementChild.cloneNode(true);
+                            calendarSlot.after(c);
+                            calendarSlot.remove();
+                            c.style.marginLeft = "103px";
+                            c.style.marginTop = "79px";
+                            quoteLGDate.innerText = formatDate(selectedDate, true);
+                        }
+                        else if (billingMethod === 'flat') {
+                            loggedInUI_quoteForm.style.display = 'none';
+                            loggedInUI_chooseBilling.style.display = 'none';
+                            loggedInUI_bottom.style.display = 'none';
+                            loggedInUI_addFurnitureInfo.style.display = '';
+                            quotePopup.querySelector('.popup-child').style.backgroundColor = '#012122';
+                            for (let f of document.querySelectorAll('.firstName'))
+                                f.innerText = firstName.value;
+                        }
+                    }
+                    function goToConfirmation() {
+                        loggedInUI_chooseHour.style.display = 'none';
                         loggedInUI_quoteForm.style.display = 'none';
-                        loggedInUI_chooseBilling.style.display = 'none';
-                        loggedInUI_bottom.style.display = 'none';
-                        loggedInUI_addFurnitureInfo.style.display = '';
-                        quotePopup.querySelector('.popup-child').style.backgroundColor = '#012122';
-                        for (let f of document.querySelectorAll('.firstName'))
-                            f.innerText = firstName.value;
+                        loggedInUI_confirmMove.style.display = '';
+                        quoteLGOrigin.innerText = pickUpPoint.value;
+                        quoteLGDest.innerText = destinationPoint.value;
+                        let price = calendarRates[selectedDate];
+                        quoteLGDetails.innerHTML = `${truckNum.innerText} TRUCK${truckNum.innerText.trim() !== '1' ? 'S' : ''}, ${moverNum.innerText} MOVER${moverNum.innerText.trim() !== '1' ? 'S' : ''} @ $${price} / HOUR`;
                     }
-                }
-                function goToConfirmation() {
-                loggedInUI_chooseHour.style.display = 'none';
-                loggedInUI_quoteForm.style.display = 'none';
-                loggedInUI_confirmMove.style.display = '';
-                quoteLGOrigin.innerText = pickUpPoint.value;
-                quoteLGDest.innerText = destinationPoint.value;
-                let price = calendarRates[selectedDate];
-                quoteLGDetails.innerHTML = `${truckNum.innerText} TRUCK${truckNum.innerText.trim() !== '1' ? 'S' : ''}, ${moverNum.innerText} MOVER${moverNum.innerText.trim() !== '1' ? 'S' : ''} @ $${price} / HOUR`;
-                }
-                function addCard () {
-                loggedInUI_confirmMove.style.display = 'none';
-                loggedInUI_addNewCard.style.display = '';
-                }
-                function saveCard () {
-                    loggedInUI_confirmMove.style.display = '';
-                    loggedInUI_addNewCard.style.display = 'none';
-                    let newCard = savedCard.content.firstElementChild.cloneNode(true);
-                    newCard.querySelector('[name=cardEnd]').innerText = acn_CN.value.slice(-4);
-                    cards.prepend(newCard);
-                }
-                function formatDate(dateString, format2 = false) {
-                    // List of month names
-                    const months = [
-                        'January', 'February', 'March', 'April', 'May', 'June',
-                        'July', 'August', 'September', 'October', 'November', 'December'
-                    ];
-    
-                    // Parse the date string (yyyy-mm-dd)
-                    const [year, month, day] = dateString.split('-').map(Number);
-    
-                    // Convert month number to month name
-                    const monthName = months[month - 1];
-    
-                    // Determine the ordinal suffix for the day
-                    let suffix = 'th';
-                    if (day % 10 === 1 && day % 100 !== 11) suffix = 'st';
-                    else if (day % 10 === 2 && day % 100 !== 12) suffix = 'nd';
-                    else if (day % 10 === 3 && day % 100 !== 13) suffix = 'rd';
-    
-                    // Format the date string
-                    return format2 ? `${day}${suffix} ${monthName} ${year}` : `${monthName} ${day}${suffix}, ${year}`;
-                }
-
-                function reserve () {
-                    moveDate.innerText = formatDate(selectedDate);
-                    loggedInUI_confirmMove.style.display = 'none';
-                    loggedInUI_moveConfirmed.style.display = '';
-                }
-
-                function nextBedroom () {
-                    let arr = ['Bedroom 1', 'Bedroom 2', 'Living Room', 'Basement', 'Specialty items'];
-                    let items = [
-                        [],
-                        ['Beds',
-                        'Dressers',
-                        'Nightstands',
-                        'Credenza'],
-                        ['Couch', 'Sofa', 'Loveseat', 'TV stand'],
-                        ['Boxes', 'Sofa', 'Loveseat', 'TV stand'],
-                        ['Piano', 'Pool table', 'Fridge', 'Safe']
-                    ];
-                    let imgs = ['bedroom1.png', 'bedroom2.png', 'livingRoom.png', 'basement.png', 'specialtyItems.png'];
-                    let idx = arr.indexOf(roomName.innerText) + 1;
-                    if (idx === arr.length) {
-                        loggedInUI_addFurnitureInfo.style.display = 'none';
-                        loggedInUI_flatFinalDetails.style.display = '';
-                        return;
+                    function addCard() {
+                        loggedInUI_confirmMove.style.display = 'none';
+                        loggedInUI_addNewCard.style.display = '';
                     }
-                    roomName.innerText = arr[idx];
-                    roomImg.src = imgs[idx];
-                    furnitureCont.innerHTML = '';
-                    createFurniture(items[idx]);
-                }
-                function confirmFinalDetails () {
-                    loggedInUI_flatFinalDetails.style.display = 'none';
-                    loggedInUI_flatConfirmAndPay.style.display = '';
-                }
-            </script>
-            <style>
-                @media all and (min-width: 600px) {
-                #fullServiceQuoteBtn {
-                margin-top: 100px !important;
-                }
-                #selfServiceQuoteBtn {
-                margin-top: 39px!important;
-                }
-                #callMeBtn {
-                margin-top: 191px!important;
-                }
-                }
-            </style>
+                    function saveCard() {
+                        loggedInUI_confirmMove.style.display = '';
+                        loggedInUI_addNewCard.style.display = 'none';
+                        let newCard = savedCard.content.firstElementChild.cloneNode(true);
+                        newCard.querySelector('[name=cardEnd]').innerText = acn_CN.value.slice(-4);
+                        cards.prepend(newCard);
+                    }
+                    function formatDate(dateString, format2 = false) {
+                        // List of month names
+                        const months = [
+                            'January', 'February', 'March', 'April', 'May', 'June',
+                            'July', 'August', 'September', 'October', 'November', 'December'
+                        ];
+
+                        // Parse the date string (yyyy-mm-dd)
+                        const [year, month, day] = dateString.split('-').map(Number);
+
+                        // Convert month number to month name
+                        const monthName = months[month - 1];
+
+                        // Determine the ordinal suffix for the day
+                        let suffix = 'th';
+                        if (day % 10 === 1 && day % 100 !== 11) suffix = 'st';
+                        else if (day % 10 === 2 && day % 100 !== 12) suffix = 'nd';
+                        else if (day % 10 === 3 && day % 100 !== 13) suffix = 'rd';
+
+                        // Format the date string
+                        return format2 ? `${day}${suffix} ${monthName} ${year}` : `${monthName} ${day}${suffix}, ${year}`;
+                    }
+
+                    function reserve() {
+                        moveDate.innerText = formatDate(selectedDate);
+                        loggedInUI_confirmMove.style.display = 'none';
+                        loggedInUI_moveConfirmed.style.display = '';
+                    }
+
+                    function nextBedroom() {
+                        let arr = ['Bedroom 1', 'Bedroom 2', 'Living Room', 'Basement', 'Specialty items'];
+                        let items = [
+                            [],
+                            ['Beds',
+                                'Dressers',
+                                'Nightstands',
+                                'Credenza'],
+                            ['Couch', 'Sofa', 'Loveseat', 'TV stand'],
+                            ['Boxes', 'Sofa', 'Loveseat', 'TV stand'],
+                            ['Piano', 'Pool table', 'Fridge', 'Safe']
+                        ];
+                        let imgs = ['bedroom1.png', 'bedroom2.png', 'livingRoom.png', 'basement.png', 'specialtyItems.png'];
+                        let idx = arr.indexOf(roomName.innerText) + 1;
+                        if (idx === arr.length) {
+                            loggedInUI_addFurnitureInfo.style.display = 'none';
+                            loggedInUI_flatFinalDetails.style.display = '';
+                            return;
+                        }
+                        roomName.innerText = arr[idx];
+                        roomImg.src = imgs[idx];
+                        furnitureCont.innerHTML = '';
+                        createFurniture(items[idx]);
+                    }
+                    function confirmFinalDetails() {
+                        loggedInUI_flatFinalDetails.style.display = 'none';
+                        loggedInUI_flatConfirmAndPay.style.display = '';
+                    }
+                </script>
+                <style>
+                    @media all and (min-width: 600px) {
+                        #fullServiceQuoteBtn {
+                            margin-top: 100px !important;
+                        }
+
+                        #selfServiceQuoteBtn {
+                            margin-top: 39px !important;
+                        }
+
+                        #callMeBtn {
+                            margin-top: 191px !important;
+                        }
+                    }
+                </style>
+            </div>
+            <div style="display:flex" id="progressDiv" class="popup-main-inner">
+                <progress style="margin-bottom: 34px; margin-top: 63px;" id=progressIndBar class=styledProgress style="width:100%;height:39px" value=50 max=950></progress>
+            </div>
         </div>
-    </div>
 </template>
 <script>
     document.body.appendChild(document.currentScript.previousElementSibling.content.firstElementChild.cloneNode(true));
