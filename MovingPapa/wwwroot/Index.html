@@ -1575,15 +1575,346 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
 <template>
     <div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:250vw;height:250vh;overflow:hidden;background-color: #012122;" id="quotePopup" class="popup bottom-bg">
         <style>
-            .popup-main-inner {
-                padding-left: 65px;
+                .popup-main-inner {
+                    padding-left: 65px;
+                    padding-right: 70px;
+                    padding-bottom: 70px;
+                }
+                /*        #popupMainPart {
+                padding-left: 65px!important;
                 padding-right: 70px;
-                padding-bottom: 70px;
+            }*/
+        </style>
+
+        <div id=loggedInUI_flatConfirmAndPay style="display:none; overflow-y: scroll;">
+            <div style="max-height: 250vh; overflow-y: scroll; height: auto;">
+                <div style='border-bottom: 1px solid #00292A;padding-bottom: 19px;margin-bottom: 92px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;' class="flatConfirmPay-body">
+                    <div class="flatConfirmPay-head">
+                        <div class="flatConfirmPay-head-image">
+                            <img src="monster7.png" alt="monster" />
+                        </div>
+                        <div class="flatConfirmPay-head-content">
+                            <div class="flatConfirmPay-head-content-title">Secure Your Move with a $50 Deposit</div>
+                            <div class="flatConfirmPay-head-content-description">Lock in your moving date and guarantee our best service with a refundable deposit.</div>
+                        </div>
+                    </div>
+                    <div class="break-line"></div>
+                    <div class="flatConfirmPay-main">
+                        <div class="flatConfirmPay-main-content">Free cancellation before up to 48 hours before your move. Get a full refund if you change your mind.</div>
+                        <div class="flatConfirmPay-main-image">
+                            <img src="calendar-check.png" alt="calendar-check" />
+                        </div>
+                    </div>
+                </div>
+                <div class="break-content"></div>
+                <div class="flatConfirmPay-body">
+                    <div class="lastConfirm" style="border-radius: 70px;background: #00292A; padding-left: 40px; padding-right: 40px; padding-bottom: 87px;">
+                        <div style="flex-shrink: 0;">
+                            <div style='padding-bottom:30px;padding-top:60px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 50px;font-style: normal;font-weight: 400;line-height: normal;'>Your move details</div>
+                            <div style='border-radius: 60px; padding: 37px;border: 2.935px solid #012122; width: 100%'>
+                                <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal; margin-bottom: 20px;'>
+                                    Pickup
+                                </div>
+                                <div style='border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                    <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                        22 Bay street, Toronto ON M5V 2R5
+                                    </div>
+                                    <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
+                                        Edit
+                                    </button>
+                                </div>
+                                <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 20px;'>
+                                    Drop-off
+                                </div>
+                                <div style='border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                    <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                        22 Bay street, Toronto ON M5V 2R5
+                                    </div>
+                                    <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
+                                        Edit
+                                    </button>
+                                </div>
+                                <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;margin-bottom: 20px;'>
+                                    Date
+                                </div>
+                                <div style='border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                    <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                        Friday August 28, 2024
+                                    </div>
+                                    <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
+                                        Edit
+                                    </button>
+                                </div>
+                                <div style='display:flex;justify-content:space-between;margin-top: 26px; gap: 57px;'>
+                                    <div style='width: 60%; text-align: center; border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                        <div class="fromAddress" style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;margin: auto;'>
+                                            2 Bedroom
+                                        </div>
+                                    </div>
+                                    <div style='width: 60%; text-align: center; border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
+                                        <div class="fromAddress" style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;margin: auto;'>
+                                            Full Service
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 118px;flex-shrink: 0;display:flex; flex-direction: column; gap:66px;">
+                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #013C3D;display:flex;justify-content: space-between;'>
+                                <div>
+                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>All-Inclusive Flat Rate</div>
+                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>No hidden fees for trucks, gas, or mileage<br />—everything is included.</div>
+                                </div>
+                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'>
+                                    <svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #013C3D;display:flex;justify-content: space-between;'>
+                                <div>
+                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Complete Protection</div>
+                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>We protect your floors, wrap furniture<br />to ensure no damages.</div>
+                                </div>
+                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'>
+                                    <svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #013C3D;display:flex;justify-content: space-between;'>
+                                <div>
+                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Top-notch Movers</div>
+                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>Our professional movers are<br />highly trained for excellent service.</div>
+                                </div>
+                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'>
+                                    <svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #013C3D;display:flex;justify-content: space-between;'>
+                                <div>
+                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Premium Protection Plan</div>
+                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>Get up to $10 per pound in coverage, <br />with property protection included for free.</div>
+                                </div>
+                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'>
+                                    <svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flagConfrimPay-body price-card">
+                        <div class="price-title">
+                            Price details
+                        </div>
+                        <div class="price-body">
+                            <div class="price-cell">
+                                <div class="price-name" style="opacity: 60%;">Guaranteed rate</div>
+                                <div class="price-value">$1598.25 CAD</div>
+                            </div>
+                            <div class="price-cell">
+                                <div class="price-name" style="opacity: 60%;">Taxes</div>
+                                <div class="price-value">$218.25 CAD</div>
+                            </div>
+                            <div class="price-cell" style="opacity: 70%; color: #13E74C;">
+                                <div class="price-name">Discounts</div>
+                                <div class="price-value">$50.00 CAD</div>
+                            </div>
+                            <div class="cell-break-line"></div>
+                            <div class="price-cell" style="margin-top: 20px;">
+                                <div class="price-name">Total</div>
+                                <div class="price-value">$218.25 CAD</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="due-today">
+                        <div class="price-cell due-today-price">
+                            <div class="price-name">Due Today</div>
+                            <div class="price-value">$50 CAD</div>
+                        </div>
+                        <div class="dash-break-line" style="opacity: 60%;"></div>
+                        <div class="due-today-description" style="opacity: 60%;">
+                            <span>By selecting the button, I confirm that I provided </span>
+                            <a href="#">accurate inventory</a>
+                        </div>
+                        <button class="secure-btn">Secure and confirm booking</button>
+                        <div class="book-help" style="opacity: 60%;">
+                            <span> Not ready to book? </span>
+                            <a href="#"> email my quote </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <style>
+            .break-line {
+                width: 100%;
+                height: 4px;
+                border: none;
+                margin: 90px 0;
+                background-color: #013C3D;
             }
-/*        #popupMainPart {
-            padding-left: 65px!important;
-            padding-right: 70px;
-        }*/
+
+            .flatConfirmPay-body {
+                padding: 0px 50px 50px 50px;
+            }
+
+            .flatConfirmPay-head {
+                display: flex;
+                border-radius: 102.42px;
+                border: 3.82px solid #00292A;
+                background: linear-gradient(266.72deg, rgba(1, 60, 61, 0.1) 86.41%, rgba(54, 76, 111, 0) 131.14%);
+            }
+
+            .flatConfirmPay-head-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 20px;
+            }
+
+            .flatConfirmPay-head-content-title {
+                font-family: Arial Rounded MT Bold;
+                font-size: 41.18px;
+                font-weight: 400;
+                line-height: 47.65px;
+                text-align: left;
+            }
+
+            .flatConfirmPay-head-content-description {
+                font-family: Arial Rounded MT;
+                font-size: 38.49px;
+                font-weight: 400;
+                line-height: 44.61px;
+                text-align: left;
+                opacity: 60%;
+            }
+
+            .flatConfirmPay-main {
+                display: flex;
+            }
+
+            .flatConfirmPay-main-content {
+                font-family: Arial Rounded MT Bold;
+                font-size: 38.49px;
+                font-weight: 400;
+                line-height: 44.54px;
+                text-align: left;
+            }
+
+            .break-content {
+                width: 100%;
+                height: 18px;
+                background-color: #013C3D;
+                margin: 40px 0;
+            }
+
+            .price-card {
+                color: white;
+                margin: 50px;
+            }
+
+            .price-title {
+                font-family: Arial Rounded MT Bold;
+                font-size: 64.04px;
+                font-weight: 400;
+                line-height: 74.11px;
+                text-align: left;
+                margin: 35px;
+            }
+
+            .price-body {
+                padding: 50px;
+                border-radius: 30px;
+                border: none;
+                background-color: #00292A;
+            }
+
+            .price-cell {
+                display: flex;
+                justify-content: space-between;
+                margin: 20px 0;
+            }
+
+            .price-name {
+                font-family: Arial Rounded MT;
+                font-size: 47.61px;
+                font-weight: 400;
+                line-height: 55.18px;
+                text-align: left;
+            }
+
+            .price-value {
+                font-family: Arial Rounded MT;
+                font-size: 46.96px;
+                font-weight: 400;
+                line-height: 54.43px;
+                text-align: left;
+            }
+
+            .cell-break-line {
+                width: 100%;
+                height: 10px;
+                background-color: #012122;
+                margin: 5px 0;
+            }
+
+            .due-today {
+                color: white;
+                border-radius: 0px 0px 121.82px 121.82px;
+                border: 3.05px 0px 0px 0px;
+                border-top: 3.05px solid #013C3D;
+                box-shadow: 0px 4px 40px 0px #00000040 inset;
+                background-color: #00292A;
+                padding: 50px 60px 100px;
+            }
+
+                .due-today a {
+                    color: white;
+                    background-color: #013C3D;
+                }
+
+            .due-today-price {
+                margin: 20px;
+            }
+
+            .dash-break-line {
+                margin: 40px 0;
+                border-top: 3px #A9A9AA dashed;
+            }
+
+            .due-today-description {
+                font-family: Arial Rounded MT;
+                font-size: 28.24px;
+                font-weight: 400;
+                line-height: 32.73px;
+                text-align: center;
+                margin: 45px;
+            }
+
+            .secure-btn {
+                width: 100%;
+                color: white;
+                font-family: Arial Rounded MT Bold;
+                font-size: 53.18px;
+                font-weight: 400;
+                border-radius: 20px;
+                text-align: center;
+                background: linear-gradient(90deg, #F84734 0%, #FCD503 27%, #278BFF 59.5%, #F84734 83%);
+                margin: 10px auto 100px;
+                padding: 60px;
+            }
+
+            .book-help {
+                font-family: Arial Rounded MT;
+                font-size: 49.32px;
+                font-weight: 400;
+                line-height: 57.16px;
+                text-align: center;
+            }
         </style>
         <div id="popupMainPart" style="
 margin-top:51px;
@@ -1804,8 +2135,8 @@ margin-top:51px;
                     function callMe() {
                         quoteFirstText.innerText = "Great choice! We’ll call you.";
                         quoteSecondText.innerText = `Share your contacts, and we’ll give you a call to
-                                                                                guide you through the process.
-                                                                                Personalized support, just a phone call away.`;
+                                                                                                guide you through the process.
+                                                                                                Personalized support, just a phone call away.`;
                         let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
                         while (elem !== null) {
                             elem.style.display = 'none';
@@ -2215,21 +2546,21 @@ ${day}
                                 </div>
                                 <button style="margin-top:-33px;margin-bottom:-33px;background: #FAFAFA;border: 1.84109px solid #EEEEEE;border-radius: 83.2348px;width: 125.19px;height: 66.28px;">
                                     <div style="display:flex;height:100%">
-                                        <svg style="margin-left:17px;margin-top:15px;margin-right:6px" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6113 4.17676C14.0623 4.17676 11.5706 4.9326 9.45128 6.34871C7.33192 7.76482 5.68008 9.77759 4.70465 12.1325C3.72922 14.4874 3.474 17.0787 3.97127 19.5786C4.46854 22.0786 5.69597 24.3749 7.49833 26.1773C9.3007 27.9797 11.5971 29.2071 14.097 29.7044C16.597 30.2016 19.1882 29.9464 21.5431 28.971C23.898 27.9955 25.9108 26.3437 27.3269 24.2243C28.743 22.105 29.4989 19.6133 29.4989 17.0644C29.4989 13.6464 28.1411 10.3683 25.7242 7.95145C23.3073 5.53456 20.0293 4.17676 16.6113 4.17676ZM20.4775 18.3531C19.054 18.3531 17.9 19.5071 17.9 20.9307C17.9 21.2725 17.7642 21.6003 17.5225 21.8419C17.2809 22.0836 16.9531 22.2194 16.6113 22.2194C16.2695 22.2194 15.9416 22.0836 15.7 21.8419C15.4583 21.6003 15.3225 21.2725 15.3225 20.9307C15.3225 19.5071 14.1685 18.3531 12.745 18.3531C12.4032 18.3531 12.0754 18.2174 11.8337 17.9757C11.592 17.734 11.4562 17.4062 11.4562 17.0644C11.4562 16.7226 11.592 16.3948 11.8337 16.1531C12.0754 15.9114 12.4032 15.7756 12.745 15.7756C14.1685 15.7756 15.3225 14.6216 15.3225 13.1981C15.3225 12.8563 15.4583 12.5285 15.7 12.2868C15.9416 12.0451 16.2695 11.9093 16.6113 11.9093C16.9531 11.9093 17.2809 12.0451 17.5225 12.2868C17.7642 12.5285 17.9 12.8563 17.9 13.1981C17.9 14.6216 19.054 15.7756 20.4775 15.7756C20.8193 15.7756 21.1471 15.9114 21.3888 16.1531C21.6305 16.3948 21.7663 16.7226 21.7663 17.0644C21.7663 17.4062 21.6305 17.734 21.3888 17.9757C21.1471 18.2174 20.8193 18.3531 20.4775 18.3531Z" fill="#F84734"/></svg>
+                                        <svg style="margin-left:17px;margin-top:15px;margin-right:6px" width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6113 4.17676C14.0623 4.17676 11.5706 4.9326 9.45128 6.34871C7.33192 7.76482 5.68008 9.77759 4.70465 12.1325C3.72922 14.4874 3.474 17.0787 3.97127 19.5786C4.46854 22.0786 5.69597 24.3749 7.49833 26.1773C9.3007 27.9797 11.5971 29.2071 14.097 29.7044C16.597 30.2016 19.1882 29.9464 21.5431 28.971C23.898 27.9955 25.9108 26.3437 27.3269 24.2243C28.743 22.105 29.4989 19.6133 29.4989 17.0644C29.4989 13.6464 28.1411 10.3683 25.7242 7.95145C23.3073 5.53456 20.0293 4.17676 16.6113 4.17676ZM20.4775 18.3531C19.054 18.3531 17.9 19.5071 17.9 20.9307C17.9 21.2725 17.7642 21.6003 17.5225 21.8419C17.2809 22.0836 16.9531 22.2194 16.6113 22.2194C16.2695 22.2194 15.9416 22.0836 15.7 21.8419C15.4583 21.6003 15.3225 21.2725 15.3225 20.9307C15.3225 19.5071 14.1685 18.3531 12.745 18.3531C12.4032 18.3531 12.0754 18.2174 11.8337 17.9757C11.592 17.734 11.4562 17.4062 11.4562 17.0644C11.4562 16.7226 11.592 16.3948 11.8337 16.1531C12.0754 15.9114 12.4032 15.7756 12.745 15.7756C14.1685 15.7756 15.3225 14.6216 15.3225 13.1981C15.3225 12.8563 15.4583 12.5285 15.7 12.2868C15.9416 12.0451 16.2695 11.9093 16.6113 11.9093C16.9531 11.9093 17.2809 12.0451 17.5225 12.2868C17.7642 12.5285 17.9 12.8563 17.9 13.1981C17.9 14.6216 19.054 15.7756 20.4775 15.7756C20.8193 15.7756 21.1471 15.9114 21.3888 16.1531C21.6305 16.3948 21.7663 16.7226 21.7663 17.0644C21.7663 17.4062 21.6305 17.734 21.3888 17.9757C21.1471 18.2174 20.8193 18.3531 20.4775 18.3531Z" fill="#F84734" /></svg>
                                         <div style="margin-top:15px;font-family: 'Poppins';font-style: normal;font-weight: 400;font-size: 22.0931px;line-height: 33px;color: #656565;">Add</div>
                                     </div>
                                 </button>
                             </div>
                         </div>
                         <div style="width:fit-content;margin-left:63px;margin-top:26px;height: 64.92px;background: #00292A;border-radius: 83.2348px;">
-                            <svg style="margin-top:15px;margin-bottom:15px;margin-left:26px" width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32.1346 11.5851H3.98395M22.4885 16.4579C19.0286 16.4579 13.6289 16.4579 13.6289 16.4579M32.2348 12.4217V29.3044C32.2348 31.2617 30.6481 32.8483 28.6909 32.8483H7.42766C5.47044 32.8483 3.88379 31.2617 3.88379 29.3044V12.4217C3.88379 11.8715 4.01188 11.3289 4.25793 10.8368L6.69304 5.96657C7.14326 5.06611 8.0636 4.49731 9.07034 4.49731H27.0482C28.055 4.49731 28.9753 5.06611 29.4255 5.96657L31.8606 10.8368C32.1067 11.3289 32.2348 11.8715 32.2348 12.4217Z" stroke="#F84734" stroke-width="2.95323" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg style="margin-top:15px;margin-bottom:15px;margin-left:26px" width="36" height="37" viewBox="0 0 36 37" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M32.1346 11.5851H3.98395M22.4885 16.4579C19.0286 16.4579 13.6289 16.4579 13.6289 16.4579M32.2348 12.4217V29.3044C32.2348 31.2617 30.6481 32.8483 28.6909 32.8483H7.42766C5.47044 32.8483 3.88379 31.2617 3.88379 29.3044V12.4217C3.88379 11.8715 4.01188 11.3289 4.25793 10.8368L6.69304 5.96657C7.14326 5.06611 8.0636 4.49731 9.07034 4.49731H27.0482C28.055 4.49731 28.9753 5.06611 29.4255 5.96657L31.8606 10.8368C32.1067 11.3289 32.2348 11.8715 32.2348 12.4217Z" stroke="#F84734" stroke-width="2.95323" stroke-linecap="round" stroke-linejoin="round" /></svg>
                             <select style="border:none;outline:none;padding-right:calc(138px - 86px);margin-right:calc(64px - 37px);background:inherit;margin-left:22px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 23.918px;line-height: 28px;/* identical to box height */color: #FFFFFF;">
                                 <option value="fullService">Full Service</option>
                                 <option value=selfService>Self Service</option>
                             </select>
                         </div>
                         <div style="margin-bottom:79px;display:flex;width:fit-content;margin-left:63px;margin-top:27px;height: 64.92px;background: #00292A;border-radius: 83.2348px;">
-                            <svg onclick="" style="cursor:pointer;margin-top:15px;margin-bottom:15px;margin-left:26px" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">S<path fill-rule="evenodd" clip-rule="evenodd" d="M11.26 2.19116C12.0389 2.19116 12.6703 2.82261 12.6703 3.60153V5.0119H22.5429V3.60153C22.5429 2.82261 23.1743 2.19116 23.9533 2.19116C24.7322 2.19116 25.3636 2.82261 25.3636 3.60153V5.04672C28.9271 5.40052 31.7103 8.40711 31.7103 12.0637V24.757C31.7103 28.6517 28.5531 31.8089 24.6584 31.8089H10.5548C6.66014 31.8089 3.50293 28.6517 3.50293 24.757V12.0637C3.50293 8.40711 6.28606 5.40052 9.84958 5.04672V3.60153C9.84958 2.82261 10.481 2.19116 11.26 2.19116ZM6.56442 10.6534H28.6488C28.0679 9.01002 26.5007 7.83263 24.6584 7.83263H10.5548C8.71252 7.83263 7.14526 9.01002 6.56442 10.6534ZM28.8895 13.4741H6.32366V24.757C6.32366 27.0938 8.21799 28.9881 10.5548 28.9881H24.6584C26.9952 28.9881 28.8895 27.0938 28.8895 24.757V13.4741ZM9.1444 17.7052C9.1444 16.9263 9.77584 16.2948 10.5548 16.2948H16.1962C16.9752 16.2948 17.6066 16.9263 17.6066 17.7052V23.3467C17.6066 24.1256 16.9752 24.757 16.1962 24.757H10.5548C9.77584 24.757 9.1444 24.1256 9.1444 23.3467V17.7052ZM14.7859 19.1156H11.9651V21.9363H14.7859V19.1156Z" fill="#F84734"/>S</svg>
+                            <svg onclick="" style="cursor:pointer;margin-top:15px;margin-bottom:15px;margin-left:26px" width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">S<path fill-rule="evenodd" clip-rule="evenodd" d="M11.26 2.19116C12.0389 2.19116 12.6703 2.82261 12.6703 3.60153V5.0119H22.5429V3.60153C22.5429 2.82261 23.1743 2.19116 23.9533 2.19116C24.7322 2.19116 25.3636 2.82261 25.3636 3.60153V5.04672C28.9271 5.40052 31.7103 8.40711 31.7103 12.0637V24.757C31.7103 28.6517 28.5531 31.8089 24.6584 31.8089H10.5548C6.66014 31.8089 3.50293 28.6517 3.50293 24.757V12.0637C3.50293 8.40711 6.28606 5.40052 9.84958 5.04672V3.60153C9.84958 2.82261 10.481 2.19116 11.26 2.19116ZM6.56442 10.6534H28.6488C28.0679 9.01002 26.5007 7.83263 24.6584 7.83263H10.5548C8.71252 7.83263 7.14526 9.01002 6.56442 10.6534ZM28.8895 13.4741H6.32366V24.757C6.32366 27.0938 8.21799 28.9881 10.5548 28.9881H24.6584C26.9952 28.9881 28.8895 27.0938 28.8895 24.757V13.4741ZM9.1444 17.7052C9.1444 16.9263 9.77584 16.2948 10.5548 16.2948H16.1962C16.9752 16.2948 17.6066 16.9263 17.6066 17.7052V23.3467C17.6066 24.1256 16.9752 24.757 16.1962 24.757H10.5548C9.77584 24.757 9.1444 24.1256 9.1444 23.3467V17.7052ZM14.7859 19.1156H11.9651V21.9363H14.7859V19.1156Z" fill="#F84734" />S</svg>
                             <div style="margin-top:15px;border:none;outline:none;padding-right:calc(138px - 86px);margin-right:calc(64px - 37px);background:inherit;margin-left:22px;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 23.918px;line-height: 28px;/* identical to box height */color: #FFFFFF;">
                                 Wed, Aug 22
                             </div>
@@ -2238,9 +2569,9 @@ ${day}
                 </div>
                 <style>
                     @media all and (max-width: 600px) {
-                    #loggedInUI_chooseBilling {
-                    margin-top: 70px;
-                    }
+                        #loggedInUI_chooseBilling {
+                            margin-top: 70px;
+                        }
                     }
                 </style>
                 <div id="loggedInUI_chooseBilling" class="mb-no-margin-left" style="margin-left:135px;padding-left:40px;padding-top:30px;width: 1011px;height: 448px;background: #00292A;box-shadow: 0px 1.96128px 1.96128px rgba(0, 0, 0, 0.25);border-radius: 40px;">
@@ -2251,30 +2582,33 @@ ${day}
                     <div style="display:flex;margin-bottom:101px" class="buttons">
                         <style>
                             .buttons > button.selected {
-                            border: 5px solid #F84734;margin:-5px;
+                                border: 5px solid #F84734;
+                                margin: -5px;
                             }
+
                             .buttons > button:not(.selected) {
-                            border: 5px solid transparent;margin:-5px;
+                                border: 5px solid transparent;
+                                margin: -5px;
                             }
                         </style>
                         <script>
-                            function selectBillingMethod (elem, met) {
-                            const toggles = elem.parentElement.querySelectorAll('.selected');
-                            toggles.forEach(e => e.classList.remove('selected'));
-                            elem.classList.add('selected');
-                            billingMethod = met;
+                            function selectBillingMethod(elem, met) {
+                                const toggles = elem.parentElement.querySelectorAll('.selected');
+                                toggles.forEach(e => e.classList.remove('selected'));
+                                elem.classList.add('selected');
+                                billingMethod = met;
                             }
                         </script>
                         <style>
                             @media all and (max-width: 600px) {
-                            #hourlyBilling {
-                            margin-right: 48px!important;
-                            }
+                                #hourlyBilling {
+                                    margin-right: 48px !important;
+                                }
                             }
                         </style>
                         <button id=hourlyBilling class="selected" onclick="selectBillingMethod(this, 'hourly')" style="margin-right:126px;background: #EEEEEE;box-shadow: 0.614137px 0.614137px 61.4137px 0.614137px rgba(0, 0, 0, 0.05);border-radius: 20px;">
                             <div style="display:flex;height:100%;text-align:left">
-                                <svg style="margin-top:26px;margin-bottom:27px;margin-left:27px;margin-right:27px" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.0362 34.2251C36.2161 34.6183 37.4913 33.9807 37.8846 32.8009C38.2779 31.621 37.6402 30.3458 36.4604 29.9525L35.0362 34.2251ZM28.1484 29.5555H25.8965C25.8965 30.5247 26.5168 31.3852 27.4363 31.6917L28.1484 29.5555ZM30.4002 18.9625C30.4002 17.7189 29.392 16.7107 28.1484 16.7107C26.9047 16.7107 25.8965 17.7189 25.8965 18.9625H30.4002ZM36.4604 29.9525L28.8605 27.4192L27.4363 31.6917L35.0362 34.2251L36.4604 29.9525ZM30.4002 29.5555V18.9625H25.8965V29.5555H30.4002ZM46.1631 27.0221C46.1631 36.9714 38.0976 45.0368 28.1484 45.0368V49.5405C40.5849 49.5405 50.6667 39.4587 50.6667 27.0221H46.1631ZM28.1484 45.0368C18.1991 45.0368 10.1337 36.9714 10.1337 27.0221H5.63C5.63 39.4587 15.7118 49.5405 28.1484 49.5405V45.0368ZM10.1337 27.0221C10.1337 17.0729 18.1991 9.00745 28.1484 9.00745V4.50378C15.7118 4.50378 5.63 14.5856 5.63 27.0221H10.1337ZM28.1484 9.00745C38.0976 9.00745 46.1631 17.0729 46.1631 27.0221H50.6667C50.6667 14.5856 40.5849 4.50378 28.1484 4.50378V9.00745Z" fill="#F84734"/></svg>
+                                <svg style="margin-top:26px;margin-bottom:27px;margin-left:27px;margin-right:27px" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M35.0362 34.2251C36.2161 34.6183 37.4913 33.9807 37.8846 32.8009C38.2779 31.621 37.6402 30.3458 36.4604 29.9525L35.0362 34.2251ZM28.1484 29.5555H25.8965C25.8965 30.5247 26.5168 31.3852 27.4363 31.6917L28.1484 29.5555ZM30.4002 18.9625C30.4002 17.7189 29.392 16.7107 28.1484 16.7107C26.9047 16.7107 25.8965 17.7189 25.8965 18.9625H30.4002ZM36.4604 29.9525L28.8605 27.4192L27.4363 31.6917L35.0362 34.2251L36.4604 29.9525ZM30.4002 29.5555V18.9625H25.8965V29.5555H30.4002ZM46.1631 27.0221C46.1631 36.9714 38.0976 45.0368 28.1484 45.0368V49.5405C40.5849 49.5405 50.6667 39.4587 50.6667 27.0221H46.1631ZM28.1484 45.0368C18.1991 45.0368 10.1337 36.9714 10.1337 27.0221H5.63C5.63 39.4587 15.7118 49.5405 28.1484 49.5405V45.0368ZM10.1337 27.0221C10.1337 17.0729 18.1991 9.00745 28.1484 9.00745V4.50378C15.7118 4.50378 5.63 14.5856 5.63 27.0221H10.1337ZM28.1484 9.00745C38.0976 9.00745 46.1631 17.0729 46.1631 27.0221H50.6667C50.6667 14.5856 40.5849 4.50378 28.1484 4.50378V9.00745Z" fill="#F84734" /></svg>
                                 <div style="margin-top:21px;">
                                     <div style="margin-bottom:12px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 23.3803px;line-height: 27px;/* identical to box height */color: #00292A;">
                                         Hourly Rate
@@ -2308,10 +2642,10 @@ ${day}
                 95% to complete<br />
                 <style>
                     @media all and (max-width: 600px) {
-                    #progressBar {
-                    transform:scale(0.6);
-                    transform-origin: top left;
-                    }
+                        #progressBar {
+                            transform: scale(0.6);
+                            transform-origin: top left;
+                        }
                     }
                 </style>
                 <svg width="1790" height="36" id=progressBar viewBox="0 0 1790 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -2322,9 +2656,11 @@ ${day}
                     <circle cx="721.927" cy="17.9268" r="5.92683" fill="white" />
                     <circle cx="1082.93" cy="17.9268" r="5.92683" fill="#FFEAEA" />
                 </svg>
-                <style>    
+                <style>
                     @media all and (min-width: 600px) {
-                    #theMap > div { width: 50%!important; }
+                        #theMap > div {
+                            width: 50% !important;
+                        }
                     }
                 </style>
                 <div id="theMap" style="border-radius:40px;height:661px;margin-bottom:41px">
@@ -2335,307 +2671,206 @@ ${day}
             </div>
             <div id=loggedInUI_addFurnitureInfo style="display:none;">
                 <div style="background-color:#012122;">
-                    <div class=mb-center><div style='margin-top: 104px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;'>
-                        What will you be moving, <span class=firstName>Abby</span>?
-                    </div></div>
-                     <div class=mb-center><div style='margin-top: 37px;color: #D9D9D9;font-family: "Arial Rounded MT";font-size: 42.489px;font-style: normal;font-weight: 400;line-height: normal;'>
-                        To provide you with a guaranteed upfront<br />
-                        flat rate, please provide accurate information
-                    </div></div>
-                    <div style="border-radius: 118.628px;background: #00292A;padding-bottom: 87px;">
-                    <div style="border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 975px;flex-shrink: 0;">
-                        <div class=center style="padding-bottom:100px">
-                            <img id=roomImg src="bedroom1.png" width=679 height=532 />
+                    <div class=mb-center>
+                        <div style='margin-top: 104px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;'>
+                            What will you be moving, <span class=firstName>Abby</span>?
                         </div>
-                        <div id="roomName" style='margin-left: 92px; margin-bottom:49px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 63.471px;font-style: normal;font-weight: 400;line-height: normal;'>Bedroom 1</div>
-                        <template id=flatRateFurniture>
-                            <div style='margin-bottom: 77px;justify-content: space-between; display: flex;margin-left: 84px; margin-right: 168px;border-radius: 90px;border: 2.966px solid #888;background: rgba(255, 255, 255, 0.50);box-shadow: 3.955px 3.955px 3.955px 0px rgba(0, 0, 0, 0.25) inset;color: #000;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 43.71px;font-style: normal;font-weight: 400;line-height: normal;'>
-                            <div style='padding-left: 37px; padding-top: 57px; padding-right: 37px; padding-bottom: 57px;' name=itemName>Boxes</div>
-                            <div style='margin-right: 25px; margin-top: 13px; margin-bottom: 14px;border-radius: 50px;border: 1px solid #D5D4DF;background: #00292A;display: flex;padding-left: 72px; padding-right: 72px;'>
-                                <div style='display: flex; flex-direction: column; justify-content: center;'>
-                                    <button onclick="let i = this.parentElement.parentElement.querySelector('[name=numberOfItems]');i.innerText = Math.max(0, +i.innerText - 1);" style='width: 70px; height: 70px;background:transparent;border:none;border-radius: 20px;background: #F84734;'>
-                                        <div style='display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>-</div>
-                                    </button>
-                                </div>
-                                <div name=numberOfItems style="margin-left: 64px; margin-right: 57px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: 'dlig' on;font-family: Inter;font-size: 32px;font-style: normal;font-weight: 700;line-height: normal;display: flex;flex-direction: column;justify-content: center;">
-                                    0
-                                </div>
-                                <div style='display: flex; flex-direction: column; justify-content: center;'>
-                                    <button onclick="let i = this.parentElement.parentElement.querySelector('[name=numberOfItems]');i.innerText = (+i.innerText + 1);" style='width: 70px; height: 70px;background:transparent;border:none;border-radius: 20px;background: #F84734;'>
-                                        <div style='display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>+</div>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        </template>
-                        <script>
-                        createFurniture(['Boxes', 'Dressers', 'Nighstands', 'Credenza', 'Wardrobes']);
-                        function createFurniture (arr) {
-                            arr.forEach(t => {
-                                let f = flatRateFurniture.content.firstElementChild.cloneNode(true);
-                                f.querySelector('[name=itemName]').innerText = t;
-                                furnitureCont.appendChild(f);
-                            });
-                        }
-                        </script>
-                        <div id=furnitureCont></div>
                     </div>
-                    <div style="display:flex">
-                        <div style='margin-left: 64px;margin-top: 65px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 34.604px;font-style: normal;font-weight: 400;line-height: normal;'>
-                            Slide to confirm that the information is accurate. Inaccuracies may affect service pricing.
+                    <div class=mb-center>
+                        <div style='margin-top: 37px;color: #D9D9D9;font-family: "Arial Rounded MT";font-size: 42.489px;font-style: normal;font-weight: 400;line-height: normal;'>
+                            To provide you with a guaranteed upfront<br />
+                            flat rate, please provide accurate information
                         </div>
-                        <div onclick="nextBedroom()" style='cursor: pointer;white-space: nowrap;margin-top: 71px;display: flex;padding: 9.75px;align-items: flex-start;gap: 24.375px;border-radius: 102.375px;background: linear-gradient(90deg, #ACACAC 0%, rgba(182, 182, 182, 0.72) 100%);'>
-                            <svg style="display: flex;flex-direction: column;justify-content: center;height: 100%;" width="127" height="115" viewBox="0 0 127 115" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_0_1)"><circle cx="58.5" cy="56.5" r="48.75" fill="#E0E0E0"/></g><path d="M51.1875 41.875L65.8125 59.0809L51.1875 71.125" stroke="black" stroke-width="4.875"/><defs><filter id="filter0_d_0_1" x="0" y="0.4375" width="126.75" height="126.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dx="4.875" dy="7.3125"/><feGaussianBlur stdDeviation="7.3125"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.19 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/></filter></defs></svg>
-                            <div style='color: #828282;font-family: Inter;font-size: 29.25px;font-style: normal;font-weight: 500;line-height: normal;display: flex;flex-direction: column; justify-content: center;height:100%;'>
-                                Slide To Confirm
+                    </div>
+                    <div style="border-radius: 118.628px;background: #00292A;padding-bottom: 87px;">
+                        <div style="border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 975px;flex-shrink: 0;">
+                            <div class=center style="padding-bottom:100px">
+                                <img id=roomImg src="bedroom1.png" width=679 height=532 />
+                            </div>
+                            <div id="roomName" style='margin-left: 92px; margin-bottom:49px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 63.471px;font-style: normal;font-weight: 400;line-height: normal;'>Bedroom 1</div>
+                            <template id=flatRateFurniture>
+                                <div style='margin-bottom: 77px;justify-content: space-between; display: flex;margin-left: 84px; margin-right: 168px;border-radius: 90px;border: 2.966px solid #888;background: rgba(255, 255, 255, 0.50);box-shadow: 3.955px 3.955px 3.955px 0px rgba(0, 0, 0, 0.25) inset;color: #000;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 43.71px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                    <div style='padding-left: 37px; padding-top: 57px; padding-right: 37px; padding-bottom: 57px;' name=itemName>Boxes</div>
+                                    <div style='margin-right: 25px; margin-top: 13px; margin-bottom: 14px;border-radius: 50px;border: 1px solid #D5D4DF;background: #00292A;display: flex;padding-left: 72px; padding-right: 72px;'>
+                                        <div style='display: flex; flex-direction: column; justify-content: center;'>
+                                            <button onclick="let i = this.parentElement.parentElement.querySelector('[name=numberOfItems]');i.innerText = Math.max(0, +i.innerText - 1);" style='width: 70px; height: 70px;background:transparent;border:none;border-radius: 20px;background: #F84734;'>
+                                                <div style='display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>-</div>
+                                            </button>
+                                        </div>
+                                        <div name=numberOfItems style="margin-left: 64px; margin-right: 57px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: 'dlig' on;font-family: Inter;font-size: 32px;font-style: normal;font-weight: 700;line-height: normal;display: flex;flex-direction: column;justify-content: center;">
+                                            0
+                                        </div>
+                                        <div style='display: flex; flex-direction: column; justify-content: center;'>
+                                            <button onclick="let i = this.parentElement.parentElement.querySelector('[name=numberOfItems]');i.innerText = (+i.innerText + 1);" style='width: 70px; height: 70px;background:transparent;border:none;border-radius: 20px;background: #F84734;'>
+                                                <div style='display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>+</div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                            <script>
+                                createFurniture(['Boxes', 'Dressers', 'Nighstands', 'Credenza', 'Wardrobes']);
+                                function createFurniture(arr) {
+                                    arr.forEach(t => {
+                                        let f = flatRateFurniture.content.firstElementChild.cloneNode(true);
+                                        f.querySelector('[name=itemName]').innerText = t;
+                                        furnitureCont.appendChild(f);
+                                    });
+                                }
+                            </script>
+                            <div id=furnitureCont></div>
+                        </div>
+                        <div style="display:flex">
+                            <div style='margin-left: 64px;margin-top: 65px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 34.604px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                Slide to confirm that the information is accurate. Inaccuracies may affect service pricing.
+                            </div>
+                            <div onclick="nextBedroom()" style='cursor: pointer;white-space: nowrap;margin-top: 71px;display: flex;padding: 9.75px;align-items: flex-start;gap: 24.375px;border-radius: 102.375px;background: linear-gradient(90deg, #ACACAC 0%, rgba(182, 182, 182, 0.72) 100%);'>
+                                <svg style="display: flex;flex-direction: column;justify-content: center;height: 100%;" width="127" height="115" viewBox="0 0 127 115" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_0_1)"><circle cx="58.5" cy="56.5" r="48.75" fill="#E0E0E0" /></g><path d="M51.1875 41.875L65.8125 59.0809L51.1875 71.125" stroke="black" stroke-width="4.875" /><defs><filter id="filter0_d_0_1" x="0" y="0.4375" width="126.75" height="126.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dx="4.875" dy="7.3125" /><feGaussianBlur stdDeviation="7.3125" /><feComposite in2="hardAlpha" operator="out" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.19 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" /></filter></defs></svg>
+                                <div style='color: #828282;font-family: Inter;font-size: 29.25px;font-style: normal;font-weight: 500;line-height: normal;display: flex;flex-direction: column; justify-content: center;height:100%;'>
+                                    Slide To Confirm
+                                </div>
                             </div>
                         </div>
-                    </div> 
                     </div>
                 </div>
             </div>
             <div id=loggedInUI_flatFinalDetails style="display:none">
                 <div style="background-color:#012122;">
-                    <div class=mb-center><div style='margin-top: 104px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;'>
-                        Final Details, <span class=firstName>Abby</span>?
-                    </div></div>
-                     <div class=mb-center><div style='margin-top: 37px;color: #D9D9D9;font-family: "Arial Rounded MT";font-size: 42.489px;font-style: normal;font-weight: 400;line-height: normal;'>
-                        To provide you with a guaranteed upfront<br />
-                        flat rate, please provide accurate information
-                    </div></div>
+                    <div class=mb-center>
+                        <div style='margin-top: 104px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;'>
+                            Final Details, <span class=firstName>Abby</span>?
+                        </div>
+                    </div>
+                    <div class=mb-center>
+                        <div style='margin-top: 37px;color: #D9D9D9;font-family: "Arial Rounded MT";font-size: 42.489px;font-style: normal;font-weight: 400;line-height: normal;'>
+                            To provide you with a guaranteed upfront<br />
+                            flat rate, please provide accurate information
+                        </div>
+                    </div>
                     <div style="border-radius: 118.628px;background: #00292A;padding-bottom: 87px;">
-                    <div style="margin-right: 150px; padding-right: 50px; border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 975px;flex-shrink: 0;">
-                        <img src="house.png" width="658" height="511" style="margin-bottom: 118px;margin-top: 41px;" />
-                        <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
-                            <div style="padding-left: 60px;padding-top: 31px;margin-bottom: 55px; font-family: 'Arial Rounded MT';font-style: normal;font-weight: 800;font-size: 40px;line-height: 47px;display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">Is there an elevator, or will we use the stairs?</div>
-                            <div style="margin-bottom: 53px; background: #012122;border-radius: 40px;display: flex;justify-content:space-between;/* Pickup */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35px;line-height: 41px;/* identical to box height */display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">
-                                <div style="margin-left: 21px">Pickup</div>
-                                <div style="display:flex;">
-                                    <style>
-                                        .transparentCheckbox {
-                                            opacity: 0;
-                                        }
-                                        .transparentCheckbox:checked {
-                                            opacity: 1;
-                                        }
-                                    </style>
-                                    <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
-                                        Stairs
-                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
-                                            <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
-                                        </div>
-                                    </div>
-                                    <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
-                                        Elevator
-                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
-                                            <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><div style="background: #012122;border-radius: 40px;display: flex;justify-content:space-between;/* Pickup */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35px;line-height: 41px;/* identical to box height */display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">
-                                <div style="margin-left: 21px">Drop-off</div>
-                                <div style="display:flex;">
-                                    <style>
-                                        .transparentCheckbox {
-                                            opacity: 0;
-                                        }
-                                        .transparentCheckbox:checked {
-                                            opacity: 1;
-                                        }
-                                    </style>
-                                    <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
-                                        Stairs
-                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
-                                            <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
-                                        </div>
-                                    </div>
-                                    <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
-                                        Elevator
-                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
-                                            <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
-                            <div style="padding-left: 60px;padding-top: 31px;margin-bottom: 55px; font-family: 'Arial Rounded MT';font-style: normal;font-weight: 800;font-size: 40px;line-height: 47px;display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">Will we need to handle any dismantling or assembly?</div>
-                            <div style="margin-bottom: 53px; background: #012122;border-radius: 40px;display: flex;justify-content:space-between;/* Pickup */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35px;line-height: 41px;/* identical to box height */display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">
-                                <div style="margin-left: 21px"></div>
-                                <div style="display:flex;">
-                                    <style>
-                                        .transparentCheckbox {
-                                            opacity: 0;
-                                        }
-                                        .transparentCheckbox:checked {
-                                            opacity: 1;
-                                        }
-                                    </style>
-                                    <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
-                                        Yes
-                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
-                                            <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
-                                        </div>
-                                    </div>
-                                    <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
-                                        No
-                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
-                                            <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
-                            <div style="padding-left: 60px;padding-top: 31px;margin-bottom: 55px; font-family: 'Arial Rounded MT';font-style: normal;font-weight: 800;font-size: 40px;line-height: 47px;display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">Do you need us to do any packing?</div>
-                            <div style="margin-bottom: 53px; background: #012122;border-radius: 40px;display: flex;justify-content:space-between;/* Pickup */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35px;line-height: 41px;/* identical to box height */display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">
-                                <div style="margin-left: 21px"></div>
-                                <div style="display:flex;">
-                                    <style>
-                                        .transparentCheckbox {
-                                            opacity: 0;
-                                        }
-                                        .transparentCheckbox:checked {
-                                            opacity: 1;
-                                        }
-                                    </style>
-                                    <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
-                                        Yes
-                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
-                                            <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
-                                        </div>
-                                    </div>
-                                    <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
-                                        No
-                                        <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
-                                            <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                    <div style="display:flex">
-                        <div style='margin-left: 64px;margin-top: 65px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 34.604px;font-style: normal;font-weight: 400;line-height: normal;'>
-                            Slide to confirm that the information is accurate. Inaccuracies may affect service pricing.
-                        </div>
-                        <div onclick="confirmFinalDetails()" style='cursor: pointer;white-space: nowrap;margin-top: 71px;display: flex;padding: 9.75px;align-items: flex-start;gap: 24.375px;border-radius: 102.375px;background: linear-gradient(90deg, #ACACAC 0%, rgba(182, 182, 182, 0.72) 100%);'>
-                            <svg style="display: flex;flex-direction: column;justify-content: center;height: 100%;" width="127" height="115" viewBox="0 0 127 115" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_0_1)"><circle cx="58.5" cy="56.5" r="48.75" fill="#E0E0E0"/></g><path d="M51.1875 41.875L65.8125 59.0809L51.1875 71.125" stroke="black" stroke-width="4.875"/><defs><filter id="filter0_d_0_1" x="0" y="0.4375" width="126.75" height="126.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dx="4.875" dy="7.3125"/><feGaussianBlur stdDeviation="7.3125"/><feComposite in2="hardAlpha" operator="out"/><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.19 0"/><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1"/><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape"/></filter></defs></svg>
-                            <div style='color: #828282;font-family: Inter;font-size: 29.25px;font-style: normal;font-weight: 500;line-height: normal;display: flex;flex-direction: column; justify-content: center;height:100%;'>
-                                Slide To Confirm
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-            </div></div>
-            <div id=loggedInUI_flatConfirmAndPay style="display:none">
-                <div style='border-bottom: 1px solid #00292A;padding-bottom: 19px;margin-bottom: 92px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;'>
-                    Confirm and pay, <span class=firstName>Abby</span>
-                </div>
-                <div style="max-height: 1743px;overflow-y: scroll;border-radius: 118.628px;background: #00292A;padding-bottom: 87px;">
-                    <div style="margin-right: 150px; padding-right: 50px; margin-left: 39px; margin-top: 123px; width: 1122.022px;flex-shrink: 0;">
-                        <div style='padding-top: 67px;padding-left: 113px;padding-bottom:30px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 50px;font-style: normal;font-weight: 400;line-height: normal;'>Your move</div>
-                        <div style='margin-left: 91px; padding-left: 37px;border: 2.935px solid #012122;'>
-                            <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                Pickup
-                            </div>
-                            <div style='margin-right: 120px;margin-top: 26px;border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                    22 Bay street, Toronto ON M5V 2R5
-                                </div>
-                                <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
-                                    Edit
-                                </button>
-                            </div>
-                            <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                Drop-off
-                            </div>
-                            <div style='margin-right: 120px;margin-top: 26px;border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                    22 Bay street, Toronto ON M5V 2R5
-                                </div>
-                                <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
-                                    Edit
-                                </button>
-                            </div>
-                            <div style='margin-left: 18px;margin-top: 22px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                Date
-                            </div>
-                            <div style='margin-right: 120px;margin-top: 26px;border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                    Friday August 28, 2024
-                                </div>
-                                <button style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
-                                    Edit
-                                </button>
-                            </div>
-                            <div style='display:flex;justify-content:space-between;'>
-                                <div style='margin-right: 120px;margin-top: 26px;border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                    <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                        2 Bedroom
-                                    </div>
-                                </div>
-                                <div style='margin-right: 120px;margin-top: 26px;border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                    <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
-                                        Full Service
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-right: 150px; padding-right: 50px; margin-left: 39px; margin-top: 123px; width: 1122.022px;flex-shrink: 0;">
-                        <div style='padding-top: 67px;padding-left: 113px;padding-bottom:30px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 50px;font-style: normal;font-weight: 400;line-height: normal;'>What's included?</div>
-                        <div style='margin-left: 91px; padding-left: 37px;border: 2.935px solid #012122;'>
-                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
-                                <div>
-                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>All-Inclusive Flat Rate</div>
-                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>No hidden fees for trucks, gas, or mileage<br />—everything is included.</div>
-                                </div>
-                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'><svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
-                                </svg></div>
-                            </div>
-                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
-                                <div>
-                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Complete Protection</div>
-                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>We protect your floors, wrap furniture<br />to ensure no damages.</div>
-                                </div>
-                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'><svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
-                                </svg></div>
-                            </div>
-                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
-                                <div>
-                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Top-notch Movers</div>
-                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>Our professional movers are<br />highly trained for excellent service.</div>
-                                </div>
-                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'><svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
-                                </svg></div>
-                            </div>
-                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;display:flex;justify-content: space-between;'>
-                                <div>
-                                    <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;'>Premium Protection Plan</div>
-                                    <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.586px;font-style: normal;font-weight: 300;line-height: normal;'>Get up to $10 per pound in coverage, <br />with property protection included for free.</div>
-                                </div>
-                                <div style='height:100%;display:flex;flex-direction:row;justify-content:center;'><svg width="98" height="97" viewBox="0 0 98 97" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M97.4258 50.7734C97.4258 54.1646 96.6111 57.3096 94.9818 60.1893C93.3525 63.0689 91.1738 65.3234 88.4268 66.8959C88.5025 67.4074 88.5404 68.2031 88.5404 69.283C88.5404 74.4172 86.8164 78.7746 83.4062 82.3742C79.9771 85.9928 75.8471 87.7926 71.016 87.7926C68.8562 87.7926 66.7912 87.3947 64.8398 86.599C63.3242 89.7061 61.1455 92.2068 58.2848 94.1203C55.443 96.0527 52.317 97 48.9258 97C45.4588 97 42.3139 96.0717 39.51 94.1771C36.6871 92.3016 34.5273 89.7818 33.0117 86.599C31.0604 87.3947 29.0143 87.7926 26.8355 87.7926C22.0045 87.7926 17.8555 85.9928 14.3885 82.3742C10.9215 78.7746 9.19746 74.3982 9.19746 69.283C9.19746 68.7147 9.27324 67.9189 9.40586 66.8959C6.65879 65.3045 4.48008 63.0689 2.85078 60.1893C1.24043 57.3096 0.425781 54.1646 0.425781 50.7734C0.425781 47.1738 1.33516 43.8584 3.13496 40.865C4.93477 37.8717 7.35977 35.6551 10.391 34.2152C9.59531 32.0555 9.19746 29.8768 9.19746 27.717C9.19746 22.6018 10.9215 18.2254 14.3885 14.6258C17.8555 11.0262 22.0045 9.20742 26.8355 9.20742C28.9953 9.20742 31.0604 9.60527 33.0117 10.401C34.5273 7.29395 36.7061 4.79316 39.5668 2.87969C42.4086 0.966211 45.5346 0 48.9258 0C52.317 0 55.443 0.966211 58.2848 2.86074C61.1266 4.77422 63.3242 7.275 64.8398 10.382C66.7912 9.58633 68.8373 9.18848 71.016 9.18848C75.8471 9.18848 79.9771 10.9883 83.4062 14.6068C86.8354 18.2254 88.5404 22.5828 88.5404 27.698C88.5404 30.0852 88.1805 32.2449 87.4605 34.1963C90.4918 35.6361 92.9168 37.8527 94.7166 40.8461C96.5164 43.8584 97.4258 47.1738 97.4258 50.7734ZM46.8607 65.3803L66.8859 35.3898C67.3975 34.5941 67.549 33.7227 67.3785 32.7943C67.1891 31.866 66.7154 31.1271 65.9197 30.6346C65.124 30.123 64.2525 29.9525 63.3242 30.0852C62.377 30.2367 61.6191 30.6914 61.0508 31.4871L43.4127 58.0105L35.2852 49.902C34.5652 49.182 33.7316 48.841 32.8033 48.8789C31.8561 48.9168 31.0414 49.2578 30.3215 49.902C29.6773 50.5461 29.3553 51.3607 29.3553 52.3459C29.3553 53.3121 29.6773 54.1268 30.3215 54.7898L41.4803 65.9486L42.0297 66.3844C42.6738 66.8201 43.3369 67.0285 43.9811 67.0285C45.2504 67.0096 46.2166 66.4791 46.8607 65.3803Z" fill="#F84734"/>
-                                </svg></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="margin-right: 150px; padding-right: 50px; margin-left: 39px; margin-top: 123px; width: 1122.022px;flex-shrink: 0;">
-                        <div style='margin-top: 20px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 50px;font-style: normal;font-weight: 400;line-height: normal;'>
-                            Secure your booking
-                        </div>
-                        <div style='color: #C0C0C0;font-family: "Arial Rounded MT";font-size: 35.58px;font-style: normal;font-weight: 300;line-height: normal;'>
-                            Limited spots available for your selected date!
-                        </div>
-                        <div style='margin-left: 91px; padding-left: 17px;border: 2.935px solid #012122;'>
-                            <div style='margin-top: 44px;margin-bottom: 41px;padding-left: 10px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 36.115px;font-style: normal;font-weight: 400;line-height: normal;'>What time should we arrive?</div>
-                            <div style='padding-left:33px;padding-right: 39px;padding-top:44px;padding-bottom: 30px;border-radius: 40px;background: #012122;'>
-                                <div>
+                        <div style="margin-right: 150px; padding-right: 50px; border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 975px;flex-shrink: 0;">
+                            <img src="house.png" width="658" height="511" style="margin-bottom: 118px;margin-top: 41px;" />
+                            <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
+                                <div style="padding-left: 60px;padding-top: 31px;margin-bottom: 55px; font-family: 'Arial Rounded MT';font-style: normal;font-weight: 800;font-size: 40px;line-height: 47px;display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">Is there an elevator, or will we use the stairs?</div>
+                                <div style="margin-bottom: 53px; background: #012122;border-radius: 40px;display: flex;justify-content:space-between;/* Pickup */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35px;line-height: 41px;/* identical to box height */display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">
+                                    <div style="margin-left: 21px">Pickup</div>
+                                    <div style="display:flex;">
+                                        <style>
+                                            .transparentCheckbox {
+                                                opacity: 0;
+                                            }
 
+                                                .transparentCheckbox:checked {
+                                                    opacity: 1;
+                                                }
+                                        </style>
+                                        <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
+                                            Stairs
+                                            <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
+                                                <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
+                                            </div>
+                                        </div>
+                                        <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
+                                            Elevator
+                                            <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
+                                                <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><div style="background: #012122;border-radius: 40px;display: flex;justify-content:space-between;/* Pickup */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35px;line-height: 41px;/* identical to box height */display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">
+                                    <div style="margin-left: 21px">Drop-off</div>
+                                    <div style="display:flex;">
+                                        <style>
+                                            .transparentCheckbox {
+                                                opacity: 0;
+                                            }
+
+                                                .transparentCheckbox:checked {
+                                                    opacity: 1;
+                                                }
+                                        </style>
+                                        <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
+                                            Stairs
+                                            <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
+                                                <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
+                                            </div>
+                                        </div>
+                                        <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
+                                            Elevator
+                                            <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
+                                                <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
+                                <div style="padding-left: 60px;padding-top: 31px;margin-bottom: 55px; font-family: 'Arial Rounded MT';font-style: normal;font-weight: 800;font-size: 40px;line-height: 47px;display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">Will we need to handle any dismantling or assembly?</div>
+                                <div style="margin-bottom: 53px; background: #012122;border-radius: 40px;display: flex;justify-content:space-between;/* Pickup */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35px;line-height: 41px;/* identical to box height */display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">
+                                    <div style="margin-left: 21px"></div>
+                                    <div style="display:flex;">
+                                        <style>
+                                            .transparentCheckbox {
+                                                opacity: 0;
+                                            }
+
+                                                .transparentCheckbox:checked {
+                                                    opacity: 1;
+                                                }
+                                        </style>
+                                        <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
+                                            Yes
+                                            <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
+                                                <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
+                                            </div>
+                                        </div>
+                                        <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
+                                            No
+                                            <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
+                                                <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
+                                <div style="padding-left: 60px;padding-top: 31px;margin-bottom: 55px; font-family: 'Arial Rounded MT';font-style: normal;font-weight: 800;font-size: 40px;line-height: 47px;display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">Do you need us to do any packing?</div>
+                                <div style="margin-bottom: 53px; background: #012122;border-radius: 40px;display: flex;justify-content:space-between;/* Pickup */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35px;line-height: 41px;/* identical to box height */display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">
+                                    <div style="margin-left: 21px"></div>
+                                    <div style="display:flex;">
+                                        <style>
+                                            .transparentCheckbox {
+                                                opacity: 0;
+                                            }
+
+                                                .transparentCheckbox:checked {
+                                                    opacity: 1;
+                                                }
+                                        </style>
+                                        <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
+                                            Yes
+                                            <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
+                                                <input class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
+                                            </div>
+                                        </div>
+                                        <div style="border-radius: 30.148px;border: 4.59px solid #00292A;display: flex;">
+                                            No
+                                            <div style="width: 38.52px;height: 38.52px;border-radius: 7px;border: 2.41px solid #F84734;">
+                                                <input checked class="transparentCheckbox" type=checkbox style="width:100%;height:100%" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display:flex">
+                            <div style='margin-left: 64px;margin-top: 65px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 34.604px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                Slide to confirm that the information is accurate. Inaccuracies may affect service pricing.
+                            </div>
+                            <div onclick="confirmFinalDetails()" style='cursor: pointer;white-space: nowrap;margin-top: 71px;display: flex;padding: 9.75px;align-items: flex-start;gap: 24.375px;border-radius: 102.375px;background: linear-gradient(90deg, #ACACAC 0%, rgba(182, 182, 182, 0.72) 100%);'>
+                                <svg style="display: flex;flex-direction: column;justify-content: center;height: 100%;" width="127" height="115" viewBox="0 0 127 115" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_0_1)"><circle cx="58.5" cy="56.5" r="48.75" fill="#E0E0E0" /></g><path d="M51.1875 41.875L65.8125 59.0809L51.1875 71.125" stroke="black" stroke-width="4.875" /><defs><filter id="filter0_d_0_1" x="0" y="0.4375" width="126.75" height="126.75" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dx="4.875" dy="7.3125" /><feGaussianBlur stdDeviation="7.3125" /><feComposite in2="hardAlpha" operator="out" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.19 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_0_1" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_0_1" result="shape" /></filter></defs></svg>
+                                <div style='color: #828282;font-family: Inter;font-size: 29.25px;font-style: normal;font-weight: 500;line-height: normal;display: flex;flex-direction: column; justify-content: center;height:100%;'>
+                                    Slide To Confirm
                                 </div>
                             </div>
                         </div>
@@ -2645,30 +2880,31 @@ ${day}
             <div id=loggedInUI_chooseHour class="mb-smaller" style="margin-left:calc(-220px - 58px);margin-right:-220px;--margin-top:65px;--height:calc(399px / var(--scale, 1) * 1.4);display:none;border-radius: 60px 60px 0px 0px;background: #00292A;box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);">
                 <div style="padding-top:65px;padding-left:50px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 54.2157px;line-height: 63px;color: #FFFFFF;">
                     Almost there Abby,<br />
-                    Please confirm your move details.</div>
+                    Please confirm your move details.
+                </div>
                 <div id=calendarSlot></div>
                 <div style="margin-left:103px;margin-top:78px;background: #FFFFFF;border-radius: 77.1223px;display:flex;width:fit-content;margin-bottom:65px">
                     <div style='margin-left:54px;margin-right:416px;color: #00292A;font-family: "Arial Rounded MT Bold";font-size: 43.914px;font-style: normal;font-weight: 400;line-height: normal;'>Trucks</div>
                     <button style="background:transparent;border:none;" onclick="let i = this.parentElement.querySelector('[name=num]');i.innerText = Math.max(1, +i.innerText - 1);">
-                    <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="26.22" stroke="#888888" stroke-width="4.55992"/><rect x="13.6797" y="26.2196" width="29.64" height="4.56" rx="1.13998" fill="#888888"/></svg>
+                        <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="26.22" stroke="#888888" stroke-width="4.55992" /><rect x="13.6797" y="26.2196" width="29.64" height="4.56" rx="1.13998" fill="#888888" /></svg>
                     </button>
                     <div id=truckNum name=num style="margin-left:98px;margin-right:99px;/* 1 */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 52.5127px;line-height: 61px;/* identical to box height */color: #F84734;">
                         1
                     </div>
                     <button style="background:transparent;border:none;margin-right:42px" onclick="let i = this.parentElement.querySelector('[name=num]');i.innerText = (+i.innerText + 1);">
-                    <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="25.02" stroke="#F84734" stroke-width="6.96"/><rect x="14.5497" y="27.09" width="27.9" height="2.82" rx="0.87" fill="#F84734" stroke="#F84734" stroke-width="1.74"/><rect x="29.9112" y="14.5501" width="27.9" height="2.82" rx="0.87" transform="rotate(90 29.9112 14.5501)" fill="#F84734" stroke="#F84734" stroke-width="1.74"/></svg>
+                        <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="25.02" stroke="#F84734" stroke-width="6.96" /><rect x="14.5497" y="27.09" width="27.9" height="2.82" rx="0.87" fill="#F84734" stroke="#F84734" stroke-width="1.74" /><rect x="29.9112" y="14.5501" width="27.9" height="2.82" rx="0.87" transform="rotate(90 29.9112 14.5501)" fill="#F84734" stroke="#F84734" stroke-width="1.74" /></svg>
                     </button>
                 </div>
                 <div style="margin-left:103px;background: #FFFFFF;border-radius: 77.1223px;display:flex;width:fit-content;">
                     <div style='margin-left:54px;margin-right:407px;color: #00292A;font-family: "Arial Rounded MT Bold";font-size: 43.914px;font-style: normal;font-weight: 400;line-height: normal;'>Movers</div>
                     <button style="background:transparent;border:none;" onclick="let i = this.parentElement.querySelector('[name=num]');i.innerText = Math.max(1, +i.innerText - 1);">
-                    <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="26.22" stroke="#888888" stroke-width="4.55992"/><rect x="13.6797" y="26.2196" width="29.64" height="4.56" rx="1.13998" fill="#888888"/></svg>
+                        <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="26.22" stroke="#888888" stroke-width="4.55992" /><rect x="13.6797" y="26.2196" width="29.64" height="4.56" rx="1.13998" fill="#888888" /></svg>
                     </button>
                     <div id=moverNum name=num style="margin-left:98px;margin-right:99px;/* 1 */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 52.5127px;line-height: 61px;/* identical to box height */color: #F84734;">
                         2
                     </div>
                     <button style="background:transparent;border:none;margin-right:42px" onclick="let i = this.parentElement.querySelector('[name=num]');i.innerText = (+i.innerText + 1);">
-                    <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="25.02" stroke="#F84734" stroke-width="6.96"/><rect x="14.5497" y="27.09" width="27.9" height="2.82" rx="0.87" fill="#F84734" stroke="#F84734" stroke-width="1.74"/><rect x="29.9112" y="14.5501" width="27.9" height="2.82" rx="0.87" transform="rotate(90 29.9112 14.5501)" fill="#F84734" stroke="#F84734" stroke-width="1.74"/></svg>
+                        <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="28.5" cy="28.5" r="25.02" stroke="#F84734" stroke-width="6.96" /><rect x="14.5497" y="27.09" width="27.9" height="2.82" rx="0.87" fill="#F84734" stroke="#F84734" stroke-width="1.74" /><rect x="29.9112" y="14.5501" width="27.9" height="2.82" rx="0.87" transform="rotate(90 29.9112 14.5501)" fill="#F84734" stroke="#F84734" stroke-width="1.74" /></svg>
                     </button>
                 </div>
                 <button onclick="goToConfirmation()" style='margin-top:131px;margin-left:70px;margin-bottom:39px;margin-right;62px;border:none;width: calc(100% - 100px);height: 160px;flex-shrink: 0;border-radius: 36.265px;background: #F84734;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 54.216px;font-style: normal;font-weight: 400;line-height: normal;text-align:center;'>
@@ -2679,43 +2915,49 @@ ${day}
             </div>
             <div id="loggedInUI_confirmMove" class="mb-smaller" style="margin-top:-400px;display:none;margin-left:-58px;">
                 <div class="bottom-bg" style="margin-left:74px;margin-top:85px;padding-top:55px;margin-right:85px">
-                    <div class=center><div style="margin-left:121px;margin-right:121px;">
+                    <div class=center>
+                        <div style="margin-left:121px;margin-right:121px;">
                             <div style='margin-bottom:56px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 54.809px;font-style: normal;font-weight: 400;line-height: normal;'>
                                 Your move summary
                             </div>
                             <style>
                                 .reserve-table {
-                                border-radius: 43.211px;
-                                border: 2.935px solid rgba(238, 238, 238, 0.35);
-                                border-collapse: separate;
+                                    border-radius: 43.211px;
+                                    border: 2.935px solid rgba(238, 238, 238, 0.35);
+                                    border-collapse: separate;
                                 }
-                                .reserve-table tr:not(:last-of-type) td {
-                                border-bottom: 2.935px solid rgba(238, 238, 238, 0.35);
-                                border-collapse: separate;
-                                }
-                                .reserve-table td {
-                                padding-left: 25px;
-                                padding-right: 186px;
-                                }
-                                .reserve-table td > div {
-                                color: rgba(255, 255, 255, 0.67);
-                                font-size: 37.806px;
-                                font-style: normal;
-                                font-weight: 400;
-                                line-height: normal;
-                                margin-top: 13px;
-                                }
-                                .reserve-table td > b {
-                                color: #FFF;
-                                font-family: "Arial Rounded MT Bold";
-                                font-size: 35.586px;
-                                font-style: normal;
-                                font-weight: 400;
-                                line-height: normal;
-                                }
+
+                                    .reserve-table tr:not(:last-of-type) td {
+                                        border-bottom: 2.935px solid rgba(238, 238, 238, 0.35);
+                                        border-collapse: separate;
+                                    }
+
+                                    .reserve-table td {
+                                        padding-left: 25px;
+                                        padding-right: 186px;
+                                    }
+
+                                        .reserve-table td > div {
+                                            color: rgba(255, 255, 255, 0.67);
+                                            font-size: 37.806px;
+                                            font-style: normal;
+                                            font-weight: 400;
+                                            line-height: normal;
+                                            margin-top: 13px;
+                                        }
+
+                                        .reserve-table td > b {
+                                            color: #FFF;
+                                            font-family: "Arial Rounded MT Bold";
+                                            font-size: 35.586px;
+                                            font-style: normal;
+                                            font-weight: 400;
+                                            line-height: normal;
+                                        }
                             </style>
                             <table class="reserve-table arial-rounded-mt">
-                                <tr><td style="padding-top:10px;padding-bottom:19px">
+                                <tr>
+                                    <td style="padding-top:10px;padding-bottom:19px">
                                         <b>ORIGIN</b>
                                         <div id=quoteLGOrigin>22 Bay street, Toronto ON M5V 2R5</div>
                                     </td>
@@ -2745,20 +2987,21 @@ ${day}
                                     <td style="/* padding-left:239px; */padding-top:46px;padding-bottom:46px;padding-left:0px;padding-right:0px;/* padding-right:239px; */">
                                         <div class=center style="width:100%">
                                             <div style="display:flex">
-                                                <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M46.5224 27.8197C46.5224 31.0904 49.1768 33.7448 52.4475 33.7448V36.1148C52.4475 45.5949 50.0774 47.965 40.5973 47.965H16.897C7.4169 47.965 5.04688 45.5949 5.04688 36.1148V34.9298C8.31752 34.9298 10.9719 32.2754 10.9719 29.0047C10.9719 25.7341 8.31752 23.0797 5.04688 23.0797V21.8946C5.04688 12.4145 7.4169 10.0445 16.897 10.0445H40.5973C50.0774 10.0445 52.4475 12.4145 52.4475 21.8946C49.1768 21.8946 46.5224 24.5491 46.5224 27.8197Z" stroke="white" stroke-width="3.55504" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.6387 22.487L35.8589 36.7072" stroke="white" stroke-width="3.55504" stroke-linecap="round" stroke-linejoin="round"/><path d="M35.8478 22.487H35.8691" stroke="white" stroke-width="4.74006" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.6271 35.5221H21.6484" stroke="white" stroke-width="4.74006" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                                <svg width="58" height="58" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M46.5224 27.8197C46.5224 31.0904 49.1768 33.7448 52.4475 33.7448V36.1148C52.4475 45.5949 50.0774 47.965 40.5973 47.965H16.897C7.4169 47.965 5.04688 45.5949 5.04688 36.1148V34.9298C8.31752 34.9298 10.9719 32.2754 10.9719 29.0047C10.9719 25.7341 8.31752 23.0797 5.04688 23.0797V21.8946C5.04688 12.4145 7.4169 10.0445 16.897 10.0445H40.5973C50.0774 10.0445 52.4475 12.4145 52.4475 21.8946C49.1768 21.8946 46.5224 24.5491 46.5224 27.8197Z" stroke="white" stroke-width="3.55504" stroke-linecap="round" stroke-linejoin="round" /><path d="M21.6387 22.487L35.8589 36.7072" stroke="white" stroke-width="3.55504" stroke-linecap="round" stroke-linejoin="round" /><path d="M35.8478 22.487H35.8691" stroke="white" stroke-width="4.74006" stroke-linecap="round" stroke-linejoin="round" /><path d="M21.6271 35.5221H21.6484" stroke="white" stroke-width="4.74006" stroke-linecap="round" stroke-linejoin="round" /></svg>
                                                 <div style="margin-left:46px">$50 coupon</div>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
                             </table>
-                        </div></div>
+                        </div>
+                    </div>
                 </div>
                 <div style='margin-top:103px;margin-bottom:47px;margin-left:104px;color: #000;text-align: center;font-family: "Arial Rounded MT Bold";font-size: 47.257px;font-style: normal;font-weight: 400;line-height: normal;text-align:left'>Credit &amp; Debit Cards</div>
                 <div id=cards style='margin-left:104px;padding: 47.257px;border-radius: 47.257px;border: 2.954px solid var(--NEUTRAL-400, #F5F5F5);background: #00292A;box-shadow: 0px 23.628px 47.257px 0px rgba(0, 0, 0, 0.08);'>
                     <button onclick="addCard()" style="padding: 11.8142px 23.6283px;width: 871.29px;height: 94.51px;/* NEUTRAL/300FFFFFF*/background: #FFFFFF;border-radius: 23.6283px;/* Inside auto layout */flex: none;order: 1;flex-grow: 0;">
                         <div style="display:flex">
-                            <svg width="72" height="71" viewBox="0 0 72 71" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.884766" y="0.0534668" width="70.885" height="70.885" rx="18.0904" fill="#D2EAFF"/><path d="M23.498 36.2343H50.6337" stroke="#027FEE" stroke-width="3.39196" stroke-linecap="round" stroke-linejoin="round"/><path d="M37.0645 49.8022V22.6665" stroke="#027FEE" stroke-width="3.39196" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg width="72" height="71" viewBox="0 0 72 71" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.884766" y="0.0534668" width="70.885" height="70.885" rx="18.0904" fill="#D2EAFF" /><path d="M23.498 36.2343H50.6337" stroke="#027FEE" stroke-width="3.39196" stroke-linecap="round" stroke-linejoin="round" /><path d="M37.0645 49.8022V22.6665" stroke="#027FEE" stroke-width="3.39196" stroke-linecap="round" stroke-linejoin="round" /></svg>
                             <div style="display:flex;flex-direction:column;justify-content:center;margin-left:35px;font-family: 'IBM Plex Sans';font-style: normal;font-weight: 400;font-size: 41.3496px;line-height: 54px;/* identical to box height */text-align: center;/* NEUTRAL/700 */color: #606060;/* Inside auto layout */flex: none;order: 1;flex-grow: 0;">
                                 Add New Card
                             </div>
@@ -2772,12 +3015,12 @@ ${day}
                     <div style="margin-bottom:54px;">
                         Why do we ask for this?
                     </div>
-                    <svg style="margin-left:22px" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27.5 25.2083V36.6667M27.5 48.125C16.1091 48.125 6.875 38.8909 6.875 27.5C6.875 16.1091 16.1091 6.875 27.5 6.875C38.8909 6.875 48.125 16.1091 48.125 27.5C48.125 38.8909 38.8909 48.125 27.5 48.125ZM27.6141 18.3333V18.5625L27.3859 18.5629V18.3333H27.6141Z" stroke="#5D5D5D" stroke-width="4.58333" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg style="margin-left:22px" width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27.5 25.2083V36.6667M27.5 48.125C16.1091 48.125 6.875 38.8909 6.875 27.5C6.875 16.1091 16.1091 6.875 27.5 6.875C38.8909 6.875 48.125 16.1091 48.125 27.5C48.125 38.8909 38.8909 48.125 27.5 48.125ZM27.6141 18.3333V18.5625L27.3859 18.5629V18.3333H27.6141Z" stroke="#5D5D5D" stroke-width="4.58333" stroke-linecap="round" stroke-linejoin="round" /></svg>
                 </div>
                 <div style="border-top:2px solid #00292A;border-bottom:2px solid #00292A;padding-top:42px;">
                     <div style="justify-content:center;display:flex;font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 40.4193px;line-height: 47px;color: #00292A;">
                         <div style="margin-bottom:50px">Your move is protected by papasurance</div>
-                        <svg style="margin-left:calc(163px - 77px)" width="69" height="67" viewBox="0 0 69 67" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.767323" y="0.908681" width="67.2083" height="65.1414" rx="32.5707" stroke="#B9A2A2" stroke-opacity="0.57" stroke-width="0.456522"/><rect x="0.767323" y="0.908681" width="67.2083" height="65.1414" rx="32.5707" stroke="#00292A" stroke-width="0.456522"/><path d="M14.283 51.9288V50.0336C14.283 49.3213 14.0029 48.6356 13.4996 48.1169C12.4339 47.0182 10.5118 45.0369 9.23037 43.7167C8.40148 42.8619 7.93945 41.7324 7.93945 40.5588C7.93945 36.75 7.93945 27.9261 7.93945 23.2276C7.93945 21.5303 9.3583 20.1548 11.1091 20.1548H11.1134C11.9539 20.1548 12.7606 20.4787 13.3547 21.0547C13.9489 21.6307 14.283 22.4128 14.283 23.2276C14.283 25.5553 14.283 28.3545 14.283 28.3545" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M54.459 51.9288V50.0336C54.459 49.3213 54.7392 48.6356 55.2424 48.1169C56.3081 47.0182 58.2302 45.0369 59.5116 43.7167C60.3405 42.8619 60.8026 41.7324 60.8026 40.5588C60.8026 36.75 60.8026 27.9261 60.8026 23.2276C60.8026 21.5303 59.3837 20.1548 57.6329 20.1548H57.6287C56.7881 20.1548 55.9814 20.4787 55.3873 21.0547C54.7931 21.6307 54.459 22.4128 54.459 23.2276C54.459 25.5553 54.459 28.3545 54.459 28.3545" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M31.2 58.4671V53.4109C31.2 53.0184 31.0393 52.6412 30.7517 52.3634C30.4652 52.0846 30.0761 51.9288 29.6712 51.9288C26.2774 51.9288 18.1492 51.9288 14.7554 51.9288C14.3504 51.9288 13.9614 52.0846 13.6748 52.3634C13.3873 52.6412 13.2266 53.0184 13.2266 53.4109C13.2266 55.3399 13.2266 58.4671 13.2266 58.4671" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M37.543 58.4671V53.4109C37.543 53.0184 37.7037 52.6412 37.9912 52.3634C38.2778 52.0846 38.6668 51.9288 39.0718 51.9288C42.4656 51.9288 50.5938 51.9288 53.9876 51.9288C54.3926 51.9288 54.7816 52.0846 55.0681 52.3634C55.3557 52.6412 55.5164 53.0184 55.5164 53.4109C55.5164 55.3399 55.5164 58.4671 55.5164 58.4671" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.1421 51.9289V46.3008C30.1421 43.8009 29.0848 41.4107 27.2166 39.6867C24.7987 37.4553 21.4271 34.3445 19.2977 32.3786C18.1707 31.3393 16.3955 31.3609 15.296 32.4268L15.2939 32.4289C14.152 33.5358 14.152 35.3316 15.2939 36.4385C17.3111 38.3952 20.0801 41.0786 20.0801 41.0786" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M38.5996 51.9289V46.3008C38.5996 43.8009 39.6569 41.4107 41.5251 39.6867C43.943 37.4553 47.3146 34.3445 49.4439 32.3786C50.571 31.3393 52.3461 31.3609 53.4457 32.4268L53.4478 32.4289C54.5896 33.5358 54.5896 35.3316 53.4478 36.4385C51.4305 38.3952 48.6616 41.0786 48.6616 41.0786" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M46.306 8.69177H28.373C28.2342 8.69177 28.0979 8.72617 27.9766 8.79167L23.021 11.4706C22.7633 11.6099 22.6035 11.8735 22.6035 12.1596V28.0066C22.6035 28.4423 22.9679 28.7955 23.4173 28.7955H41.5341C41.6932 28.7955 41.8416 28.7512 41.967 28.6747L46.7039 26.1002C46.9607 25.9606 47.1197 25.6975 47.1197 25.4121V9.48074C47.1197 9.04503 46.7554 8.69177 46.306 8.69177ZM40.7203 27.2176H24.2311V12.8631H29.0121V15.7379C29.0121 16.1736 29.3764 16.5268 29.8258 16.5268H34.1279C34.5773 16.5268 34.9416 16.1736 34.9416 15.7379V12.8631H40.7203V27.2176H40.7203ZM30.6397 14.949V12.8631H33.3141V14.949H30.6397ZM41.3216 11.2853H26.7056L28.5845 10.2696H43.1903L41.3216 11.2853ZM45.4922 24.9499L42.3479 26.6588V12.5364L45.4922 10.8274V24.9499Z" fill="#00292A"/></svg>
+                        <svg style="margin-left:calc(163px - 77px)" width="69" height="67" viewBox="0 0 69 67" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="0.767323" y="0.908681" width="67.2083" height="65.1414" rx="32.5707" stroke="#B9A2A2" stroke-opacity="0.57" stroke-width="0.456522" /><rect x="0.767323" y="0.908681" width="67.2083" height="65.1414" rx="32.5707" stroke="#00292A" stroke-width="0.456522" /><path d="M14.283 51.9288V50.0336C14.283 49.3213 14.0029 48.6356 13.4996 48.1169C12.4339 47.0182 10.5118 45.0369 9.23037 43.7167C8.40148 42.8619 7.93945 41.7324 7.93945 40.5588C7.93945 36.75 7.93945 27.9261 7.93945 23.2276C7.93945 21.5303 9.3583 20.1548 11.1091 20.1548H11.1134C11.9539 20.1548 12.7606 20.4787 13.3547 21.0547C13.9489 21.6307 14.283 22.4128 14.283 23.2276C14.283 25.5553 14.283 28.3545 14.283 28.3545" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M54.459 51.9288V50.0336C54.459 49.3213 54.7392 48.6356 55.2424 48.1169C56.3081 47.0182 58.2302 45.0369 59.5116 43.7167C60.3405 42.8619 60.8026 41.7324 60.8026 40.5588C60.8026 36.75 60.8026 27.9261 60.8026 23.2276C60.8026 21.5303 59.3837 20.1548 57.6329 20.1548H57.6287C56.7881 20.1548 55.9814 20.4787 55.3873 21.0547C54.7931 21.6307 54.459 22.4128 54.459 23.2276C54.459 25.5553 54.459 28.3545 54.459 28.3545" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M31.2 58.4671V53.4109C31.2 53.0184 31.0393 52.6412 30.7517 52.3634C30.4652 52.0846 30.0761 51.9288 29.6712 51.9288C26.2774 51.9288 18.1492 51.9288 14.7554 51.9288C14.3504 51.9288 13.9614 52.0846 13.6748 52.3634C13.3873 52.6412 13.2266 53.0184 13.2266 53.4109C13.2266 55.3399 13.2266 58.4671 13.2266 58.4671" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M37.543 58.4671V53.4109C37.543 53.0184 37.7037 52.6412 37.9912 52.3634C38.2778 52.0846 38.6668 51.9288 39.0718 51.9288C42.4656 51.9288 50.5938 51.9288 53.9876 51.9288C54.3926 51.9288 54.7816 52.0846 55.0681 52.3634C55.3557 52.6412 55.5164 53.0184 55.5164 53.4109C55.5164 55.3399 55.5164 58.4671 55.5164 58.4671" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M30.1421 51.9289V46.3008C30.1421 43.8009 29.0848 41.4107 27.2166 39.6867C24.7987 37.4553 21.4271 34.3445 19.2977 32.3786C18.1707 31.3393 16.3955 31.3609 15.296 32.4268L15.2939 32.4289C14.152 33.5358 14.152 35.3316 15.2939 36.4385C17.3111 38.3952 20.0801 41.0786 20.0801 41.0786" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M38.5996 51.9289V46.3008C38.5996 43.8009 39.6569 41.4107 41.5251 39.6867C43.943 37.4553 47.3146 34.3445 49.4439 32.3786C50.571 31.3393 52.3461 31.3609 53.4457 32.4268L53.4478 32.4289C54.5896 33.5358 54.5896 35.3316 53.4478 36.4385C51.4305 38.3952 48.6616 41.0786 48.6616 41.0786" stroke="#00292A" stroke-width="1.82609" stroke-miterlimit="2" stroke-linecap="round" stroke-linejoin="round" /><path d="M46.306 8.69177H28.373C28.2342 8.69177 28.0979 8.72617 27.9766 8.79167L23.021 11.4706C22.7633 11.6099 22.6035 11.8735 22.6035 12.1596V28.0066C22.6035 28.4423 22.9679 28.7955 23.4173 28.7955H41.5341C41.6932 28.7955 41.8416 28.7512 41.967 28.6747L46.7039 26.1002C46.9607 25.9606 47.1197 25.6975 47.1197 25.4121V9.48074C47.1197 9.04503 46.7554 8.69177 46.306 8.69177ZM40.7203 27.2176H24.2311V12.8631H29.0121V15.7379C29.0121 16.1736 29.3764 16.5268 29.8258 16.5268H34.1279C34.5773 16.5268 34.9416 16.1736 34.9416 15.7379V12.8631H40.7203V27.2176H40.7203ZM30.6397 14.949V12.8631H33.3141V14.949H30.6397ZM41.3216 11.2853H26.7056L28.5845 10.2696H43.1903L41.3216 11.2853ZM45.4922 24.9499L42.3479 26.6588V12.5364L45.4922 10.8274V24.9499Z" fill="#00292A" /></svg>
                     </div>
                 </div>
                 <div style="display:flex;margin-top:213px;padding-left:62px;padding-bottom:111px;padding-top:106px;border-radius: 90px 90px 0px 0px;background: #00292A;">
@@ -2796,22 +3039,23 @@ ${day}
                     <div style='color: #FFF;font-family: "IBM Plex Sans";font-size: 65.399px;font-style: normal;font-weight: 500;line-height: normal;'>
                         Add New Card
                     </div>
-                    <svg style="margin-left:auto;margin-right:4px" width="80" height="79" viewBox="0 0 80 79" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M39.8832 71.9337C57.868 71.9337 72.5829 57.2189 72.5829 39.2341C72.5829 21.2493 57.868 6.53445 39.8832 6.53445C21.8984 6.53445 7.18359 21.2493 7.18359 39.2341C7.18359 57.2189 21.8984 71.9337 39.8832 71.9337Z" stroke="white" stroke-width="4.90495" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.6289 48.488L49.1369 29.98" stroke="white" stroke-width="4.90495" stroke-linecap="round" stroke-linejoin="round"/><path d="M49.1369 48.488L30.6289 29.98" stroke="white" stroke-width="4.90495" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg style="margin-left:auto;margin-right:4px" width="80" height="79" viewBox="0 0 80 79" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M39.8832 71.9337C57.868 71.9337 72.5829 57.2189 72.5829 39.2341C72.5829 21.2493 57.868 6.53445 39.8832 6.53445C21.8984 6.53445 7.18359 21.2493 7.18359 39.2341C7.18359 57.2189 21.8984 71.9337 39.8832 71.9337Z" stroke="white" stroke-width="4.90495" stroke-linecap="round" stroke-linejoin="round" /><path d="M30.6289 48.488L49.1369 29.98" stroke="white" stroke-width="4.90495" stroke-linecap="round" stroke-linejoin="round" /><path d="M49.1369 48.488L30.6289 29.98" stroke="white" stroke-width="4.90495" stroke-linecap="round" stroke-linejoin="round" /></svg>
                 </div>
                 <div style="margin-top:79px">
                     <div style='margin-bottom:26px;color: #FFF;text-align: left;font-family: "IBM Plex Sans";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: normal;'><label for=acn_CN>Card Number</label></div>
                     <style>
                         #acn_CN {
-                        font-family: "Arial Rounded MT Bold";
-                        font-size: 45.779px;
-                        font-style: normal;
-                        font-weight: 400;
-                        line-height: 65.399px; /* 142.857% */
-                        color: #000;
+                            font-family: "Arial Rounded MT Bold";
+                            font-size: 45.779px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: 65.399px; /* 142.857% */
+                            color: #000;
                         }
-                        #acn_CN::placeholder {
-                        color: #979797;
-                        }
+
+                            #acn_CN::placeholder {
+                                color: #979797;
+                            }
                     </style>
                     <input id="acn_CN" placeholder="Enter 12 digit card number" style="width:100%;padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;" />
                 </div>
@@ -2823,15 +3067,16 @@ ${day}
                             </div>
                             <style>
                                 #acn_MO::placeholder {
-                                color: #979797;
+                                    color: #979797;
                                 }
+
                                 #acn_MO {
-                                color: #000;
-                                font-family: "Arial Rounded MT Bold";
-                                font-size: 45.779px;
-                                font-style: normal;
-                                font-weight: 400;
-                                line-height: 65.399px; /* 142.857% */
+                                    color: #000;
+                                    font-family: "Arial Rounded MT Bold";
+                                    font-size: 45.779px;
+                                    font-style: normal;
+                                    font-weight: 400;
+                                    line-height: 65.399px; /* 142.857% */
                                 }
                             </style>
                             <select id="acn_MO" placeholder="Month" style="margin-right:26px;padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;">
@@ -2856,18 +3101,19 @@ ${day}
                                     font-weight: 400;
                                     line-height: 65.399px; /* 142.857% */
                                 }
-                                #acn_YEAR::placeholder {
-                                    color: #979797;
-                                }
+
+                                    #acn_YEAR::placeholder {
+                                        color: #979797;
+                                    }
                             </style>
                             <select id="acn_YEAR" placeholder="Year" style="padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;">
                                 <!--@{
-                                    int cy = System.DateTime.Now.Year;
-                                    for (int y = 0; y < 20; y++)
-                                    {
-                                        <option value="@(y + cy)">@(y + cy)</option>
-                                    }
-                                }-->
+                            int cy = System.DateTime.Now.Year;
+                            for (int y = 0; y < 20; y++)
+                            {
+                                <option value="@(y + cy)">@(y + cy)</option>
+                            }
+                        }-->
                                 <option value="2024">2024</option>
                                 <option value="2025">2025</option>
                                 <option value="2026">2026</option>
@@ -2895,9 +3141,9 @@ ${day}
                                 <label for=acn_CVV>CVV</label>
                             </div>
                             <style>
-                            #acn_CVV::placeholder {
-                                color: #979797;
-                            }
+                                #acn_CVV::placeholder {
+                                    color: #979797;
+                                }
                             </style>
                             <input id="acn_CVV" placeholder="CVV" style='width:334px;font-family: "Arial Rounded MT Bold";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: 65.399px; /* 142.857% */padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;'>
                         </div>
@@ -2907,9 +3153,9 @@ ${day}
                             <label for=acn_Name>Card Holder’s Name</label>
                         </div>
                         <style>
-                        #acn_Name::placeholder {
-                            color: #979797;
-                        }
+                            #acn_Name::placeholder {
+                                color: #979797;
+                            }
                         </style>
                         <input id="acn_Name" placeholder="Name on Card" style='width:100%;font-family: "Arial Rounded MT Bold";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: 65.399px; /* 142.857% */padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;'>
                     </div>
@@ -3355,7 +3601,7 @@ ${day}
                             padding: 0 50px 40px;">More info</a>
         </div>
         <div class="center">
-            <a href="#" style="display: contents;">
+            <a href="#" style="display: contents;" onclick="loggedInUI_flatConfirmAndPay.style.display = ''; newPopupDesign.style.display = 'none'; stageDiv.style.display = 'none'">
                 <div class=mb-no-margin-top style="width: 100%; height: 80px; line-height: 80px; background: linear-gradient(90deg, #F84734 0%, #FCD503 27%, #278BFF 59.5%, #F84734 83%); border-radius: 20px; font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 53.1847px; color: #FFFFFF; justify-content: center; text-align: center; margin-top: calc(1858px - (1514px + 300px)); margin-bottom: calc(930px - 900px);">
                     Next
                 </div>
