@@ -624,6 +624,17 @@ display: none;
 </style>
 <script>
     let stageDiv;
+    window.addEventListener("popstate", (event) => {
+        if(event.state !== null) {
+            quotePopup.style.display = '';
+            quoteMethodSelector.style.display = 'none';
+            gotoStage(event.state.idx);
+        }
+        else {
+            quotePopup.style.display = 'none';
+            quoteMethodSelector.style.display = '';
+        }
+    });
     function getQuote () {
         chooseOnline();
     }
@@ -646,6 +657,8 @@ display: none;
             ["Not sure which option fits your move? Let me help you out!.", "", stage3, -1, 'stage3.png'],
             ["Great choice! how can we reach you?", "", quoteContactForm, -1, 'monsterCall.png']
 		];
+        stageIdx = 0;
+        history.pushState({idx:stageIdx}, "Stage "+stageIdx, "?stage="+stageIdx);
         displayStage();
 		quotePopup.style.display = '';
 		document.body.style.height = '100%';
@@ -655,12 +668,17 @@ display: none;
         stageIdx = 6;
         displayStage();
     }
+    function gotoStage(newStageIdx) {
+        stageIdx = newStageIdx;
+        displayStage();
+    }
     function previousStage () {
         stageIdx--;
         displayStage();
     }
     function nextStage () {
         stageIdx++;
+        history.pushState({idx:stageIdx}, "Stage "+stageIdx, "?stage="+stageIdx);
         if (stageIdx === stages.length) {
             billingMethod = 'flat';
             quotePopup.appendChild(loggedInUI.content.cloneNode(true));
@@ -694,31 +712,39 @@ display: none;
         progressIndImg.src = stage[4];
         if (stage[3] === -1) {
             progressDiv.style.display = 'none';
-        }
-        else {
+        } else {
             progressDiv.style.display = '';
             progressIndBar.value = stage[3];
         }
         progressInd1.innerText = stage[0];
         progressInd2.innerText = stage[1];
         let els = stage[2];
+        
         if (stageDiv !== undefined)
             stageDiv.style.display = 'none';
-        let tempDiv = document.createElement('div');
-        tempDiv.style.backgroundColor = '#00292A';
-        tempDiv.style.paddingTop = '91px';
-        tempDiv.style.paddingBottom = '520px';
-        tempDiv.classList.add('popup-main-inner');
-        if (!(els instanceof Array))
-            els = [els];
-        for (let el of els) {
-            if (el instanceof HTMLTemplateElement)
-                tempDiv.appendChild(el.content.cloneNode(true));
-            else
-                tempDiv.appendChild(el.cloneNode(true));
+            
+        if(stage in stageDivs) {
+            // we already have this page open, just display it
+            stageDiv = stageDivs[stage];
+            stageDiv.style.display = '';
+        } else {
+            let tempDiv = document.createElement('div');
+            tempDiv.style.backgroundColor = '#00292A';
+            tempDiv.style.paddingTop = '91px';
+            tempDiv.style.paddingBottom = '520px';
+            tempDiv.classList.add('popup-main-inner');
+            if (!(els instanceof Array))
+                els = [els];
+            for (let el of els) {
+                if (el instanceof HTMLTemplateElement)
+                    tempDiv.appendChild(el.content.cloneNode(true));
+                else
+                    tempDiv.appendChild(el.cloneNode(true));
+            }
+            popupMainPart.appendChild(tempDiv);
+            stageDiv = tempDiv;
+            stageDivs[stage] = tempDiv;
         }
-        popupMainPart.appendChild(tempDiv);
-        stageDiv = tempDiv;
     }
     function addStop(stopBtn) {
         let betweenInputs = stopBtn.parentElement;
@@ -735,6 +761,7 @@ display: none;
     }
     let stageIdx = 0;
     let stages;
+    let stageDivs = {};
 </script>
 
 <div class=landing-content>
