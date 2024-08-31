@@ -732,6 +732,10 @@ display: none;
             tempDiv.style.backgroundColor = '#00292A';
             tempDiv.style.paddingTop = '91px';
             tempDiv.style.paddingBottom = '520px';
+            setTimeout(() => {
+                // Set max height to the height of the window minus the space used up
+                tempDiv.style.maxHeight = (window.innerHeight - tempDiv.getBoundingClientRect().top - 20) * 3 + 'px';
+            })
             tempDiv.classList.add('popup-main-inner');
             if (!(els instanceof Array))
                 els = [els];
@@ -1607,6 +1611,7 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                     padding-left: 65px;
                     padding-right: 70px;
                     padding-bottom: 70px;
+                    overflow-y: scroll;
                 }
                 /*        #popupMainPart {
                 padding-left: 65px!important;
