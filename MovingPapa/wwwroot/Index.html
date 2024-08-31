@@ -626,17 +626,41 @@ display: none;
     let stageDiv;
     window.addEventListener("popstate", (event) => {
         if(event.state !== null) {
-            quotePopup.style.display = '';
-            quoteMethodSelector.style.display = 'none';
-            gotoStage(event.state.idx);
+            if('idx' in event.state){
+                gotoStage(event.state.idx);
+            }
+            else {
+                showScreen(event.state.screenType);
+            }
         }
         else {
-            quotePopup.style.display = 'none';
-            quoteMethodSelector.style.display = '';
+            showScreen('main');
         }
     });
     function getQuote () {
         chooseOnline();
+    }
+    function pushScreen(screenType) {
+        history.pushState({screenType:screenType}, screenType, '');
+        showScreen(screenType);
+    }
+    function showScreen(screenType) {
+        if(screenType === 'main'){
+            quoteMethodSelector.style.display = '';
+            quotePopup.style.display = 'none';
+        }
+        else if(screenType === 'billing') {
+            quoteMethodSelector.style.display = 'none';
+            quotePopup.style.display = '';
+            loggedInUI_flatConfirmAndPay.style.display = '';
+            newPopupDesign.style.display = 'none';
+        }
+        else if(screenType === 'popup') {
+            quoteMethodSelector.style.display = 'none';
+            quotePopup.style.display = '';
+            loggedInUI_flatConfirmAndPay.style.display = 'none';
+            newPopupDesign.style.display = '';
+        }
     }
     function chooseOnline() {
         quoteMethodSelector.style.display = 'none';
@@ -658,7 +682,7 @@ display: none;
             ["Great choice! how can we reach you?", "", quoteContactForm, -1, 'monsterCall.png']
 		];
         stageIdx = 0;
-        history.pushState({idx:stageIdx}, "Stage "+stageIdx, "?stage="+stageIdx);
+        history.pushState({idx:stageIdx, screenType:'popup'}, "Stage "+stageIdx, '');
         displayStage();
 		quotePopup.style.display = '';
 		document.body.style.height = '100%';
@@ -673,25 +697,27 @@ display: none;
         displayStage();
     }
     function previousStage () {
-        stageIdx--;
-        displayStage();
+        history.back();
     }
     function nextStage () {
         stageIdx++;
-        history.pushState({idx:stageIdx}, "Stage "+stageIdx, "?stage="+stageIdx);
+        history.pushState({idx:stageIdx, screenType:'popup'}, "Stage "+stageIdx, '');
+        displayStage();
+    }
+    function displayStage() {
+        /* I don't know what to do with this yet
         if (stageIdx === stages.length) {
             billingMethod = 'flat';
             quotePopup.appendChild(loggedInUI.content.cloneNode(true));
             chooseRate();
             newPopupDesign.style.display = 'none';
             stageDiv.style.display = 'none';
-        }
-        else
-            displayStage();
-    }
-    function displayStage() {
-        newPopupDesign.style.display = '';
+            return;
+        }*/
+                
         let stage = stages[stageIdx];
+        showScreen('popup');
+        
         if (stage[1] === '')
             progressInd1.style.height = '100%';
         else
@@ -3631,7 +3657,7 @@ ${day}
                             padding: 0 50px 40px;">More info</a>
         </div>
         <div class="center">
-            <a href="#" style="display: contents;" onclick="loggedInUI_flatConfirmAndPay.style.display = ''; newPopupDesign.style.display = 'none'; stageDiv.style.display = 'none'">
+            <a href="" style="display: contents;" onclick="pushScreen('billing'); return false;">
                 <div class=mb-no-margin-top style="width: 100%; height: 80px; line-height: 80px; background: linear-gradient(90deg, #F84734 0%, #FCD503 27%, #278BFF 59.5%, #F84734 83%); border-radius: 20px; font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 53.1847px; color: #FFFFFF; justify-content: center; text-align: center; margin-top: calc(1858px - (1514px + 300px)); margin-bottom: calc(930px - 900px);">
                     Next
                 </div>
@@ -3666,7 +3692,7 @@ ${day}
                             </div>
                             <p style="font-size: 38px;font-weight: 400; color: #E7E7E7; margin-top: 5px;">Ideal for
                                 those light moves where you’re only
-                                taking a few items like deliveries. <span style="font-family:'Arial Rounded MT Bold'">MUST BE LESS THAN 5 ITEMS</span></p>
+                                taking a few items like deliveries. <span style="font-family:'Arial Rounded MT Bold'">MUST NOT BE MORE THAN 5 ITEMS</span></p>
                         </div>
 
                     </div>
