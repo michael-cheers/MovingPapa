@@ -630,6 +630,7 @@ display: none;
     function chooseOnline() {
         quoteMethodSelector.style.display = 'none';
         stages = [
+			/*each stage is: [aboveProgressBarText, belowProgressBarText, template (or array of them), progressBarValue, progressBarImage ]*/
             ["How would you like to receive your quote?", "Help us get your move just right by listing exactly what’s coming with you.", quoteMethodSelector, -1, 'monsterCall.png'],
 			[progressInd1.innerText, progressInd2.innerText, [
 				stage0Heading,
