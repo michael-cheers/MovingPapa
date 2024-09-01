@@ -722,18 +722,17 @@ display: none;
             progressInd1.style.height = '100%';
         else
             progressInd1.style.height = '';
+            
         if (stage[2] === stage3) {
-            progressDiv.style.display = 'none';
-            newPopupDesign.style.backgroundColor = '#00292A';
-            newPopupDesign.style.borderRadius = '90px 90px 0px 0px';
-            newPopupDesign.style.boxShadow = '0px 4px 4px 5px rgba(0, 0, 0, 0.25)';
-            newPopupDesign.style.paddingTop = '0px';
-            let div = document.createElement('div');
-            div.innerHTML = `<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M52.4999 52.4999L35.0001 35.0001M35.0001 35.0001L17.5 17.5M35.0001 35.0001L52.5001 17.5M35.0001 35.0001L17.5 52.5001" stroke="#888888" stroke-width="5.83333" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-`;
-            newPopupDesign.firstElementChild.before(div);
+            popupCloseButton.style.display = '';
+            //progressDiv.style.display = 'none';
+            //newPopupDesign.style.backgroundColor = '#00292A';
+            //newPopupDesign.style.borderRadius = '90px 90px 0px 0px';
+            //newPopupDesign.style.boxShadow = '0px 4px 4px 5px rgba(0, 0, 0, 0.25)';
+            //newPopupDesign.style.paddingTop = '0px';
+        } else {
+            popupCloseButton.style.display = 'none';
+            //progressDiv.style.display = '';
         }
         progressIndImg.src = stage[4];
         if (stage[3] === -1) {
@@ -2141,6 +2140,7 @@ margin-top:51px;
                     }
             </style>
             <div id="newPopupDesign" style="display:none" class="popup-main-inner">
+                <div id="popupCloseButton" style="display:none"><svg width=70 height=70 viewbox="0 0 70 70" fill="none" onclick="previousStage();" style="cursor: pointer"><path d="M52.4999 52.4999L35.0001 35.0001M35.0001 35.0001L17.5 17.5M35.0001 35.0001L52.5001 17.5M35.0001 35.0001L17.5 52.5001" stroke="#888888" stroke-width="5.83333" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
                 <div style="background: url(background.png); border-radius: 104.801px; border: 7px solid #013C3D; padding-left: 53px; padding-right: 61px;">
                     <div style="display: flex">
                         <img id=progressIndImg src="monster.png" width=425 height=490 />
@@ -3677,7 +3677,7 @@ ${day}
                     </div>
                 </div>
             </div>
-            <a onclick="nextStage()" href="#" style="font-family: Arial Rounded MT Bold;
+            <a onclick="nextStage(); return false;" href="#" style="font-family: Arial Rounded MT Bold;
                             font-size: 40.03px;
                             font-weight: 400;
                             line-height: 46.32px;
@@ -3716,7 +3716,7 @@ ${day}
                     </div>
                 </div>
             </div>
-            <a onclick="nextStage()" href="#" style="font-family: Arial Rounded MT Bold;
+            <a onclick="nextStage(); return false;" href="#" style="font-family: Arial Rounded MT Bold;
                             font-size: 40.03px;
                             font-weight: 400;
                             line-height: 46.32px;
