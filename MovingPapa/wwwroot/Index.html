@@ -3637,7 +3637,7 @@ ${day}
 
         <div style="border: 7px solid #013C3D; border-radius:90px; background: #012122;  ">
             <div class="" style="display: flex; padding:60px 60px 0 60px;">
-                <div class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
+                <button onclick="moveTypeActive(this)" class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
                         height: 365px; text-align: center; padding: 60px 0px; margin-right: 60px; margin-bottom: 60px;">
 
                     <div class="" style="background:#00292A; border-radius: 50%; width: 162px;
@@ -3657,8 +3657,8 @@ ${day}
 
                                 ">5 items or less</p>
                     </div>
-                </div>
-                <div class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
+                </button>
+                <button onclick="moveTypeActive(this)" class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
                         height: 365px; text-align: center; padding: 60px 0px; margin-bottom: 60px;">
                     <div class="" style="background:#00292A; border-radius: 50%; width: 162px;
                             height: 162px;
@@ -3677,10 +3677,10 @@ ${day}
 
                                 ">Partial move</p>
                     </div>
-                </div>
+                </button>
             </div>
             <div class="" style="display: flex; padding:0 60px;">
-                <div class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
+                <button onclick="moveTypeActive(this)" class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
                             height: 365px; text-align: center; padding: 60px 0px; margin-right: 60px; margin-bottom: 60px;">
 
                     <div class="" style="background:#00292A; border-radius: 50%; width: 162px;
@@ -3700,8 +3700,8 @@ ${day}
 
                                     ">Full Home</p>
                     </div>
-                </div>
-                <div class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
+                </button>
+                <button onclick="moveTypeActive(this)" class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
                             height: 365px; text-align: center; padding: 60px 0px; margin-bottom: 60px;">
                     <div class="" style="background:#00292A; border-radius: 50%; width: 162px;
                                 height: 162px;
@@ -3720,8 +3720,21 @@ ${day}
 
                                     ">Commerical</p>
                     </div>
-                </div>
+                </button>
             </div>
+            <style>
+                .move-type-active {
+                    border: 7px solid #F84734!important;
+                }
+            </style>
+            <script>
+                function moveTypeActive(el) {
+                    let ac = el.parentElement.parentElement.querySelector('.move-type-active');
+                    if (ac != null)
+                        ac.classList.remove('move-type-active');
+                    el.classList.add('move-type-active');
+                }
+            </script>
             <a onclick="nextStage(); return false;" href="#" style="font-family: Arial Rounded MT Bold;
                             font-size: 40.03px;
                             font-weight: 400;
