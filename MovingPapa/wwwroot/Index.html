@@ -724,16 +724,16 @@ display: none;
             progressInd1.style.height = '';
 
         progressDiv.style.visibility = '';
+        quotePopup.style.backgroundColor = '#13282A';
+        newPopupDesign.style.backgroundColor = '#0F2022';
         if (stage[2] === stage3) {
             popupCloseButton.style.display = '';
             progressDiv.style.visibility = 'hidden';
-            newPopupDesign.style.backgroundColor = '#00292A';
             newPopupDesign.style.borderRadius = '90px 90px 0px 0px';
             newPopupDesign.style.boxShadow = '0px 4px 4px 5px rgba(0, 0, 0, 0.25)';
             //newPopupDesign.style.paddingTop = '0px';
         } else {
             popupCloseButton.style.display = 'none';
-            newPopupDesign.style.backgroundColor = 'transparent';
             newPopupDesign.style.borderRadius = 0;
             newPopupDesign.style.boxShadow = 'none';
         }
