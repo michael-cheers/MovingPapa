@@ -704,10 +704,10 @@ display: none;
                     (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'nextStage()'); return t;}) (quoteContactForm.content.cloneNode(true))
                 ], 50, 'monster.png'],
                 ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
-                stage1 ,
+                    (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = pickUpPoint.value.replace(/, Canada$/, ''); return c; })(),
                 185, 'monster2.png'],
                 ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
-                                        (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=origOrDest]').innerText = 'destination'; return c; })(),
+                    (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = destinationPoint.value.replace(/, Canada$/, '');c.querySelector('[name=toOrFrom]').innerText = 'to';c.querySelector('[name=origOrDest]').innerText = 'Drop-off'; return c; })(),
                     432, 'monster3.png'],
                 ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 643, 'monster4.png'],
                 ["Not sure which option fits your move? Let me help you out!.", "", stage3, -1, 'stage3.png'],
@@ -3420,14 +3420,14 @@ ${day}
     </div>
 <template id=stage1>
     <div style='background: #00292A; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset; overflow-y: scroll;'>
-            <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 48.392px;font-style: normal;font-weight: 400;line-height: 49.272px; /* 101.818% */'><span name=origOrDest></span></div>
+            <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 48.392px;font-style: normal;font-weight: 400;line-height: 49.272px; /* 101.818% */'></div>
     <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 44px;margin-left: 67px;'>
-                <div style="margin-top: 44px; margin-left: 67px;/* 256 Bay st, Toronto, ON M5R 2W2 */font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; margin-bottom: 30px;">
-                    Pick-up: 256 Bay st, Toronto, ON M5R 2W2
+                <div style="margin-top: 44px; margin-left: 67px;/* 256 Bay st, Toronto, ON M5R 2W2 */font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; margin-bottom: 30px;">
+                    <span name=origOrDest>Pick-up</span>: <span name=addr>256 Bay st, Toronto, ON M5R 2W2</span>
                 </div>
                 <div style="border-top: 7px solid #013C3D; border-bottom: 7px solid #013C3D; padding: 50px;">
                     <div style="font-family: Arial Rounded MT Bold; font-size: 38.24px; font-weight: 400; line-height: 44.25px; text-align: left; color: #fff;">
-                        I am moving from
+                        I am moving <span name=toOrFrom>from</span>
                     </div>
                     <div class="custom-select" style="">
                         <select style="background-color: #012122;">
