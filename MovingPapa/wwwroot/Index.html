@@ -722,17 +722,17 @@ display: none;
             progressInd1.style.height = '100%';
         else
             progressInd1.style.height = '';
-            
+
+        progressDiv.style.visibility = '';
         if (stage[2] === stage3) {
             popupCloseButton.style.display = '';
-            progressDiv.style.display = 'none';
+            progressDiv.style.visibility = 'hidden';
             newPopupDesign.style.backgroundColor = '#00292A';
             newPopupDesign.style.borderRadius = '90px 90px 0px 0px';
             newPopupDesign.style.boxShadow = '0px 4px 4px 5px rgba(0, 0, 0, 0.25)';
             //newPopupDesign.style.paddingTop = '0px';
         } else {
             popupCloseButton.style.display = 'none';
-            progressDiv.style.display = '';
             newPopupDesign.style.backgroundColor = 'transparent';
             newPopupDesign.style.borderRadius = 0;
             newPopupDesign.style.boxShadow = 'none';
@@ -740,9 +740,8 @@ display: none;
         
         progressIndImg.src = stage[4];
         if (stage[3] === -1) {
-            progressDiv.style.display = 'none';
+            progressDiv.style.visibility = 'hidden';
         } else {
-            progressDiv.style.display = '';
             progressIndBar.value = stage[3];
         }
         progressInd1.innerText = stage[0];
