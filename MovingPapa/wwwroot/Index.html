@@ -3374,15 +3374,25 @@ ${day}
                         I am moving from
                     </div>
                     <div class="custom-select" style="">
-                        <select style="background-color: #012122;">
-                            <option class="service-small" value=""></option>
+                        <select class="dropdown" style="background-color: #012122;">
                             <option class="service-small" value="">1 bedroom apartment </option>
                             <option class="service-small" value="">2 bedroom apartment </option>
                             <option class="service-small" value="">3 bedroom house </option>
                             <option class="service-small" value="">4 bedroom house </option>
                             <option class="service-small" value="">Storage (10x10) </option>
                           </select>
+                          
                           <style>
+                            .dropdown { /*container for custom dropdown arrow*/
+                                -webkit-appearance: none;
+                                -moz-appearance: window;
+                                padding: 2px 50px 2px 2px;
+                                border: none;
+                                background-image: url("./arrow.svg");
+                                background-repeat: no-repeat;
+                                background-position: right center;
+                                margin-right: 10px;
+                                }
 .custom-select {
   min-width: 350px;
   position: relative;
@@ -3402,31 +3412,8 @@ ${day}
 .custom-select option.service-small {
     font-size: 16px;
 }
-
-.custom-select::before,
-.custom-select::after {
-  --size: 0.8rem;
-  content: "";
-  position: absolute;
-  right: 2rem;
-  pointer-events: none;
-}
-
-.custom-select::before {
-  border-left: var(--size) solid transparent;
-  border-right: var(--size) solid transparent;
-  border-bottom: var(--size) solid rgb(255, 255, 255);
-  top: 50%;
-}
-
-.custom-select::after {
-  border-left: var(--size) solid transparent;
-  border-right: var(--size) solid transparent;
-  border-top: var(--size) solid rgb(255, 255, 255);
-  top: 60%;
-}
-                          </style>
-                    </div>
+</style>
+   </div>
                 </div>
                 <div style="border-bottom: 7px solid #013C3D; padding: 50px;">
                 <div style="/* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
@@ -3467,7 +3454,7 @@ ${day}
             </div>
                 <div style='display:flex;margin-bottom: 30px;'>
                     <div class="custom-select" style="width: 610px;">
-                        <select style="padding: 36px 20px;margin-top: 30px; background-color: #012122;">
+                        <select class="dropdown" style="padding: 36px 20px;margin-top: 30px; background-color: #012122;">
                             <option class="service-small" value="">Stairs</option>
                             <option class="service-small" value="">Stairs </option>
                             <option class="service-small" value="">Stairs </option>
@@ -3486,7 +3473,8 @@ ${day}
                 </div>
                </div> 
                <div class="custom-select" style="padding:50px 30px;">
-                <select style="background-color: #012122;">
+                <div ></div>
+                <select class="dropdown" style="background-color: #012122;">
                     <option class="service-small" value="">Walking distance</option>
                     <option class="service-small" value="">Walking distance </option>
                     <option class="service-small" value="">Walking distance </option>
