@@ -758,6 +758,10 @@ display: none;
             tempDiv.style.backgroundColor = '#00292A';
             tempDiv.style.paddingTop = '91px';
             tempDiv.style.paddingBottom = '520px';
+            setTimeout(() => {
+                // Set max height to the height of the window minus the space used up
+                tempDiv.style.maxHeight = (window.innerHeight - tempDiv.getBoundingClientRect().top - 20) * 3 + 'px';
+            })
             tempDiv.classList.add('popup-main-inner');
             if (!(els instanceof Array))
                 els = [els];
@@ -1630,6 +1634,7 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                     padding-left: 65px;
                     padding-right: 70px;
                     padding-bottom: 70px;
+                    overflow-y: scroll;
                 }
                 /*        #popupMainPart {
                 padding-left: 65px!important;
@@ -3415,91 +3420,170 @@ ${day}
     </div>
 <template id=stage1>
     <div style='background: #00292A; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset; max-height: 1151px; overflow-y: scroll;'>
-            <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 48.392px;font-style: normal;font-weight: 400;line-height: 49.272px; /* 101.818% */'>Tell us about your <span name=origOrDest>origin</span></div>
+            <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 48.392px;font-style: normal;font-weight: 400;line-height: 49.272px; /* 101.818% */'><span name=origOrDest></span></div>
     <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 44px;margin-left: 67px;'>
-                <div style="margin-top: 44px; margin-left: 67px;/* 256 Bay st, Toronto, ON M5R 2W2 */font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
-        256 Bay st, Toronto, ON M5R 2W2
+                <div style="margin-top: 44px; margin-left: 67px;/* 256 Bay st, Toronto, ON M5R 2W2 */font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; margin-bottom: 30px;">
+                    Pick-up: 256 Bay st, Toronto, ON M5R 2W2
                 </div>
-                <div style='display:flex;justify-content:space-evenly'>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
-            House
-                        <div class="form-check papa-check">
-                <input class="form-check-input" type="checkbox">
-            </div>
-        </div>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
-            Townhouse
-                        <div class="form-check papa-check">
-                <input class="form-check-input" type="checkbox">
-            </div>
-        </div>
-        </div>
-                <div style='display:flex;justify-content:space-evenly'>
-                    <div style='width:441px;padding: 33px;border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
-                        Apartment
-                        <div class="form-check papa-check">
-                            <input class="form-check-input" type="checkbox">
-    </div>
-    </div>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
-                        Storage
-                        <div class="form-check papa-check">
-                            <input class="form-check-input" type="checkbox">
-                        </div>
+                <div style="border-top: 7px solid #013C3D; border-bottom: 7px solid #013C3D; padding: 50px;">
+                    <div style="font-family: Arial Rounded MT Bold; font-size: 38.24px; font-weight: 400; line-height: 44.25px; text-align: left; color: #fff;">
+                        I am moving from
+                    </div>
+                    <div class="custom-select" style="">
+                        <select style="background-color: #012122;">
+                            <option class="service-small" value=""></option>
+                            <option class="service-small" value="">1 bedroom apartment </option>
+                            <option class="service-small" value="">2 bedroom apartment </option>
+                            <option class="service-small" value="">3 bedroom house </option>
+                            <option class="service-small" value="">4 bedroom house </option>
+                            <option class="service-small" value="">Storage (10x10) </option>
+                          </select>
+                          <style>
+.custom-select {
+  min-width: 350px;
+  position: relative;
+}
+
+.custom-select select {
+    width: 100%;
+    font-size: 36px;
+    font-weight: 400;
+    padding: 26px;
+    background-color: transparent;
+    border: 5.014px solid #00292A;
+    border-radius: 26px;
+    color: #fff;
+    cursor: pointer;
+}
+.custom-select option.service-small {
+    font-size: 16px;
+}
+
+.custom-select::before,
+.custom-select::after {
+  --size: 0.8rem;
+  content: "";
+  position: absolute;
+  right: 2rem;
+  pointer-events: none;
+}
+
+.custom-select::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid rgb(255, 255, 255);
+  top: 50%;
+}
+
+.custom-select::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid rgb(255, 255, 255);
+  top: 60%;
+}
+                          </style>
                     </div>
                 </div>
-            </div>
-            <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 44px;margin-left: 67px;'>
-                <div style="margin-top: 44px; margin-left: 67px; /* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
+                <div style="border-bottom: 7px solid #013C3D; padding: 50px;">
+                <div style="/* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
                     Parking type
                 </div>
-                <div style='display:flex;justify-content:space-evenly'>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+                <div style='display:flex;'>
+                    <div style='width: 610px; padding: 33px; margin: 30px 60px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
                         Loading dock
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
+                    <div style='width: 610px; padding: 33px; margin: 30px 60px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
                         Driveway
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
                 </div>
-                <div style='display:flex;justify-content:space-evenly'>
-                    <div style='width:441px;padding: 33px;border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
-                        Street
+                <div style='display:flex;'>
+                    <div style='width: 610px; padding: 33px; margin: 30px 0px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+            House
                         <div class="form-check papa-check">
-                            <input class="form-check-input" type="checkbox">
-                        </div>
-                    </div>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
-                        Other
-                        <div class="form-check papa-check">
-                            <input class="form-check-input" type="checkbox">
-                        </div>
-                    </div>
-                </div>
+                <input class="form-check-input" type="checkbox">
             </div>
-            <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 44px;margin-left: 67px;'>
-                <div style="margin-top: 44px; margin-left: 67px; /* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
-                    Access
+        </div>
+                    <div style='width: 610px; padding: 33px; margin-left: 0;  margin: 30px 60px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
+            Townhouse
+                        <div class="form-check papa-check">
+                <input class="form-check-input" type="checkbox">
+            </div>
+        </div>
+        </div>
+        </div>
+        <div style="border-bottom: 7px solid #013C3D; padding: 50px;">
+            <div style="margin-bottom: 30px; /* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
+                Access
+            </div>
+                <div style='display:flex;margin-bottom: 30px;'>
+                    <div class="custom-select" style="width: 610px;">
+                        <select style="padding: 36px 20px;margin-top: 30px; background-color: #012122;">
+                            <option class="service-small" value="">Stairs</option>
+                            <option class="service-small" value="">Stairs </option>
+                            <option class="service-small" value="">Stairs </option>
+                            <option class="service-small" value="">Stairs </option>
+                            <option class="service-small" value="">Stairs </option>
+                            <option class="service-small" value="">Stairs </option>
+                          </select>
+                    </div>
+
+    <div style='width: 610px; padding: 33px; margin: 30px 60px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+        Elevator
+        <div class="form-check papa-check">
+            <input class="form-check-input" type="checkbox">
+        </div>
+    </div>
                 </div>
-                <div style='display:flex;justify-content:space-evenly'>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
-                        Stairs
+               </div> 
+               <div class="custom-select" style="padding:50px 30px;">
+                <select style="background-color: #012122;">
+                    <option class="service-small" value="">Walking distance</option>
+                    <option class="service-small" value="">Walking distance </option>
+                    <option class="service-small" value="">Walking distance </option>
+                    <option class="service-small" value="">Walking distance </option>
+                    <option class="service-small" value="">Walking distance </option>
+                    <option class="service-small" value="">Walking distance </option>
+                  </select>
+               </div>
+               <div style="border-top: 7px solid #013C3D; padding: 50px;">
+                <div style="/* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
+                    Does your home have any of these?
+                </div>
+                <div style='display:flex;'>
+                    <div style='width: 610px; padding: 33px; margin: 30px 60px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+                        Garage
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
-                    <div style='width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
-                        Elevator
+                    <div style='width: 610px; padding: 33px; margin: 30px 60px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
+                        Basement
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
                 </div>
+                <div style='display:flex;'>
+                    <div style='width: 610px; padding: 33px; margin: 30px 0px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+                        Storage locker
+                        <div class="form-check papa-check">
+                <input class="form-check-input" type="checkbox">
+            </div>
+        </div>
+                    <div style='width: 610px; padding: 33px; margin-left: 0;  margin: 30px 60px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
+                        Backyard
+                        <div class="form-check papa-check">
+                <input class="form-check-input" type="checkbox">
+            </div>
+        </div>
+        </div>
+        </div>
             </div>
             <button onclick="nextStage()" style='width: 100%;border-radius: 40px; background: linear-gradient(90deg, #FD6F00 0.4%, #FDD302 25.4%, #F84734 50.9%, #319AED 82.4%, #F84734 100%); color: #FFF; font-family: "Arial Rounded MT"; font-size: 46.001px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: -0.46px;'>Next</button>
         </div>
@@ -3623,20 +3707,20 @@ ${day}
                         margin-bottom: 30px;">
                     Do you need us to help with packing?
                 </h2>
-                <div style="display: flex; padding: 0 60px;">
-                    <div style="white-space: nowrap; width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot; Arial Rounded MT Bold&quot;; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;">
+                <div style="display: flex;">
+                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot; Arial Rounded MT Bold&quot;; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;">
                         A little
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
-                    <div style="white-space: nowrap; width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot; Arial Rounded MT Bold&quot;; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;">
+                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot; Arial Rounded MT Bold&quot;; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;">
                         Full
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
-                    <div style="white-space: nowrap; width: 441px; padding: 33px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;">
+                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;">
                         No
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
