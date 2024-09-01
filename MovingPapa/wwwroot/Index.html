@@ -762,7 +762,7 @@ display: none;
             //tempDiv.style.paddingBottom = '520px';
             setTimeout(() => {
                 // Set max height to the height of the window minus the space used up
-                tempDiv.style.maxHeight = (window.innerHeight - tempDiv.getBoundingClientRect().top - 30) * 3 + 'px';
+                tempDiv.style.maxHeight = `calc(${window.innerHeight - tempDiv.getBoundingClientRect().top - 30}px / var(--scale, 1))`;
             })
             tempDiv.classList.add('popup-main-inner');
             if (!(els instanceof Array))
