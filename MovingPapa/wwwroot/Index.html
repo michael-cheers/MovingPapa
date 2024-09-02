@@ -775,7 +775,7 @@ display: none;
             //tempDiv.style.paddingBottom = '520px';
             setTimeout(() => {
                 // Set max height to the height of the window minus the space used up
-                tempDiv.style.maxHeight = `calc(${window.innerHeight - tempDiv.getBoundingClientRect().top - 30}px / var(--scale, 1))`;
+                tempDiv.style.maxHeight = `calc(${window.innerHeight - tempDiv.getBoundingClientRect().top}px / var(--scale, 1))`;
             })
             tempDiv.classList.add('popup-main-inner');
             if (!(els instanceof Array))
@@ -2219,7 +2219,6 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                     border: none;
                     font-size: 80px;
                     color: white;
-                    margin-left:400px;
                 }
 
                 .calendar-frame option {
@@ -2246,23 +2245,21 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                     background-color: #34A853;
                     color: rgba(255, 255, 255, 0.30);
                     padding:10px 20px 10px 20px;
-                    border-radius: 60px;
-                    width:80px;
-                    height:80px;
-                    padding-top:10px;
-                    margin: 10px 30px 10px 30px;
                     cursor:not-allowed;
                 }
 
                 .dateHighPrice div, .dateNormalPrice div {
                     background-color: rgba(52, 168, 83, 0.24);
                     color: white;
-                    border-radius: 60px;
-                    width:80px;
-                    height:80px;
-                    padding-top:10px;
+                }
+
+                .dateHighPrice div, .dateNormalPrice div, .dateLowPrice div, .dateUnavailable div {
+                    width: 67px;
+                    height: 67px;
+                    padding-top: 10px;
                     margin: 10px 30px 10px 30px;
-                    cursor:pointer;
+                    cursor: pointer;
+                    border-radius: 60px;
                 }
 
                 /*.dateNormalPrice div {
@@ -2279,23 +2276,11 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                 .dateLowPrice div {
                     background-color: #34A853;
                     color: #FFF;
-                    border-radius: 60px;
-                    width:80px;
-                    height:80px;
-                    padding-top:10px;
-                    margin: 10px 30px 10px 30px;
-                    cursor:pointer;
                 }
 
                 .dateSelected div {
                     background-color: #f84734;
                     color: white;
-                    border-radius: 60px;
-                    width:80px;
-                    height:80px;
-                    padding-top:10px;
-                    margin: 10px 30px 10px 30px;
-                    cursor:pointer;
                 }
                 
                 .btn-arrow {
@@ -2456,9 +2441,13 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                         <div class="calendar-frame">
                             <div class="center">
                                 <div>
-                                    <span>Calendar</span>
-                                    <select id="calendarMonthSelector">January 2024</select>
+                                    <div style="display:flex;justify-content:space-between;margin-left:calc(16px + 63px);margin-right: 93px;align-items:center;">
+                                        <span>Calendar</span>
+                                        <select id="calendarMonthSelector">January 2024</select>
+                                    </div>
+                                    <div class="center">
                                     <table id="calendarTable"><tr><td>S</td><td>M</td><td>T</td><td>W</td><td>T</td><td>F</td><td>S</td></tr></table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
