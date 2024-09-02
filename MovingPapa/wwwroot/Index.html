@@ -621,6 +621,39 @@ display: none;
         }
     }
 
+
+    .dropdown { /*container for custom dropdown arrow*/
+        -webkit-appearance: none;
+        -moz-appearance: window;
+        padding: 2px 40px 2px 2px;
+        border: none;
+        background-image: url("./arrow.svg");
+        background-repeat: no-repeat;
+        background-position: right center;
+        margin-right: 10px;
+    }
+
+    .custom-select {
+        min-width: 350px;
+        position: relative;
+    }
+
+        .custom-select select {
+            width: 100%;
+            font-size: 36px;
+            font-weight: 400;
+            padding: 26px;
+            background-color: transparent;
+            border: 5.014px solid #00292A;
+            border-radius: 26px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .custom-select option.service-small {
+            font-size: 16px;
+        }
+
 </style>
 <script>
     let stageDiv;
@@ -2457,14 +2490,14 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                             <div class="center">
                                 <div>
                                     <span>Calendar</span>
-                                    <select id="calendarMonthSelector">January 2024</select>
+                                    <select id="calendarMonthSelector" class="dropdown"></select>
                                     <table id="calendarTable"><tr><td>S</td><td>M</td><td>T</td><td>W</td><td>T</td><td>F</td><td>S</td></tr></table>
                                 </div>
                             </div>
                         </div>
                         <style>
                             .time-of-day-active {
-                                border-color: #F84734!important;
+                                border-color: #F84734 !important;
                             }
                         </style>
                         <script>
@@ -3949,38 +3982,6 @@ ${day}
                             <option class="service-small" value="">4 bedroom house </option>
                             <option class="service-small" value="">Storage (10x10) </option>
                           </select>
-                          
-                          <style>
-                            .dropdown { /*container for custom dropdown arrow*/
-                                -webkit-appearance: none;
-                                -moz-appearance: window;
-                                padding: 2px 50px 2px 2px;
-                                border: none;
-                                background-image: url("./arrow.svg");
-                                background-repeat: no-repeat;
-                                background-position: right center;
-                                margin-right: 10px;
-                                }
-.custom-select {
-  min-width: 350px;
-  position: relative;
-}
-
-.custom-select select {
-    width: 100%;
-    font-size: 36px;
-    font-weight: 400;
-    padding: 26px;
-    background-color: transparent;
-    border: 5.014px solid #00292A;
-    border-radius: 26px;
-    color: #fff;
-    cursor: pointer;
-}
-.custom-select option.service-small {
-    font-size: 16px;
-}
-</style>
    </div>
                 </div>
                 <div style="border-bottom: 7px solid #013C3D; padding: 50px;">
