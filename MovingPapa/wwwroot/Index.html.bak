@@ -723,17 +723,17 @@ display: none;
             progressInd1.style.height = '100%';
         else
             progressInd1.style.height = '';
-
-        progressDiv.style.visibility = '';
+            
         if (stage[2] === stage3) {
             popupCloseButton.style.display = '';
-            progressDiv.style.visibility = 'hidden';
+            progressDiv.style.display = 'none';
             newPopupDesign.style.backgroundColor = '#00292A';
             newPopupDesign.style.borderRadius = '90px 90px 0px 0px';
             newPopupDesign.style.boxShadow = '0px 4px 4px 5px rgba(0, 0, 0, 0.25)';
             //newPopupDesign.style.paddingTop = '0px';
         } else {
             popupCloseButton.style.display = 'none';
+            progressDiv.style.display = '';
             newPopupDesign.style.backgroundColor = 'transparent';
             newPopupDesign.style.borderRadius = 0;
             newPopupDesign.style.boxShadow = 'none';
@@ -741,8 +741,9 @@ display: none;
         
         progressIndImg.src = stage[4];
         if (stage[3] === -1) {
-            progressDiv.style.visibility = 'hidden';
+            progressDiv.style.display = 'none';
         } else {
+            progressDiv.style.display = '';
             progressIndBar.value = stage[3];
         }
         progressInd1.innerText = stage[0];
@@ -1755,7 +1756,7 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                     padding-left: 65px;
                     padding-right: 70px;
                     padding-bottom: 70px;
-                    overflow-y: auto;
+                    overflow-y: scroll;
                 }
                 /*        #popupMainPart {
                 padding-left: 65px!important;
@@ -1763,8 +1764,8 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
             }*/
         </style>
 
-        <div id=loggedInUI_flatConfirmAndPay style="display:none; overflow-y: auto;">
-            <div style="max-height: 250vh; overflow-y: auto; height: auto;">
+        <div id=loggedInUI_flatConfirmAndPay style="display:none; overflow-y: scroll;">
+            <div style="max-height: 250vh; overflow-y: scroll; height: auto;">
                 <div style='border-bottom: 1px solid #00292A;padding-bottom: 19px;margin-bottom: 92px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;' class="flatConfirmPay-body">
                     <div class="flatConfirmPay-head">
                         <div class="flatConfirmPay-head-image">
@@ -2093,25 +2094,9 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                 text-align: center;
             }
         </style>
-        <style>
-            @media all and (min-width: 600px) {
-                .desktop-flex {
-                    display: flex;
-                }
-
-                #newPopupDesign {
-                    width: calc(41vw / var(--scale, 1));
-                    border-right: 2px #013C3D solid;
-                }
-
-                .popup-main-inner:not(#progressDiv) {
-                    width: calc(59vw / var(--scale, 1));
-                }
-            }
-        </style>
         <div id="popupMainPart" style="
 margin-top:51px;
-/*margin-left:calc(520px - 284px);*/" class="desktop-flex">
+/*margin-left:calc(520px - 284px);*/">
             <style>
 
 
@@ -2201,7 +2186,7 @@ margin-top:51px;
                     border: none;
                     font-size: 80px;
                     color: white;
-                    margin-left:400px;
+                    margin-left:300px;
                 }
 
                 .calendar-frame option {
@@ -2399,7 +2384,7 @@ margin-top:51px;
             </style>
             <div id="newPopupDesign" style="display:none" class="popup-main-inner">
                 <div id="popupCloseButton" style="display:none"><svg width=70 height=70 viewbox="0 0 70 70" fill="none" onclick="previousStage();" style="cursor: pointer"><path d="M52.4999 52.4999L35.0001 35.0001M35.0001 35.0001L17.5 17.5M35.0001 35.0001L52.5001 17.5M35.0001 35.0001L17.5 52.5001" stroke="#888888" stroke-width="5.83333" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
-                <div style="background: url(background.png); background-size: cover; border-radius: 104.801px; border: 7px solid #013C3D; padding-left: 53px; padding-right: 61px; ">
+                <div style="background: url(background.png); border-radius: 104.801px; border: 7px solid #013C3D; padding-left: 53px; padding-right: 61px;">
                     <div style="display: flex">
                         <img id=progressIndImg src="monster.png" width=425 height=490 />
                         <div style="display: flex;flex-direction: column; justify-content: center;">
@@ -2683,8 +2668,8 @@ margin-top:51px;
                     }
                 </style>
             </div>
-            <div style="display:flex;padding-left:0px;padding-right:0px;padding-bottom: 13px" id="progressDiv" class="popup-main-inner">
-                <progress style="margin-bottom: 34px; margin-top: 63px;width:100%;height: 60px" id=progressIndBar class=styledProgress value=50 max=950></progress>
+            <div style="display:flex" id="progressDiv" class="popup-main-inner">
+                <progress style="margin-bottom: 34px; margin-top: 63px;" id=progressIndBar class=styledProgress style="width:100%;height:39px" value=50 max=950></progress>
             </div>
         </div>
 </template>
@@ -3028,7 +3013,7 @@ ${day}
                         </div>
                     </div>
                     <div style="border-radius: 118.628px;background: #00292A;padding-bottom: 87px;">
-                        <div style="border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: auto;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 975px;flex-shrink: 0;">
+                        <div style="border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 975px;flex-shrink: 0;">
                             <div class=center style="padding-bottom:100px">
                                 <img id=roomImg src="bedroom1.png" width=679 height=532 />
                             </div>
@@ -3093,9 +3078,9 @@ ${day}
                         </div>
                     </div>
                     <div style="border-radius: 118.628px;background: #00292A;padding-bottom: 87px;">
-                        <div style="margin-right: 150px; padding-right: 50px; border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: auto;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 975px;flex-shrink: 0;">
+                        <div style="margin-right: 150px; padding-right: 50px; border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px; width: 1122.022px;height: 975px;flex-shrink: 0;">
                             <img src="house.png" width="658" height="511" style="margin-bottom: 118px;margin-top: 41px;" />
-                            <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: auto;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
+                            <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
                                 <div style="padding-left: 60px;padding-top: 31px;margin-bottom: 55px; font-family: 'Arial Rounded MT';font-style: normal;font-weight: 800;font-size: 40px;line-height: 47px;display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">Is there an elevator, or will we use the stairs?</div>
                                 <div style="margin-bottom: 53px; background: #012122;border-radius: 40px;display: flex;justify-content:space-between;/* Pickup */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35px;line-height: 41px;/* identical to box height */display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">
                                     <div style="margin-left: 21px">Pickup</div>
@@ -3149,7 +3134,7 @@ ${day}
                                     </div>
                                 </div>
                             </div>
-                            <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: auto;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
+                            <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
                                 <div style="padding-left: 60px;padding-top: 31px;margin-bottom: 55px; font-family: 'Arial Rounded MT';font-style: normal;font-weight: 800;font-size: 40px;line-height: 47px;display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">Will we need to handle any dismantling or assembly?</div>
                                 <div style="margin-bottom: 53px; background: #012122;border-radius: 40px;display: flex;justify-content:space-between;/* Pickup */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35px;line-height: 41px;/* identical to box height */display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">
                                     <div style="margin-left: 21px"></div>
@@ -3178,7 +3163,7 @@ ${day}
                                     </div>
                                 </div>
                             </div>
-                            <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: auto;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
+                            <div style="padding-right: 200px;border-radius: 60px;border: 3px solid #012122;background: rgba(255, 255, 255, 0.00);border-bottom: 3px solid #B6ADB0;max-height: 1241px;overflow-y: scroll;margin-left: 39px; margin-top: 123px;flex-shrink: 0;">
                                 <div style="padding-left: 60px;padding-top: 31px;margin-bottom: 55px; font-family: 'Arial Rounded MT';font-style: normal;font-weight: 800;font-size: 40px;line-height: 47px;display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">Do you need us to do any packing?</div>
                                 <div style="margin-bottom: 53px; background: #012122;border-radius: 40px;display: flex;justify-content:space-between;/* Pickup */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35px;line-height: 41px;/* identical to box height */display: flex;align-items: center;font-feature-settings: 'pnum' on, 'lnum' on;color: #FFFFFF;">
                                     <div style="margin-left: 21px"></div>
@@ -3706,9 +3691,9 @@ ${day}
         </main>
     </div>
 <template id=stage1>
-    <div style='background: #00292A; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset; overflow-y: auto;'>
+    <div style='background: #00292A; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset; overflow-y: scroll;'>
             <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 48.392px;font-style: normal;font-weight: 400;line-height: 49.272px; /* 101.818% */'></div>
-    <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 44px;'>
+    <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 44px;margin-left: 67px;'>
                 <div style="margin-top: 44px; margin-left: 67px;/* 256 Bay st, Toronto, ON M5R 2W2 */font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; margin-bottom: 30px;">
                     <span name=origOrDest>Pick-up</span>: <span name=addr>256 Bay st, Toronto, ON M5R 2W2</span>
                 </div>
@@ -4094,7 +4079,6 @@ ${day}
             </div>
         </div>
     </template>
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - MovingPapa - <a asp-area="" asp-page="/Privacy">Privacy</a>
