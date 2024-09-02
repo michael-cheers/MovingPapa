@@ -642,6 +642,7 @@ display: none;
         }
     });
     function getQuote () {
+        history.pushState({idx:0, screenType:'popup'}, "Stage "+0, '');
         gotoStage(0);
     }
     function pushScreen(screenType) {
