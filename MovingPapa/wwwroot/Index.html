@@ -627,10 +627,11 @@ display: none;
     let stageIdx = 0;
     let stages;
     let stageDivs = {};
+    let reloadID = undefined; // a random number to identify old history entries after a reload
 
     window.addEventListener("popstate", (event) => {
-        if(event.state !== null) {
-            if('idx' in event.state){
+        if(event.state !== null && event.state.reloadID === reloadID) {
+            if('idx' in event.state) {
                 gotoStage(event.state.idx);
             }
             else {
@@ -641,14 +642,15 @@ display: none;
             showScreen('main');
         }
     });
+
     function getQuote (direct = false) {
-        history.pushState({idx:0, screenType:'popup'}, "Stage "+0, '');
         gotoStage(0);
+        history.pushState({idx:0, screenType:'popup', reloadID:reloadID}, "Stage "+0, '');
         if (direct)
             nextStage();
     }
     function pushScreen(screenType) {
-        history.pushState({screenType:screenType}, screenType, '');
+        history.pushState({screenType:screenType, reloadID:reloadID}, screenType, '');
         showScreen(screenType);
     }
     function showScreen(screenType) {
@@ -684,7 +686,7 @@ display: none;
     }
     function nextStage () {
         stageIdx++;
-        history.pushState({idx:stageIdx, screenType:'popup'}, "Stage "+stageIdx, '');
+        history.pushState({idx:stageIdx, screenType:'popup', reloadID:reloadID}, "Stage "+stageIdx, '');
         displayStage();
     }
     function displayStage() {
@@ -699,6 +701,7 @@ display: none;
         }*/
         
         if(stages === undefined) {
+            reloadID = Math.random();
             stages = [
                 /*each stage is: [aboveProgressBarText, belowProgressBarText, template (or array of them), progressBarValue, progressBarImage ]*/
                 ["", "", stage0, -1, ""],
