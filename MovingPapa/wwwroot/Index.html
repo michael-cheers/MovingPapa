@@ -711,6 +711,10 @@ display: none;
                 ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
                     (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = pickUpPoint.value.replace(/, Canada$/, ''); return c; })(),
                 185, 'monster2.png'],
+                ...(stops.map((stop, i) => ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
+                    (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = stop.value.replace(/, Canada$/, ''); c.querySelector('[name=toOrFrom]').innerText = 'to'; c.querySelector('[name=origOrDest]').innerText = `Stop ${i + 1}`; return c; })(),
+                    185 + (i + 1) * (432 - 185) / (stops.length + 1), 'monster3.png'
+                ])),
                 ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
                     (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = destinationPoint.value.replace(/, Canada$/, '');c.querySelector('[name=toOrFrom]').innerText = 'to';c.querySelector('[name=origOrDest]').innerText = 'Drop-off'; return c; })(),
                     432, 'monster3.png'],
@@ -791,18 +795,23 @@ display: none;
             updateCalendarDisplay();
         }
     }
+    let stops = [];
     function addStop(stopBtn) {
         let betweenInputs = stopBtn.parentElement;
         let destinationInput = betweenInputs.nextElementSibling;
-        let betweenInputsCloned = betweenInputs.cloneNode(true), destinationInputCloned = destinationInput.cloneNode(true);
+        let betweenInputsCloned = betweenInputs.cloneNode(true),
+            destinationInputCloned = destinationInput.cloneNode(true),
+            destActualInput = destinationInputCloned.querySelector('input');
         betweenInputsCloned.querySelector('button').style.visibility = 'hidden';
-        destinationInputCloned.querySelector('input').placeholder = 'Choose your stop';
-        destinationInputCloned.querySelector('input').id = '';
+        destActualInput.placeholder = 'Choose your stop';
+        destActualInput.id = '';
         let div = document.createElement('div');
         div.appendChild(betweenInputsCloned);
         div.appendChild(destinationInputCloned);
         div.className = "fade-in";
         betweenInputs.before(div);
+        stops.push(destActualInput);
+        autocomplete(destActualInput);
     }
     
     let didInitializeCalendar = false;
