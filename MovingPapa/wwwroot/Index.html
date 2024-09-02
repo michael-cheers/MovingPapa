@@ -2437,18 +2437,31 @@ margin-top:51px;
                                 </div>
                             </div>
                         </div>
+                        <style>
+                            .time-of-day-active {
+                                border-color: #F84734!important;
+                            }
+                        </style>
+                        <script>
+                            function timeOfDayActive(el) {
+                                let ac = el.parentElement.querySelector('.time-of-day-active');
+                                if (ac != null)
+                                    ac.classList.remove('time-of-day-active');
+                                el.classList.add('time-of-day-active');
+                            }
+                        </script>
                         <div style="margin:auto; width:1000px;">
-                            <div class="time-of-day-btn">
+                            <div class="time-of-day-btn" onclick="timeOfDayActive(this)">
                                 <span>Early Morning</span>
                             </div>
-                            <div class="time-of-day-btn">
+                            <div class="time-of-day-btn" onclick="timeOfDayActive(this)">
                                 <span>Afternoon</span>
                             </div>
                             <br>
-                            <div class="time-of-day-btn">
+                            <div class="time-of-day-btn" onclick="timeOfDayActive(this)">
                                 <span>Late Afternoon</span>
                             </div>
-                            <div class="time-of-day-btn">
+                            <div class="time-of-day-btn" onclick="timeOfDayActive(this)">
                                 <span>Evening</span>
                             </div>
                         </div>
@@ -3559,7 +3572,7 @@ ${day}
         defer></script>
                 <style>
                     .focus-orange { position: relative;}
-                    .autocomplete-items { position: absolute; bottom: -109px; left: 0%; background-color: white; z-index: 9999; width: 100%; }
+                    .autocomplete-items { position: absolute; top: 82px; font-family: 'Arial Rounded MT'; font-size: 25px; left: 0%; background-color: white; z-index: 9999; width: 100%; }
                 </style>
 <script>
 
