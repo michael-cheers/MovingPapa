@@ -699,6 +699,7 @@ display: none;
             stages = [
                 /*each stage is: [aboveProgressBarText, belowProgressBarText, template (or array of them), progressBarValue, progressBarImage ]*/
                 ["How would you like to receive your quote?", "Help us get your move just right by listing exactly what’s coming with you.", quoteMethodSelector, -1, 'monsterCall.png'],
+                ["Do you have a date in mind?", "Not sure? Enter an approximate date", calendarScreen, 25, 'monsterCall.png'],
                 [progressInd1.innerText, progressInd2.innerText, [
                     stage0Heading,
                     (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'nextStage()'); return t;}) (quoteContactForm.content.cloneNode(true))
@@ -777,6 +778,13 @@ display: none;
             stageDiv = tempDiv;
             stageDivs[stage] = tempDiv;
         }
+        
+        if(stage[2] === calendarScreen) {
+            if(!didInitializeCalendar) {
+                initializeCalendar();
+            }
+            updateCalendarDisplay();
+        }
     }
     function addStop(stopBtn) {
         let betweenInputs = stopBtn.parentElement;
@@ -790,6 +798,117 @@ display: none;
         div.appendChild(destinationInputCloned);
         div.className = "fade-in";
         betweenInputs.before(div);
+    }
+    
+    let didInitializeCalendar = false;
+    let viewingCalendarYear;
+    let viewingCalendarMonth;
+    let selectedCalendarDate;
+    
+    function initializeCalendar() {
+        let now = new Date();
+        let baseYear = now.getFullYear();
+        let baseMonth = now.getMonth();
+        viewingCalendarYear = baseYear;
+        viewingCalendarMonth = baseMonth;
+        
+        let monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+        
+        let currentYear = baseYear;
+        let currentMonth = baseMonth;
+        for(let optionIdx = 0; optionIdx < 12; ++optionIdx) {
+            let newOption = document.createElement('option');
+            newOption.value = currentYear+','+currentMonth;
+            newOption.innerText = monthNames[currentMonth]+' '+currentYear;
+            calendarMonthSelector.appendChild(newOption);
+            currentMonth++;
+            if(currentMonth >= 12) {
+                currentYear++;
+                currentMonth = 0;
+            }
+        }
+        calendarMonthSelector.onchange = (event)=>{
+            let yearmonth = event.target.value.split(',');
+            viewingCalendarYear = parseInt(yearmonth[0]);
+            viewingCalendarMonth = parseInt(yearmonth[1]);
+            updateCalendarDisplay();
+        };
+        
+        let dayNumber = 1;
+        for(let rowIdx = 0; rowIdx < 6; ++rowIdx) {
+            let newRow = document.createElement('tr');
+            for(let colIdx = 0; colIdx < 7; ++colIdx) {
+                let newCell = document.createElement('td');
+                let newDiv = document.createElement('div');
+                newCell.appendChild(newDiv);
+                newRow.appendChild(newCell);
+                newDiv.innerText = dayNumber;
+                newDiv.addEventListener("click", (event)=>{
+                    let clickedDateValue = event.target["value"];
+                    if(clickedDateValue !== undefined) {
+                        selectedCalendarDate = clickedDateValue;
+                        updateCalendarDisplay();
+                    }
+                });
+                dayNumber++;
+            }
+            calendarTable.appendChild(newRow);
+        }
+        didInitializeCalendar = true;
+    }
+    
+    function updateCalendarDisplay() {
+        let rows = calendarTable.children;
+        let startDate = new Date(viewingCalendarYear, viewingCalendarMonth);
+        let startDayOfWeek = startDate.getDay();
+        let firstDayInGrid = new Date(startDate.getTime());
+        firstDayInGrid.setDate(startDate.getDate() - startDayOfWeek);
+        let currentDate = new Date(firstDayInGrid.getTime());
+        let currentMonth = currentDate.getMonth();
+        let dateNow = new Date();
+        let showedViewedMonth = false;
+        for (let rowIdx = 1; rowIdx < rows.length; rowIdx++) {
+            let row = rows[rowIdx];
+            if(currentMonth !== viewingCalendarMonth && showedViewedMonth) {
+                // hide excess rows
+                row.style.display = 'none';
+            } else {
+                row.style.display = '';
+                let cells = row.children;
+                for (let colIdx = 0; colIdx < cells.length; colIdx++) {
+                    let cell = cells[colIdx];
+                    cell.children[0].innerText = currentDate.getDate();
+                    let currentDateTime = currentDate.getTime();
+                    cell.children[0]["value"] = currentDateTime;
+                    if(currentMonth !== viewingCalendarMonth) {
+                        // days from other months are greyed out
+                        cell.className = "dateInactive";
+                    } else if(currentDate < dateNow) {
+                        // dates in the past are always unavailable
+                        cell.className = "dateUnavailable";
+                        cell.children[0]["value"] = undefined;
+                    } else if(selectedCalendarDate === currentDateTime) {
+                        cell.className = "dateSelected";
+                    } else {
+                        // TODO: need the server to tell us what price to charge for currentDate?
+                        showedViewedMonth = true;
+                        let dayOfWeek = currentDate.getDay();
+                        if(dayOfWeek === 0 || dayOfWeek === 6)
+                            cell.className = "dateHighPrice";
+                        else if (dayOfWeek === 2)
+                            cell.className = "dateLowPrice";
+                        else if (dayOfWeek === 3) {
+                            cell.className = "dateUnavailable";
+                            cell.children[0]["value"] = undefined;
+                        }
+                        else
+                            cell.className = "dateNormalPrice";
+                    }
+                    currentDate.setDate(currentDate.getDate()+1);
+                    currentMonth = currentDate.getMonth();
+                }
+            }
+        }
     }
 </script>
 
@@ -2040,7 +2159,127 @@ margin-top:51px;
                     border-bottom: 5px solid #012122;
                     background-color: #00292a;
                 }
+                
+                .time-of-day-btn {
+                    font-size: 37px;
+                    width:450px;
+                    height:100px;
+                    padding:20px;
+                    display: inline-block;
+                    //justify-content: space-between;
+                    //padding: 79px 48px;
+                    //line-height: 100px;
+                    outline: none;
+                    color: white;
+                    //background-color: #00292a;
+                    border-radius: 25px;
+                    border: 4.58px solid #013C3D;
+                    //selected border: 4.58px solid #F84734;
+                    //align-items: center;
+                    text-align: center;
+                }
+                
+                .calendar-screen {
+                    background-color: #012122;
+                    border-radius: 60px;
+                    border: 4.58px solid #013c3d;
+                    padding: 30px;
+                    padding-bottom:250px;
+                }
+                
+                .calendar-frame {
+                    background-color: #00292a;
+                    border-radius: 60px;
+                    padding: 90px;
+                    font-size: 37px;
+                    color: white;
+                }
 
+                .calendar-frame select {
+                    appearance: none;
+                    background-color: transparent;
+                    border: none;
+                    font-size: 80px;
+                    color: white;
+                    margin-left:400px;
+                }
+
+                .calendar-frame option {
+                    color: black;
+                    font-size: 40px;
+                }
+
+                .calendar-frame div table {
+                    margin-top: 40px;
+                    color: #a7b5b5;
+                    text-align: center;
+                }
+
+                .calendar-frame table {
+                    margin-top: 40px;
+                }
+                
+                .dateInactive div {
+                    background-color: transparent;
+                    color: #4c696a;
+                }
+
+                .dateUnavailable div {
+                    background-color: #4d2088;
+                    color: #8263ac;
+                    padding:10px 20px 10px 20px;
+                    border-radius: 60px;
+                    width:80px;
+                    height:80px;
+                    padding-top:10px;
+                    margin: 10px 30px 10px 30px;
+                    cursor:not-allowed;
+                }
+
+                .dateHighPrice div {
+                    background-color: #751cba;
+                    color: white;
+                    border-radius: 60px;
+                    width:80px;
+                    height:80px;
+                    padding-top:10px;
+                    margin: 10px 30px 10px 30px;
+                    cursor:pointer;
+                }
+
+                .dateNormalPrice div {
+                    background-color: #a964de;
+                    color: white;
+                    border-radius: 60px;
+                    width:80px;
+                    height:80px;
+                    padding-top:10px;
+                    margin: 10px 30px 10px 30px;
+                    cursor:pointer;
+                }
+
+                .dateLowPrice div {
+                    background-color: #d09af9;
+                    color: white;
+                    border-radius: 60px;
+                    width:80px;
+                    height:80px;
+                    padding-top:10px;
+                    margin: 10px 30px 10px 30px;
+                    cursor:pointer;
+                }
+
+                .dateSelected div {
+                    background-color: #f84734;
+                    color: white;
+                    border-radius: 60px;
+                    width:80px;
+                    height:80px;
+                    padding-top:10px;
+                    margin: 10px 30px 10px 30px;
+                    cursor:pointer;
+                }
+                
                 .btn-arrow {
                     font-size: 150px;
                     font-weight: 600;
@@ -2186,6 +2425,35 @@ margin-top:51px;
                             <span class="btn-arrow"><img src="back.webp"></span>
                         </button>
                     </div>
+                </template>
+                <template id="calendarScreen">
+                    <div class="calendar-screen">
+                        <div class="calendar-frame">
+                            <div class="center">
+                                <div>
+                                    <span>Calendar</span>
+                                    <select id="calendarMonthSelector">January 2024</select>
+                                    <table id="calendarTable"><tr><td>S</td><td>M</td><td>T</td><td>W</td><td>T</td><td>F</td><td>S</td></tr></table>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin:auto; width:1000px;">
+                            <div class="time-of-day-btn">
+                                <span>Early Morning</span>
+                            </div>
+                            <div class="time-of-day-btn">
+                                <span>Afternoon</span>
+                            </div>
+                            <br>
+                            <div class="time-of-day-btn">
+                                <span>Late Afternoon</span>
+                            </div>
+                            <div class="time-of-day-btn">
+                                <span>Evening</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="nextStage()" style="width: 100%; height:100px; border-radius: 40px; background: linear-gradient(90deg, #FD6F00 0.4%, #FDD302 25.4%, #F84734 50.9%, #319AED 82.4%, #F84734 100%); color: #FFF; font-family: &quot;Arial Rounded MT&quot;; font-size: 46.001px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: -0.46px;">Next</button>
                 </template>
                 <style>
                     .styledProgress {
