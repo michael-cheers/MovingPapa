@@ -3289,6 +3289,10 @@ ${day}
 </template>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcXKzVKjKPR2haUPYSVZ-Wpxh2mNz_PSc&callback=initMap&libraries=places&v=weekly"
         defer></script>
+                <style>
+                    .focus-orange { position: relative;}
+                    .autocomplete-items { position: absolute; bottom: -109px; left: 0%; background-color: white; z-index: 9999; }
+                </style>
 <script>
 
     async function initMap() {// Request needed libraries.
