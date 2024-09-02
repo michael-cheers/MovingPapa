@@ -860,9 +860,11 @@ display: none;
             for(let colIdx = 0; colIdx < 7; ++colIdx) {
                 let newCell = document.createElement('td');
                 let newDiv = document.createElement('div');
+                let newSpan = document.createElement('span');
+                newDiv.appendChild(newSpan);
                 newCell.appendChild(newDiv);
                 newRow.appendChild(newCell);
-                newDiv.innerText = dayNumber;
+                newSpan.innerText = dayNumber;
                 newDiv.addEventListener("click", (event)=>{
                     let clickedDateValue = event.target["value"];
                     if(clickedDateValue !== undefined) {
@@ -897,7 +899,7 @@ display: none;
                 let cells = row.children;
                 for (let colIdx = 0; colIdx < cells.length; colIdx++) {
                     let cell = cells[colIdx];
-                    cell.children[0].innerText = currentDate.getDate();
+                    cell.children[0].children[0].innerText = currentDate.getDate();
                     let currentDateTime = currentDate.getTime();
                     cell.children[0]["value"] = currentDateTime;
                     if(currentMonth !== viewingCalendarMonth) {
@@ -2247,7 +2249,6 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                 .dateUnavailable div {
                     background-color: #34A853;
                     color: rgba(255, 255, 255, 0.30);
-                    padding:10px 20px 10px 20px;
                     cursor:not-allowed;
                 }
 
@@ -2259,12 +2260,19 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                 .dateHighPrice div, .dateNormalPrice div, .dateLowPrice div, .dateUnavailable div, .dateSelected div {
                     width: 67px;
                     height: 67px;
-                    padding-top: 10px;
                     margin: 10px 30px 10px 30px;
                     cursor: pointer;
                     border-radius: 60px;
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: row;
+                    text-align: center;
+                    align-items: center;
+                    font-size: 30px;
                 }
-
+                .dateHighPrice span, .dateNormalPrice span, .dateLowPrice span, .dateUnavailable span, .dateSelected span {
+                    margin-left: -2px;
+                }
                 /*.dateNormalPrice div {
                     background-color: #a964de;
                     color: white;
