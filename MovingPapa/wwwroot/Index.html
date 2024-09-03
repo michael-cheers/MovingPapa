@@ -729,6 +729,8 @@ display: none;
                     stage5, -1, ''],
                 ["", "",
                     stage6, -1, ''],
+                ["", "", stage7, -1, ''],
+                ["", "", stage8, -1, ''],
                 ["Great choice! how can we reach you?", "",
                     (() => { let f = quoteContactForm.content.cloneNode(true); f.querySelector('[name=contactForm]').previousElementSibling.remove(); return f; })(),
                     -1, 'monsterCall.png']
@@ -1951,7 +1953,7 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                             <span>By selecting the button, I confirm that I provided </span>
                             <a href="#">accurate inventory</a>
                         </div>
-                        <button class="secure-btn">Secure and confirm booking</button>
+                        <button class="secure-btn" onclick="showScreen('popup');nextStage()">Secure and confirm booking</button>
                         <div class="book-help" style="opacity: 60%;">
                             <span> Not ready to book? </span>
                             <a href="#"> email my quote </a>
@@ -3584,22 +3586,157 @@ ${day}
                     </button>
                 </div>
             </div>
-            <div id=loggedInUI_moveConfirmed style="margin-left:-58px;transform:scale(calc(1 / 1.2)); transform-origin:0% 0%; width:calc(100% * 1.2 + 58px);height:calc(100vh / var(--scale, 1) * 1.2);display:none;background: #00292A;">
-                <div style='padding-top:189px;text-align: center;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 78.33px;font-style: normal;font-weight: 400;line-height: normal;'>Your move is confirmed!</div>
-                <div style='margin-top:75px;text-align: center;color: #FFF;font-family: "Arial Rounded MT";font-size: 58.748px;font-style: normal;font-weight: 400;line-height: normal;'>
-                    Thank you for moving with us<br />
-                    We’ll see you on on <span id=moveDate>August 28th, 2024</span>
+        </div>
+    </div>
+</template>
+<template id="stage7">
+    <div style="display:flex">
+        <div style='color: #FFF;font-family: "IBM Plex Sans";font-size: 65.399px;font-style: normal;font-weight: 500;line-height: normal;'>
+            Confirm and pay
+        </div>
+        <svg style="margin-left:auto;margin-right:4px" width="80" height="79" viewBox="0 0 80 79" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M39.8832 71.9337C57.868 71.9337 72.5829 57.2189 72.5829 39.2341C72.5829 21.2493 57.868 6.53445 39.8832 6.53445C21.8984 6.53445 7.18359 21.2493 7.18359 39.2341C7.18359 57.2189 21.8984 71.9337 39.8832 71.9337Z" stroke="white" stroke-width="4.90495" stroke-linecap="round" stroke-linejoin="round" /><path d="M30.6289 48.488L49.1369 29.98" stroke="white" stroke-width="4.90495" stroke-linecap="round" stroke-linejoin="round" /><path d="M49.1369 48.488L30.6289 29.98" stroke="white" stroke-width="4.90495" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    </div>
+    <div style="margin-top:79px">
+        <div style='margin-bottom:26px;color: #FFF;text-align: left;font-family: "IBM Plex Sans";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: normal;'><label for=acn_CN>Card Number</label></div>
+        <style>
+            #acn_CN {
+                font-family: "Arial Rounded MT Bold";
+                font-size: 45.779px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 65.399px; /* 142.857% */
+                color: #000;
+            }
+
+                #acn_CN::placeholder {
+                    color: #979797;
+                }
+        </style>
+        <input id="acn_CN" placeholder="Enter 12 digit card number" style="width:100%;padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;" />
+    </div>
+    <div style="margin-top:51px">
+        <div style="display:flex;margin-bottom:51px">
+            <div>
+                <div style='margin-bottom:26px;color: #FFF;text-align: left;font-family: "IBM Plex Sans";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: normal;'>
+                    <label for=acn_MO>Valid Thru</label>
                 </div>
-                <div class=center>
-                    <img src="moveConfirmed.png" width=1224 height=1583 />
+                <style>
+                    #acn_MO::placeholder {
+                        color: #979797;
+                    }
+
+                    #acn_MO {
+                        color: #000;
+                        font-family: "Arial Rounded MT Bold";
+                        font-size: 45.779px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 65.399px; /* 142.857% */
+                    }
+                </style>
+                <select id="acn_MO" placeholder="Month" style="margin-right:26px;padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;">
+                    <option value="01">Jan</option>
+                    <option value="02">Feb</option>
+                    <option value="03">Mar</option>
+                    <option value="04">Apr</option>
+                    <option value="05">May</option>
+                    <option value="06">Jun</option>
+                    <option value="07">Jul</option>
+                    <option value="08">Aug</option>
+                    <option value="09">Sep</option>
+                    <option value="10">Oct</option>
+                    <option value="11">Nov</option>
+                    <option value="12">Dec</option>
+                </select>
+                <style>
+                    #acn_YEAR {
+                        font-family: "Arial Rounded MT Bold";
+                        font-size: 45.779px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 65.399px; /* 142.857% */
+                    }
+
+                        #acn_YEAR::placeholder {
+                            color: #979797;
+                        }
+                </style>
+                <select id="acn_YEAR" placeholder="Year" style="padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;">
+                    <!--@{
+                        int cy = System.DateTime.Now.Year;
+                        for (int y = 0; y < 20; y++)
+                        {
+                            <option value="@(y + cy)">@(y + cy)</option>
+                        }
+                    }-->
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                    <option value="2028">2028</option>
+                    <option value="2029">2029</option>
+                    <option value="2030">2030</option>
+                    <option value="2031">2031</option>
+                    <option value="2032">2032</option>
+                    <option value="2033">2033</option>
+                    <option value="2034">2034</option>
+                    <option value="2035">2035</option>
+                    <option value="2036">2036</option>
+                    <option value="2037">2037</option>
+                    <option value="2038">2038</option>
+                    <option value="2039">2039</option>
+                    <option value="2040">2040</option>
+                    <option value="2041">2041</option>
+                    <option value="2042">2042</option>
+                    <option value="2043">2043</option>
+                </select>
+            </div>
+            <div style="margin-left:65px;">
+                <div style='margin-bottom:26px;color: #FFF;text-align: left;font-family: "IBM Plex Sans";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: normal;'>
+                    <label for=acn_CVV>CVV</label>
                 </div>
-                <button onclick="backHome()" style='margin-left:70px;padding-bottom:39px;margin-right:62px;border:none;width: calc(100% - 100px);height: 160px;flex-shrink: 0;border-radius: 36.265px;background: #F84734;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 54.216px;font-style: normal;font-weight: 400;line-height: normal;text-align:center;'>
-                    <div style="display:flex;flex-direction:column;justify-content:center;">
-                        Back home
-                    </div>
-                </button>
+                <style>
+                    #acn_CVV::placeholder {
+                        color: #979797;
+                    }
+                </style>
+                <input id="acn_CVV" placeholder="CVV" style='width:334px;font-family: "Arial Rounded MT Bold";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: 65.399px; /* 142.857% */padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;'>
             </div>
         </div>
+        <div style="margin-bottom:550px">
+            <div style='margin-bottom:26px;color: #FFF;text-align: left;font-family: "IBM Plex Sans";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: normal;'>
+                <label for=acn_Name>Card Holder’s Name</label>
+            </div>
+            <style>
+                #acn_Name::placeholder {
+                    color: #979797;
+                }
+            </style>
+            <input id="acn_Name" placeholder="Name on Card" style='width:100%;font-family: "Arial Rounded MT Bold";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: 65.399px; /* 142.857% */padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;'>
+        </div>
+        <button onclick="nextStage()" style='margin-top:131px;margin-left:70px;margin-bottom:39px;margin-right;62px;border:none;width: calc(100% - 100px);height: 160px;flex-shrink: 0;border-radius: 36.265px;background: #F84734;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 54.216px;font-style: normal;font-weight: 400;line-height: normal;text-align:center;'>
+            <div style="display:flex;flex-direction:column;justify-content:center;">
+                Confirm and pay
+            </div>
+        </button>
+    </div>
+
+</template>
+<template id="stage8">
+    <div id=loggedInUI_moveConfirmed style="margin-left:-58px;transform:scale(calc(1 / 1.2)); transform-origin:0% 0%; width:calc(100% * 1.2 + 58px);height:calc(100vh / var(--scale, 1) * 1.2);background: #00292A;">
+        <div style='padding-top:189px;text-align: center;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 78.33px;font-style: normal;font-weight: 400;line-height: normal;'>Your move is confirmed!</div>
+        <div style='margin-top:75px;text-align: center;color: #FFF;font-family: "Arial Rounded MT";font-size: 58.748px;font-style: normal;font-weight: 400;line-height: normal;'>
+            Thank you for moving with us<br />
+            We’ll see you on on <span id=moveDate>August 28th, 2024</span>
+        </div>
+        <div class=center>
+            <img src="moveConfirmed.png" width=1224 height=1583 />
+        </div>
+        <button onclick="backHome()" style='margin-left:70px;padding-bottom:39px;margin-right:62px;border:none;width: calc(100% - 100px);height: 160px;flex-shrink: 0;border-radius: 36.265px;background: #F84734;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 54.216px;font-style: normal;font-weight: 400;line-height: normal;text-align:center;'>
+            <div style="display:flex;flex-direction:column;justify-content:center;">
+                Back home
+            </div>
+        </button>
     </div>
 </template>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcXKzVKjKPR2haUPYSVZ-Wpxh2mNz_PSc&callback=initMap&libraries=places&v=weekly"
