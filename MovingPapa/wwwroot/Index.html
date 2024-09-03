@@ -727,6 +727,8 @@ display: none;
                     stage4, -1, 'monster7.png'],
                 ["", "",
                     stage5, -1, ''],
+                ["", "",
+                    stage6, -1, ''],
                 ["Great choice! how can we reach you?", "",
                     (() => { let f = quoteContactForm.content.cloneNode(true); f.querySelector('[name=contactForm]').previousElementSibling.remove(); return f; })(),
                     -1, 'monsterCall.png']
@@ -4761,7 +4763,7 @@ ${day}
                             </span>
                             <button id="clearButton" style="background-color: transparent; position: absolute; top: 180px; font-size: 70px; margin-left: 500px;border: none;">Clear</button>
                         </div>
-                        <button onclick="showScreen('billing')" style="background: #888888;
+                        <button onclick="nextStage()" style="background: #888888;
                             border-radius: 71px;
                             font-size: 71px;
                             padding: 30px;
@@ -4813,6 +4815,357 @@ ${day}
                 context.clearRect(0, 0, canvas.width, canvas.height);
             }
         </script>
+    </template>
+    <template id="stage6">
+        <div style="">
+            <style>
+                .main-div {
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 100vh;
+                }
+
+                .check-active {
+                    background-color: green !important;
+                }
+
+                .card {
+                    text-align: center;
+                    background: #00292A;
+                    /* min-height: 90vh; */
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    border: 5px solid #013C3D;
+                    border-top-left-radius: 20px;
+                    border-top-right-radius: 20px;
+                    padding-block: 10px;
+                    flex-grow: 1;
+                }
+
+                    .card p {
+                        color: #E6D9D9;
+                    }
+
+                .date {
+                    color: white;
+                }
+
+                .first-hr {
+                    border: 1.5px solid #013C3D;
+                    width: 100%;
+                }
+                /* PACKAGE SLIDER  */
+                .package-slider {
+                    width: 100%;
+                    /* background-color: yellow; */
+                    height: 100px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .package-slider-data {
+                    height: 67px;
+                    width: 50%;
+                    border: 1.5px solid red;
+                    border-radius: 21px;
+                    background: #013C3D;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                .data-header {
+                    background: #00292A;
+                    width: 85%;
+                    height: 34px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    color: white;
+                    font-size: 15px;
+                }
+
+                .package-slider-data p {
+                    margin-bottom: 8px;
+                    font-size: 12px;
+                }
+                /* DATE SLIDER  */
+                .slider {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #002a26;
+                    padding-block: 6px;
+                    overflow: hidden;
+                    max-width: 400px; /* Adjust this as needed */
+                    margin: 5px auto;
+                }
+
+                .slider-container {
+                    overflow: hidden;
+                    width: 100%;
+                    position: relative;
+                }
+
+                .slider-track {
+                    display: flex;
+                    transition: transform 0.3s ease-in-out;
+                }
+
+                /* Arrow buttons */
+                .slider-arrow {
+                    font-size: 24px;
+                    color: #ff4f4f;
+                    cursor: pointer;
+                    padding: 0 20px;
+                }
+
+                /* Slider items */
+                .slider-item {
+                    background-color: #003d37;
+                    color: white;
+                    padding: 10px 20px;
+                    margin: 0 5px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    text-align: center;
+                    min-width: 100px; /* Adjust this as needed */
+                    flex-shrink: 0;
+                }
+
+                /* Active slider item */
+                .slider-item-active {
+                    border: 2px solid #ff4f4f;
+                }
+                /* PACKAGE CARD  */
+                .package-card {
+                    /* height: 300px; */
+                    width: 90%;
+                    border: 2px solid #F84734;
+                    border-radius: 20px;
+                    text-align: start;
+                    padding-block: 20px;
+                }
+
+                    .package-card h2 {
+                        color: white;
+                        font-size: 17px;
+                        padding-left: 30px;
+                        padding-bottom: 12px;
+                    }
+
+                .package-hr {
+                    border: 0.95px solid #013C3D;
+                }
+
+                .package-card-data {
+                    padding: 30px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 17px;
+                }
+
+                .package-1 {
+                    display: flex;
+                    align-items: center;
+                    gap: 14px;
+                }
+
+                .circle {
+                    height: 22px;
+                    width: 22px;
+                    border-radius: 50%;
+                    display: flex;
+                    background-color: #F84734;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                    .circle i {
+                        font-size: 14px;
+                    }
+
+                .package-1 span {
+                    color: white;
+                }
+
+                .total-hr {
+                    border: 1.4px dashed #A9A9AA;
+                    margin-inline: 30px;
+                }
+
+                .total-payment {
+                    padding-inline: 30px;
+                    display: flex;
+                    justify-content: space-between;
+                    padding-top: 20px;
+                }
+
+                    .total-payment span {
+                        color: white;
+                        font-weight: bold;
+                        font-size: 20px;
+                    }
+
+                .card-footer {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: #012122;
+                    height: 100px;
+                    box-shadow: 4px 4px 15px 0px #00000040 inset;
+                }
+
+                    .card-footer button {
+                        background: linear-gradient(90deg, #F84734 0%, #FCD503 27%, #278BFF 59.5%, #F84734 83%);
+                        width: 60%;
+                        height: 60px;
+                        font-weight: bold;
+                        color: white;
+                        font-size: 18px;
+                        border-radius: 11.07px;
+                        border: none;
+                        cursor: pointer;
+                    }
+            </style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" integrity="sha256-5uKiXEwbaQh9cgd2/5Vp6WmMnsUr3VZZw0a8rKnOKNU=" crossorigin="anonymous">
+            <script src="https://kit.fontawesome.com/b69ee90ce9.js" crossorigin="anonymous"></script>
+
+            <div class="main-div">
+                <div class="card">
+                    <!-- DATE SLIDER  -->
+                    <div class="date-slider">
+                        <p>choose a package</p>
+                        <!-- DATE SLIDER  -->
+                        <div class="slider">
+                            <div class="slider-arrow slider-arrow-left"><i class="fa-solid fa-chevron-left"></i></div>
+                            <div class="slider-container">
+                                <div class="slider-track">
+                                    <div class="slider-item">Fri Aug 30</div>
+                                    <div class="slider-item">Sat Aug 31</div>
+                                    <div class="slider-item slider-item-active">Sun Sep 1</div>
+                                    <div class="slider-item">Mon Sep 2</div>
+                                    <div class="slider-item">Tue Sep 3</div>
+                                    <div class="slider-item">Wed Sep 4</div>
+                                    <div class="slider-item">Thu Sep 5</div>
+                                    <div class="slider-item">Fri Sep 6</div>
+                                    <div class="slider-item">Sat Sep 7</div>
+                                    <div class="slider-item">Sun Sep 8</div>
+                                    <!-- Add more dates as needed -->
+                                </div>
+                            </div>
+                            <div class="slider-arrow slider-arrow-right"><i class="fa-solid fa-chevron-right"></i></div>
+                        </div>
+                        <!-- DATE SLIDER END  -->
+                    </div>
+                    <hr class="first-hr">
+                    <div class="package-slider">
+                        <div class="package-slider-data">
+                            <div class="data-header">
+                                <span>Muscles only</span>
+                            </div>
+                            <p>Get movers help</p>
+                        </div>
+                    </div>
+                    <div class="package-card">
+                        <h2>What you'll get</h2>
+                        <hr class="package-hr">
+                        <div class="package-card-data">
+                            <div class="package-1">
+                                <div class="circle check-active">
+                                    <i><i class="fa-solid fa-check"></i></i>
+                                </div>
+                                <span>Two movers</span>
+                            </div>
+                            <div class="package-1">
+                                <div class="circle">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                                <span>Truck</span>
+                            </div>
+                            <div class="package-1">
+                                <div class="circle">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                                <span>Wrapping Equipment</span>
+                            </div>
+                            <div class="package-1">
+                                <div class="circle">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                                <span>Equipment</span>
+                            </div>
+                            <div class="package-1">
+                                <div class="circle">
+                                    <i class="fa-solid fa-xmark"></i>
+                                </div>
+                                <span>Protection plan</span>
+                            </div>
+                        </div>
+                        <hr class="total-hr">
+                        <div class="total-payment">
+                            <span>$255.79</span>
+                            <span>6 hours</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button onclick="showScreen('billing')">Secure Quote</button>
+                </div>
+            </div>
+
+            <script src="
+https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
+" onload="setupSplide()"></script>
+            <script>
+                function setupSplide() {
+                    var splide = new Splide('.splide', {
+                        // type: 'loop',
+                        perPage: 3,
+                        focus: 'center',
+                    });
+
+                    splide.mount();
+                }
+            </script>
+            <script>
+                const track = document.querySelector('.slider-track');
+                const items = document.querySelectorAll('.slider-item');
+                let currentIndex = 2; // Starting with the third item as active (0-based index)
+
+                function updateSlider() {
+                    const itemWidth = items[0].offsetWidth + 10; // 10 for margin
+                    const containerWidth = document.querySelector('.slider-container').offsetWidth;
+                    const offset = currentIndex * itemWidth - (containerWidth - itemWidth) / 2;
+                    track.style.transform = `translateX(-${offset}px)`;
+
+                    items.forEach((item, index) => {
+                        if (index === currentIndex) {
+                            item.classList.add('slider-item-active');
+                        } else {
+                            item.classList.remove('slider-item-active');
+                        }
+                    });
+                }
+
+                document.querySelector('.slider-arrow-left').addEventListener('click', () => {
+                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : 0;
+                    updateSlider();
+                });
+
+                document.querySelector('.slider-arrow-right').addEventListener('click', () => {
+                    currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : items.length - 1;
+                    updateSlider();
+                });
+
+                updateSlider();
+            </script>
+        </div>
     </template>
 
     <footer class="border-top footer text-muted">
