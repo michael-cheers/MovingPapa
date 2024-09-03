@@ -787,6 +787,9 @@ display: none;
             setTimeout(() => {
                 // Set max height to the height of the window minus the space used up
                 tempDiv.style.maxHeight = `calc(${window.innerHeight - tempDiv.getBoundingClientRect().top}px / var(--scale, 1))`;
+                let onSize = tempDiv.querySelector('[data-onSize]');
+                if (onSize !== null)
+                    eval(onSize.getAttribute('data-onSize'));
             })
             tempDiv.classList.add('popup-main-inner');
             if (!(els instanceof Array))
@@ -4426,7 +4429,7 @@ ${day}
                     <button onclick="nextStage()" class="ypm__submit-btn">Next</button>
                 </div>
         </div>
-        <script>
+        <script data-onSize="stage4OnSize()">
             document.querySelectorAll('.ypm__qty-calculator').forEach(qtyCalculator => {
                 qtyCalculator.addEventListener('click', e => {
                     const currClickedElem = e.target.classList;
@@ -4447,6 +4450,10 @@ ${day}
                     }
                 });
             });
+            let s = document.currentScript;
+            const stage4OnSize = () => {
+                s.previousElementSibling.style.height = s.parentElement.style.maxHeight;
+            };
         </script>
         <style>
             :root {
