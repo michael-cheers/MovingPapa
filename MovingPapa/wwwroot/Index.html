@@ -865,8 +865,8 @@ display: none;
                 newCell.appendChild(newDiv);
                 newRow.appendChild(newCell);
                 newSpan.innerText = dayNumber;
-                newDiv.addEventListener("click", (event)=>{
-                    let clickedDateValue = event.target["value"];
+                newDiv.addEventListener("click", (event) => {
+                    let clickedDateValue = newDiv["value"];
                     if(clickedDateValue !== undefined) {
                         selectedCalendarDate = clickedDateValue;
                         updateCalendarDisplay();
