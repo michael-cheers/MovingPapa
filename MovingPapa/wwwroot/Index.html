@@ -723,6 +723,8 @@ display: none;
                     432, 'monster3.png'],
                 ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 643, 'monster4.png'],
                 ["Not sure which option fits your move? Let me help you out!.", "", stage3, -1, 'stage3.png'],
+                ["Make sure the quantity is accurate", "Help us get your move just right by listing exactly what's coming with you.",
+                    stage4, -1, 'monster7.png'],
                 ["Great choice! how can we reach you?", "",
                     (() => { let f = quoteContactForm.content.cloneNode(true); f.querySelector('[name=contactForm]').previousElementSibling.remove(); return f; })(),
                     -1, 'monsterCall.png']
@@ -4227,7 +4229,7 @@ ${day}
                             padding: 0 50px 40px;">More info</a>
         </div>
         <div class="center">
-            <a href="" style="display: contents;" onclick="pushScreen('billing'); return false;">
+            <a href="" style="display: contents;" onclick="nextStage(); nextStage(); return false;">
                 <div class=mb-no-margin-top style="width: 100%; height: 80px; line-height: 80px; background: linear-gradient(90deg, #F84734 0%, #FCD503 27%, #278BFF 59.5%, #F84734 83%); border-radius: 20px; font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 53.1847px; color: #FFFFFF; justify-content: center; text-align: center; margin-top: calc(1858px - (1514px + 300px)); margin-bottom: calc(930px - 900px);">
                     Next
                 </div>
@@ -4307,6 +4309,361 @@ ${day}
 
             </div>
         </div>
+    </template>
+    <template id="stage4">
+        <div id="ypm__main-wrapper" style="transform:scale(calc(1 / var(--scale, 1)));width: calc(100% * var(--scale, 1)); transform-origin: 0% 0%">
+                <div class="ypm__body-wrapper">
+                    <div class="ypm__search-wrapper">
+                        <div class="ypm__search-box">
+                                <svg style="fill:#667085" version="1.1" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 768 768">
+                                    <g id="icomoon-ignore">
+                                    </g>
+                                    <path d="M513.312 507.392c-1.088 0.832-2.144 1.76-3.168 2.784s-1.92 2.048-2.784 3.168c-40.256 38.816-95.008 62.656-155.36 62.656-61.856 0-117.824-25.024-158.4-65.6s-65.6-96.544-65.6-158.4 25.024-117.824 65.6-158.4 96.544-65.6 158.4-65.6 117.824 25.024 158.4 65.6 65.6 96.544 65.6 158.4c0 60.352-23.84 115.104-62.688 155.392zM694.624 649.376l-117.6-117.6c39.392-49.28 62.976-111.776 62.976-179.776 0-79.52-32.256-151.552-84.352-203.648s-124.128-84.352-203.648-84.352-151.552 32.256-203.648 84.352-84.352 124.128-84.352 203.648 32.256 151.552 84.352 203.648 124.128 84.352 203.648 84.352c68 0 130.496-23.584 179.776-62.976l117.6 117.6c12.512 12.512 32.768 12.512 45.248 0s12.512-32.768 0-45.248z"></path>
+                                </svg>
+                            <input type="text" placeholder="search items...">
+                        </div>
+                    </div>
+                    <div class="ypm__content-wrapper">
+                        <div class="ypm__content-part-wrapper ypm__content-part-one">
+                            <p>Primary bedroom</p>
+                            <div class="ypm__selection-rows-wrapper">
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <label>
+                                        <input type="radio" class="ypm__custom-radio" name="beds1" value="1" checked>
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input type="radio" class="ypm__custom-radio" name="beds1" value="0">
+                                        No
+                                    </label>
+                                    <div class="ypm__qty-calculator">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="1">1</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <label>
+                                        <input type="radio" class="ypm__custom-radio" name="beds2" value="1" checked>
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input type="radio" class="ypm__custom-radio" name="beds2" value="0">
+                                        No
+                                    </label>
+                                    <div class="ypm__qty-calculator">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="1">1</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <label>
+                                        <input type="radio" class="ypm__custom-radio" name="beds3" value="1" checked>
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input type="radio" class="ypm__custom-radio" name="beds3" value="0">
+                                        No
+                                    </label>
+                                    <div class="ypm__qty-calculator">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="1">1</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <label>
+                                        <input type="radio" class="ypm__custom-radio" name="beds4" value="1" checked>
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input type="radio" class="ypm__custom-radio" name="beds4" value="0">
+                                        No
+                                    </label>
+                                    <div class="ypm__qty-calculator">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="1">1</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ypm__content-part-wrapper ypm__content-part-two">
+                            <p>Living room</p>
+                            <div class="ypm__selection-rows-wrapper">
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <label>
+                                        <input type="radio" class="ypm__custom-radio" name="beds5" value="1" checked>
+                                        Yes
+                                    </label>
+                                    <label>
+                                        <input type="radio" class="ypm__custom-radio" name="beds5" value="0">
+                                        No
+                                    </label>
+                                    <div class="ypm__qty-calculator">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="1">1</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ypm__footer-wrapper">
+                    <p>Slide to confirm that the information is accurate.</p>
+                    <p class="ypm__inacc-text">Inaccuracies may affect service pricing.</p>
+                    <button class="ypm__submit-btn">Next</button>
+                </div>
+        </div>
+        <script>
+            document.querySelectorAll('.ypm__qty-calculator').forEach(qtyCalculator => {
+                qtyCalculator.addEventListener('click', e => {
+                    const currClickedElem = e.target.classList;
+                    if (currClickedElem.contains('ypm__qty-handler')) {
+                        const currentQty = e.currentTarget.querySelector('.ypm__current-qty');
+
+                        if (currClickedElem.contains('ypm__qty-increase')) {
+                            currentQty.dataset.qty = Number(currentQty.dataset.qty) + 1;
+                            currentQty.innerText = currentQty.dataset.qty;
+                        }
+                        else {
+                            if (Number(currentQty.dataset.qty) < 2) {
+                                return;
+                            }
+                            currentQty.dataset.qty = Number(currentQty.dataset.qty) - 1;
+                            currentQty.innerText = currentQty.dataset.qty;
+                        }
+                    }
+                });
+            });
+        </script>
+        <style>
+            :root {
+                --ypm__text-primary: #D9D9D9;
+                --ypm__text-secondary: #E6D9D9;
+                --ypm__text-default: #C3C3C3;
+                --ypm_text-red: #F84734;
+            }
+
+            input[type="radio"].ypm__custom-radio {
+                -webkit-appearance: none;
+                appearance: none;
+                background-color: transparent;
+                margin: 0;
+                width: 15px;
+                height: 15px;
+                border: 1px solid var(--ypm_text-red);
+                border-radius: 3px;
+            }
+
+                input[type="radio"].ypm__custom-radio::before {
+                    content: '';
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                input[type="radio"].ypm__custom-radio:checked::before {
+                    background-color: var(--ypm_text-red);
+                    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="512" height="512" viewBox="0 0 512 512"><g id="icomoon-ignore"></g><path d="M432 64l-240 240-112-112-80 80 192 192 320-320z"/></svg>');
+                    background-size: 11px 12px;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+
+            #ypm__main-wrapper {
+                min-height: 100vh;
+                background-color: #012122;
+                color: var(--ypm__text-default);
+                font-family: 'Arial Rounded MT';
+                padding: 25px;
+                color: #fff;
+            }
+
+            .ypm__head-wrapper {
+                background: linear-gradient(266.72deg, rgba(1, 60, 61, 0.1) 86.41%, rgba(54, 76, 111, 0) 131.14%);
+                display: flex;
+                flex-flow: row nowrap;
+                padding: 20px;
+                border: 3px solid #013C3D;
+                border-radius: 30px;
+                justify-content: center;
+            }
+
+            .ypm__head-img-wrapper > img {
+                width: 100%;
+                max-width: 400px;
+            }
+
+            .ypm__head-content-wrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+                .ypm__head-content-wrapper > .ypm__heading {
+                    font-family: 'Arial Rounded MT Bold';
+                    font-size: 18px;
+                    color: var(--ypm__text-secondary);
+                }
+
+                .ypm__head-content-wrapper > .ypm__head-content {
+                    margin-top: 15px;
+                    font-size: 14px;
+                    text-align: justify;
+                    color: var(--ypm__text-default);
+                }
+
+            .ypm__body-wrapper {
+                background-color: #00292A;
+                margin-top: 20px;
+                border-radius: 30px 30px 0px 0px;
+                border: 3px solid #013C3D;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .ypm__search-wrapper {
+                border-bottom: 3px solid #013C3D;
+                padding: 15px 40px;
+            }
+
+            .ypm__search-box {
+                display: flex;
+                flex-flow: row nowrap;
+                column-gap: 10px;
+            }
+
+                .ypm__search-box > .icon > svg {
+                    width: 30px;
+                    height: auto;
+                    fill: #667085;
+                }
+
+                .ypm__search-box > input {
+                    background: none;
+                    border: none;
+                    outline: none;
+                    color: #fff;
+                    font-size: 18px;
+                }
+
+            .ypm__content-wrapper {
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                margin-top: 30px;
+            }
+
+            .ypm__content-part-wrapper > p {
+                width: fit-content;
+                margin: 0 auto;
+                padding-bottom: 8px;
+                font-size: 20px;
+                padding: 0px 5px 8px 5px;
+            }
+
+            .ypm__content-part-wrapper.ypm__content-part-one > p {
+                color: var(--ypm_text-red);
+                border-bottom: 4px solid var(--ypm_text-red);
+            }
+
+            .ypm__content-part-wrapper > .ypm__selection-rows-wrapper {
+                padding: 10px 20px 20px 20px;
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                row-gap: 10px;
+            }
+
+                .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    justify-content: space-between;
+                    align-items: center;
+                    column-gap: 10px;
+                    padding: 20px;
+                    border: 4px solid #012122;
+                    border-radius: 20px;
+                    font-size: 14px;
+                }
+
+                    .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > .ypm__selection-text {
+                        font-family: 'Arial Rounded MT Bold';
+                    }
+
+                    .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > label {
+                        display: flex;
+                        flex-flow: row nowrap;
+                        align-items: center;
+                        column-gap: 5px;
+                    }
+
+                    .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > .ypm__qty-calculator {
+                        background-color: #012122;
+                        padding: 8px 20px;
+                        border-radius: 12px;
+                        border: 2px solid #013C3D;
+                        display: flex;
+                        flex-wrap: nowrap;
+                        align-items: center;
+                        justify-content: center;
+                        column-gap: 15px;
+                    }
+
+                        .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > .ypm__qty-calculator > .ypm__qty-handler {
+                            width: 20px;
+                            height: 20px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            text-align: center;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-size: 16px;
+                            background-color: var(--ypm_text-red);
+                        }
+
+            .ypm__footer-wrapper {
+                border-bottom: 3px solid #013C3D;
+                border-left: 3px solid #013C3D;
+                border-right: 3px solid #013C3D;
+                border-radius: 0px 0px 30px 30px;
+                padding: 20px;
+            }
+
+                .ypm__footer-wrapper > p {
+                    font-size: 14px;
+                    font-family: 'Arial Rounded MT Bold';
+                }
+
+                    .ypm__footer-wrapper > p.ypm__inacc-text {
+                        color: var(--ypm_text-red);
+                    }
+
+            .ypm__submit-btn {
+                background-color: var(--ypm_text-red);
+                color: #fff;
+                border: none;
+                width: 100%;
+                padding: 15px 0px;
+                font-size: 18px;
+                border-radius: 20px;
+                margin-top: 15px;
+                font-family: 'Arial Rounded MT Bold';
+            }
+        </style>
     </template>
 
     <footer class="border-top footer text-muted">
