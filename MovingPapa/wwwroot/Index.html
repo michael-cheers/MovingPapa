@@ -725,6 +725,8 @@ display: none;
                 ["Not sure which option fits your move? Let me help you out!.", "", stage3, -1, 'stage3.png'],
                 ["Make sure the quantity is accurate", "Help us get your move just right by listing exactly what's coming with you.",
                     stage4, -1, 'monster7.png'],
+                ["", "",
+                    stage5, -1, ''],
                 ["Great choice! how can we reach you?", "",
                     (() => { let f = quoteContactForm.content.cloneNode(true); f.querySelector('[name=contactForm]').previousElementSibling.remove(); return f; })(),
                     -1, 'monsterCall.png']
@@ -4419,7 +4421,7 @@ ${day}
                 <div class="ypm__footer-wrapper">
                     <p>Slide to confirm that the information is accurate.</p>
                     <p class="ypm__inacc-text">Inaccuracies may affect service pricing.</p>
-                    <button class="ypm__submit-btn">Next</button>
+                    <button onclick="nextStage()" class="ypm__submit-btn">Next</button>
                 </div>
         </div>
         <script>
@@ -4664,6 +4666,154 @@ ${day}
                 font-family: 'Arial Rounded MT Bold';
             }
         </style>
+        </template>
+    <template id="stage5">
+        <div style="background-color:#012122;">
+            <div class=mb-center>
+                <div style='padding-right:159px ;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;'>
+                    Please confirm your inventory<span class=firstName></span>.
+                </div>
+            </div>
+            <!-- <div class=mb-center><div style='margin-top: 37px;color: #D9D9D9;font-family: "Arial Rounded MT";font-size: 42.489px;font-style: normal;font-weight: 400;line-height: normal;'>
+            To provide you with a guaranteed upfront<br />
+            flat rate, please provide accurate information
+        </div></div> -->
+            <div style="border-radius: 118.628px;background: #00292A;padding-bottom: 86px;">
+                <div style="overflow-y: scroll;min-height: 1800px; margin: 20px; margin-top: 123px;flex-shrink: 0;">
+                    <!-- <div class=center style="padding-bottom:100px">
+                    <img id=roomImg src="bedroom1.png" width=679 height=532 />
+                </div> -->
+                    <div style="font-family: Arial, sans-serif; color: #ffffff; display: flex; justify-content: center; align-items: center;  margin: 0;">
+
+                        <div style="position: relative; width: 100vh; padding-top: 32px; margin-right: 83px;">
+                            <img src="./Search.png" style="position: absolute; left: 20px; top: 64%; transform: translateY(-50%); color: #cccccc; font-size: 84px" />
+                            <span style="font-family: Inter;
+                                font-size: 37.09px;
+                                font-weight: 400;
+                                line-height: 55.64px;
+                                text-align: left;
+                                color: #858D9D;
+                                position: absolute;
+                                top: 45%;
+                                left: 11%;
+                                ">Search</span>
+                            <input type="text" style="width: 110%; padding: 15px 20px; border: 1px solid #ccc; background-color: transparent; color: #ffffff; font-size: 16px; outline: none; height:113px">
+                        </div>
+
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 40px; padding-left:133px; padding-right:133px; margin-bottom: 30px; border-bottom: 7px solid #012122;">
+                        <div id="roomName" style='margin-bottom:49px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 38.471px;font-style: normal;font-weight: 400;line-height: normal;'>Name</div>
+                        <div id="roomName" style='margin-bottom:49px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 38.471px;font-style: normal;font-weight: 400;line-height: normal;'>Quantity</div>
+                    </div>
+
+                    <template id=flatRateFurniture>
+                        <div>
+                            <div style='margin-bottom: 30px;justify-content: space-between; display: flex;margin-left: 84px; margin-right: 84px;border-radius: 26px;border: 2.966px solid #888;background: #012122;box-shadow: 3.955px 3.955px 3.955px 0px rgba(0, 0, 0, 0.25) inset;color: #000;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: "dlig" on;font-family: "Arial Rounded MT Bold";font-size: 43.71px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                <div style='padding-left: 37px; padding-top: 57px; padding-right: 37px; padding-bottom: 57px; color: white;' name=itemName>Boxes</div>
+                                <div style='margin-right: 25px; margin-top: 13px; margin-bottom: 14px;border-radius: 50px;background: #00292A;display: flex;padding-left: 72px; padding-right: 72px;'>
+                                    <div style='display: flex; flex-direction: column; justify-content: center;'>
+                                        <button onclick="let i = this.parentElement.parentElement.querySelector('[name=numberOfItems]');i.innerText = Math.max(0, +i.innerText - 1);" style='width: 70px; height: 70px;background:transparent;border:none;border-radius: 20px;background: #F84734;'>
+                                            <div style='display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>-</div>
+                                        </button>
+                                    </div>
+                                    <div name=numberOfItems style="margin-left: 64px; margin-right: 57px;color: #FFF;font-variant-numeric: lining-nums proportional-nums;font-feature-settings: 'dlig' on;font-family: Inter;font-size: 32px;font-style: normal;font-weight: 700;line-height: normal;display: flex;flex-direction: column;justify-content: center;">
+                                        0
+                                    </div>
+                                    <div style='display: flex; flex-direction: column; justify-content: center;'>
+                                        <button onclick="let i = this.parentElement.parentElement.querySelector('[name=numberOfItems]');i.innerText = (+i.innerText + 1);" style='width: 70px; height: 70px;background:transparent;border:none;border-radius: 20px;background: #F84734;'>
+                                            <div style='display: flex;flex-direction: column;text-align: center;justify-content: center;height:100%;color:#fff'>+</div>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="border-bottom: 7px solid #012122; margin-bottom: 30px"></div>
+                        </div>
+
+                    </template>
+                    <script>
+                        createFurniture(['Boxes', 'Boxes', 'Boxes', 'Boxes', 'Boxes', 'Boxes', 'Boxes',]);
+                        function createFurniture(arr) {
+                            arr.forEach(t => {
+                                let f = flatRateFurniture.content.firstElementChild.cloneNode(true);
+                                f.querySelector('[name=itemName]').innerText = t;
+                                furnitureCont.appendChild(f);
+                            });
+                        }
+                    </script>
+                    <div id=furnitureCont></div>
+                </div>
+                <div style="padding: 80px;">
+                    <div style="color: white; font-size: 60px;">
+                        Confirm that the information is accurate.<span style="color: #F84734;">Inaccuracies may affect service pricing.</span>
+                    </div>
+                    <div style="margin-top: 40px; display: flex; justify-content: space-around; align-items: center; gap: 60px;">
+                        <div style="display:flex; flex-direction: column; justify-content:center; align-items: center; position: relative;">
+                            <canvas id="signatureCanvas" style="width: 800px; height: 300px; border-radius: 80px; background-color: white;"></canvas>
+                            <span style="font-family: Arial Rounded MT Bold;
+                                    font-size: 69.2px;
+                                    font-weight: 400;
+                                    line-height: 40.04px;
+                                    text-align: left;
+                                    color: black;
+                                    position: absolute;
+                                    top: 60px;">
+                                Click here to sign
+                            </span>
+                            <button id="clearButton" style="background-color: transparent; position: absolute; top: 180px; font-size: 70px; margin-left: 500px;border: none;">Clear</button>
+                        </div>
+                        <button onclick="showScreen('billing')" style="background: #888888;
+                            border-radius: 71px;
+                            font-size: 71px;
+                            padding: 30px;
+                            width: 831px;
+                            color: white;">
+                            confirm
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            debugger;
+            const canvas = document.getElementById('signatureCanvas');
+            const context = canvas.getContext('2d');
+            const clearButton = document.getElementById('clearButton');
+
+            let drawing = false;
+
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mousemove', draw);
+            clearButton.onclick = clearCanvas;
+
+            function startDrawing(event) {
+                drawing = true;
+                draw(event);
+            }
+
+            function stopDrawing() {
+                drawing = false;
+                context.beginPath();
+            }
+
+            function draw(event) {
+                if (!drawing) return;
+                context.lineWidth = 2;
+                context.lineCap = 'round';
+                context.strokeStyle = '#61dafb';
+
+                context.lineTo(event.clientX - canvas.getBoundingClientRect().left,
+                    event.clientY - canvas.getBoundingClientRect().top);
+                context.stroke();
+                context.beginPath();
+                context.moveTo(event.clientX - canvas.getBoundingClientRect().left,
+                    event.clientY - canvas.getBoundingClientRect().top);
+            }
+
+            function clearCanvas() {
+                context.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        </script>
     </template>
 
     <footer class="border-top footer text-muted">
