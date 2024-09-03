@@ -626,7 +626,7 @@ display: none;
     let stageDiv;
     let stageIdx = 0;
     let stages;
-    let stageDivs = {};
+    let stageDivs = new Map();
     let reloadID = undefined; // a random number to identify old history entries after a reload
 
     window.addEventListener("popstate", (event) => {
@@ -768,9 +768,9 @@ display: none;
         if (stageDiv !== undefined)
             stageDiv.style.display = 'none';
             
-        if(stage in stageDivs) {
+        if(stageDivs.has(stage)) {
             // we already have this page open, just display it
-            stageDiv = stageDivs[stage];
+            stageDiv = stageDivs.get(stage);
             stageDiv.style.display = '';
         } else {
             let tempDivOuter = document.createElement('div');
@@ -795,7 +795,7 @@ display: none;
             }
             popupMainPart.appendChild(tempDivOuter);
             stageDiv = tempDiv;
-            stageDivs[stage] = tempDiv;
+            stageDivs.set(stage, tempDiv);
         }
         
         if(stage[2] === calendarScreen) {
