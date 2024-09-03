@@ -674,7 +674,7 @@ display: none;
         }
     }
     function requestCall() {
-        stageIdx = 6;
+        stageIdx = stages.findIndex(s => s[0] === "Great choice! how can we reach you?" && s[4] === 'monsterCall.png');
         displayStage();
     }
     function gotoStage(newStageIdx) {
@@ -723,7 +723,9 @@ display: none;
                     432, 'monster3.png'],
                 ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 643, 'monster4.png'],
                 ["Not sure which option fits your move? Let me help you out!.", "", stage3, -1, 'stage3.png'],
-                ["Great choice! how can we reach you?", "", quoteContactForm, -1, 'monsterCall.png']
+                ["Great choice! how can we reach you?", "",
+                    (() => { let f = quoteContactForm.content.cloneNode(true); f.querySelector('[name=contactForm]').previousElementSibling.remove(); return f; })(),
+                    -1, 'monsterCall.png']
             ];
         }
                 
@@ -2416,12 +2418,12 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                 <div style="padding: 55px; padding-bottom: 62px; border-radius: 60px; border: 7px solid #013C3D; background-color: #000; ">
                 <div style="position:relative;border: 4.5px solid #012122; background: url(background.png); background-size: cover; border-radius: 52.401px; padding-left: 53px; padding-right: 61px; ">
                     <div style="display: flex">
-                        <img id=progressIndImg src="monster.png" width=136 height=128 />
+                        <img id=progressIndImg src="monster.png" width=204 height=192 />
                         <div style="display: flex;flex-direction: column; justify-content: center;">
-                            <div id=progressInd1 style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: calc(47.847px * 0.55);line-height: 63px;display: flex;align-items: center;color: #FFFFFF;">
+                            <div id=progressInd1 style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: calc(47.847px * 0.55 * 1.5);line-height: 63px;display: flex;align-items: center;color: #FFFFFF;">
                                 Hey there, you're off to a great start!
                             </div>
-                            <div id=progressInd2 style='color: #EEE;font-family: "Arial Rounded MT";font-size: calc(33.378px * 0.55);font-style: normal;font-weight: 400;line-height: normal;'>
+                            <div id=progressInd2 style='color: #EEE;font-family: "Arial Rounded MT";font-size: calc(33.378px * 0.55 * 1.5);font-style: normal;font-weight: 400;line-height: normal;'>
                                 Lets build your quote.  I’ll make this as smooth and enjoyable as a stroll in the park.
                             </div>
                         </div>
@@ -2430,7 +2432,7 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                 </div>
                 </div>
             <div style="display: flex; padding-left: 0px; padding-right: 0px;padding-bottom: 0px;" id="progressDiv" class="popup-main-inner">
-                <div class="progress" style="background-color: #D9D1C2; border-radius: 103px; margin-top: 63px; width: 100%; height: 25px" value=50 max=950>
+                <div class="progress" style="background-color: #D9D1C2; border-radius: 103px; margin-top: 63px; width: 100%; height: calc(25px * 0.55 * 1.5)" value=50 max=950>
                     <div class="progress-bar styledProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id=progressIndBar></div>
                 </div>
             </div>
