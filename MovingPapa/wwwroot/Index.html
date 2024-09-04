@@ -576,7 +576,7 @@ display: none;
     }
 
     .quoteContactFormInput {
-    font-size: 49.47px;
+    font-size: var(--const-font-size);
     font-family: Arial Rounded MT;
     font-weight: 400;
     word-wrap: break-word;
@@ -2196,7 +2196,7 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                 }
                 
                 .time-of-day-btn {
-                    font-size: 37px;
+                    font-size: var(--const-font-size);
                     width:419px;
                     height:100px;
                     padding:20px;
@@ -2409,8 +2409,12 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                     float: right;
                 }
 
+                :root {
+                    --const-font-size: 49px;
+                }
+
                 button.quote-btn span {
-                    font-size: 46px !important;
+                    font-size: var(--const-font-size) !important;
                     font-family: 'Arial Rounded MT Bold';
                 }
 
@@ -2512,7 +2516,7 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                             </div>
                         </div>
                     </div>
-                    <button onclick="nextStage()" style="border: none;width: 100%; height: 123px; margin-top: 36px; border-radius: 40px; background: #F84734; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: 46.001px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: -0.46px;">Next</button>
+                    <button onclick="nextStage()" style="border: none;width: 100%; height: 123px; margin-top: 36px; border-radius: 40px; background: #F84734; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; letter-spacing: -0.46px;">Next</button>
                 </template>
                 <style>
                     .styledProgress {
@@ -2902,10 +2906,10 @@ ${day}
                 Please select type of service
             </div>
             <div style="margin-top: 60px;margin-bottom: 58px;display:flex;justify-content:space-between;padding-right: 72px;">
-                <div onclick="setContactActive(this)" style='flex-direction: row; justify-content: center; padding-top: 38px; padding-bottom: 45px; display: flex; text-align: center; width: calc(143px / var(--scale, 1)); flex-direction: column; justify-content: center; border-radius: 20px; border: 4.101px solid #013C3D; background: #012122; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 49.47px; font-style: normal; font-weight: 400; line-height: normal; ' class="contactForm-active">
+                <div onclick="setContactActive(this)" style='flex-direction: row; justify-content: center; padding-top: 38px; padding-bottom: 45px; display: flex; text-align: center; width: calc(143px / var(--scale, 1)); flex-direction: column; justify-content: center; border-radius: 20px; border: 4.101px solid #013C3D; background: #012122; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; ' class="contactForm-active">
                     Full Service
                 </div>
-                <div onclick="setContactActive(this)" style='flex-direction: row; justify-content: center; padding-top: 38px; padding-bottom: 45px; display: flex; text-align: center; width: calc(143px / var(--scale, 1)); border-radius: 20px; border: 4.101px solid #013C3D; background: #012122; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 49.47px; font-style: normal; font-weight: 400; line-height: normal; '>
+                <div onclick="setContactActive(this)" style='flex-direction: row; justify-content: center; padding-top: 38px; padding-bottom: 45px; display: flex; text-align: center; width: calc(143px / var(--scale, 1)); border-radius: 20px; border: 4.101px solid #013C3D; background: #012122; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; '>
                     Labor only
                 </div>
                 <script>
@@ -4080,7 +4084,12 @@ ${day}
 <template id=stage1>
     <div style='background: #00292A; overflow-y: auto;'>
             <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 48.392px;font-style: normal;font-weight: 400;line-height: 49.272px; /* 101.818% */'></div>
-    <div style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 44px;'>
+        <style>
+            #stage1Div * {
+                font-size: var(--const-font-size) !important;
+            }
+        </style>
+    <div id="stage1Div" style='border-radius: 90px;border: 7px solid #013C3D;background: #012122;margin-top: 44px;'>
                 <div style="margin-top: 44px; margin-left: 67px;/* 256 Bay st, Toronto, ON M5R 2W2 */font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; margin-bottom: 30px;">
                     <span name=origOrDest>Pick-up</span>: <span name=addr>256 Bay st, Toronto, ON M5R 2W2</span>
                 </div>
@@ -4232,7 +4241,7 @@ ${day}
         </div>
         </div>
             </div>
-            <button onclick="nextStage()" style='width: 100%;border-radius: 40px; background: linear-gradient(90deg, #FD6F00 0.4%, #FDD302 25.4%, #F84734 50.9%, #319AED 82.4%, #F84734 100%); color: #FFF; font-family: "Arial Rounded MT"; font-size: 46.001px; font-style: normal; font-weight: 400; line-height: normal; letter-spacing: -0.46px;'>Next</button>
+            <button onclick="nextStage()" style='width: 100%;border-radius: 40px; background: linear-gradient(90deg, #FD6F00 0.4%, #FDD302 25.4%, #F84734 50.9%, #319AED 82.4%, #F84734 100%); color: #FFF; font-family: "Arial Rounded MT"; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; letter-spacing: -0.46px;'>Next</button>
         </div>
 </template>
 <template id="stage2">
@@ -4256,7 +4265,7 @@ ${day}
                     <div class="center" style="position:absolute;top:calc(56px - 7px);left:0%;right:0%;"><img src="fullMove.png" width="278" height="222" /></div>
                     <div style="position: absolute; left: 0%; right: 0%; margin-top: 1em; ">
                         <p style="font-family: Arial Rounded MT Bold;
-                                font-size: 40px;
+                                font-size: var(--const-font-size);
                                 font-weight: 400;
                                 line-height: 46.29px;
                                 text-align: center;
@@ -4270,7 +4279,7 @@ ${day}
                     <div class="center" style="position:absolute;top:calc(30px - 7px);left:0%;right:0%;"><img src="partialMove.png" width="288" height="230" /></div>
                     <div style="position: absolute; left: 0%; right: 0%; margin-top: 1em; ">
                         <p style="font-family: Arial Rounded MT Bold;
-                                font-size: 40px;
+                                font-size: var(--const-font-size);
                                 font-weight: 400;
                                 line-height: 46.29px;
                                 text-align: center;
@@ -4286,7 +4295,7 @@ ${day}
                             <div class="center" style="position:absolute;top:calc(85px - 7px);left:0%;right:0%;"><img width="300" height="163" src="5ItemsOrLess.png" /></div>
                     <div style="position: absolute; left: 0%; right: 0%; margin-top: 1em; ">
                         <p style="font-family: Arial Rounded MT Bold;
-                                    font-size: 40px;
+                                    font-size: var(--const-font-size);
                                     font-weight: 400;
                                     line-height: 46.29px;
                                     text-align: center;
@@ -4300,7 +4309,7 @@ ${day}
                     <div class="center" style="position:absolute;top:calc(30px - 7px);left:0%;right:0%;"><img src="commercial.png" width="232" height="232" /></div>
                     <div style="position: absolute; left:0%;right:0%;margin-top:1em;">
                         <p style="font-family: Arial Rounded MT Bold;
-                                    font-size: 40px;
+                                    font-size: var(--const-font-size);
                                     font-weight: 400;
                                     line-height: 46.29px;
                                     text-align: center;
@@ -4333,7 +4342,7 @@ ${day}
                             padding: 0 50px 40px;">More info</a>
             <div class="" style="border-top: 7px solid #013C3D; display: block; padding: 60px;">
                 <h2 style="font-family: Arial Rounded MT;
-                        font-size: 40px;
+                        font-size: var(--const-font-size);
                         font-weight: 800;
                         line-height: 46.64px;
                         text-align: left;
@@ -4342,19 +4351,19 @@ ${day}
                     Do you need us to help with packing?
                 </h2>
                 <div style="display: flex;">
-                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;">
+                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal;">
                         A little
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
-                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;">
+                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal;">
                         Full
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
-                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;">
+                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal;">
                         No
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
