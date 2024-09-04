@@ -5023,20 +5023,20 @@ ${day}
                     <div style="color: white; font-size: 60px;">
                         Confirm that the information is accurate.<span style="color: #F84734;">Inaccuracies may affect service pricing.</span>
                     </div>
-                    <div style="margin-top: 40px; display: flex; justify-content: space-around; align-items: center; gap: 60px;">
+                    <div style="margin-top: 40px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 60px;">
                         <div style="display:flex; flex-direction: column; justify-content:center; align-items: center; position: relative;">
-                            <canvas id="signatureCanvas" style="width: 800px; height: 300px; border-radius: 80px; background-color: white;"></canvas>
                             <span style="font-family: Arial Rounded MT Bold;
-                                    font-size: 69.2px;
+                                    font-size: 40px;
                                     font-weight: 400;
                                     line-height: 40.04px;
                                     text-align: left;
                                     color: black;
                                     position: absolute;
-                                    top: 60px;">
+                                    top: 40px;">
                                 Click here to sign
                             </span>
-                            <button id="clearButton" style="background-color: transparent; position: absolute; top: 180px; font-size: 70px; margin-left: 500px;border: none;">Clear</button>
+                            <button id="clearButton" style="background-color: transparent; position: absolute; top: 200px; font-size: 50px; margin-left: 500px;border: none;">Clear</button>
+                            <canvas id="signatureCanvas" style="width: 800px; height: 300px; border-radius: 80px; background-color: white;"></canvas>
                         </div>
                         <button onclick="nextStage()" style="background: #888888;
                             border-radius: 71px;
@@ -5056,6 +5056,13 @@ ${day}
             const clearButton = document.getElementById('clearButton');
 
             let drawing = false;
+            canvas.addEventListener('touchmove',function(event){
+                event.preventDefault();
+            },false);
+            canvas.addEventListener("touchstart", startDrawing);
+            canvas.addEventListener("touchend", stopDrawing);
+
+            canvas.addEventListener("pointermove", draw);
 
             canvas.addEventListener('mousedown', startDrawing);
             canvas.addEventListener('mouseup', stopDrawing);
