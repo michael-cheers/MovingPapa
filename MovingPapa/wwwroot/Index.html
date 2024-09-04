@@ -735,6 +735,10 @@ display: none;
                     (() => { let f = quoteContactForm.content.cloneNode(true); f.querySelector('[name=contactForm]').previousElementSibling.remove(); return f; })(),
                     -1, 'monsterCall.png']
             ];
+            for (let [,,,,img] of stages) {
+                if (img !== '')
+                    new Image().src = img;
+            }
         }
                 
         let stage = stages[stageIdx];
