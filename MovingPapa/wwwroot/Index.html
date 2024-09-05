@@ -4606,6 +4606,13 @@ ${day}
             });
 
             headings?.forEach(heading => observer.observe(heading));
+
+
+            let s = document.currentScript;
+            const stage4OnSize = () => {
+                s.previousElementSibling.style.height = s.parentElement.style.maxHeight;
+            };
+
         </script>
         <style>
             :root {
