@@ -16,7 +16,7 @@
 
 </head>
 <body>
-    <div class="container">
+    <div class="container" style="max-height:100vh">
            <main class="desktoph">
             <div class="sticky" style="display:flex"  >
                 <div class="mb-full-width" style="width:60%;padding-top:32px">
@@ -710,25 +710,25 @@ display: none;
                 [progressInd1.innerText.replaceAll('\n', ''), progressInd2.innerText.replaceAll('\n', ''), [
                     stage0Heading,
                     (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'nextStage()'); return t;}) (quoteContactForm.content.cloneNode(true))
-                ], 50, 'monster.png'],
+                ], 237.5, 'monster.png'],
                 ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
                     (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = pickUpPoint.value.replace(/, Canada$/, ''); return c; })(),
-                185, 'monster2.png'],
+                484, 'monster2.png'],
                 ...(stops.map((stop, i) => ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
                     (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = stop.value.replace(/, Canada$/, ''); c.querySelector('[name=toOrFrom]').innerText = 'to'; c.querySelector('[name=origOrDest]').innerText = `Stop ${i + 1}`; return c; })(),
-                    185 + (i + 1) * (432 - 185) / (stops.length + 1), 'monster3.png'
+                    484 + (i + 1) * (679 - 484) / (stops.length + 1), 'monster3.png'
                 ])),
                 ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
                     (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = destinationPoint.value.replace(/, Canada$/, '');c.querySelector('[name=toOrFrom]').innerText = 'to';c.querySelector('[name=origOrDest]').innerText = 'Drop-off'; return c; })(),
-                    432, 'monster3.png'],
-                ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 643, 'monster4.png'],
+                    679, 'monster3.png'],
+                ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 890, 'monster4.png'],
                 ["Not sure which option fits your move? Let me help you out!.", "", stage3, -1, 'stage3.png'],
                 ["Make sure the quantity is accurate", "Help us get your move just right by listing exactly what's coming with you.",
                     stage4, -1, 'monster7.png'],
                 ["", "",
                     stage5, -1, ''],
-                ["", "",
-                    stage6, -1, ''],
+                ["Secure Your Move with a $50 Deposit", "Help us get your move just right by listing exactly what’s coming with you.",
+                    stage6, -1, 'monster7.png'],
                 ["", "", stage7, -1, ''],
                 ["", "", stage8, -1, ''],
                 ["Great choice! how can we reach you?", "",
@@ -2210,7 +2210,9 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                     width:419px;
                     height:100px;
                     padding:20px;
-                    display: inline-block;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
                     //justify-content: space-between;
                     //padding: 79px 48px;
                     //line-height: 100px;
@@ -2420,7 +2422,7 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                 }
 
                 :root {
-                    --const-font-size: 49px;
+                    --const-font-size: 40px;
                 }
 
                 button.quote-btn span {
@@ -2452,7 +2454,7 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                             </div>
                         </div>
                     </div>
-                    <div style="bottom:0%;left:0%;right:0%; background: url(quote-bg.png); margin-left: -19px; margin-right: -30px; height: 150px; margin-top: -50px; margin-bottom: -30px; background-size: contain; background-repeat: no-repeat; background-position: bottom;" />
+                    <div style="bottom:0%;left:0%;right:0%; background: url(quote-bg.png); margin-left: -52px; margin-right: -61px; height: 150px; margin-top: -50px; margin-bottom: -30px; background-size: contain; background-repeat: no-repeat; background-position: bottom;" />
                 </div>
                 </div>
             <div style="display: flex; padding-left: 0px; padding-right: 0px;padding-bottom: 0px;" id="progressDiv" class="popup-main-inner">
@@ -2526,7 +2528,9 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                             </div>
                         </div>
                     </div>
-                    <button onclick="nextStage()" style="border: none;width: 100%; height: 123px; margin-top: 36px; border-radius: 40px; background: #F84734; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; letter-spacing: -0.46px;">Next</button>
+                    <button onclick="nextStage(); return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+                        <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
+                    </button>
                 </template>
                 <style>
                     .styledProgress {
@@ -2911,15 +2915,15 @@ ${day}
         }
     </style>
     <div>
-        <div style="border-bottom: 3px solid #013C3D; padding-left: 51px; padding-right: 37px; ">
+        <div style="padding-left: calc(65px + 51px); padding-right: calc(70px + 37px); border-bottom: 3px solid #013C3D ">
             <div style='color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 55.742px; font-style: normal; font-weight: 400; line-height: normal;'>
                 Please select type of service
             </div>
             <div style="margin-top: 60px;margin-bottom: 58px;display:flex;justify-content:space-between;padding-right: 72px;">
-                <div onclick="setContactActive(this)" style='flex-direction: row; justify-content: center; padding-top: 38px; padding-bottom: 45px; display: flex; text-align: center; width: calc(143px / var(--scale, 1)); flex-direction: column; justify-content: center; border-radius: 20px; border: 4.101px solid #013C3D; background: #012122; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; ' class="contactForm-active">
+                <div onclick="setContactActive(this)" style='flex-direction: row; justify-content: center; padding-top: 38px; padding-bottom: 45px; display: flex; text-align: center; width: calc(133px / var(--scale, 1)); flex-direction: column; justify-content: center; border-radius: 20px; border: 4.101px solid #013C3D; background: #012122; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; ' class="contactForm-active">
                     Full Service
                 </div>
-                <div onclick="setContactActive(this)" style='flex-direction: row; justify-content: center; padding-top: 38px; padding-bottom: 45px; display: flex; text-align: center; width: calc(143px / var(--scale, 1)); border-radius: 20px; border: 4.101px solid #013C3D; background: #012122; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; '>
+                <div onclick="setContactActive(this)" style='flex-direction: row; justify-content: center; padding-top: 38px; padding-bottom: 45px; display: flex; text-align: center; width: calc(133px / var(--scale, 1)); border-radius: 20px; border: 4.101px solid #013C3D; background: #012122; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; '>
                     Labor only
                 </div>
                 <script>
@@ -2932,7 +2936,7 @@ ${day}
                 </script>
             </div>
         </div>
-        <div name=contactForm style="padding-left: 51px; padding-right: 74px; margin-top: 81px; max-width: 1405px; width: 100%; height: 100%; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 46.17px; display: inline-flex">
+        <div name=contactForm style="padding-left: calc(65px + 51px); padding-right: calc(70px + 74px); margin-top: 81px; max-width: 1405px; width: 100%; height: 100%; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 46.17px; display: inline-flex">
             <input class="papa-focus-orange quoteContactFormInput" id=firstName placeholder="Full Name" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
             <input class="papa-focus-orange quoteContactFormInput" placeholder="Email" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
             <input class="papa-focus-orange quoteContactFormInput" placeholder="Phone Number" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex">
@@ -2941,7 +2945,7 @@ ${day}
             </button>
         </div>
     </div>
-
+    <script>document.currentScript.parentElement.style.paddingLeft = '0px'; document.currentScript.parentElement.style.paddingRight = '0px';</script>
 </template>
 <template id="papaGiftCard">
     <div name=papaGiftCard>
@@ -4204,7 +4208,7 @@ ${day}
                 <input id="destinationPoint2" style="width:100%;background:none;border:none;outline:none;/* Choose pick up point */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 25.5295px;line-height: 30px;margin-left:calc(305px - (221px + ((41px + 52px) / 2)));/* identical to box height */" class="placeholder-656565" placeholder="Choose your destination" />
             </div>
         </div>
-        <button class="rainbow-border-orange" onclick="nextStage()" style="/* Rectangle 3 */ width: 100%; height: 123px; background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 28.2559px; line-height: 33px; color: #FFFFFF;">
+        <button class="rainbow-border-orange" onclick="nextStage()" style="/* Rectangle 3 */ width: 100%; height: 123px; background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: var(--const-font-size); line-height: 33px; color: #FFFFFF;">
             <span style="text-align:center;display:flex;justify-content:center;flex-direction:column;">Next</span>
         </button>
         <script>
@@ -4228,7 +4232,7 @@ ${day}
                     <span name=origOrDest>Pick-up</span>: <span name=addr>256 Bay st, Toronto, ON M5R 2W2</span>
                 </div>
                 <div style="border-top: 7px solid #013C3D; border-bottom: 7px solid #013C3D; padding: 50px;">
-                    <div style="font-family: Arial Rounded MT Bold; font-size: 38.24px; font-weight: 400; line-height: 44.25px; text-align: left; color: #fff;">
+                    <div style="padding-bottom: 50px;font-family: Arial Rounded MT Bold; font-size: 38.24px; font-weight: 400; line-height: 44.25px; text-align: left; color: #fff;">
                         I am moving <span name=toOrFrom>from</span>
                     </div>
                     <div class="custom-select" style="">
@@ -4250,6 +4254,7 @@ ${day}
                                 background-repeat: no-repeat;
                                 background-position: right center;
                                 margin-right: 10px;
+                                font-family: 'Arial Rounded MT';
                                 }
 .custom-select {
   min-width: 350px;
@@ -4273,8 +4278,8 @@ ${day}
 </style>
    </div>
                 </div>
-                <div style="border-bottom: 7px solid #013C3D; padding: 50px;">
-                    <div style="/* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
+                <div style="padding: 50px;">
+                    <div style="padding-bottom: 50px;/* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
                         Parking type
                     </div>
                     <div class="custom-select" style="">
@@ -4285,87 +4290,91 @@ ${day}
                             <option class="service-small" value="">Other </option>
                         </select>
 
-                </div>
-        <div style="border-bottom: 7px solid #013C3D; padding: 50px;">
-            <div style="margin-bottom: 30px; /* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
-                Access
-            </div>
-                <div style='display:flex;margin-bottom: 30px;'>
-                    <div class="custom-select" style="width: 610px;">
-                        <select class="dropdown" style="padding: 36px 20px;margin-top: 30px; background-color: #012122;">
-                            <option class="service-small" value="">Stairs</option>
-                            <option class="service-small" value="">Stairs </option>
-                            <option class="service-small" value="">Stairs </option>
-                            <option class="service-small" value="">Stairs </option>
-                            <option class="service-small" value="">Stairs </option>
-                            <option class="service-small" value="">Stairs </option>
-                          </select>
+                    </div>
+                    <div class="custom-select" style="padding:50px 30px;">
+                        <div></div>
+                        <select class="dropdown" style="background-color: #012122;">
+                            <option class="service-small" value="">Walking distance</option>
+                            <option class="service-small" value="">Walking distance </option>
+                            <option class="service-small" value="">Walking distance </option>
+                            <option class="service-small" value="">Walking distance </option>
+                            <option class="service-small" value="">Walking distance </option>
+                            <option class="service-small" value="">Walking distance </option>
+                        </select>
+                    </div>
+                    <div style="border-top: 7px solid #013C3D; padding: 50px;">
+                        <div style="/* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
+                            Does your home have any of these?
+                        </div>
+                        <div style='display:flex;' class="mb-display-none">
+                            <div style='width: 610px; padding: 33px; margin: 30px 60px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+                                Garage
+                                <div class="form-check papa-check">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+                            </div>
+                            <div style='width: 610px; padding: 33px; margin: 30px 60px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
+                                Basement
+                                <div class="form-check papa-check">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+                            </div>
+                        </div>
+                        <div style='display:flex;' class="mb-display-none">
+                            <div style='width: 610px; padding: 33px; margin: 30px 0px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+                                Storage locker
+                                <div class="form-check papa-check">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+                            </div>
+                            <div style='width: 610px; padding: 33px; margin-left: 0;  margin: 30px 60px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
+                                Backyard
+                                <div class="form-check papa-check">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="custom-select pc-display-none" style="">
+                        <select class="dropdown" multiple style="background-color: #012122;">
+                            <option class="service-small" value="">Garage</option>
+                            <option class="service-small" value="">Basement </option>
+                            <option class="service-small" value="">Storage locker </option>
+                            <option class="service-small" value="">Backyard </option>
+                        </select>
+
                     </div>
 
-    <div style='width: 610px; padding: 33px; margin: 30px 60px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
-        Elevator
-        <div class="form-check papa-check">
-            <input class="form-check-input" type="checkbox">
-        </div>
-    </div>
-                </div>
-               </div> 
-               <div class="custom-select" style="padding:50px 30px;">
-                <div ></div>
-                <select class="dropdown" style="background-color: #012122;">
-                    <option class="service-small" value="">Walking distance</option>
-                    <option class="service-small" value="">Walking distance </option>
-                    <option class="service-small" value="">Walking distance </option>
-                    <option class="service-small" value="">Walking distance </option>
-                    <option class="service-small" value="">Walking distance </option>
-                    <option class="service-small" value="">Walking distance </option>
-                  </select>
-               </div>
-               <div style="border-top: 7px solid #013C3D; padding: 50px;">
-                   <div style="/* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
-                       Does your home have any of these?
-                   </div>
-                   <div style='display:flex;' class="mb-display-none">
-                       <div style='width: 610px; padding: 33px; margin: 30px 60px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
-                           Garage
-                           <div class="form-check papa-check">
-                               <input class="form-check-input" type="checkbox">
-                           </div>
-                       </div>
-                       <div style='width: 610px; padding: 33px; margin: 30px 60px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
-                           Basement
-                           <div class="form-check papa-check">
-                               <input class="form-check-input" type="checkbox">
-                           </div>
-                       </div>
-                   </div>
-                   <div style='display:flex;' class="mb-display-none">
-                       <div style='width: 610px; padding: 33px; margin: 30px 0px; margin-left: 0; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
-                           Storage locker
-                           <div class="form-check papa-check">
-                               <input class="form-check-input" type="checkbox">
-                           </div>
-                       </div>
-                       <div style='width: 610px; padding: 33px; margin-left: 0;  margin: 30px 60px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal; '>
-                           Backyard
-                           <div class="form-check papa-check">
-                               <input class="form-check-input" type="checkbox">
-                           </div>
-                       </div>
-                   </div>
-               </div>
-                   <div class="custom-select pc-display-none" style="">
-                       <select class="dropdown" multiple style="background-color: #012122;">
-                           <option class="service-small" value="">Garage</option>
-                           <option class="service-small" value="">Basement </option>
-                           <option class="service-small" value="">Storage locker </option>
-                           <option class="service-small" value="">Backyard </option>
-                       </select>
+                    <div style="padding: 50px;">
+                        <div style="margin-bottom: 30px; /* 256 Bay st, Toronto, ON M5R 2W2 */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; display: flex; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; ">
+                            Access
+                        </div>
+                        <div style='display:flex;margin-bottom: 30px;'>
+                            <div class="custom-select" style="width: 610px;">
+                                <select class="dropdown" style="padding: 36px 20px;margin-top: 30px; background-color: #012122;">
+                                    <option class="service-small" value="">Stairs</option>
+                                    <option class="service-small" value="">Stairs </option>
+                                    <option class="service-small" value="">Stairs </option>
+                                    <option class="service-small" value="">Stairs </option>
+                                    <option class="service-small" value="">Stairs </option>
+                                    <option class="service-small" value="">Stairs </option>
+                                </select>
+                            </div>
 
-                   </div>
-               </div>
+                            <div style='width: 610px; padding: 33px; margin: 30px 60px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 39.453px; font-style: normal; font-weight: 400; line-height: normal;'>
+                                Elevator
+                                <div class="form-check papa-check">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <button onclick="nextStage()" style='width: 100%;border-radius: 40px; background: linear-gradient(90deg, #FD6F00 0.4%, #FDD302 25.4%, #F84734 50.9%, #319AED 82.4%, #F84734 100%); color: #FFF; font-family: "Arial Rounded MT"; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; letter-spacing: -0.46px;'>Next</button>
+        <button onclick="nextStage(); return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+            <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
+        </button>
         </div>
 </template>
 <template id="stage2">
@@ -4504,13 +4513,9 @@ ${day}
                             display:block;
                             padding: 0 50px 40px;">More info</a>
         </div>
-        <div class="center">
-            <a href="" style="display: contents;" onclick="nextStage(); nextStage(); return false;">
-                <div class=mb-no-margin-top style="width: 100%; height: 80px; line-height: 80px; background: linear-gradient(90deg, #F84734 0%, #FCD503 27%, #278BFF 59.5%, #F84734 83%); border-radius: 20px; font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 53.1847px; color: #FFFFFF; justify-content: center; text-align: center; margin-top: calc(1858px - (1514px + 300px)); margin-bottom: calc(930px - 900px);">
-                    Next
-                </div>
-            </a>
-        </div>
+        <button onclick="nextStage(); nextStage(); return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+            <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
+        </button>
     </div>
 </template>
     <template id="stage3">
@@ -4601,90 +4606,83 @@ ${day}
                     </div>
                     <div class="ypm__content-wrapper">
                         <div class="ypm__content-part-wrapper ypm__content-part-one">
-                            <p>Primary bedroom</p>
+                            <p class="ypm__section-heading">Primary bedroom</p>
                             <div class="ypm__selection-rows-wrapper">
                                 <div class="ypm__selection-row-wrapper">
                                     <span class="ypm__selection-text">Beds</span>
-                                    <label>
-                                        <input type="radio" class="ypm__custom-radio" name="beds1" value="1" checked>
-                                        Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" class="ypm__custom-radio" name="beds1" value="0">
-                                        No
-                                    </label>
-                                    <div class="ypm__qty-calculator">
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
                                         <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="1">1</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
                                         <span class="ypm__qty-handler ypm__qty-increase">+</span>
                                     </div>
                                 </div>
                                 <div class="ypm__selection-row-wrapper">
                                     <span class="ypm__selection-text">Beds</span>
-                                    <label>
-                                        <input type="radio" class="ypm__custom-radio" name="beds2" value="1" checked>
-                                        Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" class="ypm__custom-radio" name="beds2" value="0">
-                                        No
-                                    </label>
-                                    <div class="ypm__qty-calculator">
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
                                         <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="1">1</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
                                         <span class="ypm__qty-handler ypm__qty-increase">+</span>
                                     </div>
                                 </div>
                                 <div class="ypm__selection-row-wrapper">
                                     <span class="ypm__selection-text">Beds</span>
-                                    <label>
-                                        <input type="radio" class="ypm__custom-radio" name="beds3" value="1" checked>
-                                        Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" class="ypm__custom-radio" name="beds3" value="0">
-                                        No
-                                    </label>
-                                    <div class="ypm__qty-calculator">
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
                                         <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="1">1</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
                                         <span class="ypm__qty-handler ypm__qty-increase">+</span>
                                     </div>
                                 </div>
                                 <div class="ypm__selection-row-wrapper">
                                     <span class="ypm__selection-text">Beds</span>
-                                    <label>
-                                        <input type="radio" class="ypm__custom-radio" name="beds4" value="1" checked>
-                                        Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" class="ypm__custom-radio" name="beds4" value="0">
-                                        No
-                                    </label>
-                                    <div class="ypm__qty-calculator">
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
                                         <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="1">1</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
                                         <span class="ypm__qty-handler ypm__qty-increase">+</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="ypm__content-part-wrapper ypm__content-part-two">
-                            <p>Living room</p>
+
+                        <div class="ypm__content-part-wrapper ypm__content-part-one">
+                            <p class="ypm__section-heading">Primary bedroom</p>
                             <div class="ypm__selection-rows-wrapper">
                                 <div class="ypm__selection-row-wrapper">
                                     <span class="ypm__selection-text">Beds</span>
-                                    <label>
-                                        <input type="radio" class="ypm__custom-radio" name="beds5" value="1" checked>
-                                        Yes
-                                    </label>
-                                    <label>
-                                        <input type="radio" class="ypm__custom-radio" name="beds5" value="0">
-                                        No
-                                    </label>
-                                    <div class="ypm__qty-calculator">
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
                                         <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="1">1</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
                                         <span class="ypm__qty-handler ypm__qty-increase">+</span>
                                     </div>
                                 </div>
@@ -4699,30 +4697,55 @@ ${day}
                 </div>
         </div>
         <script data-onSize="stage4OnSize()">
+            document.querySelectorAll('.ypm__start-calc-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const qtyCalculator = btn.closest('.ypm__selection-row-wrapper').querySelector('.ypm__qty-calculator');
+                    setQty(qtyCalculator, 1);
+                });
+            });
             document.querySelectorAll('.ypm__qty-calculator').forEach(qtyCalculator => {
                 qtyCalculator.addEventListener('click', e => {
                     const currClickedElem = e.target.classList;
-                    if (currClickedElem.contains('ypm__qty-handler')) {
-                        const currentQty = e.currentTarget.querySelector('.ypm__current-qty');
-
-                        if (currClickedElem.contains('ypm__qty-increase')) {
-                            currentQty.dataset.qty = Number(currentQty.dataset.qty) + 1;
-                            currentQty.innerText = currentQty.dataset.qty;
-                        }
-                        else {
-                            if (Number(currentQty.dataset.qty) < 2) {
-                                return;
-                            }
-                            currentQty.dataset.qty = Number(currentQty.dataset.qty) - 1;
-                            currentQty.innerText = currentQty.dataset.qty;
-                        }
-                    }
+                    if (currClickedElem.contains('ypm__qty-handler')) setQty(qtyCalculator, currClickedElem.contains('ypm__qty-increase') ? 1 : -1);
                 });
             });
+            const setQty = (qtyCalculator, qty) => {
+                const currentQtyElem = qtyCalculator.querySelector('.ypm__current-qty');
+                currentQtyElem.dataset.qty = Number(currentQtyElem.dataset.qty) + qty;
+                currentQtyElem.innerText = currentQtyElem.dataset.qty;
+
+                if (Number(currentQtyElem.dataset.qty) < 1) {
+                    qtyCalculator.closest('.ypm__selection-row-wrapper').querySelector('.ypm__start-calc-btn').classList.remove('d-none');
+                    qtyCalculator.classList.add('d-none');
+                        }
+                        else {
+                    qtyCalculator.closest('.ypm__selection-row-wrapper').querySelector('.ypm__start-calc-btn').classList.add('d-none');
+                    qtyCalculator.classList.remove('d-none');
+                        }
+            };
+
+            const headings = document.querySelectorAll('.ypm__content-part-wrapper');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('ypm__active-part');
+                    } else {
+                        entry.target.classList.remove('ypm__active-part');
+                    }
+                });
+            }, {
+                threshold: 1.0
+            });
+
+            headings?.forEach(heading => observer.observe(heading));
+
+
             let s = document.currentScript;
             const stage4OnSize = () => {
                 s.previousElementSibling.style.height = s.parentElement.style.maxHeight;
             };
+
         </script>
         <style>
             :root {
@@ -4731,32 +4754,11 @@ ${day}
                 --ypm__text-default: #C3C3C3;
                 --ypm_text-red: #F84734;
             }
-
-            input[type="radio"].ypm__custom-radio {
-                -webkit-appearance: none;
-                appearance: none;
-                background-color: transparent;
-                margin: 0;
-                width: 15px;
-                height: 15px;
-                border: 1px solid var(--ypm_text-red);
-                border-radius: 3px;
+            .d-none {
+                display: none !important;
             }
-
-                input[type="radio"].ypm__custom-radio::before {
-                    content: '';
-                    display: block;
-                    width: 100%;
-                    height: 100%;
-                }
-
-                input[type="radio"].ypm__custom-radio:checked::before {
-                    background-color: var(--ypm_text-red);
-                    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="512" height="512" viewBox="0 0 512 512"><g id="icomoon-ignore"></g><path d="M432 64l-240 240-112-112-80 80 192 192 320-320z"/></svg>');
-                    background-size: 11px 12px;
-                    background-repeat: no-repeat;
-                    background-position: center center;
-                }
+            /* Arial Rounded MT Bold */
+            
 
             #ypm__main-wrapper {
                 min-height: 100vh;
@@ -4852,9 +4854,10 @@ ${day}
                 padding-bottom: 8px;
                 font-size: 20px;
                 padding: 0px 5px 8px 5px;
+                transition: color 0.5s ease, border 0.5s ease;
             }
 
-            .ypm__content-part-wrapper.ypm__content-part-one > p {
+            .ypm__content-part-wrapper.ypm__active-part > p {
                 color: var(--ypm_text-red);
                 border-bottom: 4px solid var(--ypm_text-red);
             }
@@ -4868,11 +4871,10 @@ ${day}
             }
 
                 .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper {
-                    display: flex;
-                    flex-wrap: nowrap;
+                    display: grid;
+                    grid-template-columns: 40% 60%;
                     justify-content: space-between;
                     align-items: center;
-                    column-gap: 10px;
                     padding: 20px;
                     border: 4px solid #012122;
                     border-radius: 20px;
@@ -4883,11 +4885,13 @@ ${day}
                         font-family: 'Arial Rounded MT Bold';
                     }
 
-                    .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > label {
-                        display: flex;
-                        flex-flow: row nowrap;
-                        align-items: center;
-                        column-gap: 5px;
+                    .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > .ypm__start-calc-btn {
+                        background-color: var(--ypm_text-red);
+                        border: none;
+                        color: #fff;
+                        border-radius: 5px;
+                        padding: 11px;
+                        font-size: 16px;
                     }
 
                     .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > .ypm__qty-calculator {
@@ -4898,7 +4902,7 @@ ${day}
                         display: flex;
                         flex-wrap: nowrap;
                         align-items: center;
-                        justify-content: center;
+                        justify-content: space-between;
                         column-gap: 15px;
                     }
 
@@ -4942,6 +4946,17 @@ ${day}
                 border-radius: 20px;
                 margin-top: 15px;
                 font-family: 'Arial Rounded MT Bold';
+            }
+
+            @media screen and (max-width:360px) {
+                .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper {
+                    grid-template-columns: 100%;
+                    row-gap: 15px;
+                }
+
+                    .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > .ypm__selection-text {
+                        text-align: center;
+                    }
             }
         </style>
         </template>
@@ -5068,6 +5083,13 @@ ${day}
             canvas.addEventListener('mousedown', startDrawing);
             canvas.addEventListener('mouseup', stopDrawing);
             canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('touchmove', function (event) {
+                event.preventDefault();
+            }, false);
+            canvas.addEventListener("touchstart", startDrawing);
+            canvas.addEventListener("touchend", stopDrawing);
+
+            canvas.addEventListener("pointermove", draw);
             clearButton.onclick = clearCanvas;
 
             function startDrawing(event) {
@@ -5450,12 +5472,6 @@ https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js
             </script>
         </div>
     </template>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - MovingPapa - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
 
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
