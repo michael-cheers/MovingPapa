@@ -4464,7 +4464,7 @@ ${day}
                         </div>
                     </div>
                     <div class="ypm__content-wrapper">
-                        <div class="ypm__content-part-wrapper ypm__content-part-one">
+                        <div class="ypm__content-part-wrapper ypm__content-part-one ypm__active-part">
                             <p class="ypm__section-heading">Primary bedroom</p>
                             <div class="ypm__selection-rows-wrapper">
                                 <div class="ypm__selection-row-wrapper">
@@ -4506,8 +4506,50 @@ ${day}
                             </div>
                         </div>
 
-                        <div class="ypm__content-part-wrapper ypm__content-part-one">
-                            <p class="ypm__section-heading">Primary bedroom</p>
+                        <div class="ypm__content-part-wrapper">
+                            <p class="ypm__section-heading">Secondary bedroom</p>
+                            <div class="ypm__selection-rows-wrapper">
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                                <div class="ypm__selection-row-wrapper">
+                                    <span class="ypm__selection-text">Beds</span>
+                                    <button class="ypm__start-calc-btn">Add</button>
+                                    <div class="ypm__qty-calculator d-none">
+                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                                        <span class="ypm__current-qty" data-qty="0">0</span>
+                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ypm__content-part-wrapper">
+                            <p class="ypm__section-heading">Tertiary bedroom</p>
                             <div class="ypm__selection-rows-wrapper">
                                 <div class="ypm__selection-row-wrapper">
                                     <span class="ypm__selection-text">Beds</span>
@@ -4589,16 +4631,38 @@ ${day}
 
             const headings = document.querySelectorAll('.ypm__content-part-wrapper');
 
+            let previousY = 0;
+            let previousRatio = 0;
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
+                    const currentY = entry.boundingClientRect.y ;
+                    const currentRatio = entry.intersectionRatio;
+
+                    if (currentY > previousY && !entry.isIntersecting &&
+                        entry.target.classList.contains('ypm__content-part-one')) {
+                        entry.target.classList.add('ypm__active-part');
+                        return;
+                    }
+
+                    previousY = currentY;
+                    previousRatio = currentRatio;
+
                     if (entry.isIntersecting) {
                         entry.target.classList.add('ypm__active-part');
-                    } else {
+                        if (entry.target.nextElementSibling !== null)
+                            entry.target.nextElementSibling.classList.remove('ypm__active-part');
+                    }
+                    else {
                         entry.target.classList.remove('ypm__active-part');
+                        if (entry.target.nextElementSibling !== null)
+                            entry.target.nextElementSibling.classList.add('ypm__active-part');
                     }
                 });
             }, {
-                threshold: 1.0
+                threshold: 1,
+                root: document.currentScript.parentElement,
+                rootMargin: "0px"
             });
 
             headings?.forEach(heading => observer.observe(heading));
