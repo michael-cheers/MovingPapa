@@ -4555,6 +4555,10 @@ ${day}
                     <button onclick="nextStage()" class="ypm__submit-btn">Next</button>
                 </div>
         </div>
+        <script>
+            document.currentScript.parentElement.style.paddingLeft = '0px';
+            document.currentScript.parentElement.style.paddingRight = '0px';
+        </script>
         <script data-onSize="stage4OnSize()">
             document.querySelectorAll('.ypm__start-calc-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -4624,7 +4628,7 @@ ${day}
                 background-color: #012122;
                 color: var(--ypm__text-default);
                 font-family: 'Arial Rounded MT';
-                padding: 25px;
+                padding: 25px 0px;
                 color: #fff;
             }
 
@@ -4722,7 +4726,7 @@ ${day}
             }
 
             .ypm__content-part-wrapper > .ypm__selection-rows-wrapper {
-                padding: 10px 20px 20px 20px;
+                padding: 10px 10px 20px 10px;
                 color: #fff;
                 display: flex;
                 flex-direction: column;
@@ -4731,10 +4735,10 @@ ${day}
 
                 .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper {
                     display: grid;
-                    grid-template-columns: 40% 60%;
+                    grid-template-columns: 46% 54%;
                     justify-content: space-between;
                     align-items: center;
-                    padding: 20px;
+                    padding: 10px;
                     border: 4px solid #012122;
                     border-radius: 20px;
                     font-size: 14px;
