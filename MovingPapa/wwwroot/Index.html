@@ -719,7 +719,7 @@ display: none;
                     484 + (i + 1) * (679 - 484) / (stops.length + 1), 'monster3.png'
                 ])),
                 ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.", 
-                    (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = destinationPoint.value.replace(/, Canada$/, ''); let f = c.querySelector('[name=fromOnly]'); f.style.display = 'none'; f.nextElementSibling.style.borderTop = f.style.borderBottom; c.querySelector('[name=origOrDest]').innerText = 'Drop-off'; return c; })(),
+                    (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = destinationPoint.value.replace(/, Canada$/, ''); let f = c.querySelector('[name=fromOnly]'); f.style.display = 'none'; f.nextElementSibling.style.borderTop = f.style.borderTop; c.querySelector('[name=origOrDest]').innerText = 'Drop-off'; return c; })(),
                     679, 'monster3.png'],
                 ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 890, 'monster4.png'],
                 ["Not sure which option fits your move? Let me help you out!.", "", stage3, -1, 'stage3.png'],
@@ -4262,7 +4262,7 @@ ${day}
             </h3>
         </div>
 
-        <div style="border: 7px solid #013C3D; border-radius:90px; background: #012122;  ">
+        <div style="border: 7px solid #013C3D; border-radius: 90px; background: #00292A; ">
             <div class="" style="display: flex; padding:60px 60px 0 60px;">
                 <button onclick="moveTypeActive(this)" class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
                         position: relative; height: 365px; text-align: center; padding-top: 56px;padding-bottom:85px; margin-right: 60px; margin-bottom: 60px;">
@@ -4336,14 +4336,6 @@ ${day}
                     el.classList.add('move-type-active');
                 }
             </script>
-            <a onclick="nextStage(); return false;" href="#" style="font-family: Arial Rounded MT Bold;
-                            font-size: 40.03px;
-                            font-weight: 400;
-                            line-height: 46.32px;
-                            text-align: right;
-                            color: #fff;
-                            display:block;
-                            padding: 0 50px 40px;">More info</a>
             <div class="" style="border-top: 7px solid #013C3D; display: block; padding: 60px;">
                 <h2 style="font-family: Arial Rounded MT;
                         font-size: var(--const-font-size);
@@ -4355,19 +4347,13 @@ ${day}
                     Do you need us to help with packing?
                 </h2>
                 <div style="display: flex;">
-                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal;">
-                        A little
+                    <div style="background-color: #012122;white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; ">
+                        Yes
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
                         </div>
                     </div>
-                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal;">
-                        Full
-                        <div class="form-check papa-check">
-                            <input class="form-check-input" type="checkbox">
-                        </div>
-                    </div>
-                    <div style="white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal;">
+                    <div style="background-color: #012122; white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal;">
                         No
                         <div class="form-check papa-check">
                             <input class="form-check-input" type="checkbox">
@@ -4375,14 +4361,16 @@ ${day}
                     </div>
                 </div>
             </div>
-            <a onclick="nextStage(); return false;" href="#" style="font-family: Arial Rounded MT Bold;
-                            font-size: 40.03px;
-                            font-weight: 400;
-                            line-height: 46.32px;
-                            text-align: right;
-                            color: #fff;
-                            display:block;
-                            padding: 0 50px 40px;">More info</a>
+            <a onclick="nextStage(); return false;" href="#" style="color: rgba(192, 192, 192, 0.80);
+               font-family: Arial Rounded MT Bold;
+               font-size: 33.577px;
+               font-style: normal;
+               font-weight: 400;
+               line-height: normal;
+               text-decoration-line: underline;
+               text-align:right;
+               display:block;
+               padding: 0 50px 40px;">more info</a>
         </div>
         <button onclick="nextStage(); nextStage(); return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
             <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
