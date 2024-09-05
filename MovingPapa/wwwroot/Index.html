@@ -2520,7 +2520,9 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                             </div>
                         </div>
                     </div>
-                    <button onclick="nextStage()" style="border: none;width: 100%; height: 123px; margin-top: 36px; border-radius: 40px; background: #F84734; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; letter-spacing: -0.46px;">Next</button>
+                    <button onclick="nextStage(); return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+                        <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
+                    </button>
                 </template>
                 <style>
                     .styledProgress {
@@ -4074,7 +4076,7 @@ ${day}
                 <input id="destinationPoint2" style="width:100%;background:none;border:none;outline:none;/* Choose pick up point */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 25.5295px;line-height: 30px;margin-left:calc(305px - (221px + ((41px + 52px) / 2)));/* identical to box height */" class="placeholder-656565" placeholder="Choose your destination" />
             </div>
         </div>
-        <button class="rainbow-border-orange" onclick="nextStage()" style="/* Rectangle 3 */ width: 100%; height: 123px; background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 28.2559px; line-height: 33px; color: #FFFFFF;">
+        <button class="rainbow-border-orange" onclick="nextStage()" style="/* Rectangle 3 */ width: 100%; height: 123px; background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: var(--const-font-size); line-height: 33px; color: #FFFFFF;">
             <span style="text-align:center;display:flex;justify-content:center;flex-direction:column;">Next</span>
         </button>
         <script>
@@ -4237,7 +4239,9 @@ ${day}
                 </div>
 
             </div>
-            <button onclick="nextStage()" style='width: 100%;border-radius: 40px; background: linear-gradient(90deg, #FD6F00 0.4%, #FDD302 25.4%, #F84734 50.9%, #319AED 82.4%, #F84734 100%); color: #FFF; font-family: "Arial Rounded MT"; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; letter-spacing: -0.46px;'>Next</button>
+        <button onclick="nextStage(); return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+            <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
+        </button>
         </div>
 </template>
 <template id="stage2">
@@ -4376,13 +4380,9 @@ ${day}
                             display:block;
                             padding: 0 50px 40px;">More info</a>
         </div>
-        <div class="center">
-            <a href="" style="display: contents;" onclick="nextStage(); nextStage(); return false;">
-                <div class=mb-no-margin-top style="width: 100%; height: 80px; line-height: 80px; background: linear-gradient(90deg, #F84734 0%, #FCD503 27%, #278BFF 59.5%, #F84734 83%); border-radius: 20px; font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 53.1847px; color: #FFFFFF; justify-content: center; text-align: center; margin-top: calc(1858px - (1514px + 300px)); margin-bottom: calc(930px - 900px);">
-                    Next
-                </div>
-            </a>
-        </div>
+        <button onclick="nextStage(); nextStage(); return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+            <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
+        </button>
     </div>
 </template>
     <template id="stage3">
