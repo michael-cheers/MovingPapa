@@ -755,7 +755,7 @@ display: none;
 
         progressDiv.style.display = '';
         //quotePopup.style.backgroundColor = '#13282A';
-        newPopupDesign.style.backgroundColor = '#012122';
+        newPopupDesign.style.backgroundColor = '#00292A';
         newPopupDesign.style.display = stage[4] === '' ? 'none' : '';
         if (stage[2] === stage3) {
             popupCloseButton.style.display = '';
@@ -788,11 +788,15 @@ display: none;
             stageDiv.style.display = '';
         } else {
             let tempDivOuter = document.createElement('div');
-            tempDivOuter.style.backgroundColor = 'rgb(1, 33 , 34)';
+            tempDivOuter.style.backgroundColor = '#00292A';
             let tempDiv = document.createElement('div');
             tempDivOuter.appendChild(tempDiv);
             tempDiv.style.backgroundColor = '#00292A';
             tempDiv.style.paddingTop = '91px';
+            tempDiv.style.marginLeft = '33px';
+            tempDiv.style.marginRight = '6px';
+            tempDiv.style.paddingLeft = '0px';
+            tempDiv.style.paddingRight = '0px';
             //tempDiv.style.paddingBottom = '520px';
             setTimeout(() => {
                 // Set max height to the height of the window minus the space used up
@@ -4675,6 +4679,7 @@ ${day}
                 s.previousElementSibling.style.height = s.parentElement.style.maxHeight;
             };
 
+            document.currentScript.parentElement.style.paddingTop = '0px';
         </script>
         <style>
             :root {
@@ -4693,7 +4698,7 @@ ${day}
                 min-height: 100vh;
                 color: var(--ypm__text-default);
                 font-family: 'Arial Rounded MT';
-                padding: 25px 0px;
+                padding-bottom: 25px;
                 color: #fff;
             }
 
@@ -4733,8 +4738,8 @@ ${day}
                 }
 
             .ypm__body-wrapper {
-                background-color: #00292A;
-                margin-top: 20px;
+                background-color: #012122;
+                margin-top: 0px;
                 border-radius: 30px 30px 0px 0px;
                 border: 3px solid #013C3D;
                 display: flex;
@@ -4804,9 +4809,12 @@ ${day}
                     justify-content: space-between;
                     align-items: center;
                     padding: 10px;
-                    border: 4px solid #012122;
+                    border: 2px solid #013C3D;
                     border-radius: 20px;
                     font-size: 14px;
+                    padding-top: 5px;
+                    padding-bottom: 5px;
+                    margin-bottom: 5px;
                 }
 
                     .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > .ypm__selection-text {
