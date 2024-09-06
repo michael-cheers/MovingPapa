@@ -4595,16 +4595,14 @@ ${day}
                         </div>
                     </div>
                 </div>
-                <div class="ypm__footer-wrapper">
-                    <p>Slide to confirm that the information is accurate.</p>
-                    <p class="ypm__inacc-text">Inaccuracies may affect service pricing.</p>
-                    <button onclick="nextStage()" class="ypm__submit-btn">Next</button>
+                <div class="ypm__footer-wrapper" style="text-align: center;">
+                    <p style="margin-bottom:0px!important;margin-left:-10px;margin-right:-10px">Slide to confirm that the information is accurate.</p>
+                    <p class="ypm__inacc-text" style="margin-bottom:-40px">Inaccuracies may affect service pricing.</p>
+                    <button onclick="nextStage(); return false;" style="margin-top: -100px; width: 100%; border: none; align-self: stretch; padding-left: calc(var(--scale, 1) * 32.98px); padding-right: calc(var(--scale, 1) * 32.98px); padding-top: calc(var(--scale, 1) * 39.58px); padding-bottom: calc(var(--scale, 1) * 39.58px); background: #F84734; border-radius: calc(var(--scale, 1) * 16.49px); justify-content: center; align-items: center; display: inline-flex ">
+                        <div style="color: white; font-size: calc(var(--scale, 1) * 49.47px); font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
+                    </button>
                 </div>
         </div>
-        <script>
-            document.currentScript.parentElement.style.paddingLeft = '0px';
-            document.currentScript.parentElement.style.paddingRight = '0px';
-        </script>
         <script data-onSize="stage4OnSize()">
             document.querySelectorAll('.ypm__start-calc-btn').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -4693,7 +4691,6 @@ ${day}
 
             #ypm__main-wrapper {
                 min-height: 100vh;
-                background-color: #012122;
                 color: var(--ypm__text-default);
                 font-family: 'Arial Rounded MT';
                 padding: 25px 0px;
@@ -4821,8 +4818,10 @@ ${day}
                         border: none;
                         color: #fff;
                         border-radius: 5px;
-                        padding: 11px;
+                        border: 1px solid #FD6F00;
+                        padding: 8px;
                         font-size: 16px;
+                        font-family: 'Arial Rounded MT Bold';
                     }
 
                     .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > .ypm__qty-calculator {
