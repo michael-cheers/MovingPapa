@@ -5244,6 +5244,12 @@ ${day}
                     border: calc(2px / var(--scale, 1)) solid #F84734; /* Adjust the border size and color as needed */
                 }
 
+                .owl-dots {
+                    transform: scale(calc(1.5 / var(--scale, 1)));
+                    transform-origin: center center;
+                    margin-top: -60px!important;
+                    margin-bottom: 144px;
+                }
             </style>
             <section>
                 <div div class="container">
@@ -5321,7 +5327,7 @@ ${day}
                         center: true,
                         loop: false,
                         margin: 10, // Adjust spacing between items
-                        nav: true,
+                        nav: false,
                         dots: false,
                         items: 3,
                     });
@@ -5332,13 +5338,15 @@ ${day}
                     $('.mini-slide').owlCarousel({
                         loop: true,
                         margin: 10,
-                        nav: true,
+                        nav: false,
+                        navigation: false,
                         dots: true,
                         items: 1,  // Display 3 items
                         stagePadding: 50
                     })
                 });
-            </script>    
+                document.currentScript.parentElement.style.overflowX = 'hidden';
+            </script>
     </template>
 
     <script src="lib/jquery/dist/jquery.min.js"></script>
