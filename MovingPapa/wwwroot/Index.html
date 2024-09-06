@@ -730,7 +730,7 @@ display: none;
                 ["Make sure the quantity is accurate", "Help us get your move just right by listing exactly what's coming with you.",
                     stage4, -1, 'monster7.png'],
                 ["Make sure the quantity is accurate", "Help us get your move just right by listing exactly what's coming with you.",
-                    (() => { let d = stage4.content.cloneNode(true); d.querySelector('[name=please-confirm-inventory-head]').style.display = ''; d.querySelector('[name=searchHead]').style.display = 'none'; d.querySelector('[data-attrTarget]').setAttribute('data-isConfirm', 'true'); return d })(), -1, 'monster7.png'],
+                    (() => { let d = stage4.content.cloneNode(true); d.querySelector('[name=please-confirm-inventory-head]').style.display = ''; d.querySelector('[name=searchHead]').style.display = 'none'; d.querySelector('[data-attrTarget]').setAttribute('data-isConfirm', 'true'); Array.from(d.children).forEach(e => e.classList.add('isConfirm')); return d })(), -1, 'monster7.png'],
                 ["Secure Your Move with a $50 Deposit", "Help us get your move just right by listing exactly what’s coming with you.",
                     stage6, -1, 'monster7.png'],
                 ["", "", stage7, -1, ''],
@@ -4610,7 +4610,9 @@ ${day}
                     <p style="margin-bottom:0px!important;margin-left:-10px;margin-right:-10px">Slide to confirm that the information is accurate.</p>
                     <p class="ypm__inacc-text" style="margin-bottom:-40px">Inaccuracies may affect service pricing.</p>
                     <button onclick="nextStage(); return false;" style="margin-top: -100px; width: 100%; border: none; align-self: stretch; padding-left: calc(var(--scale, 1) * 32.98px); padding-right: calc(var(--scale, 1) * 32.98px); padding-top: calc(var(--scale, 1) * 39.58px); padding-bottom: calc(var(--scale, 1) * 39.58px); background: #F84734; border-radius: calc(var(--scale, 1) * 16.49px); justify-content: center; align-items: center; display: inline-flex ">
-                        <div style="color: white; font-size: calc(var(--scale, 1) * 49.47px); font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
+                        <div name="confirmInvetoryBtn" style="color: white; font-size: calc(var(--scale, 1) * 49.47px); font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">
+                            Next
+                        </div>
                     </button>
                 </div>
         </div>
@@ -4643,6 +4645,7 @@ ${day}
             };
             if (document.currentScript.getAttribute('data-isConfirm') === 'true') {
                 document.currentScript.parentElement.querySelectorAll('.ypm__start-calc-btn').forEach(b => b.click());
+                document.currentScript.parentElement.querySelector('[name=confirmInvetoryBtn]').innerText = 'Confirm and see price';
             }
 
             var headings = document.currentScript.parentElement.querySelectorAll('.ypm__content-part-wrapper');
@@ -4821,14 +4824,17 @@ ${day}
                     align-items: center;
                     padding: 10px;
                     border: 2px solid #013C3D;
-                    background-color: #013C3D;
                     border-radius: 10px;
                     font-size: 14px;
                     padding-top: 5px;
                     padding-bottom: 5px;
                     margin-bottom: 5px;
                 }
+                .isConfirm .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper {
+                    background-color: #00292A;
+                    border: 2px solid #00292A;
 
+                }
                     .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > .ypm__selection-text {
                         font-family: 'Arial Rounded MT Bold';
                     }
@@ -4907,6 +4913,10 @@ ${day}
                     .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > .ypm__selection-text {
                         text-align: center;
                     }
+
+                .ypm__section-heading {
+                    font-family: 'Arial Rounded MT Bold';
+                }
             }
         </style>
         </template>
