@@ -5291,32 +5291,74 @@ ${day}
                                 </div>
                             </div>
 
-
-                            <div class="box">
-                                <div class="box-top">
-                                    <span>What you'll get</span>
-                                </div>
-
-                                <div class="box-ul">
-                                    <ul>
-                                        <li><i class="fa fa-check-circle"></i> Two movers</li>
-                                        <li><i class="fa fa-times-circle"></i> Truck</li>
-                                        <li><i class="fa fa-times-circle"></i> Wrapping Equipment</li>
-                                        <li><i class="fa fa-times-circle"></i> Equipment</li>
-                                        <li><i class="fa fa-times-circle"></i> Protection Plan</li>
-                                    </ul>
-
-                                    <div class="box-price">
-                                        <h5>$255.79</h5>
-                                        <h5>6 hours</h5>
+                            <div class="box-slide owl-carousel owl-theme">
+                                <div class="box">
+                                    <div class="box-top">
+                                        <span>What you'll get</span>
                                     </div>
 
+                                    <div class="box-ul">
+                                        <ul>
+                                            <li><i class="fa fa-check-circle"></i> Three movers</li>
+                                            <li><i class="fa fa-times-circle"></i> Truck</li>
+                                            <li><i class="fa fa-times-circle"></i> Wrapping Equipment</li>
+                                            <li><i class="fa fa-times-circle"></i> Equipment</li>
+                                            <li><i class="fa fa-times-circle"></i> Protection Plan</li>
+                                        </ul>
+
+                                        <div class="box-price">
+                                            <h5>$255.79</h5>
+                                            <h5>6 hours</h5>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <div class="box-top">
+                                        <span>What you'll get</span>
+                                    </div>
+
+                                    <div class="box-ul">
+                                        <ul>
+                                            <li><i class="fa fa-check-circle"></i> Four movers</li>
+                                            <li><i class="fa fa-times-circle"></i> Truck</li>
+                                            <li><i class="fa fa-times-circle"></i> Wrapping Equipment</li>
+                                            <li><i class="fa fa-times-circle"></i> Equipment</li>
+                                            <li><i class="fa fa-times-circle"></i> Protection Plan</li>
+                                        </ul>
+
+                                        <div class="box-price">
+                                            <h5>$255.79</h5>
+                                            <h5>6 hours</h5>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="box">
+                                    <div class="box-top">
+                                        <span>What you'll get</span>
+                                    </div>
+
+                                    <div class="box-ul">
+                                        <ul>
+                                            <li><i class="fa fa-check-circle"></i> Two movers</li>
+                                            <li><i class="fa fa-times-circle"></i> Truck</li>
+                                            <li><i class="fa fa-times-circle"></i> Wrapping Equipment</li>
+                                            <li><i class="fa fa-times-circle"></i> Equipment</li>
+                                            <li><i class="fa fa-times-circle"></i> Protection Plan</li>
+                                        </ul>
+
+                                        <div class="box-price">
+                                            <h5>$255.79</h5>
+                                            <h5>6 hours</h5>
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
-
+                            </div>
+                            <div> <a href="javascript:showScreen('billing')" class="pkg-btn">Secure Quote</a> </div>
                         </div>
-                        <div> <a href="javascript:showScreen('billing')" class="pkg-btn">Secure Quote</a> </div>
-                    </div>
                 </div>
             </section>
             <!-- ------------------------------------------------------------- -->
@@ -5333,18 +5375,59 @@ ${day}
                     });
                 });
 
+                let oldCenterIdx = 0;
                 //////////////////////////////////////////////////////
                 $(document).ready(function () {
                     $('.mini-slide').owlCarousel({
                         loop: true,
                         margin: 10,
                         nav: false,
-                        navigation: false,
                         dots: true,
+                        items: 1,  // Display 3 items
+                        stagePadding: 70,
+                        center: true,
+                        onTranslated: function (me) {
+                            let center = me.target.querySelector('.owl-item.center');
+                            let centerIdx = Array.from(center.parentElement.children).indexOf(center);
+                            for (let i = 0; i < Math.abs(centerIdx - oldCenterIdx); i++) {
+                                if (centerIdx > oldCenterIdx)
+                                    $('.box-slide').trigger('next.owl.carousel');
+                                else
+                                    $('.box-slide').trigger('prev.owl.carousel');
+                            }
+                            oldCenterIdx = centerIdx;
+                        }
+                    })
+                });
+
+                $(document).ready(function () {
+                    $('.box-slide').owlCarousel({
+                        loop: true,
+                        margin: 10,
+                        nav: false,
+                        navigation: false,
+                        dots: false,
                         items: 1,  // Display 3 items
                         stagePadding: 70
                     })
                 });
+
+                //Sync o2 by o1
+                //$('.mini-slide').on('click', '.owl-next', function () {
+                //    $('.box-slide').trigger('next.owl.carousel')
+                //});
+                //$('.mini-slide').on('click', '.owl-prev', function () {
+                //    $('.box-slide').trigger('prev.owl.carousel')
+                //});
+                ////Sync o1 by o2
+                //$('.box-slide').on('click', '.owl-next', function () {
+                //    $('.mini-slide').trigger('next.owl.carousel')
+                //});
+                //$('.box-slide').on('click', '.owl-prev', function () {
+                //    $('.mini-slide').trigger('prev.owl.carousel')
+                //});
+
+
                 document.currentScript.parentElement.style.overflowX = 'hidden';
             </script>
     </template>
