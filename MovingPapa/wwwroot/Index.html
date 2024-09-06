@@ -116,7 +116,7 @@
 .mobileh{
 display: none;
 }
-    .center {
+    .center:not(.owl-item) {
     display: flex;
     justify-content: center;
     }
@@ -731,8 +731,8 @@ display: none;
                     stage4, -1, 'monster7.png'],
                 ["", "",
                     stage5, -1, ''],
-                //["Secure Your Move with a $50 Deposit", "Help us get your move just right by listing exactly what’s coming with you.",
-                //    stage6, -1, 'monster7.png'],
+                ["Secure Your Move with a $50 Deposit", "Help us get your move just right by listing exactly what’s coming with you.",
+                    stage6, -1, 'monster7.png'],
                 ["", "", stage7, -1, ''],
                 ["", "", stage8, -1, ''],
                 ["Great choice! how can we reach you?", "",
@@ -4985,7 +4985,7 @@ ${day}
                             <button id="clearButton" style="background-color: transparent; position: absolute; top: 180px; font-size: 70px; margin-left: 500px;border: none;">Clear</button>
                             <canvas id="signatureCanvas" style="width: 800px; height: 300px; border-radius: 80px; background-color: white;"></canvas>
                         </div>
-                        <button onclick="quotePopup.style.display = 'none';packagePopup.style.display = ''" style="background: #888888;
+                        <button onclick="nextStage()" style="background: #888888;
                             border-radius: 71px;
                             font-size: 71px;
                             padding: 30px;
@@ -5047,8 +5047,8 @@ ${day}
             document.currentScript.parentElement.style.backgroundColor = '#012122';
         </script>
     </template>
-    <template>
-        <div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:100vw;height:100vh;overflow:hidden;background-color: rgb(0, 41, 42);" id="packagePopup">
+    <template id="stage6">
+        <div style="">
             <style>
                 .owl-item {
                     background: none;
@@ -5056,28 +5056,26 @@ ${day}
                 
                 .main {
                     background: #012122;
-                    width: 430px;
-                    padding: 10px 5px;
                 }
 
                 .package {
-                    border: 4px solid #013C3D;
+                    border: calc(4px / var(--scale, 1)) solid #013C3D;
                     background: #00292A;
-                    border-top-left-radius: 20px;
-                    border-top-right-radius: 20px;
+                    border-top-left-radius: calc(20px / var(--scale, 1));
+                    border-top-right-radius: calc(20px / var(--scale, 1));
                 }
 
 
                 .box {
-                    border: 2px solid #a84d3a;
-                    border-radius: 15px;
-                    margin: 10px 20px;
+                    border: calc(2px / var(--scale, 1)) solid #a84d3a;
+                    border-radius: calc(15px / var(--scale, 1));
+                    margin: calc(10px / var(--scale, 1)) calc(20px / var(--scale, 1));
                     color: #fff;
                 }
 
                 .box-ul ul {
                     list-style: none;
-                    padding: 6px 0px;
+                    padding: calc(6px / var(--scale, 1)) calc(0px / var(--scale, 1));
                 }
 
                 i.fa.fa-check-circle {
@@ -5089,36 +5087,36 @@ ${day}
                 }
 
                 .box-top {
-                    border-bottom: 1px solid #013c3d;
-                    padding: 10px 20px;
+                    border-bottom: calc(1px / var(--scale, 1)) solid #013c3d;
+                    padding: calc(10px / var(--scale, 1)) calc(20px / var(--scale, 1));
                 }
 
                     .box-top span {
-                        font-size: 16px;
+                        font-size: calc(16px / var(--scale, 1));
                         font-weight: 500;
                     }
 
                 .box-ul {
-                    padding: 10px 20px;
-                    padding-bottom: 0px;
+                    padding: calc(10px / var(--scale, 1)) calc(20px / var(--scale, 1));
+                    padding-bottom: calc(0px / var(--scale, 1));
                 }
 
                     .box-ul li {
-                        font-size: 15px;
-                        margin-bottom: 8px;
+                        font-size: calc(15px / var(--scale, 1));
+                        margin-bottom: calc(8px / var(--scale, 1));
                     }
 
                         .box-ul li i {
-                            margin-right: 8px;
-                            font-size: 16px;
+                            margin-right: calc(8px / var(--scale, 1));
+                            font-size: calc(16px / var(--scale, 1));
                         }
 
                 .box-price {
                     display: flex;
                     justify-content: space-between;
-                    border-top: 2px solid #fff;
+                    border-top: calc(2px / var(--scale, 1)) solid #fff;
                     border-top-style: dashed;
-                    padding: 12px 0px;
+                    padding: calc(12px / var(--scale, 1)) calc(0px / var(--scale, 1));
                 }
 
                 .owl-carousel {
@@ -5126,82 +5124,82 @@ ${day}
                 }
 
                 .terms-tags {
-                    border-bottom: 2px solid #013c3d;
+                    border-bottom: calc(2px / var(--scale, 1)) solid #013c3d;
                 }
 
                     .terms-tags ul li {
                         list-style: none;
                         display: inline-block;
-                        border: 2px solid #013c3d;
-                        padding: 6px 15px;
+                        border: calc(2px / var(--scale, 1)) solid #013c3d;
+                        padding: calc(6px / var(--scale, 1)) calc(15px / var(--scale, 1));
                         color: #fff;
-                        font-size: 13px;
+                        font-size: calc(13px / var(--scale, 1));
                         font-style: normal;
                         font-weight: 400;
-                        margin-right: 5px;
-                        /*    margin-bottom: 6px;*/
-                        border-radius: 12px;
+                        margin-right: calc(5px / var(--scale, 1));
+                        /*    margin-bottom: calc(6px / var(--scale, 1));*/
+                        border-radius: calc(12px / var(--scale, 1));
                         background: #012122;
                     }
 
                     .terms-tags ul {
-                        padding: 0px;
+                        padding: calc(0px / var(--scale, 1));
                     }
 
                     .terms-tags span.terms-top {
                         display: block;
                         color: #fff;
                         text-align: center;
-                        padding: 10px;
-                        font-size: 15px;
+                        padding: calc(10px / var(--scale, 1));
+                        font-size: calc(15px / var(--scale, 1));
                     }
 
                 .pkg-btn {
                     width: 100%;
                     color: white;
-                    font-size: 20pxpx;
+                    font-size: calc(20px / var(--scale, 1));
                     font-weight: 400;
-                    border-radius: 10px;
+                    border-radius: calc(10px / var(--scale, 1));
                     text-align: center;
                     background: linear-gradient(90deg, #F84734 0%, #FCD503 27%, #278BFF 59.5%, #F84734 83%);
-                    padding: 12px;
+                    padding: calc(12px / var(--scale, 1));
                     text-decoration: none;
                     font-weight: 500;
-                    width: 280px;
+                    width: calc(280px / var(--scale, 1));
                     display: block;
                     text-align: center;
-                    margin: 15px auto;
+                    margin: calc(15px / var(--scale, 1)) auto;
                 }
 
                 .terms-tags .owl-nav span {
                     color: #da3a22;
-                    font-size: 50px;
+                    font-size: calc(50px / var(--scale, 1));
                 }
 
                 .terms-tags ul {
-                    padding: 0px 40px;
+                    padding: calc(0px / var(--scale, 1)) calc(40px / var(--scale, 1));
                 }
 
                 .terms-tags button.owl-prev {
                     position: absolute;
-                    left: 11px;
-                    top: -26px;
+                    left: calc(11px / var(--scale, 1));
+                    top: -calc(26px / var(--scale, 1));
                 }
 
                 .terms-tags button.owl-next {
                     position: absolute;
-                    right: 11px;
-                    top: -26px;
+                    right: calc(11px / var(--scale, 1));
+                    top: -calc(26px / var(--scale, 1));
                 }
 
                 .item-box {
-                    border: 2px solid #d13922;
-                    width: 280px;
+                    border: calc(2px / var(--scale, 1)) solid #d13922;
+                    width: calc(280px / var(--scale, 1));
                     margin: 0 auto;
                     background: #013C3D;
-                    border-radius: 30px;
-                    box-shadow: -1px -1px 6px 1px rgb(0 150 136 / 64%);
-                    margin-top: 15px;
+                    border-radius: calc(30px / var(--scale, 1));
+                    box-shadow: -calc(1px / var(--scale, 1)) -calc(1px / var(--scale, 1)) calc(6px / var(--scale, 1)) calc(1px / var(--scale, 1)) rgb(0 150 136 / 64%);
+                    margin-top: calc(15px / var(--scale, 1));
                 }
 
                     .item-box h5 {
@@ -5210,18 +5208,18 @@ ${day}
                         width: 80%;
                         margin: 0 auto;
                         text-align: center;
-                        border-bottom-left-radius: 22px;
-                        border-bottom-right-radius: 22px;
-                        padding: 8px;
-                        font-size: 18px;
+                        border-bottom-left-radius: calc(22px / var(--scale, 1));
+                        border-bottom-right-radius: calc(22px / var(--scale, 1));
+                        padding: calc(8px / var(--scale, 1));
+                        font-size: calc(18px / var(--scale, 1));
                     }
 
                     .item-box span {
                         display: block;
                         color: #fff;
                         text-align: center;
-                        padding: 10px;
-                        font-size: 16px;
+                        padding: calc(10px / var(--scale, 1));
+                        font-size: calc(16px / var(--scale, 1));
                     }
 
                 .owl-theme .owl-dots .owl-dot.active span,
@@ -5230,21 +5228,20 @@ ${day}
                 }
 
                 .box-price h5 {
-                    font-size: 18px;
+                    font-size: calc(18px / var(--scale, 1));
                 }
 
 
 
                 /* Media Query Mobile 767 */
 
-                @media only screen and (max-width: 767px) {
+                @media only screen and (max-width: calc(767px / var(--scale, 1))) {
                     .main {
-                        width: 100%;
                     }
                 }
 
                 .owl-item.active.center li {
-                    border: 2px solid #F84734; /* Adjust the border size and color as needed */
+                    border: calc(2px / var(--scale, 1)) solid #F84734; /* Adjust the border size and color as needed */
                 }
 
             </style>
@@ -5258,14 +5255,16 @@ ${day}
                                 <ul id="list-slider" class="list-slider owl-carousel">
                                 </ul>
                                 <script>
-                                    let d = new Date();
-                                    for (let n = 0; n < 180; n++) {
-                                        let li = document.createElement('li');
-                                        li.innerText = d.toLocaleString("en-US", {
-                                            day: "numeric", month: "short", weekday: 'short'
-                                        }).replace(',', '');
-                                        d.setDate(d.getDate() + 1);
-                                        document.currentScript.previousElementSibling.appendChild(li);
+                                    {
+                                        let d = new Date();
+                                        for (let n = 0; n < 180; n++) {
+                                            let li = document.createElement('li');
+                                            li.innerText = d.toLocaleString("en-US", {
+                                                day: "numeric", month: "short", weekday: 'short'
+                                            }).replace(',', '');
+                                            d.setDate(d.getDate() + 1);
+                                            document.currentScript.previousElementSibling.appendChild(li);
+                                        }
                                     }
                                 </script>
                             </div>
@@ -5310,7 +5309,7 @@ ${day}
                             </div>
 
                         </div>
-                        <div> <a href="#" class="pkg-btn">Secure Quote</a> </div>
+                        <div> <a href="javascript:showScreen('billing')" class="pkg-btn">Secure Quote</a> </div>
                     </div>
                 </div>
             </section>
@@ -5320,7 +5319,7 @@ ${day}
                     $('.list-slider').owlCarousel({
                         autoWidth: true,
                         center: true,
-                        loop: true,
+                        loop: false,
                         margin: 10, // Adjust spacing between items
                         nav: true,
                         dots: false,
@@ -5333,7 +5332,7 @@ ${day}
                     $('.mini-slide').owlCarousel({
                         loop: true,
                         margin: 10,
-                        nav: false,
+                        nav: true,
                         dots: true,
                         items: 1,  // Display 3 items
                         stagePadding: 50
@@ -5341,9 +5340,6 @@ ${day}
                 });
             </script>    
     </template>
-    <script>
-        document.body.appendChild(document.currentScript.previousElementSibling.content.cloneNode(true));
-    </script>
 
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
