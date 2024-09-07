@@ -5418,6 +5418,10 @@ ${day}
                                     <h5>Muscle only two</h5>
                                     <span>Get movers help</span>
                                 </div>
+                                <div class="item-box">
+                                    <h5>Custom</h5>
+                                    <span>Make it work</span>
+                                </div>
                             </div>
 
                             <div class="box-slide owl-carousel owl-theme">
@@ -5488,6 +5492,11 @@ ${day}
 
                                     </div>
                                 </div>
+                                <div class="box">
+                                    <div class="box-top">
+                                        <span>Need something else? Please call us</span>
+                                    </div>
+                                </div>
                             </div>
                             </div>
                             <div> <a href="javascript:showScreen('billing')" class="pkg-btn">Secure Quote</a> </div>
@@ -5555,8 +5564,11 @@ ${day}
                         stagePadding: 90,
                         center: true,
                         onTranslate: function (me) {
+                            debugger;
                             let center = me.target.querySelector('.owl-item.center');
                             let centerIdx = me.item.index;
+                            if (centerIdx <= 1)
+                                centerIdx += me.item.count;
                             for (let i = 0; i < Math.abs(centerIdx - oldCenterIdx); i++) {
                                 if (centerIdx > oldCenterIdx)
                                     $('.box-slide').trigger('next.owl.carousel');
