@@ -5550,9 +5550,9 @@ ${day}
                         items: 1,  // Display 3 items
                         stagePadding: 90,
                         center: true,
-                        onTranslated: function (me) {
+                        onTranslate: function (me) {
                             let center = me.target.querySelector('.owl-item.center');
-                            let centerIdx = Array.from(center.parentElement.children).indexOf(center);
+                            let centerIdx = me.item.index;
                             for (let i = 0; i < Math.abs(centerIdx - oldCenterIdx); i++) {
                                 if (centerIdx > oldCenterIdx)
                                     $('.box-slide').trigger('next.owl.carousel');
