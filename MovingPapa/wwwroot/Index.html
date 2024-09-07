@@ -4404,6 +4404,16 @@ ${day}
                 padding-right: 60px;
                 font-family:'Arial Rounded MT';
             }
+            .padABitActive {
+                border: 4.58px solid #F84734 !important;
+            }
+            .pad-a-bit.padABitActive > div > p {
+                max-height: 5em;
+            }
+
+            .pad-a-bit:not(.padABitActive) > div > p {
+                max-height: 0px;
+            }
         </style>
         <div
             style="padding: 20px; color: #fff;background-color: #00292A;">
@@ -4411,50 +4421,92 @@ ${day}
                 style="border-top: 4px solid #013C3D; display: flex; flex-direction: column; padding: 1rem 2rem; margin: 0px 0px; gap: 1.2rem; padding-top: 100px; margin-top: -60px">
                 <h2 style="font-size: 48px; font-weight: 800;text-align: left;">Move types</h2>
                 <div style="display: flex;flex-direction: column;gap: 1.5rem;">
-
-                    <div class="pad-a-bit"
-                        style=" padding: 15px; border-radius: 25px; margin-bottom: 10px; border: 4.58px solid #F84734; display: flex; justify-content: space-between; align-items: center;">
+                    <script>
+                        function expandOrUnexpand(el) {
+                            if (el.innerText === '-') {
+                                //el.parentElement.nextElementSibling.style.height = '0px';
+                                el.parentElement.parentElement.parentElement.classList.remove('padABitActive');
+                                el.innerText = '+';
+                            }
+                            else {
+                                //el.parentElement.nextElementSibling.style.height = '';
+                                el.parentElement.parentElement.parentElement.classList.add('padABitActive');
+                                el.innerText = '-';
+                            }
+                        }
+                    </script>
+                    <div class="pad-a-bit padABitActive"
+                         style="display: flex;flex-direction: column; min-height: 240px; padding: 15px; border-radius: 25px; margin-bottom: 10px; border: 4.58px solid #013C3D; display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <div style="display: flex;justify-content: space-between;align-items: center;">
                                 <h3 style="font-size:  42px;font-weight: 600; margin: 0;">5 items or less</h3>
-                                <button
-                                    style="background-color: transparent; border: none; color: red; font-size: 4rem;">−</button>
+                                <button onclick="expandOrUnexpand(this)"
+                                        style="background-color: transparent; border: none; color: red; font-size: 4rem;">
+                                    −
+                                </button>
                             </div>
-                            <p style="font-size: 38px;font-weight: 400; color: #E7E7E7; margin-top: 5px;">Ideal for
+                            <p style="transition: max-height 0.3s linear;overflow:hidden; font-size: 38px; font-weight: 400; color: #E7E7E7; margin-top: 5px;">
+                                Ideal for
                                 those light moves where you’re only
-                                taking a few items like deliveries. <span style="font-family:'Arial Rounded MT Bold'">MUST NOT BE MORE THAN 5 ITEMS</span></p>
+                                taking a few items like deliveries. <span style="font-family:'Arial Rounded MT Bold'">MUST NOT BE MORE THAN 5 ITEMS</span>
+                            </p>
                         </div>
 
                     </div>
+                    <div class="pad-a-bit"
+                         style="display: flex;flex-direction: column; min-height: 240px; padding: 15px; border-radius: 25px; margin-bottom: 10px; border: 4.58px solid #013C3D; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="display: flex;justify-content: space-between;align-items: center;">
+                                <h3 style="font-size:  42px;font-weight: 600; margin: 0;">5 items or less</h3>
+                                <button onclick="expandOrUnexpand(this)"
+                                        style="background-color: transparent; border: none; color: red; font-size: 4rem;">
+                                    +
+                                </button>
+                            </div>
+                            <p style="transition: max-height 0.3s linear; overflow: hidden; font-size: 38px; font-weight: 400; color: #E7E7E7; margin-top: 5px; ">
+                                Ideal for
+                                those light moves where you’re only
+                                taking a few items like deliveries. <span style="font-family:'Arial Rounded MT Bold'">MUST NOT BE MORE THAN 5 ITEMS</span>
+                            </p>
+                        </div>
 
-                    <div class="pad-a-bit" style=" padding: 15px; border-radius: 25px;height: 240px; margin-bottom: 10px; border: 4.58px solid 
-#013C3D; display: flex; justify-content: space-between; align-items: start;">
-                        <div style="width:100%">
-                            <div style="width:100%;display: flex;justify-content: space-between;align-items: center;">
-                        <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Partial move</h3>
-                        <button
-                            style="background-color: transparent; border: none; color: red; font-size: 5rem;">+</button>
-                    </div>    </div></div>
+                    </div>
+                    <div class="pad-a-bit"
+                         style="display: flex;flex-direction: column; min-height: 240px; padding: 15px; border-radius: 25px; margin-bottom: 10px; border: 4.58px solid #013C3D; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="display: flex;justify-content: space-between;align-items: center;">
+                                <h3 style="font-size:  42px;font-weight: 600; margin: 0;">5 items or less</h3>
+                                <button onclick="expandOrUnexpand(this)"
+                                        style="background-color: transparent; border: none; color: red; font-size: 4rem;">
+                                    +
+                                </button>
+                            </div>
+                            <p style="transition: max-height 0.3s linear; overflow: hidden; font-size: 38px; font-weight: 400; color: #E7E7E7; margin-top: 5px; ">
+                                Ideal for
+                                those light moves where you’re only
+                                taking a few items like deliveries. <span style="font-family:'Arial Rounded MT Bold'">MUST NOT BE MORE THAN 5 ITEMS</span>
+                            </p>
+                        </div>
 
+                    </div>
+                    <div class="pad-a-bit"
+                         style="display: flex;flex-direction: column; min-height: 240px; padding: 15px; border-radius: 25px; margin-bottom: 10px; border: 4.58px solid #013C3D; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="display: flex;justify-content: space-between;align-items: center;">
+                                <h3 style="font-size:  42px;font-weight: 600; margin: 0;">5 items or less</h3>
+                                <button onclick="expandOrUnexpand(this)"
+                                        style="background-color: transparent; border: none; color: red; font-size: 4rem;">
+                                    +
+                                </button>
+                            </div>
+                            <p style="transition: max-height 0.3s linear; overflow: hidden; font-size: 38px; font-weight: 400; color: #E7E7E7; margin-top: 5px; ">
+                                Ideal for
+                                those light moves where you’re only
+                                taking a few items like deliveries. <span style="font-family:'Arial Rounded MT Bold'">MUST NOT BE MORE THAN 5 ITEMS</span>
+                            </p>
+                        </div>
 
-                    <div class="pad-a-bit" style=" padding: 15px;height: 240px; border-radius: 25px; margin-bottom: 10px;border: 4.58px solid 
-#013C3D;display: flex; justify-content: space-between; align-items: start;">
-                                                <div style="width:100%">
-                            <div style="width:100%;display: flex;justify-content: space-between;align-items: center;">
-
-                        <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Full home</h3>
-                        <button
-                            style="background-color: transparent; border: none; color: red; font-size: 5rem;">+</button>
-                    </div></div></div>
-
-                    <div class="pad-a-bit" style=" padding: 15px;height: 240px; border-radius: 25px; margin-bottom: 10px;border: 4.58px solid 
-#013C3D;display: flex; justify-content: space-between; align-items: start;">
-                                            <div style="width:100%">
-<div style="width:100%;display: flex;justify-content: space-between;align-items: center;">
-                        <h3 style="font-size: 42px;font-weight: 600;  margin: 0;">Commercial</h3>
-                        <button
-                            style="background-color: transparent; border: none;  color: red; font-size: 5rem;">+</button>
-                    </div></div></div>
+                    </div>
                 </div>
 
             </div>
