@@ -4707,7 +4707,7 @@ ${day}
                     <p style="margin-bottom:0px!important;margin-left:-10px;margin-right:-10px">Slide to confirm that the information is accurate.</p>
                     <p class="ypm__inacc-text" style="margin-bottom:-40px">Inaccuracies may affect service pricing.</p>
                     <button onclick="nextStage(); return false;" style="margin-top: -100px; width: 100%; border: none; align-self: stretch; padding-left: calc(var(--scale, 1) * 32.98px); padding-right: calc(var(--scale, 1) * 32.98px); padding-top: calc(var(--scale, 1) * 39.58px); padding-bottom: calc(var(--scale, 1) * 39.58px); background: #F84734; border-radius: calc(var(--scale, 1) * 16.49px); justify-content: center; align-items: center; display: inline-flex ">
-                        <div name="confirmInvetoryBtn" style="color: white; font-size: calc(var(--scale, 1) * 49.47px); font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">
+                        <div name="confirmInventoryBtn" style="color: white; font-size: calc(var(--scale, 1) * 49.47px); font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">
                             Next
                         </div>
                     </button>
@@ -4742,7 +4742,7 @@ ${day}
             };
             if (document.currentScript.getAttribute('data-isConfirm') === 'true') {
                 document.currentScript.parentElement.querySelectorAll('.ypm__start-calc-btn').forEach(b => b.click());
-                document.currentScript.parentElement.querySelector('[name=confirmInvetoryBtn]').innerText = 'Confirm and see price';
+                document.currentScript.parentElement.querySelector('[name=confirmInventoryBtn]').innerText = 'Confirm and see price';
             }
 
             var headings = document.currentScript.parentElement.querySelectorAll('.ypm__content-part-wrapper');
@@ -5499,7 +5499,13 @@ ${day}
                                 </div>
                             </div>
                             </div>
-                            <div> <a href="javascript:showScreen('billing')" class="pkg-btn">Secure Quote</a> </div>
+                        <div>
+                            <button onclick="showScreen('billing'); return false;" style="width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; display: inline-flex ">
+                                <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">
+                                    Secure Quote
+                                </div>
+                            </button>
+                        </div>
                         </div>
                 </div>
             </section>
