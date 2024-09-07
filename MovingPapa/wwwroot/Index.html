@@ -625,6 +625,10 @@ display: none;
         }
     }
 
+    .mp-form-button:not(.mp-form-button-active) {
+        background-color: #808080!important;
+    }
+
 </style>
 <script>
     let stageDiv;
@@ -958,6 +962,7 @@ display: none;
                 }
             }
         }
+        updateCalendarValidation();
     }
 </script>
 
@@ -2479,7 +2484,27 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                         </button>
                     </div>
                 </template>
+                <script>
+                    function updateValidation(btn, value) {
+                        if (value) {
+                            btn.classList.add('mp-form-button-active');
+                        }
+                        else {
+                            btn.classList.remove('mp-form-button-active');
+                        }
+                    }
+                </script>
                 <template id="calendarScreen">
+                    <script>
+                        let calendarTopEl = document.currentScript.parentElement;
+                        function validateCalendarScreen() {
+                            return calendarTopEl.querySelector('.dateSelected') != null
+                                && calendarTopEl.querySelector('.time-of-day-active') != null;
+                        }
+                        function updateCalendarValidation() {
+                            updateValidation(calendarTopEl.querySelector('.mp-form-button'), validateCalendarScreen());
+                        }
+                    </script>
                     <div class="calendar-screen">
                         <div class="calendar-frame">
                             <div class="center">
@@ -2505,6 +2530,7 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                                 if (ac != null)
                                     ac.classList.remove('time-of-day-active');
                                 el.classList.add('time-of-day-active');
+                                updateCalendarValidation();
                             }
                         </script>
                         <div style="margin-top: 55px; width: 100%; height: 27px; flex-shrink: 0; border-radius: 40px; background: linear-gradient(90deg, #A1FFBA 0%, #34A853 33.9%, #054015 53.9%); ">
@@ -2532,7 +2558,7 @@ font-family: "Arial Rounded MT Bold";'>transparency</span>
                             </div>
                         </div>
                     </div>
-                    <button onclick="nextStage(); return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+                    <button class="mp-form-button" onclick="nextStage(); return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
                         <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
                     </button>
                 </template>
@@ -2912,13 +2938,19 @@ ${day}
         </div>
     </div>
 </template>
+<script>
+    function updateContactValidation(el) {
+        let top = el.closest('[name=contactFormTop]');
+        updateValidation(top.querySelector('[name=contactFormBtn]'), Array.from(top.querySelectorAll('input')).every(i => i.value !== ''));
+    }
+</script>
 <template id="quoteContactForm">
     <style>
         .contactForm-active {
             border: 4.101px solid #F84734!important;
         }
     </style>
-    <div>
+    <div name="contactFormTop">
         <div style="padding-left: calc(65px + 51px); padding-right: calc(70px + 37px); border-bottom: 3px solid #013C3D ">
             <div style='color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: 55.742px; font-style: normal; font-weight: 400; line-height: normal;'>
                 Please select type of service
@@ -2941,10 +2973,10 @@ ${day}
             </div>
         </div>
         <div name=contactForm style="padding-left: calc(65px + 51px); padding-right: calc(70px + 74px); margin-top: 81px; max-width: 1405px; width: 100%; height: 100%; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 46.17px; display: inline-flex">
-            <input class="papa-focus-orange quoteContactFormInput" id=firstName placeholder="Full Name" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
-            <input class="papa-focus-orange quoteContactFormInput" placeholder="Email" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
-            <input class="papa-focus-orange quoteContactFormInput" placeholder="Phone Number" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex">
-            <button onclick="chooseBillingMethod()" style="border:none;align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+            <input oninput="updateContactValidation(this)" class="papa-focus-orange quoteContactFormInput" id=firstName placeholder="Full Name" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
+            <input oninput="updateContactValidation(this)" class="papa-focus-orange quoteContactFormInput" placeholder="Email" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
+            <input oninput="updateContactValidation(this)" class="papa-focus-orange quoteContactFormInput" placeholder="Phone Number" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: rgba(255, 255, 255, 0.05); border-radius: 16.49px; border: 3.30px rgba(255, 255, 255, 0.20); flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex">
+            <button class="mp-form-button" name="contactFormBtn" onclick="chooseBillingMethod()" style="border:none;align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
                 <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Done</div>
             </button>
         </div>
@@ -4261,6 +4293,10 @@ ${day}
 <template id="stage2">
     <script>
         document.currentScript.parentElement.style.paddingTop = '0px';
+        let el = document.currentScript.parentElement;
+        function updateMoveValidation() {
+            updateValidation(el.querySelector('.mp-form-button'), el.querySelector('.move-type-active') !== null && el.querySelector('input[type=checkbox]:checked') !== null);
+        }
     </script>
     <div class="" style=" background: #00292A; padding: 60px 0px; width: 100%; ">
         <div class="" style="margin-bottom: 80px;">
@@ -4349,6 +4385,7 @@ ${day}
                     if (ac != null)
                         ac.classList.remove('move-type-active');
                     el.classList.add('move-type-active');
+                    updateMoveValidation();
                 }
             </script>
             <div class="" style="border-top: 7px solid #013C3D; display: block; padding: 60px;">
@@ -4366,13 +4403,13 @@ ${day}
                     <div style="background-color: #012122;white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; ">
                         Yes
                         <div class="form-check papa-check">
-                            <input class="form-check-input" type="checkbox">
+                            <input oninput="updateMoveValidation()" class="form-check-input" type="checkbox">
                         </div>
                     </div>
                     <div style="background-color: #012122; white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal;">
                         No
                         <div class="form-check papa-check">
-                            <input class="form-check-input" type="checkbox">
+                            <input oninput="updateMoveValidation()" class="form-check-input" type="checkbox">
                         </div>
                     </div>
                 </div>
@@ -4390,7 +4427,7 @@ ${day}
                padding: 0 50px 40px;">more info</a>
         </div>
             </div>
-        <button onclick="nextStage(); nextStage(); return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+        <button class="mp-form-button" onclick="nextStage(); nextStage(); return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
             <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
         </button>
     </div>
