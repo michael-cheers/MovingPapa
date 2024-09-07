@@ -4265,7 +4265,7 @@ ${day}
     <div class="" style=" background: #00292A; padding: 60px 0px; width: 100%; ">
         <div class="" style="margin-bottom: 80px;">
             <h3 style="font-family: Arial Rounded MT Bold;
-                    font-size: 59.44px;
+                    font-size: 55.742px;
                     font-weight: 400;
                     line-height: 47.29px;
                     text-align: left;
@@ -4471,7 +4471,7 @@ ${day}
             <div class="ypm__body-wrapper">
                 <div class="ypm__search-wrapper" name="searchHead">
                     <div class="ypm__search-box">
-                        <svg style="fill:#667085" version="1.1" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 768 768">
+                        <svg style="fill:#667085" version="1.1" xmlns="http://www.w3.org/2000/svg" width="23" height="30" viewBox="0 0 768 768">
                             <g id="icomoon-ignore">
                             </g>
                             <path d="M513.312 507.392c-1.088 0.832-2.144 1.76-3.168 2.784s-1.92 2.048-2.784 3.168c-40.256 38.816-95.008 62.656-155.36 62.656-61.856 0-117.824-25.024-158.4-65.6s-65.6-96.544-65.6-158.4 25.024-117.824 65.6-158.4 96.544-65.6 158.4-65.6 117.824 25.024 158.4 65.6 65.6 96.544 65.6 158.4c0 60.352-23.84 115.104-62.688 155.392zM694.624 649.376l-117.6-117.6c39.392-49.28 62.976-111.776 62.976-179.776 0-79.52-32.256-151.552-84.352-203.648s-124.128-84.352-203.648-84.352-151.552 32.256-203.648 84.352-84.352 124.128-84.352 203.648 32.256 151.552 84.352 203.648 124.128 84.352 203.648 84.352c68 0 130.496-23.584 179.776-62.976l117.6 117.6c12.512 12.512 32.768 12.512 45.248 0s12.512-32.768 0-45.248z"></path>
@@ -4772,6 +4772,7 @@ ${day}
             .ypm__search-wrapper {
                 border-bottom: 3px solid #013C3D;
                 padding: 15px 40px;
+                background-color: #00292A;
             }
 
             .ypm__search-box {
@@ -4805,7 +4806,8 @@ ${day}
                 width: fit-content;
                 margin: 0 auto;
                 padding-bottom: 8px;
-                font-size: 20px;
+                font-size: calc(55.7px * var(--scale, 1));
+                font-family: 'Arial Rounded MT Bold';
                 padding: 0px 5px 8px 5px;
                 transition: color 0.5s ease, border 0.5s ease;
             }
@@ -4831,7 +4833,7 @@ ${day}
                     padding: 10px;
                     border: 2px solid #013C3D;
                     border-radius: 10px;
-                    font-size: 14px;
+                    font-size: calc(var(--const-font-size) * var(--scale, 1));
                     padding-top: 5px;
                     padding-bottom: 5px;
                     margin-bottom: 5px;
