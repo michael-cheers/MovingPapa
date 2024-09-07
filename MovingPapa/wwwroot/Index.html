@@ -5502,6 +5502,41 @@ ${day}
                         dots: false,
                         items: 3,
                     });
+                    let arrowContainer = document.createElement('div');
+                    arrowContainer.style.position = 'relative';
+                    //arrowContainer.style.display = 'flex';
+                    //arrowContainer.style.justifyContent = 'space-around';
+                    let div1 = document.createElement('button');
+                    div1.style.border = 'none';
+                    div1.style.background = 'none';
+                    div1.innerHTML = `<svg width="39" height="68" viewBox="0 0 39 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1.81802 30.818C0.0606604 32.5754 0.0606604 35.4246 1.81802 37.182L30.4558 65.8198C32.2132 67.5772 35.0624 67.5772 36.8198 65.8198C38.5772 64.0624 38.5772 61.2132 36.8198 59.4558L11.364 34L36.8198 8.54416C38.5772 6.7868 38.5772 3.93755 36.8198 2.18019C35.0624 0.422836 32.2132 0.422836 30.4558 2.18019L1.81802 30.818ZM13 29.5H5L5 38.5H13V29.5Z" fill="#F84734"/>
+</svg>
+`;
+                    div1.style.position = 'absolute';
+                    div1.style.left = '4.7%';
+                    //div1.onclick = () => $('.list-slider').trigger('prev.owl.carousel');
+                    let div2 = document.createElement('button');
+                    div2.style.border = 'none';
+                    div2.style.background = 'none';
+                    div2.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="39" height="68" viewBox="0 0 39 68" fill="none">
+  <path d="M37.2726 37.182C39.0299 35.4246 39.0299 32.5754 37.2726 30.818L8.63475 2.18019C6.87739 0.422836 4.02815 0.422836 2.27079 2.18019C0.513432 3.93755 0.513432 6.7868 2.27079 8.54416L27.7266 34L2.27079 59.4558C0.513432 61.2132 0.513432 64.0624 2.27079 65.8198C4.02815 67.5772 6.87739 67.5772 8.63475 65.8198L37.2726 37.182ZM26 38.5H34.0906V29.5H26V38.5Z" fill="#F84734"/>
+</svg>`;
+                    div2.style.position = 'absolute';
+                    div2.style.right = '3.6%';
+                    document.querySelector('.list-slider').addEventListener('click', event => {
+                        for (let [d, a] of [[div1, 'prev.owl.carousel'], [div2, 'next.owl.carousel']]) {
+                            let r = d.getBoundingClientRect();
+                            if (event.clientX >= r.left && event.clientX <= r.right && event.clientY >= r.top && event.clientY <= r.bottom) {
+                                $('.list-slider').trigger(a);
+                                event.preventDefault();
+                                return;
+                            }
+                        }
+                    });
+                    arrowContainer.appendChild(div1);
+                    arrowContainer.appendChild(div2);
+                    document.querySelector('.list-slider').before(arrowContainer);
                 });
 
                 let oldCenterIdx = 2;
