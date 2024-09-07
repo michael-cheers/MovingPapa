@@ -4259,21 +4259,25 @@ ${day}
         </div>
 </template>
 <template id="stage2">
-
-    <div class="" style=" background: #00292A; padding: 60px; width: 100%; ">
+    <script>
+        document.currentScript.parentElement.style.paddingTop = '0px';
+    </script>
+    <div class="" style=" background: #00292A; padding: 60px 0px; width: 100%; ">
         <div class="" style="margin-bottom: 80px;">
             <h3 style="font-family: Arial Rounded MT Bold;
                     font-size: 59.44px;
                     font-weight: 400;
                     line-height: 47.29px;
                     text-align: left;
-                    color: #fff;">
+                    color: #fff;
+                        padding-left: 94px;
+    padding-top: 30px;">
                 How big is your move?
             </h3>
         </div>
 
         <div style="border: 7px solid #013C3D; border-radius: 90px; background: #00292A; ">
-            <div class="" style="display: flex; padding:60px 49px 0 49px;">
+            <div class="" style="display: flex; justify-content: space-around; padding:60px 49px 0 49px;">
                 <button onclick="moveTypeActive(this)" class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
                         position: relative; height: 365px; text-align: center; padding-top: 56px;padding-bottom:85px; margin-right: 60px; margin-bottom: 60px;">
                     <img style="position: absolute; top: calc(100% * (72 / 442)); left: calc(100% * (82 / 442)); width: calc(100% * (1 - (82 + 82) / 442));" src="fullMove.png" />
@@ -4303,7 +4307,7 @@ ${day}
                     </div>
                 </button>
             </div>
-            <div class="" style="display: flex; padding:0 49px;">
+            <div class="" style="display: flex; justify-content: space-around; padding: 0 49px; ">
                 <button onclick="moveTypeActive(this)" class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
                             position: relative; height: 365px; text-align: center; padding: 60px 0px; margin-right: 60px; margin-bottom: 60px;">
                     <img style="position: absolute; top: calc(100% * (109 / 442)); left: calc(100% * (87 / 442)); width:calc(100% * (1 - ((56 + 87) / 442))); " src="5ItemsOrLess.png" />
@@ -4353,6 +4357,7 @@ ${day}
                         line-height: 46.64px;
                         text-align: left;
                         color: #fff;
+                        padding-left: 30px;
                         margin-bottom: 30px;">
                     Do you need us to help with packing?
                 </h2>
@@ -4380,6 +4385,7 @@ ${day}
                text-decoration-line: underline;
                text-align:right;
                display:block;
+               margin-right: 99px;
                padding: 0 50px 40px;">more info</a>
         </div>
         <button onclick="nextStage(); nextStage(); return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
