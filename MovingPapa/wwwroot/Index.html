@@ -1185,6 +1185,16 @@
                                         <div id="whereAreYouMovingToText" style="margin-bottom: 29px;font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 35.8236px;line-height: 38px;/* identical to box height */color: #FFFFFF;text-align:center;">
                                             Where are you moving to?
                                         </div>
+                                        <script>
+                                            function updateAddrs() {
+                                                for (let el of document.querySelectorAll('.fromAddress')) {
+                                                    el.innerText = document.getElementById('pickUpPoint2')?.value ?? pickUpPoint.value;
+                                                }
+                                                for (let el of document.querySelectorAll('.toAddress')) {
+                                                    el.innerText = document.getElementById('destinationPoint2')?.value ?? destinationPoint.value;
+                                                }
+                                            }
+                                        </script>
                                         <div class="focus-orange" style="width: 100%;height: 87.53px;border-radius:calc(87.53px / 2);background: #FAFAFA;display:flex;">
                                             <div style="height:100%;display:flex;justify-content:center;flex-direction:column;margin-left:calc(-24px - -44px)">
                                                 <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1211,7 +1221,7 @@
                                             <input id="destinationPoint" style="width:100%;background:none;border:none;outline:none;/* Choose pick up point */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 25.5295px;line-height: 30px;margin-left:calc(305px - (221px + ((41px + 52px) / 2)));/* identical to box height */" class="placeholder-656565" placeholder="Choose your destination" />
                                         </div>
                                         <div class="center" style="margin-top:calc(218.6px - (72.8px + 87.53px))">
-                                            <button onclick="getQuote(true)" class="rainbow-border-orange" style="/* Rectangle 3 */ width: 1017px; height: calc(16px + 49px * 123 / 158 * 38 / 53 / var(--scale, 1)); background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 28.2559px; line-height: 33px; color: #FFFFFF;">
+                                            <button onclick="updateAddrs();getQuote(true)" class="rainbow-border-orange" style="/* Rectangle 3 */ width: 1017px; height: calc(16px + 49px * 123 / 158 * 38 / 53 / var(--scale, 1)); background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 28.2559px; line-height: 33px; color: #FFFFFF;">
                                                 <span style="text-align:center;display:flex;justify-content:center;flex-direction:column;">Get a Quote</span>
                                             </button>
                                         </div>
@@ -1718,7 +1728,7 @@
                                                         Drop-off
                                                     </div>
                                                     <div style='border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                                        <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                                        <div class=toAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
                                                             22 Bay street, Toronto ON M5V 2R5
                                                         </div>
                                                         <button onclick="gotoStage(0)" style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
@@ -1729,7 +1739,7 @@
                                                         Date
                                                     </div>
                                                     <div style='border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                                        <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                                        <div class=moveDate style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
                                                             Friday August 28, 2024
                                                         </div>
                                                         <button onclick="gotoStage(2)" style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
@@ -1738,12 +1748,12 @@
                                                     </div>
                                                     <div style='display:flex;justify-content:space-between;margin-top: 26px; gap: 57px;'>
                                                         <div style='width: 60%; text-align: center; border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                                            <div class="fromAddress" style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;margin: auto;'>
+                                                            <div class="moveSize" style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;margin: auto;'>
                                                                 2 Bedroom
                                                             </div>
                                                         </div>
                                                         <div style='width: 60%; text-align: center; border-radius: 40px;background: #012122;padding-left: 54px;padding-top: 42px;padding-bottom: 43px;padding-right: 46px;display:flex;justify-content:space-between;'>
-                                                            <div class="fromAddress" style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;margin: auto;'>
+                                                            <div class="moveType" style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;margin: auto;'>
                                                                 Full Service
                                                             </div>
                                                         </div>
@@ -3995,7 +4005,7 @@ ${day}
                 <input id="destinationPoint2" style="width:100%;background:none;border:none;outline:none;/* Choose pick up point */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 25.5295px;line-height: 30px;margin-left:calc(305px - (221px + ((41px + 52px) / 2)));/* identical to box height */" class="placeholder-656565" placeholder="Choose your destination" />
             </div>
         </div>
-        <button class="rainbow-border-orange" onclick="nextStage()" style="/* Rectangle 3 */ width: 100%; height: 123px; background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: var(--const-font-size); line-height: 33px; color: #FFFFFF;">
+        <button class="rainbow-border-orange" onclick="updateAddrs(); nextStage()" style="/* Rectangle 3 */ width: 100%; height: 123px; background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: var(--const-font-size); line-height: 33px; color: #FFFFFF;">
             <span style="text-align:center;display:flex;justify-content:center;flex-direction:column;">Next</span>
         </button>
         <script>
