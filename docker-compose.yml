@@ -43,7 +43,7 @@ services:
     container_name: certbot
     volumes:
       - ./certbot/www/:/var/www/certbot/:rw
-      - certbot-etc/:/etc/letsencrypt/:rw
+      - certbot-etc:/etc/letsencrypt/:rw
     command: certonly --webroot --webroot-path=/var/www/html --email michael.cheers8@gmail.com --agree-tos --no-eff-email -d movingpapa.com --force-renewal
 volumes:
   db_data:
