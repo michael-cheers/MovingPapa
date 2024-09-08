@@ -18,6 +18,538 @@
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
+    <style>
+        .placeholder-656565::placeholder {
+            color: #656565;
+        }
+
+        .mobileh {
+            display: none;
+        }
+
+        .center:not(.owl-item) {
+            display: flex;
+            justify-content: center;
+        }
+
+        div.container {
+            margin-left: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        main, .popup {
+            transform: scale(var(--scale, 1));
+        }
+
+        main {
+            --scale: 0.6;
+            transform-origin: 0% 0%;
+            min-width: 1920px;
+        }
+
+        .popup {
+            transform-origin: left top;
+            --scale: 0.4;
+            min-width: 1920px;
+        }
+
+        .responsive-logo {
+            background: url('movingPapaLogoLarge.png') no-repeat;
+            width: 310px;
+            height: 57px;
+            background-size: 310px 57px;
+        }
+
+        .mb-bigger {
+            height: var(--height);
+        }
+
+        .mb-smaller {
+            height: var(--height);
+            margin-top: var(--margin-top, 0px);
+        }
+
+        hr {
+            display: none;
+        }
+
+        @media all and (min-width: 600px) {
+            .pc-display-none {
+                display: none;
+            }
+
+            .pc-center {
+                display: flex;
+                justify-content: center;
+            }
+
+            .landing-content {
+                padding-left: calc((100vw - (1400px * 0.6)) / 2);
+                padding-right: calc((100vw - (1400px * 0.6)) / 2);
+            }
+        }
+
+        @media all and (max-width: 600px) {
+            #founderMsg {
+                margin-left: 52px;
+                margin-right: 92px;
+            }
+
+            #right-logo {
+                margin-top: 30px;
+            }
+
+            hr {
+                display: block;
+            }
+
+            #mainContent {
+                min-width: calc(100vw / 0.4 - 7rem);
+            }
+
+            main {
+                --scale: 0.4;
+                transform-origin: 0% 0%;
+                min-width: inherit;
+            }
+
+            .mb-center {
+                display: flex;
+                justify-content: center;
+            }
+
+            .popup {
+                --scale: 0.33;
+                transform-origin: 0% 0%;
+                min-width: calc(150vw / 0.33);
+                min-height: calc(150vh / 0.33);
+            }
+
+                .popup > *, .popup-child {
+                    max-width: calc(100vw / 0.33);
+                }
+
+            .mb-column-flex {
+                flex-direction: column;
+            }
+
+            .mb-no-margin-left {
+                margin-left: 0px !important;
+            }
+
+            .mb-no-margin-top {
+                margin-top: 0px !important;
+            }
+
+            .mb-display-none {
+                display: none !important;
+            }
+
+            .sticky {
+                position: fixed;
+                top: 0;
+                z-index: 1000;
+                background-color: #fff;
+                width: 100%;
+                box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 2px 3px 0 rgba(0, 0, 0, 0.10) !important;
+            }
+
+            .mobileh {
+                display: block;
+            }
+
+            .desktoph {
+                display: none;
+            }
+
+            .mb-full-width {
+                min-width: calc(100vw / 0.9);
+                height: 80px;
+                margin-top: -30px;
+                margin-bottom: 30px;
+            }
+
+            .mb-bigger {
+                transform: scale(1.4);
+                transform-origin: center;
+                margin-top: calc((var(--height) * 0.4) / 2);
+                margin-bottom: calc((var(--height) * 0.4) / 2);
+            }
+
+            .mb-smaller {
+                transform: scale(calc(1 / 1.4));
+                transform-origin: center;
+                margin-top: calc((var(--height) * (1 / 1.4 - 1)) / 2 + var(--margin-top, 0px));
+                margin-bottom: calc((var(--height) * (1 / 1.4 - 1)) / 2);
+            }
+
+            .responsive-logo {
+                background: url('movingPapaLogoSmall.png') no-repeat;
+                width: 208px;
+                height: 141px;
+                transform: scale(0.3);
+                margin-top: calc(-7px / var(--scale) / 0.75);
+                margin-left: -60px
+            }
+        }
+
+        .landing-content {
+            width: calc(100vw / var(--scale, 1));
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+
+        .how-it-works-title {
+            font-family: 'Arial Rounded MT Bold';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 40.0485px;
+            line-height: 46px;
+            text-align: center;
+            color: #00292A;
+        }
+
+        .how-it-works-descr {
+            font-family: 'SF Pro Display';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 41px;
+            line-height: 49px;
+            text-align: center;
+            color: #888888;
+        }
+
+        .day-of-month {
+            padding: 0px;
+            border: 1.64px solid #D5D4DF;
+            margin: -1.64px;
+            background: inherit;
+        }
+
+            .day-of-month > div:first-of-type {
+                width: calc(39.46px + 32.88px * 2);
+                height: calc(39.46px + 32.88px * 2);
+                text-align: center;
+                color: black;
+                font-size: 23.02px;
+                font-family: Arial Rounded MT;
+                font-weight: 400;
+                word-wrap: break-word;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                display: inline-flex;
+            }
+
+            .day-of-month.rate-day {
+                background: #00292A;
+            }
+
+                .day-of-month.rate-day:hover {
+                    background: #496768;
+                }
+
+                .day-of-month.rate-day > div:first-of-type {
+                    font-family: 'Arial Rounded MT Bold';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 24.5817px;
+                    line-height: 28px;
+                    color: #FFFFFF;
+                }
+
+                .day-of-month.rate-day.rate-day-save > div:first-of-type {
+                    color: #13E74C;
+                }
+
+            .day-of-month.today {
+                background: #F84734;
+            }
+
+                .day-of-month.today > div:first-of-type {
+                    color: white;
+                    font-family: Arial Rounded MT Bold;
+                }
+
+            .day-of-month.disabled {
+                background: #F2F3F7;
+            }
+
+                .day-of-month.disabled > div:first-of-type {
+                    color: #A8A8A8;
+                }
+
+            .day-of-month:hover {
+                background: rgba(242, 243, 247, 1);
+            }
+
+            .day-of-month:active {
+                background: rgba(213, 212, 223, 1);
+            }
+
+            /* .day-of-month.today with hover and active states */
+            .day-of-month.today:hover {
+                background: #F67D6F; /* Blended color for hover state */
+            }
+
+            .day-of-month.today:active {
+                background: #F8B76B; /* Blended color for active state */
+            }
+
+            /* .day-of-month.disabled with hover and active states */
+            .day-of-month.disabled:hover {
+                background: #EDEEEC; /* No change for hover state so added an effect */
+            }
+
+            .day-of-month.disabled:active {
+                background: #E9E9F0; /* Blended color for active state */
+            }
+
+        .week-of-month {
+            justify-content: flex-start;
+            align-items: center;
+            display: inline-flex
+        }
+
+        /* Arial Rounded MT Bold */
+        @font-face {
+            font-family: 'Arial Rounded MT Bold';
+            src: url('arial-mt/ARLRDBD.TTF') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* Arial Rounded MT Extra Bold */
+        @font-face {
+            font-family: 'Arial Rounded MT Extra Bold';
+            src: url('arial-mt/ARIALROUNDEDMTEXTRABOLD.TTF') format('truetype');
+            font-weight: bolder;
+            font-style: normal;
+        }
+        /* Arial Rounded MT */
+        @font-face {
+            font-family: 'Arial Rounded MT';
+            src: url('arial-mt/ARIALROUNDEDMT.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Arial Rounded MT Light */
+        @font-face {
+            font-family: 'Arial Rounded MT Light';
+            src: url('arial-mt/ARIALROUNDEDMTLIGHT.TTF') format('truetype');
+            font-weight: 300; /* Light weight */
+            font-style: normal;
+        }
+
+        /* Arial MT Bold */
+        @font-face {
+            font-family: 'Arial MT Bold';
+            src: url('arial-mt/ARIALBOLDMT.OTF') format('opentype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* Arial MT */
+        @font-face {
+            font-family: 'Arial MT';
+            src: url('arial-mt/arialmt.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Arial MT Black */
+        @font-face {
+            font-family: 'Arial MT Black';
+            src: url('arial-mt/ARIALMTBLACK.TTF') format('truetype');
+            font-weight: bolder;
+            font-style: normal;
+        }
+
+        /* Arial MT Black Italic */
+        @font-face {
+            font-family: 'Arial MT Black Italic';
+            src: url('arial-mt/arialmtblackitalic.ttf') format('truetype');
+            font-weight: bolder;
+            font-style: italic;
+        }
+
+        /* Arial MT Extra Bold */
+        @font-face {
+            font-family: 'Arial MT Extra Bold';
+            src: url('arial-mt/ARIALMTEXTRABOLD.TTF') format('truetype');
+            font-weight: bolder;
+            font-style: normal;
+        }
+
+        /* Arial MT Extra Bold Italic */
+        @font-face {
+            font-family: 'Arial MT Extra Bold Italic';
+            src: url('arial-mt/ARIALMTEXTRABOLDITALIC.TTF') format('truetype');
+            font-weight: bolder;
+            font-style: italic;
+        }
+
+        /* Arial MT Italic */
+        @font-face {
+            font-family: 'Arial MT Italic';
+            src: url('arial-mt/ARIALMTITALIC.OTF') format('opentype');
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        /* Arial MT Light */
+        @font-face {
+            font-family: 'Arial MT Light';
+            src: url('arial-mt/ARIALMTLIGHT.TTF') format('truetype');
+            font-weight: 300; /* Light weight */
+            font-style: normal;
+        }
+
+        /* Arial MT Light Italic */
+        @font-face {
+            font-family: 'Arial MT Light Italic';
+            src: url('arial-mt/ARIALMTLIGHTITALIC.TTF') format('truetype');
+            font-weight: 300; /* Light weight */
+            font-style: italic;
+        }
+
+        /* Arial MT Medium */
+        @font-face {
+            font-family: 'Arial MT Medium';
+            src: url('arial-mt/ARIALMTMEDIUM.TTF') format('truetype');
+            font-weight: 500; /* Medium weight */
+            font-style: normal;
+        }
+
+        /* Arial MT Medium Italic */
+        @font-face {
+            font-family: 'Arial MT Medium Italic';
+            src: url('arial-mt/ARIALMTMEDIUMITALIC.TTF') format('truetype');
+            font-weight: 500; /* Medium weight */
+            font-style: italic;
+        }
+
+        /* Arial MT Narrow */
+        @font-face {
+            font-family: 'Arial MT Narrow';
+            src: url('arial-mt/ARIALMTNARROW.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* Arial MT Narrow Bold */
+        @font-face {
+            font-family: 'Arial MT Narrow Bold';
+            src: url('arial-mt/ARIALMTNARROWBOLD.TTF') format('truetype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        /* Arial MT Narrow Bold Italic */
+        @font-face {
+            font-family: 'Arial MT Narrow Bold Italic';
+            src: url('arial-mt/ARIALMTNARROWBOLDITALIC.TTF') format('truetype');
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /* Arial MT Narrow Italic */
+        @font-face {
+            font-family: 'Arial MT Narrow Italic';
+            src: url('arial-mt/ARIALMTNARROWITALIC.TTF') format('truetype');
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        .top-bg {
+            background: #FFFFFF;
+        }
+
+        .bottom-bg {
+            background: #00292A;
+        }
+
+        .transparency-bullet {
+            /* Text */
+
+            font-family: 'Arial Rounded MT';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 28.3627px;
+            line-height: 160%;
+            /* or 45px */
+            /* Primary */
+            color: #020800;
+            /* Inside auto layout */
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .arial-rounded-mt {
+            font-family: 'Arial Rounded MT';
+        }
+
+            .arial-rounded-mt b {
+                font-family: 'Arial Rounded MT Bold';
+            }
+
+        .quoteContactFormInput {
+            font-size: var(--const-font-size);
+            font-family: Arial Rounded MT;
+            font-weight: 400;
+            word-wrap: break-word;
+            color: #FFFFFF;
+        }
+
+            .quoteContactFormInput::placeholder {
+                color: rgba(255, 255, 255, 0.60);
+            }
+
+        .papa-check input[type=checkbox] {
+            border: 2.41px solid #F84734;
+            background-color: transparent;
+        }
+
+            .papa-check input[type=checkbox]:checked {
+                background-color: #F84734;
+            }
+
+        .fade-in {
+            animation-name: fadeInOpacity;
+            animation-iteration-count: 1;
+            animation-timing-function: ease-in;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes fadeInOpacity {
+            0% {
+                margin-top: -170px;
+                opacity: 0;
+                clip-path: inset(100% 0 0 0);
+            }
+
+            90% {
+                clip-path: inset(5% 0 0 0);
+                opacity: 1;
+                margin-top: 0px;
+            }
+
+            100% {
+                clip-path: inset(0 0 0 0);
+                opacity: 1;
+                margin-top: 0px;
+            }
+        }
+
+        .mp-form-button:not(.mp-form-button-active) {
+            background-color: #808080 !important;
+        }
+    </style>
 </head>
 <body>
     <div class="container" style="max-height:100vh">
@@ -109,538 +641,6 @@
 			</div>
 			<main>
                 <div id="mainContent" class="mb-no-margin-left" style="transform-origin:20% 5%">
-                    <style>
-                        .placeholder-656565::placeholder {
-                            color: #656565;
-                        }
-
-                        .mobileh {
-                            display: none;
-                        }
-
-                        .center:not(.owl-item) {
-                            display: flex;
-                            justify-content: center;
-                        }
-
-                        div.container {
-                            margin-left: 0;
-                            padding-left: 0;
-                            padding-right: 0;
-                        }
-
-                        main, .popup {
-                            transform: scale(var(--scale, 1));
-                        }
-
-                        main {
-                            --scale: 0.6;
-                            transform-origin: 0% 0%;
-                            min-width: 1920px;
-                        }
-
-                        .popup {
-                            transform-origin: left top;
-                            --scale: 0.4;
-                            min-width: 1920px;
-                        }
-
-                        .responsive-logo {
-                            background: url('movingPapaLogoLarge.png') no-repeat;
-                            width: 310px;
-                            height: 57px;
-                            background-size: 310px 57px;
-                        }
-
-                        .mb-bigger {
-                            height: var(--height);
-                        }
-
-                        .mb-smaller {
-                            height: var(--height);
-                            margin-top: var(--margin-top, 0px);
-                        }
-
-                        hr {
-                            display: none;
-                        }
-
-                        @media all and (min-width: 600px) {
-                            .pc-display-none {
-                                display: none;
-                            }
-
-                            .pc-center {
-                                display: flex;
-                                justify-content: center;
-                            }
-
-                            .landing-content {
-                                padding-left: calc((100vw - (1400px * 0.6)) / 2);
-                                padding-right: calc((100vw - (1400px * 0.6)) / 2);
-                            }
-                        }
-
-                        @media all and (max-width: 600px) {
-                            #founderMsg {
-                                margin-left: 52px;
-                                margin-right: 92px;
-                            }
-
-                            #right-logo {
-                                margin-top: 30px;
-                            }
-
-                            hr {
-                                display: block;
-                            }
-
-                            #mainContent {
-                                min-width: calc(100vw / 0.4 - 7rem);
-                            }
-
-                            main {
-                                --scale: 0.4;
-                                transform-origin: 0% 0%;
-                                min-width: inherit;
-                            }
-
-                            .mb-center {
-                                display: flex;
-                                justify-content: center;
-                            }
-
-                            .popup {
-                                --scale: 0.33;
-                                transform-origin: 0% 0%;
-                                min-width: calc(150vw / 0.33);
-                                min-height: calc(150vh / 0.33);
-                            }
-
-                                .popup > *, .popup-child {
-                                    max-width: calc(100vw / 0.33);
-                                }
-
-                            .mb-column-flex {
-                                flex-direction: column;
-                            }
-
-                            .mb-no-margin-left {
-                                margin-left: 0px !important;
-                            }
-
-                            .mb-no-margin-top {
-                                margin-top: 0px !important;
-                            }
-
-                            .mb-display-none {
-                                display: none !important;
-                            }
-
-                            .sticky {
-                                position: fixed;
-                                top: 0;
-                                z-index: 1000;
-                                background-color: #fff;
-                                width: 100%;
-                                box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1), 0 2px 3px 0 rgba(0, 0, 0, 0.10) !important;
-                            }
-
-                            .mobileh {
-                                display: block;
-                            }
-
-                            .desktoph {
-                                display: none;
-                            }
-
-                            .mb-full-width {
-                                min-width: calc(100vw / 0.9);
-                                height: 80px;
-                                margin-top: -30px;
-                                margin-bottom: 30px;
-                            }
-
-                            .mb-bigger {
-                                transform: scale(1.4);
-                                transform-origin: center;
-                                margin-top: calc((var(--height) * 0.4) / 2);
-                                margin-bottom: calc((var(--height) * 0.4) / 2);
-                            }
-
-                            .mb-smaller {
-                                transform: scale(calc(1 / 1.4));
-                                transform-origin: center;
-                                margin-top: calc((var(--height) * (1 / 1.4 - 1)) / 2 + var(--margin-top, 0px));
-                                margin-bottom: calc((var(--height) * (1 / 1.4 - 1)) / 2);
-                            }
-
-                            .responsive-logo {
-                                background: url('movingPapaLogoSmall.png') no-repeat;
-                                width: 208px;
-                                height: 141px;
-                                transform: scale(0.3);
-                                margin-top: calc(-7px / var(--scale) / 0.75);
-                                margin-left: -60px
-                            }
-                        }
-
-                        .landing-content {
-                            width: calc(100vw / var(--scale, 1));
-                            overflow-x: hidden;
-                            overflow-y: hidden;
-                        }
-
-                        .how-it-works-title {
-                            font-family: 'Arial Rounded MT Bold';
-                            font-style: normal;
-                            font-weight: 400;
-                            font-size: 40.0485px;
-                            line-height: 46px;
-                            text-align: center;
-                            color: #00292A;
-                        }
-
-                        .how-it-works-descr {
-                            font-family: 'SF Pro Display';
-                            font-style: normal;
-                            font-weight: 400;
-                            font-size: 41px;
-                            line-height: 49px;
-                            text-align: center;
-                            color: #888888;
-                        }
-
-                        .day-of-month {
-                            padding: 0px;
-                            border: 1.64px solid #D5D4DF;
-                            margin: -1.64px;
-                            background: inherit;
-                        }
-
-                            .day-of-month > div:first-of-type {
-                                width: calc(39.46px + 32.88px * 2);
-                                height: calc(39.46px + 32.88px * 2);
-                                text-align: center;
-                                color: black;
-                                font-size: 23.02px;
-                                font-family: Arial Rounded MT;
-                                font-weight: 400;
-                                word-wrap: break-word;
-                                flex-direction: column;
-                                justify-content: center;
-                                align-items: center;
-                                display: inline-flex;
-                            }
-
-                            .day-of-month.rate-day {
-                                background: #00292A;
-                            }
-
-                                .day-of-month.rate-day:hover {
-                                    background: #496768;
-                                }
-
-                                .day-of-month.rate-day > div:first-of-type {
-                                    font-family: 'Arial Rounded MT Bold';
-                                    font-style: normal;
-                                    font-weight: 400;
-                                    font-size: 24.5817px;
-                                    line-height: 28px;
-                                    color: #FFFFFF;
-                                }
-
-                                .day-of-month.rate-day.rate-day-save > div:first-of-type {
-                                    color: #13E74C;
-                                }
-
-                            .day-of-month.today {
-                                background: #F84734;
-                            }
-
-                                .day-of-month.today > div:first-of-type {
-                                    color: white;
-                                    font-family: Arial Rounded MT Bold;
-                                }
-
-                            .day-of-month.disabled {
-                                background: #F2F3F7;
-                            }
-
-                                .day-of-month.disabled > div:first-of-type {
-                                    color: #A8A8A8;
-                                }
-
-                            .day-of-month:hover {
-                                background: rgba(242, 243, 247, 1);
-                            }
-
-                            .day-of-month:active {
-                                background: rgba(213, 212, 223, 1);
-                            }
-
-                            /* .day-of-month.today with hover and active states */
-                            .day-of-month.today:hover {
-                                background: #F67D6F; /* Blended color for hover state */
-                            }
-
-                            .day-of-month.today:active {
-                                background: #F8B76B; /* Blended color for active state */
-                            }
-
-                            /* .day-of-month.disabled with hover and active states */
-                            .day-of-month.disabled:hover {
-                                background: #EDEEEC; /* No change for hover state so added an effect */
-                            }
-
-                            .day-of-month.disabled:active {
-                                background: #E9E9F0; /* Blended color for active state */
-                            }
-
-                        .week-of-month {
-                            justify-content: flex-start;
-                            align-items: center;
-                            display: inline-flex
-                        }
-
-                        /* Arial Rounded MT Bold */
-                        @font-face {
-                            font-family: 'Arial Rounded MT Bold';
-                            src: url('arial-mt/ARLRDBD.TTF') format('truetype');
-                            font-weight: bold;
-                            font-style: normal;
-                        }
-
-                        /* Arial Rounded MT Extra Bold */
-                        @font-face {
-                            font-family: 'Arial Rounded MT Extra Bold';
-                            src: url('arial-mt/ARIALROUNDEDMTEXTRABOLD.TTF') format('truetype');
-                            font-weight: bolder;
-                            font-style: normal;
-                        }
-                        /* Arial Rounded MT */
-                        @font-face {
-                            font-family: 'Arial Rounded MT';
-                            src: url('arial-mt/ARIALROUNDEDMT.TTF') format('truetype');
-                            font-weight: normal;
-                            font-style: normal;
-                        }
-
-                        /* Arial Rounded MT Light */
-                        @font-face {
-                            font-family: 'Arial Rounded MT Light';
-                            src: url('arial-mt/ARIALROUNDEDMTLIGHT.TTF') format('truetype');
-                            font-weight: 300; /* Light weight */
-                            font-style: normal;
-                        }
-
-                        /* Arial MT Bold */
-                        @font-face {
-                            font-family: 'Arial MT Bold';
-                            src: url('arial-mt/ARIALBOLDMT.OTF') format('opentype');
-                            font-weight: bold;
-                            font-style: normal;
-                        }
-
-                        /* Arial MT */
-                        @font-face {
-                            font-family: 'Arial MT';
-                            src: url('arial-mt/arialmt.ttf') format('truetype');
-                            font-weight: normal;
-                            font-style: normal;
-                        }
-
-                        /* Arial MT Black */
-                        @font-face {
-                            font-family: 'Arial MT Black';
-                            src: url('arial-mt/ARIALMTBLACK.TTF') format('truetype');
-                            font-weight: bolder;
-                            font-style: normal;
-                        }
-
-                        /* Arial MT Black Italic */
-                        @font-face {
-                            font-family: 'Arial MT Black Italic';
-                            src: url('arial-mt/arialmtblackitalic.ttf') format('truetype');
-                            font-weight: bolder;
-                            font-style: italic;
-                        }
-
-                        /* Arial MT Extra Bold */
-                        @font-face {
-                            font-family: 'Arial MT Extra Bold';
-                            src: url('arial-mt/ARIALMTEXTRABOLD.TTF') format('truetype');
-                            font-weight: bolder;
-                            font-style: normal;
-                        }
-
-                        /* Arial MT Extra Bold Italic */
-                        @font-face {
-                            font-family: 'Arial MT Extra Bold Italic';
-                            src: url('arial-mt/ARIALMTEXTRABOLDITALIC.TTF') format('truetype');
-                            font-weight: bolder;
-                            font-style: italic;
-                        }
-
-                        /* Arial MT Italic */
-                        @font-face {
-                            font-family: 'Arial MT Italic';
-                            src: url('arial-mt/ARIALMTITALIC.OTF') format('opentype');
-                            font-weight: normal;
-                            font-style: italic;
-                        }
-
-                        /* Arial MT Light */
-                        @font-face {
-                            font-family: 'Arial MT Light';
-                            src: url('arial-mt/ARIALMTLIGHT.TTF') format('truetype');
-                            font-weight: 300; /* Light weight */
-                            font-style: normal;
-                        }
-
-                        /* Arial MT Light Italic */
-                        @font-face {
-                            font-family: 'Arial MT Light Italic';
-                            src: url('arial-mt/ARIALMTLIGHTITALIC.TTF') format('truetype');
-                            font-weight: 300; /* Light weight */
-                            font-style: italic;
-                        }
-
-                        /* Arial MT Medium */
-                        @font-face {
-                            font-family: 'Arial MT Medium';
-                            src: url('arial-mt/ARIALMTMEDIUM.TTF') format('truetype');
-                            font-weight: 500; /* Medium weight */
-                            font-style: normal;
-                        }
-
-                        /* Arial MT Medium Italic */
-                        @font-face {
-                            font-family: 'Arial MT Medium Italic';
-                            src: url('arial-mt/ARIALMTMEDIUMITALIC.TTF') format('truetype');
-                            font-weight: 500; /* Medium weight */
-                            font-style: italic;
-                        }
-
-                        /* Arial MT Narrow */
-                        @font-face {
-                            font-family: 'Arial MT Narrow';
-                            src: url('arial-mt/ARIALMTNARROW.TTF') format('truetype');
-                            font-weight: normal;
-                            font-style: normal;
-                        }
-
-                        /* Arial MT Narrow Bold */
-                        @font-face {
-                            font-family: 'Arial MT Narrow Bold';
-                            src: url('arial-mt/ARIALMTNARROWBOLD.TTF') format('truetype');
-                            font-weight: bold;
-                            font-style: normal;
-                        }
-
-                        /* Arial MT Narrow Bold Italic */
-                        @font-face {
-                            font-family: 'Arial MT Narrow Bold Italic';
-                            src: url('arial-mt/ARIALMTNARROWBOLDITALIC.TTF') format('truetype');
-                            font-weight: bold;
-                            font-style: italic;
-                        }
-
-                        /* Arial MT Narrow Italic */
-                        @font-face {
-                            font-family: 'Arial MT Narrow Italic';
-                            src: url('arial-mt/ARIALMTNARROWITALIC.TTF') format('truetype');
-                            font-weight: normal;
-                            font-style: italic;
-                        }
-
-                        .top-bg {
-                            background: #FFFFFF;
-                        }
-
-                        .bottom-bg {
-                            background: #00292A;
-                        }
-
-                        .transparency-bullet {
-                            /* Text */
-
-                            font-family: 'Arial Rounded MT';
-                            font-style: normal;
-                            font-weight: 400;
-                            font-size: 28.3627px;
-                            line-height: 160%;
-                            /* or 45px */
-                            /* Primary */
-                            color: #020800;
-                            /* Inside auto layout */
-                            flex: none;
-                            order: 1;
-                            flex-grow: 0;
-                            display: flex;
-                            flex-direction: row;
-                        }
-
-                        .arial-rounded-mt {
-                            font-family: 'Arial Rounded MT';
-                        }
-
-                            .arial-rounded-mt b {
-                                font-family: 'Arial Rounded MT Bold';
-                            }
-
-                        .quoteContactFormInput {
-                            font-size: var(--const-font-size);
-                            font-family: Arial Rounded MT;
-                            font-weight: 400;
-                            word-wrap: break-word;
-                            color: #FFFFFF;
-                        }
-
-                            .quoteContactFormInput::placeholder {
-                                color: rgba(255, 255, 255, 0.60);
-                            }
-
-                        .papa-check input[type=checkbox] {
-                            border: 2.41px solid #F84734;
-                            background-color: transparent;
-                        }
-
-                            .papa-check input[type=checkbox]:checked {
-                                background-color: #F84734;
-                            }
-
-                        .fade-in {
-                            animation-name: fadeInOpacity;
-                            animation-iteration-count: 1;
-                            animation-timing-function: ease-in;
-                            animation-duration: 0.6s;
-                        }
-
-                        @keyframes fadeInOpacity {
-                            0% {
-                                margin-top: -170px;
-                                opacity: 0;
-                                clip-path: inset(100% 0 0 0);
-                            }
-
-                            90% {
-                                clip-path: inset(5% 0 0 0);
-                                opacity: 1;
-                                margin-top: 0px;
-                            }
-
-                            100% {
-                                clip-path: inset(0 0 0 0);
-                                opacity: 1;
-                                margin-top: 0px;
-                            }
-                        }
-
-                        .mp-form-button:not(.mp-form-button-active) {
-                            background-color: #808080 !important;
-                        }
-                    </style>
                     <script>
                         let stageDiv;
                         let stageIdx = 0;
