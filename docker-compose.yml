@@ -51,4 +51,4 @@ services:
 volumes:
   db_data:
   aspnet_data:
-  certbot-etc:  
+  certbot-etc:
