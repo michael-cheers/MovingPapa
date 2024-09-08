@@ -5469,13 +5469,20 @@ ${day}
                                 <ul id="list-slider" class="list-slider owl-carousel">
                                 </ul>
                                 <script>
+                                    let calendarSelectedIdx;
                                     {
                                         let d = new Date();
                                         for (let n = 0; n < 180; n++) {
                                             let li = document.createElement('li');
-                                            li.innerText = d.toLocaleString("en-US", {
+                                            let t = d.toLocaleString("en-US", {
                                                 day: "numeric", month: "short", weekday: 'short'
                                             }).replace(',', '');
+                                            let t2 = new Date(selectedCalendarDate).toLocaleString("en-US", {
+                                                day: "numeric", month: "short", weekday: 'short'
+                                            }).replace(',', '');
+                                            li.innerText = t;
+                                            if (t === t2)
+                                                calendarSelectedIdx = n;
                                             d.setDate(d.getDate() + 1);
                                             document.currentScript.previousElementSibling.appendChild(li);
                                         }
@@ -5600,6 +5607,7 @@ ${day}
                         dots: false,
                         items: 3,
                     });
+                    $('.list-slider').trigger('to.owl.carousel', [calendarSelectedIdx, 0]);
                     let arrowContainer = document.createElement('div');
                     arrowContainer.style.position = 'relative';
                     //arrowContainer.style.display = 'flex';
