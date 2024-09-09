@@ -3476,7 +3476,7 @@ ${day}
                         </div>
                     </div>
                     <div class="custom-select pc-display-none" style="margin-left:50px;margin-right:50px;">
-                        <select class="dropdown" multiple style="background-color: #012122;">
+                        <select id="extraRoomsDropdown" class="dropdown" multiple style="background-color: #012122;">
                             <option class="service-small" value="">Garage</option>
                             <option class="service-small" value="">Basement </option>
                             <option class="service-small" value="">Storage locker </option>
@@ -3846,6 +3846,17 @@ ${day}
                         if (roomList.length === 0) {
                             for (let i = 0; i < numBedrooms; i++) {
                                 roomList.push([`Bedroom ${i + 1}`, ["Bed", "Nightstand", "Dresser"]]);
+                            }
+                            let roomItems = {
+                                Garage: ["Bicycle", "Lawnmower", "Toolbox"],
+                                Basement: ["Freezer", "Storage bins", "Workbench"],
+                                "Storage locker": ["Boxes", "Furniture", "Appliances"],
+                                Backyard: ["Patio furniture", "Grill", "Lawnmower"]
+                            };
+                            for (let name of document.getElementById('extraRoomsDropdown').querySelectorAll('option:checked')) {
+                                roomList.push([
+                                    name.innerText, roomItems[name.innerText.trim()]
+                                ])
                             }
                         }
                         for (let [name, items] of roomList) {
