@@ -923,6 +923,14 @@
                             didInitializeCalendar = true;
                         }
 
+                        let ratesJson;
+                        async function getRatesJson() {
+                            let req = await fetch('/rates');
+                            let json = await req.json();
+                            ratesJson = json;
+                        }
+                        getRatesJson();
+
                         function updateCalendarDisplay() {
                             let rows = calendarTable.children;
                             let startDate = new Date(viewingCalendarYear, viewingCalendarMonth);
@@ -959,16 +967,18 @@
                                             // TODO: need the server to tell us what price to charge for currentDate?
                                             showedViewedMonth = true;
                                             let dayOfWeek = currentDate.getDay();
-                                            if (dayOfWeek === 0 || dayOfWeek === 6)
+                                            let dateStr = currentDate.toLocaleDateString('en-CA', { year: 'numeric', month: 'numeric', day: 'numeric' });
+                                            let rate = ratesJson.find(d => d.Date === dateStr)?.RatePerMoverInCents ?? 6000;
+                                            if (rate >= 6500)
                                                 cell.className = "dateHighPrice";
-                                            else if (dayOfWeek === 2)
-                                                cell.className = "dateLowPrice";
-                                            else if (dayOfWeek === 3) {
-                                                cell.className = "dateUnavailable";
-                                                cell.children[0]["value"] = undefined;
-                                            }
                                             else
-                                                cell.className = "dateNormalPrice";
+                                                cell.className = "dateLowPrice";
+                                            //else if (dayOfWeek === 3) {
+                                            //    cell.className = "dateUnavailable";
+                                            //    cell.children[0]["value"] = undefined;
+                                            //}
+                                            //else
+                                            //    cell.className = "dateNormalPrice";
                                         }
                                         currentDate.setDate(currentDate.getDate() + 1);
                                         currentMonth = currentDate.getMonth();
