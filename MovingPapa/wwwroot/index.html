@@ -3806,6 +3806,12 @@ ${day}
         let roomList = [];
     </script>
     <template id="stage4">
+        <script>
+            var isConfirm = document.currentScript.classList.contains('isConfirm');
+            if (isConfirm) {
+                var confirmSelectedItems = getSelectedItems();
+            }
+        </script>
         <div id="ypm__main-wrapper" style="transform:scale(calc(1 / var(--scale, 1)));width: calc(100% * var(--scale, 1)); transform-origin: 0% 0%">
             <div class="ypm__body-wrapper">
                 <div class="ypm__search-wrapper" name="searchHead">
@@ -3859,7 +3865,23 @@ ${day}
                                 ])
                             }
                         }
-                        for (let [name, items] of roomList) {
+                        if (isConfirm) {
+                            for (let i = 0; i < confirmSelectedItems.length; i++) {
+                                let roomName = roomList[i][0];
+                                let items = confirmSelectedItems[i];
+                                if (items.every(i => i.quantity === 0))
+                                    continue;
+                                let room = createRoom(roomName);
+                                for (let item of items) {
+                                    let itemDiv = addItem(room, item.item);
+                                    setTimeout(() => {
+                                        itemDiv.querySelector('.ypm__start-calc-btn').click();
+                                        itemDiv.querySelector('.ypm__current-qty').innerText = item.quantity;
+                                    });
+                                }
+                            }
+                        }
+                        else for (let [name, items] of roomList) {
                             let room = createRoom(name);
                             for (let item of items) {
                                 addItem(room, item);
@@ -3906,7 +3928,7 @@ ${day}
                         }
             };
             if (document.currentScript.getAttribute('data-isConfirm') === 'true') {
-                document.currentScript.parentElement.querySelectorAll('.ypm__start-calc-btn').forEach(b => b.click());
+                //document.currentScript.parentElement.querySelectorAll('.ypm__start-calc-btn').forEach(b => b.click());
                 document.currentScript.parentElement.querySelector('[name=confirmInventoryBtn]').innerText = 'Confirm and see price';
             }
 
@@ -4342,6 +4364,16 @@ ${day}
             document.currentScript.parentElement.style.backgroundColor = '#012122';
         </script>
     </template>
+    <script>
+        const getSelectedItems = () => Array.from(
+            document.querySelectorAll('.ypm__content-part-wrapper'))
+            .map(p => (
+                Array.from(p.querySelectorAll('.ypm__current-qty')).map(q => ({
+                    item: q.parentElement.parentElement.querySelector('.ypm__selection-text').innerText.trim(),
+                    quantity: +q.innerText.trim()
+                }))).filter(k => k.quantity > 0)
+            );
+    </script>
     <template id="stage6">
         <div style="">
             <style>
@@ -4565,15 +4597,7 @@ ${day}
                                     let calendarSelectedIdx;
                                     updatePrice();
                                     async function updatePrice() {
-                                        let parts = Array.from(
-                                            document.querySelectorAll('.ypm__content-part-wrapper'))
-                                            .map(p => (
-                                                Array.from(p.querySelectorAll('.ypm__current-qty')).map(q => ({
-                                                    item: q.parentElement.parentElement.querySelector('.ypm__selection-text').innerText.trim(),
-                                                    quantity: +q.innerText.trim()
-                                                }))).filter(k => k.quantity > 0)
-                                            );
-
+                                        let parts = getSelectedItems();
                                         let req = await fetch('/calculate-price?moveDetails=' + encodeURIComponent(JSON.stringify({
                                             points: [
                                                 { address: (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value) },
