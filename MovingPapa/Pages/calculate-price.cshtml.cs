@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using MovingPapa.DB;
 using RestSharp;
 using System.Globalization;
 using System.Security.Cryptography.Xml;
@@ -25,6 +27,8 @@ namespace MovingPapa.Pages
 
     public class calculate_priceModel : PageModel
     {
+        readonly MovingpapaContext DB;
+        public calculate_priceModel(MovingpapaContext db) => DB = db;
         public static (int m, decimal secs) GetRouteDetails(string[] addresses, DateTime travelTime)
         {
             RestClient client = new("https://routes.googleapis.com/directions/v2:computeRoutes");
@@ -65,8 +69,10 @@ namespace MovingPapa.Pages
 
         public const string officeAddr = "7 Spadina Rd, Toronto, ON M5R 2S7, Canada";
 
-        public IActionResult OnGet(string moveDetails)
+        public async Task<IActionResult> OnGet(string moveDetails, string? uuid = null)
         {
+            var q = await DB.QuotesAndContacts.SingleAsync/**/(q => q.Uuid == uuid);
+            q.MoveInfo = moveDetails;
             MoveDetails moveDetailsParsed = JsonSerializer.Deserialize<MoveDetails>(moveDetails);
             var dt = TimeZoneInfo.ConvertTimeToUtc(DateTime.Parse(moveDetailsParsed.moveDate, CultureInfo.InvariantCulture)
                 .AddHours(moveDetailsParsed.moveTime switch
@@ -92,11 +98,15 @@ namespace MovingPapa.Pages
             decimal hours = ((decimal)secs / 3600)
                 + (numRelevantBedrooms + numRelevantExtraRooms) * (moveDetailsParsed.needsPackingHelp ? 1.5m : 1);
             decimal km = m / 1000;
+            decimal price = Math.Round(hours * pricePerHour + km * 1, 2);
+            q.PriceInCents = (int)(price * 100);
+            q.TimeUpdated = DateTime.UtcNow;
+            await DB.SaveChangesAsync();
             return new JsonResult(new[]
             {
                 new
                 {
-                    price = Math.Round(hours * pricePerHour + km * 1, 2),
+                    price,
                     time = hours
                 }
             });

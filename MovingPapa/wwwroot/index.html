@@ -730,7 +730,7 @@
                                     ["Do you have a date in mind?", "Not sure? Enter an approximate date", calendarScreen, 25, 'monsterCall.png'],
                                     [progressInd1.innerText.replaceAll('\n', ''), progressInd2.innerText.replaceAll('\n', ''), [
                                         stage0Heading,
-                                        (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'nextStage()'); return t; })(quoteContactForm.content.cloneNode(true))
+                                        (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'sendContactDetails(this); nextStage()'); return t; })(quoteContactForm.content.cloneNode(true))
                                     ], 237.5, 'monster.png'],
                                     ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
                                         (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = pickUpPoint.value.replace(/, Canada$/, ''); return c; })(),
@@ -2809,6 +2809,30 @@ ${day}
                         </div>
                     </template>
                     <script>
+                        let quoteId;
+                        async function sendContactDetails(el) {
+                            let top = el.closest('[name=contactFormTop]');
+                            let service = top.querySelector('.contactForm-active')?.innerText?.trim?.();
+                            let name = top.querySelector('#firstName').value;
+                            let email = top.querySelector('[placeholder="Email"]').value;
+                            let phone = top.querySelector('[placeholder="Phone Number"]').value;
+                            let data = {
+                                service,
+                                fullName: name,
+                                email,
+                                phoneNumber: phone,
+                                points: JSON.stringify([
+                                    (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value),
+                                    (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value)
+                                ]),
+                                moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
+                                moveTime: document.querySelector('.time-of-day-active').innerText.trim()
+                            };
+                            let req = await fetch('/confirm-contact-details?' +
+                                Object.entries(data).map(d => d[0] + "=" + encodeURIComponent(d[1])).join('&'));
+                            let text = await req.text();
+                            quoteId = text;
+                        }
                         function updateContactValidation(el) {
                             let top = el.closest('[name=contactFormTop]');
                             updateValidation(top.querySelector('[name=contactFormBtn]'), Array.from(top.querySelectorAll('input')).every(i => i.value !== ''));
@@ -2830,7 +2854,7 @@ ${day}
                                         Full Service
                                     </div>
                                     <div onclick="setContactActive(this)" style='flex-direction: row; justify-content: center; padding-top: 38px; padding-bottom: 45px; display: flex; text-align: center; width: calc(133px / var(--scale, 1)); border-radius: 20px; border: 4.101px solid #013C3D; background: #012122; color: #FFF; font-family: "Arial Rounded MT Bold"; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; '>
-                                        Labor only
+                                        Muscle only
                                     </div>
                                     <script>
                                         function setContactActive(el) {
@@ -2853,6 +2877,15 @@ ${day}
                         </div>
                         <script>document.currentScript.parentElement.style.paddingLeft = '0px'; document.currentScript.parentElement.style.paddingRight = '0px';</script>
                     </template>
+                    <script>
+                        async function confirmBooking() {
+                            let req = await fetch('/book-rate?uuid=' + encodeURIComponent(quoteId));
+                            let text = await req.text();
+                            if (text === quoteId) {
+                                nextStage();
+                            }
+                        }
+                    </script>
                     <template id="stage7">
                         <div style="display:flex">
                             <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.399px;font-style: normal;font-weight: 500;line-height: normal;'>
@@ -2978,7 +3011,7 @@ ${day}
                                 </style>
                                 <input id="acn_Name" placeholder="Name on Card" style='width:100%;font-family: "Arial Rounded MT Bold";font-size: 45.779px;font-style: normal;font-weight: 400;line-height: 65.399px; /* 142.857% */padding-top: 32.7px;padding-left: 52px; padding-bottom: 33px; border-radius: 39.24px;border: 3.27px solid rgba(10, 10, 10, 0.12);background: #FFF;'>
                             </div>
-                            <button onclick="nextStage()" style='margin-top:131px;margin-left:70px;margin-bottom:39px;margin-right;62px;border:none;width: calc(100% - 100px);height: 160px;flex-shrink: 0;border-radius: 36.265px;background: #F84734;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 54.216px;font-style: normal;font-weight: 400;line-height: normal;text-align:center;'>
+                            <button onclick="confirmBooking()" style='margin-top:131px;margin-left:70px;margin-bottom:39px;margin-right;62px;border:none;width: calc(100% - 100px);height: 160px;flex-shrink: 0;border-radius: 36.265px;background: #F84734;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 54.216px;font-style: normal;font-weight: 400;line-height: normal;text-align:center;'>
                                 <div style="display:flex;flex-direction:column;justify-content:center;">
                                     Confirm and pay
                                 </div>
@@ -4598,7 +4631,7 @@ ${day}
                                     updatePrice();
                                     async function updatePrice() {
                                         let parts = getSelectedItems();
-                                        let req = await fetch('/calculate-price?moveDetails=' + encodeURIComponent(JSON.stringify({
+                                        let req = await fetch('/calculate-price?uuid=' + encodeURIComponent(quoteId) + '&moveDetails=' + encodeURIComponent(JSON.stringify({
                                             points: [
                                                 { address: (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value) },
                                                 { address: (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value) }
@@ -4611,7 +4644,7 @@ ${day}
                                                 room: ['Bedroom', 'Living Room', 'Dining Room', 'Kitchen', 'Bathroom', 'Office', 'Garage', 'Basement', 'Storage Locker', 'Backyard', 'Other'].indexOf(
                                                     r[0].split(' ')[0]),
                                                 items: parts[i]
-                                            }))
+                                            })),
                                         })));
                                         let j = await req.json();
                                         document.querySelector('.box-price h5').innerText = `$${j[0].price}`;
