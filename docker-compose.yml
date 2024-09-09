@@ -22,6 +22,8 @@ services:
       dockerfile: MovingPapa/Dockerfile
     volumes:
       - aspnet_data:/root/.aspnet/
+    depends_on:
+      - db
 
   webserver:
     depends_on:
