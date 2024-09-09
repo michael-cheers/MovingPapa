@@ -1687,6 +1687,15 @@
                                 }*/
                             </style>
 
+                            <script>
+                                function updateBookingPrices(price) {
+                                    let values = document.querySelectorAll('.price-value');
+                                    let priceWOTax = price / 1.13 + 50, tax = price - priceWOTax + 50;
+                                    [priceWOTax, tax, 50, price].forEach((p, i) =>
+                                        values[i].innerText = '$' + p.toFixed(2) + ' CAD'
+                                    );
+                                }
+                            </script>
                             <div id=loggedInUI_flatConfirmAndPay style="display:none; overflow-y: auto;height:100%">
                                 <div style="max-height: calc(100vh / var(--scale, 1)); overflow-y: auto; height: 100%;">
                                     <div style='border-bottom: 1px solid #00292A;padding-bottom: 19px;margin-bottom: 92px;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 65.166px;font-style: normal;font-weight: 400;line-height: normal;' class="flatConfirmPay-body">
@@ -4647,7 +4656,11 @@ ${day}
                                             })),
                                         })));
                                         let j = await req.json();
-                                        document.querySelector('.box-price h5').innerText = `$${j[0].price}`;
+                                        let prices = document.querySelectorAll('.box-price h5:first-of-type');
+                                        updateBookingPrices(j[0].price);
+                                        for (let i = 0; i < j.length; i++) {
+                                            prices[i].innerText = `$${j[i].price.toFixed(2)}`;
+                                        }
                                     }
                                     {
                                         let d = new Date();

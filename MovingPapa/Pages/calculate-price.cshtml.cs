@@ -108,6 +108,11 @@ namespace MovingPapa.Pages
                 {
                     price,
                     time = hours
+                },
+                new
+                {
+                    price = price * 1.5m,
+                    time = hours * 1.5m
                 }
             });
         }
