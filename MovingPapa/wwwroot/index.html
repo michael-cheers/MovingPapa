@@ -4443,8 +4443,8 @@ ${day}
         </script>
     </template>
     <script>
-        const getSelectedItems = () => Array.from(
-            document.querySelectorAll('.ypm__content-part-wrapper'))
+        const getSelectedItems = elem => Array.from(
+            (elem ?? document).querySelectorAll('.ypm__content-part-wrapper'))
             .map(p => (
                 Array.from(p.querySelectorAll('.ypm__current-qty')).map(q => ({
                     item: q.parentElement.parentElement.querySelector('.ypm__selection-text').innerText.trim(),
@@ -4455,7 +4455,7 @@ ${day}
         let useBookingJson;
         let bookingJson;
         async function updatePrice() {
-            let parts = getSelectedItems();
+            let parts = getSelectedItems(document.querySelectorAll('#ypm__main-wrapper')[1]);
             let req = await fetch('/calculate-price?uuid=' + encodeURIComponent(quoteId) + '&moveDetails=' + encodeURIComponent(JSON.stringify({
                 points: [
                     { address: (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value) },
