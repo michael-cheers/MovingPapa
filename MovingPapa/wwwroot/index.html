@@ -4574,8 +4574,6 @@ ${day}
                                                 }))).filter(k => k.quantity > 0)
                                             );
 
-                                        debugger;
-
                                         let req = await fetch('/calculate-price?moveDetails=' + encodeURIComponent(JSON.stringify({
                                             points: [
                                                 { address: (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value) },
