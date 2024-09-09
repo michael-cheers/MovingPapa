@@ -4565,6 +4565,17 @@ ${day}
                                     let calendarSelectedIdx;
                                     updatePrice();
                                     async function updatePrice() {
+                                        let parts = Array.from(
+                                            document.querySelectorAll('.ypm__content-part-wrapper'))
+                                            .map(p => (
+                                                Array.from(p.querySelectorAll('.ypm__current-qty')).map(q => ({
+                                                    item: q.parentElement.parentElement.querySelector('.ypm__selection-text').innerText.trim(),
+                                                    quantity: +q.innerText.trim()
+                                                }))).filter(k => k.quantity > 0)
+                                            );
+
+                                        debugger;
+
                                         let req = await fetch('/calculate-price?moveDetails=' + encodeURIComponent(JSON.stringify({
                                             points: [
                                                 { address: (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value) },
@@ -4574,10 +4585,10 @@ ${day}
                                             moveTime: ['Early Morning', 'Afternoon', 'Late Afternoon', 'Evening'].indexOf(document.querySelector('.time-of-day-active').innerText.trim()),
                                             moveType: ['Full move', 'Partial move', '5 items or less', 'Commercial'].indexOf(document.querySelector('.move-type-active').innerText.trim()),
                                             needsPackingHelp: yesINeedHelpWithPacking.checked,
-                                            rooms: roomList.map(r => ({
+                                            rooms: roomList.map((r, i) => ({
                                                 room: ['Bedroom', 'Living Room', 'Dining Room', 'Kitchen', 'Bathroom', 'Office', 'Garage', 'Basement', 'Storage Locker', 'Backyard', 'Other'].indexOf(
                                                     r[0].split(' ')[0]),
-                                                items: r[1].map(it => ({item: it, quantity: 1}))
+                                                items: parts[i]
                                             }))
                                         })));
                                         let j = await req.json();
