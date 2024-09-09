@@ -1688,6 +1688,15 @@
                             </div>
                         </div>
                     </div>
+                    <script>
+                        function goBackToGetQuote() {
+                            if (pickUpPoint2.value === '')
+                                pickUpPoint2.value = pickUpPoint.value;
+                            if (destinationPoint2.value === '')
+                                destinationPoint2.value = destinationPoint.value;
+                            gotoStage(0);
+                        }
+                    </script>
                     <template>
                         <div style="display:none;z-index:9999;position: fixed;top: 0;left: 0%;width:250vw;height:250vh;overflow:hidden;background-color: rgb(0, 41, 42);" id="quotePopup" class="popup bottom-bg">
                             <style>
@@ -1746,7 +1755,7 @@
                                                         <div class=fromAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
                                                             22 Bay street, Toronto ON M5V 2R5
                                                         </div>
-                                                        <button onclick="gotoStage(0)" style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
+                                                        <button onclick="goBackToGetQuote()" style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
                                                             Edit
                                                         </button>
                                                     </div>
@@ -1757,7 +1766,7 @@
                                                         <div class=toAddress style='color: #FFF;font-family: "Arial Rounded MT";font-size: 35px;font-style: normal;font-weight: 400;line-height: normal;'>
                                                             22 Bay street, Toronto ON M5V 2R5
                                                         </div>
-                                                        <button onclick="gotoStage(0)" style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
+                                                        <button onclick="goBackToGetQuote()" style='background: transparent;border: none;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 35.586px;font-style: normal;font-weight: 400;line-height: normal;text-decoration-line: underline;'>
                                                             Edit
                                                         </button>
                                                     </div>
@@ -3952,7 +3961,7 @@ ${day}
                 <div class="ypm__footer-wrapper" style="text-align: center;">
                     <p style="margin-bottom:0px!important;margin-left:-10px;margin-right:-10px">Slide to confirm that the information is accurate.</p>
                     <p class="ypm__inacc-text" style="margin-bottom:-40px">Inaccuracies may affect service pricing.</p>
-                    <button onclick="nextStage(); return false;" style="margin-top: -100px; width: 100%; border: none; align-self: stretch; padding-left: calc(var(--scale, 1) * 32.98px); padding-right: calc(var(--scale, 1) * 32.98px); padding-top: calc(var(--scale, 1) * 39.58px); padding-bottom: calc(var(--scale, 1) * 39.58px); background: #F84734; border-radius: calc(var(--scale, 1) * 16.49px); justify-content: center; align-items: center; display: inline-flex ">
+                    <button onclick="updatePrice().then(() => nextStage()); return false;" style="margin-top: -100px; width: 100%; border: none; align-self: stretch; padding-left: calc(var(--scale, 1) * 32.98px); padding-right: calc(var(--scale, 1) * 32.98px); padding-top: calc(var(--scale, 1) * 39.58px); padding-bottom: calc(var(--scale, 1) * 39.58px); background: #F84734; border-radius: calc(var(--scale, 1) * 16.49px); justify-content: center; align-items: center; display: inline-flex ">
                         <div name="confirmInventoryBtn" style="color: white; font-size: calc(var(--scale, 1) * 49.47px); font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">
                             Next
                         </div>
@@ -4432,6 +4441,30 @@ ${day}
                     quantity: +q.innerText.trim()
                 }))).filter(k => k.quantity > 0)
             );
+
+        let useBookingJson;
+        let bookingJson;
+        async function updatePrice() {
+            let parts = getSelectedItems();
+            let req = await fetch('/calculate-price?uuid=' + encodeURIComponent(quoteId) + '&moveDetails=' + encodeURIComponent(JSON.stringify({
+                points: [
+                    { address: (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value) },
+                    { address: (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value) }
+                ],
+                moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
+                moveTime: ['Early Morning', 'Afternoon', 'Late Afternoon', 'Evening'].indexOf(document.querySelector('.time-of-day-active').innerText.trim()),
+                moveType: ['Full move', 'Partial move', '5 items or less', 'Commercial'].indexOf(document.querySelector('.move-type-active').innerText.trim()),
+                needsPackingHelp: yesINeedHelpWithPacking.checked,
+                rooms: roomList.map((r, i) => ({
+                    room: ['Bedroom', 'Living Room', 'Dining Room', 'Kitchen', 'Bathroom', 'Office', 'Garage', 'Basement', 'Storage Locker', 'Backyard', 'Other'].indexOf(
+                        r[0].split(' ')[0]),
+                    items: parts[i]
+                })),
+            })));
+            bookingJson = await req.json();
+            updateBookingPrices(bookingJson[0].price);
+            useBookingJson?.();
+        }
     </script>
     <template id="stage6">
         <div style="">
@@ -4653,32 +4686,15 @@ ${day}
                                 <ul id="list-slider" class="list-slider owl-carousel">
                                 </ul>
                                 <script>
+                                    useBookingJson = () => {
+                                        let prices = document.querySelectorAll('.box-price h5:first-of-type');
+                                        for (let i = 0; i < bookingJson.length; i++) {
+                                            prices[i].innerText = `$${bookingJson[i].price.toFixed(2)}`;
+                                        }
+                                    };
+                                    useBookingJson();
                                     let calendarSelectedIdx;
                                     updatePrice();
-                                    async function updatePrice() {
-                                        let parts = getSelectedItems();
-                                        let req = await fetch('/calculate-price?uuid=' + encodeURIComponent(quoteId) + '&moveDetails=' + encodeURIComponent(JSON.stringify({
-                                            points: [
-                                                { address: (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value) },
-                                                { address: (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value) }
-                                            ],
-                                            moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
-                                            moveTime: ['Early Morning', 'Afternoon', 'Late Afternoon', 'Evening'].indexOf(document.querySelector('.time-of-day-active').innerText.trim()),
-                                            moveType: ['Full move', 'Partial move', '5 items or less', 'Commercial'].indexOf(document.querySelector('.move-type-active').innerText.trim()),
-                                            needsPackingHelp: yesINeedHelpWithPacking.checked,
-                                            rooms: roomList.map((r, i) => ({
-                                                room: ['Bedroom', 'Living Room', 'Dining Room', 'Kitchen', 'Bathroom', 'Office', 'Garage', 'Basement', 'Storage Locker', 'Backyard', 'Other'].indexOf(
-                                                    r[0].split(' ')[0]),
-                                                items: parts[i]
-                                            })),
-                                        })));
-                                        let j = await req.json();
-                                        let prices = document.querySelectorAll('.box-price h5:first-of-type');
-                                        updateBookingPrices(j[0].price);
-                                        for (let i = 0; i < j.length; i++) {
-                                            prices[i].innerText = `$${j[i].price.toFixed(2)}`;
-                                        }
-                                    }
                                     {
                                         let d = new Date();
                                         for (let n = 0; n < 180; n++) {
