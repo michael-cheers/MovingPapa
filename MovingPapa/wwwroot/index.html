@@ -4841,11 +4841,22 @@ ${day}
                         nav: false,
                         dots: false,
                         items: 3,
+                        onTranslated: function (me) {
+                            let center = me.target.querySelector('.owl-item.center');
+                            let [, monthName, dayNum] = center.innerText.trim().split(' ');
+                            let monthIdx = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].indexOf(monthName);
+                            let today = new Date();
+                            let y = today.getFullYear(), currentMonthIdx = today.getMonth();
+                            if (monthIdx < currentMonthIdx)
+                                y++;
+                            selectedCalendarDate = +(new Date(y, monthIdx, dayNum));
+                            updateDates();
+                            updatePrice();
+                        }
                     });
                     $('.list-slider').trigger('to.owl.carousel', [calendarSelectedIdx, 0]);
                     let arrowContainer = document.createElement('div');
                     arrowContainer.style.position = 'relative';
-                    arrowContainer.style.zIndex = '99999';
                     //arrowContainer.style.display = 'flex';
                     //arrowContainer.style.justifyContent = 'space-around';
                     let div1 = document.createElement('button');
