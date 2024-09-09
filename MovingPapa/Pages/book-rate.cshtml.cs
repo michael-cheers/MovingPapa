@@ -36,7 +36,7 @@ namespace MovingPapa.Pages
                 @$"Dear {quote.FullName},
 Thank you for booking with us!
 
-Your card will be charged ${quote.PriceInCents / 100m - 50} 24 hours before your move.
+Your card will be charged ${(quote.PriceInCents / 100m - 50):0.00} 24 hours before your move.
 
 Order Code
 {orderId}
