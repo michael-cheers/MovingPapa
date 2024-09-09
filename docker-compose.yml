@@ -16,6 +16,7 @@ services:
     restart: unless-stopped
   movingpapa:
     image: ${DOCKER_REGISTRY-}movingpapa
+    env_file: .env
     build:
       context: .
       dockerfile: MovingPapa/Dockerfile
