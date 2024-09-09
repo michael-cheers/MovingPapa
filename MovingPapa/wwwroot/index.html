@@ -3372,11 +3372,13 @@ ${day}
                     </div>
                     <div class="custom-select" style="">
                         <select class="dropdown" style="background-color: #012122;">
-                            <option class="service-small" value="">1 bedroom apartment </option>
-                            <option class="service-small" value="">2 bedroom apartment </option>
-                            <option class="service-small" value="">3 bedroom house </option>
-                            <option class="service-small" value="">4 bedroom house </option>
-                            <option class="service-small" value="">Storage (10x10) </option>
+                            <option class="service-small" value="1 bedroom apartment">1 bedroom apartment</option>
+                            <option class="service-small" value="2 bedroom apartment">2 bedroom apartment</option>
+                            <option class="service-small" value="2 bedroom house">2 bedroom house</option>
+                            <option class="service-small" value="3 bedroom apartment">3 bedroom apartment </option>
+                            <option class="service-small" value="3 bedroom house">3 bedroom house </option>
+                            <option class="service-small" value="4 bedroom house">4 bedroom house </option>
+                            <option class="service-small" value="1 storage">Storage (10x10) </option>
                           </select>
                           
                           <style>
@@ -3392,6 +3394,7 @@ ${day}
                                 margin-right: 10px;
                                 font-family: 'Arial Rounded MT';
                                 }
+
 .custom-select {
   min-width: 350px;
   position: relative;
@@ -3408,6 +3411,7 @@ ${day}
     color: #fff;
     cursor: pointer;
 }
+
 .custom-select option.service-small {
     font-size: 16px;
 }
@@ -3626,7 +3630,7 @@ ${day}
                     <div style="background-color: #012122;white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal; ">
                         Yes
                         <div class="form-check papa-check">
-                            <input oninput="updateMoveValidation()" class="form-check-input" type="checkbox">
+                                    <input id="yesINeedHelpWithPacking" oninput="updateMoveValidation()" class="form-check-input" type="checkbox">
                         </div>
                     </div>
                     <div style="background-color: #012122; white-space: nowrap; width: 441px; padding: 33px; margin-right: 20px; border-radius: 32.935px; border: 5.014px solid #00292A; justify-content: space-between; display: flex; border-radius: 32.935px; border: 5.014px solid #00292A; color: #FFF; font-family: &quot;Arial Rounded MT Bold&quot;; font-size: var(--const-font-size); font-style: normal; font-weight: 400; line-height: normal;">
@@ -3660,13 +3664,16 @@ ${day}
             .pad-a-bit {
                 padding-left: 50px!important;
             }
+
             .pad-a-bit p {
                 padding-right: 60px;
                 font-family:'Arial Rounded MT';
             }
+
             .padABitActive {
                 border: 4.58px solid #F84734 !important;
             }
+
             .pad-a-bit.padABitActive > div > p {
                 max-height: 5em;
             }
@@ -3675,10 +3682,8 @@ ${day}
                 max-height: 0px;
             }
         </style>
-        <div
-            style="padding: 20px; color: #fff;background-color: #00292A;">
-            <div
-                style="border-top: 4px solid #013C3D; display: flex; flex-direction: column; padding: 1rem 2rem; margin: 0px 0px; gap: 1.2rem; padding-top: 100px; margin-top: -60px">
+        <div style="padding: 20px; color: #fff;background-color: #00292A;">
+            <div style="border-top: 4px solid #013C3D; display: flex; flex-direction: column; padding: 1rem 2rem; margin: 0px 0px; gap: 1.2rem; padding-top: 100px; margin-top: -60px">
                 <h2 style="font-size: 48px; font-weight: 800;text-align: left;">Move types</h2>
                 <div style="display: flex;flex-direction: column;gap: 1.5rem;">
                     <script>
@@ -3770,16 +3775,36 @@ ${day}
                 </div>
 
             </div>
-            <div
-                style="margin-top: 99px;display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 1rem;width: 100%;">
+            <div style="margin-top: 99px;display: flex;flex-direction: column;justify-content: center;align-items: center;gap: 1rem;width: 100%;">
                 <div style="width: 100%; height: 4px; background-color: #013C3D;"></div>
-                <span
-                    style="text-align: center; margin-top: 20px;font-size: 53px;font-weight: 400; color: #fff;border-bottom: 4px solid #fff; cursor: pointer;"
+                <span style="text-align: center; margin-top: 20px;font-size: 53px;font-weight: 400; color: #fff;border-bottom: 4px solid #fff; cursor: pointer;"
                     onclick="previousStage();">Go back</span>
 
             </div>
         </div>
     </template>
+    <template id="inventoryItem">
+        <div class="ypm__selection-row-wrapper">
+            <span class="ypm__selection-text">Beds</span>
+            <button class="ypm__start-calc-btn">Add</button>
+            <div class="ypm__qty-calculator d-none">
+                <span class="ypm__qty-handler ypm__qty-decrease">-</span>
+                <span class="ypm__current-qty" data-qty="0">0</span>
+                <span class="ypm__qty-handler ypm__qty-increase">+</span>
+            </div>
+        </div>
+    </template>
+    <template id=inventoryRoom>
+        <div class="ypm__content-part-wrapper ypm__content-part-one ypm__active-part">
+            <p class="ypm__section-heading">Primary bedroom</p>
+            <div class="ypm__selection-rows-wrapper">
+
+            </div>
+        </div>
+    </template>
+    <script>
+        let roomList = [];
+    </script>
     <template id="stage4">
         <div id="ypm__main-wrapper" style="transform:scale(calc(1 / var(--scale, 1)));width: calc(100% * var(--scale, 1)); transform-origin: 0% 0%">
             <div class="ypm__body-wrapper">
@@ -3799,132 +3824,38 @@ ${day}
                         </div>
                     </div>
                     <div class="ypm__content-wrapper">
-                        <div class="ypm__content-part-wrapper ypm__content-part-one ypm__active-part">
-                            <p class="ypm__section-heading">Primary bedroom</p>
-                            <div class="ypm__selection-rows-wrapper">
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="ypm__content-part-wrapper">
-                            <p class="ypm__section-heading">Secondary bedroom</p>
-                            <div class="ypm__selection-rows-wrapper">
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="ypm__content-part-wrapper">
-                            <p class="ypm__section-heading">Tertiary bedroom</p>
-                            <div class="ypm__selection-rows-wrapper">
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                                <div class="ypm__selection-row-wrapper">
-                                    <span class="ypm__selection-text">Beds</span>
-                                    <button class="ypm__start-calc-btn">Add</button>
-                                    <div class="ypm__qty-calculator d-none">
-                                        <span class="ypm__qty-handler ypm__qty-decrease">-</span>
-                                        <span class="ypm__current-qty" data-qty="0">0</span>
-                                        <span class="ypm__qty-handler ypm__qty-increase">+</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+                <script>
+                    {
+                        let contentWrapper = document.currentScript.previousElementSibling;
+                        let buildingType = document.querySelector('#stage1Div > [name=fromOnly] > .custom-select > select').value;
+                        let numBedrooms = +buildingType.split(' ')[0];
+                        function createRoom(name) {
+                            let r = inventoryRoom.content.firstElementChild.cloneNode(true);
+                            r.querySelector('.ypm__section-heading').innerText = name;
+                            contentWrapper.appendChild(r);
+                            return r;
+                        }
+                        function addItem(room, name) {
+                            let addTo = room.querySelector('.ypm__selection-rows-wrapper');
+                            let itemDiv = inventoryItem.content.firstElementChild.cloneNode(true);
+                            itemDiv.querySelector('.ypm__selection-text').innerText = name;
+                            addTo.appendChild(itemDiv);
+                            return itemDiv;
+                        }
+                        if (roomList.length === 0) {
+                            for (let i = 0; i < numBedrooms; i++) {
+                                roomList.push([`Bedroom ${i + 1}`, ["Bed", "Nightstand", "Dresser"]]);
+                            }
+                        }
+                        for (let [name, items] of roomList) {
+                            let room = createRoom(name);
+                            for (let item of items) {
+                                addItem(room, item);
+                            }
+                        }
+                    }
+                </script>
                 </div>
                 <div class="ypm__footer-wrapper" style="text-align: center;">
                     <p style="margin-bottom:0px!important;margin-left:-10px;margin-right:-10px">Slide to confirm that the information is accurate.</p>
@@ -4153,11 +4084,12 @@ ${day}
                     padding-bottom: 5px;
                     margin-bottom: 5px;
                 }
+
                 .isConfirm .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper {
                     background-color: #00292A;
                     border: 2px solid #00292A;
-
                 }
+
                     .ypm__content-part-wrapper > .ypm__selection-rows-wrapper > .ypm__selection-row-wrapper > .ypm__selection-text {
                         font-family: 'Arial Rounded MT Bold';
                     }
@@ -4620,6 +4552,26 @@ ${day}
                                 </ul>
                                 <script>
                                     let calendarSelectedIdx;
+                                    updatePrice();
+                                    async function updatePrice() {
+                                        let req = await fetch('/calculate-price?moveDetails=' + encodeURIComponent(JSON.stringify({
+                                            points: [
+                                                { address: (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value) },
+                                                { address: (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value) }
+                                            ],
+                                            moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
+                                            moveTime: ['Early Morning', 'Afternoon', 'Late Afternoon', 'Evening'].indexOf(document.querySelector('.time-of-day-active').innerText.trim()),
+                                            moveType: ['Full move', 'Partial move', '5 items or less', 'Commercial'].indexOf(document.querySelector('.move-type-active').innerText.trim()),
+                                            needsPackingHelp: yesINeedHelpWithPacking.checked,
+                                            rooms: roomList.map(r => ({
+                                                room: ['Bedroom', 'Living Room', 'Dining Room', 'Kitchen', 'Bathroom', 'Office', 'Garage', 'Basement', 'Storage Locker', 'Backyard', 'Other'].indexOf(
+                                                    r[0].split(' ')[0]),
+                                                items: r[1].map(it => ({item: it, quantity: 1}))
+                                            }))
+                                        })));
+                                        let j = await req.json();
+                                        document.querySelector('.box-price h5').innerText = `$${j[0].price}`;
+                                    }
                                     {
                                         let d = new Date();
                                         for (let n = 0; n < 180; n++) {
@@ -4876,8 +4828,6 @@ ${day}
     </script>
 
     <!-- Formula-->
-
-
     <!--@await RenderSectionAsync("Scripts", required: false)-->
 </body>
 </html>
