@@ -94,7 +94,7 @@ namespace MovingPapa.Pages
                 ( >=3, buildingType: BuildingType.Apartment or BuildingType.Studio ) p => numRelevantBedrooms,
                 var p => numRelevantBedrooms + 1
             } + (numRelevantExtraRooms > 0 ? 1 : 0);
-            decimal dayRate = (await DB.RateCalendars.SingleOrDefaultAsync(r => r.Date == DateTime.Parse(moveDetailsParsed.moveDate, CultureInfo.InvariantCulture))).RatePerMoverInCents / 100m;
+            decimal dayRate = ((await DB.RateCalendars.SingleOrDefaultAsync(r => r.Date == DateTime.Parse(moveDetailsParsed.moveDate, CultureInfo.InvariantCulture)))?.RatePerMoverInCents ?? 6000) / 100m;
             decimal pricePerHour = movers * dayRate;
             decimal hours = ((decimal)secs / 3600)
                 + (numRelevantBedrooms + numRelevantExtraRooms) * (moveDetailsParsed.needsPackingHelp ? 1.5m : 1);
