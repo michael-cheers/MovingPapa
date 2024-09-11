@@ -4893,6 +4893,7 @@ ${day}
                                 else
                                     $('.box-slide').trigger('prev.owl.carousel');
                             }
+                            updateBookingPrices(bookingJson[centerIdx - 2]?.price ?? bookingJson[0].price);
                             oldCenterIdx = centerIdx;
                         }
                     })
