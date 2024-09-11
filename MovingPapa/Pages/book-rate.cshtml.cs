@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using MovingPapa.DB;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace MovingPapa.Pages
 {
@@ -17,15 +19,16 @@ namespace MovingPapa.Pages
                 _ => char.ToUpper(c)
             }).ToArray());
         }
-        public async Task<IActionResult> OnGet(string uuid)
+        public async Task<IActionResult> OnGet(string uuid, int packageIdx)
         {
             var quote = await DB.QuotesAndContacts.SingleAsync(q => q.Uuid == uuid);
+            decimal packagePrice = (decimal)JsonSerializer.Deserialize<JsonArray>(quote.Packages)[packageIdx]["price"].AsValue();
             await DB.Moves.AddAsync(new()
             {
                 MoveDate = quote.MoveDate,
                 MoveDetails = quote.MoveInfo,
                 MoveTime = quote.MoveTime,
-                PriceInCents = quote.PriceInCents.Value,
+                PriceInCents = (int)Math.Round(packagePrice * 100),
                 QuoteId = quote.Id,
                 Uuid = quote.Uuid,
                 Email = quote.Email,
@@ -36,7 +39,7 @@ namespace MovingPapa.Pages
                 @$"Dear {quote.FullName},
 Thank you for booking with us!
 
-Your card will be charged ${(quote.PriceInCents / 100m - 50):0.00} 24 hours before your move.
+Your card will be charged ${(packagePrice - 50):0.00} 24 hours before your move.
 
 Order Code
 {orderId}

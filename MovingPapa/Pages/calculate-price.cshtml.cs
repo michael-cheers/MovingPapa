@@ -100,10 +100,7 @@ namespace MovingPapa.Pages
                 + (numRelevantBedrooms + numRelevantExtraRooms) * (moveDetailsParsed.needsPackingHelp ? 1.5m : 1);
             decimal km = m / 1000;
             decimal price = Math.Round(hours * pricePerHour + km * 1, 2);
-            q.PriceInCents = (int)(price * 100);
-            q.TimeUpdated = DateTime.UtcNow;
-            await DB.SaveChangesAsync();
-            return new JsonResult(new[]
+            var packages = new[]
             {
                 new
                 {
@@ -112,10 +109,14 @@ namespace MovingPapa.Pages
                 },
                 new
                 {
-                    price = price * 1.5m,
+                    price = Math.Round(price * 1.5m, 2),
                     time = hours * 1.5m
                 }
-            });
+            };
+            q.Packages = JsonSerializer.Serialize(packages);
+            q.TimeUpdated = DateTime.UtcNow;
+            await DB.SaveChangesAsync();
+            return new JsonResult(packages);
         }
     }
 }

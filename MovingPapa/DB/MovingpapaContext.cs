@@ -66,6 +66,7 @@ public partial class MovingpapaContext : DbContext
             entity.Property(e => e.MoveDate).HasColumnType("datetime");
             entity.Property(e => e.MoveInfo).HasColumnType("json");
             entity.Property(e => e.MoveTime).HasColumnType("enum('Early Morning','Afternoon','Late Afternoon','Evening')");
+            entity.Property(e => e.Packages).HasColumnType("json");
             entity.Property(e => e.PhoneNumber).HasMaxLength(256);
             entity.Property(e => e.TimeCreated)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")

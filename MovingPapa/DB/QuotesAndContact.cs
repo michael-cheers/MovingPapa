@@ -23,7 +23,7 @@ public partial class QuotesAndContact
 
     public string? MoveInfo { get; set; }
 
-    public int? PriceInCents { get; set; }
+    public string? Packages { get; set; }
 
     public DateTime? TimeUpdated { get; set; }
 

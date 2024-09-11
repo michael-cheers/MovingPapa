@@ -2900,7 +2900,7 @@ ${day}
                         </template>
                         <script>
                             async function confirmBooking() {
-                                let req = await fetch('/book-rate?uuid=' + encodeURIComponent(quoteId));
+                                let req = await fetch('/book-rate?uuid=' + encodeURIComponent(quoteId) + '&packageIdx=' + encodeURIComponent(currentPackage));
                                 let text = await req.text();
                                 if (text === quoteId) {
                                     nextStage();
@@ -4871,7 +4871,7 @@ ${day}
                     document.querySelector('.list-slider').before(arrowContainer);
                 });
 
-                let oldCenterIdx = 2;
+                let oldCenterIdx = 2, currentPackage = 0;
                 //////////////////////////////////////////////////////
                 $(document).ready(function () {
                     $('.mini-slide').owlCarousel({
@@ -4893,7 +4893,8 @@ ${day}
                                 else
                                     $('.box-slide').trigger('prev.owl.carousel');
                             }
-                            updateBookingPrices(bookingJson[centerIdx - 2]?.price ?? bookingJson[0].price);
+                            currentPackage = centerIdx - 2;
+                            updateBookingPrices(bookingJson[currentPackage]?.price ?? bookingJson[0].price);
                             oldCenterIdx = centerIdx;
                         }
                     })
