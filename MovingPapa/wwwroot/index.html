@@ -4451,7 +4451,7 @@ ${day}
                 })),
             })));
             bookingJson = await req.json();
-            updateBookingPrices(bookingJson[0].price);
+            updateBookingPrices(bookingJson[currentPackage]?.price ?? bookingJson[0].price);
             useBookingJson?.();
         }
     </script>
