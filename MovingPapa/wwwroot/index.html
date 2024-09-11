@@ -3147,7 +3147,10 @@ ${day}
                                             //}
                                         }
                                     }
-                                    service.getQueryPredictions({ input: val }, displaySuggestions);
+                                    service.getQueryPredictions({
+                                        input: val,
+                                        componentRestrictions: { country: "ca" }
+                                    }, displaySuggestions);
                                 });
                                 /*execute a function presses a key on the keyboard:*/
                                 inp.addEventListener("keydown", function (e) {
