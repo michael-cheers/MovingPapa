@@ -699,7 +699,7 @@
                             }
                         }
                         function requestCall() {
-                            stageIdx = stages.findIndex(s => s[0] === "Great choice! how can we reach you?" && s[4] === 'monsterCall.png');
+                            stageIdx = stages.findIndex(s => s[0] === "Great, we’ll make this easy. Just share your details, and we’ll be in touch shortly." && s[4] === 'monsterCall.png');
                             displayStage();
                         }
                         function gotoStage(newStageIdx) {
@@ -731,19 +731,19 @@
                                     /*each stage is: [aboveProgressBarText, belowProgressBarText, template (or array of them), progressBarValue, progressBarImage ]*/
                                     ["", "", stage0, -1, ""],
                                     ["How would you like to receive your quote?", "Help us get your move just right by listing exactly what’s coming with you.", quoteMethodSelector, -1, 'monsterCall.png'],
-                                    ["Do you have a date in mind?", "Not sure? Enter an approximate date", calendarScreen, 25, 'monsterCall.png'],
+                                    ["Let’s talk timing. When’s the big day? not sure ? Enter an approximate date", "Not sure? Enter an approximate date", calendarScreen, 25, 'monsterCall.png'],
                                     [progressInd1.innerText.replaceAll('\n', ''), progressInd2.innerText.replaceAll('\n', ''), [
                                         stage0Heading,
                                         (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'sendContactDetails(this); nextStage()'); return t; })(quoteContactForm.content.cloneNode(true))
                                     ], 237.5, 'monster.png'],
-                                    ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
+                                    ["Lets talk about your move. What's your current setup?", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
                                         (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = pickUpPoint.value.replace(/, Canada$/, ''); return c; })(),
                                         484, 'monster2.png'],
-                                    ...(stops.map((stop, i) => ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
+                                    ...(stops.map((stop, i) => ["What type of home is this stop?", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
                                         (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = stop.value.replace(/, Canada$/, ''); let f = c.querySelector('[name=fromOnly]'); c.querySelector('[name=toOrFrom]').innerText = 'to'; /*f.style.display = 'none';*/ f.nextElementSibling.style.borderBottom = f.style.borderBottom; c.querySelector('[name=origOrDest]').innerText = `Stop ${i + 1}`; return c; })(),
                                         484 + (i + 1) * (679 - 484) / (stops.length + 1), 'monster3.png'
                                     ])),
-                                    ["Let's talk about your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
+                                    ["What type of home is the destination?", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
                                         (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = destinationPoint.value.replace(/, Canada$/, ''); let f = c.querySelector('[name=fromOnly]'); c.querySelector('[name=toOrFrom]').innerText = 'to'; /*f.style.display = 'none';*/ f.nextElementSibling.style.borderTop = f.style.borderTop; c.querySelector('[name=origOrDest]').innerText = 'Drop-off'; return c; })(),
                                         679, 'monster3.png'],
                                     ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 890, 'monster4.png'],
@@ -756,7 +756,7 @@
                                         stage6, -1, 'monster7.png'],
                                     ["", "", stage7, -1, ''],
                                     ["", "", stage8, -1, ''],
-                                    ["Great choice! how can we reach you?", "",
+                                    ["Great, we’ll make this easy. Just share your details, and we’ll be in touch shortly.", "",
                                         (() => { let f = quoteContactForm.content.cloneNode(true); f.querySelector('[name=contactForm]').previousElementSibling.remove(); return f; })(),
                                         -1, 'monsterCall.png']
                                 ];
@@ -1367,7 +1367,7 @@
                                             </svg>
                                             Reliable, On-Time Service
                                         </div>
-                                        <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">Moving doesn’t have to come at the expense of the environment. We’ve investing in a green fleet and eco-friendly materials because we care about our planet just as much as you do.</div>
+                                        <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">We believe in transparency. That means the price we quote is the price you pay - no hidden fees, no unexpected charges.</div>
                                     </div>
                                     <svg onclick="showOrHide(this)" style="display:none" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
                                     <svg onclick="showOrHide(this)" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M36.7778 18.8335C35.0903 18.8335 33.7222 20.2015 33.7222 21.8891V34.1113H21.5C19.8125 34.1113 18.4445 35.4793 18.4445 37.1668C18.4445 38.8544 19.8125 40.2224 21.5 40.2224H33.7222V52.4446C33.7222 54.1321 35.0903 55.5002 36.7778 55.5002C38.4653 55.5002 39.8333 54.1321 39.8333 52.4446V40.2224H52.0556C53.7431 40.2224 55.1111 38.8544 55.1111 37.1668C55.1111 35.4793 53.7431 34.1113 52.0556 34.1113H39.8333V21.8891C39.8333 20.2015 38.4653 18.8335 36.7778 18.8335Z" fill="#F84734" /></svg>
@@ -1380,7 +1380,7 @@
                                             </svg>
                                             Sustainable Moving Choices
                                         </div>
-                                        <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">Stay informed every step of the way with our real-time tracking. Our team is discreet, ensuring your move is smooth and respectful of you and your space.</div>
+                                        <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">Moving doesn’t have to come at the expense of the environment. We’ve investing in a green fleet and eco-friendly materials because we care about our planet just as much as you do.</div>
                                     </div>
                                     <svg onclick="showOrHide(this)" style="display:none" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
                                     <svg onclick="showOrHide(this)" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M36.7778 18.8335C35.0903 18.8335 33.7222 20.2015 33.7222 21.8891V34.1113H21.5C19.8125 34.1113 18.4445 35.4793 18.4445 37.1668C18.4445 38.8544 19.8125 40.2224 21.5 40.2224H33.7222V52.4446C33.7222 54.1321 35.0903 55.5002 36.7778 55.5002C38.4653 55.5002 39.8333 54.1321 39.8333 52.4446V40.2224H52.0556C53.7431 40.2224 55.1111 38.8544 55.1111 37.1668C55.1111 35.4793 53.7431 34.1113 52.0556 34.1113H39.8333V21.8891C39.8333 20.2015 38.4653 18.8335 36.7778 18.8335Z" fill="#F84734" /></svg>
@@ -1393,7 +1393,7 @@
                                             </svg>
                                             Tracking Service
                                         </div>
-                                        <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">We believe in honest communication from the start. We provide clear, upfront pricing with no hidden fees, so you know exactlyt you’re paying for.</div>
+                                        <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">Stay informed every step of the way with our real-time tracking. Our team is discreet, ensuring your move is smooth and respectful of you and your space.</div>
                                     </div>
                                     <svg onclick="showOrHide(this)" style="display:none" width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
                                     <svg onclick="showOrHide(this)" width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M36.7778 18.8335C35.0903 18.8335 33.7222 20.2015 33.7222 21.8891V34.1113H21.5C19.8125 34.1113 18.4445 35.4793 18.4445 37.1668C18.4445 38.8544 19.8125 40.2224 21.5 40.2224H33.7222V52.4446C33.7222 54.1321 35.0903 55.5002 36.7778 55.5002C38.4653 55.5002 39.8333 54.1321 39.8333 52.4446V40.2224H52.0556C53.7431 40.2224 55.1111 38.8544 55.1111 37.1668C55.1111 35.4793 53.7431 34.1113 52.0556 34.1113H39.8333V21.8891C39.8333 20.2015 38.4653 18.8335 36.7778 18.8335Z" fill="#F84734" /></svg>
@@ -2343,7 +2343,7 @@
                                                     <img id=progressIndImg src="monster.png" width=204 height=192 />
                                                     <div style="display: flex;flex-direction: column; justify-content: center;">
                                                         <div id=progressInd1 style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: calc(47.847px * 0.55 * 1.5);line-height: 63px;display: flex;align-items: center;color: #FFFFFF;">
-                                                            Hey there, you're off to a great start!
+                                                            Great, we’ll make this easy. Just share your details, and we’ll be in touch shortly.
                                                         </div>
                                                         <div id=progressInd2 style='display: none;color: #EEE; font-family: "Arial Rounded MT"; font-size: calc(33.378px * 0.55 * 1.5); font-style: normal; font-weight: 400; line-height: normal;'>
                                                             Lets build your quote.  I’ll make this as smooth and enjoyable as a stroll in the park.
