@@ -3599,7 +3599,7 @@ ${day}
             updateValidation(el.querySelector('.mp-form-button'), el.querySelector('.move-type-active') !== null && el.querySelector('input[type=checkbox]:checked') !== null);
         }
     </script>
-    <div class="" style=" background: #00292A; padding: 60px 0px; width: 100%; ">
+    <div class="pc-width-60" style=" background: #00292A; padding: 60px 0px; width: 100%; ">
         <div class="" style="margin-bottom: 80px;">
             <h3 style="font-family: Arial Rounded MT Bold;
                     font-size: 55.742px;
@@ -3614,6 +3614,13 @@ ${day}
         </div>
 
         <div class="center">
+            <style>
+                @media all and (min-width: 600px) {
+                    .pc-width-60 {
+                        width: 60%!important;
+                    }
+                }
+            </style>
         <div style="width: 90%;border: 7px solid #013C3D; border-radius: 90px; background: #00292A; ">
             <div class="" style="display: flex; justify-content: space-around; padding:60px 49px 0 49px;">
                 <button onclick="moveTypeActive(this)" class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
