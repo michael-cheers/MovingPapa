@@ -88,6 +88,10 @@
                 padding-left: calc((100vw - (1400px * 0.6)) / 2);
                 padding-right: calc((100vw - (1400px * 0.6)) / 2);
             }
+
+            #newPopupDesign {
+                height: calc(100vh / var(--scale, 1))!important;
+            }
         }
 
         @media all and (max-width: 600px) {
@@ -2395,6 +2399,13 @@
                                                 <div class="progress-bar styledProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id=progressIndBar></div>
                                             </div>
                                         </div>
+                                        <style>
+                                            @media all and (min-width: 600px) {
+                                                .popup-main-inner:not(#progressDiv) {
+                                                    height: calc(100vh / var(--scale, 1)) !important;
+                                                }
+                                            }
+                                        </style>
                                         <template id="quoteMethodSelector" class="popup-main-inner">
                                             <div class="btn-groups">
                                                 <button onclick="nextStage()" class="quote-btn">
