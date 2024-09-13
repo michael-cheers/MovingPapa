@@ -788,7 +788,7 @@
 
                             progressDiv.style.display = '';
                             //quotePopup.style.backgroundColor = '#13282A';
-                            newPopupDesign.style.backgroundColor = stage[4] === 'monster7.png' ? '#00292A' : '#012122';
+                            newPopupDesign.style.backgroundColor = stage[0] === 'Make sure the quantity is accurate' ? '#00292A' : '#012122';
                             newPopupDesign.style.display = stage[4] === '' ? 'none' : '';
                             if (stage[2] === stage3) {
                                 popupCloseButton.style.display = '';
@@ -821,10 +821,10 @@
                                 stageDiv.style.display = '';
                             } else {
                                 let tempDivOuter = document.createElement('div');
-                                tempDivOuter.style.backgroundColor = stage[4] === 'monster7.png' ? '#00292A' : 'rgb(1, 33, 34)';
+                                tempDivOuter.style.backgroundColor = stage[0] === 'Make sure the quantity is accurate' ? '#00292A' : 'rgb(1, 33, 34)';
                                 let tempDiv = document.createElement('div');
                                 tempDivOuter.appendChild(tempDiv);
-                                tempDiv.style.backgroundColor = '#00292A';
+                                tempDiv.style.backgroundColor = stage[0] === 'Secure Your Move with a $50 Deposit' ? 'rgb(1, 33, 34)' : '#00292A';
                                 tempDiv.style.paddingTop = '91px';
                                 if (stage[4] === 'monster7.png') {
                                     tempDiv.style.marginLeft = '33px';
