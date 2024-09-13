@@ -2440,6 +2440,7 @@
                                                     updateValidation(calendarTopEl.querySelector('.mp-form-button'), validateCalendarScreen());
                                                 }
                                             </script>
+                                            <div class="pc-width-60">
                                             <div class="calendar-screen">
                                                 <div class="calendar-frame">
                                                     <div class="center">
@@ -2496,6 +2497,7 @@
                                             <button class="mp-form-button" onclick="updateDates(); nextStage(); return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
                                                 <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
                                             </button>
+                                            </div>
                                         </template>
                                         <style>
                                             .styledProgress {
@@ -3622,6 +3624,13 @@ ${day}
         </button>
         </div>
 </template>
+            <style>
+                @media all and (min-width: 600px) {
+                    .pc-width-60 {
+                        width: 60%!important;
+                    }
+                }
+            </style>
 <template id="stage2">
     <script>
         document.currentScript.parentElement.style.paddingTop = '0px';
@@ -3645,13 +3654,6 @@ ${day}
         </div>
 
         <div class="center">
-            <style>
-                @media all and (min-width: 600px) {
-                    .pc-width-60 {
-                        width: 60%!important;
-                    }
-                }
-            </style>
         <div style="width: 90%;border: 7px solid #013C3D; border-radius: 90px; background: #00292A; ">
             <div class="" style="display: flex; justify-content: space-around; padding:60px 49px 0 49px;">
                 <button onclick="moveTypeActive(this)" class="" style="border: 7px solid #013C3D;background: #012122; border-radius: 60px; width: 365px;
