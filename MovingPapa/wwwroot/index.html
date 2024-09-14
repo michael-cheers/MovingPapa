@@ -828,7 +828,7 @@
                                 tempDiv.style.paddingTop = '91px';
                                 if (stage[4] === 'monster7.png') {
                                     tempDiv.style.marginLeft = '33px';
-                                    tempDiv.style.marginRight = '6px';
+                                    tempDiv.style.marginRight = '33px';
                                     tempDiv.style.paddingLeft = '0px';
                                     tempDiv.style.paddingRight = '0px';
                                 }
@@ -1680,8 +1680,8 @@
                                 <script>
                                     function updateBookingPrices(price) {
                                         let values = document.querySelectorAll('.price-value');
-                                        let priceWOTax = price / 1.13 + 50, tax = price - priceWOTax + 50;
-                                        [priceWOTax, tax, 50, price].forEach((p, i) =>
+                                        let priceWOTax = price / 1.13, tax = price - priceWOTax;
+                                        [priceWOTax, tax, price].forEach((p, i) =>
                                             values[i].innerText = '$' + p.toFixed(2) + ' CAD'
                                         );
                                     }
@@ -1818,10 +1818,6 @@
                                                     <div class="price-cell">
                                                         <div class="price-name" style="opacity: 60%;">Taxes</div>
                                                         <div class="price-value">$218.25 CAD</div>
-                                                    </div>
-                                                    <div class="price-cell" style="opacity: 70%; color: #13E74C;">
-                                                        <div class="price-name">Discounts</div>
-                                                        <div class="price-value">$50.00 CAD</div>
                                                     </div>
                                                     <div class="cell-break-line"></div>
                                                     <div class="price-cell" style="margin-top: 20px;">
@@ -3403,7 +3399,15 @@ ${day}
         </script>
     </template>
 <template id=stage1>
-    <div style='background: #00292A; overflow-y: auto;'>
+    <style>
+        /*@media all and (min-width: 600px) {
+            .pc-dif-1 {
+                transform: scale(0.8);
+                transform-origin: 50% 0;
+            }
+        }*/
+    </style>
+    <div style='background: #00292A; overflow-y: auto;' class="pc-dif-1">
             <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 48.392px;font-style: normal;font-weight: 400;line-height: 49.272px; /* 101.818% */'></div>
         <style>
             #stage1Div * {
@@ -4477,7 +4481,7 @@ ${day}
 
 
                 .box {
-                    border: calc(2px / var(--scale, 1)) solid #a84d3a;
+                    border: calc(2px / var(--scale, 1)) solid #f84734;
                     border-radius: calc(15px / var(--scale, 1));
                     margin: calc(10px / var(--scale, 1)) calc(20px / var(--scale, 1));
                     color: #fff;
@@ -4527,7 +4531,7 @@ ${day}
                 .box-price {
                     display: flex;
                     justify-content: space-between;
-                    border-top: calc(2px / var(--scale, 1)) solid #fff;
+                    border-top: 3px solid #A9A9AA;
                     border-top-style: dashed;
                     padding: calc(12px / var(--scale, 1)) calc(0px / var(--scale, 1));
                 }
@@ -4590,7 +4594,7 @@ ${day}
                 }
 
                 .terms-tags ul {
-                    padding: calc(0px / var(--scale, 1)) calc(40px / var(--scale, 1));
+                    padding: calc(0px / var(--scale, 1)) calc(0px / var(--scale, 1));
                 }
 
                 .terms-tags button.owl-prev {
@@ -4726,6 +4730,17 @@ ${day}
                                 </div>
                             </div>
 
+                            <style>
+                                .box-slide {
+                                    transform: scale(1.2);
+                                    .owl-stage
+
+                                    {
+                                        margin-top: 100px;
+                                    }
+                                }
+                            </style>
+
                             <div class="box-slide owl-carousel owl-theme">
                                 <div class="box">
                                     <div class="box-top">
@@ -4837,6 +4852,7 @@ ${day}
                     });
                     $('.list-slider').trigger('to.owl.carousel', [calendarSelectedIdx, 0]);
                     let arrowContainer = document.createElement('div');
+                    arrowContainer.style.transform = 'translateY(93px)';
                     arrowContainer.style.position = 'relative';
                     //arrowContainer.style.display = 'flex';
                     //arrowContainer.style.justifyContent = 'space-around';
@@ -4858,11 +4874,11 @@ ${day}
 </svg>`;
                     div2.style.position = 'absolute';
                     div2.style.right = '3.6%';
-                    document.querySelector('.list-slider').addEventListener('click', event => {
+                    document.querySelector('.mini-slide').addEventListener('click', event => {
                         for (let [d, a] of [[div1, 'prev.owl.carousel'], [div2, 'next.owl.carousel']]) {
                             let r = d.getBoundingClientRect();
                             if (event.clientX >= r.left && event.clientX <= r.right && event.clientY >= r.top && event.clientY <= r.bottom) {
-                                $('.list-slider').trigger(a);
+                                $('.mini-slide').trigger(a);
                                 event.preventDefault();
                                 return;
                             }
@@ -4870,7 +4886,7 @@ ${day}
                     });
                     arrowContainer.appendChild(div1);
                     arrowContainer.appendChild(div2);
-                    document.querySelector('.list-slider').before(arrowContainer);
+                    document.querySelector('.mini-slide').before(arrowContainer);
                 });
 
                 let oldCenterIdx = 2;
