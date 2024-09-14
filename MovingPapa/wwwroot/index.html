@@ -683,6 +683,8 @@
                         });
 
                         function getQuote(direct = false) {
+                            if (direct && (pickUpPoint.value === '' || destinationPoint.value === ''))
+                                return;
                             gotoStage(0);
                             history.pushState({ idx: 0, screenType: 'popup', reloadID: reloadID }, "Stage " + 0, '');
                             if (direct)
@@ -750,7 +752,7 @@
                                     ["Let’s talk timing. When’s the big day? not sure ? Enter an approximate date", "Not sure? Enter an approximate date", calendarScreen, 25, 'monsterCall.png'],
                                     [progressInd1.innerText.replaceAll('\n', ''), progressInd2.innerText.replaceAll('\n', ''), [
                                         stage0Heading,
-                                        (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'sendContactDetails(this); nextStage()'); return t; })(quoteContactForm.content.cloneNode(true))
+                                        (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'if (isActiveBtn(this)) { sendContactDetails(this); nextStage() }'); return t; })(quoteContactForm.content.cloneNode(true))
                                     ], 237.5, 'monster.png'],
                                     ["Lets talk about your move. What's your current setup?", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
                                         (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = pickUpPoint.value.replace(/, Canada$/, ''); return c; })(),
@@ -2347,6 +2349,9 @@
                                                 }
                                             }
                                         </style>
+                                        <script>
+                                            const isActiveBtn = el => el.classList.contains('mp-form-button-active');
+                                        </script>
                                         <template id="quoteMethodSelector" class="popup-main-inner">
                                             <div class="btn-groups">
                                                 <button onclick="nextStage()" class="quote-btn">
@@ -2435,7 +2440,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <button class="mp-form-button" onclick="updateDates(); nextStage(); return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+                                            <button class="mp-form-button" onclick="if (isActiveBtn(this)) { updateDates(); nextStage(); } return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
                                                 <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
                                             </button>
                                             </div>
@@ -3720,7 +3725,7 @@ ${day}
                padding: 0 50px 40px;">more info</a>
         </div>
             </div>
-        <button class="mp-form-button" onclick="updateMoveTypes(); nextStage(); nextStage(); return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+        <button class="mp-form-button" onclick="if (isActiveBtn(this)) { updateMoveTypes(); nextStage(); nextStage(); } return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
             <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
         </button>
     </div>
