@@ -767,8 +767,8 @@
                                         (() => { let d = stage4.content.cloneNode(true); d.querySelector('[name=please-confirm-inventory-head]').style.display = ''; d.querySelector('[name=searchHead]').style.display = 'none'; d.querySelector('[data-attrTarget]').setAttribute('data-isConfirm', 'true'); Array.from(d.children).forEach(e => e.classList.add('isConfirm')); return d })(), -1, 'monster7.png'],
                                     ["Secure Your Move with a $50 Deposit", "Help us get your move just right by listing exactly what’s coming with you.",
                                         stage6, -1, 'monster7.png'],
-                                    ["", "", stage7, -1, ''],
                                     ["Secure Your Move with a $50 Deposit", "", bookingPage, -1, 'monsterCall.png'],
+                                    ["", "", stage7, -1, ''],
                                     ["", "", stage8, -1, ''],
                                     ["Great, we’ll make this easy. Just share your details, and we’ll be in touch shortly.", "",
                                         (() => { let f = quoteContactForm.content.cloneNode(true); f.querySelector('[name=contactForm]').previousElementSibling.remove(); return f; })(),
@@ -4828,7 +4828,7 @@ ${day}
                             </div>
                             </div>
                         <div class="center">
-                            <button onclick="nextStage(); nextStage(); return false;" style="margin-top: 57px;width: 75%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; display: inline-flex ">
+                            <button onclick="nextStage(); return false;" style="margin-top: 57px;width: 75%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; display: inline-flex ">
                                 <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">
                                     Secure Quote
                                 </div>
