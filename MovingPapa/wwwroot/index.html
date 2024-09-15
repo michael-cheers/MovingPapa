@@ -4025,6 +4025,12 @@ ${day}
                         </div>
                     </button>
                 </div>
+            <script>
+                let previousEl = document.currentScript.previousElementSibling;
+                let prevPrevEl = previousEl.previousElementSibling;
+                let contentEl = prevPrevEl.querySelector('.ypm__content-wrapper');
+                contentEl.style.maxHeight = `${window.innerHeight - prevPrevEl.getBoundingClientRect().top - previousEl.getBoundingClientRect().height - (prevPrevEl.getBoundingClientRect().height - contentEl.getBoundingClientRect().height)}px`;
+            </script>
         </div>
         <script data-attrTarget="true" data-onSize="stage4OnSize()">
             document.currentScript.parentElement.querySelectorAll('.ypm__start-calc-btn').forEach(btn => {
