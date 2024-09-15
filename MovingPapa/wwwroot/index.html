@@ -3775,11 +3775,14 @@ ${day}
                padding: 0 50px 40px;">more info</a>
         </div>
             </div>
-        <button class="mp-form-button" onclick="if (isActiveBtn(this)) { updateMoveTypes(); nextStage(); nextStage(); } return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+        <button class="mp-form-button" onclick="if (isActiveBtn(this)) { updateRoomItems?.(); updateMoveTypes(); nextStage(); nextStage(); } return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
             <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
         </button>
     </div>
 </template>
+    <script>
+        let updateRoomItems;
+    </script>
     <template id="stage3">
         <style>
             .pad-a-bit {
@@ -3947,12 +3950,6 @@ ${day}
         }
     </style>
     <template id="stage4">
-        <script>
-            var isConfirm = document.currentScript.classList.contains('isConfirm');
-            if (isConfirm) {
-                var confirmSelectedItems = getSelectedItems();
-            }
-        </script>
         <div id="ypm__main-wrapper" style="transform:scale(calc(1 / var(--scale, 1)));width: calc(100% * var(--scale, 1)); transform-origin: 0% 0%">
             <div class="ypm__body-wrapper">
                 <div class="ypm__search-wrapper" name="searchHead">
@@ -3972,62 +3969,151 @@ ${day}
                     </div>
                     <div class="ypm__content-wrapper" style="overflow-y:auto;">
                     </div>
-                <script>
+                <script data-attrTarget="true" data-onSize="stage4OnSize()">
+                    var stage4OnSize;
                     {
-                        let contentWrapper = document.currentScript.previousElementSibling;
-                        let buildingType = document.querySelector('#stage1Div > [name=fromOnly] > .custom-select > select').value;
-                        let numBedrooms = +buildingType.split(' ')[0];
-                        function createRoom(name) {
-                            let r = inventoryRoom.content.firstElementChild.cloneNode(true);
-                            r.querySelector('.ypm__section-heading').innerText = name;
-                            contentWrapper.appendChild(r);
-                            return r;
-                        }
-                        function addItem(room, name) {
-                            let addTo = room.querySelector('.ypm__selection-rows-wrapper');
-                            let itemDiv = inventoryItem.content.firstElementChild.cloneNode(true);
-                            itemDiv.querySelector('.ypm__selection-text').innerText = name;
-                            addTo.appendChild(itemDiv);
-                            return itemDiv;
-                        }
-                        if (roomList.length === 0) {
-                            for (let i = 0; i < numBedrooms; i++) {
-                                roomList.push([`Bedroom ${i + 1}`, ["Bed", "Nightstand", "Dresser"]]);
+                        let isConfirm = document.currentScript.closest('#ypm__main-wrapper').classList.contains('isConfirm');
+                        let currentScript1 = document.currentScript;
+                        let f = () => {
+                            let contentWrapper = currentScript1.previousElementSibling;
+                            contentWrapper.innerHTML = '';
+                            let buildingType = document.querySelector('#stage1Div > [name=fromOnly] > .custom-select > select').value;
+                            let numBedrooms = +buildingType.split(' ')[0];
+                            function createRoom(name) {
+                                let r = inventoryRoom.content.firstElementChild.cloneNode(true);
+                                r.querySelector('.ypm__section-heading').innerText = name;
+                                contentWrapper.appendChild(r);
+                                return r;
                             }
-                            let roomItems = {
-                                Garage: ["Bicycle", "Lawnmower", "Toolbox"],
-                                Basement: ["Freezer", "Storage bins", "Workbench"],
-                                "Storage locker": ["Boxes", "Furniture", "Appliances"],
-                                Backyard: ["Patio furniture", "Grill", "Lawnmower"]
-                            };
-                            for (let name of document.getElementById('extraRoomsDropdown').querySelectorAll('option:checked')) {
-                                roomList.push([
-                                    name.innerText, roomItems[name.innerText.trim()]
-                                ])
+                            function addItem(room, name) {
+                                let addTo = room.querySelector('.ypm__selection-rows-wrapper');
+                                let itemDiv = inventoryItem.content.firstElementChild.cloneNode(true);
+                                itemDiv.querySelector('.ypm__selection-text').innerText = name;
+                                addTo.appendChild(itemDiv);
+                                return itemDiv;
                             }
-                        }
-                        if (isConfirm) {
-                            for (let i = 0; i < confirmSelectedItems.length; i++) {
-                                let roomName = roomList[i][0];
-                                let items = confirmSelectedItems[i];
-                                if (items.every(i => i.quantity === 0))
-                                    continue;
-                                let room = createRoom(roomName);
-                                for (let item of items) {
-                                    let itemDiv = addItem(room, item.item);
-                                    setTimeout(() => {
-                                        itemDiv.querySelector('.ypm__start-calc-btn').click();
-                                        itemDiv.querySelector('.ypm__current-qty').innerText = item.quantity;
-                                    });
+                            if (!isConfirm) {
+                                roomList = [];
+                                for (let i = 0; i < numBedrooms; i++) {
+                                    roomList.push([`Bedroom ${i + 1}`, ["Bed", "Nightstand", "Dresser"]]);
+                                }
+                                let roomItems = {
+                                    Garage: ["Bicycle", "Lawnmower", "Toolbox"],
+                                    Basement: ["Freezer", "Storage bins", "Workbench"],
+                                    "Storage locker": ["Boxes", "Furniture", "Appliances"],
+                                    Backyard: ["Patio furniture", "Grill", "Lawnmower"]
+                                };
+                                for (let name of document.getElementById('extraRoomsDropdown').querySelectorAll('option:checked')) {
+                                    roomList.push([
+                                        name.innerText, roomItems[name.innerText.trim()]
+                                    ])
                                 }
                             }
-                        }
-                        else for (let [name, items] of roomList) {
-                            let room = createRoom(name);
-                            for (let item of items) {
-                                addItem(room, item);
+                            if (isConfirm) {
+                                let confirmSelectedItems = getSelectedItems();
+                                for (let i = 0; i < confirmSelectedItems.length; i++) {
+                                    let roomName = roomList[i][0];
+                                    let items = confirmSelectedItems[i];
+                                    if (items.every(i => i.quantity === 0))
+                                        continue;
+                                    let room = createRoom(roomName);
+                                    for (let item of items) {
+                                        let itemDiv = addItem(room, item.item);
+                                        setTimeout(() => {
+                                            itemDiv.querySelector('.ypm__start-calc-btn').click();
+                                            itemDiv.querySelector('.ypm__current-qty').innerText = item.quantity;
+                                        });
+                                    }
+                                }
                             }
-                        }
+                            else for (let [name, items] of roomList) {
+                                let room = createRoom(name);
+                                for (let item of items) {
+                                    addItem(room, item);
+                                }
+                            }
+
+                            currentScript1.parentElement.querySelectorAll('.ypm__start-calc-btn').forEach(btn => {
+                                btn.addEventListener('click', () => {
+                                    const qtyCalculator = btn.closest('.ypm__selection-row-wrapper').querySelector('.ypm__qty-calculator');
+                                    setQty(qtyCalculator, 1);
+                                });
+                            });
+                            currentScript1.parentElement.querySelectorAll('.ypm__qty-calculator').forEach(qtyCalculator => {
+                                qtyCalculator.addEventListener('click', e => {
+                                    const currClickedElem = e.target.classList;
+                                    if (currClickedElem.contains('ypm__qty-handler')) setQty(qtyCalculator, currClickedElem.contains('ypm__qty-increase') ? 1 : -1);
+                                });
+                            });
+                            var setQty = (qtyCalculator, qty) => {
+                                const currentQtyElem = qtyCalculator.querySelector('.ypm__current-qty');
+                                currentQtyElem.dataset.qty = Number(currentQtyElem.dataset.qty) + qty;
+                                currentQtyElem.innerText = currentQtyElem.dataset.qty;
+
+                                if (Number(currentQtyElem.dataset.qty) < 1) {
+                                    qtyCalculator.closest('.ypm__selection-row-wrapper').querySelector('.ypm__start-calc-btn').classList.remove('d-none');
+                                    qtyCalculator.classList.add('d-none');
+                                }
+                                else {
+                                    qtyCalculator.closest('.ypm__selection-row-wrapper').querySelector('.ypm__start-calc-btn').classList.add('d-none');
+                                    qtyCalculator.classList.remove('d-none');
+                                }
+                            };
+                            if (currentScript1.getAttribute('data-isConfirm') === 'true') {
+                                //document.currentScript.parentElement.querySelectorAll('.ypm__start-calc-btn').forEach(b => b.click());
+                                currentScript1.parentElement.querySelector('[name=confirmInventoryBtn]').innerText = 'Confirm and see price';
+                            }
+
+                            var headings = currentScript1.parentElement.querySelectorAll('.ypm__content-part-wrapper');
+
+                            var previousY = 0;
+                            var previousRatio = 0;
+
+                            var observer = new IntersectionObserver((entries) => {
+                                entries.forEach((entry) => {
+                                    const currentY = entry.boundingClientRect.y;
+                                    const currentRatio = entry.intersectionRatio;
+
+                                    if (currentY > previousY && !entry.isIntersecting &&
+                                        entry.target.classList.contains('ypm__content-part-one')) {
+                                        entry.target.classList.add('ypm__active-part');
+                                        return;
+                                    }
+
+                                    previousY = currentY;
+                                    previousRatio = currentRatio;
+
+                                    if (entry.isIntersecting) {
+                                        entry.target.classList.add('ypm__active-part');
+                                        if (entry.target.nextElementSibling !== null)
+                                            entry.target.nextElementSibling.classList.remove('ypm__active-part');
+                                    }
+                                    else {
+                                        entry.target.classList.remove('ypm__active-part');
+                                        if (entry.target.nextElementSibling !== null)
+                                            entry.target.nextElementSibling.classList.add('ypm__active-part');
+                                    }
+                                });
+                            }, {
+                                threshold: 1,
+                                root: document.currentScript.parentElement,
+                                rootMargin: "0px"
+                            });
+
+                            headings?.forEach(heading => observer.observe(heading));
+
+
+                            stage4OnSize = () => {
+                                currentScript1.parentElement.style.height = currentScript1.parentElement.parentElement.style.maxHeight;
+                            };
+
+                            currentScript1.parentElement.style.paddingTop = '0px';
+                            currentScript1.parentElement.style.overflowY = 'initial!important';
+                        };
+                        f();
+                        if (!isConfirm)
+                            updateRoomItems = f;
+
                     }
                 </script>
                 </div>
@@ -4040,92 +4126,14 @@ ${day}
                         </div>
                     </button>
                 </div>
-            <script>
-                let previousEl = document.currentScript.previousElementSibling;
-                let prevPrevEl = previousEl.previousElementSibling;
-                let contentEl = prevPrevEl.querySelector('.ypm__content-wrapper');
-                contentEl.style.maxHeight = `${window.innerHeight - prevPrevEl.getBoundingClientRect().top - previousEl.getBoundingClientRect().height - (prevPrevEl.getBoundingClientRect().height - contentEl.getBoundingClientRect().height)}px`;
+            <script>{
+                    let previousEl = document.currentScript.previousElementSibling;
+                    let prevPrevEl = previousEl.previousElementSibling;
+                    let contentEl = prevPrevEl.querySelector('.ypm__content-wrapper');
+                    contentEl.style.maxHeight = `${window.innerHeight - prevPrevEl.getBoundingClientRect().top - previousEl.getBoundingClientRect().height - (prevPrevEl.getBoundingClientRect().height - contentEl.getBoundingClientRect().height)}px`;
+                }
             </script>
         </div>
-        <script data-attrTarget="true" data-onSize="stage4OnSize()">
-            document.currentScript.parentElement.querySelectorAll('.ypm__start-calc-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const qtyCalculator = btn.closest('.ypm__selection-row-wrapper').querySelector('.ypm__qty-calculator');
-                    setQty(qtyCalculator, 1);
-                });
-            });
-            document.currentScript.parentElement.querySelectorAll('.ypm__qty-calculator').forEach(qtyCalculator => {
-                qtyCalculator.addEventListener('click', e => {
-                    const currClickedElem = e.target.classList;
-                    if (currClickedElem.contains('ypm__qty-handler')) setQty(qtyCalculator, currClickedElem.contains('ypm__qty-increase') ? 1 : -1);
-                });
-            });
-            var setQty = (qtyCalculator, qty) => {
-                const currentQtyElem = qtyCalculator.querySelector('.ypm__current-qty');
-                currentQtyElem.dataset.qty = Number(currentQtyElem.dataset.qty) + qty;
-                currentQtyElem.innerText = currentQtyElem.dataset.qty;
-
-                if (Number(currentQtyElem.dataset.qty) < 1) {
-                    qtyCalculator.closest('.ypm__selection-row-wrapper').querySelector('.ypm__start-calc-btn').classList.remove('d-none');
-                    qtyCalculator.classList.add('d-none');
-                        }
-                        else {
-                    qtyCalculator.closest('.ypm__selection-row-wrapper').querySelector('.ypm__start-calc-btn').classList.add('d-none');
-                    qtyCalculator.classList.remove('d-none');
-                        }
-            };
-            if (document.currentScript.getAttribute('data-isConfirm') === 'true') {
-                //document.currentScript.parentElement.querySelectorAll('.ypm__start-calc-btn').forEach(b => b.click());
-                document.currentScript.parentElement.querySelector('[name=confirmInventoryBtn]').innerText = 'Confirm and see price';
-            }
-
-            var headings = document.currentScript.parentElement.querySelectorAll('.ypm__content-part-wrapper');
-
-            var previousY = 0;
-            var previousRatio = 0;
-
-            var observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    const currentY = entry.boundingClientRect.y ;
-                    const currentRatio = entry.intersectionRatio;
-
-                    if (currentY > previousY && !entry.isIntersecting &&
-                        entry.target.classList.contains('ypm__content-part-one')) {
-                        entry.target.classList.add('ypm__active-part');
-                        return;
-                    }
-
-                    previousY = currentY;
-                    previousRatio = currentRatio;
-
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('ypm__active-part');
-                        if (entry.target.nextElementSibling !== null)
-                            entry.target.nextElementSibling.classList.remove('ypm__active-part');
-                    }
-                    else {
-                        entry.target.classList.remove('ypm__active-part');
-                        if (entry.target.nextElementSibling !== null)
-                            entry.target.nextElementSibling.classList.add('ypm__active-part');
-                    }
-                });
-            }, {
-                threshold: 1,
-                root: document.currentScript.parentElement,
-                rootMargin: "0px"
-            });
-
-            headings?.forEach(heading => observer.observe(heading));
-
-
-            var s = document.currentScript;
-            var stage4OnSize = () => {
-                s.previousElementSibling.style.height = s.parentElement.style.maxHeight;
-            };
-
-            document.currentScript.parentElement.style.paddingTop = '0px';
-            document.currentScript.parentElement.style.overflowY = 'initial!important';
-        </script>
         <style>
             :root {
                 --ypm__text-primary: #D9D9D9;
@@ -4514,7 +4522,7 @@ ${day}
     </template>
     <script>
         const getSelectedItems = elem => Array.from(
-            (elem ?? document).querySelectorAll('.ypm__content-part-wrapper'))
+            (elem ?? document.querySelector('.ypm__content-wrapper')).querySelectorAll('.ypm__content-part-wrapper'))
             .map(p => (
                 Array.from(p.querySelectorAll('.ypm__current-qty')).map(q => ({
                     item: q.parentElement.parentElement.querySelector('.ypm__selection-text').innerText.trim(),
