@@ -682,14 +682,23 @@
                             }
                         });
                         const checkQuote2 = () => pickUpPoint2.value !== '' && destinationPoint2.value !== '';
+                        const requestQuote2 = () => {
+                            if (!(pickUpPoint2.value.endsWith(', ON, Canada') && destinationPoint2.value.endsWith(', ON, Canada'))) {
+                                requestCall();
+                            }
+                        };
 
                         function getQuote(direct = false) {
                             if (direct && (pickUpPoint.value === '' || destinationPoint.value === ''))
                                 return;
                             gotoStage(0);
                             history.pushState({ idx: 0, screenType: 'popup', reloadID: reloadID }, "Stage " + 0, '');
-                            if (direct)
+                            if (direct) {
                                 nextStage();
+                                if (!(pickUpPoint.value.endsWith(', ON, Canada') && destinationPoint.value.endsWith(', ON, Canada'))) {
+                                    requestCall();
+                                }
+                            }
                         }
                         function pushScreen(screenType) {
                             history.pushState({ screenType: screenType, reloadID: reloadID }, screenType, '');
@@ -3397,7 +3406,7 @@ ${day}
                 <input id="destinationPoint2" style="width:100%;background:none;border:none;outline:none;/* Choose pick up point */font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;font-size: 25.5295px;line-height: 30px;margin-left:calc(305px - (221px + ((41px + 52px) / 2)));/* identical to box height */" class="placeholder-656565" placeholder="Choose your destination" />
             </div>
         </div>
-        <button class="rainbow-border-orange" onclick="if (checkQuote2()) { updateAddrs(); nextStage() }" style="/* Rectangle 3 */ width: 100%; height: 123px; background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: var(--const-font-size); line-height: 33px; color: #FFFFFF;">
+        <button class="rainbow-border-orange" onclick="if (checkQuote2()) { updateAddrs(); nextStage(); requestQuote2(); }" style="/* Rectangle 3 */ width: 100%; height: 123px; background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: var(--const-font-size); line-height: 33px; color: #FFFFFF;">
             <span style="text-align:center;display:flex;justify-content:center;flex-direction:column;">Next</span>
         </button>
         <script>
