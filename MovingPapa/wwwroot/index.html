@@ -1251,7 +1251,13 @@
                                             }
                                             function updateDates() {
                                                 for (let el of document.querySelectorAll('.moveDate')) {
-                                                    el.innerText = new Date(selectedCalendarDate).toLocaleString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' }).replace(',', '');
+                                                    let obj = { month: 'long', day: 'numeric', year: 'numeric' };
+                                                    if (el.closest('#loggedInUI_moveConfirmed') === null)
+                                                        obj.weekday = 'long';
+                                                    let str = new Date(selectedCalendarDate).toLocaleString('en-US', obj);
+                                                    if (el.closest('#loggedInUI_moveConfirmed') === null)
+                                                        str = str.replace(',', '');
+                                                    el.innerText = str;
                                                 }
                                             }
 
@@ -3060,7 +3066,7 @@ ${day}
                             <div style='padding-top:189px;text-align: center;color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 78.33px;font-style: normal;font-weight: 400;line-height: normal;'>Your move is confirmed!</div>
                             <div style='margin-top:75px;text-align: center;color: #FFF;font-family: "Arial Rounded MT";font-size: 58.748px;font-style: normal;font-weight: 400;line-height: normal;'>
                                 Thank you for moving with us<br />
-                                We’ll see you on on <span id=moveDate>August 28th, 2024</span>
+                                We’ll see you on on <span class=moveDate>August 28th, 2024</span>
                             </div>
                             <div class=center>
                                 <img src="moveConfirmed.png" width=1224 height=1583 />
@@ -3071,6 +3077,9 @@ ${day}
                                 </div>
                             </button>
                         </div>
+                        <script>
+                            updateDates();
+                        </script>
                     </template>
                     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcXKzVKjKPR2haUPYSVZ-Wpxh2mNz_PSc&callback=initMap&libraries=places&v=weekly"
                             defer></script>
@@ -3903,6 +3912,18 @@ ${day}
             }
         }
     </script>
+    <style>
+        @media all and (max-width: 600px) {
+            .ypm__content-wrapper {
+                max-height: calc(10vh / var(--scale, 1));
+            }
+        }
+        @media all and (min-width: 600px) {
+            .ypm__content-wrapper {
+                max-height: calc(25vh / var(--scale, 1));
+            }
+        }
+    </style>
     <template id="stage4">
         <script>
             var isConfirm = document.currentScript.classList.contains('isConfirm');
@@ -3927,7 +3948,7 @@ ${day}
                         Please confirm your inventory<span class=firstName></span>.
                         </div>
                     </div>
-                    <div class="ypm__content-wrapper" style="max-height:calc(10vh / var(--scale, 1));overflow-y:auto;">
+                    <div class="ypm__content-wrapper" style="overflow-y:auto;">
                     </div>
                 <script>
                     {
