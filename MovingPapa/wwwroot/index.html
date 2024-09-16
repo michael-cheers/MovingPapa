@@ -3766,7 +3766,7 @@ ${day}
                padding: 0 50px 40px;">more info</a>
         </div>
             </div>
-        <button class="mp-form-button" onclick="if (isActiveBtn(this)) { updateRoomItems?.(); updateMoveTypes(); nextStage(); nextStage(); } return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+        <button class="mp-form-button" onclick="if (isActiveBtn(this)) { if (document.querySelector('.move-type-active').innerText.trim() === 'Commercial') { requestCall(); return; } updateRoomItems?.(); updateMoveTypes(); nextStage(); nextStage(); } return false;" style="margin-top: calc(1858px - (1514px + 300px)); width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
             <div style="color: white; font-size: 49.47px; font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">Next</div>
         </button>
     </div>
