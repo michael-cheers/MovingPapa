@@ -188,7 +188,7 @@ namespace MovingPapa.Pages
                             "Tires" => 5m / 60,
                             "Large toys" => 5m / 60,
                             "Boxes" => 0
-                        })
+                        }) * 1.1m
                     });
                 decimal km = m / 1000;
                 decimal price = Math.Round(hours * pricePerHour + km * 0.96m, 2);
