@@ -3756,7 +3756,7 @@ ${day}
     </div>
 </template>
     <script>
-        let updateRoomItems;
+        let updateRoomItems, updateConfirmRoomItems;
     </script>
     <template id="stage3">
         <style>
@@ -3979,23 +3979,23 @@ ${day}
                                 "Miscellaneous items": ["Patio", "Furniture", "Barbecue", "Exercise equipment", "Bicycles", "Tires", "Large toys"],
                                 Office: ["Desk", "Chair", "Bookshelf", "Filing cabinet", "Monitors", "Extras"]
                             };
-                            for (let name of
-                                Array.from(document.getElementById('extraRoomsDropdown').querySelectorAll('option:checked')).map(o => o.innerText.trim()).concat(["Living Room"])) {
-                                roomList.push([
-                                    name, roomItems[name]
-                                ])
-                            }
                             if (!isConfirm) {
                                 roomList = [];
-                                for (let i = 0; i < numBedrooms; i++) {
-                                    roomList.push([`Bedroom ${i + 1}`, ["Bed", "Nightstand", "Dresser"]]);
+                                for (let name of
+                                    Array.from(document.getElementById('extraRoomsDropdown').querySelectorAll('option:checked')).map(o => o.innerText.trim()).concat(["Living Room"])) {
+                                    roomList.push([
+                                        name, roomItems[name]
+                                    ])
                                 }
-                                let roomItems = {
-                                    Garage: ["Bicycle", "Lawnmower", "Toolbox"],
-                                    Basement: ["Freezer", "Storage bins", "Workbench"],
-                                    "Storage locker": ["Boxes", "Furniture", "Appliances"],
-                                    Backyard: ["Patio furniture", "Grill", "Lawnmower"]
-                                };
+                                for (let i = 0; i < numBedrooms; i++) {
+                                    roomList.push([`Bedroom ${i + 1}`, roomItems.Bedroom]);
+                                }
+                                //let roomItems = {
+                                //    Garage: ["Bicycle", "Lawnmower", "Toolbox"],
+                                //    Basement: ["Freezer", "Storage bins", "Workbench"],
+                                //    "Storage locker": ["Boxes", "Furniture", "Appliances"],
+                                //    Backyard: ["Patio furniture", "Grill", "Lawnmower"]
+                                //};
                                 for (let name of document.getElementById('extraRoomsDropdown').querySelectorAll('option:checked')) {
                                     roomList.push([
                                         name.innerText, roomItems[name.innerText.trim()]
@@ -4089,7 +4089,7 @@ ${day}
                                 });
                             }, {
                                 threshold: 1,
-                                root: document.currentScript.parentElement,
+                                root: currentScript1.parentElement,
                                 rootMargin: "0px"
                             });
 
@@ -4097,23 +4097,24 @@ ${day}
 
 
                             stage4OnSize = () => {
-                                currentScript1.parentElement.style.height = currentScript1.parentElement.parentElement.style.maxHeight;
+                                currentScript1.parentElement.parentElement.style.height = currentScript1.parentElement.parentElement.parentElement.style.maxHeight;
                             };
 
-                            currentScript1.parentElement.style.paddingTop = '0px';
-                            currentScript1.parentElement.style.overflowY = 'initial!important';
+                            currentScript1.parentElement.parentElement.parentElement.style.paddingTop = '0px';
+                            currentScript1.parentElement.parentElement.parentElement.style.overflowY = 'initial!important';
                         };
                         f();
                         if (!isConfirm)
                             updateRoomItems = f;
-
+                        else
+                            updateConfirmRoomItems = f;
                     }
                 </script>
                 </div>
                 <div class="ypm__footer-wrapper" style="text-align: center;">
                     <p style="margin-bottom:0px!important;margin-left:-10px;margin-right:-10px">Slide to confirm that the information is accurate.</p>
                     <p class="ypm__inacc-text" style="margin-bottom:-40px">Inaccuracies may affect service pricing.</p>
-                    <button onclick="updatePrice().then(() => nextStage()); return false;" style="margin-top: -100px; width: 100%; border: none; align-self: stretch; padding-left: calc(var(--scale, 1) * 32.98px); padding-right: calc(var(--scale, 1) * 32.98px); padding-top: calc(var(--scale, 1) * 39.58px); padding-bottom: calc(var(--scale, 1) * 39.58px); background: #F84734; border-radius: calc(var(--scale, 1) * 16.49px); justify-content: center; align-items: center; display: inline-flex ">
+                    <button onclick="updatePrice().then(() => { if (!this.closest('#ypm__main-wrapper').classList.contains('isConfirm')) updateConfirmRoomItems?.(); nextStage(); }); return false;" style="margin-top: -100px; width: 100%; border: none; align-self: stretch; padding-left: calc(var(--scale, 1) * 32.98px); padding-right: calc(var(--scale, 1) * 32.98px); padding-top: calc(var(--scale, 1) * 39.58px); padding-bottom: calc(var(--scale, 1) * 39.58px); background: #F84734; border-radius: calc(var(--scale, 1) * 16.49px); justify-content: center; align-items: center; display: inline-flex ">
                         <div name="confirmInventoryBtn" style="color: white; font-size: calc(var(--scale, 1) * 49.47px); font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">
                             Next
                         </div>
@@ -4537,8 +4538,9 @@ ${day}
                 moveType: ['Full move', 'Partial move', '5 items or less', 'Commercial'].indexOf(document.querySelector('.move-type-active').innerText.trim()),
                 needsPackingHelp: yesINeedHelpWithPacking.checked,
                 rooms: roomList.map((r, i) => ({
-                    room: ['Bedroom', 'Living Room', 'Dining Room', 'Kitchen', 'Bathroom', 'Office', 'Garage', 'Basement', 'Storage Locker', 'Backyard', 'Other'].indexOf(
-                        r[0].split(' ')[0]),
+                    room: r[0].startsWith('Bedroom') ? 0 :
+                        ['Bedroom', 'Living Room', 'Dining Room', 'Kitchen', 'Bathroom', 'Office', 'Garage', 'Basement', 'Storage Locker', 'Backyard', 'Other']
+                        .indexOf(r[0]),
                     items: parts[i] ?? []
                 })),
             })));

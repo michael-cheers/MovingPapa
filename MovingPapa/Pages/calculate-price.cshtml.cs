@@ -72,6 +72,20 @@ namespace MovingPapa.Pages
 
         public async Task<IActionResult> OnGet(string moveDetails, string? uuid = null)
         {
+            static int getBedroomWeight(RoomDetails r) => r.items.Sum(i => i.quantity * i.item switch
+            {
+                "Bed frame" => 75,
+                "Mattress" => 75,
+                "Dresser" => 150,
+                "Nightstand" => 30,
+                "Wardrobe" => 150,
+                "TV" => 60,
+                "Lamp" => 5,
+                "Rug" => 50,
+                "Extras" => 25,
+                "Boxes" => 0,
+                _ => 0
+            });
             var q = await DB.QuotesAndContacts.SingleAsync/**/(q => q.Uuid == uuid);
             q.MoveInfo = moveDetails;
             MoveDetails moveDetailsParsed = JsonSerializer.Deserialize<MoveDetails>(moveDetails);
@@ -88,7 +102,7 @@ namespace MovingPapa.Pages
                 dt
             );
             int numTotalBedrooms = moveDetailsParsed.rooms.Count(r => r.room == Room.Bedroom);
-            int numRelevantBedrooms = moveDetailsParsed.rooms.Count(r => r.items.Length > 0 && r.room == Room.Bedroom);
+            int numRelevantBedrooms = moveDetailsParsed.rooms.Count(r => getBedroomWeight(r) >= 310 && r.room == Room.Bedroom);
             int numRelevantExtraRooms = moveDetailsParsed.rooms.Count(r => r.items.Length > 0 &&
                 r.room is Room.Backyard or Room.Garage or Room.Basement or Room.StorageLocker or Room.Other);
             int movers = (numRelevantBedrooms, moveDetailsParsed.points[0].buildingType) switch
@@ -115,7 +129,7 @@ namespace MovingPapa.Pages
                         3 or 4 => 90m / 60
                     } * r.items.Sum(i => i.quantity * i.item switch
                     {
-                        "Couch/Sofa" => 200,
+                        "Couch / Sofa" => 200,
                         "Coffee table" => 50,
                         "TV stand" => 50,
                         "TV" => 30,
@@ -128,20 +142,7 @@ namespace MovingPapa.Pages
                         "Boxes" => 0
                     }) / 535m * 1.05m,
                     Room.Bedroom => (moveDetailsParsed.needsPackingHelp ? 0.5m : 0m) + numTotalBedrooms switch { 1 or 2 => 1m, 3 or 4 => 1.25m } *
-                        r.items.Sum(i => i.quantity * i.item switch
-                        {
-                            "Bed frame" => 75,
-                            "Mattress" => 75,
-                            "Dresser" => 150,
-                            "Nightstand" => 30,
-                            "Wardrobe" => 150,
-                            "TV" => 60,
-                            "Lamp" => 5,
-                            "Rug" => 50,
-                            "Extras" => 25,
-                            "Boxes" => 0,
-                            _ => 0
-                        }) / 620 * 1.05m,
+                        getBedroomWeight(r) / 620 * 1.05m,
                     Room.Kitchen => movers switch
                     {
                         2 => 0.5m,
