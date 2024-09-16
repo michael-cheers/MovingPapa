@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using MovingPapa.DB;
 using RestSharp;
 using System.Globalization;
+using System.Linq;
 using System.Security.Cryptography.Xml;
 using System.Text.Json;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -86,20 +87,102 @@ namespace MovingPapa.Pages
                 moveDetailsParsed.points.Select(p => p.address).Prepend(officeAddr).Append(officeAddr).ToArray(),
                 dt
             );
+            int numTotalBedrooms = moveDetailsParsed.rooms.Count(r => r.room == Room.Bedroom);
             int numRelevantBedrooms = moveDetailsParsed.rooms.Count(r => r.items.Length > 0 && r.room == Room.Bedroom);
             int numRelevantExtraRooms = moveDetailsParsed.rooms.Count(r => r.items.Length > 0 &&
                 r.room is Room.Backyard or Room.Garage or Room.Basement or Room.StorageLocker or Room.Other);
             int movers = (numRelevantBedrooms, moveDetailsParsed.points[0].buildingType) switch
             {
-                ( >=3, buildingType: BuildingType.Apartment or BuildingType.Studio ) p => numRelevantBedrooms,
+                ( 3, buildingType: BuildingType.Apartment or BuildingType.Studio) => numRelevantBedrooms,
+                ( >= 4, _) => 4 + (numRelevantBedrooms - 3) / 2,
                 var p => numRelevantBedrooms + 1
             } + (numRelevantExtraRooms > 0 ? 1 : 0);
             decimal dayRate = ((await DB.RateCalendars.SingleOrDefaultAsync(r => r.Date == DateTime.Parse(moveDetailsParsed.moveDate, CultureInfo.InvariantCulture)))?.RatePerMoverInCents ?? 6000) / 100m;
             decimal pricePerHour = movers * dayRate;
+            int numBoxes = moveDetailsParsed.rooms.Sum(r => r.items.Where(i => i.item == "Boxes").Sum(i => i.quantity));
             decimal hours = ((decimal)secs / 3600)
-                + (numRelevantBedrooms + numRelevantExtraRooms) * (moveDetailsParsed.needsPackingHelp ? 1.5m : 1);
+                + moveDetailsParsed.points[0].buildingType
+                switch
+                {
+                    BuildingType.House => 5m,
+                    BuildingType.Apartment => 10m
+                } * ((numBoxes - 1) / 3) / movers
+                + moveDetailsParsed.rooms.Sum(r => r.room switch
+                {
+                    Room.LivingRoom => numTotalBedrooms switch
+                    {
+                        1 or 2 => 75m / 60,
+                        3 or 4 => 90m / 60
+                    } * r.items.Sum(i => i.quantity * i.item switch
+                    {
+                        "Couch/Sofa" => 200,
+                        "Coffee table" => 50,
+                        "TV stand" => 50,
+                        "TV" => 30,
+                        "Bookshelf" => 75,
+                        "Rug" => 50,
+                        "Side table" => 25,
+                        "Plant" => 25,
+                        "Artwork" => 5,
+                        "Extras" => 25,
+                        "Boxes" => 0
+                    }) / 535m * 1.05m,
+                    Room.Bedroom => (moveDetailsParsed.needsPackingHelp ? 0.5m : 0m) + numTotalBedrooms switch { 1 or 2 => 1m, 3 or 4 => 1.25m } *
+                        r.items.Sum(i => i.quantity * i.item switch
+                        {
+                            "Bed frame" => 75,
+                            "Mattress" => 75,
+                            "Dresser" => 150,
+                            "Nightstand" => 30,
+                            "Wardrobe" => 150,
+                            "TV" => 60,
+                            "Lamp" => 5,
+                            "Rug" => 50,
+                            "Extras" => 25,
+                            "Boxes" => 0,
+                            _ => 0
+                        }) / 620 * 1.05m,
+                    Room.Kitchen => movers switch
+                    {
+                        2 => 0.5m,
+                        >=3 => 20m / 60
+                    } * r.items.Sum(i => i.quantity * i.item switch
+                    {
+                        "Refrigerator" => 200,
+                        "Freezer" => 75,
+                        "Washer/dryer" => 100,
+                        "Extras" => 25,
+                        "Boxes" => 0
+                    }) / 375m * 1.05m,
+                    Room.DiningRoom => (moveDetailsParsed.needsPackingHelp ? 0.5m : 20m / 60) * r.items.Sum(i => i.quantity * i.item switch
+                    {
+                        "Cabinet" => 150,
+                        "Dining table" => 120,
+                        "Chairs" => 10,
+                        "Extras" => 25
+                    }) / 310m * 1.05m,
+                    Room.Office => (40m / 60) * r.items.Sum(i => i.quantity * i.item switch
+                    {
+                        "Desk" => 75,
+                        "Chair" => 25,
+                        "Bookshelf" => 50,
+                        "Filing cabinet" => 50,
+                        "Monitors" => 15,
+                        "Extras" => 25
+                    }) / 215m * 1.05m,
+                    _ => r.items.Sum(i => i.quantity * i.item switch
+                    {
+                        "Patio" => 15m / 60,
+                        "Furniture" => 15m / 60,
+                        "Barbecue" => 5m / 60,
+                        "Exercise equipment" => 15m / 60,
+                        "Bicycles" => 5m / 60,
+                        "Tires" => 5m / 60,
+                        "Large toys" => 5m / 60
+                    })
+                });
             decimal km = m / 1000;
-            decimal price = Math.Round(hours * pricePerHour + km * 1, 2);
+            decimal price = Math.Round(hours * pricePerHour + km * 0.96m, 2);
             var packages = new[]
             {
                 new
