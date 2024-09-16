@@ -65,9 +65,9 @@
 
         .responsive-logo {
             background: url('movingPapaLogoLarge.png') no-repeat;
-            width: 310px;
-            height: 57px;
-            background-size: 310px 57px;
+            width: calc(310px * 0.6);
+            height: calc(57px * 0.6);
+            background-size: calc(310px * 0.6) calc(57px * 0.6);
         }
 
         .mb-bigger {
@@ -84,6 +84,11 @@
         }
 
         @media all and (min-width: 600px) {
+            .responsive-logo {
+                margin-left: 100px;
+                margin-top: 30px;
+            }
+            
             .pc-display-none {
                 display: none;
             }
@@ -108,6 +113,10 @@
 
             .landing-content, .pc-full-width {
                 width: calc(98.8vw / var(--scale, 1)) !important;
+            }
+
+            .container {
+                max-width:100vw;
             }
         }
 
@@ -211,11 +220,11 @@
 
             .responsive-logo {
                 background: url('movingPapaLogoSmall.png') no-repeat;
-                background-size: 100%;
+                width: 208px;
                 height: 141px;
                 transform: scale(0.3);
                 margin-top: calc(-7px / var(--scale) / 0.75);
-                margin-left: -102px
+                margin-left: -60px
             }
         }
 
@@ -582,7 +591,7 @@
 </head>
 <body>
     <div class="container" style="max-height:100vh">
-           <main class="desktoph">
+           <!--<main class="desktoph">
             <div class="sticky" style="display:flex"  >
                 <div class="mb-full-width" style="width:60%;padding-top:32px">
                     <div id="right-logo" style="float:right">
@@ -590,61 +599,47 @@
                             <div style="display:flex;flex-direction:column;justify-content:center;">
                                 Book a move
                             </div>
-                        </button>
+                        </button>-->
                         <!--<svg class="pc-display-none" width="108" height="64" viewBox="0 0 108 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform:scale(0.5);margin-top:-15.4px">
                             <path d="M3 3L104.939 3" stroke="black" stroke-width="5" stroke-linecap="round" />
                             <path d="M3 32.8788H104.939" stroke="black" stroke-width="5" stroke-linecap="round" />
                             <path d="M3 61H104.939" stroke="#242121" stroke-width="5" stroke-linecap="round" />
                         </svg>-->
-                    </div>
+                    <!--</div>
                     <a href="/"><div class="responsive-logo"></div></a>
                     <hr/>
                 </div>
-                <div class="mb-display-none" style="width:70%;border-left: 0.747786px solid #6D6D6D;display:flex">
-                    <a href="/track" style="padding-top:51px;padding-bottom:40px;text-decoration:none;padding-left:30px;padding-right:20px;border-right: 0.747786px solid #6D6D6D; font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26px;line-height: 32px;/* identical to box height, or 125% */color: #00292A;">
-                        TRACK YOUR MOVE
-                        <svg style="margin-left:15px" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.8017 15.4858C11.7989 15.4858 10.1625 13.8581 10.1625 11.8466C10.1625 9.83772 11.7961 8.21885 13.8017 8.21885C15.8045 8.21885 17.4409 9.84649 17.4409 11.8581C17.4409 13.8669 15.8072 15.4858 13.8017 15.4858ZM13.8017 8.32034C11.8603 8.32034 10.2639 9.90075 10.2639 11.8581C10.2639 13.8131 11.8466 15.3958 13.8017 15.3958C15.7567 15.3958 17.3394 13.8131 17.3394 11.8581C17.3394 9.90075 15.743 8.32034 13.8017 8.32034Z" fill="#3E4E6F" stroke="#F84734" stroke-width="1.62374" />
-                            <path d="M4.11529 9.76136L4.1155 9.76045C5.28831 4.59371 9.79273 2.24955 13.8016 2.24955H13.8016H13.8016H13.8016H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8019H13.8019H13.8019H13.8019H13.8019H13.8019H13.8019H13.8019H13.8019H13.802H13.802H13.802H13.802H13.802H13.802H13.802H13.802H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8023H13.8023H13.8023H13.8023H13.8023H13.8023H13.8023H13.8023H13.8023H13.8024H13.8024H13.8024H13.8024H13.8024H13.8024H13.8024H13.8024H13.8024H13.8025H13.8025H13.8025H13.8025H13.8025H13.8025H13.8025H13.8025H13.8025H13.8026H13.8026H13.8026H13.8026H13.8026H13.8026H13.8026H13.8027H13.8027H13.8027H13.8027H13.8027H13.8027H13.8027H13.8027H13.8028H13.8028H13.8028H13.8028H13.8028H13.8028H13.8029H13.8029H13.8029H13.8029H13.8029H13.8029H13.8029H13.803H13.803H13.803H13.803H13.803H13.803H13.8031H13.8031H13.8031H13.8031H13.8031H13.8031H13.8032H13.8032H13.8032H13.8032H13.8032H13.8033H13.8033H13.8033H13.8033H13.8033H13.8033H13.8034H13.8034H13.8034H13.8034H13.8034H13.8035H13.8035H13.8035H13.8035H13.8035H13.8036H13.8036H13.8036H13.8036H13.8036H13.8037H13.8037H13.8037H13.8037H13.8038H13.8038H13.8038H13.8038H13.8038H13.8039H13.8039H13.8039H13.8039H13.804H13.804H13.804H13.804H13.8041H13.8041H13.8041H13.8041H13.8042H13.8042H13.8042H13.8042H13.8043H13.8043H13.8043H13.8043H13.8044H13.8044H13.8044H13.8044H13.8045H13.8045H13.8045H13.8045H13.8046H13.8046H13.8046H13.8046H13.8047H13.8047H13.8047H13.8048H13.8048H13.8048H13.8048H13.8049H13.8049H13.8049H13.805H13.805H13.805H13.8051H13.8051H13.8051H13.8051H13.8052H13.8052H13.8052H13.8053H13.8053H13.8053H13.8054H13.8054H13.8054H13.8055H13.8055H13.8055H13.8056H13.8056H13.8056H13.8057H13.8057H13.8057H13.8058H13.8058H13.8058H13.8059H13.8059H13.8059H13.806H13.806H13.806H13.8061H13.8061H13.8061H13.8062H13.8062H13.8063H13.8063H13.8063H13.8064H13.8064H13.8064H13.8065H13.8065H13.8066H13.8066H13.8066H13.8067H13.8067H13.8067H13.8068H13.8068H13.8069H13.8069H13.8069H13.807H13.807H13.8071H13.8071H13.8071H13.8072H13.8072H13.8073H13.8073H13.8074H13.8074H13.8074H13.8075H13.8075H13.8076H13.8076H13.8077H13.8077H13.8077H13.8078H13.8078H13.8079H13.8079H13.808H13.808H13.8081H13.8081H13.8082H13.8082H13.8082H13.8083H13.8083H13.8084H13.8084H13.8085H13.8085H13.8086H13.8086H13.8087H13.8087H13.8088H13.8088H13.8089H13.8089H13.809H13.809H13.8091H13.8091H13.8092H13.8092H13.8093H13.8093H13.8094H13.8094H13.8095H13.8095H13.8096H13.8096H13.8097H13.8097H13.8098H13.8099H13.8099H13.81H13.81H13.8101H13.8101H13.8102H13.8102H13.8103H13.8104H13.8104H13.8105H13.8105H13.8106H13.8106H13.8107H13.8107H13.8108H13.8109H13.8109H13.811H13.811H13.8111H13.8112H13.8112H13.8113H13.8113H13.8114H13.8115H13.8115H13.8116H13.8116H13.8117H13.8118H13.8118H13.8119H13.812H13.812H13.8121H13.8121H13.8122H13.8123H13.8123H13.8124H13.8125H13.8125H13.8126H13.8127H13.8127H13.8128H13.8129H13.8129H13.813H13.8131H13.8131C17.8214 2.24955 22.326 4.59316 23.4991 9.77147C24.803 15.5318 21.3346 20.4502 17.9898 23.6706C16.8102 24.7992 15.2991 25.3655 13.8016 25.3655C12.3042 25.3655 10.7931 24.7992 9.61341 23.6706C6.26897 20.4505 2.80088 15.5212 4.11529 9.76136ZM23.4038 9.78203L23.4031 9.77879C22.1411 4.27657 17.39 2.35104 13.8016 2.35104C10.2127 2.35104 5.47282 4.27723 4.22296 9.77966C2.87887 15.6434 6.57574 20.5953 9.69626 23.588C12.0004 25.8112 15.6145 25.8112 17.9186 23.5879C21.0274 20.5955 24.7232 15.6445 23.4038 9.78203Z" fill="#3E4E6F" stroke="#F84734" stroke-width="1.62374" />
-                        </svg>
-                    </a>
-                    <a href="/sustainability" style="padding-top:51px;padding-bottom:42px;text-decoration:none;padding-left:34px;padding-right:32px;border-right: 0.747786px solid #6D6D6D; font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26px;line-height: 32px;/* identical to box height, or 125% */color: #00292A;">
-                        SUSTAINABILITY
-                        <svg style="margin-left:8px" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.8017 15.4858C11.7989 15.4858 10.1625 13.8581 10.1625 11.8466C10.1625 9.83772 11.7961 8.21885 13.8017 8.21885C15.8045 8.21885 17.4409 9.84649 17.4409 11.8581C17.4409 13.8669 15.8072 15.4858 13.8017 15.4858ZM13.8017 8.32034C11.8603 8.32034 10.2639 9.90075 10.2639 11.8581C10.2639 13.8131 11.8466 15.3958 13.8017 15.3958C15.7567 15.3958 17.3394 13.8131 17.3394 11.8581C17.3394 9.90075 15.743 8.32034 13.8017 8.32034Z" fill="#3E4E6F" stroke="#F84734" stroke-width="1.62374" />
-                            <path d="M4.11529 9.76136L4.1155 9.76045C5.28831 4.59371 9.79273 2.24955 13.8016 2.24955H13.8016H13.8016H13.8016H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8017H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8018H13.8019H13.8019H13.8019H13.8019H13.8019H13.8019H13.8019H13.8019H13.8019H13.802H13.802H13.802H13.802H13.802H13.802H13.802H13.802H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8021H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8022H13.8023H13.8023H13.8023H13.8023H13.8023H13.8023H13.8023H13.8023H13.8023H13.8024H13.8024H13.8024H13.8024H13.8024H13.8024H13.8024H13.8024H13.8024H13.8025H13.8025H13.8025H13.8025H13.8025H13.8025H13.8025H13.8025H13.8025H13.8026H13.8026H13.8026H13.8026H13.8026H13.8026H13.8026H13.8027H13.8027H13.8027H13.8027H13.8027H13.8027H13.8027H13.8027H13.8028H13.8028H13.8028H13.8028H13.8028H13.8028H13.8029H13.8029H13.8029H13.8029H13.8029H13.8029H13.8029H13.803H13.803H13.803H13.803H13.803H13.803H13.8031H13.8031H13.8031H13.8031H13.8031H13.8031H13.8032H13.8032H13.8032H13.8032H13.8032H13.8033H13.8033H13.8033H13.8033H13.8033H13.8033H13.8034H13.8034H13.8034H13.8034H13.8034H13.8035H13.8035H13.8035H13.8035H13.8035H13.8036H13.8036H13.8036H13.8036H13.8036H13.8037H13.8037H13.8037H13.8037H13.8038H13.8038H13.8038H13.8038H13.8038H13.8039H13.8039H13.8039H13.8039H13.804H13.804H13.804H13.804H13.8041H13.8041H13.8041H13.8041H13.8042H13.8042H13.8042H13.8042H13.8043H13.8043H13.8043H13.8043H13.8044H13.8044H13.8044H13.8044H13.8045H13.8045H13.8045H13.8045H13.8046H13.8046H13.8046H13.8046H13.8047H13.8047H13.8047H13.8048H13.8048H13.8048H13.8048H13.8049H13.8049H13.8049H13.805H13.805H13.805H13.8051H13.8051H13.8051H13.8051H13.8052H13.8052H13.8052H13.8053H13.8053H13.8053H13.8054H13.8054H13.8054H13.8055H13.8055H13.8055H13.8056H13.8056H13.8056H13.8057H13.8057H13.8057H13.8058H13.8058H13.8058H13.8059H13.8059H13.8059H13.806H13.806H13.806H13.8061H13.8061H13.8061H13.8062H13.8062H13.8063H13.8063H13.8063H13.8064H13.8064H13.8064H13.8065H13.8065H13.8066H13.8066H13.8066H13.8067H13.8067H13.8067H13.8068H13.8068H13.8069H13.8069H13.8069H13.807H13.807H13.8071H13.8071H13.8071H13.8072H13.8072H13.8073H13.8073H13.8074H13.8074H13.8074H13.8075H13.8075H13.8076H13.8076H13.8077H13.8077H13.8077H13.8078H13.8078H13.8079H13.8079H13.808H13.808H13.8081H13.8081H13.8082H13.8082H13.8082H13.8083H13.8083H13.8084H13.8084H13.8085H13.8085H13.8086H13.8086H13.8087H13.8087H13.8088H13.8088H13.8089H13.8089H13.809H13.809H13.8091H13.8091H13.8092H13.8092H13.8093H13.8093H13.8094H13.8094H13.8095H13.8095H13.8096H13.8096H13.8097H13.8097H13.8098H13.8099H13.8099H13.81H13.81H13.8101H13.8101H13.8102H13.8102H13.8103H13.8104H13.8104H13.8105H13.8105H13.8106H13.8106H13.8107H13.8107H13.8108H13.8109H13.8109H13.811H13.811H13.8111H13.8112H13.8112H13.8113H13.8113H13.8114H13.8115H13.8115H13.8116H13.8116H13.8117H13.8118H13.8118H13.8119H13.812H13.812H13.8121H13.8121H13.8122H13.8123H13.8123H13.8124H13.8125H13.8125H13.8126H13.8127H13.8127H13.8128H13.8129H13.8129H13.813H13.8131H13.8131C17.8214 2.24955 22.326 4.59316 23.4991 9.77147C24.803 15.5318 21.3346 20.4502 17.9898 23.6706C16.8102 24.7992 15.2991 25.3655 13.8016 25.3655C12.3042 25.3655 10.7931 24.7992 9.61341 23.6706C6.26897 20.4505 2.80088 15.5212 4.11529 9.76136ZM23.4038 9.78203L23.4031 9.77879C22.1411 4.27657 17.39 2.35104 13.8016 2.35104C10.2127 2.35104 5.47282 4.27723 4.22296 9.77966C2.87887 15.6434 6.57574 20.5953 9.69626 23.588C12.0004 25.8112 15.6145 25.8112 17.9186 23.5879C21.0274 20.5955 24.7232 15.6445 23.4038 9.78203Z" fill="#3E4E6F" stroke="#F84734" stroke-width="1.62374" />
-                        </svg>
-                    </a>
-                    <a href="/sign-up" style="padding-top:46px;padding-bottom:45px;text-decoration:none;padding-left:34px;padding-right:32px;border-right: 0.747786px solid #6D6D6D; font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26px;line-height: 32px;/* identical to box height, or 125% */color: #00292A;">
-                        SIGN UP
-                    </a>
-                    <a href="/sign-in" style="padding-top:46px;padding-bottom:45px;text-decoration:none;padding-left:34px;padding-right:32px;border-right: 0.747786px solid #6D6D6D; font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26px;line-height: 32px;/* identical to box height, or 125% */color: #00292A;">
-                        LOGIN
-                    </a>
-                </div>
             </div>
-			</main>
+			</main>-->
 			
 			
-			<div class="mobileh" >
+			<div class="" style="border-bottom: 1px solid #6D6D6D" >
             <div class="sticky" style="display:flex"  >
-                <div class="mb-full-width" >
+                <div style="width: calc(100vw / 0.9)" class="mb-full-width" >
                     <div id="right-logo" style="float:right">
                         <button onclick="getQuote()" style=" transform: scale(0.4);  width: 252.2px;height: 83.79px;background: #F84734; margin-right: -10px; border-radius: 35.467px;border:none;/* Book a move */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 28.6003px;line-height: 31px;/* identical to box height */color: #FFFFFF;">
                             <div style="display:flex;flex-direction:column;justify-content:center;">
                                 Book a move
                             </div>
+
                         </button>
                         <!--<svg class="pc-display-none" width="108" height="30" viewBox="0 0 108 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform:scale(0.5); margin-right: 10px; margin-top:-15.4px">
-                            <path d="M3 3L104.939 3" stroke="black" stroke-width="5" stroke-linecap="round" />
-                            <path d="M3 32.8788H104.939" stroke="black" stroke-width="5" stroke-linecap="round" />
-                            <path d="M3 61H104.939" stroke="#242121" stroke-width="5" stroke-linecap="round" />
-                        </svg>-->
+        <path d="M3 3L104.939 3" stroke="black" stroke-width="5" stroke-linecap="round" />
+        <path d="M3 32.8788H104.939" stroke="black" stroke-width="5" stroke-linecap="round" />
+        <path d="M3 61H104.939" stroke="#242121" stroke-width="5" stroke-linecap="round" />
+    </svg>-->
+
+                        <svg style="height: 35px; margin-left: -80px; margin-right: 28px; margin-bottom: 17px;" width="104" height="98" viewBox="0 0 104 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path opacity="0.4" d="M50.6712 56.304L40.3397 66.6355C39.2023 65.6245 38.0965 64.5818 37.0223 63.5076C33.768 60.2217 30.8297 56.7779 28.2073 53.1761C25.6165 49.5743 23.5313 45.9725 22.0147 42.4022C20.4981 38.8004 19.7399 35.3566 19.7399 32.0707C19.7399 29.9223 20.119 27.8686 20.8773 25.9729C21.6356 24.0456 22.8362 22.2763 24.5107 20.6966C26.5328 18.7061 28.7444 17.7267 31.0824 17.7267C31.9671 17.7267 32.8517 17.9162 33.6416 18.2954C34.4631 18.6745 35.1898 19.2432 35.7585 20.0647L43.0885 30.3962C43.6572 31.1861 44.0679 31.9128 44.3523 32.6078C44.6366 33.2713 44.7946 33.9348 44.7946 34.5351C44.7946 35.2934 44.5734 36.0517 44.1311 36.7784C43.7204 37.505 43.1201 38.2633 42.3618 39.0216L39.9606 41.5176C39.613 41.8651 39.4551 42.2759 39.4551 42.7814C39.4551 43.0341 39.4867 43.2553 39.5498 43.5081C39.6446 43.7608 39.7394 43.9504 39.8026 44.14C40.3713 45.1826 41.3507 46.5412 42.7409 48.1841C44.1627 49.827 45.6792 51.5016 47.3222 53.1761C48.4596 54.2819 49.5654 55.3561 50.6712 56.304Z" fill="#F84734" />
+                            <path d="M82.8347 69.321C82.8347 70.2057 82.6767 71.1219 82.3607 72.0066C82.266 72.2594 82.1712 72.5121 82.0448 72.7649C81.5077 73.9023 80.8126 74.9765 79.8963 75.9876C78.3482 77.6937 76.6421 78.9259 74.7148 79.7157C74.6832 79.7157 74.6516 79.7473 74.62 79.7473C72.7559 80.5056 70.7338 80.9163 68.5538 80.9163C65.3311 80.9163 61.8873 80.1581 58.2539 78.6099C54.6205 77.0618 50.9871 74.9765 47.3852 72.3541C46.153 71.4379 44.9208 70.5216 43.7518 69.5422L54.0833 59.2107C54.968 59.8742 55.7579 60.3797 56.4214 60.7272C56.5793 60.7904 56.7689 60.8852 56.9901 60.98C57.2428 61.0748 57.4956 61.1064 57.7799 61.1064C58.3171 61.1064 58.7278 60.9168 59.0753 60.5693L61.4765 58.1997C62.2664 57.4098 63.0247 56.8095 63.7514 56.4303C64.4781 55.988 65.2047 55.7668 65.9946 55.7668C66.5949 55.7668 67.2268 55.8932 67.9219 56.1776C68.617 56.4619 69.3437 56.8727 70.1335 57.4098L80.5914 64.8346C81.4129 65.4033 81.9816 66.0668 82.3291 66.8566C82.6451 67.6465 82.8347 68.4364 82.8347 69.321Z" fill="#F84734" />
+                            <rect x="3.5" y="3.5" width="96.3403" height="90.972" rx="23.3416" stroke="#F84734" stroke-width="7" />
+                        </svg>
+
                     </div>
                     <a href="/"><div class="responsive-logo"></div></a>
                     
                 </div>
-                <div class="mb-display-none" style="width:70%;border-left: 0.747786px solid #6D6D6D;display:flex">
+                <!--<div class="mb-display-none" style="width:70%;border-left: 0.747786px solid #6D6D6D;display:flex">
                     <a href="/track" style="padding-top:51px;padding-bottom:40px;text-decoration:none;padding-left:30px;padding-right:20px;border-right: 0.747786px solid #6D6D6D; font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26px;line-height: 32px;/* identical to box height, or 125% */color: #00292A;">
                         TRACK YOUR MOVE
                         <svg style="margin-left:15px" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -665,7 +660,7 @@
                     <a href="/sign-in" style="padding-top:46px;padding-bottom:45px;text-decoration:none;padding-left:34px;padding-right:32px;border-right: 0.747786px solid #6D6D6D; font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26px;line-height: 32px;/* identical to box height, or 125% */color: #00292A;">
                         LOGIN
                     </a>
-                </div>
+                </div>-->
             </div>
 			</div>
 			<main>
