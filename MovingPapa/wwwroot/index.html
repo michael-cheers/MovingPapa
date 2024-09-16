@@ -3982,7 +3982,7 @@ ${day}
                             if (!isConfirm) {
                                 roomList = [];
                                 for (let name of
-                                    Array.from(document.getElementById('extraRoomsDropdown').querySelectorAll('option:checked')).map(o => o.innerText.trim()).concat(["Living Room"])) {
+                                    Array.from(document.getElementById('extraRoomsDropdown').querySelectorAll('option:checked')).map(o => o.innerText.trim()).concat(Object.keys(roomItems).filter(o => o !== 'Bedroom') )) {
                                     roomList.push([
                                         name, roomItems[name]
                                     ])
