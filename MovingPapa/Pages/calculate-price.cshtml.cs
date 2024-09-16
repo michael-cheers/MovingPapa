@@ -20,7 +20,7 @@ namespace MovingPapa.Pages
     public enum MoveTime { EarlyMorning, Afternoon, LateAfternoon, Evening }
     public enum MoveType { FullMove, PartialMove, _5ItemsOrLess, Commercial }
     public record Item (string item, int quantity);
-    public enum Room { Bedroom, LivingRoom, DiningRoom, Kitchen, Bathroom, Office, Garage, Basement, StorageLocker, Backyard, Other }
+    public enum Room { Bedroom, LivingRoom, DiningRoom, Kitchen, Bathroom, Office, Garage, Basement, StorageLocker, Backyard, MiscellaneousItems, Other }
     public record RoomDetails (Room room, Item[] items);
     public record MoveDetails (Point[] points, string moveDate, MoveTime moveTime, MoveType moveType, bool needsPackingHelp, List<RoomDetails> rooms);
     public record GoogleRoute (int distanceMeters, string duration);
@@ -74,14 +74,14 @@ namespace MovingPapa.Pages
         {
             static int getBedroomWeight(RoomDetails r) => r.items.Sum(i => i.quantity * i.item switch
             {
-                "Bed frame" => 75,
-                "Mattress" => 75,
-                "Dresser" => 150,
-                "Nightstand" => 30,
-                "Wardrobe" => 150,
-                "TV" => 60,
-                "Lamp" => 5,
-                "Rug" => 50,
+                "Bed frames" => 75,
+                "Mattresses" => 75,
+                "Dressers" => 150,
+                "Nightstands" => 30,
+                "Wardrobes" => 150,
+                "TVs" => 60,
+                "Lamps" => 5,
+                "Rugs" => 50,
                 "Extras" => 25,
                 "Boxes" => 0,
                 _ => 0
@@ -134,15 +134,15 @@ namespace MovingPapa.Pages
                             3 or 4 => 90m / 60
                         } * r.items.Sum(i => i.quantity * i.item switch
                         {
-                            "Couch / Sofa" => 200,
-                            "Coffee table" => 50,
-                            "TV stand" => 50,
-                            "TV" => 30,
-                            "Bookshelf" => 75,
-                            "Rug" => 50,
-                            "Side table" => 25,
-                            "Plant" => 25,
-                            "Artwork" => 5,
+                            "Couches / Sofas" => 200,
+                            "Coffee tables" => 50,
+                            "TV stands" => 50,
+                            "TVs" => 30,
+                            "Bookshelves" => 75,
+                            "Rugs" => 50,
+                            "Side tables" => 25,
+                            "Plants" => 25,
+                            "Artworks" => 5,
                             "Extras" => 25,
                             "Boxes" => 0
                         }) / 535m * 1.1m,
@@ -154,35 +154,35 @@ namespace MovingPapa.Pages
                             >= 3 => 20m / 60
                         } * r.items.Sum(i => i.quantity * i.item switch
                         {
-                            "Refrigerator" => 200,
-                            "Freezer" => 75,
-                            "Washer/dryer" => 100,
+                            "Refrigerators" => 200,
+                            "Freezers" => 75,
+                            "Washers/dryers" => 100,
                             "Extras" => 25,
                             "Boxes" => 0
                         }) / 375m * 1.1m,
                         Room.DiningRoom => (needsPackingHelp ? 0.5m : 20m / 60) * r.items.Sum(i => i.quantity * i.item switch
                         {
-                            "Cabinet" => 150,
-                            "Dining table" => 120,
+                            "Cabinets" => 150,
+                            "Dining tables" => 120,
                             "Chairs" => 10,
                             "Extras" => 25,
                             "Boxes" => 0
                         }) / 310m * 1.1m,
                         Room.Office => (40m / 60) * r.items.Sum(i => i.quantity * i.item switch
                         {
-                            "Desk" => 75,
-                            "Chair" => 25,
-                            "Bookshelf" => 50,
-                            "Filing cabinet" => 50,
+                            "Desks" => 75,
+                            "Chairs" => 25,
+                            "Bookshelves" => 50,
+                            "Filing cabinets" => 50,
                             "Monitors" => 15,
                             "Extras" => 25,
                             "Boxes" => 0
                         }) / 215m * 1.1m,
                         _ => r.items.Sum(i => i.quantity * i.item switch
                         {
-                            "Patio" => 15m / 60,
+                            "Patios" => 15m / 60,
                             "Furniture" => 15m / 60,
-                            "Barbecue" => 5m / 60,
+                            "Barbecues" => 5m / 60,
                             "Exercise equipment" => 15m / 60,
                             "Bicycles" => 5m / 60,
                             "Tires" => 5m / 60,

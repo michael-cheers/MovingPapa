@@ -3988,12 +3988,12 @@ ${day}
                                 //Basement: ["Freezer", "Storage bins", "Workbench"],
                                 //"Storage locker": ["Boxes", "Furniture", "Appliances"],
                                 //Backyard: ["Patio furniture", "Grill", "Lawnmower"],
-                                "Living Room": ["Couch / Sofa", "Coffee table", "TV stand", "TV", "Bookshelf", "Rug", "Side table", "Plant", "Artwork", "Extras", "Boxes"],
-                                Bedroom: ["Bed frame", "Mattress", "Dresser", "Nightstand", "Wardrobe", "TV", "Lamp", "Rug", "Extras", "Boxes"],
-                                Kitchen: ["Refrigerator", "Washer/dryer", "Extras", "Boxes"],
-                                "Dining room": ["Cabinet", "Dining table", "Chairs", "Extras"],
-                                "Miscellaneous items": ["Patio", "Furniture", "Barbecue", "Exercise equipment", "Bicycles", "Tires", "Large toys", "Boxes"],
-                                Office: ["Desk", "Chair", "Bookshelf", "Filing cabinet", "Monitors", "Extras", "Boxes"]
+                                "Living Room": ["Couches / Sofas", "Coffee tables", "TV stands", "TVs", "Bookshelves", "Rugs", "Side tables", "Plants", "Artworks", "Extras", "Boxes"],
+                                Bedroom: ["Bed frames", "Mattresses", "Dressers", "Nightstands", "Wardrobes", "TVs", "Lamps", "Rugs", "Extras", "Boxes"],
+                                Kitchen: ["Refrigerators", "Washers/dryers", "Extras", "Boxes"],
+                                "Dining room": ["Cabinets", "Dining tables", "Chairs", "Extras"],
+                                "Miscellaneous items": ["Patios", "Furniture", "Barbecues", "Exercise equipment", "Bicycles", "Tires", "Large toys", "Boxes"],
+                                Office: ["Desks", "Chairs", "Bookshelves", "Filing cabinets", "Monitors", "Extras", "Boxes"]
                             };
                             if (!isConfirm) {
                                 roomList = [];
@@ -4555,7 +4555,7 @@ ${day}
                 needsPackingHelp: yesINeedHelpWithPacking.checked,
                 rooms: roomList.map((r, i) => ({
                     room: r[0].startsWith('Bedroom') ? 0 :
-                        ['Bedroom', 'Living Room', 'Dining Room', 'Kitchen', 'Bathroom', 'Office', 'Garage', 'Basement', 'Storage Locker', 'Backyard', 'Other']
+                        ['Bedroom', 'Living Room', 'Dining room', 'Kitchen', 'Bathroom', 'Office', 'Garage', 'Basement', 'Storage Locker', 'Backyard', "Miscellaneous items", 'Other']
                         .indexOf(r[0]),
                     items: parts[i] ?? []
                 })),
