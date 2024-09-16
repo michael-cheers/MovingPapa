@@ -68,7 +68,7 @@ namespace MovingPapa.Pages
             return (route.distanceMeters, decimal.Parse(route.duration[..^1]));
         }
 
-        public const string officeAddr = "7 Spadina Rd, Toronto, ON M5R 2S7, Canada";
+        public const string officeAddr = "200 Fairbank Ave, York, ON M6B 1G1, Canada";
 
         public async Task<IActionResult> OnGet(string moveDetails, string? uuid = null)
         {
@@ -117,14 +117,14 @@ namespace MovingPapa.Pages
                     var p => numRelevantBedrooms + 1
                 } + (numRelevantExtraRooms > 0 ? 1 : 0);
                 decimal dayRate = ((await DB.RateCalendars.SingleOrDefaultAsync(r => r.Date == DateTime.Parse(moveDetailsParsed.moveDate, CultureInfo.InvariantCulture)))?.RatePerMoverInCents ?? 6000) / 100m;
-                decimal pricePerHour = movers * dayRate;
+                decimal pricePerHour = movers * (dayRate + 20);
                 int numBoxes = moveDetailsParsed.rooms.Sum(r => r.items.Where(i => i.item == "Boxes").Sum(i => i.quantity));
                 decimal hours = ((decimal)secs / 3600)
                     + moveDetailsParsed.points[0].buildingType
                     switch
                     {
-                        BuildingType.House => 5m,
-                        BuildingType.Apartment => 10m
+                        BuildingType.House => 5m / 60,
+                        BuildingType.Apartment => 10m / 60
                     } * ((numBoxes - 1) / 3) / movers
                     + moveDetailsParsed.rooms.Sum(r => r.room switch
                     {
@@ -165,7 +165,8 @@ namespace MovingPapa.Pages
                             "Cabinet" => 150,
                             "Dining table" => 120,
                             "Chairs" => 10,
-                            "Extras" => 25
+                            "Extras" => 25,
+                            "Boxes" => 0
                         }) / 310m * 1.05m,
                         Room.Office => (40m / 60) * r.items.Sum(i => i.quantity * i.item switch
                         {
@@ -174,7 +175,8 @@ namespace MovingPapa.Pages
                             "Bookshelf" => 50,
                             "Filing cabinet" => 50,
                             "Monitors" => 15,
-                            "Extras" => 25
+                            "Extras" => 25,
+                            "Boxes" => 0
                         }) / 215m * 1.05m,
                         _ => r.items.Sum(i => i.quantity * i.item switch
                         {
@@ -184,7 +186,8 @@ namespace MovingPapa.Pages
                             "Exercise equipment" => 15m / 60,
                             "Bicycles" => 5m / 60,
                             "Tires" => 5m / 60,
-                            "Large toys" => 5m / 60
+                            "Large toys" => 5m / 60,
+                            "Boxes" => 0
                         })
                     });
                 decimal km = m / 1000;

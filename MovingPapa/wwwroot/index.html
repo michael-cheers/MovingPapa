@@ -756,31 +756,31 @@
                                 stages = [
                                     /*each stage is: [aboveProgressBarText, belowProgressBarText, template (or array of them), progressBarValue, progressBarImage ]*/
                                     ["", "", stage0, -1, ""],
-                                    ["How would you like to receive your quote?", "Help us get your move just right by listing exactly what’s coming with you.", quoteMethodSelector, -1, 'monsterCall.png'],
-                                    ["Let’s talk timing. When’s the big day? not sure ? Enter an approximate date", "Not sure? Enter an approximate date", calendarScreen, 25, 'monsterCall.png'],
+                                    ["Got it! Ready to make your move a breeze. How would you like to get your personalized quote? Choose the option that works best for you.", "Help us get your move just right by listing exactly what’s coming with you.", quoteMethodSelector, -1, 'monsterCall.png'],
+                                    ["Let’s set your move date! Not sure of the exact day? No worries—just pick an approximate date.", "Not sure? Enter an approximate date", calendarScreen, 25, 'monsterCall.png'],
                                     [progressInd1.innerText.replaceAll('\n', ''), progressInd2.innerText.replaceAll('\n', ''), [
                                         stage0Heading,
                                         (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'if (isActiveBtn(this)) { sendContactDetails(this); nextStage() }'); return t; })(quoteContactForm.content.cloneNode(true))
                                     ], 237.5, 'monster.png'],
-                                    ["Lets talk about your move. What's your current setup?", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
+                                    ["Let’s talk about your move. What’s your current setup? The more we know, the better we can assist!", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
                                         (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = pickUpPoint.value.replace(/, Canada$/, ''); return c; })(),
                                         484, 'monster2.png'],
                                     ...(stops.map((stop, i) => ["What type of home is this stop?", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
                                         (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = stop.value.replace(/, Canada$/, ''); let f = c.querySelector('[name=fromOnly]'); c.querySelector('[name=toOrFrom]').innerText = 'to'; /*f.style.display = 'none';*/ f.nextElementSibling.style.borderBottom = f.style.borderBottom; c.querySelector('[name=origOrDest]').innerText = `Stop ${i + 1}`; return c; })(),
                                         484 + (i + 1) * (679 - 484) / (stops.length + 1), 'monster3.png'
                                     ])),
-                                    ["What type of home is the destination?", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
+                                    ["Great! Now let’s get your new place details. This will help us plan the final steps of your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
                                         (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = destinationPoint.value.replace(/, Canada$/, ''); let f = c.querySelector('[name=fromOnly]'); c.querySelector('[name=toOrFrom]').innerText = 'to'; /*f.style.display = 'none';*/ f.nextElementSibling.style.borderTop = f.style.borderTop; c.querySelector('[name=origOrDest]').innerText = 'Drop-off'; return c; })(),
                                         679, 'monster3.png'],
-                                    ["Time to Take Stock!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 890, 'monster4.png'],
+                                    ["What’s the size of your move? And if you need packing help, please let us know—we’re ready to assist!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 890, 'monster4.png'],
                                     ["Not sure which option fits your move? Let me help you out!.", "", stage3, -1, 'stage3.png'],
-                                    ["Make sure the quantity is accurate", "Help us get your move just right by listing exactly what's coming with you.",
+                                    ["Let’s take stock! Double-check your items and quantities so we can get you an accurate flat-rate.", "Help us get your move just right by listing exactly what's coming with you.",
                                         stage4, -1, 'monster7.png'],
-                                    ["Make sure the quantity is accurate", "Help us get your move just right by listing exactly what's coming with you.",
+                                    ["Accuracy matters! Please double-check your item counts..", "Help us get your move just right by listing exactly what's coming with you.",
                                         (() => { let d = stage4.content.cloneNode(true); d.querySelector('[name=please-confirm-inventory-head]').style.display = ''; d.querySelector('[name=searchHead]').style.display = 'none'; d.querySelector('[data-attrTarget]').setAttribute('data-isConfirm', 'true'); Array.from(d.children).forEach(e => e.classList.add('isConfirm')); return d })(), -1, 'monster7.png'],
-                                    ["Secure Your Move with a $50 Deposit", "Help us get your move just right by listing exactly what’s coming with you.",
+                                    ["You’re almost there! Pick the package that best fits your move, and let’s get everything set.", "Help us get your move just right by listing exactly what’s coming with you.",
                                         stage6, -1, 'monster7.png'],
-                                    ["Secure Your Move with a $50 Deposit", "", bookingPage, -1, 'monsterCall.png'],
+                                    ["You’re all set! Just lock in your move with a $50 deposit, and we’ll take it from here.", "", bookingPage, -1, 'monsterCall.png'],
                                     ["", "", stage7, -1, ''],
                                     ["", "", stage8, -1, ''],
                                     ["Great, we’ll make this easy. Just share your details, and we’ll be in touch shortly.", "",
@@ -2342,7 +2342,7 @@
                                                 <img id=progressIndImg src="monster.png" width=204 height=192 />
                                                 <div style="display: flex;flex-direction: column; justify-content: center;">
                                                     <div id=progressInd1 style="font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: calc(47.847px * 0.55 * 1.5);line-height: 63px;display: flex;align-items: center;color: #FFFFFF;">
-                                                        Great, we’ll make this easy. Just share your details, and we’ll be in touch shortly.
+                                                        Let’s figure out the help you need. Choose full service or just some muscle—we’ve got you covered!
                                                     </div>
                                                     <div id=progressInd2 style='display: none;color: #EEE; font-family: "Arial Rounded MT"; font-size: calc(33.378px * 0.55 * 1.5); font-style: normal; font-weight: 400; line-height: normal;'>
                                                         Lets build your quote.  I’ll make this as smooth and enjoyable as a stroll in the park.
@@ -3972,12 +3972,12 @@ ${day}
                                 //Basement: ["Freezer", "Storage bins", "Workbench"],
                                 //"Storage locker": ["Boxes", "Furniture", "Appliances"],
                                 //Backyard: ["Patio furniture", "Grill", "Lawnmower"],
-                                "Living Room": ["Couch / Sofa", "Coffee table", "TV stand", "TV", "Bookshelf", "Rug", "Side table", "Plant", "Artwork", "Extras"],
-                                Bedroom: ["Bed frame", "Mattress", "Dresser", "Nightstand", "Wardrobe", "TV", "Lamp", "Rug", "Extras"],
-                                Kitchen: ["Refrigerator", "Washer/dryer", "Extras"],
+                                "Living Room": ["Couch / Sofa", "Coffee table", "TV stand", "TV", "Bookshelf", "Rug", "Side table", "Plant", "Artwork", "Extras", "Boxes"],
+                                Bedroom: ["Bed frame", "Mattress", "Dresser", "Nightstand", "Wardrobe", "TV", "Lamp", "Rug", "Extras", "Boxes"],
+                                Kitchen: ["Refrigerator", "Washer/dryer", "Extras", "Boxes"],
                                 "Dining room": ["Cabinet", "Dining table", "Chairs", "Extras"],
-                                "Miscellaneous items": ["Patio", "Furniture", "Barbecue", "Exercise equipment", "Bicycles", "Tires", "Large toys"],
-                                Office: ["Desk", "Chair", "Bookshelf", "Filing cabinet", "Monitors", "Extras"]
+                                "Miscellaneous items": ["Patio", "Furniture", "Barbecue", "Exercise equipment", "Bicycles", "Tires", "Large toys", "Boxes"],
+                                Office: ["Desk", "Chair", "Bookshelf", "Filing cabinet", "Monitors", "Extras", "Boxes"]
                             };
                             if (!isConfirm) {
                                 roomList = [];
