@@ -145,9 +145,9 @@ namespace MovingPapa.Pages
                             "Artwork" => 5,
                             "Extras" => 25,
                             "Boxes" => 0
-                        }) / 535m * 1.05m,
+                        }) / 535m * 1.1m,
                         Room.Bedroom => (needsPackingHelp ? 0.5m : 0m) + numTotalBedrooms switch { 1 or 2 => 1m, 3 or 4 => 1.25m } *
-                            getBedroomWeight(r) / 620 * 1.05m,
+                            getBedroomWeight(r) / 620 * 1.1m,
                         Room.Kitchen => movers switch
                         {
                             2 => 0.5m,
@@ -159,7 +159,7 @@ namespace MovingPapa.Pages
                             "Washer/dryer" => 100,
                             "Extras" => 25,
                             "Boxes" => 0
-                        }) / 375m * 1.05m,
+                        }) / 375m * 1.1m,
                         Room.DiningRoom => (needsPackingHelp ? 0.5m : 20m / 60) * r.items.Sum(i => i.quantity * i.item switch
                         {
                             "Cabinet" => 150,
@@ -167,7 +167,7 @@ namespace MovingPapa.Pages
                             "Chairs" => 10,
                             "Extras" => 25,
                             "Boxes" => 0
-                        }) / 310m * 1.05m,
+                        }) / 310m * 1.1m,
                         Room.Office => (40m / 60) * r.items.Sum(i => i.quantity * i.item switch
                         {
                             "Desk" => 75,
@@ -177,7 +177,7 @@ namespace MovingPapa.Pages
                             "Monitors" => 15,
                             "Extras" => 25,
                             "Boxes" => 0
-                        }) / 215m * 1.05m,
+                        }) / 215m * 1.1m,
                         _ => r.items.Sum(i => i.quantity * i.item switch
                         {
                             "Patio" => 15m / 60,
