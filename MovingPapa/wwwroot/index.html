@@ -742,6 +742,7 @@
                             history.pushState({ idx: stageIdx, screenType: 'popup', reloadID: reloadID }, "Stage " + stageIdx, '');
                             displayStage();
                         }
+                        let loadedFn = () => stageDiv.style.display = '';
                         function displayStage() {
                             /* I don't know what to do with this yet
                             if (stageIdx === stages.length) {
@@ -860,12 +861,16 @@
                                 tempDiv.classList.add('popup-main-inner');
                                 if (!(els instanceof Array))
                                     els = [els];
+                                let callsLoadedFn = false;
                                 for (let el of els) {
-                                    if (el instanceof HTMLTemplateElement)
-                                        tempDiv.appendChild(el.content.cloneNode(true));
-                                    else
-                                        tempDiv.appendChild(el.cloneNode(true));
+                                    let elCreated = el instanceof HTMLTemplateElement ? el.content : el;
+                                    elCreated = elCreated.cloneNode(true);
+                                    if (elCreated.querySelector('[data-callsLoadedFn]') !== null)
+                                        callsLoadedFn = true;
+                                    tempDiv.appendChild(elCreated);
                                 }
+                                if (callsLoadedFn)
+                                    tempDiv.style.display = 'none';
                                 popupMainPart.appendChild(tempDivOuter);
                                 stageDiv = tempDiv;
                                 stageDivs.set(stage, tempDiv);
@@ -4933,7 +4938,7 @@ ${day}
                 </div>
             </section>
             <!-- ------------------------------------------------------------- -->
-            <script type="text/javascript">
+            <script type="text/javascript" data-callsLoadedFn="true">
                 $(document).ready(function () {
                     $('.list-slider').owlCarousel({
                         autoWidth: true,
@@ -4954,6 +4959,9 @@ ${day}
                             selectedCalendarDate = +(new Date(y, monthIdx, dayNum));
                             updateDates();
                             updatePrice();
+                        },
+                        onInitialized: function (me) {
+                            loadedFn();
                         }
                     });
                     $('.list-slider').trigger('to.owl.carousel', [calendarSelectedIdx, 0]);
@@ -5038,7 +5046,7 @@ ${day}
                         touchDrag: false,
                         pullDrag: false,
                         freeDrag: false
-                    })
+                    });
                 });
 
                 //Sync o2 by o1

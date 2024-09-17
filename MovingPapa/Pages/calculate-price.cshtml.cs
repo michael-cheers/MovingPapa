@@ -114,6 +114,7 @@ namespace MovingPapa.Pages
                 {
                     (3, buildingType: BuildingType.Apartment or BuildingType.Studio) => numRelevantBedrooms,
                     ( >= 4, _) => 4 + (numRelevantBedrooms - 3) / 2,
+                    (0, _) => 2,
                     var p => numRelevantBedrooms + 1
                 } + (numRelevantExtraRooms > 0 ? 1 : 0);
                 decimal dayRate = ((await DB.RateCalendars.SingleOrDefaultAsync(r => r.Date == DateTime.Parse(moveDetailsParsed.moveDate, CultureInfo.InvariantCulture)))?.RatePerMoverInCents ?? 6000) / 100m;
@@ -178,7 +179,7 @@ namespace MovingPapa.Pages
                             "Extras" => 25,
                             "Boxes" => 0
                         }) / 215m * 1.1m,
-                        _ => r.items.Sum(i => i.quantity * i.item switch
+                        Room.MiscellaneousItems => r.items.Sum(i => i.quantity * i.item switch
                         {
                             "Patios" => 15m / 60,
                             "Furniture" => 15m / 60,
