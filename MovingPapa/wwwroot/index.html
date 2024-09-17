@@ -5114,7 +5114,9 @@ ${day}
                 let item2 = document.querySelector('.gallery').children[1];
                 let div = document.createElement('div');
                 div.style.display = 'flex';
-                div.style.justifyContent = 'end';
+                div.style.justifyContent = 'left';
+                div.style.paddingLeft = '25vw';
+                div.style.marginBottom = '20vw';
                 div.appendChild(item);
                 div.appendChild(item2);
                 document.querySelector('.gallery').appendChild(div);
