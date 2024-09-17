@@ -742,7 +742,14 @@
                             history.pushState({ idx: stageIdx, screenType: 'popup', reloadID: reloadID }, "Stage " + stageIdx, '');
                             displayStage();
                         }
-                        let loadedFn = () => stageDiv.style.display = '';
+                        let loadedFn = () => {
+                            stageDiv.style.display = '';
+                            // Set max height to the height of the window minus the space used up
+                            stageDiv.style.maxHeight = `calc(${window.innerHeight - stageDiv.getBoundingClientRect().top}px / var(--scale, 1))`;
+                            let onSize = stageDiv.querySelector('[data-onSize]');
+                            if (onSize !== null)
+                                eval(onSize.getAttribute('data-onSize'));
+                        }
                         function displayStage() {
                             /* I don't know what to do with this yet
                             if (stageIdx === stages.length) {
@@ -851,13 +858,6 @@
                                     tempDiv.style.paddingRight = '0px';
                                 }
                                 //tempDiv.style.paddingBottom = '520px';
-                                setTimeout(() => {
-                                    // Set max height to the height of the window minus the space used up
-                                    tempDiv.style.maxHeight = `calc(${window.innerHeight - tempDiv.getBoundingClientRect().top}px / var(--scale, 1))`;
-                                    let onSize = tempDiv.querySelector('[data-onSize]');
-                                    if (onSize !== null)
-                                        eval(onSize.getAttribute('data-onSize'));
-                                })
                                 tempDiv.classList.add('popup-main-inner');
                                 if (!(els instanceof Array))
                                     els = [els];
@@ -874,6 +874,8 @@
                                 popupMainPart.appendChild(tempDivOuter);
                                 stageDiv = tempDiv;
                                 stageDivs.set(stage, tempDiv);
+                                if (!callsLoadedFn)
+                                    setTimeout(() => loadedFn());
                             }
 
                             if (stage[2] === calendarScreen) {
