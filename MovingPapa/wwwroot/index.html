@@ -2481,18 +2481,18 @@
                                                 <div style="margin-top: 55px;">
                                                     <div style="margin-bottom:56px;display:flex;justify-content:space-around">
                                                         <div class="time-of-day-btn" onclick="timeOfDayActive(this)">
-                                                            <span>Early Morning</span>
+                                                            <span>8 AM - 11 AM</span>
                                                         </div>
                                                         <div class="time-of-day-btn" onclick="timeOfDayActive(this)">
-                                                            <span>Afternoon</span>
+                                                            <span>12 PM - 2 PM</span>
                                                         </div>
                                                     </div>
                                                     <div style="display:flex;justify-content:space-around">
                                                         <div class="time-of-day-btn" onclick="timeOfDayActive(this)">
-                                                            <span>Late Afternoon</span>
+                                                            <span>3 PM - 5 PM</span>
                                                         </div>
                                                         <div class="time-of-day-btn" onclick="timeOfDayActive(this)">
-                                                            <span>Evening</span>
+                                                            <span>6 PM - 7 PM</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -2896,7 +2896,7 @@ ${day}
                                     (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value)
                                 ]),
                                 moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
-                                moveTime: document.querySelector('.time-of-day-active').innerText.trim()
+                                moveTime: ['Early Morning', 'Afternoon', 'Late Afternoon', 'Evening'][['8 AM - 11 AM', '12 PM - 2 PM', '3 PM - 5 PM', '6 PM - 7 PM'].indexOf(document.querySelector('.time-of-day-active').innerText.trim())]
                             };
                             let req = await fetch('/confirm-contact-details?' +
                                 Object.entries(data).map(d => d[0] + "=" + encodeURIComponent(d[1])).join('&'));
@@ -4577,7 +4577,7 @@ ${day}
                     { address: (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value), buildingType: ['house', 'apartment', 'townhouse', 'studio'].indexOf(document.querySelectorAll('[name=fromOnly] select')[1].value.split(' ')[2]) }
                 ],
                 moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
-                moveTime: ['Early Morning', 'Afternoon', 'Late Afternoon', 'Evening'].indexOf(document.querySelector('.time-of-day-active').innerText.trim()),
+                moveTime: ['8 AM - 11 AM', '12 PM - 2 PM', '3 PM - 5 PM', '6 PM - 7 PM'].indexOf(document.querySelector('.time-of-day-active').innerText.trim()),
                 moveType: ['Full move', 'Partial move', '5 items or less', 'Commercial'].indexOf(document.querySelector('.move-type-active').innerText.trim()),
                 needsPackingHelp: yesINeedHelpWithPacking.checked,
                 rooms: roomList.map((r, i) => ({
