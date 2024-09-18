@@ -3485,13 +3485,10 @@ ${day}
                     </div>
                     <div class="custom-select" style="">
                         <select class="dropdown" style="background-color: #012122;">
-                            <option class="service-small" value="1 bedroom apartment">1 bedroom apartment</option>
-                            <option class="service-small" value="2 bedroom apartment">2 bedroom apartment</option>
-                            <option class="service-small" value="2 bedroom house">2 bedroom house</option>
-                            <option class="service-small" value="3 bedroom apartment">3 bedroom apartment </option>
-                            <option class="service-small" value="3 bedroom house">3 bedroom house </option>
-                            <option class="service-small" value="4 bedroom house">4 bedroom house </option>
-                            <option class="service-small" value="1 storage">Storage (10x10) </option>
+                            <option class="service-small" value="1 bedroom">1 bedroom</option>
+                            <option class="service-small" value="2 bedroom">2 bedroom</option>
+                            <option class="service-small" value="3 bedroom">3 bedroom </option>
+                            <option class="service-small" value="4 bedroom">4 bedroom</option>
                           </select>
                           
                           <style>
@@ -3546,13 +3543,14 @@ ${day}
                     </div>
                     <div class="custom-select" style="padding: 50px 0; margin-left: 50px; margin-right: 50px;">
                         <div></div>
-                        <select class="dropdown" style="background-color: #012122;">
-                            <option class="service-small" value="">Walking distance</option>
-                            <option class="service-small" value="">Walking distance </option>
-                            <option class="service-small" value="">Walking distance </option>
-                            <option class="service-small" value="">Walking distance </option>
-                            <option class="service-small" value="">Walking distance </option>
-                            <option class="service-small" value="">Walking distance </option>
+                        <select name="buildingType" class="dropdown" style="background-color: #012122;">
+                            <option class="service-small" value="">Type of home</option>
+                            <option class="service-small" value="Apartment">Apartment</option>
+                            <option class="service-small" value="Basement">Basement</option>
+                            <option class="service-small" value="Condo">Condo</option>
+                            <option class="service-small" value="Duplex">Duplex</option>
+                            <option class="service-small" value="House">House</option>
+                            <option class="service-small" value="Townhouse">Townhouse</option>
                         </select>
                     </div>
                     <div style="border-top: 7px solid #013C3D; padding: 50px;">
@@ -3604,13 +3602,12 @@ ${day}
                         </div>
                         <div style='display:flex;margin-bottom: 30px;'>
                             <div class="custom-select" style="width: 610px;">
-                                <select class="dropdown" style="padding: 26px 20px;margin-top: 30px; background-color: #012122;">
+                                <select name="stairsDropdown" class="dropdown" style="padding: 26px 20px;margin-top: 30px; background-color: #012122;">
                                     <option class="service-small" value="">Stairs</option>
-                                    <option class="service-small" value="">Stairs </option>
-                                    <option class="service-small" value="">Stairs </option>
-                                    <option class="service-small" value="">Stairs </option>
-                                    <option class="service-small" value="">Stairs </option>
-                                    <option class="service-small" value="">Stairs </option>
+                                    <option class="service-small" value="1">1 Flight</option>
+                                    <option class="service-small" value="2">2 Flights</option>
+                                    <option class="service-small" value="3">3 Flights</option>
+                                    <option class="service-small" value="4">More than 3 Flights</option>
                                 </select>
                             </div>
 
@@ -4139,7 +4136,7 @@ ${day}
                 </script>
                 </div>
                 <div class="ypm__footer-wrapper" style="text-align: center;">
-                    <p style="margin-bottom:0px!important;margin-left:-10px;margin-right:-10px">Slide to confirm that the information is accurate.</p>
+                    <p style="margin-bottom:0px!important;margin-left:-10px;margin-right:-10px">Please confirm that the information is accurate.</p>
                     <p class="ypm__inacc-text" style="margin-bottom:-40px">Inaccuracies may affect service pricing.</p>
                     <button onclick="updatePrice().then(() => { if (!this.closest('#ypm__main-wrapper').classList.contains('isConfirm')) updateConfirmRoomItems?.(); nextStage(); }); return false;" style="margin-top: -100px; width: 100%; border: none; align-self: stretch; padding-left: calc(var(--scale, 1) * 32.98px); padding-right: calc(var(--scale, 1) * 32.98px); padding-top: calc(var(--scale, 1) * 39.58px); padding-bottom: calc(var(--scale, 1) * 39.58px); background: #F84734; border-radius: calc(var(--scale, 1) * 16.49px); justify-content: center; align-items: center; display: inline-flex ">
                         <div name="confirmInventoryBtn" style="color: white; font-size: calc(var(--scale, 1) * 49.47px); font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">
@@ -4557,8 +4554,8 @@ ${day}
             let parts = getSelectedItems(document.querySelectorAll('#ypm__main-wrapper')[1]);
             let req = await fetch('/calculate-price?uuid=' + encodeURIComponent(quoteId) + '&moveDetails=' + encodeURIComponent(JSON.stringify({
                 points: [
-                    { address: (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value), buildingType: ['house', 'apartment', 'townhouse', 'studio'].indexOf(document.querySelector('[name=fromOnly] select').value.split(' ')[2]) },
-                    { address: (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value), buildingType: ['house', 'apartment', 'townhouse', 'studio'].indexOf(document.querySelectorAll('[name=fromOnly] select')[1].value.split(' ')[2]) }
+                    { address: (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value), buildingType: ['Apartment', 'Basement', 'Condo', 'Duplex', 'House', 'Townhouse'].indexOf(document.querySelector('select[name=buildingType]').value), stairs: document.querySelector('select[name=stairsDropdown]').value },
+                    { address: (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value), buildingType: ['Apartment', 'Basement', 'Condo', 'Duplex', 'House', 'Townhouse'].indexOf(document.querySelectorAll('select[name=buildingType]')[1].value), stairs: document.querySelectorAll('select[name=stairsDropdown]')[1].value }
                 ],
                 moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
                 moveTime: ['8 AM - 11 AM', '12 PM - 2 PM', '3 PM - 5 PM', '6 PM - 7 PM'].indexOf(document.querySelector('.time-of-day-active').innerText.trim()),

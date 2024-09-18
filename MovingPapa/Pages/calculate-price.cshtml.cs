@@ -15,7 +15,7 @@ namespace MovingPapa.Pages
     public enum WalkingDistance { _14Min, _510Min, _10MinPlus }
     [Flags]
     public enum Access { Direct, Stairs, Elevator }
-    public enum BuildingType { House, Apartment, Townhouse, Studio }
+    public enum BuildingType { Apartment, Basement, Condo, Duplex, House, Townhouse }
     public record Point (string address, BuildingType? buildingType, ParkingType parkingType, WalkingDistance walkingDistanceInMin, Access access);
     public enum MoveTime { EarlyMorning, Afternoon, LateAfternoon, Evening }
     public enum MoveType { FullMove, PartialMove, _5ItemsOrLess, Commercial }
@@ -99,8 +99,8 @@ namespace MovingPapa.Pages
                     {
                         MoveTime.EarlyMorning => 8,
                         MoveTime.Afternoon => 12,
-                        MoveTime.LateAfternoon => 16,
-                        MoveTime.Evening => 20
+                        MoveTime.LateAfternoon => 15,
+                        MoveTime.Evening => 18
                     }), TimeZoneInfo.FindSystemTimeZoneById("Eastern Standard Time"));
                 (int m, decimal secs) = GetRouteDetails(
                     moveDetailsParsed.points.Select(p => p.address).Prepend(officeAddr).Append(officeAddr).ToArray(),
@@ -112,7 +112,7 @@ namespace MovingPapa.Pages
                     r.room is Room.Backyard or Room.Garage or Room.Basement or Room.StorageLocker or Room.Other);
                 int movers = (numRelevantBedrooms, moveDetailsParsed.points[0].buildingType) switch
                 {
-                    (3, buildingType: BuildingType.Apartment or BuildingType.Studio) => numRelevantBedrooms,
+                    (3, buildingType: BuildingType.Apartment or BuildingType.Condo) => numRelevantBedrooms,
                     ( >= 4, _) => 4 + (numRelevantBedrooms - 3) / 2,
                     (0, _) => 2,
                     var p => numRelevantBedrooms + 1
@@ -124,8 +124,8 @@ namespace MovingPapa.Pages
                     + moveDetailsParsed.points[0].buildingType
                     switch
                     {
-                        BuildingType.House => 5m / 60,
-                        BuildingType.Apartment => 10m / 60
+                        BuildingType.Apartment or BuildingType.Condo => 10m / 60,
+                        _ => 5m / 60,
                     } * ((numBoxes - 1) / 3) / movers
                     + moveDetailsParsed.rooms.Sum(r => r.room switch
                     {
