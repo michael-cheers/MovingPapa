@@ -3967,6 +3967,15 @@ ${day}
                         </div>
                     </div>
                     <div class="ypm__content-wrapper" style="overflow-y:auto;">
+                <div class="ypm__footer-wrapper" style="text-align: center;">
+                    <p style="margin-bottom:0px!important;margin-left:-10px;margin-right:-10px">Please confirm that the information is accurate.</p>
+                    <p class="ypm__inacc-text" style="margin-bottom:-40px">Inaccuracies may affect service pricing.</p>
+                    <button onclick="updatePrice().then(() => { if (!this.closest('#ypm__main-wrapper').classList.contains('isConfirm')) updateConfirmRoomItems?.(); nextStage(); }); return false;" style="margin-top: -100px; width: 100%; border: none; align-self: stretch; padding-left: calc(var(--scale, 1) * 32.98px); padding-right: calc(var(--scale, 1) * 32.98px); padding-top: calc(var(--scale, 1) * 39.58px); padding-bottom: calc(var(--scale, 1) * 39.58px); background: #F84734; border-radius: calc(var(--scale, 1) * 16.49px); justify-content: center; align-items: center; display: inline-flex ">
+                        <div name="confirmInventoryBtn" style="color: white; font-size: calc(var(--scale, 1) * 49.47px); font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">
+                            Next
+                        </div>
+                    </button>
+                </div>
                     </div>
                 <script data-attrTarget="true" data-onSize="stage4OnSize()">
                     var stage4OnSize;
@@ -3975,13 +3984,15 @@ ${day}
                         let currentScript1 = document.currentScript;
                         let f = () => {
                             let contentWrapper = currentScript1.previousElementSibling;
-                            contentWrapper.innerHTML = '';
+                            while (contentWrapper.children.length > 1) {
+                                contentWrapper.lastElementChild.previousElementSibling.remove();
+                            }
                             let buildingType = document.querySelector('#stage1Div > [name=fromOnly] > .custom-select > select').value;
                             let numBedrooms = +buildingType.split(' ')[0];
                             function createRoom(name) {
                                 let r = inventoryRoom.content.firstElementChild.cloneNode(true);
                                 r.querySelector('.ypm__section-heading').innerText = name;
-                                contentWrapper.appendChild(r);
+                                contentWrapper.lastElementChild.before(r);
                                 return r;
                             }
                             function addItem(room, name) {
@@ -4135,20 +4146,10 @@ ${day}
                     }
                 </script>
                 </div>
-                <div class="ypm__footer-wrapper" style="text-align: center;">
-                    <p style="margin-bottom:0px!important;margin-left:-10px;margin-right:-10px">Please confirm that the information is accurate.</p>
-                    <p class="ypm__inacc-text" style="margin-bottom:-40px">Inaccuracies may affect service pricing.</p>
-                    <button onclick="updatePrice().then(() => { if (!this.closest('#ypm__main-wrapper').classList.contains('isConfirm')) updateConfirmRoomItems?.(); nextStage(); }); return false;" style="margin-top: -100px; width: 100%; border: none; align-self: stretch; padding-left: calc(var(--scale, 1) * 32.98px); padding-right: calc(var(--scale, 1) * 32.98px); padding-top: calc(var(--scale, 1) * 39.58px); padding-bottom: calc(var(--scale, 1) * 39.58px); background: #F84734; border-radius: calc(var(--scale, 1) * 16.49px); justify-content: center; align-items: center; display: inline-flex ">
-                        <div name="confirmInventoryBtn" style="color: white; font-size: calc(var(--scale, 1) * 49.47px); font-family: Arial Rounded MT Bold; font-weight: 400; word-wrap: break-word">
-                            Next
-                        </div>
-                    </button>
-                </div>
             <script>{
-                    let previousEl = document.currentScript.previousElementSibling;
-                    let prevPrevEl = previousEl.previousElementSibling;
+                    let prevPrevEl = document.currentScript.previousElementSibling;
                     let contentEl = prevPrevEl.querySelector('.ypm__content-wrapper');
-                    contentEl.style.maxHeight = `${window.innerHeight - prevPrevEl.getBoundingClientRect().top - previousEl.getBoundingClientRect().height - (prevPrevEl.getBoundingClientRect().height - contentEl.getBoundingClientRect().height)}px`;
+                    contentEl.style.maxHeight = `${window.innerHeight - prevPrevEl.getBoundingClientRect().top - (prevPrevEl.getBoundingClientRect().height - contentEl.getBoundingClientRect().height) }px`;
                 }
             </script>
         </div>
@@ -4212,7 +4213,7 @@ ${day}
             .ypm__body-wrapper {
                 background-color: #012122;
                 margin-top: 0px;
-                border-radius: 30px 30px 0px 0px;
+                border-radius: 30px;
                 border: 3px solid #013C3D;
                 display: flex;
                 align-items: center;
@@ -4252,7 +4253,6 @@ ${day}
                 display: flex;
                 flex-direction: column;
                 align-items: stretch;
-                margin-top: 30px;
             }
 
             .ypm__content-part-wrapper > p {
@@ -4338,11 +4338,10 @@ ${day}
                         }
 
             .ypm__footer-wrapper {
-                border-bottom: 3px solid #013C3D;
-                border-left: 3px solid #013C3D;
-                border-right: 3px solid #013C3D;
+                border-top: 3px solid #013C3D;
                 border-radius: 0px 0px 30px 30px;
                 padding: 20px;
+                background-color: rgb(0, 41, 42);
             }
 
                 .ypm__footer-wrapper > p {
