@@ -3936,21 +3936,8 @@ ${day}
             }
         }
     </script>
-    <style>
-        @media all and (max-width: 600px) {
-            .ypm__content-wrapper {
-                max-height: calc(10vh / var(--scale, 1));
-            }
-        }
-        @media all and (min-width: 600px) {
-            .ypm__content-wrapper {
-                max-height: calc(25vh / var(--scale, 1));
-            }
-        }
-    </style>
     <template id="stage4">
         <div id="ypm__main-wrapper" style="transform:scale(calc(1 / var(--scale, 1)));width: calc(100% * var(--scale, 1)); transform-origin: 0% 0%">
-            <div class="ypm__body-wrapper">
                 <div class="ypm__search-wrapper" name="searchHead">
                     <div class="ypm__search-box">
                         <svg style="fill:#667085" version="1.1" xmlns="http://www.w3.org/2000/svg" width="23" height="30" viewBox="0 0 768 768">
@@ -3961,12 +3948,14 @@ ${day}
                         <input oninput="updateInventorySearch(this)" type="text" placeholder="search items...">
                     </div>
                 </div>
+            <div class="scrollingPart" style="overflow-y:auto;">
+                <div class="ypm__body-wrapper">
                 <div class=mb-center name="please-confirm-inventory-head" style="display:none;margin-top:23px">
                     <div style='color: #FFF;font-family: "Arial Rounded MT Bold";font-size: 22.166px;font-style: normal;font-weight: 400;line-height: normal;'>
                         Please confirm your inventory<span class=firstName></span>.
                         </div>
                     </div>
-                    <div class="ypm__content-wrapper" style="overflow-y:auto;">
+                    <div class="ypm__content-wrapper" style="">
                     </div>
                 <script data-attrTarget="true" data-onSize="stage4OnSize()">
                     var stage4OnSize;
@@ -4144,11 +4133,13 @@ ${day}
                         </div>
                     </button>
                 </div>
-            <script>{
+            </div>
+            <script>
+    {
                     let previousEl = document.currentScript.previousElementSibling;
-                    let prevPrevEl = previousEl.previousElementSibling;
-                    let contentEl = prevPrevEl.querySelector('.ypm__content-wrapper');
-                    contentEl.style.maxHeight = `${window.innerHeight - prevPrevEl.getBoundingClientRect().top - previousEl.getBoundingClientRect().height - (prevPrevEl.getBoundingClientRect().height - contentEl.getBoundingClientRect().height)}px`;
+                    //let prevPrevEl = previousEl.previousElementSibling;
+                    //let contentEl = prevPrevEl.querySelector('.ypm__content-wrapper');
+                    previousEl.style.maxHeight = `calc(${window.innerHeight - previousEl.getBoundingClientRect().top}px / var(--scale, 1))`;
                 }
             </script>
         </div>
@@ -4252,7 +4243,6 @@ ${day}
                 display: flex;
                 flex-direction: column;
                 align-items: stretch;
-                margin-top: 30px;
             }
 
             .ypm__content-part-wrapper > p {
