@@ -4031,11 +4031,11 @@ ${day}
                                 //    "Storage locker": ["Boxes", "Furniture", "Appliances"],
                                 //    Backyard: ["Patio furniture", "Grill", "Lawnmower"]
                                 //};
-                                for (let name of document.getElementById('extraRoomsDropdown').querySelectorAll('option:checked')) {
-                                    roomList.push([
-                                        name.innerText, roomItems[name.innerText.trim()]
-                                    ])
-                                }
+                                //for (let name of document.getElementById('extraRoomsDropdown').querySelectorAll('option:checked')) {
+                                //    roomList.push([
+                                //        name.innerText, roomItems[name.innerText.trim()]
+                                //    ])
+                                //}
                             }
                             if (isConfirm) {
                                 let confirmSelectedItems = getSelectedItems();
@@ -4089,7 +4089,7 @@ ${day}
                             };
                             if (currentScript1.getAttribute('data-isConfirm') === 'true') {
                                 //document.currentScript.parentElement.querySelectorAll('.ypm__start-calc-btn').forEach(b => b.click());
-                                currentScript1.parentElement.parentElement.querySelector('[name=confirmInventoryBtn]').innerText = 'Confirm and see price';
+                                //currentScript1.parentElement.parentElement.querySelector('[name=confirmInventoryBtn]').innerText = 'Confirm and see price';
                             }
 
                             var headings = currentScript1.parentElement.querySelectorAll('.ypm__content-part-wrapper');
