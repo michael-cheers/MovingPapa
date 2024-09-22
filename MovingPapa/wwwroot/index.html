@@ -726,9 +726,9 @@
                         });
                         const checkQuote2 = () => pickUpPoint2.value !== '' && destinationPoint2.value !== '';
                         const requestQuote2 = () => {
-                            if (!(pickUpPoint2.value.endsWith(', ON, Canada') && destinationPoint2.value.endsWith(', ON, Canada'))) {
+                            //if (!(pickUpPoint2.value.endsWith(', ON, Canada') && destinationPoint2.value.endsWith(', ON, Canada'))) {
                                 requestCall();
-                            }
+                            //}
                         };
 
                         function getQuote(direct = false) {
@@ -1703,6 +1703,7 @@
                                         #howWeDoItGetQuoteBtn {
                                             margin-left: 247px;
                                             padding-bottom: 123px;
+                                            margin-bottom: 78px;
                                         }
                                     }
                                 </style>
