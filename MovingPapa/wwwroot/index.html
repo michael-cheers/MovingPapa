@@ -88,7 +88,7 @@
         @media all and (min-width: 600px) {
             .responsive-logo {
                 margin-left: 100px;
-                margin-top: 30px;
+                margin-top: 35px;
             }
 
             .pc-display-none {
@@ -184,6 +184,7 @@
 
             .mb-column-flex {
                 flex-direction: column;
+                display: flex;
             }
 
             .mb-no-margin-left {
@@ -599,12 +600,17 @@
         }
 
         @media all and (min-width: 600px) {
-            #bookMoveDiv {
-                box-shadow: 0 -1px 2px 0px #012122 !important;
+            #bookMoveDiv button {
+                height: 100.79px !important;
+                /*box-shadow: 0 -1px 2px 0px #012122 !important;*/
             }
 
             #phoneNumNav {
                 border: 3.443px solid #000;
+                height: 84px;
+                margin-left: -8px !important;
+                border-radius: 10px !important;
+                margin-right: -94px !important;
             }
         }
 
@@ -644,7 +650,7 @@
 			
 			<div class="" style="border-bottom: 1px solid #6D6D6D" >
             <div class="sticky" style="display:flex"  >
-                <div style="width: calc(100vw / 0.9)" class="mb-full-width" >
+                <div style="width: calc(100vw / 0.9)" class="mb-full-width">
                     <div id="right-logo" style="float:right;display:flex;align-items:center;">
                         <div id="bookMoveDiv">
                             <button onclick="getQuote()" style=" transform: scale(0.5);  width: 252.2px;height: 83.79px;background: #F84734; margin-right: -10px; border-radius: 10px;border:none;/* Book a move */font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 28.6003px;line-height: 31px;/* identical to box height */color: #FFFFFF;">
@@ -655,15 +661,14 @@
                             </button>
                         </div>
                         <!--<svg class="pc-display-none" width="108" height="30" viewBox="0 0 108 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform:scale(0.5); margin-right: 10px; margin-top:-15.4px">
-        <path d="M3 3L104.939 3" stroke="black" stroke-width="5" stroke-linecap="round" />
-        <path d="M3 32.8788H104.939" stroke="black" stroke-width="5" stroke-linecap="round" />
-        <path d="M3 61H104.939" stroke="#242121" stroke-width="5" stroke-linecap="round" />
-    </svg>-->
+            <path d="M3 3L104.939 3" stroke="black" stroke-width="5" stroke-linecap="round" />
+            <path d="M3 32.8788H104.939" stroke="black" stroke-width="5" stroke-linecap="round" />
+            <path d="M3 61H104.939" stroke="#242121" stroke-width="5" stroke-linecap="round" />
+        </svg>-->
 
-                        <a id="phoneNumNav" href="tel:6476702576" class="mb-display-none" style="cursor: pointer; text-decoration:none; margin-left: 45px; transform:scale(0.58); padding-left: 35px; padding-right: 54px; padding-top: 8px; padding-bottom: 8px; transform-origin:0% center; display: flex; border-radius: 40px; align-items: center; margin-right: -100px;background: none;">
-                            <svg width="55" height="55" viewBox="0 0 55 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.4" d="M27.1628 32.1826L19.7895 39.5559C18.9777 38.8344 18.1885 38.0903 17.4219 37.3236C15.0994 34.9786 13.0024 32.5208 11.1309 29.9503C9.28189 27.3798 7.7937 24.8093 6.71138 22.2613C5.62905 19.6908 5.08789 17.233 5.08789 14.888C5.08789 13.3547 5.35847 11.889 5.89963 10.5361C6.4408 9.16068 7.29763 7.89797 8.4927 6.77055C9.9358 5.35 11.5142 4.651 13.1828 4.651C13.8141 4.651 14.4455 4.78629 15.0092 5.05687C15.5955 5.32745 16.1141 5.73332 16.5199 6.31958L21.7512 13.6929C22.157 14.2566 22.4502 14.7752 22.6531 15.2713C22.856 15.7448 22.9688 16.2183 22.9688 16.6468C22.9688 17.1879 22.8109 17.7291 22.4953 18.2477C22.2021 18.7663 21.7737 19.3075 21.2326 19.8486L19.5189 21.63C19.2708 21.878 19.1581 22.1711 19.1581 22.5319C19.1581 22.7123 19.1806 22.8701 19.2257 23.0505C19.2934 23.2309 19.361 23.3662 19.4061 23.5015C19.812 24.2456 20.511 25.2152 21.5031 26.3877C22.5178 27.5602 23.6001 28.7553 24.7727 29.9503C25.5844 30.7395 26.3736 31.5062 27.1628 32.1826Z" fill="#012122" /><path d="M50.1172 41.4726C50.1172 42.1039 50.0045 42.7578 49.779 43.3892C49.7114 43.5696 49.6437 43.75 49.5535 43.9304C49.1702 44.7421 48.6741 45.5088 48.0202 46.2303C46.9154 47.4479 45.6977 48.3273 44.3223 48.891C44.2997 48.891 44.2772 48.9136 44.2547 48.9136C42.9243 49.4547 41.4812 49.7479 39.9254 49.7479C37.6254 49.7479 35.1676 49.2067 32.5746 48.1018C29.9815 46.9969 27.3884 45.5088 24.8179 43.6372C23.9385 42.9833 23.0591 42.3294 22.2249 41.6304L29.5982 34.2571C30.2295 34.7306 30.7932 35.0914 31.2668 35.3394C31.3795 35.3845 31.5148 35.4522 31.6726 35.5198C31.853 35.5874 32.0334 35.61 32.2363 35.61C32.6197 35.61 32.9128 35.4747 33.1608 35.2267L34.8745 33.5355C35.4382 32.9718 35.9794 32.5434 36.498 32.2728C37.0166 31.9572 37.5352 31.7993 38.0989 31.7993C38.5274 31.7993 38.9783 31.8895 39.4744 32.0924C39.9705 32.2954 40.4891 32.5885 41.0528 32.9718L48.5163 38.2707C49.1026 38.6766 49.5084 39.1501 49.7565 39.7138C49.9819 40.2775 50.1172 40.8412 50.1172 41.4726Z" fill="#012122" /></svg>
+                        <a id="phoneNumNav" href="tel:6476702576" class="mb-display-none" style="cursor: pointer; text-decoration:none; margin-left: 45px; transform:scale(0.58); padding-left: 35px; padding-right: 54px; padding-top: 8px; padding-bottom: 8px; transform-origin:0% center; display: flex; border-radius: 0px; align-items: center; margin-right: -100px;background: none;">
                             <span style='color: #012122; font-family: "Arial Rounded MT Bold"; font-size: 26.6px; font-style: normal; font-weight: 400; line-height: normal;'>
-                                +1 (647) 670-2576
+                                (647) 670-2576
                             </span>
                         </a>
                         <a class="pc-display-none" href="tel:6476702576" style="border-radius: 40px; display: flex;">
@@ -675,8 +680,16 @@
                         </a>
 
                     </div>
-                    <a href="/"><div class="responsive-logo"></div></a>
-                    
+                    <div style="display:flex">
+                        <a href="/"><div class="responsive-logo"></div></a>
+
+                        <div class="mb-display-none" style='margin-top: 33px; margin-left: 91px; display: flex; flex-direction: column; justify-content: center; color: #012122; font-family: "Arial Rounded MT"; font-size: 18px; font-style: normal; font-weight: 800; line-height: normal;'>
+                            About us
+                        </div>
+                        <div class="mb-display-none" style='margin-top: 33px; margin-left: 50px; display: flex; flex-direction: column; justify-content: center; color: #012122; font-family: "Arial Rounded MT"; font-size: 18px; font-style: normal; font-weight: 800; line-height: normal; '>
+                            Sustainability
+                        </div>
+                    </div>
                 </div>
                 <!--<div class="mb-display-none" style="width:70%;border-left: 0.747786px solid #6D6D6D;display:flex">
                     <a href="/track" style="padding-top:51px;padding-bottom:40px;text-decoration:none;padding-left:30px;padding-right:20px;border-right: 0.747786px solid #6D6D6D; font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 26px;line-height: 32px;/* identical to box height, or 125% */color: #00292A;">
@@ -1096,8 +1109,43 @@
                         }
                     </script>
 
-                    <div class=landing-content style="margin-bottom:-36px">
-                        <div style="display:flex;justify-content: space-between;" class="mb-column-flex">
+                    <style>
+                        @media all and (min-width: 600px) {
+                            #landingTop {
+                                background-color: #00292A;
+                                border-radius: 40px;
+                                margin-left: 40px;
+                                width: 40px;
+                                width: calc(98.8vw / var(--scale, 1) - 80px) !important;
+                                display: flex;
+                            }
+                            #headerTxt2, #desTxt2 {
+                                color: white !important;
+                            }
+                            /*.mark-left, .mark-right {
+                                display: none;
+                            }*/
+                            #quoteForm > div {
+                                margin-top: -90px !important;
+                            }
+                            #quoteForm {
+                                margin-bottom: 0px !important;
+                            }
+                            #headerTxt2 > span {
+                                color: #F84734!important;
+                            }
+                            #googleDiv {
+                                transform: scale(0.8);
+                                transform-origin: 0% 0%;
+                            }
+                            #googleDiv img {
+                                transform: scale(calc(1 / 0.8));
+                            }
+                        }
+                    </style>
+
+                    <div id="landingTop" class="landing-content pc-np" style="margin-bottom:-36px">
+                        <div style="justify-content: space-between;" class="mb-column-flex">
                             <style>
                                 @media all and (min-width: 600px) {
                                     #aboutInfo {
@@ -1119,7 +1167,7 @@
                                 <style>
                                     @media all and (min-width: 600px) {
                                         #headerTxt2 {
-                                            font-size: 38.37px !important;
+                                            font-size: 33.37px !important;
                                             line-height: revert !important;
                                             margin-bottom: 1rem;
                                         }
@@ -1192,15 +1240,17 @@
                                                 margin-top: 250px;
                                             }
 
-                                            #mark-left, #mark-right {
+                                            .mark-left, .mark-right {
                                                 display: block;
                                             }
                                         }
                                 </style>
                                 <div id="googleReviewsSummary" style="display:flex;justify-content:center;width:100%;">
                                     <div id="googleDiv" style="width:549px;height:181px;border-top:6.5px solid #34A853;display:flex;padding-top:27px;box-shadow: -6.552px -3.276px 26.208px 0px rgba(0, 0, 0, 0.08), 32.76px 22.932px 65.521px 0px rgba(0, 0, 0, 0.08);border-radius: 13.104px;background: #FFF;position:relative;">
-                                        <img id="mark-left" src="mark-left.jpg" style="width: 114.59px; height: 201px; position: absolute; left: -150px; top: 0px" />
-                                        <img id="mark-right" src="mark-right.png" style="width: 114.59px; height: 201px; position: absolute; left: 587px; top: 0px" />
+                                        <img class="pc-display-none mark-left" src="mark-left.jpg" style="width: 114.59px; height: 201px; position: absolute; left: -150px; top: 0px" />
+                                        <img class="pc-display-none mark-right" src="mark-right.png" style="width: 114.59px; height: 201px; position: absolute; left: 587px; top: 0px" />
+                                        <img class="mb-display-none mark-left" src="mark-left-pc.png" style="width: 114.59px; height: 201px; position: absolute; left: -150px; top: 0px" />
+                                        <img class="mb-display-none mark-right" src="mark-right-pc.png" style="width: 114.59px; height: 201px; position: absolute; left: 587px; top: 0px" />
                                         <svg style="margin-left:41px;margin-top:10px" width="107" height="107" viewBox="0 0 107 107" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M100.419 54.1394C100.419 50.6925 100.11 47.3782 99.5353 44.1965H53.7542V63.0216H79.9148C78.7659 69.0757 75.319 74.2017 70.1487 77.6486V89.8893H85.9247C95.1163 81.4048 100.419 68.9431 100.419 54.1394Z" fill="#4285F4" />
                                             <path d="M53.7542 101.644C66.8788 101.644 77.8822 97.3132 85.9248 89.8893L70.1488 77.6485C65.8182 80.5651 60.2944 82.3327 53.7542 82.3327C41.1158 82.3327 30.3776 73.804 26.533 62.3145H10.3594V74.8646C18.3578 90.7289 34.7524 101.644 53.7542 101.644Z" fill="#34A853" />
@@ -1255,8 +1305,8 @@
                                         #quoteForm {
                                             width: 975px;
                                             border-radius: 40px;
-                                            position: absolute;
-                                            right: -60px;
+                                            /*position: absolute;
+                                            right: -60px;*/
                                         }
                                     }
                                 </style>
@@ -1392,7 +1442,7 @@
                                         </div>
                                         <div class="center" style="margin-top:calc(218.6px - (72.8px + 87.53px))">
                                             <button onclick="updateAddrs();getQuote(true)" class="rainbow-border-orange" style="/* Rectangle 3 */ width: 1017px; height: calc(16px + 49px * 123 / 158 * 38 / 53 / var(--scale, 1)); background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 28.2559px; line-height: 33px; color: #FFFFFF;">
-                                                <span style="text-align:center;display:flex;justify-content:center;flex-direction:column;">Get a Quote</span>
+                                                <span style="text-align:center;display:flex;justify-content:center;flex-direction:column;">Get a Free Quote</span>
                                             </button>
                                         </div>
                                         <div class="center">
@@ -1403,6 +1453,7 @@
                                 </div>
                             </div>
                         </div>
+                        <img src="movingPapaTruck.png" style="width: 100%; height: calc(1057px - 108px); border-radius: 90px 0px 0px 90px;margin-top:54px;margin-bottom:54px;" />
                     </div>
                     <div style="margin-top: 200px; background-color: #00292A; color: white; " class="landing-content pc-np arial-rounded-mt mb-column-flex">
                         <div class="pc-trans" style="border-bottom: 1px solid transparent; justify-content: space-between; display: flex; ">
@@ -1906,7 +1957,7 @@
                                     <div class="center" style="width:calc(50vw / var(--scale, 1))">
                                         <div>
                                             <b>Office address</b><br />
-                                            47 bay st, Toronto ON M5R2V9<br /><br />
+                                            200 Fairbank Ave, York, ON M6B 1G1<br /><br />
 
                                             <b>Customer support</b><br />
                                             Email: <a href="mailto:hello@movingpapa.com">hello@movingpapa.com</a><br />
