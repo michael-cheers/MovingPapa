@@ -1031,43 +1031,6 @@
                         }
 
                         let ratesJson;
-                        async function getRatesJson() {
-                            let req = await fetch('/rates');
-                            let json = await req.json();
-                            let reviewsJson = json.reviews;
-                            for (let review of reviewsJson) {
-                                let reviewDiv = reviewTemplate.content.cloneNode(true);
-                                reviewDiv.querySelector('[name=reviewContent]').innerText = review.text;
-                                reviewDiv.querySelector('[name=reviewName]').innerText = review.author_name;
-                                dtCarousel.appendChild(reviewDiv);
-                            }
-                            /*if (screen.width >= 600)*/ {
-                                dtCarousel.parentElement.style.paddingLeft = '0px';
-                                dtCarousel.parentElement.style.paddingRight = '0px';
-                                dtCarousel.style.marginTop = '100px';
-                                $(document).ready(function () {
-                                    //$('#dtCarousel').owlCarousel({
-                                    //    autoWidth: true,
-                                    //    center: true,
-                                    //    loop: true,
-                                    //    margin: 100, // Adjust spacing between items
-                                    //    nav: true,
-                                    //    dots: false,
-                                    //    items: 10
-                                    //});
-                                    $('#dtCarousel').flickity({
-                                        arrowShape: 'M 7 53 L 40 15 M 7 47 L 40 85 M 10 50 L 90 50',
-                                        cellPosition: 'center',
-                                        wrapAround: true,
-                                        draggable: true,
-                                        pageDots: false
-                                    }).flickity('next');
-
-                                });
-                            }
-                            ratesJson = json.rates;
-                        }
-                        getRatesJson();
 
                         function updateCalendarDisplay() {
                             let rows = calendarTable.children;
@@ -1996,6 +1959,45 @@
                                     }*/
                             </style>
                         </div>
+                        <script>
+                            async function getRatesJson() {
+                                let req = await fetch('/rates');
+                                let json = await req.json();
+                                let reviewsJson = json.reviews;
+                                for (let review of reviewsJson) {
+                                    let reviewDiv = reviewTemplate.content.cloneNode(true);
+                                    reviewDiv.querySelector('[name=reviewContent]').innerText = review.text;
+                                    reviewDiv.querySelector('[name=reviewName]').innerText = review.author_name;
+                                    dtCarousel.appendChild(reviewDiv);
+                                }
+                            /*if (screen.width >= 600)*/ {
+                                    dtCarousel.parentElement.style.paddingLeft = '0px';
+                                    dtCarousel.parentElement.style.paddingRight = '0px';
+                                    dtCarousel.style.marginTop = '100px';
+                                    $(document).ready(function () {
+                                        //$('#dtCarousel').owlCarousel({
+                                        //    autoWidth: true,
+                                        //    center: true,
+                                        //    loop: true,
+                                        //    margin: 100, // Adjust spacing between items
+                                        //    nav: true,
+                                        //    dots: false,
+                                        //    items: 10
+                                        //});
+                                        $('#dtCarousel').flickity({
+                                            arrowShape: 'M 7 53 L 40 15 M 7 47 L 40 85 M 10 50 L 90 50',
+                                            cellPosition: 'center',
+                                            wrapAround: true,
+                                            draggable: true,
+                                            pageDots: false
+                                        }).flickity('next');
+
+                                    });
+                                }
+                                ratesJson = json.rates;
+                            }
+                            getRatesJson();
+                        </script>
                     <style>
                         /*@media all and (max-width: 600px) {
                             #sustainabilityContainer {
