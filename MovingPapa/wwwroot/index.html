@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="manifest" href="manifest.json">
-    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/jquery/dist/jquery.min.js" defer></script>
+    <script src="lib/flickity/flickity.pkgd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" defer></script>
     <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
     <!-- Google tag (gtag.js) -->
@@ -177,7 +178,7 @@
             }
 
             .mb-text-center {
-                text-align: center!important;
+                text-align: center !important;
             }
 
             .popup {
@@ -1974,7 +1975,7 @@
                                     dtCarousel.parentElement.style.paddingLeft = '0px';
                                     dtCarousel.parentElement.style.paddingRight = '0px';
                                     dtCarousel.style.marginTop = '100px';
-                                    $(document).ready(function () {
+                                    
                                         //$('#dtCarousel').owlCarousel({
                                         //    autoWidth: true,
                                         //    center: true,
@@ -1984,15 +1985,13 @@
                                         //    dots: false,
                                         //    items: 10
                                         //});
-                                        $('#dtCarousel').flickity({
+                                        new Flickity('#dtCarousel', {
                                             arrowShape: 'M 7 53 L 40 15 M 7 47 L 40 85 M 10 50 L 90 50',
                                             cellPosition: 'center',
                                             wrapAround: true,
                                             draggable: true,
                                             pageDots: false
-                                        }).flickity('next');
-
-                                    });
+                                        }).next();
                                 }
                                 ratesJson = json.rates;
                             }
@@ -5550,14 +5549,11 @@ ${day}
         let currentPackage = 0;
     </script>
 
-    <script src="lib/jquery/dist/jquery.min.js"></script>
-    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/flickity/flickity.pkgd.min.js"></script>
     <script src="js/site.js" asp-append-version="true"></script>
     <script>
         if (screen.width < 600) {
-            $(document).ready(function () {
-                $('.gallery').flickity({
+            //$(document).ready(function () {
+                new Flickity('.gallery', {
                     arrowShape: 'M 7 53 L 40 15 M 7 47 L 40 85 M 10 50 L 90 50',
                     cellPosition: 'center',
                     wrapAround: true,
@@ -5565,7 +5561,7 @@ ${day}
                     pageDots: false,
 
                 });
-            });
+            //});
         }
         if (false) {
             let childCount = document.querySelector('.gallery').children.length;
