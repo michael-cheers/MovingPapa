@@ -751,7 +751,7 @@
                                 showScreen('main');
                             }
                         });
-                        const checkQuote2 = () => pickUpPoint2.value !== '' && destinationPoint2.value !== '';
+                        const checkQuote2 = () => pickUpPoint2.value !== '' || destinationPoint2.value !== '';
                         const requestQuote2 = () => {
                             //if (!(pickUpPoint2.value.endsWith(', ON, Canada') && destinationPoint2.value.endsWith(', ON, Canada'))) {
                             //    requestCall();
@@ -2497,9 +2497,14 @@
 
                                     .popup-main-inner:not(#progressDiv) {
                                         /*width: calc(59vw / var(--scale, 1));*/
+                                        padding-right: calc(99vw* 0.07 / var(--scale, 1));
+                                        padding-left: calc(99vw* 0.33 / var(--scale, 1));
+                                        width: calc(99vw / var(--scale, 1)) !important;
+                                    }
+
+                                    .popup-main-inner-get-quote:not(#progressDiv) {
                                         padding-right: calc(99vw* 0.4 / var(--scale, 1));
                                         padding-left: calc(99vw* 0.00 / var(--scale, 1));
-                                        width: calc(99vw / var(--scale, 1)) !important;
                                     }
                                 }
                             </style>
@@ -2793,6 +2798,10 @@
                                         #newPopupDesign {
                                             display: none!important;
                                         }
+
+                                    _::-webkit-full-page-media, _:future, :root #calendarMonthSelector {
+                                        text-decoration: underline;
+                                    }
                                 </style>
                                 <div id="newPopupDesign" style="display:none;padding-top:51px;" class="popup-main-inner">
                                     <div id="popupCloseButton" style="display:none"><svg width=70 height=70 viewbox="0 0 70 70" fill="none" onclick="previousStage();" style="cursor: pointer"><path d="M52.4999 52.4999L35.0001 35.0001M35.0001 35.0001L17.5 17.5M35.0001 35.0001L52.5001 17.5M35.0001 35.0001L17.5 52.5001" stroke="#888888" stroke-width="5.83333" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>
@@ -3904,6 +3913,7 @@ ${day}
                 document.currentScript.parentElement.style.marginLeft = 'calc(7vw / var(--scale, 1))';
                 document.currentScript.parentElement.parentElement.style.backgroundColor = 'rgb(0, 41, 42)';
             }
+            document.currentScript.parentElement.classList.add('popup-main-inner-get-quote');
         </script>
     </template>
     <style>
