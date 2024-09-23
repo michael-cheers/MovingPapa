@@ -1465,7 +1465,7 @@
                                 </div>
                             </div>
                         </div>
-                        <img class="mb-display-none" src="movingPapaTruck.png" style="width: calc((1057px - 108px) * 1059 / 949); height: calc(1057px - 108px); border-radius: 90px 0px 0px 90px; margin-top: 54px; margin-bottom: 54px;" />
+                        <img class="mb-display-none" src="movingPapaTruck.png" style="aspect-ratio: calc(1762 / 1579); height: calc(1057px - 108px); border-radius: 90px 0px 0px 90px; margin-top: 54px; margin-bottom: 54px; " />
                     </div>
                     <style>
                         @media all and (max-width: 600px) {
@@ -1765,6 +1765,12 @@
 
                                 .flickity-prev-next-button.next {
                                     left: calc(100vw / 3);
+                                }
+                            }
+
+                            @media all and (max-width: 600px) {
+                                .gallery-cell {
+                                    height: 750px !important;
                                 }
                             }
 
@@ -2491,8 +2497,8 @@
 
                                     .popup-main-inner:not(#progressDiv) {
                                         /*width: calc(59vw / var(--scale, 1));*/
-                                        padding-left: calc(99vw* 0.33 / var(--scale, 1));
-                                        padding-right: calc(99vw* 0.07 / var(--scale, 1));
+                                        padding-right: calc(99vw* 0.4 / var(--scale, 1));
+                                        padding-left: calc(99vw* 0.00 / var(--scale, 1));
                                         width: calc(99vw / var(--scale, 1)) !important;
                                     }
                                 }
