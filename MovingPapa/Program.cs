@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.ResponseCompression;
 using MovingPapa.DB;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,9 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<MovingpapaContext>();
+builder.Services.Configure<GzipCompressionProvider>(o => { });
 builder.Services.AddResponseCompression(opt =>
 {
     opt.EnableForHttps = true;
+    opt.Providers.Add<GzipCompressionProvider>();
 });
 builder.Services.AddWebOptimizer(true, true);
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
@@ -28,10 +31,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseResponseCompression();
 app.UseHttpsRedirection();
 app.UseDefaultFiles();
 app.UseStaticFiles();
-
 app.UseRouting();
 app.UseForwardedHeaders();
 
