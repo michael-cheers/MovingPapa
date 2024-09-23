@@ -34,6 +34,7 @@ if (!app.Environment.IsDevelopment())
 app.UseResponseCompression();
 app.UseHttpsRedirection();
 app.UseDefaultFiles();
+app.UseWebOptimizer();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseForwardedHeaders();
