@@ -790,6 +790,9 @@
                                 document.body.style.overflow = "hidden";
                             }
                         }
+                        function backHome() {
+                            showScreen('main');
+                        }
                         function requestCall() {
                             stageIdx = stages.findIndex(s => s[0] === "Great, we’ll make this easy. Just share your details, and we’ll be in touch shortly." && s[4] === 'monsterCall.png');
                             displayStage();
