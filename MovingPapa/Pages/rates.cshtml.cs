@@ -31,7 +31,7 @@ namespace MovingPapa.Pages
                         new review("Fantastic service from start to finish! The crew arrived on time, were professional, and handled everything with care. They took extra care with my fragile items and made sure nothing was damaged.", "Alexander Malko"),
                         new review("These guys were amazing! I was moving from Toronto to Mississauga, and they made the entire process stress-free.", "Ann Blanchard"),
                         new review("The movers were friendly and worked quickly. They arrived and got straight to work, handling everything with care. They even helped me unpack and arrange things once we got to the new place.", "Asha Shaji"),
-                        new review("I couldn’t be happier with the service! The movers were efficient, professional, and took great care with all my belongings. Everything arrived in perfect condition.", "Ali Baranpourian")
+                        new review("I couldn't be happier with the service! The movers were efficient, professional, and took great care with all my belongings. Everything arrived in perfect condition.", "Ali Baranpourian")
                     }
                 )
             }
