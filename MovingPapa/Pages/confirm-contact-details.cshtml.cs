@@ -1,6 +1,14 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MovingPapa.DB;
+using MySqlX.XDevAPI;
+using Org.BouncyCastle.Cms;
+using RestSharp;
+using RingClient = RingCentral.RestClient;
+using RestClient = RestSharp.RestClient;
+using System.Net;
+using System.Text.Json;
+using RingCentral;
 
 namespace MovingPapa.Pages
 {
@@ -11,7 +19,7 @@ namespace MovingPapa.Pages
         public async Task<IActionResult> OnGet(string fullName, string email, string phoneNumber, string service, string points, string moveDate, string moveTime, bool isCallNow, string? uuid = null)
         {
             uuid ??= Guid.NewGuid().ToString();
-            Enum.Parse<MoveTime>(moveTime.Replace(" ", ""));
+            //Enum.Parse<MoveTime>(moveTime.Replace(" ", ""));
             await DB.QuotesAndContacts.AddAsync(new()
             {
                 FullName = fullName,
@@ -22,10 +30,73 @@ namespace MovingPapa.Pages
                 Addresses = points,
                 IsCallNow = isCallNow,
                 MoveDate = DateTime.Parse(moveDate),
-                MoveTime = moveTime.ToString()
+                MoveTime = "Early Morning" //moveTime.ToString()
             });
             await DB.SaveChangesAsync();
+            var pointsDecoded = JsonSerializer.Deserialize<List<string>>(points); 
+            EmailService emailService = new();
+            await emailService.SendMessage(
+                "sales@movingpapa.com",
+                "NEW LEAD",
+                "<ul>" + string.Concat($"Date: {moveDate}\r\nFrom: {pointsDecoded[0]}\r\nTo: {pointsDecoded[1]}\r\nName:{fullName}\r\nPhone:{phoneNumber}\r\nEmail:{email}\r\n"
+                    .Split("\r\n").Select(k => "<li>" + WebUtility.HtmlEncode(k) + "</li>")) + "</ul>"
+            );
+            await emailService.SendMessage(
+                email,
+                "We’ve Received Your Moving Request! 📦",
+                @$"Hi {fullName},<br><br>
+Thank you for choosing Moving Papa! We’ve received your moving details and will be giving you a call shortly to provide your personalized quote.<br><br>
+<b>Move Details:</b>
+<ul><li>Date: {DateTime.Parse(moveDate).ToString("MMMM d yyyy")}</li><li>From: {pointsDecoded[0]}</li><li>To: {pointsDecoded[1]}</li></ul>
+Expect a call from us soon at (647) 670-2576. If you need anything in the meantime, feel free to reply to this email!<br><br>
+Looking forward to helping you move with confidence!<br><br>
+Best,<br>
+The Moving Papa Team"
+            );
+            await send_sms(
+                "+16476702576",
+                phoneNumber,
+                $"Hi {fullName}! This is Moving Papa. We’ve received your moving request and will be calling you soon with your quote. Talk to you soon! 📞"
+            );
             return Content(uuid);
         }
+
+        static private async Task send_sms(string fromNumber, string toNumber, string message)
+        {
+            RingClient restClient = new (
+                Environment.GetEnvironmentVariable("RC_APP_CLIENT_ID"),
+                Environment.GetEnvironmentVariable("RC_APP_CLIENT_SECRET"),
+                "https://platform.ringcentral.com");
+            // Authenticate a user using a personal JWT token
+            await restClient.Authorize(Environment.GetEnvironmentVariable("RC_USER_JWT"));
+
+            try
+            {
+                var requestBody = new CreateSMSMessage();
+                requestBody.from = new MessageStoreCallerInfoRequest
+                {
+                    phoneNumber = fromNumber
+                };
+                requestBody.to = new [] {
+                    new MessageStoreCallerInfoRequest { phoneNumber = toNumber }
+                };
+                // To send group messaging, add more (max 10 recipients) 'phoneNumber' object. E.g.
+                /*
+                requestBody.to = new MessageStoreCallerInfoRequest[] {
+                  new MessageStoreCallerInfoRequest { phoneNumber = "Recipient_1_Number" },
+                  new MessageStoreCallerInfoRequest { phoneNumber = "Recipient_2_Number" }
+                };
+                */
+                requestBody.text = message;
+
+                var resp = await restClient.Restapi().Account().Extension().Sms().Post(requestBody);
+                //Console.WriteLine("SMS sent. Message id: " + resp.id.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }
