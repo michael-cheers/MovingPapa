@@ -13,7 +13,12 @@ builder.Services.AddResponseCompression(opt =>
     opt.EnableForHttps = true;
     opt.Providers.Add<GzipCompressionProvider>();
 });
-builder.Services.AddWebOptimizer(true, true);
+builder.Services.AddWebOptimizer(pipeline =>
+{
+    pipeline.MinifyHtmlFiles();
+    pipeline.MinifyJsFiles();
+    pipeline.MinifyCssFiles();
+});
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;

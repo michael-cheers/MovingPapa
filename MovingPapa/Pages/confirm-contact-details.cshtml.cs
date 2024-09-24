@@ -33,7 +33,19 @@ namespace MovingPapa.Pages
                 MoveTime = "Early Morning" //moveTime.ToString()
             });
             await DB.SaveChangesAsync();
-            var pointsDecoded = JsonSerializer.Deserialize<List<string>>(points); 
+            var pointsDecoded = JsonSerializer.Deserialize<List<string>>(points);
+            var client = new RestClient($"https://api.smartmoving.com/api/leads/from-provider/v2?providerKey={Environment.GetEnvironmentVariable("SM_API_KEY")}");
+            await client.PostAsync(new RestRequest()
+                .AddJsonBody(new
+                {
+                    FullName = fullName,
+                    PhoneNumber = phoneNumber,
+                    Email = email,
+                    MoveDate = DateTime.Parse(moveDate).ToString("yyyyMMdd"),
+                    OriginAddressFull = pointsDecoded[0],
+                    DestinationAddressFull = pointsDecoded[^1]
+                })
+            );
             EmailService emailService = new();
             await emailService.SendMessage(
                 "sales@movingpapa.com",

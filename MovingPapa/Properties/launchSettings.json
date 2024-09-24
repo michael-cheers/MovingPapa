@@ -18,7 +18,8 @@
         "MOVINGPAPA_EMAIL_PASSWORD": "REMOVED_KEY2",
         "RC_USER_JWT": "REMOVED_KEY3",
         "RC_APP_CLIENT_ID": "REMOVED_KEY4",
-        "RC_APP_CLIENT_SECRET": "REMOVED_KEY5"
+        "RC_APP_CLIENT_SECRET": "REMOVED_KEY5",
+        "SM_API_KEY": "REMOVED_KEY6"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7283;http://localhost:5283"
