@@ -826,6 +826,10 @@
                             if (onSize !== null)
                                 eval(onSize.getAttribute('data-onSize'));
                         }
+                        function q (name, defaultValue) {
+                            var $t;
+                            return ($t = new URLSearchParams(window.location.search).get(name), $t != null ? $t : defaultValue);
+                        }
                         function displayStage() {
                             /* I don't know what to do with this yet
                             if (stageIdx === stages.length) {
@@ -845,10 +849,10 @@
                                     //["Got it! Ready to make your move a breeze. How would you like to get your personalized quote? Choose the option that works best for you.", "Help us get your move just right by listing exactly what’s coming with you.", quoteMethodSelector, -1, 'howQuote.svg'],
                                     ["Let’s set your move date! Not sure of the exact day? No worries—just pick an approximate date.", "Not sure? Enter an approximate date", calendarScreen, 25, 'moveDate.svg'],
                                     ["", "", stage8, -1, ''],
-                                    [progressInd1.innerText.replaceAll('\n', ''), progressInd2.innerText.replaceAll('\n', ''), [
-                                        stage0Heading,
-                                        (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'if (isActiveBtn(this)) { sendContactDetails(this); nextStage() }'); return t; })(quoteContactForm.content.cloneNode(true))
-                                    ], 237.5, 'chooseServiceType.svg'],
+                                    //[progressInd1.innerText.replaceAll('\n', ''), progressInd2.innerText.replaceAll('\n', ''), [
+                                    //    stage0Heading,
+                                    //    (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'if (isActiveBtn(this)) { sendContactDetails(this); nextStage() }'); return t; })(quoteContactForm.content.cloneNode(true))
+                                    //], 237.5, 'chooseServiceType.svg'],
                                     ["Let’s talk about your move. What’s your current setup? The more we know, the better we can assist!", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
                                         (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = pickUpPoint.value.replace(/, Canada$/, ''); return c; })(),
                                         484, 'currentItems.svg'],
@@ -873,6 +877,11 @@
                                         (() => { let f = quoteContactForm.content.cloneNode(true); f.querySelector('[name=contactForm]').previousElementSibling.remove(); return f; })(),
                                         -1, 'monsterCall.png']
                                 ];
+                                if (q('debug', '') === 'true') {
+                                    let stage8 = stages[2];
+                                    stages.splice(2, 1);
+                                    stages.splice(stages.findIndex(i => i[2] === stage7) + 1, 0, stage8);
+                                }
                                 for (let [, , , , img] of stages) {
                                     if (img !== '')
                                         new Image().src = img;
@@ -5029,7 +5038,7 @@ ${day}
                     { address: (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value), buildingType: ['Apartment', 'Basement', 'Condo', 'Duplex', 'House', 'Townhouse'].indexOf(document.querySelectorAll('select[name=buildingType]')[1].value), stairs: document.querySelectorAll('select[name=stairsDropdown]')[1].value }
                 ],
                 moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
-                moveTime: ['8 AM - 11 AM', '12 PM - 2 PM', '3 PM - 5 PM', '6 PM - 7 PM'].indexOf(document.querySelector('.time-of-day-active').innerText.trim()),
+                //moveTime: ['8 AM - 11 AM', '12 PM - 2 PM', '3 PM - 5 PM', '6 PM - 7 PM'].indexOf(document.querySelector('.time-of-day-active').innerText.trim()),
                 moveType: ['Full move', 'Partial move', '5 items or less', 'Commercial'].indexOf(document.querySelector('.move-type-active').innerText.trim()),
                 needsPackingHelp: yesINeedHelpWithPacking.checked,
                 rooms: roomList.map((r, i) => ({
