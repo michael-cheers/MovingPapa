@@ -25,7 +25,7 @@ namespace MovingPapa.Pages
                     Date = c.Date.ToString("yyyy-MM-dd"),
                     c.RatePerMoverInCents
                 }),
-                reviews = JsonSerializer.Deserialize<resultContainer>((await client.GetAsync(new RestRequest())).Content).result.reviews.Concat(
+                reviews = JsonSerializer.Deserialize<resultContainer>((await client.GetAsync(new RestRequest())).Content).result.reviews/*.Concat(
                     new[]
                     {
                         new review("Fantastic service from start to finish! The crew arrived on time, were professional, and handled everything with care. They took extra care with my fragile items and made sure nothing was damaged.", "Alexander Malko"),
@@ -33,7 +33,7 @@ namespace MovingPapa.Pages
                         new review("The movers were friendly and worked quickly. They arrived and got straight to work, handling everything with care. They even helped me unpack and arrange things once we got to the new place.", "Asha Shaji"),
                         new review("I couldn't be happier with the service! The movers were efficient, professional, and took great care with all my belongings. Everything arrived in perfect condition.", "Ali Baranpourian")
                     }
-                )
+                )*/
             }
         ));
         }
