@@ -770,10 +770,10 @@
                         function getQuote(direct = false) {
                             if (direct && (pickUpPoint.value === '' && destinationPoint.value === ''))
                                 return;
-                            gotoStage(0);
-                            history.pushState({ idx: 0, screenType: 'popup', reloadID: reloadID }, "Stage " + 0, '');
+                            gotoStage(direct ? 1 : 0);
+                            history.pushState({ idx: 0, screenType: 'popup', reloadID: reloadID }, "Stage " + (direct ? 1 : 0), '');
                             if (direct) {
-                                nextStage();
+                                //nextStage();
                                 //if (!(pickUpPoint.value.endsWith(', ON, Canada') && destinationPoint.value.endsWith(', ON, Canada'))) {
                                 //    requestCall();
                                 //}
