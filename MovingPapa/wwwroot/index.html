@@ -654,26 +654,31 @@
         smartlook('init', 'b11271a21a0d1c78e61ffdaa227603a459615f50', { region: 'eu' });
     </script>
     <script>
-        function goToSpecialPage(pageType) {
-            document.body.classList.add('special-page');
-            for (let p of ['res', 'comm'])
-                document.body.classList.remove(`special-page-${p}`);
-            document.body.classList.add(`special-page-${pageType}`);
-            document.body.classList.remove('not-special-page');
-        }
-    </script>
-</head>
-<body class="not-special-page">
-    <script>
-        let obj = {
+        let pageMap = {
             '/residential-moving': 'res',
             '/commercial-moving': 'comm',
             '/seniors-moving': 'seniors',
             '/packing': 'pack',
             '/storage': 'store',
         };
-        if (location.pathname in obj) {
-            goToSpecialPage(obj[location.pathname]);
+        function goToSpecialPage(pageType, addToHistory = true) {
+            document.body.classList.add('special-page');
+            for (let p of Object.values(pageMap))
+                document.body.classList.remove(`special-page-${p}`);
+            document.body.classList.add(`special-page-${pageType}`);
+            document.body.classList.remove('not-special-page');
+            if (addToHistory) {
+                //if (location.pathname === '/')
+                //    window.history.replaceState({ action: 'reload' }, '', '/');
+                window.history.pushState({ action: 'reload' }, '', Object.fromEntries(Object.entries(pageMap).map(a => a.reverse()))[pageType]);
+            }
+        }
+    </script>
+</head>
+<body class="not-special-page">
+    <script>
+        if (location.pathname in pageMap) {
+            goToSpecialPage(pageMap[location.pathname], false);
         }
     </script>
     <div class="container" style="max-height:100vh">
@@ -745,7 +750,7 @@
                                 (647) 670-2576
                             </span>
                         </a>
-                            <a class="pc-display-none" href="tel:6476702576" style="border-radius: 40px; display: flex; margin-right: -50px;">
+                            <a class="pc-display-none" href="tel:6476702576" style="border-radius: 40px; display: flex; margin-right: -38px;">
                                 <svg style="height: 35px; margin-left: -80px; margin-right: -18px; margin-top: 17px; margin-bottom: 17px;" width="104" height="98" viewBox="0 0 104 98" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.4" d="M50.6712 56.304L40.3397 66.6355C39.2023 65.6245 38.0965 64.5818 37.0223 63.5076C33.768 60.2217 30.8297 56.7779 28.2073 53.1761C25.6165 49.5743 23.5313 45.9725 22.0147 42.4022C20.4981 38.8004 19.7399 35.3566 19.7399 32.0707C19.7399 29.9223 20.119 27.8686 20.8773 25.9729C21.6356 24.0456 22.8362 22.2763 24.5107 20.6966C26.5328 18.7061 28.7444 17.7267 31.0824 17.7267C31.9671 17.7267 32.8517 17.9162 33.6416 18.2954C34.4631 18.6745 35.1898 19.2432 35.7585 20.0647L43.0885 30.3962C43.6572 31.1861 44.0679 31.9128 44.3523 32.6078C44.6366 33.2713 44.7946 33.9348 44.7946 34.5351C44.7946 35.2934 44.5734 36.0517 44.1311 36.7784C43.7204 37.505 43.1201 38.2633 42.3618 39.0216L39.9606 41.5176C39.613 41.8651 39.4551 42.2759 39.4551 42.7814C39.4551 43.0341 39.4867 43.2553 39.5498 43.5081C39.6446 43.7608 39.7394 43.9504 39.8026 44.14C40.3713 45.1826 41.3507 46.5412 42.7409 48.1841C44.1627 49.827 45.6792 51.5016 47.3222 53.1761C48.4596 54.2819 49.5654 55.3561 50.6712 56.304Z" fill="#F84734" />
                                 <path d="M82.8347 69.321C82.8347 70.2057 82.6767 71.1219 82.3607 72.0066C82.266 72.2594 82.1712 72.5121 82.0448 72.7649C81.5077 73.9023 80.8126 74.9765 79.8963 75.9876C78.3482 77.6937 76.6421 78.9259 74.7148 79.7157C74.6832 79.7157 74.6516 79.7473 74.62 79.7473C72.7559 80.5056 70.7338 80.9163 68.5538 80.9163C65.3311 80.9163 61.8873 80.1581 58.2539 78.6099C54.6205 77.0618 50.9871 74.9765 47.3852 72.3541C46.153 71.4379 44.9208 70.5216 43.7518 69.5422L54.0833 59.2107C54.968 59.8742 55.7579 60.3797 56.4214 60.7272C56.5793 60.7904 56.7689 60.8852 56.9901 60.98C57.2428 61.0748 57.4956 61.1064 57.7799 61.1064C58.3171 61.1064 58.7278 60.9168 59.0753 60.5693L61.4765 58.1997C62.2664 57.4098 63.0247 56.8095 63.7514 56.4303C64.4781 55.988 65.2047 55.7668 65.9946 55.7668C66.5949 55.7668 67.2268 55.8932 67.9219 56.1776C68.617 56.4619 69.3437 56.8727 70.1335 57.4098L80.5914 64.8346C81.4129 65.4033 81.9816 66.0668 82.3291 66.8566C82.6451 67.6465 82.8347 68.4364 82.8347 69.321Z" fill="#F84734" />
@@ -777,7 +782,7 @@
 
                             <span onclick="goToSpecialPage('comm');navBtn.onclick()">Commercial Moving</span><br /><br />
 
-                            <span onclick="goToSpecialPage('senior');navBtn.onclick()">Seniors moving</span><br /><br />
+                            <span onclick="goToSpecialPage('seniors');navBtn.onclick()">Seniors moving</span><br /><br />
 
                             <span onclick="goToSpecialPage('pack');navBtn.onclick()">Packing</span><br /><br />
 
@@ -825,7 +830,10 @@
                         let reloadID = undefined; // a random number to identify old history entries after a reload
 
                         window.addEventListener("popstate", (event) => {
-                            if (event.state !== null && event.state.reloadID === reloadID) {
+                            if (document.body.classList.contains('special-page') || event.state?.action === 'reload') {
+                                location.reload();
+                            }
+                            else if (event.state !== null && event.state.reloadID === reloadID) {
                                 if ('idx' in event.state) {
                                     gotoStage(event.state.idx);
                                 }
@@ -1605,7 +1613,8 @@
                             margin-top: 350px;
                         }
 
-                        .special-page-comm-only, .special-page-res-only, .special-page-seniors-only, .special-page-pack-only, .special-page-store-only {
+                        .special-page-comm-only, .special-page-res-only, .special-page-seniors-only, .special-page-pack-only, .special-page-store-only,
+                        .special-page-comm-only-block, .special-page-res-only-block, .special-page-seniors-only-block, .special-page-pack-only-block, .special-page-store-only-block {
                             display: none;
                         }
 
@@ -1616,6 +1625,14 @@
                         .special-page-store .special-page-store-only
                         {
                             display: inline;
+                        }
+
+                        .special-page-comm .special-page-comm-only-block,
+                        .special-page-res .special-page-res-only-block,
+                        .special-page-seniors .special-page-seniors-only-block,
+                        .special-page-pack .special-page-pack-only-block,
+                        .special-page-store .special-page-store-only-block {
+                            display: block;
                         }
                     </style>
 
@@ -1628,22 +1645,11 @@
                             <span class="special-page-store-only">Storage</span>
                         </div>
                         <div class="center">
-                            <svg style="width:75%;" width="6665" height="" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                <path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" />
-                                <path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" />
-                                <mask id="mask0_1132_3801" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982">
-                                    <path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" />
-                                </mask>
-                                <g mask="url(#mask0_1132_3801)">
-                                    <rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1132_3801)" />
-                                </g>
-                                <defs>
-                                    <pattern id="pattern0_1132_3801" patternContentUnits="objectBoundingBox" width="1" height="1">
-                                        <use xlink:href="#image0_1132_3801" transform="matrix(0.000336188 0 0 0.000366166 -0.188512 0)" />
-                                    </pattern>
-                                    <image id="image0_1132_3801" width="4096" height="2731" xlink:href="commercialMovingImg.jpg" />
-                                </defs>
-                            </svg>
+                            <svg class="special-page-store-only" style="width:75%;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734"/><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519"/><mask id="mask0_1137_5694" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4"/></mask><g mask="url(#mask0_1137_5694)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1137_5694)"/></g><defs><pattern id="pattern0_1137_5694" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1137_5694" transform="matrix(0.000366166 0 0 0.000398818 0 -0.316779)"/></pattern><image id="image0_1137_5694" width="2731" height="4096" xlink:href="storageImg.jpg"/></defs></svg>
+                            <svg class="special-page-comm-only" style="width:75%;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1132_3801" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1132_3801)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1132_3801)" /></g><defs><pattern id="pattern0_1132_3801" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1132_3801" transform="matrix(0.000336188 0 0 0.000366166 -0.188512 0)" /></pattern><image id="image0_1132_3801" width="4096" height="2731" xlink:href="commercialMovingImg.jpg" /></defs></svg>
+                            <svg class="special-page-pack-only" style="width:75%" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734"/><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519"/><mask id="mask0_1134_5568" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4"/></mask><g mask="url(#mask0_1134_5568)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1134_5568)"/></g><defs><pattern id="pattern0_1134_5568" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1134_5568" transform="matrix(0.000336188 0 0 0.000366166 -0.188512 0)"/></pattern><image id="image0_1134_5568" width="4096" height="2731" xlink:href="packingImg.jpg"/></defs></svg>
+                            <svg class="special-page-res-only" style="width:75%" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734"/><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519"/><mask id="mask0_1126_3777" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.19 1800.05C1337.17 1730.22 1345.92 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.54 5210.67 3900.82 4863.06C4225.45 4192.63 4990.03 3896.87 5331.74 3832.8C6095.31 3585.14 5750.92 3000.48 5483.29 2739.11C4811 2048.46 3896.43 1825.3 3523.19 1800.05Z" fill="#C4C4C4"/></mask><g mask="url(#mask0_1126_3777)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1126_3777)"/></g><defs><pattern id="pattern0_1126_3777" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1126_3777" transform="matrix(0.000336188 0 0 0.000366166 -0.188512 0)"/></pattern><image id="image0_1126_3777" width="4096" height="2731" xlink:href="residentialMovingImg.jpg"/></defs></svg>
+                            <svg class="special-page-seniors-only" style="width:75%" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734"/><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519"/><mask id="mask0_1137_5818" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4"/></mask><g mask="url(#mask0_1137_5818)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1137_5818)"/></g><defs><pattern id="pattern0_1137_5818" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1137_5818" transform="matrix(0.000336188 0 0 0.000366166 -0.188512 0)"/></pattern><image id="image0_1137_5818" width="4096" height="2731" xlink:href="seniorsMovingImg.jpg"/></defs></svg>
                         </div>
                         <div style='padding-left: 94px; padding-right: 94px; margin-bottom: 40px; text-align: left; color: #000; font-family: "Arial Rounded MT Bold"; font-style: normal; font-weight: 400; line-height: normal; font-size: calc(73.6715px * 358 / 562)'>
                             <span class="special-page-res-only special-page-comm-only special-page-pack-only">
@@ -1688,6 +1694,36 @@
                                 provide a fast, secure, and seamless transition for
                                 your business.
                             </span>
+                            <span class="special-page-pack-only">
+                                Moving Papa offers tailored moving solutions designed
+                                to fit your unique needs.<br /><br />
+
+                                We provide the right level of support for every move,
+                                big or small. Our team has a proven track record of
+                                making the moving process smooth and stress-free
+                                for countless happy customers. At Moving Papa,
+                                we customize our services to match your destination
+                                and the scale of your move, ensuring a seamless
+                                experience no matter where life takes you.
+                            </span>
+                            <div class="special-page-store-only-block">
+                                At Moving Papa, we understand that sometimes your
+                                new home or office isn’t quite ready for all your
+                                belongings. That’s why we offer secure, flexible storage
+                                options to fit your needs. Whether you need short-term
+                                storage for a few days or a more extended solution,
+                                we’ve got you covered.<br /><br />
+
+                                <ul>
+                                    <li>Safe and Secure  </li>
+                                    <li>Flexible Options </li>
+                                    <li>Convenient Access</li>
+                                </ul><br />
+
+                                Let Moving Papa provide peace of mind by keeping
+                                your belongings safe and secure until you’re ready for
+                                them!
+                            </div>
                         </div>
                     </div>
                     <style>
@@ -2647,6 +2683,140 @@
                                     document.currentScript.parentElement.after(div);
                                 }
                             </script>
+                        </div>
+                        <style>
+                            .faq {
+                                padding-left: 40px;
+                                padding-right: 40px;
+                                padding-top: 37.5px;
+                                padding-bottom: 35px;
+                                margin-bottom: 49px;
+                                border-radius: 10px;
+                                background: #00292A;
+                            }
+                            .faq > div:nth-of-type(1) {
+                                display: flex;
+                                justify-content: space-between;
+                                margin-bottom: 18.5px;
+                            }
+                            .faq > div:nth-of-type(1) > div:nth-of-type(1) {
+                                display: flex;
+                                justify-content: center;
+                                flex-direction: column;
+                                color: #FFF;
+                                font-family: "Arial Rounded MT Bold";
+                                font-size: 30px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: normal;
+                            }
+                            .faq > div:nth-of-type(1) > svg:nth-of-type(1) {
+                                display: none;
+                            }
+                            .faq.faq-open > div:nth-of-type(1) > svg:nth-of-type(2) {
+                                display: none;
+                            }
+                            .faq.faq-open > div:nth-of-type(1) > svg:nth-of-type(1) {
+                                display: block;
+                            }
+                            .faq > div:nth-of-type(2) {
+                                color: #FFF;
+                                font-family: "Arial Rounded MT";
+                                font-size: 20px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: normal;
+                                overflow: hidden;
+                                height: 0px;
+                                transition: height 0.3s ease-out;
+                            }
+                        </style>
+                        <script>
+                            function toggleFaq(faqSvg) {
+                                let faq = faqSvg.closest('.faq');
+                                let textEl = faq.children[1];
+                                textEl.style.height = !faq.classList.contains('faq-open') ? textEl.scrollHeight + 'px' : '';
+                                faq.classList.toggle('faq-open');
+                            }
+                        </script>
+                        <div class="landing-content" style="padding-left:112px;padding-right:112px;">
+                            <div style="margin-top: 82px; margin-bottom: 49px; text-align: left; color: #000; font-family: 'Arial Rounded MT Bold'; font-size: 40px; font-style: normal; font-weight: 800; line-height: normal;">
+                                Frequently Asked Questions:
+                            </div>
+                            <div class="faq" onclick="toggleFaq(this)">
+                                <div>
+                                    <div><div>What’s included in the flat-rate service?</div></div>
+                                    <svg style="width:40px;" width="454" viewBox="0 0 454 227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M442.174 10.2157C449.613 16.5468 453.332 24.6046 453.332 34.3891C453.332 44.1736 449.613 52.2314 442.174 58.5625L255.539 217.416C251.482 220.87 247.086 223.322 242.353 224.772C237.619 226.199 232.548 226.913 227.138 226.913C221.728 226.913 216.481 226.05 211.396 224.323C206.338 222.596 202.118 220.294 198.737 217.416L12.1014 58.5625C4.66306 52.2314 0.943817 44.1736 0.943817 34.3891C0.943817 24.6046 4.66306 16.5468 12.1014 10.2157C19.5398 3.88457 29.0068 0.718979 40.5024 0.718979C51.9981 0.718979 61.4651 3.88457 68.9035 10.2157L227.138 144.896L385.372 10.2157C392.811 3.88457 402.278 0.718979 413.773 0.718979C425.269 0.718979 434.736 3.88457 442.174 10.2157Z" fill="#F84734"/></svg>
+                                    <svg style="width:40px;" width="454" viewBox="0 0 454 227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M442.174 216.97C449.613 210.639 453.332 202.581 453.332 192.796C453.332 183.012 449.613 174.954 442.174 168.623L255.539 9.76915C251.482 6.3158 247.086 3.86395 242.353 2.41354C237.619 0.986162 232.548 0.272461 227.138 0.272461C221.728 0.272461 216.481 1.13579 211.396 2.86246C206.338 4.58914 202.118 6.89136 198.737 9.76915L12.1014 168.623C4.66306 174.954 0.943817 183.012 0.943817 192.796C0.943817 202.581 4.66306 210.639 12.1014 216.97C19.5398 223.301 29.0068 226.467 40.5024 226.467C51.9981 226.467 61.4651 223.301 68.9035 216.97L227.138 82.2894L385.372 216.97C392.811 223.301 402.278 226.467 413.773 226.467C425.269 226.467 434.736 223.301 442.174 216.97Z" fill="#F84734"/></svg>
+                                </div>
+                                <div>
+                                    Our flat-rate service includes the moving truck, professional movers, furniture disassembly and reassembly, loading, unloading, and travel time between locations. Additional services, like packing or storage, can also be added for an extra fee.
+                                </div>
+                            </div>
+                            <div class="faq" onclick="toggleFaq(this)">
+                                <div>
+                                    <div><div>Can I change my moving date after booking?</div></div>
+                                    <svg style="width:40px;" width="454" viewBox="0 0 454 227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M442.174 10.2157C449.613 16.5468 453.332 24.6046 453.332 34.3891C453.332 44.1736 449.613 52.2314 442.174 58.5625L255.539 217.416C251.482 220.87 247.086 223.322 242.353 224.772C237.619 226.199 232.548 226.913 227.138 226.913C221.728 226.913 216.481 226.05 211.396 224.323C206.338 222.596 202.118 220.294 198.737 217.416L12.1014 58.5625C4.66306 52.2314 0.943817 44.1736 0.943817 34.3891C0.943817 24.6046 4.66306 16.5468 12.1014 10.2157C19.5398 3.88457 29.0068 0.718979 40.5024 0.718979C51.9981 0.718979 61.4651 3.88457 68.9035 10.2157L227.138 144.896L385.372 10.2157C392.811 3.88457 402.278 0.718979 413.773 0.718979C425.269 0.718979 434.736 3.88457 442.174 10.2157Z" fill="#F84734" /></svg>
+                                    <svg style="width:40px;" width="454" viewBox="0 0 454 227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M442.174 216.97C449.613 210.639 453.332 202.581 453.332 192.796C453.332 183.012 449.613 174.954 442.174 168.623L255.539 9.76915C251.482 6.3158 247.086 3.86395 242.353 2.41354C237.619 0.986162 232.548 0.272461 227.138 0.272461C221.728 0.272461 216.481 1.13579 211.396 2.86246C206.338 4.58914 202.118 6.89136 198.737 9.76915L12.1014 168.623C4.66306 174.954 0.943817 183.012 0.943817 192.796C0.943817 202.581 4.66306 210.639 12.1014 216.97C19.5398 223.301 29.0068 226.467 40.5024 226.467C51.9981 226.467 61.4651 223.301 68.9035 216.97L227.138 82.2894L385.372 216.97C392.811 223.301 402.278 226.467 413.773 226.467C425.269 226.467 434.736 223.301 442.174 216.97Z" fill="#F84734" /></svg>
+                                </div>
+                                <div>
+                                    Yes! At Moving Papa, we understand plans can change. You can easily reschedule your move free of charge if you notify us at least 48 hours in advance.
+                                </div>
+                            </div>
+                            <div class="faq" onclick="toggleFaq(this)">
+                                <div>
+                                    <div><div>What is Moving Papa's flat-rate pricing, and how is it calculated?</div></div>
+                                    <svg style="width:40px;" width="454" viewBox="0 0 454 227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M442.174 10.2157C449.613 16.5468 453.332 24.6046 453.332 34.3891C453.332 44.1736 449.613 52.2314 442.174 58.5625L255.539 217.416C251.482 220.87 247.086 223.322 242.353 224.772C237.619 226.199 232.548 226.913 227.138 226.913C221.728 226.913 216.481 226.05 211.396 224.323C206.338 222.596 202.118 220.294 198.737 217.416L12.1014 58.5625C4.66306 52.2314 0.943817 44.1736 0.943817 34.3891C0.943817 24.6046 4.66306 16.5468 12.1014 10.2157C19.5398 3.88457 29.0068 0.718979 40.5024 0.718979C51.9981 0.718979 61.4651 3.88457 68.9035 10.2157L227.138 144.896L385.372 10.2157C392.811 3.88457 402.278 0.718979 413.773 0.718979C425.269 0.718979 434.736 3.88457 442.174 10.2157Z" fill="#F84734" /></svg>
+                                    <svg style="width:40px;" width="454" viewBox="0 0 454 227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M442.174 216.97C449.613 210.639 453.332 202.581 453.332 192.796C453.332 183.012 449.613 174.954 442.174 168.623L255.539 9.76915C251.482 6.3158 247.086 3.86395 242.353 2.41354C237.619 0.986162 232.548 0.272461 227.138 0.272461C221.728 0.272461 216.481 1.13579 211.396 2.86246C206.338 4.58914 202.118 6.89136 198.737 9.76915L12.1014 168.623C4.66306 174.954 0.943817 183.012 0.943817 192.796C0.943817 202.581 4.66306 210.639 12.1014 216.97C19.5398 223.301 29.0068 226.467 40.5024 226.467C51.9981 226.467 61.4651 223.301 68.9035 216.97L227.138 82.2894L385.372 216.97C392.811 223.301 402.278 226.467 413.773 226.467C425.269 226.467 434.736 223.301 442.174 216.97Z" fill="#F84734" /></svg>
+                                </div>
+                                <div>
+                                    Moving Papa offers flat-rate pricing based on the size of your move, the distance between locations, and the specific services you choose. The price is agreed upon upfront, so you know exactly what you’ll pay—no hidden fees or surprise costs.
+                                </div>
+                            </div>
+                            <div class="faq" onclick="toggleFaq(this)">
+                                <div>
+                                    <div><div>What is Moving Papa's cancellation policy?</div></div>
+                                    <svg style="width:40px;" width="454" viewBox="0 0 454 227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M442.174 10.2157C449.613 16.5468 453.332 24.6046 453.332 34.3891C453.332 44.1736 449.613 52.2314 442.174 58.5625L255.539 217.416C251.482 220.87 247.086 223.322 242.353 224.772C237.619 226.199 232.548 226.913 227.138 226.913C221.728 226.913 216.481 226.05 211.396 224.323C206.338 222.596 202.118 220.294 198.737 217.416L12.1014 58.5625C4.66306 52.2314 0.943817 44.1736 0.943817 34.3891C0.943817 24.6046 4.66306 16.5468 12.1014 10.2157C19.5398 3.88457 29.0068 0.718979 40.5024 0.718979C51.9981 0.718979 61.4651 3.88457 68.9035 10.2157L227.138 144.896L385.372 10.2157C392.811 3.88457 402.278 0.718979 413.773 0.718979C425.269 0.718979 434.736 3.88457 442.174 10.2157Z" fill="#F84734" /></svg>
+                                    <svg style="width:40px;" width="454" viewBox="0 0 454 227" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M442.174 216.97C449.613 210.639 453.332 202.581 453.332 192.796C453.332 183.012 449.613 174.954 442.174 168.623L255.539 9.76915C251.482 6.3158 247.086 3.86395 242.353 2.41354C237.619 0.986162 232.548 0.272461 227.138 0.272461C221.728 0.272461 216.481 1.13579 211.396 2.86246C206.338 4.58914 202.118 6.89136 198.737 9.76915L12.1014 168.623C4.66306 174.954 0.943817 183.012 0.943817 192.796C0.943817 202.581 4.66306 210.639 12.1014 216.97C19.5398 223.301 29.0068 226.467 40.5024 226.467C51.9981 226.467 61.4651 223.301 68.9035 216.97L227.138 82.2894L385.372 216.97C392.811 223.301 402.278 226.467 413.773 226.467C425.269 226.467 434.736 223.301 442.174 216.97Z" fill="#F84734" /></svg>
+                                </div>
+                                <div>
+                                    We offer free cancellation with no extra charges as long as you cancel at least 48 hours before your scheduled move. We understand plans can change, and we want to give you peace of mind without any penalties. Simply contact us, and we’ll take care of the cancellation for you!
+                                </div>
+                            </div>
+                            <div style="text-align: left; font-size: 30px;font-family:'Arial Rounded MT Bold'">
+                                Have more questions?<br />
+                                Call us!
+                            </div>
+                            <div class="center" style='margin-top: 36px; margin-bottom: 47.5px; height: 80px; width:340px; border-radius: 30px; background: #012122; color: #F84734;font-family: "Arial Rounded MT Bold";font-size: 30.1592px;font-style: normal;font-weight: 400;line-height: normal;'>
+                                <div style="display:flex">
+                                    <div style="display:flex;flex-direction:column;justify-content:center">
+                                        <svg style="width:40px;" viewBox="0 0 401 400" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.4" d="M197.185 236.887L142.707 291.365C136.709 286.034 130.878 280.536 125.214 274.872C108.054 257.546 92.5603 239.386 78.7326 220.394C65.0714 201.402 54.0759 182.409 46.0791 163.584C38.0824 144.591 34.084 126.432 34.084 109.106C34.084 97.777 36.0832 86.9481 40.0816 76.9521C44.0799 66.7896 50.4107 57.46 59.2405 49.1301C69.9028 38.6343 81.5648 33.4697 93.8931 33.4697C98.5579 33.4697 103.223 34.4693 107.388 36.4685C111.719 38.4677 115.551 41.4665 118.55 45.7981L157.201 100.276C160.2 104.441 162.365 108.273 163.865 111.938C165.364 115.437 166.197 118.935 166.197 122.101C166.197 126.099 165.031 130.097 162.699 133.929C160.533 137.761 157.367 141.759 153.369 145.758L140.707 158.919C138.875 160.752 138.042 162.917 138.042 165.583C138.042 166.916 138.209 168.082 138.542 169.415C139.041 170.747 139.541 171.747 139.874 172.747C142.873 178.244 148.038 185.408 155.368 194.071C162.865 202.735 170.862 211.564 179.525 220.394C185.523 226.225 191.354 231.889 197.185 236.887Z" fill="#F84734" /><path d="M366.777 305.527C366.777 310.192 365.944 315.023 364.278 319.688C363.778 321.02 363.278 322.353 362.612 323.686C359.779 329.684 356.114 335.348 351.283 340.679C343.12 349.676 334.123 356.173 323.961 360.338C323.794 360.338 323.627 360.504 323.461 360.504C313.631 364.503 302.969 366.669 291.474 366.669C274.481 366.669 256.321 362.67 237.162 354.507C218.003 346.344 198.845 335.348 179.852 321.52C173.355 316.689 166.858 311.857 160.693 306.693L215.171 252.215C219.836 255.714 224.001 258.379 227.5 260.212C228.333 260.545 229.332 261.045 230.498 261.545C231.831 262.044 233.164 262.211 234.663 262.211C237.496 262.211 239.661 261.211 241.494 259.379L254.156 246.884C258.32 242.719 262.319 239.553 266.151 237.554C269.982 235.222 273.814 234.056 277.979 234.056C281.145 234.056 284.477 234.722 288.142 236.221C291.807 237.721 295.639 239.887 299.804 242.719L354.948 281.87C359.28 284.868 362.278 288.367 364.111 292.532C365.777 296.697 366.777 300.862 366.777 305.527Z" fill="#F84734" /></svg>
+                                    </div>
+                                    <div style="display:flex;flex-direction:column;justify-content:center">647-123-45678</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="landing-content" style="background: #012122; padding-top: 126px; ">
+                            <div style='color: #FFF; text-align: center; font-family: "Arial Rounded MT Bold"; font-size: 71px; font-style: normal; font-weight: 400;'>Resources and insights</div>
+                            <div style='color: #FFF; text-align: center; font-family: "Arial Rounded MT"; font-size: 35.592px; font-style: normal; font-weight: 400; '>The latest industry news, interviews, technologies, and resources.</div>
+                            <div class="center" style="background: linear-gradient( to bottom, #012122 0%, #012122 27%, /* 21/250 = 8.4% */ #1F3B3C 27%, #1F3B3C 40%, /* 229/250 = 91.6% */ #fff 40%, #fff 100% ) ">
+                                <div class="center" style='width: 90%; border-radius: 30px; background: #FFF; box-shadow: 0px 237.28px 316.373px -79.093px rgba(16, 24, 40, 0.08), 0px 79.093px 118.64px -39.547px rgba(16, 24, 40, 0.03);'>
+                                    <div style="width:90%">
+                                        <img src="blogImg1.jpeg" style="width: 100%; margin-top: 47px" />
+                                        <div style='margin-top: 63px; color: #F84734; font-family: "Arial Rounded MT"; font-size: 27.6827px; font-style: normal; font-weight: 600;'>Design</div>
+                                        <div style='margin-top: 24px; color: #012122; font-family: "Arial Rounded MT"; font-size: 39.5467px; font-style: normal; font-weight: 600;'>UX review presentations</div>
+                                        <div style='margin-top: 24px; color: #667085; font-family: "Arial Rounded MT"; font-size: 31.6373px; font-style: normal; font-weight: 400;'>How do you create compelling presentations that wow your colleagues and impress your managers?</div>
+                                        <div style='margin-top: 63px; margin-bottom: 63px; display: flex'>
+                                            <img src="blogProf1.png" width="79" />
+                                            <div style="margin-left:23.7px">
+                                                <div style='color: #012122; font-family: "Arial Rounded MT Bold"; font-size: 27.6827px; font-style: normal; font-weight: 500;'>Olivia Rhye</div>
+                                                <div style='color: #667085; font-family: "Arial Rounded MT"; font-size: 27.6827px; font-style: normal; font-weight: 400; /* 142.857% */ '>20 Jan 2022</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin-top: -1px; background-color: #fff; padding-bottom: 126px;"></div>
                         </div>
                         <div class="landing-content pc-np" style="padding-top:0px;padding-bottom:0px">
                         </div>
