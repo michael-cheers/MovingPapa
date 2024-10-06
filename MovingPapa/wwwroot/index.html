@@ -1224,8 +1224,10 @@
                     </script>
 
                     <style>
-                        .special-page #transparencyBulletContainer {
-                            margin-top: calc(229px - 80px) !important;
+                        @media all and (min-width: 600px) {
+                            .special-page #transparencyBulletContainer {
+                                margin-top: calc(229px - 80px) !important;
+                            }
                         }
 
                         .special-page #landingTop {
@@ -1350,6 +1352,7 @@
                                             transform: scale(0.5);
                                             margin-top: -100px;
                                         }
+
                                         #aboutInfo {
                                             margin-top: 70px;
                                         }
@@ -1360,6 +1363,7 @@
                                         #aboutInfo {
                                             margin-top: calc(75px - -158px);
                                         }
+
                                         #googleReviewsSummary {
                                             margin-bottom: 97px;
                                         }
@@ -1677,7 +1681,7 @@
 
                         @media all and (min-width: 600px) {
                             .pc-width-55 {
-                                width: 55%!important;
+                                width: 55% !important;
                             }
                         }
                     </style>
@@ -1691,11 +1695,21 @@
                             <span class="special-page-store-only">Storage</span>
                         </div>
                         <div class="center">
-                            <template class=load-sp-store><svg class="pc-width-55 special-page-store-only" style="width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1137_5694" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1137_5694)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1137_5694)" /></g><defs><pattern id="pattern0_1137_5694" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1137_5694" transform="matrix(0.000330688 0 0 0.000360176 0 -0.226115)" /></pattern><image id="image0_1137_5694" width="3024" height="4032" xlink:href="storageImg.jpg" /></defs></svg>          </template>
-                            <template class=load-sp-comm><svg class="pc-width-55 special-page-comm-only" style="width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1132_3801" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1132_3801)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1132_3801)" /></g><defs><pattern id="pattern0_1132_3801" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1132_3801" transform="matrix(0.000330688 0 0 0.000360176 0 -0.226115)" /></pattern><image id="image0_1132_3801" width="3024" height="4032" xlink:href="commercialMovingImg.jpg" /></defs></svg>  </template>
-                            <template class=load-sp-pack><svg class="pc-width-55 special-page-pack-only" style="width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734"/><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519"/><mask id="mask0_1134_5568" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4"/></mask><g mask="url(#mask0_1134_5568)"><rect x="1350" y="1645" width="6002" height="5510.61" fill="url(#pattern0_1134_5568)"/></g><defs><pattern id="pattern0_1134_5568" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1134_5568" transform="matrix(0.000325521 0 0 0.000354548 0 -0.226115)"/></pattern><image id="image0_1134_5568" width="3072" height="4096" xlink:href="packingImg.jpg"/></defs></svg>                    </template>
-                            <template class=load-sp-res><svg class="pc-width-55 special-page-res-only" style=" width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1126_3777" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.19 1800.05C1337.17 1730.22 1345.92 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.54 5210.67 3900.82 4863.06C4225.45 4192.63 4990.03 3896.87 5331.74 3832.8C6095.31 3585.14 5750.92 3000.48 5483.29 2739.11C4811 2048.46 3896.43 1825.3 3523.19 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1126_3777)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1126_3777)" /></g><defs><pattern id="pattern0_1126_3777" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1126_3777" transform="matrix(0.000325521 0 0 0.000354548 0 -0.226115)" /></pattern><image id="image0_1126_3777" width="3072" height="4096" xlink:href="residentialMovingImg.jpg" /></defs></svg></template>
-                            <template class=load-sp-comm><svg class="special-page-seniors-only" style="width:75%" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1137_5818" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1137_5818)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1137_5818)" /></g><defs><pattern id="pattern0_1137_5818" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1137_5818" transform="matrix(0.000336188 0 0 0.000366166 -0.188512 0)" /></pattern><image id="image0_1137_5818" width="4096" height="2731" xlink:href="seniorsMovingImg.jpg" /></defs></svg>                                                                                                      </template>
+                            <template class=load-sp-store>
+                                <svg class="pc-width-55 special-page-store-only" style="width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1137_5694" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1137_5694)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1137_5694)" /></g><defs><pattern id="pattern0_1137_5694" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1137_5694" transform="matrix(0.000330688 0 0 0.000360176 0 -0.226115)" /></pattern><image id="image0_1137_5694" width="3024" height="4032" xlink:href="storageImg.jpg" /></defs></svg>
+                            </template>
+                            <template class=load-sp-comm>
+                                <svg class="pc-width-55 special-page-comm-only" style="width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1132_3801" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1132_3801)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1132_3801)" /></g><defs><pattern id="pattern0_1132_3801" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1132_3801" transform="matrix(0.000330688 0 0 0.000360176 0 -0.226115)" /></pattern><image id="image0_1132_3801" width="3024" height="4032" xlink:href="commercialMovingImg.jpg" /></defs></svg>
+                            </template>
+                            <template class=load-sp-pack>
+                                <svg class="pc-width-55 special-page-pack-only" style="width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1134_5568" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1134_5568)"><rect x="1350" y="1645" width="6002" height="5510.61" fill="url(#pattern0_1134_5568)" /></g><defs><pattern id="pattern0_1134_5568" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1134_5568" transform="matrix(0.000325521 0 0 0.000354548 0 -0.226115)" /></pattern><image id="image0_1134_5568" width="3072" height="4096" xlink:href="packingImg.jpg" /></defs></svg>
+                            </template>
+                            <template class=load-sp-res>
+                                <svg class="pc-width-55 special-page-res-only" style=" width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1126_3777" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.19 1800.05C1337.17 1730.22 1345.92 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.54 5210.67 3900.82 4863.06C4225.45 4192.63 4990.03 3896.87 5331.74 3832.8C6095.31 3585.14 5750.92 3000.48 5483.29 2739.11C4811 2048.46 3896.43 1825.3 3523.19 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1126_3777)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1126_3777)" /></g><defs><pattern id="pattern0_1126_3777" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1126_3777" transform="matrix(0.000325521 0 0 0.000354548 0 -0.226115)" /></pattern><image id="image0_1126_3777" width="3072" height="4096" xlink:href="residentialMovingImg.jpg" /></defs></svg>
+                            </template>
+                            <template class=load-sp-comm>
+                                <svg class="special-page-seniors-only" style="width:75%" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1137_5818" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1137_5818)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1137_5818)" /></g><defs><pattern id="pattern0_1137_5818" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1137_5818" transform="matrix(0.000336188 0 0 0.000366166 -0.188512 0)" /></pattern><image id="image0_1137_5818" width="4096" height="2731" xlink:href="seniorsMovingImg.jpg" /></defs></svg>
+                            </template>
                         </div>
                         <script>
                             checkPreLoad(document.currentScript.previousElementSibling, loadedSp);
@@ -1703,7 +1717,7 @@
                         <style>
                             @media all and (min-width: 600px) {
                                 #specialHeading {
-                                    text-align: left!important;
+                                    text-align: left !important;
                                 }
                             }
                         </style>
@@ -1729,7 +1743,7 @@
                         <style>
                             @media all and (min-width: 600px) {
                                 #specialTxt {
-                                    font-size: 30px!important;
+                                    font-size: 30px !important;
                                 }
                             }
                         </style>
@@ -1754,14 +1768,9 @@
                                 move isn’t just a job, it’s our mission.
                             </span>
                             <span class="special-page-comm-only">
-                                Whether you're relocating to a bigger office or downsizing to a more efficient space,
-                                Moving Papa knows that every business move comes with unique challenges.
-                                That’s why we offer a personalized approach, ensuring every step is smooth, timely,
-                                and handled with care. With experience moving businesses of all sizes, we know what
-                                it takes to keep your team running seamlessly before, during, and after your move.<br /><br />
-                                Your business deserves more than just a moving company—it deserves a partner who
-                                understands the value of your time and the importance of precision. At Moving Papa,
-                                we’re here to help you hit the ground running in your new space.
+                                Whether you're relocating to a bigger office or downsizing to a more efficient space, Moving Papa understands that every business move presents unique challenges, which is why we offer a personalized approach to ensure each step is smooth, timely, and handled with care. With extensive experience moving businesses of all sizes, we know how to keep your team running seamlessly before, during, and after the move.
+                                <br /><br />
+                                Your business deserves more than just a moving company—it deserves a partner who values your time and prioritizes precision, and at Moving Papa, we're here to help you hit the ground running in your new space.
                             </span>
                             <span class="special-page-pack-only">
                                 <span style="font-family:'Arial Rounded MT Bold'">
@@ -1789,6 +1798,16 @@
                                 perfect storage plan for you.
                             </div>
                         </div>
+                        <div id="ourClientsDiv" class="special-page-comm-only-block" style="font-size: 30px; font-family: 'Arial Rounded MT Bold'; text-align: center; background-color: #F4F4F4; padding-top: 20px; margin-top: 40px; ">
+                            Our Clients
+                            <div style="display: flex;justify-content: space-around">
+                                <img style="width:15%" src="logo1.webp" />
+                                <div style="width:15%; display:flex;flex-direction:column;justify-content:center">
+                                    <img style="width:100%;height:50%" src="logo2.webp" />
+                                </div>
+                                <img style="width:11%" src="logo3.webp" />
+                            </div>
+                        </div>
                     </div>
                     <style>
                         .special-page #currentPromos {
@@ -1800,108 +1819,42 @@
                                 margin-top: 130px;
                             }
 
+                            #ourClientsDiv {
+                                margin-left: 94px;
+                                margin-right: 140px;
+                            }
+
                             #currentPromosScaled {
-                                transform: scale(0.5)!important;
-                                width: calc(100% / 0.5)!important;
+                                transform: scale(0.5) !important;
+                                width: calc(100% / 0.5) !important;
                                 margin-top: -50px;
-                                margin-bottom: -290px!important;
+                                margin-bottom: -290px !important;
                                 display: flex;
                                 justify-content: space-around;
                             }
+
                             #specialGetQuoteBtn {
                                 margin-top: 80px;
                                 margin-bottom: -50px;
                             }
                         }
+
                         @media all and (max-width: 600px) {
+                            #ourClientsDiv > div > * {
+                                width: 25% !important;
+                            }
+
                             #currentPromosInner {
-                                padding-top: 50px!important;
-                                padding-bottom: 0px!important;
+                                padding-top: 50px !important;
+                                padding-bottom: 0px !important;
+                            }
+
+                            #specialGetQuoteBtn {
+                                margin-bottom: 100px;
                             }
                         }
                     </style>
-                    <div class="landing-content" id="currentPromos">
-                        <div class="hide-special-page center pc-display-none" style="margin-top:60px;margin-bottom:70px">
-                            <img src="moversImg5.webp" style="width:75%" />
-                        </div>
-                        <div style="margin-top: 100px; margin-bottom: 35px; font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 50px; text-align: center; color: #000000; ">
-                            <!--<span id=whatsIncludedSpan>What's Included?</span>-->
-                            <span id="currentPromotionsSpan" class="hide-not-special-page pc-display-none">Current promotions</span>
-                        </div>
-                        <div id="currentPromosInner" style="margin-left: 51px; margin-right: 51px; padding: 94.2887px; border: 5.365px solid #00292A; box-shadow: 0px 3.9287px 7.85739px -3.9287px rgba(28, 40, 64, 0.08), 0px 7.85739px 15.7148px rgba(28, 40, 64, 0.04); border-radius: 10px; /* Inside auto layout */ flex: none; order: 0; flex-grow: 0; ">
-                            <div id="currentPromosScaled" style="transform: scale(0.8);transform-origin: 0% 0%; width:calc(100% / 0.8); margin-bottom: -160px">
-                                <div>
-                                    <div class="">
-                                        <div style="border-radius: 392.87px; background-color: #F84734; /* 🍂 Fall Promotion */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-size: 50px; /* 🍂 Fall Promotion */ width: 481px; height: 132px; font-family: 'Arial Rounded MT'; font-style: normal; font-weight: 400; /* identical to box height, or 133% */ display: flex; align-items: center; letter-spacing: 0.01em; color: #FFFFFF; /* Inside auto layout */ flex: none; order: 0; flex-grow: 0; display: flex; flex-direction: row; align-items: center; padding: 0px; gap: 23.57px; /* Inside auto layout */ flex: none; order: 0; flex-grow: 0; padding-left:10px;">
-                                            🍂 Fall Promotion
-                                        </div>
-                                    </div>
-                                    <div style='text-align: left; margin-top: 50px; margin-bottom: 50px; color: #247218; font-family: "Arial Rounded MT Bold"; font-size: calc(44px / 0.8); font-style: normal; font-weight: 800; line-height: 62.859px; /* 133.333% */'>
-                                        Get 10% off if you pay cash
-                                    </div>
-                                    <div style='text-align: left; margin-bottom: 43px; color: #232529; font-family: "Arial Rounded MT Bold"; font-size: calc(44px / 0.8); font-style: normal; font-weight: 800; line-height: 78.574px; /* 142.857% */ '>
-                                        Absolutely Everything
-                                        is included in our rate
-                                        (Blankets, dollies, UNLIMITED
-                                        Shrink wrap and tape) plus:
-                                    </div>
-                                    <style>
-                                        .whatsIncludedCheck {
-                                            display: flex;
-                                            margin-bottom: 48px;
-                                            /*margin-left: 100px;*/
-                                        }
 
-                                            .whatsIncludedCheck > div:first-of-type {
-                                                margin-left: 31px;
-                                                color: #00292A;
-                                                font-family: "Arial Rounded MT";
-                                                font-size: calc(44px / 0.8);
-                                                font-style: normal;
-                                                font-weight: 400;
-                                                line-height: 78.574px; /* 142.857% */
-                                                letter-spacing: -0.393px;
-                                            }
-                                    </style>
-                                </div>
-                                <div style=" display: flex; flex-direction: column; justify-content: center;">
-                                    <div class="whatsIncludedCheck">
-                                        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="0.841736" y="0.557373" width="70.7165" height="70.7165" rx="23.5722" fill="#F84734" />
-                                            <path d="M22.4495 34.6664L25.5453 39.5576C27.6747 42.9245 28.7394 44.606 30.1026 45.1953C31.2969 45.706 32.6484 45.7178 33.8467 45.2228C35.2217 44.6571 36.3139 42.9913 38.4943 39.6598L49.9504 22.1653" stroke="white" stroke-width="4.32157" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        <div>
-                                            2 Free wardrobe boxes
-                                        </div>
-                                    </div>
-                                    <div class="whatsIncludedCheck">
-                                        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="0.841736" y="0.557373" width="70.7165" height="70.7165" rx="23.5722" fill="#F84734" />
-                                            <path d="M22.4495 34.6664L25.5453 39.5576C27.6747 42.9245 28.7394 44.606 30.1026 45.1953C31.2969 45.706 32.6484 45.7178 33.8467 45.2228C35.2217 44.6571 36.3139 42.9913 38.4943 39.6598L49.9504 22.1653" stroke="white" stroke-width="4.32157" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        <div>
-                                            2 Free mattress bags
-                                        </div>
-                                    </div>
-                                    <div class="whatsIncludedCheck">
-                                        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <rect x="0.841736" y="0.557373" width="70.7165" height="70.7165" rx="23.5722" fill="#F84734" />
-                                            <path d="M22.4495 34.6664L25.5453 39.5576C27.6747 42.9245 28.7394 44.606 30.1026 45.1953C31.2969 45.706 32.6484 45.7178 33.8467 45.2228C35.2217 44.6571 36.3139 42.9913 38.4943 39.6598L49.9504 22.1653" stroke="white" stroke-width="4.32157" stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        <div>
-                                            Assembly / Reassembly
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button id="specialGetQuoteBtn" class="hide-not-special-page rainbow-border-orange" style="/* Rectangle 3 */ width: 100%; background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: calc(28.2559px * 1.4); line-height: 33px; color: #FFFFFF; " onclick="getQuote()">
-                                <div style="height: calc(1.4 * (16px + 49px * 123 / 158 * 38 / 53 / var(--scale, 1)));text-align:center; display: flex; justify-content: center; flex-direction: column;">Get a Quote</div>
-                            </button>
-                        </div>
-                    </div>
-                    <template id="playButton">
-                        <svg onclick="this.previousElementSibling.play();this.remove()" style="position:absolute;right:0%;top:0%;width:110px;height:110px;" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_1072_3531)"><circle cx="110" cy="110" r="82.5" fill="#00292A" /></g><g filter="url(#filter1_i_1072_3531)"><circle cx="110" cy="110" r="68.75" fill="url(#paint0_linear_1072_3531)" /></g><g filter="url(#filter2_d_1072_3531)"><circle cx="110" cy="110" r="64.1667" fill="url(#paint1_linear_1072_3531)" /></g><g filter="url(#filter3_i_1072_3531)"><path d="M98.5594 81.9374L139.88 106.041C142.912 107.81 142.912 112.19 139.88 113.959L98.5594 138.063C95.5039 139.845 91.6666 137.641 91.6666 134.104V85.8964C91.6666 82.359 95.5039 80.155 98.5594 81.9374Z" fill="url(#paint2_linear_1072_3531)" /></g><defs><filter id="filter0_d_1072_3531" x="24.0625" y="25.7812" width="171.875" height="171.875" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="1.71875" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter1_i_1072_3531" x="41.25" y="41.25" width="137.5" height="139.219" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><filter id="filter2_d_1072_3531" x="44.1146" y="45.8335" width="131.771" height="131.771" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter3_i_1072_3531" x="91.6666" y="81.3062" width="50.4871" height="59.1064" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><linearGradient id="paint0_linear_1072_3531" x1="110" y1="41.25" x2="110" y2="178.75" gradientUnits="userSpaceOnUse"><stop stop-color="#ECECEC" /><stop offset="1" stop-color="white" /></linearGradient><linearGradient id="paint1_linear_1072_3531" x1="110" y1="45.8335" x2="110" y2="174.167" gradientUnits="userSpaceOnUse"><stop stop-color="white" /><stop offset="1" stop-color="#E4E4E4" /></linearGradient><linearGradient id="paint2_linear_1072_3531" x1="119.167" y1="77.9168" x2="119.167" y2="142.083" gradientUnits="userSpaceOnUse"><stop stop-color="#F84734" /><stop offset="1" stop-color="#F84734" /></linearGradient></defs></svg>
-                    </template>
                     <div id="transparencyBulletContainer" style=" background-color: white; color: #00292A; " class="landing-content pc-np arial-rounded-mt mb-column-flex">
                         <!--<div class="hide-special-page pc-display-none landing-content mb-column-flex pc-np" style="margin-bottom:150px;display:flex;margin-top:100px">
             <div class="pc-width-40" style="display: flex; justify-content: space-around;">
@@ -1924,10 +1877,10 @@
             </div>
         </div>-->
                         <!--<script>
-                            if (screen.width > 600) {
-                                document.currentScript.previousElementSibling.remove();
-                            }
-                        </script>-->
+            if (screen.width > 600) {
+                document.currentScript.previousElementSibling.remove();
+            }
+        </script>-->
                         <div class="pc-trans" style="border-bottom: 1px solid transparent; justify-content: space-between; display: flex; ">
                             <div class="pc-width-40 pc-mg-10" style="margin-bottom:20px">
                                 <style>
@@ -2067,11 +2020,12 @@
                                 <style>
                                     @media all and (min-width: 600px) {
                                         #ourAdvantages {
-                                            text-align: left!important;
-                                            padding-left: 126px!important;
-                                            font-size: 65px!important;
+                                            text-align: left !important;
+                                            padding-left: 126px !important;
+                                            font-size: 65px !important;
                                         }
                                     }
+
                                     .special-page-res .flex-res {
                                         display: flex !important;
                                     }
@@ -2403,34 +2357,116 @@
                                     <img src="moversImg5.webp" style="width:75%" />
                                 </div>
                                 <!--<div class="hide-special-page mb-display-none">
-                                    <div class="pc-width-40" style="margin-top: 100px; transform: scale(calc(1 / 0.7)); display: flex; justify-content: space-around;">
-                                        <div class="center" style="margin-right:100px">
-                                            <div style="width:426px;height:700px;position: relative;">
-                                                <video playsinline loop onclick="if (this.parentElement.childElementCount === 1 && this.paused) this.play();else  { this.pause(); if (this.parentElement.childElementCount === 1) this.after(playButton.content.cloneNode(true)); }" width="426" height="700" style="box-shadow: 0 4px 4px rgba(0,0,0,.25098039215686274); object-fit:cover; border-radius: 90px">
-                                                    <source src="video1.webm" />
-                                                </video>
-                                                <svg onclick="this.previousElementSibling.play();this.remove()" style="position:absolute;right:0%;top:0%;width:110px;height:110px;" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_1072_3531)"><circle cx="110" cy="110" r="82.5" fill="#00292A" /></g><g filter="url(#filter1_i_1072_3531)"><circle cx="110" cy="110" r="68.75" fill="url(#paint0_linear_1072_3531)" /></g><g filter="url(#filter2_d_1072_3531)"><circle cx="110" cy="110" r="64.1667" fill="url(#paint1_linear_1072_3531)" /></g><g filter="url(#filter3_i_1072_3531)"><path d="M98.5594 81.9374L139.88 106.041C142.912 107.81 142.912 112.19 139.88 113.959L98.5594 138.063C95.5039 139.845 91.6666 137.641 91.6666 134.104V85.8964C91.6666 82.359 95.5039 80.155 98.5594 81.9374Z" fill="url(#paint2_linear_1072_3531)" /></g><defs><filter id="filter0_d_1072_3531" x="24.0625" y="25.7812" width="171.875" height="171.875" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="1.71875" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter1_i_1072_3531" x="41.25" y="41.25" width="137.5" height="139.219" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><filter id="filter2_d_1072_3531" x="44.1146" y="45.8335" width="131.771" height="131.771" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter3_i_1072_3531" x="91.6666" y="81.3062" width="50.4871" height="59.1064" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><linearGradient id="paint0_linear_1072_3531" x1="110" y1="41.25" x2="110" y2="178.75" gradientUnits="userSpaceOnUse"><stop stop-color="#ECECEC" /><stop offset="1" stop-color="white" /></linearGradient><linearGradient id="paint1_linear_1072_3531" x1="110" y1="45.8335" x2="110" y2="174.167" gradientUnits="userSpaceOnUse"><stop stop-color="white" /><stop offset="1" stop-color="#E4E4E4" /></linearGradient><linearGradient id="paint2_linear_1072_3531" x1="119.167" y1="77.9168" x2="119.167" y2="142.083" gradientUnits="userSpaceOnUse"><stop stop-color="#F84734" /><stop offset="1" stop-color="#F84734" /></linearGradient></defs></svg>
-                                            </div>
-                                        </div>
-                                        <div class="center">
-                                            <div style="width:426px;height:700px;position:relative">
-                                                <video playsinline loop onclick="if (this.parentElement.childElementCount === 1 && this.paused) this.play();else  { this.pause(); if (this.parentElement.childElementCount === 1) this.after(playButton.content.cloneNode(true)); }" width="426" height="700" style="box-shadow: 0 4px 4px rgba(0,0,0,.25098039215686274); object-fit: cover; border-radius: 90px ">
-                                                    <source src="video2.webm" />
-                                                </video>
-                                                <svg onclick="this.previousElementSibling.play();this.remove()" style="position:absolute;right:0%;top:0%;width:110px;height:110px;" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_1072_3531)"><circle cx="110" cy="110" r="82.5" fill="#00292A" /></g><g filter="url(#filter1_i_1072_3531)"><circle cx="110" cy="110" r="68.75" fill="url(#paint0_linear_1072_3531)" /></g><g filter="url(#filter2_d_1072_3531)"><circle cx="110" cy="110" r="64.1667" fill="url(#paint1_linear_1072_3531)" /></g><g filter="url(#filter3_i_1072_3531)"><path d="M98.5594 81.9374L139.88 106.041C142.912 107.81 142.912 112.19 139.88 113.959L98.5594 138.063C95.5039 139.845 91.6666 137.641 91.6666 134.104V85.8964C91.6666 82.359 95.5039 80.155 98.5594 81.9374Z" fill="url(#paint2_linear_1072_3531)" /></g><defs><filter id="filter0_d_1072_3531" x="24.0625" y="25.7812" width="171.875" height="171.875" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="1.71875" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter1_i_1072_3531" x="41.25" y="41.25" width="137.5" height="139.219" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><filter id="filter2_d_1072_3531" x="44.1146" y="45.8335" width="131.771" height="131.771" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter3_i_1072_3531" x="91.6666" y="81.3062" width="50.4871" height="59.1064" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><linearGradient id="paint0_linear_1072_3531" x1="110" y1="41.25" x2="110" y2="178.75" gradientUnits="userSpaceOnUse"><stop stop-color="#ECECEC" /><stop offset="1" stop-color="white" /></linearGradient><linearGradient id="paint1_linear_1072_3531" x1="110" y1="45.8335" x2="110" y2="174.167" gradientUnits="userSpaceOnUse"><stop stop-color="white" /><stop offset="1" stop-color="#E4E4E4" /></linearGradient><linearGradient id="paint2_linear_1072_3531" x1="119.167" y1="77.9168" x2="119.167" y2="142.083" gradientUnits="userSpaceOnUse"><stop stop-color="#F84734" /><stop offset="1" stop-color="#F84734" /></linearGradient></defs></svg>
-                                            </div>
-                                        </div>
-                                    </div>-->
-                                    <!--<img src="moversTrust2.webp" style="width: 1208px; margin-top: 11px; margin-bottom: 69px; border-radius: 60px; " />-->
+                    <div class="pc-width-40" style="margin-top: 100px; transform: scale(calc(1 / 0.7)); display: flex; justify-content: space-around;">
+                        <div class="center" style="margin-right:100px">
+                            <div style="width:426px;height:700px;position: relative;">
+                                <video playsinline loop onclick="if (this.parentElement.childElementCount === 1 && this.paused) this.play();else  { this.pause(); if (this.parentElement.childElementCount === 1) this.after(playButton.content.cloneNode(true)); }" width="426" height="700" style="box-shadow: 0 4px 4px rgba(0,0,0,.25098039215686274); object-fit:cover; border-radius: 90px">
+                                    <source src="video1.webm" />
+                                </video>
+                                <svg onclick="this.previousElementSibling.play();this.remove()" style="position:absolute;right:0%;top:0%;width:110px;height:110px;" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_1072_3531)"><circle cx="110" cy="110" r="82.5" fill="#00292A" /></g><g filter="url(#filter1_i_1072_3531)"><circle cx="110" cy="110" r="68.75" fill="url(#paint0_linear_1072_3531)" /></g><g filter="url(#filter2_d_1072_3531)"><circle cx="110" cy="110" r="64.1667" fill="url(#paint1_linear_1072_3531)" /></g><g filter="url(#filter3_i_1072_3531)"><path d="M98.5594 81.9374L139.88 106.041C142.912 107.81 142.912 112.19 139.88 113.959L98.5594 138.063C95.5039 139.845 91.6666 137.641 91.6666 134.104V85.8964C91.6666 82.359 95.5039 80.155 98.5594 81.9374Z" fill="url(#paint2_linear_1072_3531)" /></g><defs><filter id="filter0_d_1072_3531" x="24.0625" y="25.7812" width="171.875" height="171.875" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="1.71875" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter1_i_1072_3531" x="41.25" y="41.25" width="137.5" height="139.219" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><filter id="filter2_d_1072_3531" x="44.1146" y="45.8335" width="131.771" height="131.771" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter3_i_1072_3531" x="91.6666" y="81.3062" width="50.4871" height="59.1064" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><linearGradient id="paint0_linear_1072_3531" x1="110" y1="41.25" x2="110" y2="178.75" gradientUnits="userSpaceOnUse"><stop stop-color="#ECECEC" /><stop offset="1" stop-color="white" /></linearGradient><linearGradient id="paint1_linear_1072_3531" x1="110" y1="45.8335" x2="110" y2="174.167" gradientUnits="userSpaceOnUse"><stop stop-color="white" /><stop offset="1" stop-color="#E4E4E4" /></linearGradient><linearGradient id="paint2_linear_1072_3531" x1="119.167" y1="77.9168" x2="119.167" y2="142.083" gradientUnits="userSpaceOnUse"><stop stop-color="#F84734" /><stop offset="1" stop-color="#F84734" /></linearGradient></defs></svg>
+                            </div>
+                        </div>
+                        <div class="center">
+                            <div style="width:426px;height:700px;position:relative">
+                                <video playsinline loop onclick="if (this.parentElement.childElementCount === 1 && this.paused) this.play();else  { this.pause(); if (this.parentElement.childElementCount === 1) this.after(playButton.content.cloneNode(true)); }" width="426" height="700" style="box-shadow: 0 4px 4px rgba(0,0,0,.25098039215686274); object-fit: cover; border-radius: 90px ">
+                                    <source src="video2.webm" />
+                                </video>
+                                <svg onclick="this.previousElementSibling.play();this.remove()" style="position:absolute;right:0%;top:0%;width:110px;height:110px;" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_1072_3531)"><circle cx="110" cy="110" r="82.5" fill="#00292A" /></g><g filter="url(#filter1_i_1072_3531)"><circle cx="110" cy="110" r="68.75" fill="url(#paint0_linear_1072_3531)" /></g><g filter="url(#filter2_d_1072_3531)"><circle cx="110" cy="110" r="64.1667" fill="url(#paint1_linear_1072_3531)" /></g><g filter="url(#filter3_i_1072_3531)"><path d="M98.5594 81.9374L139.88 106.041C142.912 107.81 142.912 112.19 139.88 113.959L98.5594 138.063C95.5039 139.845 91.6666 137.641 91.6666 134.104V85.8964C91.6666 82.359 95.5039 80.155 98.5594 81.9374Z" fill="url(#paint2_linear_1072_3531)" /></g><defs><filter id="filter0_d_1072_3531" x="24.0625" y="25.7812" width="171.875" height="171.875" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="1.71875" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter1_i_1072_3531" x="41.25" y="41.25" width="137.5" height="139.219" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><filter id="filter2_d_1072_3531" x="44.1146" y="45.8335" width="131.771" height="131.771" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter3_i_1072_3531" x="91.6666" y="81.3062" width="50.4871" height="59.1064" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><linearGradient id="paint0_linear_1072_3531" x1="110" y1="41.25" x2="110" y2="178.75" gradientUnits="userSpaceOnUse"><stop stop-color="#ECECEC" /><stop offset="1" stop-color="white" /></linearGradient><linearGradient id="paint1_linear_1072_3531" x1="110" y1="45.8335" x2="110" y2="174.167" gradientUnits="userSpaceOnUse"><stop stop-color="white" /><stop offset="1" stop-color="#E4E4E4" /></linearGradient><linearGradient id="paint2_linear_1072_3531" x1="119.167" y1="77.9168" x2="119.167" y2="142.083" gradientUnits="userSpaceOnUse"><stop stop-color="#F84734" /><stop offset="1" stop-color="#F84734" /></linearGradient></defs></svg>
+                            </div>
+                        </div>
+                    </div>-->
+                                <!--<img src="moversTrust2.webp" style="width: 1208px; margin-top: 11px; margin-bottom: 69px; border-radius: 60px; " />-->
                                 <!--</div>-->
                             </div>
                         </div>
                     </div>
+                    <div class="landing-content" id="currentPromos">
+                        <div class="hide-special-page center pc-display-none" style="margin-top:60px;margin-bottom:70px">
+                            <img src="moversImg5.webp" style="width:75%" />
+                        </div>
+                        <div style="margin-top: 100px; margin-bottom: 35px; font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 50px; text-align: center; color: #000000; ">
+                            <!--<span id=whatsIncludedSpan>What's Included?</span>-->
+                            <span id="currentPromotionsSpan" class="hide-not-special-page pc-display-none">Current promotions</span>
+                        </div>
+                        <div id="currentPromosInner" style="margin-left: 51px; margin-right: 51px; padding: 94.2887px; border: 5.365px solid #00292A; box-shadow: 0px 3.9287px 7.85739px -3.9287px rgba(28, 40, 64, 0.08), 0px 7.85739px 15.7148px rgba(28, 40, 64, 0.04); border-radius: 10px; /* Inside auto layout */ flex: none; order: 0; flex-grow: 0; ">
+                            <div id="currentPromosScaled" style="transform: scale(0.8);transform-origin: 0% 0%; width:calc(100% / 0.8); margin-bottom: -160px">
+                                <div>
+                                    <div class="">
+                                        <div style="border-radius: 392.87px; background-color: #F84734; /* 🍂 Fall Promotion */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-size: 50px; /* 🍂 Fall Promotion */ width: 481px; height: 132px; font-family: 'Arial Rounded MT'; font-style: normal; font-weight: 400; /* identical to box height, or 133% */ display: flex; align-items: center; letter-spacing: 0.01em; color: #FFFFFF; /* Inside auto layout */ flex: none; order: 0; flex-grow: 0; display: flex; flex-direction: row; align-items: center; padding: 0px; gap: 23.57px; /* Inside auto layout */ flex: none; order: 0; flex-grow: 0; padding-left:10px;">
+                                            🍂 Fall Promotion
+                                        </div>
+                                    </div>
+                                    <div style='text-align: left; margin-top: 50px; margin-bottom: 50px; color: #247218; font-family: "Arial Rounded MT Bold"; font-size: calc(44px / 0.8); font-style: normal; font-weight: 800; line-height: 62.859px; /* 133.333% */'>
+                                        Get 10% off if you pay cash
+                                    </div>
+                                    <div style='text-align: left; margin-bottom: 43px; color: #232529; font-family: "Arial Rounded MT Bold"; font-size: calc(44px / 0.8); font-style: normal; font-weight: 800; line-height: 78.574px; /* 142.857% */ '>
+                                        Absolutely Everything
+                                        is included in our rate
+                                        (Blankets, dollies, UNLIMITED
+                                        Shrink wrap and tape) plus:
+                                    </div>
+                                    <style>
+                                        .whatsIncludedCheck {
+                                            display: flex;
+                                            margin-bottom: 48px;
+                                            /*margin-left: 100px;*/
+                                        }
+
+                                            .whatsIncludedCheck > div:first-of-type {
+                                                margin-left: 31px;
+                                                color: #00292A;
+                                                font-family: "Arial Rounded MT";
+                                                font-size: calc(44px / 0.8);
+                                                font-style: normal;
+                                                font-weight: 400;
+                                                line-height: 78.574px; /* 142.857% */
+                                                letter-spacing: -0.393px;
+                                            }
+                                    </style>
+                                </div>
+                                <div style=" display: flex; flex-direction: column; justify-content: center;">
+                                    <div class="whatsIncludedCheck">
+                                        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="0.841736" y="0.557373" width="70.7165" height="70.7165" rx="23.5722" fill="#F84734" />
+                                            <path d="M22.4495 34.6664L25.5453 39.5576C27.6747 42.9245 28.7394 44.606 30.1026 45.1953C31.2969 45.706 32.6484 45.7178 33.8467 45.2228C35.2217 44.6571 36.3139 42.9913 38.4943 39.6598L49.9504 22.1653" stroke="white" stroke-width="4.32157" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div>
+                                            2 Free wardrobe boxes
+                                        </div>
+                                    </div>
+                                    <div class="whatsIncludedCheck">
+                                        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="0.841736" y="0.557373" width="70.7165" height="70.7165" rx="23.5722" fill="#F84734" />
+                                            <path d="M22.4495 34.6664L25.5453 39.5576C27.6747 42.9245 28.7394 44.606 30.1026 45.1953C31.2969 45.706 32.6484 45.7178 33.8467 45.2228C35.2217 44.6571 36.3139 42.9913 38.4943 39.6598L49.9504 22.1653" stroke="white" stroke-width="4.32157" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div>
+                                            2 Free mattress bags
+                                        </div>
+                                    </div>
+                                    <div class="whatsIncludedCheck">
+                                        <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="0.841736" y="0.557373" width="70.7165" height="70.7165" rx="23.5722" fill="#F84734" />
+                                            <path d="M22.4495 34.6664L25.5453 39.5576C27.6747 42.9245 28.7394 44.606 30.1026 45.1953C31.2969 45.706 32.6484 45.7178 33.8467 45.2228C35.2217 44.6571 36.3139 42.9913 38.4943 39.6598L49.9504 22.1653" stroke="white" stroke-width="4.32157" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div>
+                                            Assembly / Reassembly
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="specialGetQuoteBtn" class="hide-not-special-page rainbow-border-orange" style="/* Rectangle 3 */ width: 100%; background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: calc(28.2559px * 1.4); line-height: 33px; color: #FFFFFF; " onclick="getQuote()">
+                                <div style="height: calc(1.4 * (16px + 49px * 123 / 158 * 38 / 53 / var(--scale, 1)));text-align:center; display: flex; justify-content: center; flex-direction: column;">Get a Quote</div>
+                            </button>
+                        </div>
+                    </div>
+                    <template id="playButton">
+                        <svg onclick="this.previousElementSibling.play();this.remove()" style="position:absolute;right:0%;top:0%;width:110px;height:110px;" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_1072_3531)"><circle cx="110" cy="110" r="82.5" fill="#00292A" /></g><g filter="url(#filter1_i_1072_3531)"><circle cx="110" cy="110" r="68.75" fill="url(#paint0_linear_1072_3531)" /></g><g filter="url(#filter2_d_1072_3531)"><circle cx="110" cy="110" r="64.1667" fill="url(#paint1_linear_1072_3531)" /></g><g filter="url(#filter3_i_1072_3531)"><path d="M98.5594 81.9374L139.88 106.041C142.912 107.81 142.912 112.19 139.88 113.959L98.5594 138.063C95.5039 139.845 91.6666 137.641 91.6666 134.104V85.8964C91.6666 82.359 95.5039 80.155 98.5594 81.9374Z" fill="url(#paint2_linear_1072_3531)" /></g><defs><filter id="filter0_d_1072_3531" x="24.0625" y="25.7812" width="171.875" height="171.875" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="1.71875" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter1_i_1072_3531" x="41.25" y="41.25" width="137.5" height="139.219" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><filter id="filter2_d_1072_3531" x="44.1146" y="45.8335" width="131.771" height="131.771" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter3_i_1072_3531" x="91.6666" y="81.3062" width="50.4871" height="59.1064" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><linearGradient id="paint0_linear_1072_3531" x1="110" y1="41.25" x2="110" y2="178.75" gradientUnits="userSpaceOnUse"><stop stop-color="#ECECEC" /><stop offset="1" stop-color="white" /></linearGradient><linearGradient id="paint1_linear_1072_3531" x1="110" y1="45.8335" x2="110" y2="174.167" gradientUnits="userSpaceOnUse"><stop stop-color="white" /><stop offset="1" stop-color="#E4E4E4" /></linearGradient><linearGradient id="paint2_linear_1072_3531" x1="119.167" y1="77.9168" x2="119.167" y2="142.083" gradientUnits="userSpaceOnUse"><stop stop-color="#F84734" /><stop offset="1" stop-color="#F84734" /></linearGradient></defs></svg>
+                    </template>
                     <div class="landing-content hide-not-special-page" style="margin-top:100px">
                         <style>
                             @media all and (min-width: 600px) {
                                 #weServiceOntario {
-                                    text-align: left!important;
+                                    text-align: left !important;
                                 }
                             }
                         </style>
@@ -2828,7 +2864,7 @@
                                     reviewDiv.querySelector('[name=reviewName]').innerText = review.author_name;
                                     dtCarousel.appendChild(reviewDiv);
                                 }
-                                                                                                                                                                            /*if (screen.width >= 600)*/ {
+                                                                                                                                                                                                    /*if (screen.width >= 600)*/ {
                                     dtCarousel.parentElement.style.paddingLeft = '0px';
                                     dtCarousel.parentElement.style.paddingRight = '0px';
                                     dtCarousel.style.marginTop = '100px';
@@ -2879,9 +2915,11 @@
                                         height: 1280px !important;
                                         margin-bottom: -1330px !important;
                                     }
+
                                     #founderMsgDiagText {
                                         margin-top: 40px !important;
                                     }
+
                                     #aboutOurCompany {
                                         margin-bottom: 40px !important;
                                     }
@@ -3984,7 +4022,7 @@
                                                 function validateCalendarScreen() {
                                                     return calendarTopEl.querySelector('.dateSelected') != null
                                                         && Array.from(calendarTopEl.querySelectorAll('input')).every(i => i.value !== '')
-                                                                                                                                                                                                                                                                                                                            /*&& calendarTopEl.querySelector('.time-of-day-active') != null*/;
+                                                                                                                                                                                                                                                                                                                                                                        /*&& calendarTopEl.querySelector('.time-of-day-active') != null*/;
                                                 }
                                                 function updateCalendarValidation() {
                                                     updateValidation(calendarTopEl.querySelector('.mp-form-button'), validateCalendarScreen());
@@ -4072,8 +4110,8 @@
                                             function callMe() {
                                                 quoteFirstText.innerText = "Great choice! We’ll call you.";
                                                 quoteSecondText.innerText = `Share your contacts, and we’ll give you a call to
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        guide you through the process.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Personalized support, just a phone call away.`;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                guide you through the process.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Personalized support, just a phone call away.`;
                                                 let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
                                                 while (elem !== null) {
                                                     elem.style.display = 'none';
