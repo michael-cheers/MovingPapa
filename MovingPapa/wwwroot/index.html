@@ -874,7 +874,7 @@
                                 showScreen('main');
                             }
                         });
-                        const checkQuote2 = () => pickUpPoint2.value !== '' || destinationPoint2.value !== '';
+                        const checkQuote2 = () => window.pickUpPoint2?.value !== '' || window.destinationPoint2?.value !== '';
                         const requestQuote2 = () => {
                             //if (!(pickUpPoint2.value.endsWith(', ON, Canada') && destinationPoint2.value.endsWith(', ON, Canada'))) {
                             //    requestCall();
@@ -3234,10 +3234,10 @@
                         </div>
                         <script>
                             function goBackToGetQuote() {
-                                if (pickUpPoint2.value === '')
-                                    pickUpPoint2.value = pickUpPoint.value;
-                                if (destinationPoint2.value === '')
-                                    destinationPoint2.value = destinationPoint.value;
+                                if (window.pickUpPoint2?.value === '')
+                                    window.pickUpPoint2.value = pickUpPoint.value;
+                                if (window.destinationPoint2?.value === '')
+                                    window.destinationPoint2.value = destinationPoint.value;
                                 gotoStage(0);
                             }
                         </script>
@@ -4438,8 +4438,8 @@ ${day}
                                     email,
                                     phoneNumber: phone,
                                     points: JSON.stringify([
-                                        (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value),
-                                        (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value)
+                                        (window.pickUpPoint2?.value === '' ? pickUpPoint.value : window.pickUpPoint2?.value),
+                                        (window.destinationPoint2?.value === '' ? destinationPoint.value : window.destinationPoint2?.value)
                                     ]),
                                     moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
                                     //moveTime: ['Early Morning', 'Afternoon', 'Late Afternoon', 'Evening'][['8 AM - 11 AM', '12 PM - 2 PM', '3 PM - 5 PM', '6 PM - 7 PM'].indexOf(document.querySelector('.time-of-day-active').innerText.trim())]
@@ -6182,8 +6182,8 @@ ${day}
             let parts = getSelectedItems(document.querySelectorAll('#ypm__main-wrapper')[1]);
             let req = await fetch('/calculate-price?uuid=' + encodeURIComponent(quoteId) + '&moveDetails=' + encodeURIComponent(JSON.stringify({
                 points: [
-                    { address: (pickUpPoint2.value === '' ? pickUpPoint.value : pickUpPoint2.value), buildingType: ['Apartment', 'Basement', 'Condo', 'Duplex', 'House', 'Townhouse'].indexOf(document.querySelector('select[name=buildingType]').value), stairs: document.querySelector('select[name=stairsDropdown]').value },
-                    { address: (destinationPoint2.value === '' ? destinationPoint.value : destinationPoint2.value), buildingType: ['Apartment', 'Basement', 'Condo', 'Duplex', 'House', 'Townhouse'].indexOf(document.querySelectorAll('select[name=buildingType]')[1].value), stairs: document.querySelectorAll('select[name=stairsDropdown]')[1].value }
+                    { address: (window.pickUpPoint2?.value === '' ? pickUpPoint.value : window.pickUpPoint2?.value), buildingType: ['Apartment', 'Basement', 'Condo', 'Duplex', 'House', 'Townhouse'].indexOf(document.querySelector('select[name=buildingType]').value), stairs: document.querySelector('select[name=stairsDropdown]').value },
+                    { address: (window.destinationPoint2?.value === '' ? destinationPoint.value : window.destinationPoint2?.value), buildingType: ['Apartment', 'Basement', 'Condo', 'Duplex', 'House', 'Townhouse'].indexOf(document.querySelectorAll('select[name=buildingType]')[1].value), stairs: document.querySelectorAll('select[name=stairsDropdown]')[1].value }
                 ],
                 moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
                 //moveTime: ['8 AM - 11 AM', '12 PM - 2 PM', '3 PM - 5 PM', '6 PM - 7 PM'].indexOf(document.querySelector('.time-of-day-active').innerText.trim()),
