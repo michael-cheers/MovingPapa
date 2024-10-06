@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.ResponseCompression;
+using Microsoft.AspNetCore.Rewrite;
 using MovingPapa.DB;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -38,6 +39,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseResponseCompression();
 app.UseHttpsRedirection();
+app.UseRewriter(new RewriteOptions().AddRewrite("^((residential|seniors|commercial)-moving|packing|storage)$", "index.html", true));
 app.UseDefaultFiles();
 app.UseWebOptimizer();
 app.UseStaticFiles();

@@ -17,6 +17,7 @@ namespace MovingPapa.Pages
             RestClient client = new(
                 "https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJoeIpTEozK4gRRdz0QV9yJUw&key=AIzaSyAV5-u4FmaK19MYQByVruZuw6Hn4PHUUt0&fields=reviews"
             );
+            var revs = JsonSerializer.Deserialize<resultContainer>((await client.GetAsync(new RestRequest())).Content).result.reviews.Where(r => r.text.Length <= 400);
             return Content(JsonSerializer.Serialize(
             new
             {
@@ -25,7 +26,9 @@ namespace MovingPapa.Pages
                     Date = c.Date.ToString("yyyy-MM-dd"),
                     c.RatePerMoverInCents
                 }),
-                reviews = JsonSerializer.Deserialize<resultContainer>((await client.GetAsync(new RestRequest())).Content).result.reviews/*.Concat(
+                reviews = revs.Concat(revs)
+                    
+                    /*.Concat(
                     new[]
                     {
                         new review("Fantastic service from start to finish! The crew arrived on time, were professional, and handled everything with care. They took extra care with my fragile items and made sure nothing was damaged.", "Alexander Malko"),
