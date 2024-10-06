@@ -4742,7 +4742,10 @@ ${day}
                                             //b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
                                             b.innerText = arr[i];
                                             /*insert a input field that will hold the current array item's value:*/
-                                            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                                            let input = document.createElement('input');
+                                            input.type = 'hidden';
+                                            input.value = arr[i];
+                                            b.appendChild(input);
                                             /*execute a function when someone clicks on the item value (DIV element):*/
                                             b.addEventListener("click", function (e) {
                                                 /*insert the value for the autocomplete text field:*/
