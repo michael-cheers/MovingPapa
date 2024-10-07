@@ -2512,13 +2512,148 @@
                             <img src="movingPapaPic.webp" style="width: 75%; margin-bottom: 70px;" />
                         </div>
                     </div>
-                    <div class="hide-special-page mb-no-margin-top center pc-np landing-content" style='background-color: white; color: #000; padding-top: 0px; margin-top: -30px; padding-bottom: 70px; font-family: "Arial Rounded MT Bold"; font-size: 54px; font-style: normal; font-weight: 400; line-height: normal; '>
+                    <div class="hide-special-page mb-no-margin-top center pc-np landing-content" style='padding-bottom:50px;border-bottom: 2px solid #E5E7EB; background-color: white; color: #000; padding-top: 0px; margin-top: -30px; font-family: "Arial Rounded MT Bold"; font-size: 54px; font-style: normal; font-weight: 400; line-height: normal; '>
                         <span style='color: #F84734;font-family: "Arial Rounded MT Bold";'>Trust.</span>&nbsp;that's movingPapa.
                     </div>
 
+                    <div class="hide-special-page landing-content" style="margin-top:30px">
+                        <div id="whatCustomersSaying" style='color: var(--Black, #2D2D2D); text-align: left; margin-top: 40px; font-family: "Arial Rounded MT Bold"; font-size: 50px; font-style: normal; font-weight: 400; line-height: 67.866px; /* 111.256% */'>What Our Customers Are Saying</div>
+                    </div>
+                    <style>
+                        @media all and (max-width: 600px) {
+                            [name=reviewContent], [name=reviewName] {
+                                font-size: 36.7px !important;
+                            }
 
+                            [name=reviewName] {
+                                line-height: 47px !important;
+                            }
+
+                            .dt-svg-1 svg {
+                                transform: scale(calc(36.7 / 30));
+                                transform-origin: 0% center;
+                            }
+
+                            .dt-svg-1 {
+                                width: 653px !important;
+                            }
+                        }
+                    </style>
+                    <template id="reviewTemplate">
+                        <div class="center" style="margin-top:100px">
+                            <div class="dt-svg-1" style="position: relative; width: calc(553px);border-radius: 73.674px; border: 2.105px solid #000;">
+                                <div>
+                                    <div>
+                                        <div name="reviewName" style="padding-left: 70px; margin-top: 50px; text-align: left; color: #00292A; font-family: 'Arial Rounded MT Bold'; font-size: 31.6px; font-style: normal; font-weight: 400; line-height: 42.133px; /* 133.333% */ ">Sydney A.</div>
+                                        <div style="padding-left: 70px">
+                                            <svg width="213" height="36" viewBox="0 0 213 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.8784 3.68482C17.5271 2.37027 19.4016 2.37027 20.0504 3.68481L23.2508 10.1696C23.5085 10.6916 24.0065 11.0534 24.5825 11.1371L31.7389 12.177C33.1896 12.3878 33.7688 14.1705 32.7191 15.1938L27.5407 20.2414C27.1239 20.6478 26.9336 21.2332 27.032 21.8069L28.2545 28.9344C28.5023 30.3792 26.9858 31.481 25.6883 30.7988L19.2874 27.4337C18.7722 27.1628 18.1566 27.1628 17.6414 27.4337L11.2405 30.7988C9.943 31.481 8.42649 30.3792 8.6743 28.9344L9.89675 21.8069C9.99516 21.2332 9.80494 20.6478 9.38809 20.2414L4.20971 15.1938C3.15998 14.1705 3.73923 12.3878 5.18992 12.177L12.3463 11.1371C12.9223 11.0534 13.4203 10.6916 13.678 10.1696L16.8784 3.68482Z" fill="#34A853" /><path d="M61.029 3.68482C61.6778 2.37027 63.5523 2.37027 64.2011 3.68481L67.4015 10.1696C67.6591 10.6916 68.1571 11.0534 68.7332 11.1371L75.8895 12.177C77.3402 12.3878 77.9195 14.1705 76.8697 15.1938L71.6913 20.2414C71.2745 20.6478 71.0843 21.2332 71.1827 21.8069L72.4051 28.9344C72.6529 30.3792 71.1364 31.481 69.8389 30.7988L63.4381 27.4337C62.9228 27.1628 62.3073 27.1628 61.792 27.4337L55.3912 30.7988C54.0936 31.481 52.5771 30.3792 52.8249 28.9344L54.0474 21.8069C54.1458 21.2332 53.9556 20.6478 53.5387 20.2414L48.3603 15.1938C47.3106 14.1705 47.8899 12.3878 49.3406 12.177L56.4969 11.1371C57.073 11.0534 57.571 10.6916 57.8286 10.1696L61.029 3.68482Z" fill="#34A853" /><path d="M105.18 3.68482C105.829 2.37027 107.704 2.37027 108.352 3.68481L111.553 10.1696C111.81 10.6916 112.308 11.0534 112.885 11.1371L120.041 12.177C121.492 12.3878 122.071 14.1705 121.021 15.1938L115.843 20.2414C115.426 20.6478 115.236 21.2332 115.334 21.8069L116.556 28.9344C116.804 30.3792 115.288 31.481 113.99 30.7988L107.589 27.4337C107.074 27.1628 106.459 27.1628 105.943 27.4337L99.5425 30.7988C98.245 31.481 96.7285 30.3792 96.9763 28.9344L98.1988 21.8069C98.2972 21.2332 98.1069 20.6478 97.6901 20.2414L92.5117 15.1938C91.462 14.1705 92.0412 12.3878 93.4919 12.177L100.648 11.1371C101.224 11.0534 101.722 10.6916 101.98 10.1696L105.18 3.68482Z" fill="#34A853" /><path d="M149.331 3.68482C149.98 2.37027 151.854 2.37027 152.503 3.68481L155.703 10.1696C155.961 10.6916 156.459 11.0534 157.035 11.1371L164.192 12.177C165.642 12.3878 166.221 14.1705 165.172 15.1938L159.993 20.2414C159.576 20.6478 159.386 21.2332 159.485 21.8069L160.707 28.9344C160.955 30.3792 159.438 31.481 158.141 30.7988L151.74 27.4337C151.225 27.1628 150.609 27.1628 150.094 27.4337L143.693 30.7988C142.396 31.481 140.879 30.3792 141.127 28.9344L142.349 21.8069C142.448 21.2332 142.258 20.6478 141.841 20.2414L136.662 15.1938C135.613 14.1705 136.192 12.3878 137.643 12.177L144.799 11.1371C145.375 11.0534 145.873 10.6916 146.131 10.1696L149.331 3.68482Z" fill="#34A853" /><path d="M193.482 3.68482C194.131 2.37027 196.005 2.37027 196.654 3.68481L199.854 10.1696C200.112 10.6916 200.61 11.0534 201.186 11.1371L208.342 12.177C209.793 12.3878 210.372 14.1705 209.323 15.1938L204.144 20.2414C203.727 20.6478 203.537 21.2332 203.636 21.8069L204.858 28.9344C205.106 30.3792 203.589 31.481 202.292 30.7988L195.891 27.4337C195.376 27.1628 194.76 27.1628 194.245 27.4337L187.844 30.7988C186.547 31.481 185.03 30.3792 185.278 28.9344L186.5 21.8069C186.599 21.2332 186.408 20.6478 185.992 20.2414L180.813 15.1938C179.763 14.1705 180.343 12.3878 181.793 12.177L188.95 11.1371C189.526 11.0534 190.024 10.6916 190.281 10.1696L193.482 3.68482Z" fill="#34A853" /></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div name="reviewContent" style="padding-top: 30px; padding-left: 70px; padding-right: 70px; color: #000; /* Quote text 1 */ font-family: 'Arial Rounded MT'; font-size: 30px; font-style: normal; font-weight: 400; /*line-height: 30px;*/ /* 150% */">Best moving experience we’ve ever had! We’ve moved several times, but this was by far the best experience. </div>
+                            </div>
+                        </div>
+                    </template>
+                    <div class="hide-special-page landing-content">
+                        <div id="dtCarousel">
+                            <style>
+                                @media all and (min-width: 600px) {
+                                    .sm-on-desktop-1 {
+                                        transform-origin: 50% 0%;
+                                        transform: scale(calc(918 / 1051));
+                                    }
+                                }
+
+                                @media all and (max-width: 600px) {
+                                    #whatCustomersSaying {
+                                        text-align: center !important;
+                                    }
+
+                                    .dt-svg-1 {
+                                        margin-top: -30px;
+                                    }
+
+                                    .dt-svg-2 {
+                                        margin-top: -71px;
+                                    }
+
+                                    .dt-svg-3 {
+                                        margin-top: 14px;
+                                    }
+
+                                    #dtCarousel {
+                                        padding-top: 100px;
+                                    }
+                                }
+
+                                .dt-svg-1 {
+                                    height: 810px;
+                                }
+
+                                #dtCarousel > div > div > div.center {
+                                    margin-right: 100px;
+                                }
+
+                                /*.flickity-slider div {
+                                        margin-right: -300px;
+                                    }*/
+                            </style>
+                        </div>
+                        <script>
+                            async function getRatesJson() {
+                                let req = await fetch('/rates');
+                                let json = await req.json();
+                                let reviewsJson = json.reviews;
+                                for (let review of reviewsJson) {
+                                    let reviewDiv = reviewTemplate.content.cloneNode(true);
+                                    reviewDiv.querySelector('[name=reviewContent]').innerText = review.text;
+                                    reviewDiv.querySelector('[name=reviewName]').innerText = review.author_name;
+                                    dtCarousel.appendChild(reviewDiv);
+                                }
+                                                                                                                                                                                                                                                                            /*if (screen.width >= 600)*/ {
+                                    dtCarousel.parentElement.style.paddingLeft = '0px';
+                                    dtCarousel.parentElement.style.paddingRight = '0px';
+                                    dtCarousel.style.marginTop = '100px';
+
+                                    //$('#dtCarousel').owlCarousel({
+                                    //    autoWidth: true,
+                                    //    center: true,
+                                    //    loop: true,
+                                    //    margin: 100, // Adjust spacing between items
+                                    //    nav: true,
+                                    //    dots: false,
+                                    //    items: 10
+                                    //});
+                                    new Flickity('#dtCarousel', {
+                                        arrowShape: 'M 7 53 L 40 15 M 7 47 L 40 85 M 10 50 L 90 50',
+                                        cellPosition: 'center',
+                                        wrapAround: true,
+                                        draggable: true,
+                                        pageDots: false
+                                    }).next();
+                                }
+                                ratesJson = json.rates;
+                            }
+                            getRatesJson();
+                        </script>
+                        <style>
+                            /*@media all and (max-width: 600px) {
+                                #sustainabilityContainer {
+                                    margin-left: 47px!important;
+                                }
+                                #sustainability {
+                                    width: calc((98.8vw / var(--scale, 1) - (47px * 2)))!important;
+                                }
+                            }*/
+                            @media all and (min-width: 600px) {
+                                #aboutUs {
+                                    width: calc(98.8vw / var(--scale, 1) - 140px) !important;
+                                }
+                            }
+                        </style>
+                    </div>
                     <div class="hide-special-page landing-content" style="background-color: #FFF; padding: 0px;">
-                        <div class="mb-text-center arial-rounded-mt mb-no-margin-left" style="border-top: 2px solid #E5E7EB; font-style: normal; font-weight: 400; font-size: 50px; line-height: 69px; text-align: left; color: #012122; padding-top: 70px; margin-left: 310px;">
+                        <div class="mb-text-center arial-rounded-mt mb-no-margin-left" style="font-style: normal; font-weight: 400; font-size: 50px; line-height: 69px; text-align: left; color: #012122; padding-top: 70px; margin-left: 310px;">
                             <b>Services designed with you in mind</b>
                         </div>
                         <div id="servicesTxt" class="mb-text-center mb-no-margin-left" style="margin-left: 312px; padding-right: 50px; /* Moving Papa provides flexible moving solutions, from full-service to DIY options. Our tech-driven platform ensures a smooth, transparent process, so you can move with ease. */ font-family: 'Arial Rounded MT'; font-style: normal; font-weight: 400; font-size: 35px; line-height: 160%; /* or 51px */ text-align: left; color: #012122;">
@@ -2779,141 +2914,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hide-special-page landing-content" style="margin-top:30px">
-                        <div id="whatCustomersSaying" style='color: var(--Black, #2D2D2D); text-align: left; margin-top: 100px; font-family: "Arial Rounded MT Bold"; font-size: 50px; font-style: normal; font-weight: 400; line-height: 67.866px; /* 111.256% */'>What Our Customers Are Saying</div>
-                    </div>
-                    <style>
-                        @media all and (max-width: 600px) {
-                            [name=reviewContent], [name=reviewName] {
-                                font-size: 36.7px !important;
-                            }
-
-                            [name=reviewName] {
-                                line-height: 47px !important;
-                            }
-
-                            .dt-svg-1 svg {
-                                transform: scale(calc(36.7 / 30));
-                                transform-origin: 0% center;
-                            }
-
-                            .dt-svg-1 {
-                                width: 653px !important;
-                            }
-                        }
-                    </style>
-                    <template id="reviewTemplate">
-                        <div class="center" style="margin-top:100px">
-                            <div class="dt-svg-1" style="position: relative; width: calc(553px);border-radius: 73.674px; border: 2.105px solid #000;">
-                                <div>
-                                    <div>
-                                        <div name="reviewName" style="padding-left: 70px; margin-top: 50px; text-align: left; color: #00292A; font-family: 'Arial Rounded MT Bold'; font-size: 31.6px; font-style: normal; font-weight: 400; line-height: 42.133px; /* 133.333% */ ">Sydney A.</div>
-                                        <div style="padding-left: 70px">
-                                            <svg width="213" height="36" viewBox="0 0 213 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.8784 3.68482C17.5271 2.37027 19.4016 2.37027 20.0504 3.68481L23.2508 10.1696C23.5085 10.6916 24.0065 11.0534 24.5825 11.1371L31.7389 12.177C33.1896 12.3878 33.7688 14.1705 32.7191 15.1938L27.5407 20.2414C27.1239 20.6478 26.9336 21.2332 27.032 21.8069L28.2545 28.9344C28.5023 30.3792 26.9858 31.481 25.6883 30.7988L19.2874 27.4337C18.7722 27.1628 18.1566 27.1628 17.6414 27.4337L11.2405 30.7988C9.943 31.481 8.42649 30.3792 8.6743 28.9344L9.89675 21.8069C9.99516 21.2332 9.80494 20.6478 9.38809 20.2414L4.20971 15.1938C3.15998 14.1705 3.73923 12.3878 5.18992 12.177L12.3463 11.1371C12.9223 11.0534 13.4203 10.6916 13.678 10.1696L16.8784 3.68482Z" fill="#34A853" /><path d="M61.029 3.68482C61.6778 2.37027 63.5523 2.37027 64.2011 3.68481L67.4015 10.1696C67.6591 10.6916 68.1571 11.0534 68.7332 11.1371L75.8895 12.177C77.3402 12.3878 77.9195 14.1705 76.8697 15.1938L71.6913 20.2414C71.2745 20.6478 71.0843 21.2332 71.1827 21.8069L72.4051 28.9344C72.6529 30.3792 71.1364 31.481 69.8389 30.7988L63.4381 27.4337C62.9228 27.1628 62.3073 27.1628 61.792 27.4337L55.3912 30.7988C54.0936 31.481 52.5771 30.3792 52.8249 28.9344L54.0474 21.8069C54.1458 21.2332 53.9556 20.6478 53.5387 20.2414L48.3603 15.1938C47.3106 14.1705 47.8899 12.3878 49.3406 12.177L56.4969 11.1371C57.073 11.0534 57.571 10.6916 57.8286 10.1696L61.029 3.68482Z" fill="#34A853" /><path d="M105.18 3.68482C105.829 2.37027 107.704 2.37027 108.352 3.68481L111.553 10.1696C111.81 10.6916 112.308 11.0534 112.885 11.1371L120.041 12.177C121.492 12.3878 122.071 14.1705 121.021 15.1938L115.843 20.2414C115.426 20.6478 115.236 21.2332 115.334 21.8069L116.556 28.9344C116.804 30.3792 115.288 31.481 113.99 30.7988L107.589 27.4337C107.074 27.1628 106.459 27.1628 105.943 27.4337L99.5425 30.7988C98.245 31.481 96.7285 30.3792 96.9763 28.9344L98.1988 21.8069C98.2972 21.2332 98.1069 20.6478 97.6901 20.2414L92.5117 15.1938C91.462 14.1705 92.0412 12.3878 93.4919 12.177L100.648 11.1371C101.224 11.0534 101.722 10.6916 101.98 10.1696L105.18 3.68482Z" fill="#34A853" /><path d="M149.331 3.68482C149.98 2.37027 151.854 2.37027 152.503 3.68481L155.703 10.1696C155.961 10.6916 156.459 11.0534 157.035 11.1371L164.192 12.177C165.642 12.3878 166.221 14.1705 165.172 15.1938L159.993 20.2414C159.576 20.6478 159.386 21.2332 159.485 21.8069L160.707 28.9344C160.955 30.3792 159.438 31.481 158.141 30.7988L151.74 27.4337C151.225 27.1628 150.609 27.1628 150.094 27.4337L143.693 30.7988C142.396 31.481 140.879 30.3792 141.127 28.9344L142.349 21.8069C142.448 21.2332 142.258 20.6478 141.841 20.2414L136.662 15.1938C135.613 14.1705 136.192 12.3878 137.643 12.177L144.799 11.1371C145.375 11.0534 145.873 10.6916 146.131 10.1696L149.331 3.68482Z" fill="#34A853" /><path d="M193.482 3.68482C194.131 2.37027 196.005 2.37027 196.654 3.68481L199.854 10.1696C200.112 10.6916 200.61 11.0534 201.186 11.1371L208.342 12.177C209.793 12.3878 210.372 14.1705 209.323 15.1938L204.144 20.2414C203.727 20.6478 203.537 21.2332 203.636 21.8069L204.858 28.9344C205.106 30.3792 203.589 31.481 202.292 30.7988L195.891 27.4337C195.376 27.1628 194.76 27.1628 194.245 27.4337L187.844 30.7988C186.547 31.481 185.03 30.3792 185.278 28.9344L186.5 21.8069C186.599 21.2332 186.408 20.6478 185.992 20.2414L180.813 15.1938C179.763 14.1705 180.343 12.3878 181.793 12.177L188.95 11.1371C189.526 11.0534 190.024 10.6916 190.281 10.1696L193.482 3.68482Z" fill="#34A853" /></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div name="reviewContent" style="padding-top: 30px; padding-left: 70px; padding-right: 70px; color: #000; /* Quote text 1 */ font-family: 'Arial Rounded MT'; font-size: 30px; font-style: normal; font-weight: 400; /*line-height: 30px;*/ /* 150% */">Best moving experience we’ve ever had! We’ve moved several times, but this was by far the best experience. </div>
-                            </div>
-                        </div>
-                    </template>
-                    <div class="hide-special-page landing-content">
-                        <div id="dtCarousel">
-                            <style>
-                                @media all and (min-width: 600px) {
-                                    .sm-on-desktop-1 {
-                                        transform-origin: 50% 0%;
-                                        transform: scale(calc(918 / 1051));
-                                    }
-                                }
-
-                                @media all and (max-width: 600px) {
-                                    #whatCustomersSaying {
-                                        text-align: center !important;
-                                    }
-
-                                    .dt-svg-1 {
-                                        margin-top: -30px;
-                                    }
-
-                                    .dt-svg-2 {
-                                        margin-top: -71px;
-                                    }
-
-                                    .dt-svg-3 {
-                                        margin-top: 14px;
-                                    }
-
-                                    #dtCarousel {
-                                        padding-top: 100px;
-                                    }
-                                }
-
-                                .dt-svg-1 {
-                                    height: 810px;
-                                }
-
-                                #dtCarousel > div > div > div.center {
-                                    margin-right: 100px;
-                                }
-
-                                /*.flickity-slider div {
-                                        margin-right: -300px;
-                                    }*/
-                            </style>
-                        </div>
-                        <script>
-                            async function getRatesJson() {
-                                let req = await fetch('/rates');
-                                let json = await req.json();
-                                let reviewsJson = json.reviews;
-                                for (let review of reviewsJson) {
-                                    let reviewDiv = reviewTemplate.content.cloneNode(true);
-                                    reviewDiv.querySelector('[name=reviewContent]').innerText = review.text;
-                                    reviewDiv.querySelector('[name=reviewName]').innerText = review.author_name;
-                                    dtCarousel.appendChild(reviewDiv);
-                                }
-                                                                                                                                                                                                                            /*if (screen.width >= 600)*/ {
-                                    dtCarousel.parentElement.style.paddingLeft = '0px';
-                                    dtCarousel.parentElement.style.paddingRight = '0px';
-                                    dtCarousel.style.marginTop = '100px';
-
-                                    //$('#dtCarousel').owlCarousel({
-                                    //    autoWidth: true,
-                                    //    center: true,
-                                    //    loop: true,
-                                    //    margin: 100, // Adjust spacing between items
-                                    //    nav: true,
-                                    //    dots: false,
-                                    //    items: 10
-                                    //});
-                                    new Flickity('#dtCarousel', {
-                                        arrowShape: 'M 7 53 L 40 15 M 7 47 L 40 85 M 10 50 L 90 50',
-                                        cellPosition: 'center',
-                                        wrapAround: true,
-                                        draggable: true,
-                                        pageDots: false
-                                    }).next();
-                                }
-                                ratesJson = json.rates;
-                            }
-                            getRatesJson();
-                        </script>
-                        <style>
-                            /*@media all and (max-width: 600px) {
-                                #sustainabilityContainer {
-                                    margin-left: 47px!important;
-                                }
-                                #sustainability {
-                                    width: calc((98.8vw / var(--scale, 1) - (47px * 2)))!important;
-                                }
-                            }*/
-                            @media all and (min-width: 600px) {
-                                #aboutUs {
-                                    width: calc(98.8vw / var(--scale, 1) - 140px) !important;
-                                }
-                            }
-                        </style>
+                    <div class="hide-special-page landing-content pc-np">
                         <div id="aboutUs" class="landing-content pc-np mb-no-margin-left" style="margin-left: 70px; margin-top: 160px; background-color: #012122; border-radius: 100px; ">
                             <style>
                                 @media all and (min-width: 600px) {
@@ -4032,7 +4033,7 @@
                                                     return calendarTopEl.querySelector('.dateSelected') != null
                                                         && Array.from(calendarTopEl.querySelectorAll('input')).every(i => i.value !== '')
                                                         && /^(\+1 ?)?\(?[0-9]{3}\)?[- ]?[0-9]{3}[- ]?[0-9]{4}$/.test(calendarTopEl.querySelector('[placeholder="Phone Number"]').value);
-                                                                                                                                                                                                                                                                                                                                                                                                                    /*&& calendarTopEl.querySelector('.time-of-day-active') != null*/;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                /*&& calendarTopEl.querySelector('.time-of-day-active') != null*/;
                                                 }
                                                 function updateCalendarValidation() {
                                                     updateValidation(calendarTopEl.querySelector('.mp-form-button'), validateCalendarScreen());
@@ -4120,8 +4121,8 @@
                                             function callMe() {
                                                 quoteFirstText.innerText = "Great choice! We’ll call you.";
                                                 quoteSecondText.innerText = `Share your contacts, and we’ll give you a call to
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        guide you through the process.
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        Personalized support, just a phone call away.`;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                guide you through the process.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                Personalized support, just a phone call away.`;
                                                 let elem = quotePopup.querySelector('script').nextElementSibling, elemParent = elem.parentElement;
                                                 while (elem !== null) {
                                                     elem.style.display = 'none';
