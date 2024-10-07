@@ -4023,6 +4023,7 @@
                                                 function validateCalendarScreen() {
                                                     return calendarTopEl.querySelector('.dateSelected') != null
                                                         && Array.from(calendarTopEl.querySelectorAll('input')).every(i => i.value !== '')
+                                                        && /^(\+1 ?)?\(?[0-9]{3}\)?[- ]?[0-9]{3}[- ]?[0-9]{4}$/.test(calendarTopEl.querySelector('[placeholder="Phone Number"]').value);
                                                                                                                                                                                                                                                                                                                                                                         /*&& calendarTopEl.querySelector('.time-of-day-active') != null*/;
                                                 }
                                                 function updateCalendarValidation() {
