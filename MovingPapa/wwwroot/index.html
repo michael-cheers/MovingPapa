@@ -4485,8 +4485,8 @@ ${day}
                                     email,
                                     phoneNumber: phone,
                                     points: JSON.stringify([
-                                        (window.pickUpPoint2?.value === '' ? pickUpPoint.value : window.pickUpPoint2?.value),
-                                        (window.destinationPoint2?.value === '' ? destinationPoint.value : window.destinationPoint2?.value)
+                                        (['', undefined].includes(window.pickUpPoint2?.value) ? pickUpPoint.value : window.pickUpPoint2?.value),
+                                        (['', undefined].includes(window.destinationPoint2?.value) ? destinationPoint.value : window.destinationPoint2?.value)
                                     ]),
                                     moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
                                     //moveTime: ['Early Morning', 'Afternoon', 'Late Afternoon', 'Evening'][['8 AM - 11 AM', '12 PM - 2 PM', '3 PM - 5 PM', '6 PM - 7 PM'].indexOf(document.querySelector('.time-of-day-active').innerText.trim())]
