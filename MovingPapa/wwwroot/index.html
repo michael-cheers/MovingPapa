@@ -1831,7 +1831,11 @@
                                 margin-top: -50px;
                                 margin-bottom: -290px !important;
                                 display: flex;
-                                justify-content: space-around;
+                                justify-content: space-between;
+                            }
+
+                            #currentPromosScaled > div:first-of-type {
+                                width: 50%;
                             }
 
                             #specialGetQuoteBtn {
@@ -1868,8 +1872,8 @@
                             <div id="currentPromosScaled" style="transform: scale(0.8);transform-origin: 0% 0%; width:calc(100% / 0.8); margin-bottom: -160px">
                                 <div>
                                     <div class="">
-                                        <div style="border-radius: 392.87px; background-color: #F84734; /* 🍂 Fall Promotion */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-size: 50px; /* 🍂 Fall Promotion */ width: 481px; height: 132px; font-family: 'Arial Rounded MT'; font-style: normal; font-weight: 400; /* identical to box height, or 133% */ display: flex; align-items: center; letter-spacing: 0.01em; color: #FFFFFF; /* Inside auto layout */ flex: none; order: 0; flex-grow: 0; display: flex; flex-direction: row; align-items: center; padding: 0px; gap: 23.57px; /* Inside auto layout */ flex: none; order: 0; flex-grow: 0; padding-left:10px;">
-                                            🍂 Fall Promotion
+                                        <div style="border-radius: 392.87px; background-color: #F84734; /* 🍂 Fall Promotion */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-size: 50px; /* 🍂 Fall Promotion */ width: 581px; height: 132px; font-family: 'Arial Rounded MT'; font-style: normal; font-weight: 400; /* identical to box height, or 133% */ display: flex; align-items: center; letter-spacing: 0.01em; color: #FFFFFF; /* Inside auto layout */ flex: none; order: 0; flex-grow: 0; display: flex; flex-direction: row; align-items: center; padding: 0px; gap: 23.57px; /* Inside auto layout */ flex: none; order: 0; flex-grow: 0; padding-left:10px;">
+                                            ❄️ Winter Promotion
                                         </div>
                                     </div>
                                     <div style='text-align: left; margin-top: 50px; margin-bottom: 50px; color: #247218; font-family: "Arial Rounded MT Bold"; font-size: calc(44px / 0.8); font-style: normal; font-weight: 800; line-height: 62.859px; /* 133.333% */'>
@@ -1907,7 +1911,7 @@
                                             <path d="M22.4495 34.6664L25.5453 39.5576C27.6747 42.9245 28.7394 44.606 30.1026 45.1953C31.2969 45.706 32.6484 45.7178 33.8467 45.2228C35.2217 44.6571 36.3139 42.9913 38.4943 39.6598L49.9504 22.1653" stroke="white" stroke-width="4.32157" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                         <div>
-                                            2 Free wardrobe boxes
+                                            Insurance coverage
                                         </div>
                                     </div>
                                     <div class="whatsIncludedCheck">
@@ -1916,7 +1920,7 @@
                                             <path d="M22.4495 34.6664L25.5453 39.5576C27.6747 42.9245 28.7394 44.606 30.1026 45.1953C31.2969 45.706 32.6484 45.7178 33.8467 45.2228C35.2217 44.6571 36.3139 42.9913 38.4943 39.6598L49.9504 22.1653" stroke="white" stroke-width="4.32157" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
                                         <div>
-                                            2 Free mattress bags
+                                            Personal moving consultant
                                         </div>
                                     </div>
                                     <div class="whatsIncludedCheck">
@@ -3766,8 +3770,8 @@
                                                 border: none;
                                                 font-size: 80px;
                                                 color: white;
-                                                transform: scale(4);
-                                                margin-right: 60px;
+                                                /*transform: scale(4);*/
+                                                /*margin-right: 60px;*/
                                                 font-size: 13px;
                                             }
 
@@ -4043,11 +4047,35 @@
                                                 <div style="text-align:center;margin-top:-20px;margin-bottom:20px;font-size:60.6px; color:white;font-family:'Arial Rounded MT Bold'">Final step</div>
                                                 <div class="calendar-screen">
                                                     <div class="calendar-frame">
+                                                        <div style="display: flex; justify-content: space-between; color: #F84734; font-size: calc(20px * 4); ">
+                                                            <button style="color:inherit;border:none;background:none" onclick="monthMove(-1)">⬅</button>
+                                                            <button style="color:inherit;border:none;background:none" onclick="monthMove(1)">⮕</button>
+                                                        </div>
                                                         <div class="center">
                                                             <div>
                                                                 <div style="display:flex;justify-content:space-between;margin-left:calc(16px + 63px);margin-right: 93px;align-items:center;">
-                                                                    <span>Calendar</span>
-                                                                    <select id="calendarMonthSelector">January 2024</select>
+                                                                    <span>
+                                                                        Calendar
+                                                                    </span>
+                                                                    <div style="display: flex; transform: scale(4); font-size: 13px; /* justify-content: left; */ margin-right: 60px;">
+                                                                        <select id="calendarMonthSelector">January 2024</select>
+                                                                        <script>
+                                                                            function monthMove(pos) {
+                                                                                let options = Array.from(calendarMonthSelector.querySelectorAll('option'));
+                                                                                for (let idx = 0; idx < options.length; idx++) {
+                                                                                    let opt = options[idx];
+                                                                                    if (opt.value === calendarMonthSelector.value) {
+                                                                                        let finalIdx = idx + pos;
+                                                                                        if (finalIdx < 0 || finalIdx > options.length)
+                                                                                            return;
+                                                                                        calendarMonthSelector.value = options[finalIdx].value;
+                                                                                        calendarMonthSelector.onchange({ target: calendarMonthSelector });
+                                                                                        return;
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        </script>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="center">
                                                                     <table id="calendarTable"><tr><td>S</td><td>M</td><td>T</td><td>W</td><td>T</td><td>F</td><td>S</td></tr></table>
