@@ -1226,13 +1226,17 @@
                     <style>
                         @media all and (min-width: 600px) {
 
-                            .special-page #transparencyBulletContainer {
+                            .special-page:not(.special-page-comm) #transparencyBulletContainer {
                                 margin-top: calc(229px - 80px) !important;
                             }
                         }
 
                         .special-page #landingTop {
                             display: none;
+                        }
+
+                        .special-page-comm #landingTop {
+                            display: flex !important;
                         }
 
                         .special-page #transparencyBulletContainer > div:first-of-type {
@@ -1298,11 +1302,11 @@
                             </style>
                             <div id="aboutInfo">
                                 <div id="headerTxt2" style="padding-left:20px;padding-right:20px; font-family: 'Arial Rounded MT Bold';font-style: normal;font-weight: 400;font-size: 60.37px;line-height: 86px;color: #00292A;text-align:center;">
-                                    <div>Your move, simplified.</div> Get a <span style="color: #F84734">free quote within minutes.</span><!--<span style="background: linear-gradient(90deg, rgba(255, 0, 0, 0.7), rgba(0, 128, 0, 0.7), rgba(0, 0, 255, 0.7), rgba(255, 0, 0, 0.7)); -webkit-background-clip: text; background-clip: text; color: transparent; ">minutes.</span>-->
+                                    <div>Your<span class="special-page-comm-only"> Business</span> Move, Simplified.</div> Get a <span style="color: #F84734">free quote within minutes.</span><!--<span style="background: linear-gradient(90deg, rgba(255, 0, 0, 0.7), rgba(0, 128, 0, 0.7), rgba(0, 0, 255, 0.7), rgba(255, 0, 0, 0.7)); -webkit-background-clip: text; background-clip: text; color: transparent; ">minutes.</span>-->
                                 </div>
 
                                 <div id="desTxt2" style="font-family: 'Arial Rounded MT';font-style: normal;font-weight: 400;line-height: 58.11px;color: #00292A;width:100%;text-align:center;">
-                                    Moving doesn't have to be hard - let us make it easy for you.
+                                    Moving <span class="special-page-comm-only">your business doesn’t have to disrupt operations.<br class="mb-display-none" /><span class="pc-display-none">&nbsp;</span>Let us handle it efficiently and on time</span><span class="special-page-comm-only-none">doesn't have to be hard - let us make it easy for you.</span>
                                 </div>
 
                                 <style>
@@ -1679,6 +1683,13 @@
                         .special-page-store .special-page-store-only-flex {
                             display: flex !important;
                         }
+                        .special-page-comm .special-page-comm-only-none,
+                        .special-page-res .special-page-res-only-none,
+                        .special-page-seniors .special-page-seniors-only-none,
+                        .special-page-pack .special-page-pack-only-none,
+                        .special-page-store .special-page-store-only-none {
+                            display: none !important;
+                        }
 
                         @media all and (min-width: 600px) {
                             .pc-width-55 {
@@ -1687,9 +1698,28 @@
                         }
                     </style>
 
-                    <div class="landing-content" id="specialExplanation" style="display:none;">
+                    <div class="landing-content">
+                        <div id="ourClientsDiv" class="special-page-comm-only-block" style="font-size: 30px; font-family: 'Arial Rounded MT Bold'; text-align: center; background-color: #F4F4F4; padding-top: 20px; margin-top: 40px; border-radius: 50px;">
+                            Our Clients
+                            <div style="display: flex;justify-content: space-around">
+                                <img style="width:15%" src="logo1.webp" />
+                                <div style="width:15%; display:flex;flex-direction:column;justify-content:center">
+                                    <img style="width:100%;height:50%" src="logo2.webp" />
+                                </div>
+                                <img style="width:11%" src="logo3.webp" />
+                            </div>
+                        </div>
+                    </div>
+                    <style>
+                         .special-page-comm #tbAndSeContainer {
+                             display: flex;
+                             flex-direction: column-reverse;
+                         }
+                    </style>
+                    <div id="tbAndSeContainer">
+                    <div class="landing-content" id="specialExplanation">
                         <div style='margin-top: 30px; font-size: 60.37px; color: #000; text-align: center; font-family: "Arial Rounded MT Bold"; font-style: normal; font-weight: 400; line-height: normal;'>
-                            <span class="special-page-comm-only">Commercial Moving</span>
+                            <!--<span class="special-page-comm-only">Commercial Moving</span>-->
                             <span class="special-page-res-only">Residential Moving</span>
                             <span class="special-page-seniors-only">Seniors Moving</span>
                             <span class="special-page-pack-only">Packing</span>
@@ -1700,7 +1730,7 @@
                                 <svg class="pc-width-55 special-page-store-only" style="width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1137_5694" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1137_5694)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1137_5694)" /></g><defs><pattern id="pattern0_1137_5694" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1137_5694" transform="matrix(0.000330688 0 0 0.000360176 0 -0.226115)" /></pattern><image id="image0_1137_5694" width="3024" height="4032" xlink:href="storageImg.jpg" /></defs></svg>
                             </template>
                             <template class=load-sp-comm>
-                                <svg class="pc-width-55 special-page-comm-only" style="width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1132_3801" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1132_3801)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1132_3801)" /></g><defs><pattern id="pattern0_1132_3801" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1132_3801" transform="matrix(0.000330688 0 0 0.000360176 0 -0.226115)" /></pattern><image id="image0_1132_3801" width="3024" height="4032" xlink:href="commercialMovingImg.jpg" /></defs></svg>
+                                <!--<svg class="pc-width-55 special-page-comm-only" style="width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1132_3801" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1132_3801)"><rect x="1350" y="1645" width="4645.83" height="4265.47" fill="url(#pattern0_1132_3801)" /></g><defs><pattern id="pattern0_1132_3801" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1132_3801" transform="matrix(0.000330688 0 0 0.000360176 0 -0.226115)" /></pattern><image id="image0_1132_3801" width="3024" height="4032" xlink:href="commercialMovingImg.jpg" /></defs></svg>-->
                             </template>
                             <template class=load-sp-pack>
                                 <svg class="pc-width-55 special-page-pack-only" style="width: 125%; margin-left: -100px; margin-right: -100px; margin-top: -180px; margin-bottom: -90px;" width="6665" viewBox="0 0 6665 6794" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92C2049.69 1447.54 2065.06 1445.06 2080.69 1442L2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36Z" fill="#F84734" /><path d="M2106.84 1435.81C2082.13 1443.2 2058.05 1444.57 2034.57 1452.92M2106.84 1435.81L2034.57 1452.92M2106.84 1435.81C2133.21 1434.33 2163.83 1427.59 2197.28 1429.3C2397.43 1439.56 2698.84 1519.56 2795.67 1819.36C3065.55 2274.12 3754.16 3214.17 4349.54 3336.28C5008.46 3352.85 6130.12 3673.79 5345.43 4824.93C4777.29 5658.38 2296.02 5922.56 1322.56 3621.78C1134.52 3034.45 1026.42 1811.24 2034.57 1452.92" stroke="#F84734" stroke-width="6.74519" /><mask id="mask0_1134_5568" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1495" y="1797" width="4303" height="3982"><path d="M3523.18 1800.05C1337.16 1730.22 1345.91 3301.53 1623.54 4095.92C2141.92 5560.27 2781.5 5797.83 3227.35 5777.72C3497.96 5765.51 3835.53 5210.67 3900.82 4863.06C4225.45 4192.63 4990.02 3896.87 5331.74 3832.8C6095.3 3585.14 5750.92 3000.48 5483.28 2739.11C4811 2048.46 3896.43 1825.3 3523.18 1800.05Z" fill="#C4C4C4" /></mask><g mask="url(#mask0_1134_5568)"><rect x="1350" y="1645" width="6002" height="5510.61" fill="url(#pattern0_1134_5568)" /></g><defs><pattern id="pattern0_1134_5568" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_1134_5568" transform="matrix(0.000325521 0 0 0.000354548 0 -0.226115)" /></pattern><image id="image0_1134_5568" width="3072" height="4096" xlink:href="packingImg.jpg" /></defs></svg>
@@ -1799,16 +1829,6 @@
                                 perfect storage plan for you.
                             </div>
                         </div>
-                        <div id="ourClientsDiv" class="special-page-comm-only-block" style="font-size: 30px; font-family: 'Arial Rounded MT Bold'; text-align: center; background-color: #F4F4F4; padding-top: 20px; margin-top: 40px; ">
-                            Our Clients
-                            <div style="display: flex;justify-content: space-around">
-                                <img style="width:15%" src="logo1.webp" />
-                                <div style="width:15%; display:flex;flex-direction:column;justify-content:center">
-                                    <img style="width:100%;height:50%" src="logo2.webp" />
-                                </div>
-                                <img style="width:11%" src="logo3.webp" />
-                            </div>
-                        </div>
                     </div>
                     <style>
                         .special-page #currentPromos {
@@ -1834,9 +1854,9 @@
                                 justify-content: space-between;
                             }
 
-                            #currentPromosScaled > div:first-of-type {
-                                width: 50%;
-                            }
+                                #currentPromosScaled > div:first-of-type {
+                                    width: 50%;
+                                }
 
                             #specialGetQuoteBtn {
                                 margin-top: 80px;
@@ -1868,6 +1888,11 @@
                             <!--<span id=whatsIncludedSpan>What's Included?</span>-->
                             <span id="currentPromotionsSpan" class="hide-not-special-page pc-display-none">Current promotions</span>
                         </div>
+                        <style>
+                            .special-page-comm #currentPromos {
+                                display: none;
+                            }
+                        </style>
                         <div id="currentPromosInner" style="margin-left: 51px; margin-right: 51px; padding: 94.2887px; border: 5.365px solid #00292A; box-shadow: 0px 3.9287px 7.85739px -3.9287px rgba(28, 40, 64, 0.08), 0px 7.85739px 15.7148px rgba(28, 40, 64, 0.04); border-radius: 10px; /* Inside auto layout */ flex: none; order: 0; flex-grow: 0; ">
                             <div id="currentPromosScaled" style="transform: scale(0.8);transform-origin: 0% 0%; width:calc(100% / 0.8); margin-bottom: -160px">
                                 <div>
@@ -2370,10 +2395,14 @@
                                                 <svg style="margin-right:16px" xmlns="http://www.w3.org/2000/svg" width="81" height="81" viewBox="0 0 81 81" fill="none">
                                                     <path d="M81 42.3984C81 45.2303 80.3197 47.8564 78.9592 50.2611C77.5986 52.6658 75.7793 54.5484 73.4854 55.8615C73.5486 56.2887 73.5803 56.9531 73.5803 57.8549C73.5803 62.1422 72.1406 65.7809 69.293 68.7867C66.4295 71.8084 62.9807 73.3113 58.9465 73.3113C57.143 73.3113 55.4186 72.9791 53.7891 72.3147C52.5234 74.9092 50.7041 76.9975 48.3152 78.5953C45.9422 80.209 43.3318 81 40.5 81C37.6049 81 34.9787 80.2248 32.6373 78.6428C30.2801 77.0766 28.4766 74.9725 27.2109 72.3147C25.5814 72.9791 23.8729 73.3113 22.0535 73.3113C18.0193 73.3113 14.5547 71.8084 11.6596 68.7867C8.76445 65.7809 7.3248 62.1264 7.3248 57.8549C7.3248 57.3803 7.38809 56.7158 7.49883 55.8615C5.20488 54.5326 3.38555 52.6658 2.025 50.2611C0.680273 47.8564 0 45.2303 0 42.3984C0 39.3926 0.759375 36.624 2.2623 34.1244C3.76523 31.6248 5.79023 29.7738 8.32148 28.5715C7.65703 26.768 7.3248 24.9486 7.3248 23.1451C7.3248 18.8736 8.76445 15.2191 11.6596 12.2133C14.5547 9.20742 18.0193 7.68867 22.0535 7.68867C23.857 7.68867 25.5814 8.0209 27.2109 8.68535C28.4766 6.09082 30.2959 4.00254 32.6848 2.40469C35.0578 0.806836 37.6682 0 40.5 0C43.3318 0 45.9422 0.806836 48.3152 2.38887C50.6883 3.98672 52.5234 6.075 53.7891 8.66953C55.4186 8.00508 57.1272 7.67285 58.9465 7.67285C62.9807 7.67285 66.4295 9.17578 69.293 12.1975C72.1564 15.2191 73.5803 18.8578 73.5803 23.1293C73.5803 25.1227 73.2797 26.9262 72.6785 28.5557C75.2098 29.758 77.2348 31.609 78.7377 34.1086C80.2406 36.624 81 39.3926 81 42.3984ZM38.7756 54.5959L55.4977 29.5523C55.9248 28.8879 56.0514 28.1602 55.909 27.385C55.7508 26.6098 55.3553 25.9928 54.6908 25.5814C54.0264 25.1543 53.2986 25.0119 52.5234 25.1227C51.7324 25.2492 51.0996 25.6289 50.625 26.2934L35.8963 48.4418L29.1094 41.6707C28.5082 41.0695 27.8121 40.7848 27.0369 40.8164C26.2459 40.848 25.5656 41.1328 24.9645 41.6707C24.4266 42.2086 24.1576 42.8889 24.1576 43.7115C24.1576 44.5184 24.4266 45.1986 24.9645 45.7523L34.2826 55.0705L34.7414 55.4344C35.2793 55.7982 35.833 55.9723 36.3709 55.9723C37.4309 55.9564 38.2377 55.5135 38.7756 54.5959Z" fill="#F84734" />
                                                 </svg>
-                                                Your Time Is Money
+                                                Customized Solution
                                             </div>
                                             <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">
-                                                We know that every hour your business isn’t fully operational is costly. Our team is trained to work quickly and efficiently, minimizing disruption so you can get back to business faster.
+                                                No two businesses are the same, and neither are their
+                                                moving needs. Whether you require packing services,
+                                                furniture assembly, or specialized transportation for
+                                                sensitive equipment, we tailor our services to fit your
+                                                specific requirements.
                                             </div>
                                         </div>
                                         <svg style="width: 30px; height: 30px; display: none " width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
@@ -2388,14 +2417,10 @@
                                                 <svg style="margin-right:16px" xmlns="http://www.w3.org/2000/svg" width="81" height="81" viewBox="0 0 81 81" fill="none">
                                                     <path d="M81 42.3984C81 45.2303 80.3197 47.8564 78.9592 50.2611C77.5986 52.6658 75.7793 54.5484 73.4854 55.8615C73.5486 56.2887 73.5803 56.9531 73.5803 57.8549C73.5803 62.1422 72.1406 65.7809 69.293 68.7867C66.4295 71.8084 62.9807 73.3113 58.9465 73.3113C57.143 73.3113 55.4186 72.9791 53.7891 72.3147C52.5234 74.9092 50.7041 76.9975 48.3152 78.5953C45.9422 80.209 43.3318 81 40.5 81C37.6049 81 34.9787 80.2248 32.6373 78.6428C30.2801 77.0766 28.4766 74.9725 27.2109 72.3147C25.5814 72.9791 23.8729 73.3113 22.0535 73.3113C18.0193 73.3113 14.5547 71.8084 11.6596 68.7867C8.76445 65.7809 7.3248 62.1264 7.3248 57.8549C7.3248 57.3803 7.38809 56.7158 7.49883 55.8615C5.20488 54.5326 3.38555 52.6658 2.025 50.2611C0.680273 47.8564 0 45.2303 0 42.3984C0 39.3926 0.759375 36.624 2.2623 34.1244C3.76523 31.6248 5.79023 29.7738 8.32148 28.5715C7.65703 26.768 7.3248 24.9486 7.3248 23.1451C7.3248 18.8736 8.76445 15.2191 11.6596 12.2133C14.5547 9.20742 18.0193 7.68867 22.0535 7.68867C23.857 7.68867 25.5814 8.0209 27.2109 8.68535C28.4766 6.09082 30.2959 4.00254 32.6848 2.40469C35.0578 0.806836 37.6682 0 40.5 0C43.3318 0 45.9422 0.806836 48.3152 2.38887C50.6883 3.98672 52.5234 6.075 53.7891 8.66953C55.4186 8.00508 57.1272 7.67285 58.9465 7.67285C62.9807 7.67285 66.4295 9.17578 69.293 12.1975C72.1564 15.2191 73.5803 18.8578 73.5803 23.1293C73.5803 25.1227 73.2797 26.9262 72.6785 28.5557C75.2098 29.758 77.2348 31.609 78.7377 34.1086C80.2406 36.624 81 39.3926 81 42.3984ZM38.7756 54.5959L55.4977 29.5523C55.9248 28.8879 56.0514 28.1602 55.909 27.385C55.7508 26.6098 55.3553 25.9928 54.6908 25.5814C54.0264 25.1543 53.2986 25.0119 52.5234 25.1227C51.7324 25.2492 51.0996 25.6289 50.625 26.2934L35.8963 48.4418L29.1094 41.6707C28.5082 41.0695 27.8121 40.7848 27.0369 40.8164C26.2459 40.848 25.5656 41.1328 24.9645 41.6707C24.4266 42.2086 24.1576 42.8889 24.1576 43.7115C24.1576 44.5184 24.4266 45.1986 24.9645 45.7523L34.2826 55.0705L34.7414 55.4344C35.2793 55.7982 35.833 55.9723 36.3709 55.9723C37.4309 55.9564 38.2377 55.5135 38.7756 54.5959Z" fill="#F84734" />
                                                 </svg>
-                                                Reliable Service
+                                                Professional Movers
                                             </div>
                                             <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">
-                                                From cubicles to conference rooms, no detail is
-                                                too small. Our experienced movers know how
-                                                to handle office equipment, delicate electronics,
-                                                and large-scale furniture, ensuring everything arrives
-                                                at your new location in perfect condition.
+                                                Our movers are trained and experienced in handling office equipment, sensitive technology, and valuable assets with care and precision.
                                             </div>
                                         </div>
                                         <svg style="width: 30px; height: 30px; display: none " width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
@@ -2407,14 +2432,10 @@
                                                 <svg style="margin-right:16px" xmlns="http://www.w3.org/2000/svg" width="81" height="81" viewBox="0 0 81 81" fill="none">
                                                     <path d="M81 42.3984C81 45.2303 80.3197 47.8564 78.9592 50.2611C77.5986 52.6658 75.7793 54.5484 73.4854 55.8615C73.5486 56.2887 73.5803 56.9531 73.5803 57.8549C73.5803 62.1422 72.1406 65.7809 69.293 68.7867C66.4295 71.8084 62.9807 73.3113 58.9465 73.3113C57.143 73.3113 55.4186 72.9791 53.7891 72.3147C52.5234 74.9092 50.7041 76.9975 48.3152 78.5953C45.9422 80.209 43.3318 81 40.5 81C37.6049 81 34.9787 80.2248 32.6373 78.6428C30.2801 77.0766 28.4766 74.9725 27.2109 72.3147C25.5814 72.9791 23.8729 73.3113 22.0535 73.3113C18.0193 73.3113 14.5547 71.8084 11.6596 68.7867C8.76445 65.7809 7.3248 62.1264 7.3248 57.8549C7.3248 57.3803 7.38809 56.7158 7.49883 55.8615C5.20488 54.5326 3.38555 52.6658 2.025 50.2611C0.680273 47.8564 0 45.2303 0 42.3984C0 39.3926 0.759375 36.624 2.2623 34.1244C3.76523 31.6248 5.79023 29.7738 8.32148 28.5715C7.65703 26.768 7.3248 24.9486 7.3248 23.1451C7.3248 18.8736 8.76445 15.2191 11.6596 12.2133C14.5547 9.20742 18.0193 7.68867 22.0535 7.68867C23.857 7.68867 25.5814 8.0209 27.2109 8.68535C28.4766 6.09082 30.2959 4.00254 32.6848 2.40469C35.0578 0.806836 37.6682 0 40.5 0C43.3318 0 45.9422 0.806836 48.3152 2.38887C50.6883 3.98672 52.5234 6.075 53.7891 8.66953C55.4186 8.00508 57.1272 7.67285 58.9465 7.67285C62.9807 7.67285 66.4295 9.17578 69.293 12.1975C72.1564 15.2191 73.5803 18.8578 73.5803 23.1293C73.5803 25.1227 73.2797 26.9262 72.6785 28.5557C75.2098 29.758 77.2348 31.609 78.7377 34.1086C80.2406 36.624 81 39.3926 81 42.3984ZM38.7756 54.5959L55.4977 29.5523C55.9248 28.8879 56.0514 28.1602 55.909 27.385C55.7508 26.6098 55.3553 25.9928 54.6908 25.5814C54.0264 25.1543 53.2986 25.0119 52.5234 25.1227C51.7324 25.2492 51.0996 25.6289 50.625 26.2934L35.8963 48.4418L29.1094 41.6707C28.5082 41.0695 27.8121 40.7848 27.0369 40.8164C26.2459 40.848 25.5656 41.1328 24.9645 41.6707C24.4266 42.2086 24.1576 42.8889 24.1576 43.7115C24.1576 44.5184 24.4266 45.1986 24.9645 45.7523L34.2826 55.0705L34.7414 55.4344C35.2793 55.7982 35.833 55.9723 36.3709 55.9723C37.4309 55.9564 38.2377 55.5135 38.7756 54.5959Z" fill="#F84734" />
                                                 </svg>
-                                                Flexible Scheduling
+                                                Sustainable Practices
                                             </div>
                                             <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">
-                                                Moving Papa offers flexible scheduling, including nights
-                                                and weekends, to fit your business’s needs. We’re here
-                                                to make sure your move happens when it’s most
-                                                convenient for you, so you never have to
-                                                interrupt your workflow.
+                                                Our commitment to eco-friendly moving ensures that your relocation is not only efficient but also environmentally responsible.
                                             </div>
                                         </div>
                                         <svg style="width: 30px; height: 30px; display: none " width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
@@ -2426,14 +2447,10 @@
                                                 <svg style="margin-right:16px" xmlns="http://www.w3.org/2000/svg" width="81" height="81" viewBox="0 0 81 81" fill="none">
                                                     <path d="M81 42.3984C81 45.2303 80.3197 47.8564 78.9592 50.2611C77.5986 52.6658 75.7793 54.5484 73.4854 55.8615C73.5486 56.2887 73.5803 56.9531 73.5803 57.8549C73.5803 62.1422 72.1406 65.7809 69.293 68.7867C66.4295 71.8084 62.9807 73.3113 58.9465 73.3113C57.143 73.3113 55.4186 72.9791 53.7891 72.3147C52.5234 74.9092 50.7041 76.9975 48.3152 78.5953C45.9422 80.209 43.3318 81 40.5 81C37.6049 81 34.9787 80.2248 32.6373 78.6428C30.2801 77.0766 28.4766 74.9725 27.2109 72.3147C25.5814 72.9791 23.8729 73.3113 22.0535 73.3113C18.0193 73.3113 14.5547 71.8084 11.6596 68.7867C8.76445 65.7809 7.3248 62.1264 7.3248 57.8549C7.3248 57.3803 7.38809 56.7158 7.49883 55.8615C5.20488 54.5326 3.38555 52.6658 2.025 50.2611C0.680273 47.8564 0 45.2303 0 42.3984C0 39.3926 0.759375 36.624 2.2623 34.1244C3.76523 31.6248 5.79023 29.7738 8.32148 28.5715C7.65703 26.768 7.3248 24.9486 7.3248 23.1451C7.3248 18.8736 8.76445 15.2191 11.6596 12.2133C14.5547 9.20742 18.0193 7.68867 22.0535 7.68867C23.857 7.68867 25.5814 8.0209 27.2109 8.68535C28.4766 6.09082 30.2959 4.00254 32.6848 2.40469C35.0578 0.806836 37.6682 0 40.5 0C43.3318 0 45.9422 0.806836 48.3152 2.38887C50.6883 3.98672 52.5234 6.075 53.7891 8.66953C55.4186 8.00508 57.1272 7.67285 58.9465 7.67285C62.9807 7.67285 66.4295 9.17578 69.293 12.1975C72.1564 15.2191 73.5803 18.8578 73.5803 23.1293C73.5803 25.1227 73.2797 26.9262 72.6785 28.5557C75.2098 29.758 77.2348 31.609 78.7377 34.1086C80.2406 36.624 81 39.3926 81 42.3984ZM38.7756 54.5959L55.4977 29.5523C55.9248 28.8879 56.0514 28.1602 55.909 27.385C55.7508 26.6098 55.3553 25.9928 54.6908 25.5814C54.0264 25.1543 53.2986 25.0119 52.5234 25.1227C51.7324 25.2492 51.0996 25.6289 50.625 26.2934L35.8963 48.4418L29.1094 41.6707C28.5082 41.0695 27.8121 40.7848 27.0369 40.8164C26.2459 40.848 25.5656 41.1328 24.9645 41.6707C24.4266 42.2086 24.1576 42.8889 24.1576 43.7115C24.1576 44.5184 24.4266 45.1986 24.9645 45.7523L34.2826 55.0705L34.7414 55.4344C35.2793 55.7982 35.833 55.9723 36.3709 55.9723C37.4309 55.9564 38.2377 55.5135 38.7756 54.5959Z" fill="#F84734" />
                                                 </svg>
-                                                Customized Solution
+                                                Post-Move Support
                                             </div>
                                             <div style="overflow: hidden; height: 0; transition: height 0.3s ease-out;">
-                                                No two businesses are the same, and neither are their
-                                                moving needs. Whether you require packing services,
-                                                furniture assembly, or specialized transportation for
-                                                sensitive equipment, we tailor our services to fit your
-                                                specific requirements.
+                                                We offer unpacking, setup assistance, and follow-up services to ensure your business is ready to thrive in its new location.
                                             </div>
                                         </div>
                                         <svg style="width: 30px; height: 30px; display: none " width="74" height="75" viewBox="0 0 74 75" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="18.4447" y="34.501" width="36.6667" height="6.11111" rx="3.05556" fill="#F84734" /></svg>
@@ -2471,6 +2488,7 @@
                                 <!--</div>-->
                             </div>
                         </div>
+                    </div>
                     </div>
                     <template id="playButton">
                         <svg onclick="this.previousElementSibling.play();this.remove()" style="position:absolute;right:0%;top:0%;width:110px;height:110px;" width="220" height="220" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg"><g filter="url(#filter0_d_1072_3531)"><circle cx="110" cy="110" r="82.5" fill="#00292A" /></g><g filter="url(#filter1_i_1072_3531)"><circle cx="110" cy="110" r="68.75" fill="url(#paint0_linear_1072_3531)" /></g><g filter="url(#filter2_d_1072_3531)"><circle cx="110" cy="110" r="64.1667" fill="url(#paint1_linear_1072_3531)" /></g><g filter="url(#filter3_i_1072_3531)"><path d="M98.5594 81.9374L139.88 106.041C142.912 107.81 142.912 112.19 139.88 113.959L98.5594 138.063C95.5039 139.845 91.6666 137.641 91.6666 134.104V85.8964C91.6666 82.359 95.5039 80.155 98.5594 81.9374Z" fill="url(#paint2_linear_1072_3531)" /></g><defs><filter id="filter0_d_1072_3531" x="24.0625" y="25.7812" width="171.875" height="171.875" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="1.71875" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter1_i_1072_3531" x="41.25" y="41.25" width="137.5" height="139.219" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><filter id="filter2_d_1072_3531" x="44.1146" y="45.8335" width="131.771" height="131.771" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0" /><feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1072_3531" /><feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1072_3531" result="shape" /></filter><filter id="filter3_i_1072_3531" x="91.6666" y="81.3062" width="50.4871" height="59.1064" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix" /><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" /><feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" /><feOffset dy="1.71875" /><feGaussianBlur stdDeviation="0.859375" /><feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" /><feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" /><feBlend mode="normal" in2="shape" result="effect1_innerShadow_1072_3531" /></filter><linearGradient id="paint0_linear_1072_3531" x1="110" y1="41.25" x2="110" y2="178.75" gradientUnits="userSpaceOnUse"><stop stop-color="#ECECEC" /><stop offset="1" stop-color="white" /></linearGradient><linearGradient id="paint1_linear_1072_3531" x1="110" y1="45.8335" x2="110" y2="174.167" gradientUnits="userSpaceOnUse"><stop stop-color="white" /><stop offset="1" stop-color="#E4E4E4" /></linearGradient><linearGradient id="paint2_linear_1072_3531" x1="119.167" y1="77.9168" x2="119.167" y2="142.083" gradientUnits="userSpaceOnUse"><stop stop-color="#F84734" /><stop offset="1" stop-color="#F84734" /></linearGradient></defs></svg>
