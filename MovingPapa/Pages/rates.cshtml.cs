@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MovingPapa.DB;
 using RestSharp;
@@ -12,12 +12,23 @@ namespace MovingPapa.Pages
         public ratesModel(MovingpapaContext db) => DB = db;
         public record resultContainer (result result);
         public record result (List<review> reviews);
-        public record review (string text, string author_name);
+        public record review (string text, string author_name, string? image = null);
         public async Task<IActionResult> OnGet() {
             RestClient client = new(
                 "https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJoeIpTEozK4gRRdz0QV9yJUw&key=AIzaSyAV5-u4FmaK19MYQByVruZuw6Hn4PHUUt0&fields=reviews"
             );
-            var revs = JsonSerializer.Deserialize<resultContainer>((await client.GetAsync(new RestRequest())).Content).result.reviews.Where(r => r.text.Length <= 400);
+            var revs =
+                    new[]
+                    {
+                        new review("Kevin and Joel couldn’t have been more amazing. They were prompt and extremely professional, they handled everything with care.", "Catherine MacFadyen", "CatherineMacFadyen.jpg"),
+                        new review("Rohit and Sam were amazing with the move. Very fast and efficient. Respectful, friendly and no damages!! Recommend Moving Papa 10/10.", "Niki V", "NikiV.jpg"),
+                        new review("kevin and joel did a great job fast and cared a lot about not damaging anything", "McFury", "McFury.jpg"),
+                        new review("Sam nd Rohit came did an amazing job! Moving papa is really a great company to deal with! From booking to offload these guys are amazingly smooth! I’m so happy I found these guys", "Eestbound Beats", "EestboundBeats.jpg"),
+                        new review("I am always hesitant when selecting a moving company but i was suggested Moving Papa a lot and oh i am very glad that i chose them. They turned a very stressful day into a breeze.", "Unique Basnet", "UniqueBasnet.jpg"),
+                        new review("Amazing job! Thanks Rohit and Abel did a great job. Highly recommend!", "Mary Rankowski", "MaryRankowski.jpg")
+                    }.Concat(JsonSerializer.Deserialize<resultContainer>((await client.GetAsync(new RestRequest())).Content).result.reviews.Where(r => r.text.Length <= 400))
+                    .DistinctBy(r => r.author_name);
+            revs = revs.Skip(2).Concat(revs.Take(2));
             return Content(JsonSerializer.Serialize(
             new
             {
@@ -27,16 +38,8 @@ namespace MovingPapa.Pages
                     c.RatePerMoverInCents
                 }),
                 reviews = revs.Concat(revs)
-                    
-                    /*.Concat(
-                    new[]
-                    {
-                        new review("Fantastic service from start to finish! The crew arrived on time, were professional, and handled everything with care. They took extra care with my fragile items and made sure nothing was damaged.", "Alexander Malko"),
-                        new review("These guys were amazing! I was moving from Toronto to Mississauga, and they made the entire process stress-free.", "Ann Blanchard"),
-                        new review("The movers were friendly and worked quickly. They arrived and got straight to work, handling everything with care. They even helped me unpack and arrange things once we got to the new place.", "Asha Shaji"),
-                        new review("I couldn't be happier with the service! The movers were efficient, professional, and took great care with all my belongings. Everything arrived in perfect condition.", "Ali Baranpourian")
-                    }
-                )*/
+
+                //.Concat(
             }
         ));
         }
