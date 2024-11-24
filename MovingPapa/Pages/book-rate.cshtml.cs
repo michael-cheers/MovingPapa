@@ -25,7 +25,7 @@ namespace MovingPapa.Pages
             decimal packagePrice = (decimal)JsonSerializer.Deserialize<JsonArray>(quote.Packages)[packageIdx]["price"].AsValue();
             await DB.Moves.AddAsync(new()
             {
-                MoveDate = quote.MoveDate,
+                //MoveDate = quote.MoveDate,
                 MoveDetails = quote.MoveInfo,
                 MoveTime = quote.MoveTime,
                 PriceInCents = (int)Math.Round(packagePrice * 100),

@@ -19,6 +19,8 @@ namespace MovingPapa.Pages
         public async Task<IActionResult> OnGet(string fullName, string email, string phoneNumber, string service, string points, string moveDate, string moveTime, bool isCallNow, string? uuid = null)
         {
             uuid ??= Guid.NewGuid().ToString();
+            if (!DateTime.TryParse(moveDate, out DateTime dt))
+                dt = default;
             //Enum.Parse<MoveTime>(moveTime.Replace(" ", ""));
             await DB.QuotesAndContacts.AddAsync(new()
             {
@@ -29,7 +31,7 @@ namespace MovingPapa.Pages
                 IsMuscleOnly = service == "Muscle only",
                 Addresses = points,
                 IsCallNow = isCallNow,
-                MoveDate = DateTime.Parse(moveDate),
+                MoveDate = dt == default ? null : dt,
                 MoveTime = "Early Morning" //moveTime.ToString()
             });
             await DB.SaveChangesAsync();
@@ -41,7 +43,7 @@ namespace MovingPapa.Pages
                     FullName = fullName,
                     PhoneNumber = phoneNumber,
                     Email = email,
-                    MoveDate = DateTime.Parse(moveDate).ToString("yyyyMMdd"),
+                    MoveDate = dt == default ? "" : dt.ToString("yyyyMMdd"),
                     OriginAddressFull = pointsDecoded[0],
                     DestinationAddressFull = pointsDecoded[^1]
                 })

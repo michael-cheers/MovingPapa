@@ -4067,13 +4067,23 @@
                                             <script>
                                                 let calendarTopEl = document.currentScript.parentElement;
                                                 function validateCalendarScreen() {
-                                                    return calendarTopEl.querySelector('.dateSelected') != null
-                                                        && Array.from(calendarTopEl.querySelectorAll('input')).every(i => i.value !== '')
-                                                        && /^(\+1 ?)?\(?[0-9]{3}\)?[- ]?[0-9]{3}[- ]?[0-9]{4}$/.test(calendarTopEl.querySelector('[placeholder="Phone Number"]').value);
+                                                    return Array.from(calendarTopEl.querySelectorAll('input')).every(i => i.value !== '')
+                                                        && /^((\+?)1 ?)?\(?[0-9]{3}\)?[- ]?[0-9]{3}[- ]?[0-9]{4}$/.test(calendarTopEl.querySelector('[placeholder="Phone Number"]').value);
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             /*&& calendarTopEl.querySelector('.time-of-day-active') != null*/;
                                                 }
                                                 function updateCalendarValidation() {
-                                                    updateValidation(calendarTopEl.querySelector('.mp-form-button'), validateCalendarScreen());
+                                                    let isValid = validateCalendarScreen();
+                                                    let contactForm = calendarTopEl.querySelector('[name=contactForm]');
+                                                    let contactFormBtn = calendarTopEl.querySelector('[name=contactFormBtn]');
+                                                    if (isValid) {
+                                                        contactForm.classList.add('contact-form');
+                                                        contactFormBtn.classList.add('contact-form-btn');
+                                                    }
+                                                    else {
+                                                        contactForm.classList.remove('contact-form');
+                                                        contactFormBtn.classList.remove('contact-form-btn');
+                                                    }
+                                                    updateValidation(calendarTopEl.querySelector('.mp-form-button'), isValid);
                                                 }
                                             </script>
                                             <div name="contactFormTop" class="pc-width-60">
@@ -4163,12 +4173,12 @@
                                     </div>
                                 </div>-->
                                                 </div>
-                                                <form class="contact-form" name=contactForm style="/*padding-left: calc(65px + 51px); padding-right: calc(70px + 74px);*/ margin-top: 81px; max-width: 1405px; width: 100%; height: 100%; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 46.17px; display: inline-flex">
+                                                <form name=contactForm style="/*padding-left: calc(65px + 51px); padding-right: calc(70px + 74px);*/ margin-top: 81px; max-width: 1405px; width: 100%; height: 100%; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 46.17px; display: inline-flex">
                                                     <input oninput="updateCalendarValidation(this)" class="papa-focus-orange quoteContactFormInput" id=firstName placeholder="Full Name" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: #012122; border-radius: 16.49px; border: 4.58px solid #013c3d; flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
                                                     <input oninput="updateCalendarValidation(this)" class="papa-focus-orange quoteContactFormInput" placeholder="Email" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: #012122; border-radius: 16.49px; border: 4.58px solid #013c3d; flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
                                                     <input oninput="updateCalendarValidation(this)" class="papa-focus-orange quoteContactFormInput" placeholder="Phone Number" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: #012122; border-radius: 16.49px; border: 4.58px solid #013c3d; flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
                                                 </form>
-                                                <button class="contact-form-btn mp-form-button" onclick="if (isActiveBtn(this)) { sendContactDetails(this); updateDates(); nextStage(); } return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+                                                <button name="contactFormBtn" class="mp-form-button" onclick="if (isActiveBtn(this)) { sendContactDetails(this); updateDates(); nextStage(); } return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
                                                     <div style="color: white; font-size: 49.47px; font-family: 'Arial Rounded MT Bold'; font-weight: 400; word-wrap: break-word">Get Quote</div>
                                                 </button>
                                             </div>

@@ -29,7 +29,7 @@ public partial class QuotesAndContact
 
     public bool IsCallNow { get; set; }
 
-    public DateTime MoveDate { get; set; }
+    public DateTime? MoveDate { get; set; }
 
     public string MoveTime { get; set; } = null!;
 
