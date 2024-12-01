@@ -16,7 +16,7 @@ namespace MovingPapa.Pages
     {
         readonly MovingpapaContext DB;
         public confirm_contact_detailsModel (MovingpapaContext db) => DB = db;
-        public async Task<IActionResult> OnGet(string fullName, string email, string phoneNumber, string service, string points, string moveDate, string moveTime, bool isCallNow, string? uuid = null)
+        public async Task<IActionResult> OnGet(string fullName, string email, string phoneNumber, string service, string points, string moveDate, string moveTime, bool isCallNow, string? uuid = null, string? UtmMedium = "", string? UtmKeyword = "", string? UtmCampaign = "")
         {
             uuid ??= Guid.NewGuid().ToString();
             if (!DateTime.TryParse(moveDate, out DateTime dt))
@@ -45,7 +45,10 @@ namespace MovingPapa.Pages
                     Email = email,
                     MoveDate = dt == default ? "" : dt.ToString("yyyyMMdd"),
                     OriginAddressFull = pointsDecoded[0],
-                    DestinationAddressFull = pointsDecoded[^1]
+                    DestinationAddressFull = pointsDecoded[^1],
+                    UtmCampaign = UtmCampaign switch { "" or null => null, _ => UtmCampaign },
+                    UtmKeyword = UtmKeyword switch { "" or null => null, _ => UtmKeyword },
+                    UtmMedium = UtmMedium switch { "" or null => null, _ => UtmMedium }
                 })
             );
             EmailService emailService = new();

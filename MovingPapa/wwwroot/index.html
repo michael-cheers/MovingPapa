@@ -4590,6 +4590,12 @@ ${day}
                                     moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
                                     //moveTime: ['Early Morning', 'Afternoon', 'Late Afternoon', 'Evening'][['8 AM - 11 AM', '12 PM - 2 PM', '3 PM - 5 PM', '6 PM - 7 PM'].indexOf(document.querySelector('.time-of-day-active').innerText.trim())]
                                 };
+                                for (let fieldName of ["utm_medium", "utm_keyword", "utm_campaign"]) {
+                                    let adjustedName = fieldName.split('_').map(s => s[0].toUpperCase() + s.substr(1)).join('');
+                                    if (q(fieldName, '') !== '') {
+                                        data[adjustedName] = q(fieldName);
+                                    }
+                                }
                                 let req = await fetch('/confirm-contact-details?' +
                                     Object.entries(data).map(d => d[0] + "=" + encodeURIComponent(d[1])).join('&'));
                                 let text = await req.text();
