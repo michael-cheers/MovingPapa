@@ -39,7 +39,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseResponseCompression();
 app.UseHttpsRedirection();
-app.UseRewriter(new RewriteOptions().AddRewrite("^service-area/(bradford|toronto|oshawa|scarborough|pickering|vaughan|oakville|hamilton|celadon|brampton|mississauga|milton|st-catherines|landon|kingston|burlington|markham|richmond-hill|new-market|barrie|aurora|kitchener|waterloo|vancouver|burnaby|richmond|surrey|ottawa|gatineau|saskatchewan|winnipeg|saskatoon|halifax|regina|calgary|edmonton|kelowna|victoria|vancouver-island|new-brunswick)|(((residential|seniors|commercial)-moving|packing|storage))$", "index.html", true));
+app.UseRewriter(new RewriteOptions().AddRewrite("^service-area/(etobicoke|north-york|york|bradford|toronto|oshawa|scarborough|pickering|vaughan|oakville|hamilton|celadon|brampton|mississauga|milton|st-catherines|landon|kingston|burlington|markham|richmond-hill|new-market|barrie|aurora|kitchener|waterloo|vancouver|burnaby|richmond|surrey|ottawa|gatineau|saskatchewan|winnipeg|saskatoon|halifax|regina|calgary|edmonton|kelowna|victoria|vancouver-island|new-brunswick)|(((residential|seniors|commercial)-moving|packing|storage))$", "index.html", true));
 app.UseDefaultFiles();
 //app.UseWebOptimizer();
 app.UseStaticFiles();
