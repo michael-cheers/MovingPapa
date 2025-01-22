@@ -4148,6 +4148,9 @@
                                                     }
                                                     updateValidation(calendarTopEl.querySelector('.mp-form-button'), isValid);
                                                 }
+                                                async function asyncSendContactDetails(el) {
+                                                    if (isActiveBtn(el)) { await sendContactDetails(el); updateDates(); nextStage(); }
+                                                }
                                             </script>
                                             <div name="contactFormTop" class="pc-width-60">
                                                 <div  name="contactFormHeading" style="text-align:center;margin-top:-20px;margin-bottom:20px;font-size:60.6px; color:white;font-family:'Arial Rounded MT Bold'">Almost there</div>
@@ -4244,7 +4247,7 @@
                                                     <input oninput="updateCalendarValidation(this)" class="papa-focus-orange quoteContactFormInput" placeholder="Email" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: #012122; border-radius: 16.49px; border: 4.58px solid #013c3d; flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
                                                     <input oninput="updateCalendarValidation(this)" class="papa-focus-orange quoteContactFormInput" placeholder="Phone Number" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: #012122; border-radius: 16.49px; border: 4.58px solid #013c3d; flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
                                                 </form>
-                                                <button name="contactFormBtn" class="mp-form-button" onclick="if (isActiveBtn(this)) { sendContactDetails(this); updateDates(); nextStage(); } return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
+                                                <button name="contactFormBtn" class="mp-form-button" onclick="asyncSendContactDetails(this); return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
                                                     <div style="color: white; font-size: 49.47px; font-family: 'Arial Rounded MT Bold'; font-weight: 400; word-wrap: break-word">Done</div>
                                                 </button>
                                             </div>
