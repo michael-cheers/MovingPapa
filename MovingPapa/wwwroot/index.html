@@ -939,9 +939,8 @@
                         function backHome() {
                             showScreen('main');
                         }
-                        async function requestCall() {
-                            await fetch('/request-call?uuid=' + encodeURIComponent(quoteId));
-                            stageIdx = stages.findIndex(s => s[2] === stage8);
+                        function requestCall() {
+                            stageIdx = stages.findIndex(s => s[0] === "Great, we’ll make this easy. Just share your details, and we’ll be in touch shortly." && s[4] === 'monsterCall.png');
                             displayStage();
                         }
                         function gotoStage(newStageIdx) {
@@ -984,36 +983,33 @@
                                 stages = [
                                     /*each stage is: [aboveProgressBarText, belowProgressBarText, template (or array of them), progressBarValue, progressBarImage ]*/
                                     ["", "", stage0, -1, ""],
+                                    //["Got it! Ready to make your move a breeze. How would you like to get your personalized quote? Choose the option that works best for you.", "Help us get your move just right by listing exactly what’s coming with you.", quoteMethodSelector, -1, 'howQuote.svg'],
                                     ["Let’s set your move date! Not sure of the exact day? No worries—just pick an approximate date.", "Not sure? Enter an approximate date", calendarScreen, 25, 'moveDate.svg'],
-                                    ["Got it! Ready to make your move a breeze. How would you like to get your personalized quote? Choose the option that works best for you.", "Help us get your move just right by listing exactly what’s coming with you.", quoteMethodSelector, -1, 'howQuote.svg'],
+                                    ["", "", stage8, -1, ''],
                                     //[progressInd1.innerText.replaceAll('\n', ''), progressInd2.innerText.replaceAll('\n', ''), [
                                     //    stage0Heading,
                                     //    (t => { t.querySelector('button div').innerText = "Next"; t.querySelector('button').setAttribute('onclick', 'if (isActiveBtn(this)) { sendContactDetails(this); nextStage() }'); return t; })(quoteContactForm.content.cloneNode(true))
                                     //], 237.5, 'chooseServiceType.svg'],
                                     ["Let’s talk about your move. What’s your current setup? The more we know, the better we can assist!", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
-                                        stage1,
+                                        (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = pickUpPoint.value.replace(/, Canada$/, ''); return c; })(),
                                         484, 'currentItems.svg'],
-                                    //...(stops.map((stop, i) => ["What type of home is this stop?", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
-                                    //    (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = stop.value.replace(/, Canada$/, ''); let f = c.querySelector('[name=fromOnly]'); c.querySelector('[name=toOrFrom]').innerText = 'to'; /*f.style.display = 'none';*/ f.nextElementSibling.style.borderBottom = f.style.borderBottom; c.querySelector('[name=origOrDest]').innerText = `Stop ${i + 1}`; return c; })(),
-                                    //    484 + (i + 1) * (679 - 484) / (stops.length + 1), 'destInfo.svg'
-                                    //])),
-                                    //["Great! Now let’s get your new place details. This will help us plan the final steps of your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
-                                    //    (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = destinationPoint.value.replace(/, Canada$/, ''); let f = c.querySelector('[name=fromOnly]'); c.querySelector('[name=toOrFrom]').innerText = 'to'; /*f.style.display = 'none';*/ f.nextElementSibling.style.borderTop = f.style.borderTop; c.querySelector('[name=origOrDest]').innerText = 'Drop-off'; return c; })(),
-                                    //    679, 'destInfo.svg'],
-                                    //["What’s the size of your move? And if you need packing help, please let us know—we’re ready to assist!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 890, 'moveSize.svg'],
-
-                                    ["Let’s set your move date! Not sure of the exact day? No worries—just pick an approximate date.", "Not sure? Enter an approximate date", (() => { let cs2 = calendarScreen.content.cloneNode(true); let { contactForm, contactFormBtn, contactFormHeading } = byName(cs2); contactFormBtn.style.display = 'none'; contactForm.style.display = 'none'; contactFormHeading.innerText = "Please select a date to view pricing"; cs2.appendChild(calendarScreenP2.content.cloneNode(true)); return cs2; })(), 25, 'moveDate.svg'],
-                                    ["", "", moveInfoPage, -1, ''],
-                                    //["Not sure which option fits your move? Let me help you out!.", "", stage3, -1, 'stage3.png'],
-                                    //["Let’s take stock! Double-check your items and quantities so we can get you an accurate flat-rate.", "Help us get your move just right by listing exactly what's coming with you.",
-                                    //    stage4, -1, 'doubleCheck.svg'],
-                                    //["Accuracy matters! Please double-check your item counts..", "Help us get your move just right by listing exactly what's coming with you.",
-                                    //    (() => { let d = stage4.content.cloneNode(true); d.querySelector('[name=please-confirm-inventory-head]').style.display = ''; d.querySelector('[name=searchHead]').style.display = 'none'; d.querySelector('[data-attrTarget]').setAttribute('data-isConfirm', 'true'); Array.from(d.children).forEach(e => e.classList.add('isConfirm')); return d })(), -1, 'doubleDoubleCheck.svg'],
-                                    //["You’re almost there! Pick the package that best fits your move, and let’s get everything set.", "Help us get your move just right by listing exactly what’s coming with you.",
-                                    //    stage6, -1, 'choosePackage.svg'],
+                                    ...(stops.map((stop, i) => ["What type of home is this stop?", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
+                                        (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = stop.value.replace(/, Canada$/, ''); let f = c.querySelector('[name=fromOnly]'); c.querySelector('[name=toOrFrom]').innerText = 'to'; /*f.style.display = 'none';*/ f.nextElementSibling.style.borderBottom = f.style.borderBottom; c.querySelector('[name=origOrDest]').innerText = `Stop ${i + 1}`; return c; })(),
+                                        484 + (i + 1) * (679 - 484) / (stops.length + 1), 'destInfo.svg'
+                                    ])),
+                                    ["Great! Now let’s get your new place details. This will help us plan the final steps of your move", "Where are you headed, and what’s your current setup? We'll make sure everything’s ready for a smooth move.",
+                                        (() => { let c = stage1.content.cloneNode(true); c.querySelector('[name=addr]').innerText = destinationPoint.value.replace(/, Canada$/, ''); let f = c.querySelector('[name=fromOnly]'); c.querySelector('[name=toOrFrom]').innerText = 'to'; /*f.style.display = 'none';*/ f.nextElementSibling.style.borderTop = f.style.borderTop; c.querySelector('[name=origOrDest]').innerText = 'Drop-off'; return c; })(),
+                                        679, 'destInfo.svg'],
+                                    ["What’s the size of your move? And if you need packing help, please let us know—we’re ready to assist!", "How much are we moving? Help us understand the scale so we can get it just right.", stage2, 890, 'moveSize.svg'],
+                                    ["Not sure which option fits your move? Let me help you out!.", "", stage3, -1, 'stage3.png'],
+                                    ["Let’s take stock! Double-check your items and quantities so we can get you an accurate flat-rate.", "Help us get your move just right by listing exactly what's coming with you.",
+                                        stage4, -1, 'doubleCheck.svg'],
+                                    ["Accuracy matters! Please double-check your item counts..", "Help us get your move just right by listing exactly what's coming with you.",
+                                        (() => { let d = stage4.content.cloneNode(true); d.querySelector('[name=please-confirm-inventory-head]').style.display = ''; d.querySelector('[name=searchHead]').style.display = 'none'; d.querySelector('[data-attrTarget]').setAttribute('data-isConfirm', 'true'); Array.from(d.children).forEach(e => e.classList.add('isConfirm')); return d })(), -1, 'doubleDoubleCheck.svg'],
+                                    ["You’re almost there! Pick the package that best fits your move, and let’s get everything set.", "Help us get your move just right by listing exactly what’s coming with you.",
+                                        stage6, -1, 'choosePackage.svg'],
                                     ["You’re all set! Just lock in your move with a $50 deposit, and we’ll take it from here.", "", bookingPage, -1, 'bookingMascot.svg'],
                                     ["", "", stage7, -1, ''],
-                                    ["", "", stage8, -1, ''],
                                     ["Great, we’ll make this easy. Just share your details, and we’ll be in touch shortly.", "",
                                         (() => { let f = quoteContactForm.content.cloneNode(true); f.querySelector('[name=contactForm]').previousElementSibling.remove(); return f; })(),
                                         -1, 'monsterCall.png']
@@ -1104,12 +1100,11 @@
                                     setTimeout(() => loadedFn());
                             }
 
-                            if (stage[4] === "moveDate.svg"/*stage[2] === calendarScreen*/) {
-                                if (!didInitializeCalendar.has(stage)) {
-                                    initializeCalendar(stageDivs.get(stage));
-                                    didInitializeCalendar.add(stage);
+                            if (stage[2] === calendarScreen) {
+                                if (!didInitializeCalendar) {
+                                    initializeCalendar();
                                 }
-                                updateCalendarDisplay(stageDivs.get(stage));
+                                updateCalendarDisplay();
                             }
                         }
                         let stops = [];
@@ -1131,19 +1126,12 @@
                             autocomplete(destActualInput);
                         }
 
-                        let didInitializeCalendar = new Set();
+                        let didInitializeCalendar = false;
                         let viewingCalendarYear;
                         let viewingCalendarMonth;
                         let selectedCalendarDate;
 
-                        function byName(elem) {
-                            return new Proxy({}, {
-                                get(_, prop) { return elem.querySelector(`[name=${prop}]`); }
-                            });
-                        }
-
-                        function initializeCalendar(upperDiv) {
-                            let { calendarTable, calendarMonthSelector } = byName(upperDiv);
+                        function initializeCalendar() {
                             let now = new Date();
                             now.setDate(now.getDate() + 1);
                             let baseYear = now.getFullYear();
@@ -1170,7 +1158,7 @@
                                 let yearmonth = event.target.value.split(',');
                                 viewingCalendarYear = parseInt(yearmonth[0]);
                                 viewingCalendarMonth = parseInt(yearmonth[1]);
-                                updateCalendarDisplay(upperDiv);
+                                updateCalendarDisplay();
                             };
 
                             let dayNumber = 1;
@@ -1188,19 +1176,19 @@
                                         let clickedDateValue = newDiv["value"];
                                         if (clickedDateValue !== undefined) {
                                             selectedCalendarDate = clickedDateValue;
-                                            updateCalendarDisplay(upperDiv);
+                                            updateCalendarDisplay();
                                         }
                                     });
                                     dayNumber++;
                                 }
                                 calendarTable.appendChild(newRow);
                             }
+                            didInitializeCalendar = true;
                         }
 
                         let ratesJson;
 
-                        function updateCalendarDisplay(upperDiv) {
-                            let { calendarTable } = byName(upperDiv);
+                        function updateCalendarDisplay() {
                             let rows = calendarTable.children;
                             let startDate = new Date(viewingCalendarYear, viewingCalendarMonth);
                             let startDayOfWeek = startDate.getDay();
@@ -1232,16 +1220,6 @@
                                             cell.children[0]["value"] = undefined;
                                         } else if (selectedCalendarDate === currentDateTime) {
                                             cell.className = "dateSelected";
-                                            let dateStr = currentDate.toLocaleDateString('en-CA', { year: 'numeric', month: 'numeric', day: 'numeric' });
-                                            let rate = ratesJson.find(d => d.Date === dateStr)?.RatePerMoverInCents ?? 6000;
-                                            let moverSelects = upperDiv.querySelector('.btn-groups');
-                                            if (moverSelects != null) {
-                                                for (let moverSelect of moverSelects.querySelectorAll('.quote-btn')) {
-                                                    let numMovers = +moverSelect.querySelector('.numMovers').innerText;
-                                                    let priceSpan = moverSelect.querySelector('.moversHourlyPrice');
-                                                    priceSpan.innerText = numMovers / 100 * rate + 19 + (numMovers >= 4 ? 20 : 0);
-                                                }
-                                            }
                                         } else {
                                             // TODO: need the server to tell us what price to charge for currentDate?
                                             showedViewedMonth = true;
@@ -4103,14 +4081,14 @@
                                             const isActiveBtn = el => el.classList.contains('mp-form-button-active');
                                         </script>
                                         <template id="quoteMethodSelector" class="popup-main-inner">
-                                            <div class="btn-groups" style="margin-left:0px;margin-right:0px">
-                                                <button onclick="requestCall()" class="quote-btn">
-                                                    <span>Wait for a call back</span>
+                                            <div class="btn-groups">
+                                                <button onclick="nextStage()" class="quote-btn">
+                                                    <p class="recommended-box">recommended</p>
+                                                    <span>Book online</span>
                                                     <span class="btn-arrow"><img src="/back.webp"></span>
                                                 </button>
-                                                <button onclick="nextStage()" class="quote-btn">
-                                                    <p class="recommended-box">recommended for small moves</p>
-                                                    <span>Complete online</span>
+                                                <button onclick="requestCall()" class="quote-btn">
+                                                    <span>Request a call</span>
                                                     <span class="btn-arrow"><img src="/back.webp"></span>
                                                 </button>
                                             </div>
@@ -4125,10 +4103,9 @@
                                                 }
                                             }
                                         </script>
-                                        <script>let calendarTopEl;</script>
                                         <template id="calendarScreen">
                                             <script>
-                                                calendarTopEl ??= document.currentScript.parentElement;
+                                                let calendarTopEl = document.currentScript.parentElement;
                                                 function validateCalendarScreen() {
                                                     return Array.from(calendarTopEl.querySelectorAll('input')).every(i => i.value !== '')
                                                         && /^((\+?)1 ?)?\(?[0-9]{3}\)?[- ]?[0-9]{3}[- ]?[0-9]{4}$/.test(calendarTopEl.querySelector('[placeholder="Phone Number"]').value);
@@ -4150,7 +4127,7 @@
                                                 }
                                             </script>
                                             <div name="contactFormTop" class="pc-width-60">
-                                                <div  name="contactFormHeading" style="text-align:center;margin-top:-20px;margin-bottom:20px;font-size:60.6px; color:white;font-family:'Arial Rounded MT Bold'">Almost there</div>
+                                                <div style="text-align:center;margin-top:-20px;margin-bottom:20px;font-size:60.6px; color:white;font-family:'Arial Rounded MT Bold'">Final step</div>
                                                 <div class="calendar-screen">
                                                     <div class="calendar-frame">
                                                         <div style="display: flex; justify-content: space-between; color: #F84734; font-size: calc(20px * 4); ">
@@ -4172,22 +4149,19 @@
                                                                         Calendar
                                                                     </span>
                                                                     <div style="display: flex; transform: scale(4); font-size: 13px; /* justify-content: left; */ margin-right: 60px;">
-                                                                        <select name="calendarMonthSelector">January 2024</select>
+                                                                        <select id="calendarMonthSelector">January 2024</select>
                                                                         <script>
-                                                                            {
-                                                                                let { calendarMonthSelector } = byName(document.currentScript.parentElement);
-                                                                                function monthMove(pos) {
-                                                                                    let options = Array.from(calendarMonthSelector.querySelectorAll('option'));
-                                                                                    for (let idx = 0; idx < options.length; idx++) {
-                                                                                        let opt = options[idx];
-                                                                                        if (opt.value === calendarMonthSelector.value) {
-                                                                                            let finalIdx = idx + pos;
-                                                                                            if (finalIdx < 0 || finalIdx > options.length)
-                                                                                                return;
-                                                                                            calendarMonthSelector.value = options[finalIdx].value;
-                                                                                            calendarMonthSelector.onchange({ target: calendarMonthSelector });
+                                                                            function monthMove(pos) {
+                                                                                let options = Array.from(calendarMonthSelector.querySelectorAll('option'));
+                                                                                for (let idx = 0; idx < options.length; idx++) {
+                                                                                    let opt = options[idx];
+                                                                                    if (opt.value === calendarMonthSelector.value) {
+                                                                                        let finalIdx = idx + pos;
+                                                                                        if (finalIdx < 0 || finalIdx > options.length)
                                                                                             return;
-                                                                                        }
+                                                                                        calendarMonthSelector.value = options[finalIdx].value;
+                                                                                        calendarMonthSelector.onchange({ target: calendarMonthSelector });
+                                                                                        return;
                                                                                     }
                                                                                 }
                                                                             }
@@ -4195,7 +4169,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="center">
-                                                                    <table name="calendarTable"><tr><td>S</td><td>M</td><td>T</td><td>W</td><td>T</td><td>F</td><td>S</td></tr></table>
+                                                                    <table id="calendarTable"><tr><td>S</td><td>M</td><td>T</td><td>W</td><td>T</td><td>F</td><td>S</td></tr></table>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -4245,70 +4219,8 @@
                                                     <input oninput="updateCalendarValidation(this)" class="papa-focus-orange quoteContactFormInput" placeholder="Phone Number" style="align-self: stretch; height: 136.15px; padding-left: 46.17px; padding-right: 46.17px; padding-top: 39.58px; padding-bottom: 39.58px; background: #012122; border-radius: 16.49px; border: 4.58px solid #013c3d; flex-direction: column; justify-content: center; align-items: flex-start; gap: 32.98px; display: flex ">
                                                 </form>
                                                 <button name="contactFormBtn" class="mp-form-button" onclick="if (isActiveBtn(this)) { sendContactDetails(this); updateDates(); nextStage(); } return false;" style="margin-top: 36px; width: 100%; border: none; align-self: stretch; padding-left: 32.98px; padding-right: 32.98px; padding-top: 39.58px; padding-bottom: 39.58px; background: #F84734; border-radius: 16.49px; justify-content: center; align-items: center; gap: 32.98px; display: inline-flex">
-                                                    <div style="color: white; font-size: 49.47px; font-family: 'Arial Rounded MT Bold'; font-weight: 400; word-wrap: break-word">Done</div>
+                                                    <div style="color: white; font-size: 49.47px; font-family: 'Arial Rounded MT Bold'; font-weight: 400; word-wrap: break-word">Get Quote</div>
                                                 </button>
-                                            </div>
-                                        </template>
-                                        <script>
-                                            async function clickMoverOptSelect() {
-                                                await sendBookingInfo();
-                                                nextStage();
-                                                //location.href = 'https://buy.stripe.com/eVag2n7ui3PnaL6005?client_reference_id=' + encodeURIComponent(quoteId);
-                                            }
-                                        </script>
-                                        <template id="calendarScreenP2">
-                                            <div class="btn-groups" style="margin-left: 0px; margin-right: 0px; min-width: 60% !important;">
-                                                <button class="quote-btn" onclick="clickMoverOptSelect()">
-                                                    <span><span class="numMovers">2</span> movers, 1 truck ($<span class=moversHourlyPrice></span> per hour)</span>
-                                                    <span class="btn-arrow"><img src="/back.webp"></span>
-                                                </button>
-                                                <button class="quote-btn" onclick="clickMoverOptSelect()">
-                                                    <span><span class="numMovers">3</span> movers, 1 truck ($<span class=moversHourlyPrice></span> per hour)</span>
-                                                    <span class="btn-arrow"><img src="/back.webp"></span>
-                                                </button>
-                                                <button class="quote-btn" onclick="clickMoverOptSelect()">
-                                                    <span><span class="numMovers">4</span> movers, 2 trucks ($<span class=moversHourlyPrice></span> per hour)</span>
-                                                    <span class="btn-arrow"><img src="/back.webp"></span>
-                                                </button>
-                                                <button class="quote-btn" onclick="clickMoverOptSelect()">
-                                                    <span><span class="numMovers">5</span> movers, 2 trucks ($<span class=moversHourlyPrice></span> per hour)</span>
-                                                    <span class="btn-arrow"><img src="/back.webp"></span>
-                                                </button>
-                                            </div>
-                                        </template>
-                                        <template id="moveInfoPage">
-                                            <div style='background: #00292A; overflow-y: auto;' class="pc-dif-1">
-                                                <div style="color: white; border-radius: 90px; border: 7px solid #013C3D; background: #012122; margin-top: 44px; padding: 50px; padding-bottom: 50px; font-family: 'Arial Rounded MT Bold'; font-size: 38.24px; font-weight: 400; line-height: 44.25px; text-align: left; color: #fff;">
-                                                    <span style="color: #F84734; font-weight: 800">How billing works:</span><br />
-                                                    We start billing from the moment we arrive at your pickup location until we complete the job at your drop-off location. For example, if we arrive at 8:00 AM and finish your move at 11:00 AM, you will be billed for 3 hours at your hourly rate, plus a standard truck fee.
-                                                    <span style="color: #F84734">A flat truck fee of $150 is automatically applied to all moves.</span><br />
-                                                    <br />
-                                                    <span style="color: #F84734; font-weight: 800">Important Notice 2-Hour Minimum Policy:</span><br />
-                                                    All moves require a minimum of 2 hours. If the total move time is less than 2 hours,
-                                                    the 2-hour minimum charge still applies.<br />
-                                                    <br />
-                                                    <span style="color: #F84734; font-weight: 800">Billing After 2 Hours:</span>
-                                                    After the initial 2 hours,<br />
-                                                    we bill in 15-minute increments.<br />
-                                                    <br />
-                                                    <span style="color: #F84734; font-weight: 800">What's Included in Your Move</span><br />
-                                                    ✅ Shrink Wrap and Blankets to protect and pad your furniture.<br />
-                                                    ✅ Fully Outfitted Trucks equipped with dollies and other tools.<br />
-                                                    ✅ Floor Runners to safeguard your floors and home.<br />
-                                                    ✅ Dismantling and Assembly services (We bring the tools!).<br />
-                                                    ✅ Eco-Friendly Packaging options available.<br />
-                                                    ✅ Flexible Scheduling to accommodate your plans.<br />
-                                                    ✅ Protection Plan:<br />
-                                                    - Compensation up to $10/lb per item.<br />
-                                                    - Up to $1,750 for property damage.<br />
-                                                    - $250 Deductible applies.<br />
-                                                    <br />
-                                                    ✅ Professional, Friendly, and Experienced Movers to make your move fast and
-                                                    stress-free.<br /><br />
-                                                    <button class="rainbow-border-orange" onclick="location.href = 'https://buy.stripe.com/eVag2n7ui3PnaL6005?client_reference_id=' + encodeURIComponent(quoteId);" style="/* Rectangle 3 */ width: 100%; height: 123px; background-color: #F84734; border-radius: 40px; border-radius: 18.6746px; /* Get a Quote */ font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: var(--const-font-size); line-height: 33px; color: #FFFFFF;">
-                                                        <span style="text-align:center;display:flex;justify-content:center;flex-direction:column;">Finalize</span>
-                                                    </button>
-                                                </div>
                                             </div>
                                         </template>
                                         <style>
@@ -5379,10 +5291,6 @@ ${day}
                 <div style="margin-top: 44px; margin-left: 67px;/* 256 Bay st, Toronto, ON M5R 2W2 */font-family: 'Arial Rounded MT Bold'; font-style: normal; font-weight: 400; font-size: 38.2353px; line-height: 44px; align-items: center; font-feature-settings: 'pnum' on, 'lnum' on; color: #FFFFFF; margin-bottom: 30px;">
                     <span name=origOrDest>Pick-up</span>: <span name=addr>256 Bay st, Toronto, ON M5R 2W2</span>
                 </div>
-                <script>
-                    let pp2 = document.getElementById('pickUpPoint2')?.value;
-                    document.currentScript.parentElement.querySelector('[name=addr]').innerText = (pp2 === '' || pp2 === undefined ? pickUpPoint.value : pp2).replace(/, Canada$/, ''); 
-                </script>
                 <div name="fromOnly" style="border-top: 7px solid #013C3D; border-bottom: 7px solid #013C3D; padding: 50px;">
                     <div style="padding-bottom: 50px;font-family: 'Arial Rounded MT Bold'; font-size: 38.24px; font-weight: 400; line-height: 44.25px; text-align: left; color: #fff;">
                         <span>I am moving <span name="toOrFrom">from</span></span>
@@ -6453,29 +6361,28 @@ ${day}
 
         let useBookingJson;
         let bookingJson;
-        async function sendBookingInfo(moverNum) {
-            //let parts = getSelectedItems(document.querySelectorAll('#ypm__main-wrapper')[1]);
+        async function updatePrice() {
+            let parts = getSelectedItems(document.querySelectorAll('#ypm__main-wrapper')[1]);
             let req = await fetch('/calculate-price?uuid=' + encodeURIComponent(quoteId) + '&moveDetails=' + encodeURIComponent(JSON.stringify({
                 points: [
                     { address: (window.pickUpPoint2?.value === '' ? pickUpPoint.value : window.pickUpPoint2?.value), buildingType: ['Apartment', 'Basement', 'Condo', 'Duplex', 'House', 'Townhouse'].indexOf(document.querySelector('select[name=buildingType]').value), stairs: document.querySelector('select[name=stairsDropdown]').value },
-                    { address: (window.destinationPoint2?.value === '' ? destinationPoint.value : window.destinationPoint2?.value)/*, buildingType: ['Apartment', 'Basement', 'Condo', 'Duplex', 'House', 'Townhouse'].indexOf(document.querySelectorAll('select[name=buildingType]')[1].value), stairs: document.querySelectorAll('select[name=stairsDropdown]')[1].value*/ }
+                    { address: (window.destinationPoint2?.value === '' ? destinationPoint.value : window.destinationPoint2?.value), buildingType: ['Apartment', 'Basement', 'Condo', 'Duplex', 'House', 'Townhouse'].indexOf(document.querySelectorAll('select[name=buildingType]')[1].value), stairs: document.querySelectorAll('select[name=stairsDropdown]')[1].value }
                 ],
                 moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
                 //moveTime: ['8 AM - 11 AM', '12 PM - 2 PM', '3 PM - 5 PM', '6 PM - 7 PM'].indexOf(document.querySelector('.time-of-day-active').innerText.trim()),
-                //moveType: ['Full move', 'Partial move', '5 items or less', 'Commercial'].indexOf(document.querySelector('.move-type-active').innerText.trim()),
-                //needsPackingHelp: yesINeedHelpWithPacking.checked,
+                moveType: ['Full move', 'Partial move', '5 items or less', 'Commercial'].indexOf(document.querySelector('.move-type-active').innerText.trim()),
+                needsPackingHelp: yesINeedHelpWithPacking.checked,
                 rooms: roomList.map((r, i) => ({
                     room: r[0].startsWith('Bedroom') ? 0 :
                         ['Bedroom', 'Living Room', 'Dining room', 'Kitchen', 'Bathroom', 'Office', 'Garage', 'Basement', 'Storage Locker', 'Backyard', "Miscellaneous items", 'Other']
                         .indexOf(r[0]),
                     items: parts[i] ?? []
                 })),
-                moverNum
             })));
-            //bookingJson = await req.json();
-            //currentBookingPrice = bookingJson[currentPackage]?.price ?? bookingJson[0].price;
-            //updateBookingPrices?.();
-            //useBookingJson?.();
+            bookingJson = await req.json();
+            currentBookingPrice = bookingJson[currentPackage]?.price ?? bookingJson[0].price;
+            updateBookingPrices?.();
+            useBookingJson?.();
         }
     </script>
     <template id="stage6">
