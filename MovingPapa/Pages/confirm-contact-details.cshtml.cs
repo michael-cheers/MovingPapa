@@ -59,8 +59,15 @@ namespace MovingPapa.Pages
 
             requestBody["Medium"] = !string.IsNullOrEmpty(UtmMedium) ? UtmMedium : "organic";
 
+            if (!string.IsNullOrEmpty(UtmCampaign))
+                requestBody[nameof(UtmCampaign)] = UtmCampaign;
+            if (!string.IsNullOrEmpty(UtmKeyword))
+                requestBody[nameof(UtmKeyword)] = UtmKeyword;
+            if (!string.IsNullOrEmpty(UtmMedium))
+                requestBody[nameof(UtmMedium)] = UtmMedium;
+
             if (!string.IsNullOrEmpty(EntryCity))
-                requestBody[nameof(EntryCity)] = EntryCity;
+                requestBody["Page"] = EntryCity;
 
 
             await client.PostAsync(new RestRequest().AddJsonBody(requestBody));
