@@ -9,6 +9,7 @@ using RestClient = RestSharp.RestClient;
 using System.Net;
 using System.Text.Json;
 using RingCentral;
+using RestSharp.Serializers.Json;
 
 namespace MovingPapa.Pages
 {
@@ -16,7 +17,7 @@ namespace MovingPapa.Pages
     {
         readonly MovingpapaContext DB;
         public confirm_contact_detailsModel (MovingpapaContext db) => DB = db;
-        public async Task<IActionResult> OnGet(string fullName, string email, string phoneNumber, string service, string points, string moveDate, string moveTime, bool isCallNow, string? uuid = null, string? UtmMedium = "", string? UtmKeyword = "", string? UtmCampaign = "")
+        public async Task<IActionResult> OnGet(string fullName, string email, string phoneNumber, string service, string points, string moveDate, string moveTime, bool isCallNow, string? uuid = null, string? UtmMedium = "", string? UtmKeyword = "", string? UtmCampaign = "", string? EntryCity = "")
         {
             uuid ??= Guid.NewGuid().ToString();
             if (!DateTime.TryParse(moveDate, out DateTime dt))
@@ -36,21 +37,33 @@ namespace MovingPapa.Pages
             });
             await DB.SaveChangesAsync();
             var pointsDecoded = JsonSerializer.Deserialize<List<string>>(points);
-            var client = new RestClient($"https://api.smartmoving.com/api/leads/from-provider/v2?providerKey={Environment.GetEnvironmentVariable("SM_API_KEY")}");
-            await client.PostAsync(new RestRequest()
-                .AddJsonBody(new
-                {
-                    FullName = fullName,
-                    PhoneNumber = phoneNumber,
-                    Email = email,
-                    MoveDate = dt == default ? "" : dt.ToString("yyyyMMdd"),
-                    OriginAddressFull = pointsDecoded[0],
-                    DestinationAddressFull = pointsDecoded[^1],
-                    UtmCampaign = UtmCampaign switch { "" or null => null, _ => UtmCampaign },
-                    UtmKeyword = UtmKeyword switch { "" or null => null, _ => UtmKeyword },
-                    UtmMedium = UtmMedium switch { "" or null => null, _ => UtmMedium }
-                })
+            var client = new RestClient(
+                $"https://api.smartmoving.com/api/leads/from-provider/v2?providerKey={Environment.GetEnvironmentVariable("SM_API_KEY")}",
+                configureSerialization: config => config.UseSystemTextJson(new() { PropertyNamingPolicy = null })
             );
+            var requestBody = new Dictionary<string, object>
+            {
+                ["FullName"] = fullName,
+                ["PhoneNumber"] = phoneNumber,
+                ["Email"] = email,
+                ["MoveDate"] = dt == default ? "" : dt.ToString("yyyyMMdd"),
+                ["OriginAddressFull"] = pointsDecoded[0],
+                ["DestinationAddressFull"] = pointsDecoded[^1],
+            };
+
+            if (!string.IsNullOrEmpty(UtmCampaign))
+                requestBody["Campaign"] = UtmCampaign;
+
+            //if (!string.IsNullOrEmpty(UtmKeyword))
+            //    requestBody["Keyword"] = UtmKeyword;
+
+            requestBody["Medium"] = !string.IsNullOrEmpty(UtmMedium) ? UtmMedium : "organic";
+
+            if (!string.IsNullOrEmpty(EntryCity))
+                requestBody[nameof(EntryCity)] = EntryCity;
+
+
+            await client.PostAsync(new RestRequest().AddJsonBody(requestBody));
             EmailService emailService = new();
             await emailService.SendMessage(
                 "sales@movingpapa.com",

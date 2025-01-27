@@ -4619,6 +4619,24 @@ ${day}
                                     moveDate: new Date(selectedCalendarDate).toLocaleDateString("en-US", { day: "numeric", month: "numeric", year: "numeric" }),
                                     //moveTime: ['Early Morning', 'Afternoon', 'Late Afternoon', 'Evening'][['8 AM - 11 AM', '12 PM - 2 PM', '3 PM - 5 PM', '6 PM - 7 PM'].indexOf(document.querySelector('.time-of-day-active').innerText.trim())]
                                 };
+
+                                // 1. Check if the pathname starts with /service-area/
+                                if (window.location.pathname.startsWith('/service-area/')) {
+                                    // 2. Extract the city slug at the end of /service-area/
+                                    //    e.g. /service-area/north-york -> "north-york"
+                                    let citySlug = window.location.pathname.replace(/^\/service-area\//, '').split('/')[0];
+
+                                    // 3. Convert the slug to a more readable format:
+                                    //    e.g. "north-york" -> "North York"
+                                    let cityName = citySlug
+                                        .split('-')
+                                        .map(part => (part[0] ?? '').toUpperCase() + part.substr(1))
+                                        .join(' ');
+
+                                    // 4. Add the city as a custom field in our data object
+                                    data.entryCity = cityName;
+                                }
+
                                 for (let fieldName of ["utm_medium", "utm_keyword", "utm_campaign"]) {
                                     let adjustedName = fieldName.split('_').map(s => s[0].toUpperCase() + s.substr(1)).join('');
                                     if (q(fieldName, '') !== '') {
