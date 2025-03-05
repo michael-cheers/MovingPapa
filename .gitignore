@@ -362,4 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
-*.envMovingPapa\Properties\launchSettings.json
+*.env
+
+MovingPapa/Properties/launchSettings.json
