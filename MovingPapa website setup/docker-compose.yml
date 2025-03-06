@@ -1,0 +1,25 @@
+services:
+  db:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=movingpapa
+      - MYSQL_USER=user
+      - MYSQL_ROOT_PASSWORD=MB9f2tvBekn8hnpFAaRZ
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - "12784:3306"
+  phpmyadmin:
+    depends_on:
+      - db
+    environment:
+      - PMA_HOST=db
+      - PMA_USER=root
+      - PMA_PASSWORD=MB9f2tvBekn8hnpFAaRZ
+    image: phpmyadmin:latest
+    restart: unless-stopped
+    ports:
+      - "16000:80"
+volumes:
+  dbdata:

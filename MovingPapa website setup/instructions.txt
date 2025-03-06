@@ -1,0 +1,14 @@
+Instructions to get MovingPapa working
+--------------------------------------
+
+First, you'll need Visual Studio 2022 installed along with ASP.NET Core.
+
+Then, set up the database. You'll need Docker for this.
+
+You can use run.bat once you have Docker installed.
+
+Once you have run that, go to http://localhost:16000 and create a database called MovingPapa.
+
+Then copy and paste the sql from run_this_to_create_database.sql into the SQL runner and the tables will be populated.
+
+From there, you can use Ctrl+F5 in Visual Studio and it should run the Moving Papa website.
