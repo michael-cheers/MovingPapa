@@ -3395,6 +3395,79 @@
                                     </div>
                                 </div>
                             </a>
+                            <style>
+                                .main-form-container {
+                                    display: flex;
+                                    flex-direction: column;
+                                }
+                                
+                                .highlight_red{
+                                    color: #F84734;
+        
+                                }
+        
+                                .input_box{
+                                    border-radius:20px;
+                                    margin:15px;
+                                    font-size:30px;
+                                    height:100px;
+                                    padding-left: 20px;
+                                    box-sizing: border-box; 
+                                }
+                                .input_box_message{
+                                    border-radius:20px;
+                                    margin:15px;
+                                    font-size:30px;
+                                    height:200px;
+                                    padding-left: 20px; 
+                                    padding-top: 30px;
+                                    box-sizing: border-box; 
+                                    border-color:black;
+                                }
+                                .input_box::placeholder {
+                                    position: absolute;
+                                    left: 20px;
+                                }
+                                .input_box_message::placeholder {
+                                    position: absolute;
+                                    left: 20px;
+                                    top: 25px;
+                                    font-family: Arial, Helvetica, sans-serif;
+                                }
+                                .form_button:hover {
+                                    background-color: darkred;
+                                    cursor: pointer;
+                                }
+                                .form_button {
+                                    height: 100px;
+                                    border-radius: 20px;
+                                    background-color: #F84734;
+                                    color: white;
+                                    font-size: 30px;
+                                    margin: 15px;
+                                    transition: background-color 0.3s ease;
+                                }
+                            </style>
+                            <div class="main-form-container" style="width: 50%">
+                                <div style="margin-left:20px;font-family: 'Arial Rounded MT Bold';">
+                                    <h1 style="display:flex; font-size: 40px; margin-bottom: 0px"> <p style="color:red;">Get in Touch</p><p style="margin-left:10px"> with us</p></h1>
+                                    <p style="margin-top: 0px; font-size:25px; width:70%">
+                                        Whether you hava a question, need a quote, or require assistance, reach out to us, and we'll response within 60 minutes. 
+                                    </p>
+                                </div>
+                                <form class="main-form-container" action="/submit_form" method="post">
+                                    <textarea class="input_box_message" placeholder="Your Message" id="message" name="message" required=""></textarea> 
+                                    
+                                    <input class="input_box" placeholder="Your Name" type="text" id="name" name="name" required="">
+                                    
+                                    <input class="input_box" placeholder="Email" type="email" id="email" name="email" required="">
+                                    
+                                    <input class="input_box" placeholder="Phone Number" type="tel" id="phone" name="phone" required="">
+    
+                                    
+                                    <input type="submit" class="form_button" value="Submit">
+                                </form>
+                            </div>
                         </div>
                         <!--<div class="landing-content" style="background: #012122; padding-top: 126px; ">
         <div style='color: #FFF; text-align: center; font-family: "Arial Rounded MT Bold"; font-size: 71px; font-style: normal; font-weight: 400;'>Resources and insights</div>
